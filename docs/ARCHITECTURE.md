@@ -1,6 +1,6 @@
 # Architecture notes
 
-How the Milestone 1 prototype is put together, and why. The short version is in
+How the Milestone 1.5 prototype is put together, and why. The short version is in
 the README; this file records the decisions that are not obvious from the code.
 
 ## Coordinate system and layout rules
@@ -166,3 +166,19 @@ All scenes are ordinary `.tscn` files and can be edited in the Godot editor.
 minimum state to make those signals meaningful, and are reset by
 `Game.reset_station()`. They are scene-owned rather than autoloads because
 nothing needs global access to them yet.
+
+## Presentation (Milestone 1.5)
+
+`StationArt` and `TrainArt` add visual children to the authored station and cars.
+`DetailBuilder` batches boxes/braces per material, parent and cutaway section; signs
+are text meshes. The builders never create collision objects. The original walls
+collect these meshes in their deferred initialization, so new trim/text participates
+in their existing fade and train-pass cutaways. Keep details on the correct wall parent.
+
+`Game` creates `PresentationEffects` and binds the player. It animates visual-only limbs
+and landing offsets on physics ticks, plus bounded CPU particles. Neither effects nor HUD
+write movement or train state. `Hud.bind` accepts the player, train and station, refreshes
+context at 10 Hz and eases visual values each frame. `RailTheme` shares the industrial
+palette with the independently toggled developer console.
+
+See [VISUAL_DESIGN.md](VISUAL_DESIGN.md) for art direction, budgets and constraints.

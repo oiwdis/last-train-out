@@ -1,10 +1,14 @@
 # Last Train Out
 
 A survival game about the operator of the last working train in a city that is
-being swallowed by fog. This repository holds **Milestone 1: a playable
-gray-box prototype of the first station, Harlow Junction**, built with
+being swallowed by fog. This repository holds **Milestone 1.5: a playable, atmospheric presentation pass
+of the first station, Harlow Junction**, built with
 **Godot 4 and GDScript** using only primitive meshes and built-in engine
-features (no plugins, no imported art).
+features (no plugins, no paid or imported art).
+
+The train is a warm refuge in a cold, abandoned railway: detailed rolling stock,
+industrial buildings with readable cutaways, a railway instrument HUD and subtle
+movement feedback. [Visual design and before/after comparisons](docs/VISUAL_DESIGN.md).
 
 The milestone is about one thing above all: sprint along the platform, time a
 jump, grab the moving train, climb aboard and ride away.
@@ -13,18 +17,21 @@ jump, grab the moving train, climb aboard and ride away.
 
 | | |
 |---|---|
-| Engine | Godot **4.5 or newer** (authored on 4.5.1, also verified on 4.7) |
+| Engine | Godot **4.5.1** (the version used for this milestone's tests and exports) |
 | Language | GDScript |
 | Renderer | Forward+ on desktop (Compatibility fallback configured for web) |
 | Physics | Jolt Physics, 60 ticks/s, physics interpolation on |
 | macOS app | Built automatically by GitHub Actions for Apple Silicon and Intel - [download and play](#play-on-macos-no-godot-needed) |
 | Status | See [docs/TEST_REPORT.md](docs/TEST_REPORT.md) for what is verified and what is not |
 
+[Watch the Milestone 1.5 gameplay tour](docs/recording/milestone1_5_demo.mp4) — scripted
+movement, warehouse cutaways, freight-yard traversal and two ways to catch the train.
+
 ---
 
 ## Play on macOS (no Godot needed)
 
-Every push to the development branch is tested and built by GitHub Actions into a standalone
+Every push to the development branch and pull request targeting it is tested and built by GitHub Actions into a standalone
 **Last Train Out.app**: one universal app for Apple Silicon and Intel Macs that contains the
 Godot runtime and all game data. You do not need Godot, Xcode or anything else to play it.
 
@@ -207,6 +214,13 @@ shimmy, **Space** to jump off, **E** to let go.
 
 ---
 
+## Player HUD
+
+The HUD shows your current area, stamina and train status. Exhaustion is labelled explicitly;
+the bar eases between values. Interaction hints reflect actions the player can actually perform,
+then switch to climbing or hanging controls when attached. A brief notice confirms boarding.
+The departure instrument distinguishes parked, departing, cruising, braking and stopped states.
+
 ## Debug menu
 
 Press **F1** (or `` ` ``). The game keeps running and movement keys keep
@@ -243,7 +257,8 @@ last-train-out/
 │   ├── train/           train, train_car, departure_mode
 │   ├── camera/          camera_rig, camera_zone, camera_profile
 │   ├── interaction/     interactable (base), ladder, grab_rail
-│   ├── environment/     gray-box blocks, stairs, racks, track, cutaway walls, station
+│   ├── environment/     collision blocks, stairs, racks, track, cutaway walls, station
+│   ├── presentation/    batched station/train art and visual movement feedback
 │   ├── main/            game.gd - wires the systems together
 │   └── ui/              debug_menu, hud
 ├── systems/             fog_system, passenger_system, inventory_system (placeholders)
@@ -341,7 +356,7 @@ verified); the second writes `build/macos/Last Train Out.app`.
 
 ## Screenshots and recording
 
-The files in `docs/screenshots/` and `docs/recording/` were rendered from the
+The updated screenshots in `docs/screenshots/` and recordings in `docs/recording/` were rendered from the
 running game by `tools/capture_screenshots.tscn` and `tools/record_demo.tscn`;
 the player in them is driven by scripted input. See the test report for how
 they were produced.
@@ -359,6 +374,6 @@ they were produced.
 
 ## Scope
 
-Milestone 1 deliberately stops at the gray-box: there is no advancing fog,
+Milestone 1.5 polishes the playable prototype: there is no advancing fog,
 passenger AI, inventory, train upgrades, route selection, dialogue, audio,
 menus or saving. Those arrive in later milestones.
