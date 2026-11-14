@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="LootTable" format=3]
+
+[ext_resource type="Script" path="res://scripts/scavenging/loot_table.gd" id="table"]
+[ext_resource type="Script" path="res://scripts/scavenging/loot_entry.gd" id="entry"]
+[ext_resource type="Resource" path="res://resources/items/medicine.tres" id="item0"]
+[ext_resource type="Resource" path="res://resources/items/bandages.tres" id="item1"]
+
+[sub_resource type="Resource" id="entry0"]
+script = ExtResource("entry")
+item = ExtResource("item0")
+weight = 3.0
+minimum = 1
+maximum = 2
+
+[sub_resource type="Resource" id="entry1"]
+script = ExtResource("entry")
+item = ExtResource("item1")
+weight = 2.0
+minimum = 2
+maximum = 3
+
+[resource]
+script = ExtResource("table")
+rolls = 2
+entries = Array[ExtResource("entry")]([SubResource("entry0"), SubResource("entry1")])

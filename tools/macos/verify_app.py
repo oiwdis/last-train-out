@@ -33,7 +33,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 BUNDLE_IDENTIFIER = "com.lasttrainout.game"
 # Project folders whose contents must be in the exported game, and those that must not be.
-GAME_DIRECTORIES = ("scenes", "scripts", "systems", "resources")
+GAME_DIRECTORIES = ("scenes", "scripts", "systems", "resources", "assets")
 EXCLUDED_DIRECTORIES = ("tests/", "tools/", "docs/")
 CPU_NAMES = {0x01000007: "x86_64", 0x0100000C: "arm64"}
 
@@ -101,14 +101,14 @@ def expected_game_files() -> list[str]:
     files = []
     for directory in GAME_DIRECTORIES:
         for path in sorted((ROOT / directory).rglob("*")):
-            if path.suffix in (".tscn", ".tres", ".gd"):
+            if path.suffix in (".tscn", ".tres", ".gd", ".svg", ".png"):
                 files.append(path.relative_to(ROOT).as_posix())
     return files
 
 
 def in_pack(source: str, packed: set[str]) -> bool:
-    """Godot stores scenes/resources behind a .remap entry and scripts as compiled .gdc files."""
-    if source in packed or source + ".remap" in packed:
+    """Godot remaps resources, imports textures and compiles scripts into .gdc files."""
+    if source in packed or source + ".remap" in packed or source + ".import" in packed:
         return True
     return source.endswith(".gd") and source[:-3] + ".gdc" in packed
 

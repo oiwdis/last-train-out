@@ -104,6 +104,8 @@ func _physics_process(delta: float) -> void:
 			reach = -2.6
 		elif state == Player.State.VAULT:
 			reach = -1.2
+		if _player.carrying_heavy:
+			reach = -1.3
 		_arms[i].rotation.x = lerpf(_arms[i].rotation.x, reach, 1.0 - exp(-15 * delta))
 	_player.visual.position.y = -_impact * 0.1 + (absf(sin(_phase)) * 0.025 if moving else 0.0)
 	_motes.global_position = _player.global_position + Vector3(0, 2, -1)

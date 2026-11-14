@@ -73,9 +73,9 @@ func _build() -> void:
 	_message.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_message.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	_message_panel.modulate.a = 0
-	var controls := _label(_root, "WASD  MOVE     SPACE  JUMP     E  INTERACT", 11, RailTheme.MUTED)
+	var controls := _label(_root, "WASD MOVE   SPACE JUMP   E USE   TAB PACK   G CARGO   F2 GRAPHICS", 11, RailTheme.MUTED)
 	controls.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_RIGHT)
-	controls.offset_left = -358
+	controls.offset_left = -610
 	controls.offset_top = -42
 	controls.offset_right = -30
 	controls.offset_bottom = -24

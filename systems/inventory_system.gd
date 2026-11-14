@@ -1,38 +1,47 @@
 class_name InventorySystem
 extends Node
-## Placeholder for supplies and loot (later milestones).
-##
-## A plain item-id -> amount table with a change signal. No loot sources, item
-## definitions, weight or UI exist yet.
+## Owns the reusable backpack and train storage models.
 
 signal inventory_changed(item_id: StringName, amount: int)
 
-var _items: Dictionary = {}
+@export_range(6, 200) var storage_slots := 48
+var backpack := InventoryModel.new(6)
+var storage: InventoryModel
+var _legacy_ids: Array[StringName] = []
 
 
+func _ready() -> void:
+	storage = InventoryModel.new(storage_slots, true)
+
+
+## Compatibility for the Milestone 1 API; these supplies live in train storage.
 func add_item(item_id: StringName, amount: int = 1) -> void:
-	if amount <= 0:
-		return
-	_items[item_id] = get_amount(item_id) + amount
-	inventory_changed.emit(item_id, _items[item_id])
+	var item := ItemCatalog.find(&"coal_sack" if item_id == &"coal" else item_id)
+	if storage.add(item, amount) > 0:
+		if not _legacy_ids.has(item_id):
+			_legacy_ids.append(item_id)
+		inventory_changed.emit(item_id, get_amount(item_id))
 
 
-## Removes up to [param amount]; returns how many were actually removed.
 func remove_item(item_id: StringName, amount: int = 1) -> int:
-	var removed := mini(amount, get_amount(item_id))
-	if removed <= 0:
-		return 0
-	_items[item_id] = get_amount(item_id) - removed
-	inventory_changed.emit(item_id, _items[item_id])
+	var id := &"coal_sack" if item_id == &"coal" else item_id
+	var removed := 0
+	for i in storage.slot_count:
+		var slot := storage.get_slot(i)
+		if not slot.is_empty() and (slot.item as ItemDefinition).id == id:
+			removed += storage.remove_at(i, amount - removed)
+	if removed > 0:
+		inventory_changed.emit(item_id, get_amount(item_id))
 	return removed
 
 
 func get_amount(item_id: StringName) -> int:
-	return _items.get(item_id, 0)
+	return storage.count(&"coal_sack" if item_id == &"coal" else item_id)
 
 
 func reset() -> void:
-	var ids := _items.keys()
-	_items.clear()
-	for item_id: StringName in ids:
-		inventory_changed.emit(item_id, 0)
+	backpack.clear()
+	storage.clear()
+	for id in _legacy_ids:
+		inventory_changed.emit(id, 0)
+	_legacy_ids.clear()

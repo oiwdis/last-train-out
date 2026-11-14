@@ -28,6 +28,10 @@ extends Node3D
 
 const TRAIN_PROFILE_KEY := &"train_departure"
 
+var scavenging: ScavengingSystem
+var supply_ui: SupplyUI
+var graphics: GraphicsSettings
+
 
 func _ready() -> void:
 	var effects := PresentationEffects.new()
@@ -58,6 +62,21 @@ func _ready() -> void:
 		passenger_system.passenger_state_changed.connect(_on_passenger_state_changed)
 	if inventory_system != null:
 		inventory_system.inventory_changed.connect(_on_inventory_changed)
+		scavenging = ScavengingSystem.new()
+		scavenging.name = "Scavenging"
+		add_child(scavenging)
+		scavenging.bind(player, inventory_system, station, train, self)
+		if hud != null:
+			scavenging.notice.connect(func(text: String) -> void: hud.show_message(text, 3.2))
+	graphics = GraphicsSettings.new()
+	graphics.name = "GraphicsSettings"
+	add_child(graphics)
+	graphics.bind(self, station.get_node_or_null("Atmosphere") as Atmosphere if station != null else null)
+	if scavenging != null:
+		supply_ui = SupplyUI.new()
+		supply_ui.name = "SupplyUI"
+		add_child(supply_ui)
+		supply_ui.bind(scavenging, graphics)
 
 
 func _physics_process(_delta: float) -> void:
@@ -93,6 +112,11 @@ func set_train_max_speed(value: float) -> void:
 func reset_train() -> void:
 	if train == null:
 		return
+	if scavenging != null:
+		scavenging.cancel_search(false)
+		scavenging.reset_loose_train_cargo(train)
+	if supply_ui != null:
+		supply_ui.close()
 	var ride := player.get_ride_body() as TrainCar if player != null else null
 	var standing_aboard := ride != null and not player.is_attached()
 	var local_offset := Vector3.ZERO
@@ -116,6 +140,10 @@ func reset_train() -> void:
 func reset_player() -> void:
 	if player == null:
 		return
+	if scavenging != null:
+		scavenging.cancel_search(false)
+	if supply_ui != null:
+		supply_ui.close()
 	player.teleport_to(get_spawn_position())
 
 
@@ -136,6 +164,8 @@ func get_spawn_position() -> Vector3:
 
 ## Puts the train, the player and the environment back to their starting state.
 func reset_station() -> void:
+	if scavenging != null:
+		scavenging.reset_world()
 	if train != null:
 		train.reset_to_station()
 	reset_player()
@@ -181,6 +211,8 @@ func _on_train_stopped() -> void:
 func _on_player_grab_failed(reason: String) -> void:
 	if reason == "too_fast":
 		hud.show_message("Too fast to grab - match the train's speed", 1.6)
+	elif reason == "hands_full":
+		hud.show_message("Hands full — G to drop cargo before climbing or vaulting", 2.5)
 
 
 func _on_fog_surge_triggered(_intensity: float) -> void:

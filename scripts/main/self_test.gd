@@ -137,7 +137,7 @@ func _check_game() -> void:
 		return
 
 	var missing_actions: Array[String] = []
-	for action: StringName in [&"move_left", &"move_right", &"move_in", &"move_out", &"sprint", &"jump", &"interact", &"debug_toggle"]:
+	for action: StringName in [&"move_left", &"move_right", &"move_in", &"move_out", &"sprint", &"jump", &"interact", &"debug_toggle", &"inventory_toggle", &"drop_item", &"drop_cargo", &"graphics_cycle"]:
 		if not InputMap.has_action(action) or InputMap.action_get_events(action).is_empty():
 			missing_actions.append(String(action))
 	_check("input_map_is_complete", missing_actions.is_empty(), ", ".join(missing_actions))
@@ -193,6 +193,42 @@ func _check_game() -> void:
 			game.debug_menu.get_diagnostic("On train") == "yes" and game.debug_menu.get_diagnostic("Train state") != "STOPPED",
 			"On train: %s, train state: %s" % [game.debug_menu.get_diagnostic("On train"), game.debug_menu.get_diagnostic("Train state")])
 	player.input.clear()
+	await _check_scavenging(game)
+
+
+func _check_scavenging(game: Game) -> void:
+	game.debug_menu.set_open(false)
+	game.reset_station()
+	await _physics_frames(5)
+	var service := game.scavenging
+	if not _check("scavenging_system_present", service != null and service.containers.size() == 13):
+		return
+	var cache := service.containers[0]
+	game.player.teleport_to(cache.global_position + Vector3(0, 0.05, -0.8), Vector3.BACK)
+	await _physics_frames(20)
+	var contents_before := cache.contents.totals()
+	game.player.input.script_interact()
+	await _physics_frames(ceili(cache.search_seconds * 60) + 12)
+	_check("search_completes_in_export", cache.is_searched and game.inventory_system.backpack.used_slots() > 0)
+	game.player.teleport_to(service.storage_point.global_position + Vector3(0, 0.05, 0.75), Vector3.FORWARD)
+	await _physics_frames(20)
+	var deposited := service.deposit_all()
+	_check("supplies_deposit_in_export", deposited > 0 and game.inventory_system.backpack.used_slots() == 0)
+	_check("exported_loot_is_conserved", game.inventory_system.storage.totals() == contents_before)
+	_check("supplies_withdraw_in_export", service.withdraw_slot(0) > 0)
+	var cargo := service.spawn_world(ItemCatalog.find(&"coal_sack"), 1, game.player.global_position + Vector3(0.4, 0.15, 0))
+	await _physics_frames(15)
+	service.pick_up(game.player, cargo)
+	_check("physical_cargo_is_carried_in_export", service.carried == cargo and game.player.carrying_heavy)
+	service.drop_heavy()
+	_check("physical_cargo_is_released_in_export", cargo.available and not game.player.carrying_heavy)
+	for i in 3:
+		game.graphics.set_preset(i)
+		await _physics_frames(2)
+	_check("graphics_presets_work_in_export", game.graphics.current_index == 2)
+	game.graphics.set_preset(1)
+	game.supply_ui.open()
+	_check("inventory_ui_opens_in_export", game.supply_ui.is_open())
 
 
 func _check_rendering() -> void:

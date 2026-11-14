@@ -39,6 +39,8 @@ const TELEPORT_DISTANCE := 4.0
 var state := State.IDLE
 ## Horizontal unit vector the character is facing.
 var facing := Vector3.RIGHT
+## The only carrying modifier. The original movement configuration is never edited.
+var carrying_heavy := false
 
 var _mode := Mode.LOCOMOTION
 var _is_sprinting := false
@@ -199,6 +201,8 @@ func begin_hang(rail: GrabRail) -> bool:
 
 ## Short hint describing what the interact button would do right now.
 func get_interaction_prompt() -> String:
+	if input.blocked:
+		return ""
 	match _mode:
 		Mode.ATTACHED:
 			if _attached_state == State.CLIMB:
@@ -207,8 +211,12 @@ func get_interaction_prompt() -> String:
 		Mode.LOCOMOTION:
 			var choice := _choose_interaction()
 			if choice.has("interactable"):
+				if carrying_heavy and (choice.interactable as Interactable).requires_free_hands():
+					return "G  Drop cargo before climbing / grabbing"
 				return "E  %s" % (choice["interactable"] as Interactable).prompt
 			if choice.has("vault"):
+				if carrying_heavy:
+					return "G  Drop cargo before vaulting / climbing"
 				return "E  Vault" if choice["vault"]["kind"] == "over" else "E  Climb up"
 	return ""
 
@@ -249,15 +257,18 @@ func _tick_locomotion(delta: float) -> void:
 		_interact_buffer_timer -= delta
 		if _try_interact():
 			_interact_buffer_timer = 0.0
-			return
+			if _mode != Mode.LOCOMOTION:
+				return
 
 	var on_floor := is_on_floor()
 	var has_input := input.move.length_squared() > 0.01
 	if has_input:
 		facing = Vector3(input.move.x, 0.0, input.move.y).normalized()
 
-	_is_sprinting = input.sprint_held and has_input and stamina.can_sprint()
+	_is_sprinting = input.sprint_held and has_input and stamina.can_sprint() and not carrying_heavy
 	var target_speed := config.sprint_speed if _is_sprinting else config.walk_speed
+	if carrying_heavy:
+		target_speed = 2.5
 	var target := Vector3(input.move.x, 0.0, input.move.y * config.depth_speed_scale) * target_speed
 
 	# Horizontal movement. On the floor `velocity` is relative to the floor
@@ -346,6 +357,10 @@ func _after_move() -> void:
 
 func _try_interact() -> bool:
 	var choice := _choose_interaction()
+	var target := choice.get("interactable") as Interactable
+	if carrying_heavy and (choice.has("vault") or (target != null and target.requires_free_hands())):
+		grab_failed.emit("hands_full")
+		return true
 	if choice.has("interactable"):
 		return (choice["interactable"] as Interactable).interact(self)
 	if choice.has("vault"):
@@ -412,6 +427,9 @@ func _begin_vault(vault: Dictionary) -> void:
 
 
 func _begin_attach(anchor: Interactable, local_target: Vector3, attached_state: State) -> bool:
+	if carrying_heavy:
+		grab_failed.emit("hands_full")
+		return false
 	if _mode != Mode.LOCOMOTION:
 		return false
 	if anchor == _last_anchor and _regrab_timer > 0.0:

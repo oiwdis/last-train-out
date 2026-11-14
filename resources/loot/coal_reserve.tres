@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="LootTable" format=3]
+
+[ext_resource type="Script" path="res://scripts/scavenging/loot_table.gd" id="table"]
+[ext_resource type="Script" path="res://scripts/scavenging/loot_entry.gd" id="entry"]
+[ext_resource type="Resource" path="res://resources/items/coal_sack.tres" id="item0"]
+
+[sub_resource type="Resource" id="entry0"]
+script = ExtResource("entry")
+item = ExtResource("item0")
+weight = 1.0
+minimum = 1
+maximum = 1
+
+[resource]
+script = ExtResource("table")
+rolls = 1
+entries = Array[ExtResource("entry")]([SubResource("entry0")])

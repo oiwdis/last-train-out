@@ -17,9 +17,14 @@ var interact_pressed := false
 
 ## When true the fields are left untouched by [method sample].
 var scripted := false
+## Inventory/settings panels release keys instead of pausing the moving world.
+var blocked := false
 
 
 func sample() -> void:
+	if blocked:
+		clear()
+		return
 	if scripted:
 		return
 	move = Input.get_vector(&"move_left", &"move_right", &"move_in", &"move_out")
