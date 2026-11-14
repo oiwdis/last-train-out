@@ -79,8 +79,8 @@ material = ExtResource("11_lamp")
 [node name="LanternLight" type="OmniLight3D" parent="Visual"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.34, 0.95, 0.3)
 light_color = Color(1, 0.72, 0.45, 1)
-light_energy = 0.8
-omni_range = 4.5
+light_energy = 1.3
+omni_range = 5.5
 omni_attenuation = 1.4
 
 [node name="Input" type="Node" parent="."]

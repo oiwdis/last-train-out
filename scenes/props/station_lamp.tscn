@@ -1,0 +1,52 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/environment/prop_light.gd" id="1_prop_light"]
+[ext_resource type="Script" path="res://scripts/environment/box_part.gd" id="2_box_part"]
+[ext_resource type="StandardMaterial3D" path="res://resources/materials/metal_dark.tres" id="3_metal_dark"]
+[ext_resource type="Script" path="res://scripts/environment/box_visual.gd" id="4_box_visual"]
+[ext_resource type="StandardMaterial3D" path="res://resources/materials/lamp_cool.tres" id="5_lamp_cool"]
+
+[node name="StationLamp" type="StaticBody3D"]
+collision_layer = 1
+collision_mask = 0
+script = ExtResource("1_prop_light")
+
+[node name="Pole" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 2.3, 0.0)
+script = ExtResource("2_box_part")
+size = Vector3(0.14, 4.6, 0.14)
+material = ExtResource("3_metal_dark")
+
+[node name="Base" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.125, 0.0)
+script = ExtResource("4_box_visual")
+size = Vector3(0.3, 0.25, 0.3)
+material = ExtResource("3_metal_dark")
+
+[node name="Arm" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.42, 4.55, 0.0)
+script = ExtResource("4_box_visual")
+size = Vector3(0.95, 0.08, 0.08)
+material = ExtResource("3_metal_dark")
+
+[node name="Shade" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.8, 4.5, 0.0)
+script = ExtResource("4_box_visual")
+size = Vector3(0.56, 0.1, 0.36)
+material = ExtResource("3_metal_dark")
+
+[node name="Bulb" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.8, 4.42, 0.0)
+script = ExtResource("4_box_visual")
+size = Vector3(0.4, 0.06, 0.24)
+material = ExtResource("5_lamp_cool")
+
+[node name="Light" type="SpotLight3D" parent="."]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, -1.0, 0.0, 0.8, 4.36, 0.0)
+light_color = Color(0.74, 0.86, 1.0, 1.0)
+light_energy = 5.0
+shadow_enabled = false
+spot_range = 10.0
+spot_attenuation = 1.1
+spot_angle = 58.0
+spot_angle_attenuation = 1.4

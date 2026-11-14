@@ -2,5 +2,5 @@
 
 [resource]
 resource_name = "player_coat"
-albedo_color = Color(0.22, 0.34, 0.4, 1)
+albedo_color = Color(0.3, 0.45, 0.52, 1)
 roughness = 0.8

@@ -1,0 +1,664 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/environment/box_visual.gd" id="1_box_visual"]
+[ext_resource type="StandardMaterial3D" path="res://resources/materials/floor_interior.tres" id="2_floor_interi"]
+[ext_resource type="Script" path="res://scripts/environment/cutaway_wall.gd" id="3_cutaway_wall"]
+[ext_resource type="Script" path="res://scripts/environment/box_part.gd" id="4_box_part"]
+[ext_resource type="StandardMaterial3D" path="res://resources/materials/wall_industrial.tres" id="5_wall_industr"]
+[ext_resource type="StandardMaterial3D" path="res://resources/materials/glass_dark.tres" id="6_glass_dark"]
+[ext_resource type="StandardMaterial3D" path="res://resources/materials/roof_metal.tres" id="7_roof_metal"]
+[ext_resource type="StandardMaterial3D" path="res://resources/materials/wall_interior.tres" id="8_wall_interio"]
+[ext_resource type="StandardMaterial3D" path="res://resources/materials/crate_dark.tres" id="9_crate_dark"]
+[ext_resource type="StandardMaterial3D" path="res://resources/materials/shelf_metal.tres" id="10_shelf_metal"]
+[ext_resource type="StandardMaterial3D" path="res://resources/materials/crate_wood.tres" id="11_crate_wood"]
+[ext_resource type="Script" path="res://scripts/environment/shelf_rack.gd" id="12_shelf_rack"]
+[ext_resource type="StandardMaterial3D" path="res://resources/materials/floor_wood.tres" id="13_floor_wood"]
+[ext_resource type="StandardMaterial3D" path="res://resources/materials/lamp_warm.tres" id="14_lamp_warm"]
+[ext_resource type="PackedScene" path="res://scenes/props/hanging_lamp.tscn" id="15_hanging_lamp"]
+[ext_resource type="StandardMaterial3D" path="res://resources/materials/window_dim.tres" id="16_window_dim"]
+[ext_resource type="StandardMaterial3D" path="res://resources/materials/metal_dark.tres" id="17_metal_dark"]
+[ext_resource type="StandardMaterial3D" path="res://resources/materials/metal_rust.tres" id="18_metal_rust"]
+[ext_resource type="Script" path="res://scripts/environment/cutaway_trigger.gd" id="19_cutaway_trig"]
+[ext_resource type="Script" path="res://scripts/camera/camera_zone.gd" id="20_camera_zone"]
+[ext_resource type="Resource" path="res://resources/camera/indoor.tres" id="21_indoor"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1"]
+size = Vector3(29.4, 5.3, 5.7)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2"]
+size = Vector3(30.0, 10.0, 3.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3"]
+size = Vector3(11.5, 2.8, 1.7)
+
+[node name="WarehouseB" type="Node3D"]
+
+[node name="Shell" type="StaticBody3D" parent="."]
+collision_layer = 1
+collision_mask = 0
+
+[node name="FloorFinish" type="MeshInstance3D" parent="Shell"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 15.0, 0.015, 1.725)
+script = ExtResource("1_box_visual")
+size = Vector3(30.0, 0.03, 5.75)
+material = ExtResource("2_floor_interi")
+
+[node name="BackWall" type="StaticBody3D" parent="."]
+collision_layer = 1
+collision_mask = 0
+script = ExtResource("3_cutaway_wall")
+
+[node name="WallSeg1" type="CollisionShape3D" parent="BackWall"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.6, 2.75, -1.275)
+script = ExtResource("4_box_part")
+size = Vector3(1.2, 5.5, 0.25)
+material = ExtResource("5_wall_industr")
+
+[node name="WallSeg2" type="CollisionShape3D" parent="BackWall"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 2.3, 0.75, -1.275)
+script = ExtResource("4_box_part")
+size = Vector3(2.2, 1.5, 0.25)
+material = ExtResource("5_wall_industr")
+
+[node name="WallSeg3" type="CollisionShape3D" parent="BackWall"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 2.3, 4.1, -1.275)
+script = ExtResource("4_box_part")
+size = Vector3(2.2, 2.8, 0.25)
+material = ExtResource("5_wall_industr")
+
+[node name="WallSeg4" type="CollisionShape3D" parent="BackWall"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 4.4, 2.75, -1.275)
+script = ExtResource("4_box_part")
+size = Vector3(2.0, 5.5, 0.25)
+material = ExtResource("5_wall_industr")
+
+[node name="WallSeg5" type="CollisionShape3D" parent="BackWall"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 6.3, 0.75, -1.275)
+script = ExtResource("4_box_part")
+size = Vector3(1.8, 1.5, 0.25)
+material = ExtResource("5_wall_industr")
+
+[node name="WallSeg6" type="CollisionShape3D" parent="BackWall"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 6.3, 4.1, -1.275)
+script = ExtResource("4_box_part")
+size = Vector3(1.8, 2.8, 0.25)
+material = ExtResource("5_wall_industr")
+
+[node name="WallSeg7" type="CollisionShape3D" parent="BackWall"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 11.75, 2.75, -1.275)
+script = ExtResource("4_box_part")
+size = Vector3(9.1, 5.5, 0.25)
+material = ExtResource("5_wall_industr")
+
+[node name="WallSeg8" type="CollisionShape3D" parent="BackWall"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 17.2, 0.65, -1.275)
+script = ExtResource("4_box_part")
+size = Vector3(1.8, 1.3, 0.25)
+material = ExtResource("5_wall_industr")
+
+[node name="WallSeg9" type="CollisionShape3D" parent="BackWall"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 17.2, 3.9, -1.275)
+script = ExtResource("4_box_part")
+size = Vector3(1.8, 3.2, 0.25)
+material = ExtResource("5_wall_industr")
+
+[node name="WallSeg10" type="CollisionShape3D" parent="BackWall"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 22.65, 2.75, -1.275)
+script = ExtResource("4_box_part")
+size = Vector3(9.1, 5.5, 0.25)
+material = ExtResource("5_wall_industr")
+
+[node name="WallSeg11" type="CollisionShape3D" parent="BackWall"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 28.3, 0.75, -1.275)
+script = ExtResource("4_box_part")
+size = Vector3(2.2, 1.5, 0.25)
+material = ExtResource("5_wall_industr")
+
+[node name="WallSeg12" type="CollisionShape3D" parent="BackWall"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 28.3, 4.1, -1.275)
+script = ExtResource("4_box_part")
+size = Vector3(2.2, 2.8, 0.25)
+material = ExtResource("5_wall_industr")
+
+[node name="WallSeg13" type="CollisionShape3D" parent="BackWall"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 29.7, 2.75, -1.275)
+script = ExtResource("4_box_part")
+size = Vector3(0.6, 5.5, 0.25)
+material = ExtResource("5_wall_industr")
+
+[node name="Glass1" type="CollisionShape3D" parent="BackWall"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 2.3, 2.1, -1.275)
+script = ExtResource("4_box_part")
+size = Vector3(2.2, 1.2, 0.05)
+material = ExtResource("6_glass_dark")
+cast_shadow = false
+
+[node name="Mullion1" type="MeshInstance3D" parent="BackWall"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 2.3, 2.1, -1.275)
+script = ExtResource("1_box_visual")
+size = Vector3(0.06, 1.2, 0.09)
+material = ExtResource("5_wall_industr")
+
+[node name="Glass2" type="CollisionShape3D" parent="BackWall"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 6.3, 2.1, -1.275)
+script = ExtResource("4_box_part")
+size = Vector3(1.8, 1.2, 0.05)
+material = ExtResource("6_glass_dark")
+cast_shadow = false
+
+[node name="Mullion2" type="MeshInstance3D" parent="BackWall"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 6.3, 2.1, -1.275)
+script = ExtResource("1_box_visual")
+size = Vector3(0.06, 1.2, 0.09)
+material = ExtResource("5_wall_industr")
+
+[node name="Glass3" type="CollisionShape3D" parent="BackWall"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 17.2, 1.8, -1.275)
+script = ExtResource("4_box_part")
+size = Vector3(1.8, 1.0, 0.05)
+material = ExtResource("6_glass_dark")
+cast_shadow = false
+
+[node name="Mullion3" type="MeshInstance3D" parent="BackWall"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 17.2, 1.8, -1.275)
+script = ExtResource("1_box_visual")
+size = Vector3(0.06, 1.0, 0.09)
+material = ExtResource("5_wall_industr")
+
+[node name="Glass4" type="CollisionShape3D" parent="BackWall"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 28.3, 2.1, -1.275)
+script = ExtResource("4_box_part")
+size = Vector3(2.2, 1.2, 0.05)
+material = ExtResource("6_glass_dark")
+cast_shadow = false
+
+[node name="Mullion4" type="MeshInstance3D" parent="BackWall"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 28.3, 2.1, -1.275)
+script = ExtResource("1_box_visual")
+size = Vector3(0.06, 1.2, 0.09)
+material = ExtResource("5_wall_industr")
+
+[node name="LeftWallSeg1" type="CollisionShape3D" parent="Shell"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.125, 2.75, -0.425)
+script = ExtResource("4_box_part")
+size = Vector3(0.25, 5.5, 1.45)
+material = ExtResource("5_wall_industr")
+
+[node name="LeftWallSeg2" type="CollisionShape3D" parent="Shell"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.125, 4.0, 1.1)
+script = ExtResource("4_box_part")
+size = Vector3(0.25, 3.0, 1.6)
+material = ExtResource("5_wall_industr")
+
+[node name="LeftWallSeg3" type="CollisionShape3D" parent="Shell"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.125, 2.75, 3.25)
+script = ExtResource("4_box_part")
+size = Vector3(0.25, 5.5, 2.7)
+material = ExtResource("5_wall_industr")
+
+[node name="RightWallSeg1" type="CollisionShape3D" parent="Shell"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 29.875, 2.75, 0.725)
+script = ExtResource("4_box_part")
+size = Vector3(0.25, 5.5, 3.75)
+material = ExtResource("5_wall_industr")
+
+[node name="RightWallSeg2" type="CollisionShape3D" parent="Shell"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 29.875, 4.0, 3.4)
+script = ExtResource("4_box_part")
+size = Vector3(0.25, 3.0, 1.6)
+material = ExtResource("5_wall_industr")
+
+[node name="RightWallSeg3" type="CollisionShape3D" parent="Shell"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 29.875, 2.75, 4.4)
+script = ExtResource("4_box_part")
+size = Vector3(0.25, 5.5, 0.4)
+material = ExtResource("5_wall_industr")
+
+[node name="Roof" type="CollisionShape3D" parent="Shell"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 15.0, 5.65, 1.8)
+script = ExtResource("4_box_part")
+size = Vector3(30.5, 0.3, 6.4)
+material = ExtResource("7_roof_metal")
+
+[node name="BackRoomEndA" type="CollisionShape3D" parent="Shell"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 11.6, 1.5, -0.225)
+script = ExtResource("4_box_part")
+size = Vector3(0.2, 3.0, 1.85)
+material = ExtResource("8_wall_interio")
+
+[node name="BackRoomEndB" type="CollisionShape3D" parent="Shell"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 23.4, 1.5, -0.225)
+script = ExtResource("4_box_part")
+size = Vector3(0.2, 3.0, 1.85)
+material = ExtResource("8_wall_interio")
+
+[node name="BackRoomCeiling" type="CollisionShape3D" parent="Shell"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 17.5, 3.075, -0.125)
+script = ExtResource("4_box_part")
+size = Vector3(12.0, 0.15, 2.05)
+material = ExtResource("8_wall_interio")
+
+[node name="BackRoomFront" type="StaticBody3D" parent="."]
+collision_layer = 1
+collision_mask = 0
+script = ExtResource("3_cutaway_wall")
+
+[node name="WallSeg1" type="CollisionShape3D" parent="BackRoomFront"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 11.9, 1.5, 0.8)
+script = ExtResource("4_box_part")
+size = Vector3(0.8, 3.0, 0.2)
+material = ExtResource("8_wall_interio")
+
+[node name="WallSeg2" type="CollisionShape3D" parent="BackRoomFront"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 13.0, 2.65, 0.8)
+script = ExtResource("4_box_part")
+size = Vector3(1.4, 0.7, 0.2)
+material = ExtResource("8_wall_interio")
+
+[node name="WallSeg3" type="CollisionShape3D" parent="BackRoomFront"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 17.35, 1.5, 0.8)
+script = ExtResource("4_box_part")
+size = Vector3(7.3, 3.0, 0.2)
+material = ExtResource("8_wall_interio")
+
+[node name="WallSeg4" type="CollisionShape3D" parent="BackRoomFront"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 21.7, 2.65, 0.8)
+script = ExtResource("4_box_part")
+size = Vector3(1.4, 0.7, 0.2)
+material = ExtResource("8_wall_interio")
+
+[node name="WallSeg5" type="CollisionShape3D" parent="BackRoomFront"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 22.95, 1.5, 0.8)
+script = ExtResource("4_box_part")
+size = Vector3(1.1, 3.0, 0.2)
+material = ExtResource("8_wall_interio")
+
+[node name="PartitionSeg1" type="CollisionShape3D" parent="Shell"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 17.625, 2.75, 1.25)
+script = ExtResource("4_box_part")
+size = Vector3(0.25, 5.5, 0.7)
+material = ExtResource("5_wall_industr")
+
+[node name="PartitionSeg2" type="CollisionShape3D" parent="Shell"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 17.625, 4.0, 2.4)
+script = ExtResource("4_box_part")
+size = Vector3(0.25, 3.0, 1.6)
+material = ExtResource("5_wall_industr")
+
+[node name="PartitionSeg3" type="CollisionShape3D" parent="Shell"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 17.625, 2.75, 3.9)
+script = ExtResource("4_box_part")
+size = Vector3(0.25, 5.5, 1.4)
+material = ExtResource("5_wall_industr")
+
+[node name="Blockage" type="StaticBody3D" parent="."]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Plug" type="CollisionShape3D" parent="Blockage"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 17.625, 1.25, 2.4)
+script = ExtResource("4_box_part")
+size = Vector3(0.7, 2.5, 1.6)
+material = ExtResource("9_crate_dark")
+
+[node name="FallenRack" type="CollisionShape3D" parent="Blockage"]
+transform = Transform3D(0.93661, -0.30432, 0.17365, 0.30902, 0.95106, 0.0, -0.16515, 0.05366, 0.98481, 16.5, 0.72, 2.6)
+script = ExtResource("4_box_part")
+size = Vector3(2.4, 0.4, 0.7)
+material = ExtResource("10_shelf_metal")
+
+[node name="PileA" type="CollisionShape3D" parent="Blockage"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 16.5, 0.5, 1.9)
+script = ExtResource("4_box_part")
+size = Vector3(1.1, 1.0, 1.2)
+material = ExtResource("11_crate_wood")
+
+[node name="PileB" type="CollisionShape3D" parent="Blockage"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 16.4, 0.4, 3.4)
+script = ExtResource("4_box_part")
+size = Vector3(0.9, 0.8, 0.9)
+material = ExtResource("9_crate_dark")
+
+[node name="PileFar" type="CollisionShape3D" parent="Blockage"]
+transform = Transform3D(0.9703, 0.0, -0.24192, 0.0, 1.0, 0.0, 0.24192, 0.0, 0.9703, 18.7, 0.55, 2.5)
+script = ExtResource("4_box_part")
+size = Vector3(1.2, 1.1, 1.3)
+material = ExtResource("11_crate_wood")
+
+[node name="MainHall" type="StaticBody3D" parent="."]
+collision_layer = 1
+collision_mask = 0
+
+[node name="EntryCrate" type="CollisionShape3D" parent="MainHall"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 2.2, 0.35, 1.1)
+script = ExtResource("4_box_part")
+size = Vector3(0.7, 0.7, 1.3)
+material = ExtResource("11_crate_wood")
+
+[node name="RackM1" type="StaticBody3D" parent="."]
+transform = Transform3D(0.0, 0.0, 1.0, 0.0, 1.0, 0.0, -1.0, 0.0, 0.0, 4.3, 0.0, 0.6)
+collision_layer = 1
+collision_mask = 0
+script = ExtResource("12_shelf_rack")
+length = 3.5
+height = 2.4
+depth = 0.6
+shelf_count = 3
+clutter_seed = 21
+frame_material = ExtResource("10_shelf_metal")
+cargo_material = ExtResource("11_crate_wood")
+
+[node name="RackM2" type="StaticBody3D" parent="."]
+transform = Transform3D(0.0, 0.0, 1.0, 0.0, 1.0, 0.0, -1.0, 0.0, 0.0, 7.8, 0.0, 2.95)
+collision_layer = 1
+collision_mask = 0
+script = ExtResource("12_shelf_rack")
+length = 3.3
+height = 2.4
+depth = 0.6
+shelf_count = 3
+clutter_seed = 22
+frame_material = ExtResource("10_shelf_metal")
+cargo_material = ExtResource("11_crate_wood")
+
+[node name="RackM3" type="StaticBody3D" parent="."]
+transform = Transform3D(0.0, 0.0, 1.0, 0.0, 1.0, 0.0, -1.0, 0.0, 0.0, 10.5, 0.0, -0.1)
+collision_layer = 1
+collision_mask = 0
+script = ExtResource("12_shelf_rack")
+length = 2.1
+height = 2.4
+depth = 0.6
+shelf_count = 3
+clutter_seed = 23
+frame_material = ExtResource("10_shelf_metal")
+cargo_material = ExtResource("11_crate_wood")
+
+[node name="HallCrateA" type="CollisionShape3D" parent="MainHall"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 5.9, 0.6, -0.4)
+script = ExtResource("4_box_part")
+size = Vector3(1.2, 1.2, 1.2)
+material = ExtResource("9_crate_dark")
+
+[node name="HallCrateB" type="CollisionShape3D" parent="MainHall"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 9.4, 0.4, 3.9)
+script = ExtResource("4_box_part")
+size = Vector3(1.0, 0.8, 1.0)
+material = ExtResource("11_crate_wood")
+
+[node name="HallCrateC" type="CollisionShape3D" parent="MainHall"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 14.9, 0.7, 3.9)
+script = ExtResource("4_box_part")
+size = Vector3(1.3, 1.4, 1.2)
+material = ExtResource("9_crate_dark")
+
+[node name="HallCrateD" type="CollisionShape3D" parent="MainHall"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 11.3, 0.3, 3.4)
+script = ExtResource("4_box_part")
+size = Vector3(0.9, 0.6, 1.0)
+material = ExtResource("11_crate_wood")
+
+[node name="HallPillarA" type="CollisionShape3D" parent="MainHall"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 9.2, 2.75, 1.35)
+script = ExtResource("4_box_part")
+size = Vector3(0.35, 5.5, 0.35)
+material = ExtResource("5_wall_industr")
+
+[node name="HallPillarB" type="CollisionShape3D" parent="MainHall"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 14.6, 2.75, 1.35)
+script = ExtResource("4_box_part")
+size = Vector3(0.35, 5.5, 0.35)
+material = ExtResource("5_wall_industr")
+
+[node name="BackRoom" type="StaticBody3D" parent="."]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Desk" type="CollisionShape3D" parent="BackRoom"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 15.6, 0.4, -0.8)
+script = ExtResource("4_box_part")
+size = Vector3(1.6, 0.8, 0.65)
+material = ExtResource("13_floor_wood")
+
+[node name="DeskLamp" type="MeshInstance3D" parent="BackRoom"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 15.2, 0.9, -0.85)
+script = ExtResource("1_box_visual")
+size = Vector3(0.14, 0.2, 0.14)
+material = ExtResource("14_lamp_warm")
+
+[node name="CabinetA" type="CollisionShape3D" parent="BackRoom"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 18.7, 0.7, -0.88)
+script = ExtResource("4_box_part")
+size = Vector3(0.6, 1.4, 0.5)
+material = ExtResource("10_shelf_metal")
+
+[node name="CabinetB" type="CollisionShape3D" parent="BackRoom"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 19.35, 0.7, -0.88)
+script = ExtResource("4_box_part")
+size = Vector3(0.6, 1.4, 0.5)
+material = ExtResource("10_shelf_metal")
+
+[node name="CorridorCrate" type="CollisionShape3D" parent="BackRoom"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 17.4, 0.3, 0.2)
+script = ExtResource("4_box_part")
+size = Vector3(0.7, 0.6, 0.75)
+material = ExtResource("11_crate_wood")
+
+[node name="RackRoom" type="StaticBody3D" parent="."]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 20.9, 0.0, -0.9)
+collision_layer = 1
+collision_mask = 0
+script = ExtResource("12_shelf_rack")
+length = 2.4
+height = 2.0
+depth = 0.45
+shelf_count = 3
+clutter_seed = 31
+frame_material = ExtResource("10_shelf_metal")
+cargo_material = ExtResource("11_crate_wood")
+
+[node name="DeskLight" type="OmniLight3D" parent="."]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 15.4, 1.5, -0.4)
+light_color = Color(1.0, 0.66, 0.36, 1.0)
+light_energy = 1.5
+omni_range = 5.0
+omni_attenuation = 1.3
+
+[node name="RoomLight" type="OmniLight3D" parent="."]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 20.6, 2.4, -0.2)
+light_color = Color(1.0, 0.62, 0.32, 1.0)
+light_energy = 1.0
+omni_range = 4.5
+omni_attenuation = 1.3
+
+[node name="RoomBulb" type="MeshInstance3D" parent="BackRoom"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 20.6, 2.9, -0.2)
+script = ExtResource("1_box_visual")
+size = Vector3(0.16, 0.1, 0.16)
+material = ExtResource("14_lamp_warm")
+
+[node name="FarSection" type="StaticBody3D" parent="."]
+collision_layer = 1
+collision_mask = 0
+
+[node name="RackF1" type="StaticBody3D" parent="."]
+transform = Transform3D(0.0, 0.0, 1.0, 0.0, 1.0, 0.0, -1.0, 0.0, 0.0, 24.8, 0.0, 3.0)
+collision_layer = 1
+collision_mask = 0
+script = ExtResource("12_shelf_rack")
+length = 3.2
+height = 2.4
+depth = 0.6
+shelf_count = 3
+clutter_seed = 41
+frame_material = ExtResource("10_shelf_metal")
+cargo_material = ExtResource("11_crate_wood")
+
+[node name="RackFBack" type="StaticBody3D" parent="."]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 25.6, 0.0, -0.88)
+collision_layer = 1
+collision_mask = 0
+script = ExtResource("12_shelf_rack")
+length = 2.6
+height = 2.4
+depth = 0.5
+shelf_count = 3
+clutter_seed = 42
+frame_material = ExtResource("10_shelf_metal")
+cargo_material = ExtResource("11_crate_wood")
+
+[node name="FarCrateA" type="CollisionShape3D" parent="FarSection"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 19.8, 0.5, 3.9)
+script = ExtResource("4_box_part")
+size = Vector3(1.2, 1.0, 1.2)
+material = ExtResource("11_crate_wood")
+
+[node name="FarCrateB" type="CollisionShape3D" parent="FarSection"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 27.4, 0.5, 1.5)
+script = ExtResource("4_box_part")
+size = Vector3(1.1, 1.0, 1.1)
+material = ExtResource("9_crate_dark")
+
+[node name="FarCrateC" type="CollisionShape3D" parent="FarSection"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 22.9, 0.3, 3.2)
+script = ExtResource("4_box_part")
+size = Vector3(0.8, 0.6, 0.9)
+material = ExtResource("11_crate_wood")
+
+[node name="CacheTable" type="CollisionShape3D" parent="FarSection"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 28.4, 0.4, -0.8)
+script = ExtResource("4_box_part")
+size = Vector3(1.4, 0.8, 0.65)
+material = ExtResource("13_floor_wood")
+
+[node name="CacheLantern" type="MeshInstance3D" parent="FarSection"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 28.7, 0.92, -0.8)
+script = ExtResource("1_box_visual")
+size = Vector3(0.16, 0.24, 0.16)
+material = ExtResource("14_lamp_warm")
+
+[node name="CacheBoxA" type="MeshInstance3D" parent="FarSection"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 28.1, 0.95, -0.82)
+script = ExtResource("1_box_visual")
+size = Vector3(0.45, 0.3, 0.35)
+material = ExtResource("11_crate_wood")
+
+[node name="CacheLight" type="OmniLight3D" parent="."]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 28.6, 1.4, -0.4)
+light_color = Color(1.0, 0.68, 0.38, 1.0)
+light_energy = 1.4
+omni_range = 4.5
+omni_attenuation = 1.3
+
+[node name="FarPoint" type="Marker3D" parent="."]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 28.2, 0.02, -0.05)
+
+[node name="LampHallA" parent="." instance=ExtResource("15_hanging_lamp")]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 6.0, 4.75, 1.7)
+energy_scale = 0.7
+
+[node name="LampHallB" parent="." instance=ExtResource("15_hanging_lamp")]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 13.0, 4.75, 3.0)
+energy_scale = 0.65
+shadows = true
+
+[node name="LampFarA" parent="." instance=ExtResource("15_hanging_lamp")]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 21.2, 4.75, 2.9)
+energy_scale = 0.7
+
+[node name="FrontWall" type="StaticBody3D" parent="."]
+collision_layer = 1
+collision_mask = 0
+script = ExtResource("3_cutaway_wall")
+
+[node name="Wall" type="CollisionShape3D" parent="FrontWall"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 15.0, 2.75, 4.725)
+script = ExtResource("4_box_part")
+size = Vector3(30.0, 5.5, 0.25)
+material = ExtResource("5_wall_industr")
+
+[node name="Window1" type="MeshInstance3D" parent="FrontWall"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 4.0, 3.6, 4.862)
+script = ExtResource("1_box_visual")
+size = Vector3(1.3, 0.9, 0.03)
+material = ExtResource("16_window_dim")
+
+[node name="Window2" type="MeshInstance3D" parent="FrontWall"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 12.0, 3.6, 4.862)
+script = ExtResource("1_box_visual")
+size = Vector3(1.3, 0.9, 0.03)
+material = ExtResource("16_window_dim")
+
+[node name="Window3" type="MeshInstance3D" parent="FrontWall"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 20.5, 3.6, 4.862)
+script = ExtResource("1_box_visual")
+size = Vector3(1.3, 0.9, 0.03)
+material = ExtResource("16_window_dim")
+
+[node name="Window4" type="MeshInstance3D" parent="FrontWall"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 26.5, 3.6, 4.862)
+script = ExtResource("1_box_visual")
+size = Vector3(1.3, 0.9, 0.03)
+material = ExtResource("16_window_dim")
+
+[node name="LoadingDoor" type="MeshInstance3D" parent="FrontWall"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 8.0, 1.55, 4.862)
+script = ExtResource("1_box_visual")
+size = Vector3(3.4, 3.1, 0.05)
+material = ExtResource("17_metal_dark")
+
+[node name="LoadingDoorRail" type="MeshInstance3D" parent="FrontWall"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 8.0, 3.2, 4.882)
+script = ExtResource("1_box_visual")
+size = Vector3(4.4, 0.12, 0.08)
+material = ExtResource("18_metal_rust")
+
+[node name="BaseTrim" type="MeshInstance3D" parent="FrontWall"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 15.0, 0.25, 4.857)
+script = ExtResource("1_box_visual")
+size = Vector3(30.0, 0.5, 0.04)
+material = ExtResource("5_wall_industr")
+
+[node name="InteriorTrigger" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("19_cutaway_trig")
+walls = Array[NodePath]([NodePath("../FrontWall")])
+
+[node name="Shape" type="CollisionShape3D" parent="InteriorTrigger"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 15.0, 2.75, 1.725)
+shape = SubResource("BoxShape3D_1")
+
+[node name="InteriorCamera" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("20_camera_zone")
+profile = ExtResource("21_indoor")
+
+[node name="Shape" type="CollisionShape3D" parent="InteriorCamera"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 15.0, 2.75, 1.725)
+shape = SubResource("BoxShape3D_1")
+
+[node name="BehindTrigger" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("19_cutaway_trig")
+walls = Array[NodePath]([NodePath("../FrontWall"), NodePath("../BackWall")])
+
+[node name="Shape" type="CollisionShape3D" parent="BehindTrigger"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 15.0, 5.0, -3.2)
+shape = SubResource("BoxShape3D_2")
+
+[node name="BackRoomTrigger" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("19_cutaway_trig")
+walls = Array[NodePath]([NodePath("../BackRoomFront")])
+
+[node name="Shape" type="CollisionShape3D" parent="BackRoomTrigger"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 17.5, 1.5, -0.3)
+shape = SubResource("BoxShape3D_3")

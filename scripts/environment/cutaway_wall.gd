@@ -1,102 +1,83 @@
-class_name BuildingCutaway
-extends Area3D
-## Fades a building's camera-facing wall while the player is inside.
+class_name CutawayWall
+extends StaticBody3D
+## A wall that can be cut away so the camera sees past it.
 ##
-## Put the Area3D's shape around the interior and list the wall nodes in
-## [member cutaway_roots]. Every MeshInstance3D below those nodes fades out with
-## a cheap alpha blend and is then hidden outright, so no transparency is
-## rendered once the transition is over. Collision is untouched: the wall still
-## blocks movement. Each building owns its own cutaway, so several buildings
-## work independently.
+## [CutawayTrigger] volumes request the cut while the player is inside them;
+## the wall fades out when at least one request is active and fades back when
+## none are left. Several triggers may share a wall (for example "player is
+## inside the building" and "player is passing behind the building").
+##
+## Only the visuals change: every MeshInstance3D below this node fades with a
+## cheap alpha blend and is then hidden outright, so nothing transparent is
+## drawn once the transition is over. Collision stays active.
 
-signal revealed
-signal concealed
+signal cut_away_changed(is_cut: bool)
 
-const PLAYER_LAYER := 1 << 1
-
-## Nodes whose visuals are cut away (typically the front wall and its windows).
-@export var cutaway_roots: Array[NodePath] = []
 @export var fade_time := 0.35
 ## Keep the hidden wall casting shadows so the interior lighting does not change.
 @export var keep_shadows := true
 
-var _occupants := 0
-## 0 = wall fully visible, 1 = fully cut away.
+var _requests: Dictionary = {}
+## 0 = fully visible, 1 = fully cut away.
 var _fade := 0.0
 var _target := 0.0
 var _meshes: Array[MeshInstance3D] = []
 var _fade_materials: Dictionary = {}
+var _source_alpha: Dictionary = {}
 
 
 func _ready() -> void:
-	collision_layer = 0
-	collision_mask = PLAYER_LAYER
-	monitoring = true
-	monitorable = false
-	body_entered.connect(_on_body_entered)
-	body_exited.connect(_on_body_exited)
-	_collect.call_deferred()
+	add_to_group(&"station_resettable")
 	set_process(false)
+	_collect.call_deferred()
 
 
 func _process(delta: float) -> void:
-	var step := delta / maxf(fade_time, 0.01)
-	_fade = move_toward(_fade, _target, step)
+	_fade = move_toward(_fade, _target, delta / maxf(fade_time, 0.01))
 	_apply_fade()
 	if is_equal_approx(_fade, _target):
 		set_process(false)
-		if _target >= 1.0:
-			revealed.emit()
-		else:
-			concealed.emit()
+
+
+## Asks for the wall to be cut away. [param key] identifies the requester.
+func request_cut(key: Object) -> void:
+	_requests[key.get_instance_id()] = true
+	_update_target()
+
+
+func release_cut(key: Object) -> void:
+	_requests.erase(key.get_instance_id())
+	_update_target()
 
 
 func is_cut_away() -> bool:
 	return _target >= 1.0
 
 
-## 0 = wall fully visible, 1 = fully cut away.
+## 0 = fully visible, 1 = fully cut away.
 func get_fade() -> float:
 	return _fade
 
 
-## Restores the wall immediately (used when the station is reset).
+## Jumps straight to the wanted state (used when the station is reset).
 func reset_state() -> void:
-	_occupants = 0
-	for body in get_overlapping_bodies():
-		if body.is_in_group(&"player"):
-			_occupants += 1
-	_target = 1.0 if _occupants > 0 else 0.0
 	_fade = _target
 	_apply_fade()
+	set_process(false)
 
 
-func _on_body_entered(body: Node3D) -> void:
-	if not body.is_in_group(&"player"):
+func _update_target() -> void:
+	var wanted := 1.0 if not _requests.is_empty() else 0.0
+	if is_equal_approx(wanted, _target):
 		return
-	_occupants += 1
-	_set_target(1.0)
-
-
-func _on_body_exited(body: Node3D) -> void:
-	if not body.is_in_group(&"player"):
-		return
-	_occupants = maxi(_occupants - 1, 0)
-	if _occupants == 0:
-		_set_target(0.0)
-
-
-func _set_target(value: float) -> void:
-	_target = value
+	_target = wanted
 	set_process(true)
+	cut_away_changed.emit(_target >= 1.0)
 
 
 func _collect() -> void:
 	_meshes.clear()
-	for path in cutaway_roots:
-		var root := get_node_or_null(path)
-		if root != null:
-			_collect_meshes(root)
+	_collect_meshes(self)
 	for mesh_instance in _meshes:
 		if keep_shadows and mesh_instance.cast_shadow != GeometryInstance3D.SHADOW_CASTING_SETTING_OFF:
 			# A permanent shadow-only twin keeps the lighting stable while the
@@ -131,20 +112,20 @@ func _apply_fade() -> void:
 		else:
 			var fade_material := _get_fade_material(mesh_instance)
 			if fade_material != null:
-				fade_material.albedo_color.a = 1.0 - _fade
+				fade_material.albedo_color.a = _source_alpha.get(fade_material, 1.0) * (1.0 - _fade)
 				mesh_instance.material_override = fade_material
 			mesh_instance.visible = true
 
 
 func _get_fade_material(mesh_instance: MeshInstance3D) -> BaseMaterial3D:
-	var source := mesh_instance.get_active_material(0) if mesh_instance.material_override == null else null
-	if source == null:
-		# Already overridden by one of our fade materials.
+	if mesh_instance.material_override != null:
 		return mesh_instance.material_override as BaseMaterial3D
+	var source := mesh_instance.get_active_material(0) as BaseMaterial3D
+	if source == null:
+		return null
 	if not _fade_materials.has(source):
 		var copy := source.duplicate() as BaseMaterial3D
-		if copy == null:
-			return null
 		copy.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
 		_fade_materials[source] = copy
+		_source_alpha[copy] = source.albedo_color.a
 	return _fade_materials[source]

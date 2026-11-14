@@ -2,6 +2,6 @@
 
 [resource]
 resource_name = "train_body"
-albedo_color = Color(0.15, 0.23, 0.25, 1)
-metallic = 0.4
-roughness = 0.55
+albedo_color = Color(0.2, 0.31, 0.34, 1)
+metallic = 0.3
+roughness = 0.6

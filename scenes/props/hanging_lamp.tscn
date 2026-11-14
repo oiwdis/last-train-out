@@ -1,0 +1,35 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/environment/prop_light.gd" id="1_prop_light"]
+[ext_resource type="Script" path="res://scripts/environment/box_visual.gd" id="2_box_visual"]
+[ext_resource type="StandardMaterial3D" path="res://resources/materials/metal_dark.tres" id="3_metal_dark"]
+[ext_resource type="StandardMaterial3D" path="res://resources/materials/lamp_warm.tres" id="4_lamp_warm"]
+
+[node name="HangingLamp" type="Node3D"]
+script = ExtResource("1_prop_light")
+
+[node name="Cord" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.3, 0.0)
+script = ExtResource("2_box_visual")
+size = Vector3(0.03, 0.6, 0.03)
+material = ExtResource("3_metal_dark")
+
+[node name="Shade" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.02, 0.0)
+script = ExtResource("2_box_visual")
+size = Vector3(0.5, 0.1, 0.5)
+material = ExtResource("3_metal_dark")
+
+[node name="Bulb" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, -0.07, 0.0)
+script = ExtResource("2_box_visual")
+size = Vector3(0.22, 0.1, 0.22)
+material = ExtResource("4_lamp_warm")
+
+[node name="Light" type="OmniLight3D" parent="."]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, -0.25, 0.0)
+light_color = Color(1.0, 0.66, 0.36, 1.0)
+light_energy = 2.2
+shadow_enabled = false
+omni_range = 8.0
+omni_attenuation = 1.25

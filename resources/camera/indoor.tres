@@ -6,7 +6,7 @@
 script = ExtResource("1_profile")
 distance = 14.5
 fov = 38.0
-pitch_degrees = -6.0
-focus_height = 1.9
+pitch_degrees = -5.0
+focus_height = 2.4
 look_ahead = 1.6
 depth_follow = 0.35

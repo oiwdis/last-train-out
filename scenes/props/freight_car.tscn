@@ -1,0 +1,132 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/environment/box_part.gd" id="1_box_part"]
+[ext_resource type="Script" path="res://scripts/environment/box_visual.gd" id="2_box_visual"]
+[ext_resource type="StandardMaterial3D" path="res://resources/materials/metal_dark.tres" id="3_metal_dark"]
+[ext_resource type="StandardMaterial3D" path="res://resources/materials/freight_body.tres" id="4_freight_body"]
+[ext_resource type="StandardMaterial3D" path="res://resources/materials/roof_metal.tres" id="5_roof_metal"]
+[ext_resource type="StandardMaterial3D" path="res://resources/materials/metal_rust.tres" id="6_metal_rust"]
+[ext_resource type="Script" path="res://scripts/interaction/ladder.gd" id="7_ladder"]
+[ext_resource type="StandardMaterial3D" path="res://resources/materials/interact_yellow.tres" id="8_interact_yel"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_1"]
+top_radius = 0.42
+bottom_radius = 0.42
+height = 0.14
+radial_segments = 16
+rings = 1
+material = ExtResource("3_metal_dark")
+
+[node name="FreightCar" type="StaticBody3D"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Chassis" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.62, 0.0)
+script = ExtResource("1_box_part")
+size = Vector3(7.0, 0.64, 2.5)
+show_mesh = false
+
+[node name="Frame" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.79, 0.0)
+script = ExtResource("2_box_visual")
+size = Vector3(7.0, 0.3, 1.5)
+material = ExtResource("3_metal_dark")
+
+[node name="Deck" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.97, 0.0)
+script = ExtResource("1_box_part")
+size = Vector3(7.0, 0.06, 2.6)
+material = ExtResource("3_metal_dark")
+
+[node name="Body" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 2.35, 0.0)
+script = ExtResource("1_box_part")
+size = Vector3(6.8, 2.7, 2.6)
+material = ExtResource("4_freight_body")
+
+[node name="Roof" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 3.75, 0.0)
+script = ExtResource("1_box_part")
+size = Vector3(7.0, 0.1, 2.7)
+material = ExtResource("5_roof_metal")
+
+[node name="Door" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.2, 2.2, 1.31)
+script = ExtResource("2_box_visual")
+size = Vector3(1.9, 2.3, 0.05)
+material = ExtResource("6_metal_rust")
+
+[node name="Rib1" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, -2.6, 2.35, 1.31)
+script = ExtResource("2_box_visual")
+size = Vector3(0.08, 2.6, 0.05)
+material = ExtResource("3_metal_dark")
+
+[node name="Rib2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, -1.3, 2.35, 1.31)
+script = ExtResource("2_box_visual")
+size = Vector3(0.08, 2.6, 0.05)
+material = ExtResource("3_metal_dark")
+
+[node name="Rib3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.6, 2.35, 1.31)
+script = ExtResource("2_box_visual")
+size = Vector3(0.08, 2.6, 0.05)
+material = ExtResource("3_metal_dark")
+
+[node name="Rib4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 2.7, 2.35, 1.31)
+script = ExtResource("2_box_visual")
+size = Vector3(0.08, 2.6, 0.05)
+material = ExtResource("3_metal_dark")
+
+[node name="Wheels" type="Node3D" parent="."]
+
+[node name="Wheel1" type="MeshInstance3D" parent="Wheels"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 1.0, 0.0, -2.6, 0.52, -0.86)
+mesh = SubResource("CylinderMesh_1")
+
+[node name="Wheel2" type="MeshInstance3D" parent="Wheels"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 1.0, 0.0, -2.6, 0.52, 0.86)
+mesh = SubResource("CylinderMesh_1")
+
+[node name="Wheel3" type="MeshInstance3D" parent="Wheels"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 1.0, 0.0, -1.6, 0.52, -0.86)
+mesh = SubResource("CylinderMesh_1")
+
+[node name="Wheel4" type="MeshInstance3D" parent="Wheels"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 1.0, 0.0, -1.6, 0.52, 0.86)
+mesh = SubResource("CylinderMesh_1")
+
+[node name="Wheel5" type="MeshInstance3D" parent="Wheels"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 1.0, 0.0, 1.6, 0.52, -0.86)
+mesh = SubResource("CylinderMesh_1")
+
+[node name="Wheel6" type="MeshInstance3D" parent="Wheels"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 1.0, 0.0, 1.6, 0.52, 0.86)
+mesh = SubResource("CylinderMesh_1")
+
+[node name="Wheel7" type="MeshInstance3D" parent="Wheels"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 1.0, 0.0, 2.6, 0.52, -0.86)
+mesh = SubResource("CylinderMesh_1")
+
+[node name="Wheel8" type="MeshInstance3D" parent="Wheels"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 1.0, 0.0, 2.6, 0.52, 0.86)
+mesh = SubResource("CylinderMesh_1")
+
+[node name="LadderLeft" type="Area3D" parent="."]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, -2.95, 0.35, 1.32)
+script = ExtResource("7_ladder")
+height = 3.45
+reach_below = 0.5
+top_exit_depth = 0.65
+material = ExtResource("8_interact_yel")
+
+[node name="LadderRight" type="Area3D" parent="."]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 2.95, 0.35, 1.32)
+script = ExtResource("7_ladder")
+height = 3.45
+reach_below = 0.5
+top_exit_depth = 0.65
+material = ExtResource("8_interact_yel")

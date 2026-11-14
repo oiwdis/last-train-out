@@ -1,0 +1,61 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/main/game.gd" id="1_game"]
+[ext_resource type="Resource" path="res://resources/camera/train_departure.tres" id="2_train_depart"]
+[ext_resource type="PackedScene" path="res://scenes/station/harlow_junction.tscn" id="3_harlow_junct"]
+[ext_resource type="PackedScene" path="res://scenes/train/train.tscn" id="4_train"]
+[ext_resource type="PackedScene" path="res://scenes/player/player.tscn" id="5_player"]
+[ext_resource type="Script" path="res://scripts/camera/camera_rig.gd" id="6_camera_rig"]
+[ext_resource type="Resource" path="res://resources/camera/outdoor.tres" id="7_outdoor"]
+[ext_resource type="Script" path="res://systems/fog_system.gd" id="8_fog_system"]
+[ext_resource type="Script" path="res://systems/passenger_system.gd" id="9_passenger_sy"]
+[ext_resource type="Script" path="res://systems/inventory_system.gd" id="10_inventory_sy"]
+[ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="11_hud"]
+[ext_resource type="PackedScene" path="res://scenes/ui/debug/debug_menu.tscn" id="12_debug_menu"]
+
+[node name="Main" type="Node3D" node_paths=PackedStringArray("player", "train", "camera_rig", "station", "debug_menu", "hud", "fog_system", "passenger_system", "inventory_system")]
+script = ExtResource("1_game")
+player = NodePath("Player")
+train = NodePath("Train")
+camera_rig = NodePath("CameraRig")
+station = NodePath("HarlowJunction")
+debug_menu = NodePath("DebugMenu")
+hud = NodePath("Hud")
+fog_system = NodePath("Systems/FogSystem")
+passenger_system = NodePath("Systems/PassengerSystem")
+inventory_system = NodePath("Systems/InventorySystem")
+train_departure_profile = ExtResource("2_train_depart")
+
+[node name="HarlowJunction" parent="." instance=ExtResource("3_harlow_junct")]
+
+[node name="Train" parent="." instance=ExtResource("4_train")]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 15.0, 0.0, -3.5)
+
+[node name="Player" parent="." instance=ExtResource("5_player")]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 16.0, 1.02, 0.6)
+
+[node name="CameraRig" type="Node3D" parent="." node_paths=PackedStringArray("target")]
+script = ExtResource("6_camera_rig")
+target = NodePath("../Player")
+default_profile = ExtResource("7_outdoor")
+
+[node name="Camera3D" type="Camera3D" parent="CameraRig"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 16.0, 4.5, 21.0)
+fov = 38.0
+near = 0.3
+far = 500.0
+
+[node name="Systems" type="Node" parent="."]
+
+[node name="FogSystem" type="Node" parent="Systems"]
+script = ExtResource("8_fog_system")
+
+[node name="PassengerSystem" type="Node" parent="Systems"]
+script = ExtResource("9_passenger_sy")
+
+[node name="InventorySystem" type="Node" parent="Systems"]
+script = ExtResource("10_inventory_sy")
+
+[node name="Hud" parent="." instance=ExtResource("11_hud")]
+
+[node name="DebugMenu" parent="." instance=ExtResource("12_debug_menu")]
