@@ -425,13 +425,13 @@ transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 110.2, 0.45
 mesh = SubResource("CylinderMesh_2")
 
 [node name="BarrelF" type="CollisionShape3D" parent="FreightYard"]
-transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 100.9, 0.45, 2.4)
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 100.8, 0.45, -0.7)
 script = ExtResource("3_box_part")
 size = Vector3(0.6, 0.9, 0.6)
 show_mesh = false
 
 [node name="BarrelFMesh" type="MeshInstance3D" parent="FreightYard"]
-transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 100.9, 0.45, 2.4)
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 100.8, 0.45, -0.7)
 mesh = SubResource("CylinderMesh_2")
 
 [node name="EndFence" type="CollisionShape3D" parent="FreightYard"]

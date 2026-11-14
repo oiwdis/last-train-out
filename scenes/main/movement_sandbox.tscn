@@ -99,13 +99,13 @@ size = Vector3(2.4, 1.1, 2.0)
 material = ExtResource("8_crate_dark")
 
 [node name="LadderTower" type="CollisionShape3D" parent="World"]
-transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 47.0, 1.5, -0.5)
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 47.0, 1.5, 0.0)
 script = ExtResource("3_box_part")
 size = Vector3(2.0, 3.0, 2.0)
 material = ExtResource("9_wall_industr")
 
 [node name="TowerLadder" type="Area3D" parent="."]
-transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 47.0, 0.0, 0.52)
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 47.0, 0.0, 1.02)
 script = ExtResource("10_ladder")
 height = 3.0
 reach_below = 0.2

@@ -22,8 +22,9 @@ extends Node3D
 @export var look_ahead_rate := 2.4
 ## Target speed (m/s) at which the look-ahead is fully extended.
 @export var look_ahead_full_speed := 6.0
-## How quickly distance / FOV / pitch blend between profiles (1/s).
-@export var profile_blend_rate := 2.2
+## Seconds a change of framing (distance / FOV / pitch) takes to settle. The
+## blend eases in and out, so zooms never start or stop abruptly.
+@export var profile_blend_time := 0.55
 
 @export_group("Interest framing")
 ## The point of interest is ignored when further away than this (m).
@@ -53,6 +54,8 @@ var _focus_height := 1.4
 var _depth_follow := 0.5
 var _previous_target_position := Vector3.ZERO
 var _initialised := false
+## Rates of change of the blended framing values (for the critically damped blend).
+var _blend_velocity: Dictionary = {}
 
 
 func _ready() -> void:
@@ -74,12 +77,11 @@ func _physics_process(delta: float) -> void:
 	if not _initialised:
 		snap_to_target()
 	var profile := get_active_profile()
-	var blend := 1.0 - exp(-profile_blend_rate * delta)
-	_distance = lerpf(_distance, profile.distance, blend)
-	_fov = lerpf(_fov, profile.fov, blend)
-	_pitch = lerpf(_pitch, profile.pitch_degrees, blend)
-	_focus_height = lerpf(_focus_height, profile.focus_height, blend)
-	_depth_follow = lerpf(_depth_follow, profile.depth_follow, blend)
+	_distance = _ease_toward(&"distance", _distance, profile.distance, delta)
+	_fov = _ease_toward(&"fov", _fov, profile.fov, delta)
+	_pitch = _ease_toward(&"pitch", _pitch, profile.pitch_degrees, delta)
+	_focus_height = _ease_toward(&"focus_height", _focus_height, profile.focus_height, delta)
+	_depth_follow = _ease_toward(&"depth_follow", _depth_follow, profile.depth_follow, delta)
 
 	var target_position := target.global_position
 	var step := target_position - _previous_target_position
@@ -182,6 +184,7 @@ func snap_to_target() -> void:
 	_look_ahead = 0.0
 	_interest_shift = 0.0
 	_interest_zoom = 0.0
+	_blend_velocity.clear()
 	_previous_target_position = target.global_position
 	_focus = Vector3(_previous_target_position.x, _previous_target_position.y, _previous_target_position.z * _depth_follow)
 	_initialised = true
@@ -199,6 +202,19 @@ func on_camera_zone_entered(zone: CameraZone, body: Node3D) -> void:
 func on_camera_zone_exited(zone: CameraZone, body: Node3D) -> void:
 	if body == target:
 		pop_profile(_zone_key(zone))
+
+
+## Critically damped spring toward [param target]: starts and ends with zero
+## speed, never overshoots.
+func _ease_toward(key: StringName, current: float, target: float, delta: float) -> float:
+	var omega := 2.0 / maxf(profile_blend_time, 0.01)
+	var x := omega * delta
+	var decay := 1.0 / (1.0 + x + 0.48 * x * x + 0.235 * x * x * x)
+	var velocity: float = _blend_velocity.get(key, 0.0)
+	var change := current - target
+	var temp := (velocity + omega * change) * delta
+	_blend_velocity[key] = (velocity - omega * temp) * decay
+	return target + (change + temp) * decay
 
 
 func _zone_key(zone: CameraZone) -> StringName:

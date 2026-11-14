@@ -53,6 +53,11 @@ func get_interaction_distance(player: Player) -> float:
 	return global_position.distance_to(player.global_position)
 
 
+## World position the player would end up at when interacting.
+func get_interaction_point(_player: Player) -> Vector3:
+	return global_position
+
+
 ## World-space velocity of this object (non-zero when mounted on a moving body).
 func get_velocity() -> Vector3:
 	return _velocity

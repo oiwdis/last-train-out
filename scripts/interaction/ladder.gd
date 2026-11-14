@@ -70,6 +70,10 @@ func get_interaction_distance(player: Player) -> float:
 	return Vector2(p.x, p.z - climber_offset).length()
 
 
+func get_interaction_point(player: Player) -> Vector3:
+	return to_global(get_attach_local(player.global_position))
+
+
 ## Highest feet position (local Y) reachable while holding the ladder.
 func get_max_climb() -> float:
 	return maxf(height - HAND_REACH, 0.0)

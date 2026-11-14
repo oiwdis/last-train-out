@@ -205,13 +205,11 @@ func get_interaction_prompt() -> String:
 				return "W / S  climb    Space  jump off    E  let go"
 			return "W  climb over    A / D  shimmy    Space  jump off    E  let go"
 		Mode.LOCOMOTION:
-			var blocked: Interactable = _last_anchor if _regrab_timer > 0.0 else null
-			var target := interactor.find_interactable(blocked)
-			if target != null:
-				return "E  %s" % target.prompt
-			var vault := interactor.find_vault(facing)
-			if not vault.is_empty():
-				return "E  Vault" if vault["kind"] == "over" else "E  Climb up"
+			var choice := _choose_interaction()
+			if choice.has("interactable"):
+				return "E  %s" % (choice["interactable"] as Interactable).prompt
+			if choice.has("vault"):
+				return "E  Vault" if choice["vault"]["kind"] == "over" else "E  Climb up"
 	return ""
 
 
@@ -347,21 +345,44 @@ func _after_move() -> void:
 # --- Interaction -------------------------------------------------------------
 
 func _try_interact() -> bool:
+	var choice := _choose_interaction()
+	if choice.has("interactable"):
+		return (choice["interactable"] as Interactable).interact(self)
+	if choice.has("vault"):
+		_begin_vault(choice["vault"])
+		return true
+	return false
+
+
+## Decides what the interact button means right now. Returns a Dictionary with
+## either an "interactable" or a "vault" entry, or nothing at all.
+##
+## An obstacle the player is heading for beats an interactable that lies behind
+## them, so vaulting a crate next to a ladder does not grab the ladder instead.
+func _choose_interaction() -> Dictionary:
 	var blocked: Interactable = _last_anchor if _regrab_timer > 0.0 else null
 	var target := interactor.find_interactable(blocked)
-	if target != null and target.interact(self):
-		return true
-	var directions: Array[Vector3] = []
+	var heading := facing
 	if input.move.length_squared() > 0.01:
-		directions.append(Vector3(input.move.x, 0.0, input.move.y))
-	directions.append(facing)
-	directions.append(Vector3.FORWARD)  # Into the scene, where the train runs.
-	for direction in directions:
-		var vault := interactor.find_vault(direction)
+		heading = Vector3(input.move.x, 0.0, input.move.y).normalized()
+	var vault := interactor.find_vault(heading)
+	if target != null:
+		var offset := target.get_interaction_point(self) - global_position
+		offset.y = 0.0
+		var behind := offset.length() > 0.3 and offset.normalized().dot(heading) < -0.2
+		if not (behind and not vault.is_empty()):
+			return {"interactable": target}
+	if not vault.is_empty():
+		return {"vault": vault}
+	# Nothing ahead: try where the character is looking, then "into the scene"
+	# (where the train runs), so boarding works without precise aiming.
+	for direction: Vector3 in [facing, Vector3.FORWARD]:
+		if direction.is_equal_approx(heading):
+			continue
+		vault = interactor.find_vault(direction)
 		if not vault.is_empty():
-			_begin_vault(vault)
-			return true
-	return false
+			return {"vault": vault}
+	return {}
 
 
 func _begin_vault(vault: Dictionary) -> void:

@@ -197,21 +197,21 @@ size = Vector3(0.25, 5.5, 2.7)
 material = ExtResource("5_wall_industr")
 
 [node name="RightWallSeg1" type="CollisionShape3D" parent="Shell"]
-transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 29.875, 2.75, 0.725)
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 29.875, 2.75, -0.125)
 script = ExtResource("4_box_part")
-size = Vector3(0.25, 5.5, 3.75)
+size = Vector3(0.25, 5.5, 2.05)
 material = ExtResource("5_wall_industr")
 
 [node name="RightWallSeg2" type="CollisionShape3D" parent="Shell"]
-transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 29.875, 4.0, 3.4)
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 29.875, 4.0, 1.7)
 script = ExtResource("4_box_part")
 size = Vector3(0.25, 3.0, 1.6)
 material = ExtResource("5_wall_industr")
 
 [node name="RightWallSeg3" type="CollisionShape3D" parent="Shell"]
-transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 29.875, 2.75, 4.4)
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 29.875, 2.75, 3.55)
 script = ExtResource("4_box_part")
-size = Vector3(0.25, 5.5, 0.4)
+size = Vector3(0.25, 5.5, 2.1)
 material = ExtResource("5_wall_industr")
 
 [node name="Roof" type="CollisionShape3D" parent="Shell"]
@@ -514,7 +514,7 @@ size = Vector3(1.2, 1.0, 1.2)
 material = ExtResource("11_crate_wood")
 
 [node name="FarCrateB" type="CollisionShape3D" parent="FarSection"]
-transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 27.4, 0.5, 1.5)
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 27.6, 0.5, 3.7)
 script = ExtResource("4_box_part")
 size = Vector3(1.1, 1.0, 1.1)
 material = ExtResource("9_crate_dark")

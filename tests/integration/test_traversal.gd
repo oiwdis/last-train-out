@@ -79,7 +79,7 @@ func test_climb_onto_deep_obstacle() -> void:
 
 
 func test_tall_wall_cannot_be_vaulted() -> void:
-	await _place(Vector3(45.3, 0.05, -0.5))
+	await _place(Vector3(45.3, 0.05, 0.0))
 	player.input.script_move(1.0)
 	await seconds(0.5)
 	player.input.script_interact()
@@ -102,7 +102,7 @@ func test_interact_with_nothing_nearby_does_nothing() -> void:
 # --- Static ladder -------------------------------------------------------------
 
 func test_climb_static_ladder_to_the_top() -> void:
-	await _place(Vector3(47.0, 0.05, 1.2), Vector3.FORWARD)
+	await _place(Vector3(47.0, 0.05, 1.7), Vector3.FORWARD)
 	player.input.script_interact()
 	check(await _wait_for_state([Player.State.CLIMB]), "interact grabs the ladder")
 	check_near(player.global_position.x, 47.0, 0.02, "player is centred on the ladder")
@@ -118,12 +118,12 @@ func test_climb_static_ladder_to_the_top() -> void:
 	await physics_frames(10)
 	check(saw_mount, "player climbed off the top of the ladder")
 	check_near(player.global_position.y, 3.0, 0.06, "player stands on the tower")
-	check_less(player.global_position.z, 0.45, "player moved onto the tower top")
+	check_less(player.global_position.z, 0.95, "player moved onto the tower top")
 	check(player.is_grounded(), "player is grounded on the tower")
 
 
 func test_climb_down_ladder_from_the_top() -> void:
-	await _place(Vector3(47.0, 3.05, -0.1), Vector3.BACK)
+	await _place(Vector3(47.0, 3.05, 0.4), Vector3.BACK)
 	check(player.is_grounded(), "player starts on the tower")
 	player.input.script_interact()
 	check(await _wait_for_state([Player.State.CLIMB]), "interact at the top grabs the ladder")
@@ -132,11 +132,11 @@ func test_climb_down_ladder_from_the_top() -> void:
 	player.input.script_move(0.0)
 	await physics_frames(20)
 	check_near(player.global_position.y, 0.0, 0.05, "player is back on the ground")
-	check_greater(player.global_position.z, 0.6, "player is in front of the tower")
+	check_greater(player.global_position.z, 1.1, "player is in front of the tower")
 
 
 func test_jump_off_ladder() -> void:
-	await _place(Vector3(47.0, 0.05, 1.2), Vector3.FORWARD)
+	await _place(Vector3(47.0, 0.05, 1.7), Vector3.FORWARD)
 	player.input.script_interact()
 	check(await _wait_for_state([Player.State.CLIMB]), "player is on the ladder")
 	player.input.script_move(0.0, -1.0)
@@ -150,12 +150,12 @@ func test_jump_off_ladder() -> void:
 	await physics_frames(3)
 	check(player.state in [Player.State.JUMP, Player.State.FALL], "jump lets go of the ladder")
 	check(await _wait_for_state([Player.State.IDLE], 200), "player lands")
-	check_greater(player.global_position.z, 1.4, "player jumped away from the wall")
+	check_greater(player.global_position.z, 1.9, "player jumped away from the wall")
 	check_near(player.global_position.y, 0.0, 0.05, "player is on the ground")
 
 
 func test_regrab_is_blocked_briefly_after_letting_go() -> void:
-	await _place(Vector3(47.0, 0.05, 1.2), Vector3.FORWARD)
+	await _place(Vector3(47.0, 0.05, 1.7), Vector3.FORWARD)
 	player.input.script_interact()
 	check(await _wait_for_state([Player.State.CLIMB]), "player is on the ladder")
 	await physics_frames(10)
@@ -395,3 +395,34 @@ func test_walking_onto_moving_deck_carries_the_player() -> void:
 	await seconds(1.0)
 	check(player.is_on_train(), "player is carried by the train")
 	check_near(player.get_world_velocity().x, train.speed, 0.1, "player moves at train speed")
+
+
+func test_obstacle_in_the_way_knocks_a_climber_off_instead_of_dragging_through() -> void:
+	var ladder := crew_car.get_node("RoofLadder") as Ladder
+	# Put a solid post right where a climber on the train's side would pass.
+	var post := StaticBody3D.new()
+	post.collision_layer = 1
+	post.collision_mask = 0
+	var shape := CollisionShape3D.new()
+	var box := BoxShape3D.new()
+	box.size = Vector3(0.4, 6.0, 0.4)
+	shape.shape = box
+	post.add_child(shape)
+	game.add_child(post)
+	post.global_position = Vector3(ladder.global_position.x + 14.0, 3.0, -1.7)
+	await _place(Vector3(ladder.global_position.x, 1.05, -1.6), Vector3.FORWARD)
+	player.input.script_interact()
+	check(await _wait_for_state([Player.State.CLIMB]), "player holds the ladder")
+	train.set_mode_index(0)
+	train.start()
+	var let_go := false
+	for i in 600:
+		await physics_frames(1)
+		if player.state != Player.State.CLIMB:
+			let_go = true
+			break
+	check(let_go, "the post knocked the climber off the ladder")
+	check_less(player.global_position.x, post.global_position.x + 0.2, "the climber was not dragged through the post")
+	check(await _wait_for_state([Player.State.IDLE], 240), "the climber lands and recovers")
+	check_greater(player.global_position.y, -0.1, "the climber is on solid ground")
+

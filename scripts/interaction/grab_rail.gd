@@ -76,6 +76,10 @@ func get_interaction_distance(player: Player) -> float:
 	return Vector2(along, p.z - cling_offset).length()
 
 
+func get_interaction_point(player: Player) -> Vector3:
+	return to_global(get_attach_local(player.global_position))
+
+
 func get_shimmy_limit() -> float:
 	return maxf(length * 0.5 - end_margin, 0.0)
 
