@@ -152,6 +152,8 @@ jobs:
 
   # Downloads the artifact the way a player would, unzips it and launches it - on an Apple
   # Silicon Mac and on an Intel Mac, so both halves of the universal app are really run.
+  # GitHub's Intel Mac runners have no usable GPU (the app's renderer cannot start there),
+  # so on Intel only the launch without a window is run; rendering on Intel is not checked.
   check:
     name: Download and launch (${{ matrix.label }})
     needs: build
@@ -162,9 +164,11 @@ jobs:
           - label: Apple Silicon
             runner: macos-latest
             arch: arm64
+            window: true
           - label: Intel
             runner: macos-15-intel
             arch: x86_64
+            window: false
     runs-on: ${{ matrix.runner }}
     timeout-minutes: 20
     steps:
@@ -206,6 +210,7 @@ jobs:
         run: tools/macos/run_selftest.sh "extracted/$APP_NAME.app" "${{ matrix.arch }}-headless" --headless --expect-arch "${{ matrix.arch }}"
 
       - name: Launch the unzipped app with its window
+        if: ${{ matrix.window }}
         run: tools/macos/run_selftest.sh "extracted/$APP_NAME.app" "${{ matrix.arch }}-window" --expect-arch "${{ matrix.arch }}"
 
       - name: Upload the self-test reports

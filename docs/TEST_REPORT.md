@@ -16,7 +16,9 @@ build: the project has never been run on macOS or played by a person.
 | Same tests on Godot 4.7 | 102 passed, 0 failed |
 | Screenshots | 10 captured from the running game |
 | Recording | 48 s scripted playthrough captured from the running game |
-| macOS / Apple Silicon | **not tested** |
+| macOS app build (GitHub Actions) | tests, export, bundle checks and self-test launches pass - see "macOS build pipeline" |
+| macOS / Apple Silicon | tests and the exported app run in CI on a virtual Apple Silicon Mac; **not tested on a real Mac** |
+| macOS / Intel | the app's Intel half runs in CI without a window; **rendering on Intel not tested** |
 | Played by a human | **not tested** |
 | Frame rate on real hardware | **not measured** |
 
@@ -138,6 +140,42 @@ Caveats:
   of any real machine.
 - Software rendering can differ slightly from a GPU (filtering, shadow detail).
 
+## macOS build pipeline
+
+`.github/workflows/macos-app.yml` runs on GitHub's macOS runners on every push to the
+development branch. Results of the runs made while setting it up:
+
+| Step | Result |
+|---|---|
+| All automated tests on macOS 26 / Apple Silicon (Godot 4.5.1 editor, headless) | 102 passed, 0 failed |
+| Export with Godot 4.5.1 and the official 4.5.1 export template (checksums pinned) | `Last Train Out.app`, 181 MB |
+| Bundle checks | 25 of 25: `Info.plist`, executable present and universal (`arm64` + `x86_64`, confirmed by `lipo`), game data pack with all 89 project scenes/scripts/resources and nothing from tests/tools/docs, ad-hoc signature valid (`codesign --verify --deep --strict`) |
+| Exported app launched on the runner, no window | 14 of 14 self-test checks |
+| Exported app launched on the runner, with its window | 17 of 17 self-test checks; Forward+ on Metal, frame captured and not blank |
+| ZIP made with `ditto` | 63.5 MB; 11 of 11 checks: holds exactly the bundle, file for file, executable bit kept |
+| ZIP downloaded as an artifact, unzipped and launched on Apple Silicon | passed (without and with its window) |
+| ZIP downloaded, unzipped and launched on an Intel runner | Intel half of the app passed the launch without a window |
+
+The self-test (`scripts/main/self_test.gd`) runs inside the exported app, with no editor and
+no project folder: it loads the real main scene, walks and jumps the player, puts the player
+on the flat car, starts an Emergency Steam departure and checks the rider does not slide
+(0.0000 m), checks the debug menu's live values, and fails on any engine error.
+
+What this does **not** show:
+
+- **GitHub's Macs are virtual machines.** Their GPU ("Apple Paravirtual device") cannot
+  render volumetric fog; the first run crashed there until the game learned to check for the
+  feature and skip the haze. So the windowed launch in CI runs *without* the volumetric haze,
+  and the haze on real Mac hardware is still unverified.
+- **Intel rendering is unverified.** The Intel runner has no usable GPU: opening a window
+  there crashes in Vulkan pipeline creation, so that step is not run on Intel.
+- The frame rate reported in CI (about 52 FPS on the virtual GPU) says nothing about a real Mac.
+- Gatekeeper prompts were not observed: runners do not download through a browser, so the
+  build is never quarantined there. The README describes the expected behaviour.
+- **The signing job has not run with real credentials.** With no secrets configured it stops
+  at its first step and lists what is missing.
+- Nobody has opened the downloaded app on a real Mac or played it.
+
 ## Manual testing
 
 **None was performed.** No person has played this build, and it has not been
@@ -173,7 +211,10 @@ run on macOS. The items below therefore rest on automated evidence only:
 
 ## Not verified
 
-- [ ] Opening and running the project on **macOS** (Intel or Apple Silicon).
+- [ ] Running the app on a **real Mac** (CI covers virtual Apple Silicon and, without a window, Intel).
+- [ ] Rendering on an **Intel Mac**, and the volumetric haze on any Mac.
+- [ ] Developer ID signing, notarization and stapling (needs your Apple credentials).
+- [ ] The Gatekeeper prompts for a downloaded development build.
 - [ ] **60 FPS on a modern MacBook Air** - no measurement on any real GPU.
 - [ ] Rendering with a real GPU / the Metal backend.
 - [ ] Real keyboard hardware (key events were simulated at the Input Map level).

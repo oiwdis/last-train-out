@@ -101,10 +101,14 @@ Each build is only uploaded after the workflow has:
 5. checked that the ZIP holds the complete bundle, file for file.
 
 Two more jobs then download the ZIP the way you would, unzip it and launch it again - one on an
-Apple Silicon Mac, one on an Intel Mac.
+Apple Silicon Mac, one on an Intel Mac. On Apple Silicon the app opens its window and renders
+with Metal. GitHub's Intel Macs have no usable GPU, so there the Intel half of the app is only
+run without a window: the game logic is checked on Intel, the picture is not.
 
 This shows that the app starts and the game runs on GitHub's Macs. It does not replace a person
-playing it: nobody sees the picture or feels the controls in CI.
+playing it: nobody sees the picture or feels the controls in CI, and GitHub's Macs are virtual
+machines (their GPU cannot render the game's volumetric haze, so that effect is switched off
+there and is only seen on a real Mac).
 
 ### Signed and notarized builds
 
