@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PlayerMovementConfig" format=3]
+
+[ext_resource type="Script" path="res://scripts/player/player_movement_config.gd" id="1_cfg"]
+
+[resource]
+script = ExtResource("1_cfg")
+walk_speed = 3.0
+sprint_speed = 6.0
+jump_height = 1.3
+coyote_time = 0.12
+jump_buffer_time = 0.12

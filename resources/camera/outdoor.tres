@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="CameraProfile" format=3]
+
+[ext_resource type="Script" path="res://scripts/camera/camera_profile.gd" id="1_profile"]
+
+[resource]
+script = ExtResource("1_profile")
+distance = 21.0
+fov = 38.0
+pitch_degrees = -7.0
+focus_height = 1.6
+look_ahead = 2.8
+depth_follow = 0.5

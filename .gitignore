@@ -1,0 +1,21 @@
+# Godot 4 editor cache and imported data (regenerated on first open)
+.godot/
+/android/
+
+# Export output
+/build/
+/export/
+*.pck
+*.dmg
+*.app
+*.exe
+*.x86_64
+
+# Test / capture scratch output
+/tests/_output/
+*.avi
+*.wav
+
+# OS noise
+.DS_Store
+Thumbs.db

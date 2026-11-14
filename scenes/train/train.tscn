@@ -1,0 +1,25 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/train/train.gd" id="1_train"]
+[ext_resource type="Script" path="res://scripts/train/departure_mode.gd" id="2_departure_mo"]
+[ext_resource type="Resource" path="res://resources/train/departure_emergency.tres" id="3_departure_em"]
+[ext_resource type="Resource" path="res://resources/train/departure_normal.tres" id="4_departure_no"]
+[ext_resource type="Resource" path="res://resources/train/departure_slow.tres" id="5_departure_sl"]
+[ext_resource type="PackedScene" path="res://scenes/train/flat_car.tscn" id="6_flat_car"]
+[ext_resource type="PackedScene" path="res://scenes/train/crew_car.tscn" id="7_crew_car"]
+[ext_resource type="PackedScene" path="res://scenes/train/locomotive.tscn" id="8_locomotive"]
+
+[node name="Train" type="Node3D"]
+script = ExtResource("1_train")
+departure_modes = Array[ExtResource("2_departure_mo")]([ExtResource("3_departure_em"), ExtResource("4_departure_no"), ExtResource("5_departure_sl")])
+default_mode_index = 1
+max_speed = 12.0
+
+[node name="FlatCar" parent="." instance=ExtResource("6_flat_car")]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, -9.0, 0.0, 0.0)
+
+[node name="CrewCar" parent="." instance=ExtResource("7_crew_car")]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0)
+
+[node name="Locomotive" parent="." instance=ExtResource("8_locomotive")]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 9.0, 0.0, 0.0)

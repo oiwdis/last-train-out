@@ -1,0 +1,304 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/train/train_car.gd" id="1_train_car"]
+[ext_resource type="Script" path="res://scripts/environment/box_part.gd" id="2_box_part"]
+[ext_resource type="StandardMaterial3D" path="res://resources/materials/train_trim.tres" id="3_train_trim"]
+[ext_resource type="StandardMaterial3D" path="res://resources/materials/train_deck.tres" id="4_train_deck"]
+[ext_resource type="Script" path="res://scripts/environment/box_visual.gd" id="5_box_visual"]
+[ext_resource type="StandardMaterial3D" path="res://resources/materials/metal_dark.tres" id="6_metal_dark"]
+[ext_resource type="StandardMaterial3D" path="res://resources/materials/rail_steel.tres" id="7_rail_steel"]
+[ext_resource type="StandardMaterial3D" path="res://resources/materials/train_body.tres" id="8_train_body"]
+[ext_resource type="StandardMaterial3D" path="res://resources/materials/roof_metal.tres" id="9_roof_metal"]
+[ext_resource type="StandardMaterial3D" path="res://resources/materials/window_warm.tres" id="10_window_warm"]
+[ext_resource type="StandardMaterial3D" path="res://resources/materials/lamp_warm.tres" id="11_lamp_warm"]
+[ext_resource type="Script" path="res://scripts/interaction/ladder.gd" id="12_ladder"]
+[ext_resource type="StandardMaterial3D" path="res://resources/materials/interact_yellow.tres" id="13_interact_yel"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_1"]
+top_radius = 0.5
+bottom_radius = 0.5
+height = 0.14
+radial_segments = 16
+rings = 1
+material = ExtResource("6_metal_dark")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_2"]
+top_radius = 0.98
+bottom_radius = 0.98
+height = 5.2
+radial_segments = 20
+rings = 1
+material = ExtResource("3_train_trim")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_3"]
+top_radius = 0.3
+bottom_radius = 0.24
+height = 0.9
+radial_segments = 12
+rings = 1
+material = ExtResource("3_train_trim")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_4"]
+top_radius = 0.3
+bottom_radius = 0.38
+height = 0.45
+radial_segments = 12
+rings = 1
+material = ExtResource("8_train_body")
+
+[node name="Locomotive" type="AnimatableBody3D"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_train_car")
+car_length = 9.0
+
+[node name="Chassis" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.62, 0.0)
+script = ExtResource("2_box_part")
+size = Vector3(8.8, 0.64, 2.5)
+material = ExtResource("3_train_trim")
+
+[node name="Deck" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.97, 0.0)
+script = ExtResource("2_box_part")
+size = Vector3(8.8, 0.06, 2.6)
+material = ExtResource("4_train_deck")
+
+[node name="CouplerFront" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 4.45, 0.6, 0.0)
+script = ExtResource("5_box_visual")
+size = Vector3(0.3, 0.16, 0.3)
+material = ExtResource("6_metal_dark")
+
+[node name="CouplerRear" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, -4.45, 0.6, 0.0)
+script = ExtResource("5_box_visual")
+size = Vector3(0.3, 0.16, 0.3)
+material = ExtResource("6_metal_dark")
+
+[node name="Wheels" type="Node3D" parent="."]
+
+[node name="Wheel1" type="Node3D" parent="Wheels"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, -3.2, 0.5, -0.86)
+
+[node name="Rim" type="MeshInstance3D" parent="Wheels/Wheel1"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0)
+mesh = SubResource("CylinderMesh_1")
+
+[node name="Spoke" type="MeshInstance3D" parent="Wheels/Wheel1"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0)
+script = ExtResource("5_box_visual")
+size = Vector3(0.85, 0.09, 0.17)
+material = ExtResource("7_rail_steel")
+
+[node name="Wheel2" type="Node3D" parent="Wheels"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, -3.2, 0.5, 0.86)
+
+[node name="Rim" type="MeshInstance3D" parent="Wheels/Wheel2"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0)
+mesh = SubResource("CylinderMesh_1")
+
+[node name="Spoke" type="MeshInstance3D" parent="Wheels/Wheel2"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0)
+script = ExtResource("5_box_visual")
+size = Vector3(0.85, 0.09, 0.17)
+material = ExtResource("7_rail_steel")
+
+[node name="Wheel3" type="Node3D" parent="Wheels"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, -1.4, 0.5, -0.86)
+
+[node name="Rim" type="MeshInstance3D" parent="Wheels/Wheel3"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0)
+mesh = SubResource("CylinderMesh_1")
+
+[node name="Spoke" type="MeshInstance3D" parent="Wheels/Wheel3"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0)
+script = ExtResource("5_box_visual")
+size = Vector3(0.85, 0.09, 0.17)
+material = ExtResource("7_rail_steel")
+
+[node name="Wheel4" type="Node3D" parent="Wheels"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, -1.4, 0.5, 0.86)
+
+[node name="Rim" type="MeshInstance3D" parent="Wheels/Wheel4"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0)
+mesh = SubResource("CylinderMesh_1")
+
+[node name="Spoke" type="MeshInstance3D" parent="Wheels/Wheel4"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0)
+script = ExtResource("5_box_visual")
+size = Vector3(0.85, 0.09, 0.17)
+material = ExtResource("7_rail_steel")
+
+[node name="Wheel5" type="Node3D" parent="Wheels"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.2, 0.5, -0.86)
+
+[node name="Rim" type="MeshInstance3D" parent="Wheels/Wheel5"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0)
+mesh = SubResource("CylinderMesh_1")
+
+[node name="Spoke" type="MeshInstance3D" parent="Wheels/Wheel5"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0)
+script = ExtResource("5_box_visual")
+size = Vector3(0.85, 0.09, 0.17)
+material = ExtResource("7_rail_steel")
+
+[node name="Wheel6" type="Node3D" parent="Wheels"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.2, 0.5, 0.86)
+
+[node name="Rim" type="MeshInstance3D" parent="Wheels/Wheel6"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0)
+mesh = SubResource("CylinderMesh_1")
+
+[node name="Spoke" type="MeshInstance3D" parent="Wheels/Wheel6"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0)
+script = ExtResource("5_box_visual")
+size = Vector3(0.85, 0.09, 0.17)
+material = ExtResource("7_rail_steel")
+
+[node name="Wheel7" type="Node3D" parent="Wheels"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.6, 0.5, -0.86)
+
+[node name="Rim" type="MeshInstance3D" parent="Wheels/Wheel7"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0)
+mesh = SubResource("CylinderMesh_1")
+
+[node name="Spoke" type="MeshInstance3D" parent="Wheels/Wheel7"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0)
+script = ExtResource("5_box_visual")
+size = Vector3(0.85, 0.09, 0.17)
+material = ExtResource("7_rail_steel")
+
+[node name="Wheel8" type="Node3D" parent="Wheels"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.6, 0.5, 0.86)
+
+[node name="Rim" type="MeshInstance3D" parent="Wheels/Wheel8"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0)
+mesh = SubResource("CylinderMesh_1")
+
+[node name="Spoke" type="MeshInstance3D" parent="Wheels/Wheel8"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0)
+script = ExtResource("5_box_visual")
+size = Vector3(0.85, 0.09, 0.17)
+material = ExtResource("7_rail_steel")
+
+[node name="Wheel9" type="Node3D" parent="Wheels"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 3.2, 0.5, -0.86)
+
+[node name="Rim" type="MeshInstance3D" parent="Wheels/Wheel9"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0)
+mesh = SubResource("CylinderMesh_1")
+
+[node name="Spoke" type="MeshInstance3D" parent="Wheels/Wheel9"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0)
+script = ExtResource("5_box_visual")
+size = Vector3(0.85, 0.09, 0.17)
+material = ExtResource("7_rail_steel")
+
+[node name="Wheel10" type="Node3D" parent="Wheels"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 3.2, 0.5, 0.86)
+
+[node name="Rim" type="MeshInstance3D" parent="Wheels/Wheel10"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 0.0, -1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0)
+mesh = SubResource("CylinderMesh_1")
+
+[node name="Spoke" type="MeshInstance3D" parent="Wheels/Wheel10"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0)
+script = ExtResource("5_box_visual")
+size = Vector3(0.85, 0.09, 0.17)
+material = ExtResource("7_rail_steel")
+
+[node name="Cab" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, -2.6, 2.25, 0.0)
+script = ExtResource("2_box_part")
+size = Vector3(3.2, 2.5, 2.6)
+material = ExtResource("8_train_body")
+
+[node name="CabRoof" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, -2.6, 3.56, 0.0)
+script = ExtResource("2_box_part")
+size = Vector3(3.5, 0.12, 2.6)
+material = ExtResource("9_roof_metal")
+
+[node name="CabWindowSide" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, -2.3, 2.55, 1.305)
+script = ExtResource("5_box_visual")
+size = Vector3(1.3, 0.75, 0.03)
+material = ExtResource("10_window_warm")
+
+[node name="CabWindowFront" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, -0.994, 3.05, 0.0)
+script = ExtResource("5_box_visual")
+size = Vector3(0.03, 0.5, 1.6)
+material = ExtResource("10_window_warm")
+
+[node name="BoilerCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.6, 2.0, 0.0)
+script = ExtResource("2_box_part")
+size = Vector3(5.2, 2.0, 2.6)
+show_mesh = false
+
+[node name="Boiler" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.0, -1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.6, 2.02, 0.0)
+mesh = SubResource("CylinderMesh_2")
+
+[node name="BoilerSaddle" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.6, 1.25, 0.0)
+script = ExtResource("5_box_visual")
+size = Vector3(5.2, 0.5, 2.3)
+material = ExtResource("8_train_body")
+
+[node name="RunningBoardNear" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.6, 1.5, 1.14)
+script = ExtResource("5_box_visual")
+size = Vector3(5.2, 0.06, 0.32)
+material = ExtResource("3_train_trim")
+
+[node name="Chimney" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 3.5, 3.4, 0.0)
+mesh = SubResource("CylinderMesh_3")
+
+[node name="Dome" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.4, 3.2, 0.0)
+mesh = SubResource("CylinderMesh_4")
+
+[node name="BufferBeam" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 4.6, 0.68, 0.0)
+script = ExtResource("2_box_part")
+size = Vector3(0.4, 0.75, 2.5)
+material = ExtResource("3_train_trim")
+
+[node name="Plough" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.88295, 0.46947, 0.0, -0.46947, 0.88295, 0.0, 0.0, 0.0, 1.0, 4.75, 0.42, 0.0)
+script = ExtResource("5_box_visual")
+size = Vector3(0.9, 0.5, 2.3)
+material = ExtResource("6_metal_dark")
+
+[node name="Headlight" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 4.24, 2.75, 0.0)
+script = ExtResource("5_box_visual")
+size = Vector3(0.12, 0.3, 0.3)
+material = ExtResource("11_lamp_warm")
+
+[node name="HeadlightBeam" type="SpotLight3D" parent="."]
+transform = Transform3D(0.0, 0.10453, -0.99452, 0.0, 0.99452, 0.10453, 1.0, 0.0, 0.0, 4.4, 2.75, 0.0)
+light_color = Color(1.0, 0.82, 0.6, 1.0)
+light_energy = 4.0
+spot_range = 34.0
+spot_angle = 22.0
+spot_attenuation = 1.2
+
+[node name="CabLadder" type="Area3D" parent="."]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, -3.5, 1.0, 1.32)
+script = ExtResource("12_ladder")
+height = 2.62
+reach_below = 1.2
+top_exit_depth = 0.65
+material = ExtResource("13_interact_yel")
+
+[node name="CabGlow" type="OmniLight3D" parent="."]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, -2.3, 2.4, 2.0)
+light_color = Color(1.0, 0.62, 0.32, 1.0)
+light_energy = 1.1
+omni_range = 4.5
+omni_attenuation = 1.3

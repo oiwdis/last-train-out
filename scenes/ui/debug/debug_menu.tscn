@@ -1,0 +1,150 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/debug_menu.gd" id="1_debug_menu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1"]
+content_margin_left = 14.0
+content_margin_top = 12.0
+content_margin_right = 14.0
+content_margin_bottom = 12.0
+bg_color = Color(0.05, 0.07, 0.09, 0.9)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.35, 0.42, 0.5, 0.6)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[node name="DebugMenu" type="CanvasLayer"]
+layer = 50
+script = ExtResource("1_debug_menu")
+
+[node name="Panel" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -364.0
+offset_top = 12.0
+offset_right = -12.0
+offset_bottom = 12.0
+grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_1")
+
+[node name="VBox" type="VBoxContainer" parent="Panel"]
+theme_override_constants/separation = 6
+
+[node name="Title" type="Label" parent="Panel/VBox"]
+text = "DEBUG MENU      F1 toggle   Esc close"
+theme_override_font_sizes/font_size = 13
+
+[node name="Sep0" type="HSeparator" parent="Panel/VBox"]
+
+[node name="TrainHeader" type="Label" parent="Panel/VBox"]
+text = "TRAIN"
+modulate = Color(0.62, 0.72, 0.82, 1.0)
+theme_override_font_sizes/font_size = 12
+
+[node name="TrainButtons" type="HBoxContainer" parent="Panel/VBox"]
+
+[node name="StartButton" type="Button" parent="Panel/VBox/TrainButtons"]
+unique_name_in_owner = true
+focus_mode = 0
+text = "Start"
+size_flags_horizontal = 3
+
+[node name="StopButton" type="Button" parent="Panel/VBox/TrainButtons"]
+unique_name_in_owner = true
+focus_mode = 0
+text = "Stop"
+size_flags_horizontal = 3
+
+[node name="ResetTrainButton" type="Button" parent="Panel/VBox/TrainButtons"]
+unique_name_in_owner = true
+focus_mode = 0
+text = "Reset to platform"
+size_flags_horizontal = 3
+
+[node name="ModeLabel" type="Label" parent="Panel/VBox"]
+text = "Departure mode"
+theme_override_font_sizes/font_size = 13
+
+[node name="ModeRow" type="VBoxContainer" parent="Panel/VBox"]
+unique_name_in_owner = true
+theme_override_constants/separation = 3
+
+[node name="SpeedRow" type="HBoxContainer" parent="Panel/VBox"]
+
+[node name="SpeedLabel" type="Label" parent="Panel/VBox/SpeedRow"]
+text = "Max speed"
+theme_override_font_sizes/font_size = 13
+
+[node name="SpeedSlider" type="HSlider" parent="Panel/VBox/SpeedRow"]
+unique_name_in_owner = true
+focus_mode = 0
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = 2.0
+max_value = 30.0
+step = 0.5
+value = 12.0
+
+[node name="SpeedValue" type="Label" parent="Panel/VBox/SpeedRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(72.0, 0.0)
+text = "12.0 m/s"
+horizontal_alignment = 2
+
+[node name="Sep1" type="HSeparator" parent="Panel/VBox"]
+
+[node name="PlayerHeader" type="Label" parent="Panel/VBox"]
+text = "PLAYER"
+modulate = Color(0.62, 0.72, 0.82, 1.0)
+theme_override_font_sizes/font_size = 12
+
+[node name="PlayerButtons" type="HBoxContainer" parent="Panel/VBox"]
+
+[node name="ResetPlayerButton" type="Button" parent="Panel/VBox/PlayerButtons"]
+unique_name_in_owner = true
+focus_mode = 0
+text = "Reset position"
+size_flags_horizontal = 3
+
+[node name="ResetStaminaButton" type="Button" parent="Panel/VBox/PlayerButtons"]
+unique_name_in_owner = true
+focus_mode = 0
+text = "Reset stamina"
+size_flags_horizontal = 3
+
+[node name="ResetStationButton" type="Button" parent="Panel/VBox"]
+unique_name_in_owner = true
+focus_mode = 0
+text = "Reset entire station"
+
+[node name="Sep2" type="HSeparator" parent="Panel/VBox"]
+
+[node name="SystemsHeader" type="Label" parent="Panel/VBox"]
+text = "FUTURE SYSTEMS"
+modulate = Color(0.62, 0.72, 0.82, 1.0)
+theme_override_font_sizes/font_size = 12
+
+[node name="FogButton" type="Button" parent="Panel/VBox"]
+unique_name_in_owner = true
+focus_mode = 0
+text = "Trigger fog surge (placeholder)"
+
+[node name="Sep3" type="HSeparator" parent="Panel/VBox"]
+
+[node name="DiagHeader" type="Label" parent="Panel/VBox"]
+text = "LIVE DIAGNOSTICS"
+modulate = Color(0.62, 0.72, 0.82, 1.0)
+theme_override_font_sizes/font_size = 12
+
+[node name="Diagnostics" type="GridContainer" parent="Panel/VBox"]
+unique_name_in_owner = true
+columns = 2
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 2

@@ -1,0 +1,137 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/main/game.gd" id="1_game"]
+[ext_resource type="Resource" path="res://resources/camera/train_departure.tres" id="2_train_depart"]
+[ext_resource type="Script" path="res://scripts/environment/box_part.gd" id="3_box_part"]
+[ext_resource type="StandardMaterial3D" path="res://resources/materials/ground_asphalt.tres" id="4_ground_aspha"]
+[ext_resource type="StandardMaterial3D" path="res://resources/materials/platform_concrete.tres" id="5_platform_con"]
+[ext_resource type="StandardMaterial3D" path="res://resources/materials/platform_edge.tres" id="6_platform_edg"]
+[ext_resource type="StandardMaterial3D" path="res://resources/materials/crate_wood.tres" id="7_crate_wood"]
+[ext_resource type="StandardMaterial3D" path="res://resources/materials/crate_dark.tres" id="8_crate_dark"]
+[ext_resource type="StandardMaterial3D" path="res://resources/materials/wall_industrial.tres" id="9_wall_industr"]
+[ext_resource type="Script" path="res://scripts/interaction/ladder.gd" id="10_ladder"]
+[ext_resource type="StandardMaterial3D" path="res://resources/materials/interact_yellow.tres" id="11_interact_yel"]
+[ext_resource type="PackedScene" path="res://scenes/train/train.tscn" id="12_train"]
+[ext_resource type="PackedScene" path="res://scenes/player/player.tscn" id="13_player"]
+[ext_resource type="Script" path="res://scripts/camera/camera_rig.gd" id="14_camera_rig"]
+[ext_resource type="Resource" path="res://resources/camera/outdoor.tres" id="15_outdoor"]
+[ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="16_hud"]
+[ext_resource type="PackedScene" path="res://scenes/ui/debug/debug_menu.tscn" id="17_debug_menu"]
+
+[sub_resource type="Environment" id="Environment_1"]
+background_mode = 1
+background_color = Color(0.07, 0.09, 0.12, 1.0)
+ambient_light_source = 2
+ambient_light_color = Color(0.45, 0.52, 0.62, 1.0)
+ambient_light_energy = 0.9
+tonemap_mode = 2
+
+[node name="MovementSandbox" type="Node3D" node_paths=PackedStringArray("player", "train", "camera_rig", "fallback_spawn", "debug_menu", "hud")]
+script = ExtResource("1_game")
+player = NodePath("Player")
+train = NodePath("Train")
+camera_rig = NodePath("CameraRig")
+fallback_spawn = NodePath("PlayerSpawn")
+debug_menu = NodePath("DebugMenu")
+hud = NodePath("Hud")
+train_departure_profile = ExtResource("2_train_depart")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.81915, 0.42625, -0.3838, 0.0, 0.66913, 0.74314, 0.57358, -0.60875, 0.54812, 0.0, 0.0, 0.0)
+light_color = Color(0.72, 0.8, 0.95, 1.0)
+light_energy = 1.1
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_1")
+
+[node name="World" type="StaticBody3D" parent="."]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Ground" type="CollisionShape3D" parent="World"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 50.0, -0.5, 0.0)
+script = ExtResource("3_box_part")
+size = Vector3(160.0, 1.0, 14.0)
+material = ExtResource("4_ground_aspha")
+
+[node name="Platform" type="CollisionShape3D" parent="World"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 15.0, 0.5, 0.375)
+script = ExtResource("3_box_part")
+size = Vector3(30.0, 1.0, 4.85)
+material = ExtResource("5_platform_con")
+
+[node name="PlatformEdge" type="CollisionShape3D" parent="World"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 15.0, 1.0, -1.875)
+script = ExtResource("3_box_part")
+size = Vector3(30.0, 0.02, 0.35)
+material = ExtResource("6_platform_edg")
+solid = false
+
+[node name="BackWall" type="CollisionShape3D" parent="World"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 50.0, 6.0, -5.1)
+script = ExtResource("3_box_part")
+size = Vector3(160.0, 12.0, 0.3)
+show_mesh = false
+
+[node name="FrontWall" type="CollisionShape3D" parent="World"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 50.0, 6.0, 2.95)
+script = ExtResource("3_box_part")
+size = Vector3(160.0, 12.0, 0.3)
+show_mesh = false
+
+[node name="LeftWall" type="CollisionShape3D" parent="World"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, -8.0, 6.0, 0.0)
+script = ExtResource("3_box_part")
+size = Vector3(0.3, 12.0, 14.0)
+show_mesh = false
+
+[node name="VaultCrate" type="CollisionShape3D" parent="World"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 36.0, 0.4, 0.4)
+script = ExtResource("3_box_part")
+size = Vector3(0.8, 0.8, 1.6)
+material = ExtResource("7_crate_wood")
+
+[node name="ClimbCrate" type="CollisionShape3D" parent="World"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 41.0, 0.55, 0.4)
+script = ExtResource("3_box_part")
+size = Vector3(2.4, 1.1, 2.0)
+material = ExtResource("8_crate_dark")
+
+[node name="LadderTower" type="CollisionShape3D" parent="World"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 47.0, 1.5, -0.5)
+script = ExtResource("3_box_part")
+size = Vector3(2.0, 3.0, 2.0)
+material = ExtResource("9_wall_industr")
+
+[node name="TowerLadder" type="Area3D" parent="."]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 47.0, 0.0, 0.52)
+script = ExtResource("10_ladder")
+height = 3.0
+reach_below = 0.2
+material = ExtResource("11_interact_yel")
+
+[node name="Train" parent="." instance=ExtResource("12_train")]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 15.0, 0.0, -3.5)
+
+[node name="Player" parent="." instance=ExtResource("13_player")]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 16.0, 1.0, 0.5)
+
+[node name="PlayerSpawn" type="Marker3D" parent="."]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 16.0, 1.02, 0.5)
+
+[node name="CameraRig" type="Node3D" parent="." node_paths=PackedStringArray("target")]
+script = ExtResource("14_camera_rig")
+target = NodePath("../Player")
+default_profile = ExtResource("15_outdoor")
+
+[node name="Camera3D" type="Camera3D" parent="CameraRig"]
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 16.0, 4.0, 21.0)
+fov = 38.0
+near = 0.3
+far = 400.0
+
+[node name="Hud" parent="." instance=ExtResource("16_hud")]
+
+[node name="DebugMenu" parent="." instance=ExtResource("17_debug_menu")]
+start_open = true

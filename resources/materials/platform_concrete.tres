@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[resource]
+resource_name = "platform_concrete"
+albedo_color = Color(0.3, 0.33, 0.37, 1)
+roughness = 0.9
