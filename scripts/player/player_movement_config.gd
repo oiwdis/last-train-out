@@ -30,8 +30,9 @@ extends Resource
 @export var jump_time_to_apex := 0.36
 ## Gravity multiplier while falling (and after an early jump release).
 @export var fall_gravity_multiplier := 1.5
-## Upward velocity kept when the jump button is released early.
-@export_range(0.0, 1.0, 0.05) var jump_cut_multiplier := 0.45
+## Releasing the jump button early cuts the jump short: the player rises at
+## most this much further (metres). Gives a controllable short hop.
+@export var jump_release_rise := 0.3
 @export var max_fall_speed := 28.0
 ## Grace period after walking off a ledge during which a jump is still allowed.
 @export var coyote_time := 0.12
@@ -80,6 +81,11 @@ func get_jump_velocity() -> float:
 
 func get_rise_gravity() -> float:
 	return 2.0 * jump_height / (jump_time_to_apex * jump_time_to_apex)
+
+
+## Upward speed the jump is clamped to when the button is released early.
+func get_jump_release_velocity() -> float:
+	return sqrt(2.0 * get_rise_gravity() * maxf(jump_release_rise, 0.0))
 
 
 func get_fall_gravity() -> float:

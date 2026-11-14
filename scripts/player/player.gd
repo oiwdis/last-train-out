@@ -295,10 +295,10 @@ func _tick_locomotion(delta: float) -> void:
 
 	# Variable jump height and gravity.
 	if _jumping and velocity.y > 0.0 and not input.jump_held and not _jump_cut:
-		velocity.y *= config.jump_cut_multiplier
+		velocity.y = minf(velocity.y, config.get_jump_release_velocity())
 		_jump_cut = true
 	if not on_floor:
-		var gravity := config.get_rise_gravity() if velocity.y > 0.0 and not _jump_cut else config.get_fall_gravity()
+		var gravity := config.get_rise_gravity() if velocity.y > 0.0 else config.get_fall_gravity()
 		velocity.y = maxf(velocity.y - gravity * delta, -config.max_fall_speed)
 
 	move_and_slide()
