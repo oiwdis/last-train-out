@@ -71,6 +71,15 @@ jobs:
       - name: Install Godot 4.5.1 and its macOS export template
         run: tools/macos/install_godot.sh
 
+      # Cold GPU texture compression takes roughly half an hour on this runner.
+      # Godot still checks source/import hashes and rebuilds changed resources.
+      - name: Restore imported assets
+        uses: actions/cache@v6
+        with:
+          path: .godot/imported
+          key: godot-imports-macos-arm64-4.5.1-v1-${{ hashFiles('project.godot', 'assets/**', 'resources/**') }}
+          restore-keys: godot-imports-macos-arm64-4.5.1-v1-
+
       # Import, a headless run of the main scene, then every automated test. Nothing is
       # exported unless this passes.
       - name: Run the automated tests

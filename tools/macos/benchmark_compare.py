@@ -10,13 +10,24 @@ root = Path(__file__).resolve().parents[2]
 godot, baseline, output = sys.argv[1:]
 output = Path(output).resolve()
 output.mkdir(parents=True, exist_ok=True)
-(output/'host.json').write_text(json.dumps({'platform': platform.platform(), 'machine': platform.machine(), 'scope': 'hosted runner, 1280x720 window; not physical 2020 M1 fullscreen'}, indent=2))
+host = {'platform': platform.platform(), 'machine': platform.machine(),
+        'requested_resolution': '(1280, 720)',
+        'scope': 'hosted windowed runner; not physical 2020 M1 fullscreen'}
+(output/'host.json').write_text(json.dumps(host, indent=2))
+matched_resolution = None
 for name, project in [('before', Path(baseline).resolve()), ('after', root)]:
     command = [godot, '--path', str(project), '--audio-driver', 'Dummy', '--resolution', '1280x720', '--script', 'res://tools/benchmark_milestone25.gd', '--', '--suite=presets', '--samples=24', '--out='+str(output/(name+'.json'))]
     with (output/(name+'.log')).open('w') as log:
         subprocess.run(command, stdout=log, stderr=subprocess.STDOUT, check=True, timeout=240)
     result = json.loads((output/(name+'.json')).read_text())
-    assert result['fixed_fps'] is False and result['resolution'] == '(1280, 720)'
+    assert result['fixed_fps'] is False
+    # Hosted macOS desktops can clamp a requested window to the usable screen.
+    # Compare the actual viewport sizes and retain them in the hardware report.
+    if matched_resolution is None:
+        matched_resolution = result['resolution']
+    assert result['resolution'] == matched_resolution, 'before/after viewport sizes differ'
+    host['actual_resolution'] = matched_resolution
+    (output/'host.json').write_text(json.dumps(host, indent=2))
     assert len(result['results']) == 6
     print(name, result['processor'], result['adapter'], result['renderer'])
     for row in result['results']:
