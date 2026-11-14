@@ -64,8 +64,10 @@ func _physics_process(_delta: float) -> void:
 # --- Train ---------------------------------------------------------------------
 
 func start_train() -> void:
-	if train != null:
-		train.start()
+	if train == null:
+		return
+	if not train.start() and hud != null:
+		hud.show_message("The train is at the end of the line  -  reset it first", 3.0)
 
 
 func stop_train() -> void:
@@ -164,6 +166,8 @@ func _on_train_departure_started(_mode: DepartureMode) -> void:
 
 
 func _on_train_stopped() -> void:
+	if hud != null and train.is_at_end_of_track():
+		hud.show_message("End of the line  -  F1, then Reset entire station", 6.0)
 	if camera_rig == null:
 		return
 	camera_rig.pop_profile(TRAIN_PROFILE_KEY)

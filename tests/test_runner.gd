@@ -83,7 +83,13 @@ func _run() -> void:
 	var elapsed := (Time.get_ticks_msec() - started) / 1000.0
 	print("\n=== %d passed, %d failed, %d total (%.1f s wall clock) ===\n" % [passed, failed, passed + failed, elapsed])
 	if _report_path != "":
+		# A plain relative path is taken to be relative to the project folder.
+		if _report_path.is_relative_path() and not _report_path.contains("://"):
+			_report_path = "res://".path_join(_report_path)
+		DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(_report_path.get_base_dir()))
 		var file := FileAccess.open(_report_path, FileAccess.WRITE)
+		if file == null:
+			push_warning("Could not write the test report to %s" % _report_path)
 		if file != null:
 			file.store_string(JSON.stringify({
 				"godot": Engine.get_version_info()["string"],

@@ -230,12 +230,55 @@ func test_freight_yard_ladders_roofs_and_gap() -> void:
 	await physics_frames(20)
 	check_near(player.global_position.y, 3.8, 0.06, "player landed on the second car's roof")
 	check_greater(player.global_position.x, 110.4, "player is on the second car")
-	# Down the far ladder.
-	ok = await bot.run([{"to": _v(116.85, 0.9), "then": "interact"}])
-	check(ok, "grabbed the far ladder from the roof: %s" % bot.failure)
+	# A second, shorter gap leads onto the loading gantry at the end of the siding.
+	ok = await bot.run([
+		{"to": _v(116.9, 0.3), "then": "jump"},
+		{"to": _v(119.2, 0.3), "timeout": 4.0},
+	])
+	check(ok, "jumped from the car roof onto the gantry: %s" % bot.failure)
+	await physics_frames(20)
+	check_near(player.global_position.y, 3.8, 0.06, "player stands on the gantry")
+	check_greater(player.global_position.x, 118.4, "player is on the gantry deck")
+	# Down the gantry ladder.
+	ok = await bot.run([{"to": _v(119.25, 0.9), "then": "interact"}])
+	check(ok, "grabbed the gantry ladder from the top: %s" % bot.failure)
 	ok = await bot.run([{"to": player.global_position, "then": "climb_down"}])
 	check(ok, "climbed down: %s" % bot.failure)
 	check_near(player.global_position.y, 0.0, 0.06, "player is back on the ground")
+
+
+func test_every_freight_ladder_reaches_the_roof() -> void:
+	# (ladder x, the z to stand at in front of it)
+	for spot: Vector2 in [Vector2(101.55, 2.0), Vector2(107.45, 2.0), Vector2(110.95, 2.0), Vector2(116.85, 2.0), Vector2(119.25, 1.9)]:
+		player.teleport_to(_v(spot.x, spot.y, 0.05), Vector3.FORWARD)
+		await physics_frames(10)
+		var bot := RouteBot.new(player)
+		var ok := await bot.run([{"to": _v(spot.x, spot.y), "radius": 0.5, "then": "interact"}])
+		check(ok and player.state == Player.State.CLIMB, "ladder at x=%.1f can be grabbed: %s" % [spot.x, bot.failure])
+		ok = await bot.run([{"to": player.global_position, "then": "climb_up"}])
+		check(ok, "ladder at x=%.1f leads to the top: %s" % [spot.x, bot.failure])
+		check_near(player.global_position.y, 3.8, 0.06, "player stands on top at x=%.1f" % spot.x)
+
+
+func test_warehouse_b_takes_longer_to_cross_than_warehouse_a() -> void:
+	var route := _route_platform_to_freight_yard()
+	# Split the end-to-end route at the buildings' doors.
+	var through_a := route.slice(2, 10)
+	var through_b := route.slice(12)
+	player.teleport_to(_v(35.0, 1.1, 0.05))
+	await physics_frames(10)
+	var bot := RouteBot.new(player)
+	var ok := await bot.run(through_a)
+	var seconds_a := bot.get_seconds()
+	check(ok, "crossed Warehouse A: %s" % bot.failure)
+	game.reset_stamina()
+	player.teleport_to(_v(70.2, 1.1, 0.05))
+	await physics_frames(10)
+	ok = await bot.run(through_b)
+	var seconds_b := bot.get_seconds()
+	check(ok, "crossed Warehouse B: %s" % bot.failure)
+	note("Warehouse A door to door: %.1f s, Warehouse B door to door: %.1f s" % [seconds_a, seconds_b])
+	check_greater(seconds_b, seconds_a + 0.8, "Warehouse B takes noticeably longer to get through")
 
 
 func test_return_run_from_warehouse_b_to_train() -> void:

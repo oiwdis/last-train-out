@@ -80,15 +80,17 @@ func _physics_process(delta: float) -> void:
 # --- Controls ----------------------------------------------------------------
 
 ## Starts (or resumes) accelerating using the current departure mode.
-func start() -> void:
+## Returns false when the train cannot depart (it is at the end of the track).
+func start() -> bool:
 	if state == State.ACCELERATING or state == State.CRUISING:
-		return
-	if distance >= track_length - 0.5:
-		return  # End of the line: reset first.
+		return true
+	if is_at_end_of_track():
+		return false
 	# Resume from the current speed so restarting mid-brake stays smooth.
 	_profile_time = current_mode.inverse_sample(_speed_fraction())
 	_set_state(State.ACCELERATING)
 	departure_started.emit(current_mode)
+	return true
 
 
 ## Brakes smoothly to a standstill.
@@ -141,6 +143,11 @@ func get_mode_index() -> int:
 
 func is_moving() -> bool:
 	return speed > 0.01
+
+
+## True once the train has used up its track and has to be reset.
+func is_at_end_of_track() -> bool:
+	return distance >= track_length - 1.0
 
 
 func get_cars() -> Array[TrainCar]:

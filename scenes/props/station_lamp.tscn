@@ -44,7 +44,7 @@ material = ExtResource("5_lamp_cool")
 [node name="Light" type="SpotLight3D" parent="."]
 transform = Transform3D(1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, -1.0, 0.0, 0.8, 4.36, 0.0)
 light_color = Color(0.74, 0.86, 1.0, 1.0)
-light_energy = 5.0
+light_energy = 6.0
 shadow_enabled = false
 spot_range = 10.0
 spot_attenuation = 1.1

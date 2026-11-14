@@ -88,10 +88,10 @@ func _shot_overview() -> void:
 	environment.fog_density = 0.0025
 	environment.volumetric_fog_enabled = false
 	var camera := Camera3D.new()
-	camera.fov = 44.0
+	camera.fov = 48.0
 	camera.far = 800.0
 	add_child(camera)
-	camera.global_transform = Transform3D(Basis(Vector3.RIGHT, deg_to_rad(-13.0)), Vector3(59.0, 24.0, 88.0))
+	camera.global_transform = Transform3D(Basis(Vector3.RIGHT, deg_to_rad(-17.0)), Vector3(60.0, 30.0, 80.0))
 	camera.current = true
 	await _seconds(1.0)
 	await _save("01_harlow_junction_overview.png")

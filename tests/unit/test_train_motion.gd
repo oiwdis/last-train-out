@@ -199,3 +199,8 @@ func test_brakes_before_end_of_track() -> void:
 	check_eq(train.state, Train.State.STOPPED, "train stops on its own near the end of the track")
 	check_less(train.distance, train.track_length + 0.5, "train does not overrun the track")
 	check_greater(train.distance, train.track_length - 5.0, "train uses the available track")
+	check(train.is_at_end_of_track(), "train reports it is at the end of the track")
+	check(not train.start(), "a train at the end of the track refuses to depart")
+	check_eq(train.state, Train.State.STOPPED, "and stays stopped")
+	train.reset_to_station()
+	check(train.start(), "after a reset it departs again")
