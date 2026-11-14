@@ -6,14 +6,14 @@ Milestone 2 commit `444fafc250527058021fce4516e6ef816b0a1a0f` passed **147/147**
 before implementation with official **Godot 4.5.1-stable**, Linux x86_64, Jolt and 60 Hz physics.
 Milestone 2.5 passes **168/168** locally: all 147 previous cases remain, plus 21 new cases.
 Project import and the 600-frame main-scene smoke also pass without engine/script errors.
-The final full suite took **74.8 seconds** while screenshot rendering also ran on the shared
+The final full suite took **48.8 seconds** while tour rendering also ran on the shared
 CPU; suite wall time is not game FPS. CI requires at least 168 passing tests.
 
 | New suite | Tests | Coverage |
 |---|---:|---|
 | Exploration camera | 12 | FP/TP initialization, physical V, mouse bounds, camera-relative input at four yaws, swept collision, state/cargo preservation, queued vault switching, departure riding, searches in both views, range/occlusion, held-cargo storage targeting, settings and independent menus |
-| Train interiors | 5 | Walking/braking inside a moving crew car, crossing all three cars, look-targeted cab controls and all modes, closed-door collision/occupied-door safety, interior jump/switch/reset |
-| Exploration district | 4 | Exterior routes, waiting-hall/platform approach, container ladder/roof, reset of doors and camera state |
+| Train interiors | 5 | Walking/braking inside a moving crew car, crossing all three cars, look-targeted cab controls and all modes, reticle targeting of open/closed panels, collision/occupied-door safety, interior jump/switch/reset |
+| Exploration district | 4 | Exterior routes, waiting-hall/platform approach, container ladder/roof, reset of doors (including interrupted animations) and camera state |
 
 Perspective-dependent assertions now test opaque immersive walls and a player-controlled
 camera. Separate component tests retain the old cutaway fade/collision behavior for the
@@ -26,8 +26,9 @@ coverage remains. Existing rendered rider/climber tests still report 0.00000 m r
 [headless app self-test report](validation/milestone25-linux-selftest.json) are retained.
 The latter loads the source project, so `exported_build` is correctly false. It verifies
 both perspectives, a moving interior walk, cab operation, searches, transfers, cargo anchors,
-all presets and UI without engine errors. A final cosmetic change makes supply labels face
-the camera, and the export excludes documentation media; macOS CI checks the resulting commit.
+all presets and UI without engine errors. Supply labels face the camera, open-door targeting follows the visible panel, and reset
+cancels pending door animations. Both door cases were reproduced before their fixes and
+now have regression assertions. The full local suite includes these final fixes.
 
 ## Reproduction
 
@@ -62,6 +63,13 @@ godot --path . --audio-driver Dummy --fixed-fps 24 \
 ```
 
 Captures use Linux Xvfb and Mesa software graphics. Still views use High; the tour uses Medium.
+The encoded tour is **745 frames / 31.042 seconds**, 1280×720 H.264 at 24 FPS with AAC audio.
+The entire encoded file decodes without errors; sampled frames show the stated actions.
+The tour completed every assertion. Movie Maker emitted an ObjectDB cleanup warning on exit;
+this offline-capture warning did not occur in the local headless suite or Compatibility smoke.
+A separate Compatibility/Low platform capture completed with no engine errors; Mesa warned
+that VSync control was unsupported. [Tour log](validation/milestone25-recording.log),
+[Compatibility log](validation/milestone25-compatibility.log).
 Movie Maker's output rate is not a performance measurement. The separate
 [performance report](PERFORMANCE.md) contains matched real-time samples and hardware limits.
 
@@ -72,7 +80,24 @@ jobs remain. The verifier now includes imported JPG, GLB and WAV assets. Documen
 is excluded from the app pack. Pull requests targeting the complete Milestone 2 branch run
 this pipeline before merging. Developer ID signing/notarization remains optional and manual.
 
-The final CI run and download are recorded here after verification.
+[macOS run #10](https://github.com/oiwdis/last-train-out/actions/runs/43625984990)
+verified implementation `a3c47b5` on 14 November 2026 UTC:
+
+- **168/168 tests passed** on Apple Silicon (53.6 seconds of suite wall time).
+- The universal executable contains **arm64 and x86_64**; **25/25 bundle checks** and
+  **11/11 ZIP checks** passed, including all **180 game project files** and imported assets.
+- Exported-app self-tests passed headlessly and with a window on Apple Silicon.
+- Fresh jobs downloaded and launched the ZIP successfully: Apple Silicon passed headless
+  and windowed checks; Intel passed headless. Intel windowed rendering is not verified.
+- Apple Silicon reported macOS 26.7.2, Apple M1 (Virtual), Apple Paravirtual device (Apple5),
+  Forward+ / Metal. Metal emitted its existing sampler LOD-bias warning; self-tests found
+  no engine errors. This virtual machine is not the user's physical M1.
+- Optional Developer ID signing/notarization was skipped.
+
+The subsequent door-regression fixes and evidence are checked by the same workflow.
+[PR #3 checks](https://github.com/oiwdis/last-train-out/pull/3/checks) show the latest commit's
+result. Download **LastTrainOut-macos-universal.zip** from the latest successful run there;
+the final delivery also links that run and its artifact directly.
 
 ## Remaining limits
 

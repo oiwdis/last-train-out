@@ -136,7 +136,8 @@ both this immersive behavior and the retained component's fade/collision behavio
 
 `TrainInterior` builds hollow walls, windows, floors and gangways on the existing moving
 bodies after scene setup. `WorldDoor` keeps its closed collider on the supporting body,
-checks the doorway for a player before closing, and animates only the visual hinge.
+checks the doorway for a player before closing, and animates the visual hinge plus its
+ray-target area. A reset cancels any in-flight hinge tween before restoring panel and collision.
 `TrainConsole` calls the same start, stop and mode APIs as the debug menu. The integrator
 in `train.gd` is unchanged. Station reset restores door states; train reset preserves riders
 and loose cargo using the existing reset path.

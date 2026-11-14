@@ -7,9 +7,11 @@ extends Interactable
 @export var starts_open := true
 var is_open := true
 var _panel: Node3D
+var _target_shape: CollisionShape3D
 var _collider: CollisionShape3D
 var _closed_transform: Transform3D
 var _latch: AudioStreamPlayer3D
+var _motion: Tween
 
 
 func _ready() -> void:
@@ -19,6 +21,7 @@ func _ready() -> void:
 	shape.size = Vector3(width + 0.25, height, 0.36)
 	area.shape = shape
 	area.position.y = height / 2
+	_target_shape = area
 	add_child(area)
 	_panel = Node3D.new()
 	_panel.position.x = -width / 2
@@ -42,6 +45,7 @@ func _ready() -> void:
 	is_open = starts_open
 	_collider.disabled = is_open
 	_panel.rotation.y = -PI / 2 if is_open else 0
+	_align_target()
 	_update_prompt()
 	if DisplayServer.get_name() != "headless":
 		_latch = AudioStreamPlayer3D.new()
@@ -69,7 +73,9 @@ func interact(player: Player) -> bool:
 	if _latch != null:
 		_latch.play()
 	_collider.set_deferred("disabled", is_open)
-	create_tween().tween_property(_panel, "rotation:y", -PI / 2 if is_open else 0.0, 0.3)
+	_stop_motion()
+	_motion = create_tween()
+	_motion.tween_property(_panel, "rotation:y", -PI / 2 if is_open else 0.0, 0.3)
 	_update_prompt()
 	return true
 
@@ -79,7 +85,26 @@ func _update_prompt() -> void:
 
 
 func reset_state() -> void:
+	_stop_motion()
 	is_open = starts_open
 	_collider.set_deferred("disabled", is_open)
 	_panel.rotation.y = -PI / 2 if is_open else 0
+	_align_target()
 	_update_prompt()
+
+
+func _stop_motion() -> void:
+	if _motion != null and _motion.is_valid():
+		_motion.kill()
+	_motion = null
+
+
+func _process(_delta: float) -> void:
+	_align_target()
+
+
+func _align_target() -> void:
+	# The ray target follows the visible hinged panel, including while it moves.
+	var desired := _panel.transform * Transform3D(Basis.IDENTITY, Vector3(width / 2, height / 2, 0))
+	if _target_shape.transform != desired:
+		_target_shape.transform = desired

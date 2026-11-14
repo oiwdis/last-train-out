@@ -175,8 +175,6 @@ Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
           . platform -> freight yard in 19.3 s
   PASS  test_warehouse_a_stairs_and_upper_floor
   PASS  test_warehouse_b_doorway_is_blocked_but_back_room_gets_around
-WARNING: Jolt Physics job system exceeded the maximum number of jobs. This should not happen. Please report this. Waiting for jobs to become available...
-     at: CreateJob (modules/jolt_physics/spaces/jolt_job_system.cpp:125)
   PASS  test_freight_yard_ladders_roofs_and_gap
   PASS  test_every_freight_ladder_reaches_the_roof
   PASS  test_warehouse_b_takes_longer_to_cross_than_warehouse_a
@@ -246,6 +244,6 @@ WARNING: Jolt Physics job system exceeded the maximum number of jobs. This shoul
   PASS  test_walking_onto_moving_deck_carries_the_player
   PASS  test_obstacle_in_the_way_knocks_a_climber_off_instead_of_dragging_through
 
-=== 168 passed, 0 failed, 168 total (74.8 s wall clock) ===
+=== 168 passed, 0 failed, 168 total (48.8 s wall clock) ===
 
 ALL CHECKS PASSED

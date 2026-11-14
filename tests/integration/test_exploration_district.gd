@@ -57,4 +57,6 @@ func test_station_reset_restores_door_states_and_preserves_camera() -> void:
 	game.reset_station()
 	await seconds(0.5)
 	check(door.is_open, "reset restores authored open entrance")
+	check_near(door._panel.rotation.y, -PI / 2, 0.01, "reset cancels an in-flight close animation")
+	check(door._collider.disabled, "reset door collider agrees with visible open panel")
 	check_eq(game.camera_rig.exploration.perspective, 0, "reset preserves selected camera")
