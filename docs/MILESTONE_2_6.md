@@ -23,14 +23,29 @@ Poly Haven shelving, crates, drill presses, work carts, hand trucks, lamps, barr
 ## Evidence and validation
 
 - [Matched before/after gallery](screenshots/milestone26/README.md), including close face/hands and gameplay views. Original PNGs and camera metadata are included.
-- [Scripted gameplay recording](recording/milestone26_tour.mp4), with explicit tour cuts and real interaction/perspective inputs. This is not a performance recording.
+- [Scripted gameplay recording](recording/milestone26_tour.mp4), with explicit tour cuts and real interaction/perspective inputs. [Capture settings and checks](recording/milestone26_tour.md): Low, 854×480, offline 24 FPS. This is not a performance recording.
 - [Performance comparison](PERFORMANCE_MILESTONE26.md), including raw measurements and hardware limitations.
 - [Asset credits and individual licenses](ASSET_CREDITS.md), [reproduction pipeline](ASSET_PIPELINE.md), and source manifests alongside the assets.
-- Baseline: **168/168** tests passed before changes. Updated Linux suite: **182/182** tests passed, with no import/main-scene/runtime errors. The final full Linux suite passed in 97.4 seconds while graphical capture also ran (test wall time is not game FPS), and includes the final FP shoulder-placement, Low/Medium LOD and long-track batching assertions. Raw results are under [validation/milestone26](validation/milestone26/).
-- The 14 added tests cover rig/finger topology, required animation clips, movement and traversal states, train-relative gait, FP mesh visibility, two-hand cargo positioning and ownership, carry/drop, cab interaction, authored prop batching and all 13 caches, wheel movement, preset restoration nonuniform mesh normals, and spatial/triangle budgets for long-track details. Existing tests cover physical collision, door clearance, moving interiors, inventory and accessibility.
+- Baseline: **168/168** tests passed before changes. Updated Linux suite: **182/182** tests passed, with no import/main-scene/runtime errors. The final full Linux suite passed in 97.4 seconds while graphical capture also ran (test wall time is not game FPS), and includes the final FP shoulder-placement, Low/Medium LOD and long-track batching assertions. A subsequent 12/12 character-suite run validates the final hidden-FP-pose transition fix. Raw results are under [validation/milestone26](validation/milestone26/).
+- The 14 added tests cover rig/finger topology, required animation clips, movement and traversal states, train-relative gait, FP mesh visibility, two-hand cargo positioning and ownership, carry/drop, cab interaction, authored prop batching and all 13 caches, wheel movement, preset restoration, nonuniform mesh normals, and spatial/triangle budgets for long-track details. Existing tests cover physical collision, door clearance, moving interiors, inventory and accessibility.
 - `tools/assets/check_assets.py` validates all 20 new GLBs and 115 explicitly compressed/mipmapped 3D textures for embedded image/buffer payloads, valid bounds, normals, materials, skin data and the complete character image set. This catches lost Blender texture paths before packaging.
 
 The macOS workflow also attempts matched windowed before/after benchmarks on its hosted Apple Silicon runner; raw reports are uploaded with test logs, and a measurement failure is reported separately without discarding the app. These are not full-screen measurements on the user’s physical M1. The workflow retains universal export, Apple Silicon headless/window launch, Intel headless launch, bundle and ZIP checks, fresh-download launches and optional signing/notarization. Build-specific results, the exact commit and the downloadable ZIP are linked from the pull request and its Actions run.
+
+## Acceptance status
+
+| Requirement group | Status |
+|---|---|
+| Replace primitive worker; human anatomy, face/fingers, clothing, functional rig | Implemented with licensed authored assets; facial/material polish remains below the requested final quality |
+| Body movement and traversal animations | Implemented and tested; natural motion/foot planting still needs polish |
+| Dedicated first-person hands, actions and carrying | Implemented and tested; grips remain approximate for different cargo shapes |
+| Locomotive exterior | Substantially replaced; connecting-rod animation remains incomplete |
+| Cab and train cars | Improved with fitted assets; professional-quality instrumentation/interior finish remains incomplete |
+| Station, warehouses and freight yard | Authored equipment and infrastructure added; the complete environment rebuild remains incomplete |
+| PBR materials, overcast/warm lighting, asset licenses | Implemented and documented |
+| Existing gameplay, 13 caches and graphics presets | Regression suite passes; collision and train movement rules preserved |
+| 2020 M1 full-screen playability / 60 FPS target | Unverified; requires the actual device and full-screen resolution |
+| Screenshots, gameplay recording, tests and universal Mac build | Evidence linked above and in the PR; build-specific checks and download are reported there |
 
 ## Remaining limitations
 

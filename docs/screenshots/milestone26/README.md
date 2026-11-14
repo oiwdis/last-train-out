@@ -24,3 +24,5 @@ Godot 4.5.1, Forward+, High, 1280×720. Both revisions use identical feet, camer
 | Running Gear | [![Before Running Gear](before/16_running_gear.png)](before/16_running_gear.png) | [![After Running Gear](after/16_running_gear.png)](after/16_running_gear.png) |
 
 [Gameplay recording](../../recording/milestone26_tour.mp4) uses live state transitions and interaction commands with explicit cuts between locations. No frame-rate claim is made from that offline capture.
+
+The five PNGs in this directory outside `before/` and `after/` are additional Low, 854×480 frames from the gameplay recording (moving train, search, both carrying views and secured supplies). They are not part of the matched High comparison.

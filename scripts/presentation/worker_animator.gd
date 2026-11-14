@@ -30,7 +30,9 @@ func bind(who: Player, arms_only := false) -> void:
 			mesh.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	for clip in LOOPS:
 		animation.get_animation(clip).loop_mode = Animation.LOOP_LINEAR
-	animation.play(&"idle")
+	# The hidden FP rig keeps its arm roots below the eye even between actions,
+	# so its first visible crossfade never sweeps shoulders through the camera.
+	animation.play(&"fp_carry" if first_person else &"idle")
 	animation.advance(0)
 	player.landed.connect(func() -> void:
 		if _teleport_cooldown <= 0:
@@ -111,7 +113,7 @@ func play_action(clip: StringName, seconds := 0.7) -> void:
 func _change(clip: StringName, rate: float, restart := false) -> void:
 	if current_state != clip or restart:
 		var presentation_clip := StringName("fp_" + String(clip)) if first_person and animation.has_animation("fp_" + String(clip)) else clip
-		if first_person and player.carrying_heavy and not String(presentation_clip).begins_with("fp_"):
+		if first_person and not String(presentation_clip).begins_with("fp_"):
 			presentation_clip = &"fp_carry"
 		animation.play(presentation_clip, 0.16)
 		current_state = clip

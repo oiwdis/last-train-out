@@ -75,6 +75,7 @@ func test_first_person_renders_only_the_matching_arm_meshes() -> void:
 	var arms := view._first_person_hands.get_node("FirstPersonWorker") as WorkerAnimator
 	check(not player.visual.visible, "full body and face are hidden at the eye")
 	check(not view._first_person_hands.visible, "idle first-person view hides the shoulder cut surfaces")
+	check_eq(arms.animation.current_animation, "fp_carry", "hidden FP arm roots stay below the eye before an action begins")
 	var visible := 0
 	for mesh: MeshInstance3D in arms.model.find_children("*", "MeshInstance3D", true, false):
 		check(mesh.visible == mesh.name.begins_with("FP"), "only the dedicated arm geometry renders")

@@ -18,6 +18,8 @@ func _run() -> void:
 	view = game.camera_rig.exploration
 	game.graphics.set_preset(quality)
 	await _cut(Vector3(28,1.05,0.4), Vector3(32,2,0.4), 1, "Milestone 2.6 / rigged survivor and authored railway assets")
+	# The tour caption otherwise covers the face throughout this inspection shot.
+	game.hud.show_message("", 0)
 	view.set_process(false)
 	var camera := game.camera_rig.get_camera()
 	camera.global_position = Vector3(30.9,2.15,0.4)

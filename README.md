@@ -19,7 +19,7 @@ Its existing acceleration, moving-platform physics, climbing and inventory rules
 | Renderer | Forward+ on desktop (Compatibility fallback configured for web) |
 | Physics | Jolt Physics, 60 ticks/s, physics interpolation on |
 | macOS app | Built automatically by GitHub Actions for Apple Silicon and Intel - [download and play](#play-on-macos-no-godot-needed) |
-| Status | See [docs/MILESTONE_2_6.md](docs/TEST_REPORT.md) for what is verified and what is not |
+| Status | See [docs/MILESTONE_2_6.md](docs/MILESTONE_2_6.md) for what is verified and what is not |
 
 [Watch the Milestone 2.6 tour](docs/recording/milestone26_tour.mp4): perspective switching,
 walking inside a moving car, scavenging and carrying. The recording uses scripted gameplay
@@ -29,7 +29,7 @@ Graphics default to **Medium**. On a 2020 M1 Mac in full-screen, try **Low** usi
 **F2** (often **Fn+F2** on Mac) or **Tab → Graphics**. Low and Medium cap 3D rendering
 resolution while keeping the interface sharp. [Matched performance comparison and limitations](docs/PERFORMANCE_MILESTONE26.md).
 [Before/after gallery](docs/screenshots/milestone26/README.md). The asset upgrade is substantial,
-but full photorealism and physical 2020 M1 full-screen performance remain unverified; see the milestone report.
+but full photorealism is incomplete and physical 2020 M1 full-screen performance remains unverified; see the milestone report.
 
 ---
 
