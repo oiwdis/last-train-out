@@ -28,6 +28,7 @@ func _ready() -> void:
 func _run() -> void:
 	await _seconds(1.2)
 	await _movement_basics()
+	await _warehouses()
 	await _freight_yard_climb()
 	await _board_by_jumping()
 	await _board_by_ladder()
@@ -85,6 +86,22 @@ func _movement_basics() -> void:
 	await _seconds(0.6)
 
 
+# Building shots use the same teleport helper as the existing tour between locations.
+# Traversal/boarding sections below still use real player input.
+func _warehouses() -> void:
+	_player.teleport_to(Vector3(44.5, 0.05, 1.2))
+	_caption("Bonded stores / Warehouse A", 3.0)
+	await _seconds(3.0)
+	_player.teleport_to(Vector3(51, 3.65, 1.2))
+	_caption("Dispatch / upper floor", 2.5)
+	await _seconds(2.5)
+	_player.teleport_to(Vector3(80.5, 0.05, 1.0))
+	_caption("Transfer hall / follow the service passage", 3.0)
+	await _seconds(3.0)
+	_player.teleport_to(Vector3(88.5, 0.05, -0.1))
+	await _seconds(2.5)
+
+
 # 2. Ladders, roofs and a jumpable gap in the freight yard.
 func _freight_yard_climb() -> void:
 	_player.teleport_to(Vector3(100.8, 0.05, 1.7))
@@ -103,7 +120,7 @@ func _freight_yard_climb() -> void:
 func _board_by_jumping() -> void:
 	var flat_car := _train.get_node("FlatCar") as TrainCar
 	_player.teleport_to(Vector3(flat_car.global_position.x + 3.0, 1.05, -1.5))
-	_game.debug_menu.set_open(true)
+	_game.debug_menu.set_open(false)
 	await _seconds(2.0)
 	_caption("Normal departure  -  sprint and jump aboard", 6.0)
 	_train.set_mode_index(1)
