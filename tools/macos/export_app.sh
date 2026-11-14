@@ -1,0 +1,82 @@
+#!/usr/bin/env bash
+# Exports "Last Train Out.app" with the "macOS" preset in export_presets.cfg:
+# one universal build (Apple Silicon + Intel) that contains the Godot runtime
+# and all game data, so nothing else has to be installed to play it.
+#
+#   tools/macos/export_app.sh <godot-binary> [output.app]
+#
+# The matching export template must be installed (tools/macos/install_godot.sh).
+# Optional environment, recorded in the app's Info.plist:
+#   BUILD_NUMBER  CFBundleVersion (default 0)
+#   BUILD_COMMIT  git commit of the build (default: the current HEAD)
+#   BUILD_KIND    "development" or "distribution" (default: development)
+set -euo pipefail
+
+GODOT="${1:?usage: tools/macos/export_app.sh <godot-binary> [output.app]}"
+ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
+APP="${2:-$ROOT/build/macos/Last Train Out.app}"
+case "$APP" in
+	/*) ;;
+	*) APP="$PWD/$APP" ;;
+esac
+
+BUILD_NUMBER="${BUILD_NUMBER:-0}"
+BUILD_COMMIT="${BUILD_COMMIT:-$(git -C "$ROOT" rev-parse HEAD 2>/dev/null || echo unknown)}"
+BUILD_KIND="${BUILD_KIND:-development}"
+
+case "$BUILD_NUMBER" in
+	'' | *[!0-9]*)
+		echo "BUILD_NUMBER must be a whole number, got '$BUILD_NUMBER'." >&2
+		exit 2
+		;;
+esac
+case "$BUILD_COMMIT$BUILD_KIND" in
+	*[!A-Za-z0-9._-]*)
+		echo "BUILD_COMMIT and BUILD_KIND may only contain letters, digits, '.', '_' and '-'." >&2
+		exit 2
+		;;
+esac
+
+cd "$ROOT"
+PRESET="export_presets.cfg"
+BACKUP="$(mktemp)"
+cp "$PRESET" "$BACKUP"
+restore_preset() {
+	cp "$BACKUP" "$PRESET"
+	rm -f "$BACKUP"
+}
+trap restore_preset EXIT
+
+# Stamp the build into the preset for this export only; the committed file is restored afterwards.
+PLIST_EXTRA="<key>LTOBuildNumber</key><string>${BUILD_NUMBER}</string><key>LTOBuildCommit</key><string>${BUILD_COMMIT}</string><key>LTOBuildKind</key><string>${BUILD_KIND}</string>"
+sed \
+	-e "s|^application/version=.*|application/version=\"${BUILD_NUMBER}\"|" \
+	-e "s|^application/additional_plist_content=.*|application/additional_plist_content=\"${PLIST_EXTRA}\"|" \
+	"$BACKUP" > "$PRESET"
+
+rm -rf "$APP"
+mkdir -p "$(dirname "$APP")"
+LOG="$(dirname "$APP")/export.log"
+
+echo "Exporting build $BUILD_NUMBER ($BUILD_KIND, commit $BUILD_COMMIT) to $APP"
+set +e
+"$GODOT" --headless --path "$ROOT" --export-release "macOS" "$APP" > "$LOG" 2>&1
+CODE=$?
+set -e
+
+# Show the interesting part of Godot's log (the per-file progress lines are noise).
+grep -vE 'savepack|reimport|first_scan_filesystem|update_scripts_classes|loading_editor_layout|^[[:space:]]*$' "$LOG" | tail -n 40 || true
+
+if [ "$CODE" -ne 0 ]; then
+	echo "Godot exited with code $CODE: the export failed (full log: $LOG)." >&2
+	exit 1
+fi
+if grep -q "Project export for preset .* failed" "$LOG"; then
+	echo "Godot reported that the export failed (full log: $LOG)." >&2
+	exit 1
+fi
+if [ ! -d "$APP" ]; then
+	echo "The export finished but $APP does not exist (full log: $LOG)." >&2
+	exit 1
+fi
+echo "Exported $APP ($(du -sh "$APP" | cut -f1))"

@@ -17,11 +17,126 @@ jump, grab the moving train, climb aboard and ride away.
 | Language | GDScript |
 | Renderer | Forward+ on desktop (Compatibility fallback configured for web) |
 | Physics | Jolt Physics, 60 ticks/s, physics interpolation on |
+| macOS app | Built automatically by GitHub Actions for Apple Silicon and Intel - [download and play](#play-on-macos-no-godot-needed) |
 | Status | See [docs/TEST_REPORT.md](docs/TEST_REPORT.md) for what is verified and what is not |
 
 ---
 
-## Getting started
+## Play on macOS (no Godot needed)
+
+Every push to the development branch is tested and built by GitHub Actions into a standalone
+**Last Train Out.app**: one universal app for Apple Silicon and Intel Macs that contains the
+Godot runtime and all game data. You do not need Godot, Xcode or anything else to play it.
+
+### 1. Download the latest build
+
+1. Open **[Actions → macOS app](https://github.com/oiwdis/last-train-out/actions/workflows/macos-app.yml?query=is%3Asuccess)**
+   (the link lists successful runs only) and click the newest run.
+2. At the bottom of the run page, under **Artifacts**, click
+   **LastTrainOut-macos-universal.zip**. You need to be signed in to GitHub.
+
+The run page also shows the build number, the commit it was built from and the ZIP's SHA-256.
+Development builds are kept for 30 days.
+
+### 2. Unzip and open it
+
+1. Double-click **LastTrainOut-macos-universal.zip** in your Downloads folder (Safari may have
+   unzipped it already). You get **Last Train Out.app**.
+2. Move it wherever you like, for example to **Applications**.
+3. Open it. A development build needs one extra step the first time - see below.
+
+### 3. The macOS security warning (development builds)
+
+Development builds are ad-hoc signed, not signed with a Developer ID and not notarized by
+Apple. macOS marks anything downloaded from the internet as quarantined, and Gatekeeper refuses
+to open a quarantined app it cannot trace to a known developer. Expect a message such as
+*"Apple could not verify 'Last Train Out' is free of malware"* or *"cannot be opened because the
+developer cannot be verified"*. That is what an un-notarized build looks like to macOS; it does
+not mean the download is broken. Use either of these, once per downloaded build:
+
+- **Terminal (quickest).** Remove the quarantine mark, then open the app normally:
+
+  ```bash
+  xattr -dr com.apple.quarantine "/Applications/Last Train Out.app"
+  ```
+
+  (Change the path if you put the app somewhere else.)
+
+- **System Settings.** Try to open the app and dismiss the warning. Then open
+  **System Settings → Privacy & Security**, scroll down to the message about *Last Train Out* and
+  click **Open Anyway**, and confirm with your password or Touch ID. On macOS 14 and earlier you
+  can instead Control-click the app, choose **Open**, then **Open** again.
+
+If macOS says the app *"is damaged and can't be opened"*, it is the same quarantine block; the
+Terminal command above clears it. Signed builds (below) open without any of this.
+
+### 4. Replacing an older build
+
+1. Quit the game if it is running.
+2. Delete the old **Last Train Out.app** (or drag the new one to the same place and choose
+   **Replace**).
+3. Open the new one. Each download is quarantined afresh, so repeat step 3 above.
+
+There is nothing to migrate: the prototype has no save files. To see which build an app is,
+run:
+
+```bash
+defaults read "/Applications/Last Train Out.app/Contents/Info" LTOBuildNumber
+```
+
+The number is the run number shown on the Actions page (`LTOBuildCommit` holds the commit).
+Godot writes its log to `~/Library/Application Support/Godot/app_userdata/Last Train Out/logs/`,
+which is the place to look if the game does not start.
+
+### What a build has been through
+
+Each build is only uploaded after the workflow has:
+
+1. run every automated test on macOS (the build fails if any test fails);
+2. exported the app with Godot 4.5.1 and the matching official export template;
+3. checked the bundle: executable for both architectures, `Info.plist`, the game data pack
+   (every scene, script and resource of the project), a valid code signature;
+4. launched the exported app on the runner, without and with its window, in a self-test that
+   loads the real game, walks and jumps the player and rides the departing train;
+5. checked that the ZIP holds the complete bundle, file for file.
+
+Two more jobs then download the ZIP the way you would, unzip it and launch it again - one on an
+Apple Silicon Mac, one on an Intel Mac.
+
+This shows that the app starts and the game runs on GitHub's Macs. It does not replace a person
+playing it: nobody sees the picture or feels the controls in CI.
+
+### Signed and notarized builds
+
+The same workflow can also produce a build that is signed with a **Developer ID Application**
+certificate, **notarized** by Apple and **stapled**, so it opens on any Mac without the warning
+above. This is for distributing the game outside the Mac App Store. It only runs when you ask
+for it, and it needs your Apple Developer credentials stored as encrypted repository secrets -
+nothing secret is ever committed.
+
+**Set up (once):** add these under **Settings → Secrets and variables → Actions**. They are the
+same names TIDEBORN uses. Step-by-step instructions, including how to create each value, are in
+[docs/macos-signing.md](docs/macos-signing.md).
+
+| Secret | What it is |
+|---|---|
+| `MACOS_CERTIFICATE_P12_BASE64` | your Developer ID Application certificate and key (.p12), base64-encoded |
+| `MACOS_CERTIFICATE_PASSWORD` | the password you chose when exporting the .p12 |
+| `APPLE_API_KEY_P8_BASE64`, `APPLE_API_KEY_ID`, `APPLE_API_ISSUER_ID` | an App Store Connect API key for notarization (recommended) |
+| `APPLE_ID`, `APPLE_APP_SPECIFIC_PASSWORD`, `APPLE_TEAM_ID` | alternative to the API key: your Apple ID with an app-specific password |
+
+**Make a signed build:** open **Actions → macOS app → Run workflow**, pick the branch, tick
+**Sign with Developer ID and notarize** and run it. When it finishes, download
+**LastTrainOut-macos-universal-signed.zip** from the run's Artifacts.
+
+If the secrets are missing, or Apple rejects the app, the signing job fails and says why; no
+signed ZIP is produced, and the development build from the same run is unaffected.
+
+---
+
+## Develop with Godot
+
+You only need this to change the game or run it from source. To just play, use the build above.
 
 ### 1. Install Godot
 
@@ -108,8 +223,11 @@ working while it is open.
 ```text
 last-train-out/
 ├── project.godot
+├── export_presets.cfg   macOS export preset (universal app, ad-hoc signed, no credentials)
+├── .github/workflows/   macos-app.yml - tests, builds, checks and uploads the macOS app
 ├── scenes/
-│   ├── main/            main.tscn (the game), movement_sandbox.tscn (isolated test scene)
+│   ├── main/            main.tscn (the game), movement_sandbox.tscn (isolated test scene),
+│   │                    self_test.tscn (what an exported build runs to test itself in CI)
 │   ├── station/         harlow_junction.tscn
 │   ├── buildings/       warehouse_a.tscn, warehouse_b.tscn
 │   ├── train/           train.tscn, locomotive.tscn, crew_car.tscn, flat_car.tscn
@@ -128,7 +246,8 @@ last-train-out/
 ├── resources/           tunable data: movement, departure modes, camera profiles, materials
 ├── tests/               test runner, unit and integration tests
 ├── tools/               run_tests.sh, screenshot capture, demo recording
-└── docs/                architecture notes, test report, screenshots, recording
+│   └── macos/           build scripts used by the workflow (install Godot, export, verify, self-test)
+└── docs/                architecture notes, test report, signing guide, screenshots, recording
 ```
 
 ### Where to tune things
@@ -193,8 +312,26 @@ Add `-- --only=<text>` to run only the test files whose name contains
 once after cloning (and after adding scripts) so Godot knows the script
 classes.
 
+The same script runs on macOS in GitHub Actions before every build; the app is only exported
+when it passes.
+
 What is covered, the measured numbers and - just as important - what could
 **not** be verified are listed in [docs/TEST_REPORT.md](docs/TEST_REPORT.md).
+
+### Building the app yourself (optional)
+
+GitHub Actions does this for you. On a Mac with nothing installed, the same scripts work:
+
+```bash
+tools/macos/install_godot.sh
+```
+
+```bash
+tools/macos/export_app.sh ~/godot-ci/Godot.app/Contents/MacOS/Godot
+```
+
+The first downloads Godot 4.5.1 and its macOS export template into `~/godot-ci` (checksums are
+verified); the second writes `build/macos/Last Train Out.app`.
 
 ---
 

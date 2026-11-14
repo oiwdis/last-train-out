@@ -5,6 +5,8 @@
 #
 # The Godot binary is taken from the first argument, then $GODOT, then "godot".
 # On macOS that is usually: /Applications/Godot.app/Contents/MacOS/Godot
+# Set MIN_TESTS to also require at least that many passing tests (the build
+# uses it so that tests cannot silently go missing).
 # Exit code is 0 only if every step succeeds.
 set -u
 
@@ -42,6 +44,14 @@ echo "== 3/3  Automated tests =="
 	| tee tests/_output/tests.log
 if [ "${PIPESTATUS[0]}" -ne 0 ]; then
 	status=1
+fi
+
+if [ -n "${MIN_TESTS:-}" ]; then
+	PASSED="$(sed -n 's/^=== \([0-9][0-9]*\) passed, .*/\1/p' tests/_output/tests.log | tail -n 1)"
+	if [ -z "$PASSED" ] || [ "$PASSED" -lt "$MIN_TESTS" ]; then
+		echo "FAILED: expected at least $MIN_TESTS passing tests, found ${PASSED:-none}"
+		status=1
+	fi
 fi
 
 if [ "$status" -eq 0 ]; then

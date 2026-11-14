@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  Hardened-runtime entitlements for the Developer ID build (used only by the "sign" job of
+  .github/workflows/macos-app.yml).
+
+  Deliberately empty. Last Train Out is plain GDScript on the standard Godot export template:
+  no C#, no GDExtension libraries, no JIT, and no camera, microphone, location or network
+  access. This is the same (empty) set Godot's own exporter would generate for this project.
+  Add an entitlement here only if the signed app's self-test shows that one is required.
+-->
+<plist version="1.0">
+<dict/>
+</plist>

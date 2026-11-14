@@ -1,0 +1,428 @@
+name: macOS app
+
+# Tests the game, exports "Last Train Out.app" (one universal build for Apple Silicon and Intel
+# Macs), checks it, launches it on real macOS runners and uploads it as a ZIP to download and
+# play. The app contains the Godot runtime and all game data: nothing else is needed on the Mac.
+#
+# Development builds - every push to the development branch, or started by hand.
+#   They need no credentials. The app is ad-hoc signed, so macOS asks for confirmation the
+#   first time it is opened (see "Play on macOS" in the README).
+#
+# Signed builds - start the workflow by hand and tick "Sign with Developer ID and notarize".
+#   That adds a last job which signs the app that was just tested, has Apple notarize it and
+#   staples the ticket. It needs the repository secrets described in docs/macos-signing.md and
+#   stops with a clear message when they are missing. It never runs on a push, and a failure
+#   there does not remove the development build.
+on:
+  push:
+    branches:
+      - claude/serene-turing-0vpdmt # the development branch
+      - main
+  workflow_dispatch:
+    inputs:
+      sign_and_notarize:
+        description: Sign with Developer ID and notarize (needs the signing secrets)
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: macos-app-${{ github.ref }}-${{ github.event_name }}-${{ inputs.sign_and_notarize && 'signed' || 'dev' }}
+  cancel-in-progress: ${{ github.event_name == 'push' }}
+
+env:
+  APP_NAME: Last Train Out
+  DEV_ZIP: LastTrainOut-macos-universal.zip
+  SIGNED_ZIP: LastTrainOut-macos-universal-signed.zip
+  # The build fails if fewer tests than this pass, so tests cannot silently go missing.
+  MIN_TESTS: "102"
+
+jobs:
+  build:
+    name: Test, export and package
+    runs-on: macos-latest # GitHub's macos-latest runners are Apple Silicon (arm64)
+    timeout-minutes: 45
+    env:
+      APP: build/macos/Last Train Out.app
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Confirm an Apple Silicon runner
+        run: |
+          sw_vers
+          test "$(uname -m)" = "arm64"
+
+      # The editor and the macOS export template (about 300 MB once unpacked) are cached;
+      # on a cache miss install_godot.sh downloads them and verifies their checksums.
+      - name: Restore Godot 4.5.1 from the cache
+        uses: actions/cache@v6
+        with:
+          path: ~/godot-ci
+          key: godot-4.5.1-stable-macos-universal-template-v1
+
+      - name: Install Godot 4.5.1 and its macOS export template
+        run: tools/macos/install_godot.sh
+
+      # Import, a headless run of the main scene, then every automated test. Nothing is
+      # exported unless this passes.
+      - name: Run the automated tests
+        run: |
+          tools/run_tests.sh "$GODOT"
+          {
+            echo "### Automated tests (Godot $("$GODOT" --version), macOS $(sw_vers -productVersion), $(uname -m))"
+            echo
+            echo '```'
+            grep -E '^=== [0-9]+ passed' tests/_output/tests.log
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload the test logs
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: test-logs
+          path: tests/_output/
+          if-no-files-found: warn
+          retention-days: 14
+
+      - name: Export Last Train Out.app
+        env:
+          BUILD_NUMBER: ${{ github.run_number }}
+          BUILD_COMMIT: ${{ github.sha }}
+          BUILD_KIND: development
+        run: tools/macos/export_app.sh "$GODOT" "$APP"
+
+      - name: Check the bundle
+        run: |
+          python3 tools/macos/verify_app.py "$APP" --expect-signature adhoc --title "Exported bundle"
+          du -sh "$APP"
+
+      # Start the real bundle (no editor, no project folder) and let it test itself:
+      # once without a window, once with its window so the renderer is exercised too.
+      - name: Launch the exported app without a window
+        run: tools/macos/run_selftest.sh "$APP" build-headless --headless --expect-arch arm64
+
+      - name: Launch the exported app with its window
+        run: tools/macos/run_selftest.sh "$APP" build-window --expect-arch arm64
+
+      # upload-artifact would drop executable bits if it zipped the bundle itself, which breaks
+      # an .app. So the ZIP is made here with ditto and uploaded as it is (archive: false):
+      # the download is this ZIP, and unzipping it once gives the app.
+      - name: Zip the app
+        run: |
+          ditto -c -k --sequesterRsrc --keepParent "$APP" "$DEV_ZIP"
+          ls -la "$DEV_ZIP"
+
+      - name: Check the ZIP holds the complete app
+        run: python3 tools/macos/verify_app.py "$APP" --zip "$DEV_ZIP" --title "ZIP contents"
+
+      - name: Upload the app
+        id: upload
+        uses: actions/upload-artifact@v7
+        with:
+          path: ${{ env.DEV_ZIP }}
+          archive: false
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Summarise the build
+        env:
+          ARTIFACT_URL: ${{ steps.upload.outputs.artifact-url }}
+        run: |
+          {
+            echo "### Development build ${{ github.run_number }}"
+            echo
+            echo "- Download: [\`$DEV_ZIP\`]($ARTIFACT_URL) ($(du -h "$DEV_ZIP" | cut -f1 | xargs), needs a GitHub sign-in)"
+            echo "- SHA-256: \`$(shasum -a 256 "$DEV_ZIP" | cut -d' ' -f1)\`"
+            echo "- Commit: \`${{ github.sha }}\`"
+            echo "- Unzip it once to get **$APP_NAME.app**. This build is not notarized, so macOS asks for"
+            echo "  confirmation the first time: see *Play on macOS* in the README."
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload the self-test reports
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: selftest-build
+          path: ${{ runner.temp }}/selftest/
+          if-no-files-found: warn
+          retention-days: 14
+
+  # Downloads the artifact the way a player would, unzips it and launches it - on an Apple
+  # Silicon Mac and on an Intel Mac, so both halves of the universal app are really run.
+  check:
+    name: Download and launch (${{ matrix.label }})
+    needs: build
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - label: Apple Silicon
+            runner: macos-latest
+            arch: arm64
+          - label: Intel
+            runner: macos-15-intel
+            arch: x86_64
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Confirm the runner's architecture
+        run: |
+          sw_vers
+          test "$(uname -m)" = "${{ matrix.arch }}"
+
+      - name: Download the ZIP
+        uses: actions/download-artifact@v8
+        with:
+          name: ${{ env.DEV_ZIP }}
+          path: download
+          skip-decompress: true
+
+      - name: Unzip it
+        run: |
+          ls -la download
+          ZIP_PATH="$(find download -type f -name '*.zip' | head -n 1)"
+          test -n "$ZIP_PATH"
+          python3 tools/macos/verify_app.py --zip "$ZIP_PATH" --title "Downloaded ZIP (${{ matrix.label }})"
+          ditto -x -k "$ZIP_PATH" extracted
+          ls -la extracted
+
+      - name: Check the unzipped bundle
+        run: python3 tools/macos/verify_app.py "extracted/$APP_NAME.app" --expect-signature adhoc --title "Unzipped bundle (${{ matrix.label }})"
+
+      # For information only: a development build is not notarized, so Gatekeeper is expected
+      # to reject it here. This is why a downloaded copy needs "Open Anyway" the first time.
+      - name: Show Gatekeeper's verdict on the development build
+        run: |
+          set +e
+          spctl --assess --type execute --verbose=4 "extracted/$APP_NAME.app"
+          echo "spctl exit code: $? (not zero is expected for a build that is not notarized)"
+
+      - name: Launch the unzipped app without a window
+        run: tools/macos/run_selftest.sh "extracted/$APP_NAME.app" "${{ matrix.arch }}-headless" --headless --expect-arch "${{ matrix.arch }}"
+
+      - name: Launch the unzipped app with its window
+        run: tools/macos/run_selftest.sh "extracted/$APP_NAME.app" "${{ matrix.arch }}-window" --expect-arch "${{ matrix.arch }}"
+
+      - name: Upload the self-test reports
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: selftest-${{ matrix.arch }}
+          path: ${{ runner.temp }}/selftest/
+          if-no-files-found: warn
+          retention-days: 14
+
+  # Optional, manual only. Signs the build that was tested above with a Developer ID
+  # Application certificate (hardened runtime), has Apple notarize it and staples the ticket.
+  # Credentials come from encrypted repository secrets; nothing secret is in the repository.
+  sign:
+    name: Sign with Developer ID, notarize and staple
+    if: ${{ github.event_name == 'workflow_dispatch' && inputs.sign_and_notarize }}
+    needs: [build, check]
+    runs-on: macos-latest
+    timeout-minutes: 60
+    env:
+      APP: signed/Last Train Out.app
+    steps:
+      - uses: actions/checkout@v7
+
+      # Fail before doing any work if the credentials are not configured. Only presence is
+      # checked; values are never printed.
+      - name: Check that signing credentials are configured
+        env:
+          CERT: ${{ secrets.MACOS_CERTIFICATE_P12_BASE64 }}
+          CERT_PASSWORD: ${{ secrets.MACOS_CERTIFICATE_PASSWORD }}
+          API_KEY: ${{ secrets.APPLE_API_KEY_P8_BASE64 }}
+          API_KEY_ID: ${{ secrets.APPLE_API_KEY_ID }}
+          API_ISSUER: ${{ secrets.APPLE_API_ISSUER_ID }}
+          APPLE_ID: ${{ secrets.APPLE_ID }}
+          APPLE_PASSWORD: ${{ secrets.APPLE_APP_SPECIFIC_PASSWORD }}
+          TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+        run: |
+          missing=0
+          need() {
+            if [ -z "$2" ]; then
+              echo "::error::Missing repository secret $1 (see docs/macos-signing.md)"
+              echo "- :x: \`$1\` is not set" >> "$GITHUB_STEP_SUMMARY"
+              missing=1
+            fi
+          }
+          echo "### Signing credentials" >> "$GITHUB_STEP_SUMMARY"
+          need MACOS_CERTIFICATE_P12_BASE64 "$CERT"
+          need MACOS_CERTIFICATE_PASSWORD "$CERT_PASSWORD"
+          if [ -n "$API_KEY" ] || [ -n "$API_KEY_ID" ] || [ -n "$API_ISSUER" ]; then
+            need APPLE_API_KEY_P8_BASE64 "$API_KEY"
+            need APPLE_API_KEY_ID "$API_KEY_ID"
+            need APPLE_API_ISSUER_ID "$API_ISSUER"
+            echo "NOTARY_AUTH=api-key" >> "$GITHUB_ENV"
+          elif [ -n "$APPLE_ID" ] || [ -n "$APPLE_PASSWORD" ] || [ -n "$TEAM_ID" ]; then
+            need APPLE_ID "$APPLE_ID"
+            need APPLE_APP_SPECIFIC_PASSWORD "$APPLE_PASSWORD"
+            need APPLE_TEAM_ID "$TEAM_ID"
+            echo "NOTARY_AUTH=apple-id" >> "$GITHUB_ENV"
+          else
+            echo "::error::No notarization credentials: set the three APPLE_API_* secrets, or APPLE_ID + APPLE_APP_SPECIFIC_PASSWORD + APPLE_TEAM_ID (see docs/macos-signing.md)"
+            echo "- :x: no notarization credentials are set (the three \`APPLE_API_*\` secrets, or \`APPLE_ID\` + \`APPLE_APP_SPECIFIC_PASSWORD\` + \`APPLE_TEAM_ID\`)" >> "$GITHUB_STEP_SUMMARY"
+            missing=1
+          fi
+          if [ "$missing" -ne 0 ]; then
+            {
+              echo
+              echo "**The signed build was not made.** Add the missing secrets under *Settings → Secrets and variables → Actions*"
+              echo "(step by step in \`docs/macos-signing.md\`), then run the workflow again."
+              echo "The development build from this run is unaffected and can still be downloaded."
+            } >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "- :white_check_mark: all required secrets are set" >> "$GITHUB_STEP_SUMMARY"
+          fi
+          exit $missing
+
+      - name: Download the build that was just tested
+        uses: actions/download-artifact@v8
+        with:
+          name: ${{ env.DEV_ZIP }}
+          path: download
+          skip-decompress: true
+
+      - name: Unzip it
+        run: |
+          ZIP_PATH="$(find download -type f -name '*.zip' | head -n 1)"
+          test -n "$ZIP_PATH"
+          ditto -x -k "$ZIP_PATH" signed
+          /usr/libexec/PlistBuddy -c "Set :LTOBuildKind distribution" "$APP/Contents/Info.plist"
+
+      # The certificate lives only in a throw-away keychain on this runner, unlocked for this job.
+      - name: Import the Developer ID certificate into a temporary keychain
+        env:
+          CERT: ${{ secrets.MACOS_CERTIFICATE_P12_BASE64 }}
+          CERT_PASSWORD: ${{ secrets.MACOS_CERTIFICATE_PASSWORD }}
+        run: |
+          KEYCHAIN="$RUNNER_TEMP/lasttrainout-signing.keychain-db"
+          echo "KEYCHAIN=$KEYCHAIN" >> "$GITHUB_ENV"
+          KEYCHAIN_PASSWORD="$(openssl rand -base64 24)"
+          echo "::add-mask::$KEYCHAIN_PASSWORD"
+          CERT_FILE="$RUNNER_TEMP/developer-id.p12"
+          printf '%s' "$CERT" | base64 --decode > "$CERT_FILE"
+          security create-keychain -p "$KEYCHAIN_PASSWORD" "$KEYCHAIN"
+          security set-keychain-settings -lut 3600 "$KEYCHAIN"
+          security unlock-keychain -p "$KEYCHAIN_PASSWORD" "$KEYCHAIN"
+          security import "$CERT_FILE" -P "$CERT_PASSWORD" -A -t cert -f pkcs12 -k "$KEYCHAIN"
+          rm -f "$CERT_FILE"
+          security set-key-partition-list -S apple-tool:,apple: -k "$KEYCHAIN_PASSWORD" "$KEYCHAIN" > /dev/null
+          security list-keychains -d user -s "$KEYCHAIN" $(security list-keychains -d user | tr -d '"')
+          # The certificate must be a Developer ID Application one: anything else cannot be notarized.
+          IDENTITY="$(security find-identity -v -p codesigning "$KEYCHAIN" | grep 'Developer ID Application' | head -n 1 | awk '{print $2}')"
+          if [ -z "$IDENTITY" ]; then
+            echo "::error::The certificate in MACOS_CERTIFICATE_P12_BASE64 is not a 'Developer ID Application' certificate with its private key"
+            exit 1
+          fi
+          echo "SIGN_IDENTITY=$IDENTITY" >> "$GITHUB_ENV"
+          security find-identity -v -p codesigning "$KEYCHAIN" | grep 'Developer ID Application' | sed -E 's/^ *[0-9]+\) [0-9A-F]+ /identity: /'
+
+      - name: Sign with Developer ID and the hardened runtime
+        run: |
+          SIGN=(codesign --force --options runtime --timestamp --entitlements tools/macos/entitlements.plist --keychain "$KEYCHAIN" --sign "$SIGN_IDENTITY")
+          # Sign inside-out: any nested libraries, then the executable, then the bundle itself.
+          find "$APP/Contents" -type f \( -name '*.dylib' -o -name '*.so' \) -print0 | while IFS= read -r -d '' LIB; do
+            "${SIGN[@]}" "$LIB"
+          done
+          if [ -d "$APP/Contents/Frameworks" ]; then
+            find "$APP/Contents/Frameworks" -maxdepth 1 -name '*.framework' -print0 | while IFS= read -r -d '' FRAMEWORK; do
+              "${SIGN[@]}" "$FRAMEWORK"
+            done
+          fi
+          for BIN in "$APP/Contents/MacOS/"*; do
+            "${SIGN[@]}" "$BIN"
+          done
+          "${SIGN[@]}" "$APP"
+          python3 tools/macos/verify_app.py "$APP" --expect-signature developer-id --title "Signed bundle"
+
+      # Prove the signed, hardened build still starts and works before sending it to Apple.
+      - name: Launch the signed app without a window
+        run: tools/macos/run_selftest.sh "$APP" signed-headless --headless --expect-arch arm64
+
+      - name: Launch the signed app with its window
+        run: tools/macos/run_selftest.sh "$APP" signed-window --expect-arch arm64
+
+      - name: Submit to Apple for notarization and wait for the verdict
+        env:
+          API_KEY: ${{ secrets.APPLE_API_KEY_P8_BASE64 }}
+          API_KEY_ID: ${{ secrets.APPLE_API_KEY_ID }}
+          API_ISSUER: ${{ secrets.APPLE_API_ISSUER_ID }}
+          APPLE_ID: ${{ secrets.APPLE_ID }}
+          APPLE_PASSWORD: ${{ secrets.APPLE_APP_SPECIFIC_PASSWORD }}
+          TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+        run: |
+          ditto -c -k --sequesterRsrc --keepParent "$APP" "$RUNNER_TEMP/notarize.zip"
+          if [ "$NOTARY_AUTH" = "api-key" ]; then
+            KEY_FILE="$RUNNER_TEMP/AuthKey.p8"
+            printf '%s' "$API_KEY" | base64 --decode > "$KEY_FILE"
+            AUTH=(--key "$KEY_FILE" --key-id "$API_KEY_ID" --issuer "$API_ISSUER")
+          else
+            AUTH=(--apple-id "$APPLE_ID" --password "$APPLE_PASSWORD" --team-id "$TEAM_ID")
+          fi
+          set +e
+          xcrun notarytool submit "$RUNNER_TEMP/notarize.zip" "${AUTH[@]}" --wait --timeout 30m --output-format json > "$RUNNER_TEMP/notary.json"
+          CODE=$?
+          set -e
+          cat "$RUNNER_TEMP/notary.json" || true
+          ID="$(/usr/bin/python3 -c 'import json,sys; print(json.load(open(sys.argv[1])).get("id",""))' "$RUNNER_TEMP/notary.json" 2>/dev/null || true)"
+          STATUS="$(/usr/bin/python3 -c 'import json,sys; print(json.load(open(sys.argv[1])).get("status",""))' "$RUNNER_TEMP/notary.json" 2>/dev/null || true)"
+          # Apple's log says exactly what it objected to; always show it.
+          if [ -n "$ID" ]; then xcrun notarytool log "$ID" "${AUTH[@]}" || true; fi
+          rm -f "$RUNNER_TEMP/AuthKey.p8"
+          if [ "$CODE" -ne 0 ] || [ "$STATUS" != "Accepted" ]; then
+            echo "::error::Apple did not accept the app for notarization (status: ${STATUS:-unknown})"
+            echo "### Notarization failed (status: ${STATUS:-unknown}). No signed build was produced." >> "$GITHUB_STEP_SUMMARY"
+            exit 1
+          fi
+
+      - name: Staple the notarization ticket and check Gatekeeper accepts the app
+        run: |
+          xcrun stapler staple "$APP"
+          xcrun stapler validate "$APP"
+          spctl --assess --type execute --verbose=4 "$APP"
+
+      - name: Zip the signed app
+        run: |
+          ditto -c -k --sequesterRsrc --keepParent "$APP" "$SIGNED_ZIP"
+          python3 tools/macos/verify_app.py "$APP" --zip "$SIGNED_ZIP" --title "Signed ZIP contents"
+
+      - name: Upload the signed app
+        id: upload
+        uses: actions/upload-artifact@v7
+        with:
+          path: ${{ env.SIGNED_ZIP }}
+          archive: false
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Summarise the signed build
+        env:
+          ARTIFACT_URL: ${{ steps.upload.outputs.artifact-url }}
+        run: |
+          {
+            echo "### Signed and notarized build ${{ github.run_number }}"
+            echo
+            echo "- Download: [\`$SIGNED_ZIP\`]($ARTIFACT_URL)"
+            echo "- SHA-256: \`$(shasum -a 256 "$SIGNED_ZIP" | cut -d' ' -f1)\`"
+            echo "- Signed with Developer ID, notarized by Apple, ticket stapled. Opens without a Gatekeeper prompt."
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload the self-test reports
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: selftest-signed
+          path: ${{ runner.temp }}/selftest/
+          if-no-files-found: warn
+          retention-days: 14
+
+      - name: Remove the temporary keychain
+        if: always()
+        run: if [ -n "${KEYCHAIN:-}" ]; then security delete-keychain "$KEYCHAIN" 2>/dev/null || true; fi
