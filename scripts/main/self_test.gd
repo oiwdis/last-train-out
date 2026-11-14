@@ -124,6 +124,10 @@ func _check_game() -> void:
 
 	var player := game.player
 	var train := game.train
+	var atmosphere := game.station.get_node_or_null(^"Atmosphere") as Atmosphere if game.station != null else null
+	if atmosphere != null and atmosphere.get_environment() != null:
+		# Informational: the haze is skipped on GPUs that cannot render it.
+		_report["volumetric_fog"] = atmosphere.get_environment().volumetric_fog_enabled
 	_check("station_is_harlow_junction", game.station != null and game.station.station_name == "Harlow Junction")
 	_check("train_has_locomotive_and_two_cars", train != null and train.get_cars().size() == 3)
 	_check("player_stands_on_the_platform",

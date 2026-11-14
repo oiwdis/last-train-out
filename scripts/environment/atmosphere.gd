@@ -17,8 +17,20 @@ func _ready() -> void:
 	var environment := _world_environment.environment
 	if environment == null:
 		return
-	var supported := RenderingServer.get_current_rendering_method() == "forward_plus"
-	environment.volumetric_fog_enabled = use_volumetric_fog and supported
+	environment.volumetric_fog_enabled = use_volumetric_fog and _volumetric_fog_is_supported()
+
+
+## Volumetric fog needs the Forward+ renderer and a GPU that can use 32-bit
+## integer textures as atomic storage. Some GPUs (virtual machines among them)
+## cannot, and Godot crashes rather than degrading, so check before enabling.
+func _volumetric_fog_is_supported() -> bool:
+	if RenderingServer.get_current_rendering_method() != "forward_plus":
+		return false
+	var device := RenderingServer.get_rendering_device()
+	if device == null:
+		return false
+	return device.texture_is_format_supported_for_usage(
+		RenderingDevice.DATA_FORMAT_R32_UINT, RenderingDevice.TEXTURE_USAGE_STORAGE_ATOMIC_BIT)
 
 
 func get_environment() -> Environment:
