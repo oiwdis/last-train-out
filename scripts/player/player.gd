@@ -19,6 +19,7 @@ signal attached(anchor: Interactable)
 signal detached(anchor: Interactable)
 signal vault_started(kind: String)
 signal grab_failed(reason: String)
+signal teleported(position: Vector3, facing: Vector3)
 
 enum State { IDLE, WALK, SPRINT, JUMP, FALL, CLIMB, HANG, VAULT, MOUNT }
 enum Mode { LOCOMOTION, ATTACHED, SCRIPTED, SUSPENDED }
@@ -41,6 +42,15 @@ var state := State.IDLE
 var facing := Vector3.RIGHT
 ## The only carrying modifier. The original movement configuration is never edited.
 var carrying_heavy := false
+var carry_anchor: Node3D
+var carried_visual: Node3D
+
+
+func set_carry_anchor(anchor: Node3D) -> void:
+	carry_anchor = anchor
+	if is_instance_valid(carried_visual):
+		carried_visual.reparent(carry_anchor)
+		carried_visual.transform = Transform3D.IDENTITY
 
 var _mode := Mode.LOCOMOTION
 var _is_sprinting := false
@@ -235,6 +245,7 @@ func teleport_to(world_position: Vector3, new_facing: Vector3 = Vector3.RIGHT) -
 	_is_sprinting = false
 	facing = new_facing
 	reset_physics_interpolation()
+	teleported.emit(world_position, new_facing)
 
 
 ## Freezes the player in place for a few physics ticks (used while the train is
@@ -262,14 +273,15 @@ func _tick_locomotion(delta: float) -> void:
 
 	var on_floor := is_on_floor()
 	var has_input := input.move.length_squared() > 0.01
+	var direction := input.world_direction()
 	if has_input:
-		facing = Vector3(input.move.x, 0.0, input.move.y).normalized()
+		facing = direction.normalized()
 
 	_is_sprinting = input.sprint_held and has_input and stamina.can_sprint() and not carrying_heavy
 	var target_speed := config.sprint_speed if _is_sprinting else config.walk_speed
 	if carrying_heavy:
 		target_speed = 2.5
-	var target := Vector3(input.move.x, 0.0, input.move.y * config.depth_speed_scale) * target_speed
+	var target := Vector3(direction.x, 0.0, direction.z * config.depth_speed_scale) * target_speed
 
 	# Horizontal movement. On the floor `velocity` is relative to the floor
 	# (Godot adds the platform's motion itself); in the air it is world space.
@@ -377,6 +389,11 @@ func _try_interact() -> bool:
 func _choose_interaction() -> Dictionary:
 	var blocked: Interactable = _last_anchor if _regrab_timer > 0.0 else null
 	var target := interactor.find_interactable(blocked)
+	if interactor.aim_camera != null:
+		if target != null:
+			return {"interactable": target}
+		var viewed_vault := interactor.find_vault(-interactor.aim_camera.global_basis.z)
+		return {"vault": viewed_vault} if not viewed_vault.is_empty() else {}
 	var heading := facing
 	if input.move.length_squared() > 0.01:
 		heading = Vector3(input.move.x, 0.0, input.move.y).normalized()
@@ -523,7 +540,7 @@ func _tick_ladder(ladder: Ladder, delta: float) -> bool:
 
 ## Returns true when the player started climbing over the railing.
 func _tick_rail(rail: GrabRail, delta: float) -> bool:
-	var wish := Vector3(input.move.x, 0.0, input.move.y)
+	var wish := input.world_direction()
 	var along_axis := rail.global_basis.x.normalized()
 	var inward := -rail.global_basis.z.normalized()
 	var limit := rail.get_shimmy_limit()

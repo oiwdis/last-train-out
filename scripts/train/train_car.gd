@@ -16,6 +16,7 @@ const TRAIN_LAYER := 1 << 2
 @export var wheel_radius := 0.45
 
 var _wheels: Array[Node3D] = []
+var interior: TrainInterior
 
 
 func _ready() -> void:
@@ -28,6 +29,15 @@ func _ready() -> void:
 		for child in wheel_root.get_children():
 			if child is Node3D:
 				_wheels.append(child)
+	# Build after the scene has finished entering the tree (children add collision).
+	_build_interior.call_deferred()
+
+
+func _build_interior() -> void:
+	interior = TrainInterior.new()
+	interior.name = "Interior"
+	add_child(interior)
+	interior.build(self)
 
 
 ## Spins the wheels to match [param distance_delta] metres travelled.

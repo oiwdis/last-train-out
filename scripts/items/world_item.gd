@@ -14,6 +14,7 @@ var _ground_velocity := Vector3.ZERO
 var _safe_position := Vector3.ZERO
 var _suspend_ticks := 0
 var _settled_ticks := 0
+var _carrier: Player
 
 
 func _ready() -> void:
@@ -38,6 +39,7 @@ func _ready() -> void:
 	add_child(interaction)
 	if item.heavy:
 		var label := Label3D.new()
+		label.billboard = BaseMaterial3D.BILLBOARD_ENABLED
 		label.text = "HEAVY / TWO HANDS"
 		label.position.y = 1.0
 		label.font_size = 28
@@ -50,20 +52,25 @@ func _ready() -> void:
 
 
 func hold(player: Player) -> void:
+	_carrier = player
+	player.carried_visual = self
 	held = true
 	available = false
 	interaction.enabled = false
 	collision_mask = 0
 	set_physics_process(false)
 	_clear_floor()
-	reparent(player.visual)
-	position = Vector3(0, 0.65, 0.48)
+	reparent(player.carry_anchor if player.carry_anchor != null else player.visual)
+	position = Vector3.ZERO if player.carry_anchor != null else Vector3(0, 0.65, 0.48)
 	rotation = Vector3.ZERO
 	get_node("CargoLabel").hide()
 	reset_physics_interpolation()
 
 
 func release(parent: Node3D, at: Vector3, initial_velocity: Vector3) -> void:
+	if is_instance_valid(_carrier):
+		_carrier.carried_visual = null
+	_carrier = null
 	reparent(parent)
 	global_position = at
 	global_rotation = Vector3.ZERO
@@ -79,6 +86,9 @@ func release(parent: Node3D, at: Vector3, initial_velocity: Vector3) -> void:
 
 
 func retire() -> void:
+	if is_instance_valid(_carrier):
+		_carrier.carried_visual = null
+	_carrier = null
 	available = false
 	interaction.enabled = false
 	collision_mask = 0

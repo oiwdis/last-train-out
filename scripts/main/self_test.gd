@@ -137,7 +137,7 @@ func _check_game() -> void:
 		return
 
 	var missing_actions: Array[String] = []
-	for action: StringName in [&"move_left", &"move_right", &"move_in", &"move_out", &"sprint", &"jump", &"interact", &"debug_toggle", &"inventory_toggle", &"drop_item", &"drop_cargo", &"graphics_cycle"]:
+	for action: StringName in [&"move_left", &"move_right", &"move_in", &"move_out", &"sprint", &"jump", &"interact", &"debug_toggle", &"inventory_toggle", &"drop_item", &"drop_cargo", &"graphics_cycle", &"perspective_toggle"]:
 		if not InputMap.has_action(action) or InputMap.action_get_events(action).is_empty():
 			missing_actions.append(String(action))
 	_check("input_map_is_complete", missing_actions.is_empty(), ", ".join(missing_actions))
@@ -193,7 +193,42 @@ func _check_game() -> void:
 			game.debug_menu.get_diagnostic("On train") == "yes" and game.debug_menu.get_diagnostic("Train state") != "STOPPED",
 			"On train: %s, train state: %s" % [game.debug_menu.get_diagnostic("On train"), game.debug_menu.get_diagnostic("Train state")])
 	player.input.clear()
+	await _check_immersive_train(game)
 	await _check_scavenging(game)
+
+
+func _check_immersive_train(game: Game) -> void:
+	game.debug_menu.set_open(false)
+	game.reset_station()
+	await _physics_frames(5)
+	var view := game.camera_rig.exploration
+	_check("immersive_camera_present", view != null and game.player.input.camera_relative)
+	var crew := game.train.get_node("CrewCar") as TrainCar
+	game.player.teleport_to(crew.to_global(Vector3(-2, 1.05, 0)))
+	view.request_perspective(0)
+	await _physics_frames(60)
+	_check("first_person_eye_in_export", view.camera.global_position.distance_to(game.player.global_position + Vector3.UP * 1.6) < 0.1 and not game.player.visual.visible)
+	game.train.start()
+	game.player.input.script_move(1)
+	await _physics_frames(60)
+	game.player.input.clear()
+	await get_tree().process_frame
+	_check("walk_inside_moving_car_in_export", game.player.is_on_train() and crew.to_local(game.player.global_position).x > 0.5)
+	var velocity := game.player.velocity
+	view.request_perspective(1)
+	_check("perspective_switch_preserves_motion_in_export", game.player.velocity == velocity)
+	await _physics_frames(60)
+	_check("third_person_camera_in_export", view.perspective == 1 and view._boom > 2)
+	game.reset_station()
+	await _physics_frames(5)
+	var locomotive := game.train.get_node("Locomotive") as TrainCar
+	game.player.teleport_to(locomotive.to_global(Vector3(-2.7, 1.05, 0)))
+	view.request_perspective(0)
+	await _physics_frames(60)
+	view.aim_at(locomotive.interior.controls[0].global_position)
+	game.player.input.script_interact()
+	await _physics_frames(10)
+	_check("physical_cab_control_in_export", game.train.state == Train.State.ACCELERATING)
 
 
 func _check_scavenging(game: Game) -> void:
@@ -206,6 +241,7 @@ func _check_scavenging(game: Game) -> void:
 	var cache := service.containers[0]
 	game.player.teleport_to(cache.global_position + Vector3(0, 0.05, -0.8), Vector3.BACK)
 	await _physics_frames(20)
+	game.camera_rig.exploration.aim_at(cache.global_position + Vector3.UP * 0.65)
 	var contents_before := cache.contents.totals()
 	game.player.input.script_interact()
 	await _physics_frames(ceili(cache.search_seconds * 60) + 12)
@@ -220,6 +256,10 @@ func _check_scavenging(game: Game) -> void:
 	await _physics_frames(15)
 	service.pick_up(game.player, cargo)
 	_check("physical_cargo_is_carried_in_export", service.carried == cargo and game.player.carrying_heavy)
+	for perspective in [1, 0]:
+		game.camera_rig.exploration.request_perspective(perspective)
+		await _physics_frames(5)
+		_check("cargo_anchor_perspective_%d_in_export" % perspective, cargo.get_parent() == game.player.carry_anchor and service.carried == cargo)
 	service.drop_heavy()
 	_check("physical_cargo_is_released_in_export", cargo.available and not game.player.carrying_heavy)
 	for i in 3:

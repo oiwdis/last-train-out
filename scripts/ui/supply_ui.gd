@@ -1,5 +1,6 @@
 class_name SupplyUI
 extends CanvasLayer
+signal open_changed(open: bool)
 ## A compact field summary; the six-slot ledger opens only when requested.
 
 var selected_slot := 0
@@ -185,6 +186,37 @@ func _place(control: Control, anchor: Vector2, offset: Vector2, dimensions: Vect
 	control.offset_bottom = offset.y + dimensions.y
 
 
+func add_camera_settings(camera: ExplorationCamera) -> void:
+	var rows := _panel.get_child(0)
+	var strip := HBoxContainer.new()
+	strip.add_theme_constant_override("separation", 12)
+	rows.add_child(strip)
+	_label(strip, "CAMERA", 12, RailTheme.MUTED)
+	var perspective := OptionButton.new()
+	perspective.add_item("First person")
+	perspective.add_item("Third person")
+	perspective.select(camera.settings.default_perspective)
+	strip.add_child(perspective)
+	perspective.item_selected.connect(func(index: int) -> void:
+		camera.settings.default_perspective = index
+		camera.request_perspective(index)
+		camera.apply_settings())
+	for specification in [["Sensitivity", "sensitivity", 0.0005, 0.01, 0.0005], ["FOV", "first_person_fov", 60, 105, 1], ["Distance", "third_person_distance", 1.2, 5, 0.1], ["Smoothing", "smoothing", 4, 30, 1]]:
+		_label(strip, specification[0], 12, RailTheme.MUTED)
+		var value := SpinBox.new()
+		value.min_value = specification[2]
+		value.max_value = specification[3]
+		value.step = specification[4]
+		value.value = camera.settings.get(specification[1])
+		value.custom_minimum_size.x = 90
+		strip.add_child(value)
+		value.value_changed.connect(func(number: float) -> void:
+			camera.settings.set(specification[1], number)
+			camera.apply_settings())
+	_panel.offset_top = -290
+	_panel.offset_bottom = 290
+
+
 func _label(parent: Node, text: String, size: int, color: Color = RailTheme.PAPER) -> Label:
 	var label := Label.new()
 	label.text = text
@@ -216,6 +248,7 @@ func open(at_storage: bool = false) -> void:
 	_shade.show()
 	set_process(true)
 	refresh()
+	open_changed.emit(true)
 
 
 func close() -> void:
@@ -226,6 +259,7 @@ func close() -> void:
 	if _service != null:
 		_service.player.input.blocked = false
 		_service.player.input.clear()
+	open_changed.emit(false)
 
 
 func _process(delta: float) -> void:

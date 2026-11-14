@@ -9,6 +9,7 @@ const PLAYER_LAYER := 1 << 1
 
 ## Walls to cut away while the volume is occupied.
 @export var walls: Array[NodePath] = []
+var immersive := false
 
 var _occupants := 0
 var _walls: Array[CutawayWall] = []
@@ -38,6 +39,8 @@ func is_occupied() -> bool:
 
 
 func _on_body_entered(body: Node3D) -> void:
+	if immersive:
+		return
 	if not body.is_in_group(&"player"):
 		return
 	_occupants += 1

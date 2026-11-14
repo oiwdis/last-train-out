@@ -16,6 +16,7 @@ const FACE_INSET := 0.1
 @export var probe_height := 1.9
 
 var _player: Player
+var aim_camera: Camera3D
 var _probe_shape := CapsuleShape3D.new()
 var _fit_shape := CapsuleShape3D.new()
 var _ground_shape := SphereShape3D.new()
@@ -31,6 +32,8 @@ func setup(player: Player) -> void:
 
 ## Best interactable the player is currently able to use, or null.
 func find_interactable(excluded: Interactable = null) -> Interactable:
+	if aim_camera != null:
+		return _find_aimed(excluded)
 	var query := PhysicsShapeQueryParameters3D.new()
 	query.shape = _probe_shape
 	query.transform = Transform3D(Basis.IDENTITY, _player.global_position + Vector3.UP * (probe_height * 0.5))
@@ -48,6 +51,50 @@ func find_interactable(excluded: Interactable = null) -> Interactable:
 			best = candidate
 			best_distance = distance
 	return best
+
+
+func _find_aimed(excluded: Interactable) -> Interactable:
+	var from := aim_camera.global_position
+	var length := from.distance_to(_player.global_position) + 3.0
+	var query := PhysicsRayQueryParameters3D.create(from, from - aim_camera.global_basis.z * length,
+		obstacle_mask | interactable_mask, [_player.get_rid()])
+	query.collide_with_areas = true
+	query.hit_from_inside = true
+	var hit := _space().intersect_ray(query)
+	# Broad grab volumes support forgiving boarding, but the reticle must actually
+	# point at the ladder rather than selecting one behind the player's shoulder.
+	for attempt in 12:
+		if hit.is_empty():
+			break
+		var possible := hit.collider as Interactable
+		if possible == null:
+			break
+		var eligible := possible != excluded and possible.can_interact(_player)
+		if eligible and possible is Ladder:
+			var ladder := possible as Ladder
+			var visual_bounds := AABB(Vector3(-ladder.width / 2 - 0.12, -0.1, -0.18), Vector3(ladder.width + 0.24, ladder.height + 1.1, 0.42))
+			eligible = visual_bounds.intersects_segment(ladder.to_local(query.from), ladder.to_local(query.to)) != null
+		if eligible:
+			break
+		# Disabled carried-item areas and unreachable sensing volumes are not walls.
+		var ignored := query.exclude
+		ignored.append(possible.get_rid())
+		query.exclude = ignored
+		hit = _space().intersect_ray(query)
+	if hit.is_empty():
+		return null
+	var candidate := hit.collider as Interactable
+	if candidate == null or candidate == excluded or not candidate.can_interact(_player):
+		return null
+	var point := candidate.get_interaction_point(_player)
+	# A broad interaction area may protrude through a wall: also check player-side visibility.
+	if candidate is SupplyInteractable:
+		point = candidate.global_position + Vector3.UP * 0.65
+	else:
+		point = hit.position
+	if not _ray(_player.global_position + Vector3.UP * 0.85, point).is_empty():
+		return null
+	return candidate
 
 
 ## Looks for a low obstacle in [param direction] that can be vaulted over or

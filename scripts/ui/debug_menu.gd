@@ -16,6 +16,7 @@ signal player_reset_requested
 signal stamina_reset_requested
 signal station_reset_requested
 signal fog_surge_requested
+signal open_changed(open: bool)
 
 const DIAGNOSTIC_ROWS: Array[String] = [
 	"FPS",
@@ -124,6 +125,7 @@ func is_open() -> bool:
 func set_open(open: bool) -> void:
 	_panel.visible = open
 	_refresh_timer = 0.0
+	open_changed.emit(open)
 
 
 ## Current text of a diagnostics row (used by tests).

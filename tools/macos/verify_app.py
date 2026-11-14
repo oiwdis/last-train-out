@@ -101,7 +101,7 @@ def expected_game_files() -> list[str]:
     files = []
     for directory in GAME_DIRECTORIES:
         for path in sorted((ROOT / directory).rglob("*")):
-            if path.suffix in (".tscn", ".tres", ".gd", ".svg", ".png"):
+            if path.suffix in (".tscn", ".tres", ".gd", ".svg", ".png", ".jpg", ".glb", ".wav"):
                 files.append(path.relative_to(ROOT).as_posix())
     return files
 

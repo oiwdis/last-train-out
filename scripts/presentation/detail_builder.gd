@@ -12,10 +12,11 @@ const RUST := Color("815044")
 var root: Node3D
 var _batches: Dictionary = {}
 var _materials: Dictionary = {}
-var _unit_box := BoxMesh.new()
+var _unit_box: Mesh
 
 
 func _init(parent: Node3D, title: String = "Details") -> void:
+	_unit_box = FabricatedMesh.unit_box()
 	root = Node3D.new()
 	root.name = title
 	root.add_to_group(&"presentation_detail")
@@ -72,14 +73,19 @@ func mesh(shape: Mesh, at: Vector3, color: Color, rotation: Vector3 = Vector3.ZE
 	return instance
 
 
-func cylinder(at: Vector3, radius: float, height: float, color: Color, rotation: Vector3 = Vector3.ZERO, top: float = -1.0) -> MeshInstance3D:
+func cylinder(at: Vector3, radius: float, height: float, color: Color, rotation: Vector3 = Vector3.ZERO, top: float = -1.0) -> void:
 	var shape := CylinderMesh.new()
 	shape.top_radius = radius if top < 0.0 else top
 	shape.bottom_radius = radius
 	shape.height = height
 	shape.radial_segments = 12
 	shape.rings = 1
-	return mesh(shape, at, color, rotation)
+	var mat := material(color)
+	if not _batches.has(mat):
+		var surface := SurfaceTool.new()
+		surface.begin(Mesh.PRIMITIVE_TRIANGLES)
+		_batches[mat] = surface
+	(_batches[mat] as SurfaceTool).append_from(shape, 0, Transform3D(Basis.from_euler(rotation), at))
 
 
 func lettering(at: Vector3, text: String, height: float, color: Color = PALE) -> MeshInstance3D:

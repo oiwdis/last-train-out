@@ -12,6 +12,9 @@ extends Node3D
 
 @export var target: Node3D
 @export var default_profile: CameraProfile
+## The movement sandbox keeps its original diagnostic framing; the game uses full 3D.
+@export var immersive_mode := false
+var exploration: ExplorationCamera
 
 @export_group("Smoothing")
 ## How quickly the framing settles horizontally (1/s).
@@ -68,10 +71,19 @@ func _ready() -> void:
 	_camera.current = true
 	if default_profile == null:
 		default_profile = CameraProfile.new()
+	if immersive_mode and target is Player:
+		exploration = ExplorationCamera.new()
+		exploration.name = "ExplorationCamera"
+		add_child(exploration)
+		exploration.bind(target as Player, _camera)
+		return
 	snap_to_target()
 
 
 func _physics_process(delta: float) -> void:
+	if exploration != null:
+		exploration.physics_tick(delta)
+		return
 	if target == null or not is_instance_valid(target):
 		return
 	if not _initialised:
@@ -168,11 +180,17 @@ func set_interest_source(source: Object) -> void:
 
 ## Current framing values (for tests and debugging).
 func get_framing() -> Dictionary:
+	if exploration != null:
+		return {"distance": exploration._collision_distance, "fov": _camera.fov,
+			"pitch": rad_to_deg(exploration.pitch), "focus": target.global_position + Vector3.UP * ExplorationCamera.EYE_HEIGHT}
 	return {"distance": _distance + _interest_zoom, "fov": _fov, "pitch": _pitch, "focus": _focus}
 
 
 ## Cuts straight to the target (only used on start-up).
 func snap_to_target() -> void:
+	if exploration != null:
+		exploration.snap_to_target()
+		return
 	if target == null or not is_instance_valid(target) or _camera == null:
 		return
 	var profile := get_active_profile()

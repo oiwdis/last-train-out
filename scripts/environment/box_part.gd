@@ -63,11 +63,8 @@ func _rebuild() -> void:
 		return
 	if _mesh_instance == null:
 		_mesh_instance = MeshInstance3D.new()
-		_mesh_instance.mesh = BoxMesh.new()
 		add_child(_mesh_instance, false, Node.INTERNAL_MODE_BACK)
-	var mesh := _mesh_instance.mesh as BoxMesh
-	mesh.size = size
-	mesh.material = material
+	_mesh_instance.mesh = FabricatedMesh.box(size, material)
 	_mesh_instance.cast_shadow = (
 		GeometryInstance3D.SHADOW_CASTING_SETTING_ON
 		if cast_shadow

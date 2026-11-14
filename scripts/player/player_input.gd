@@ -19,6 +19,14 @@ var interact_pressed := false
 var scripted := false
 ## Inventory/settings panels release keys instead of pausing the moving world.
 var blocked := false
+var camera_relative := false
+var camera_yaw := 0.0
+
+
+## Scripted route input stays in world coordinates, while physical WASD follows the view.
+func world_direction() -> Vector3:
+	var direction := Vector3(move.x, 0, move.y)
+	return Basis(Vector3.UP, camera_yaw) * direction if camera_relative and not scripted else direction
 
 
 func sample() -> void:

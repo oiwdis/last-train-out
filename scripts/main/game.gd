@@ -33,11 +33,19 @@ var supply_ui: SupplyUI
 var graphics: GraphicsSettings
 
 
+func _exit_tree() -> void:
+	FabricatedMesh.clear_cache()
+
+
 func _ready() -> void:
 	var effects := PresentationEffects.new()
 	effects.name = "PresentationEffects"
 	add_child(effects)
 	effects.bind(player)
+	var audio := RailAudio.new()
+	audio.name = "RailAudio"
+	add_child(audio)
+	audio.bind(player, train)
 	if debug_menu != null:
 		debug_menu.bind(player, train)
 		debug_menu.train_start_requested.connect(start_train)
@@ -77,6 +85,14 @@ func _ready() -> void:
 		supply_ui.name = "SupplyUI"
 		add_child(supply_ui)
 		supply_ui.bind(scavenging, graphics)
+	if camera_rig != null and camera_rig.exploration != null:
+		for trigger in find_children("*", "CutawayTrigger", true, false):
+			trigger.immersive = true
+		if debug_menu != null:
+			debug_menu.open_changed.connect(func(open: bool) -> void: camera_rig.exploration.set_menu_open(&"debug", open))
+		if supply_ui != null:
+			supply_ui.open_changed.connect(func(open: bool) -> void: camera_rig.exploration.set_menu_open(&"inventory", open))
+			supply_ui.add_camera_settings(camera_rig.exploration)
 
 
 func _physics_process(_delta: float) -> void:
@@ -168,6 +184,10 @@ func reset_station() -> void:
 		scavenging.reset_world()
 	if train != null:
 		train.reset_to_station()
+		for car in train.get_cars():
+			if car.interior != null:
+				for door in car.interior.doors:
+					door.reset_state()
 	reset_player()
 	reset_stamina()
 	if station != null:

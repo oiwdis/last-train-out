@@ -1,20 +1,15 @@
 # Last Train Out
 
-A survival game about the operator of the last working train in a city that is
-being swallowed by fog. This repository holds **Milestone 2: scavenging, a six-slot backpack and physical cargo
-at the first station, Harlow Junction**, built with
-**Godot 4 and GDScript** using only primitive meshes and built-in engine
-features, with small original SVG inventory icons (no plugins or paid art).
+A survival adventure about the operator of the last working train in a city being swallowed by fog.
+**Milestone 2.5** adds full 3D exploration, switchable first- and third-person views,
+walkable train interiors, physical cab controls, and a wider Harlow Junction.
+Built in **Godot 4.5.1 and GDScript**, with original models and commercially usable CC0 materials.
 
-The train is a warm refuge in a cold, abandoned railway: detailed rolling stock,
-industrial buildings with readable cutaways, a railway instrument HUD and subtle
-movement feedback. [Visual design and before/after comparisons](docs/VISUAL_DESIGN.md).
+Search the station, fill a six-slot backpack, carry bulky supplies back to the train,
+and secure them in its hold. Enter the cab, choose a departure mode, and start the train.
+Its existing acceleration, moving-platform physics, climbing and inventory rules remain.
 
-Search the station, decide what fits in your backpack, carry bulky supplies back to the
-train and secure them in its hold. **How much can you bring back before you need to leave?**
-The approved movement, climbing and moving-train physics are preserved.
-
-![The train at Harlow Junction](docs/screenshots/02_train_and_platform.png)
+![Harlow Junction in first person](docs/screenshots/milestone25/01_first_person_platform.png)
 
 | | |
 |---|---|
@@ -25,10 +20,10 @@ The approved movement, climbing and moving-train physics are preserved.
 | macOS app | Built automatically by GitHub Actions for Apple Silicon and Intel - [download and play](#play-on-macos-no-godot-needed) |
 | Status | See [docs/TEST_REPORT.md](docs/TEST_REPORT.md) for what is verified and what is not |
 
-[Watch the Milestone 2 scavenging tour](docs/recording/milestone2_tour.mp4) — searches in both
-warehouses, inventory, carrying, recovery and train storage. Scripted inputs and explicit
-location cuts; this is a gameplay demonstration, not a performance measurement.
-
+[Watch the Milestone 2.5 tour](docs/recording/milestone25_tour.mp4): perspective switching,
+walking inside a moving car, scavenging and carrying. The recording uses scripted gameplay
+inputs and explicit location cuts; it is not a frame-rate measurement.
+[Art and asset credits](docs/ASSET_CREDITS.md).
 Graphics default to **Medium**. On a 2020 M1 Mac in full-screen, try **Low** using
 **F2** (often **Fn+F2** on Mac) or **Tab → Graphics**. Low and Medium cap 3D rendering
 resolution while keeping the interface sharp. [Measurements and limits](docs/PERFORMANCE.md).
@@ -187,19 +182,21 @@ To open the isolated movement test scene instead of the station:
 
 | Input | Action |
 |---|---|
-| **A / D** (or ← / →) | Move left / right |
-| **W / S** (or ↑ / ↓) | Move into / out of the scene; climb up / down on ladders |
+| **A / D** (or ← / →) | Move left / right relative to the camera |
+| **W / S** (or ↑ / ↓) | Move forward / backward relative to the camera; climb up / down on ladders |
+| **Mouse** | Look around; click to capture the mouse after releasing it |
+| **V** | Smoothly switch first / third person |
 | **Shift** | Sprint (drains stamina) |
 | **Space** | Jump (hold for full height, tap for a short hop) |
-| **E** | Search / cancel / collect, lift cargo, open train hold; grab / release ladders and railings, vault |
-| **Tab / I** | Open or close backpack and graphics settings |
+| **E** | Look at a target to search / collect, lift cargo, use doors, cab controls or the hold; climb / release, vault |
+| **Tab / I** | Open or close backpack, graphics and camera settings |
 | **1–6** | Select backpack slot |
 | **Q** | Drop one item from selected slot (ledger also offers Drop stack) |
 | **G** | Immediately put down heavy cargo |
 | **↑ / ↓**, **Enter**, **R** in storage | Select stored item, withdraw selected stack / cargo, deposit all + cargo |
 | **F2** | Cycle Low / Medium / High graphics |
 | **F1** (or **`**) | Toggle the debug menu |
-| **Esc** | Close inventory / debug menu, or cancel a search |
+| **Esc** | Close inventory / debug menu, cancel a search, or release the mouse |
 
 All actions are defined in the Input Map (**Project → Project Settings → Input
 Map**) and can be rebound there. `` ` `` is a second binding for the debug menu
@@ -211,7 +208,7 @@ shimmy, **Space** to jump off, **E** to let go.
 
 ### Things to try
 
-1. **Scavenge and return.** Press **E** by the marked platform luggage, then search the
+1. **Scavenge and return.** Look at the marked platform luggage and press **E**, then search the
    toolboxes in Warehouse A and medical cabinets in Warehouse B. **Tab** shows six slots,
    stack limits and tooltips. Overflow stays in its cache.
 2. **Bring back something heavy.** Find coal in A or the machine component in B.
@@ -309,7 +306,7 @@ last-train-out/
 | Stamina drain / regeneration | `Stamina` node in `scenes/player/player.tscn` |
 | Departure modes (time to full speed, optional curve) | `resources/train/departure_*.tres` |
 | Train maximum speed, braking, track length | `Train` node in `scenes/train/train.tscn` |
-| Camera framings (outdoor, indoor, train departure) | `resources/camera/*.tres` |
+| Camera preferences | **Tab → Camera**; defaults in `scripts/settings/camera_settings.gd` |
 | Haze, moonlight, glow | `Atmosphere` in `scenes/station/harlow_junction.tscn` |
 | Item stacks, weights, future metadata | `resources/items/*.tres` |
 | Loot weights / amounts / draws | `resources/loot/*.tres` |
@@ -327,13 +324,12 @@ last-train-out/
 - **Train** integrates speed and distance on the physics tick and moves each
   car, a kinematic `AnimatableBody3D` with `sync_to_physics`, so Godot's own
   moving-platform velocity inheritance carries the rider.
-- **Interaction** is extensible: anything derived from `Interactable` is found
-  by a shape query; vaulting works on any geometry via raycasts.
-- **Camera** blends between `CameraProfile` resources requested by
-  `CameraZone` volumes and by the game (train departure). It only ever knows a
-  target node.
-- **Cutaway walls** fade when a `CutawayTrigger` volume holds the player -
-  inside a building, or passing behind it on the train.
+- **Interaction** uses the camera ray plus player-side reach and occlusion checks.
+- **ExplorationCamera** reads the interpolated player transform, sweeps a sphere for camera
+  collision and changes perspective without changing the player or train. Preferences persist locally.
+- **TrainInterior** builds hollow shells, safe doors and gangways on the original moving bodies.
+- **ExplorationDistrict** adds a waiting hall, service paths, track crossings and container roofs.
+  Buildings stay opaque in immersive gameplay; legacy camera/cutaway components remain in diagnostics.
 - **Game** (`scripts/main/game.gd`) is the only script that knows about all of
   the above; everything else talks through signals and exported references.
 - **InventoryModel** is a UI-independent slot model with atomic, capacity-aware transfers.
@@ -349,7 +345,7 @@ in [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
 
 ## Tests
 
-The project has **147 automated tests** using a small Godot-native runner (no add-ons). Tests drive the
+The project has **168 automated tests** using a small Godot-native runner (no add-ons). Tests drive the
 real player through a scripted-input hook and run the real physics.
 
 ```bash
@@ -397,24 +393,24 @@ verified); the second writes `build/macos/Last Train Out.app`.
 
 ## Screenshots and recording
 
-[Milestone 2 screenshot gallery](docs/screenshots/milestone2/) and
-[short gameplay recording](docs/recording/milestone2_tour.mp4), captured from the running game.
-The reproducible tour uses real search and transfer operations, scripted input and explicit
-teleports between locations. The older movement and visual-overhaul evidence remains in `docs/`.
+[Milestone 2.5 screenshot gallery](docs/screenshots/milestone25/) and
+[gameplay recording](docs/recording/milestone25_tour.mp4), captured from the running game.
+Older milestone evidence remains in `docs/`.
 
-| Scavenging | Inventory |
+| First person | Third person |
 |---|---|
-| ![Warehouse search](docs/screenshots/milestone2/02_search_warehouse_b.png) | ![Six-slot backpack](docs/screenshots/milestone2/03_six_slot_inventory.png) |
-| ![Physical carrying](docs/screenshots/milestone2/04_heavy_carrying.png) | ![Train storage](docs/screenshots/milestone2/06_train_storage.png) |
-| Heavy cargo | Supplies secured aboard |
+| ![Cab controls](docs/screenshots/milestone25/04_cab_controls.png) | ![Train exterior](docs/screenshots/milestone25/02_third_person_train.png) |
+| ![Crew interior](docs/screenshots/milestone25/03_crew_interior.png) | ![Freight yard](docs/screenshots/milestone25/07_freight_yard.png) |
 
 ---
 
 ## Scope
 
-Milestone 2 implements scavenging, inventory, physical carrying and train storage.
+Milestone 2.5 adds immersive cameras, train interiors and controls, expanded environments,
+PBR materials, an articulated worker and original ambient sound. The art is an original
+procedural interpretation; it is not a claim of AAA photorealism.
 There is no advancing dangerous fog, damage, consumption, healing, crafting, combat,
 passenger AI, train upgrades, route selection, additional stations or full save/load.
-Only the graphics preference persists across launches. Audio remains outside this prototype.
+Graphics and camera preferences persist across launches; inventory and train progress do not.
 
 [Scavenging rules and reset semantics](docs/SCAVENGING.md).

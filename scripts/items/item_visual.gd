@@ -8,8 +8,7 @@ func configure(item: ItemDefinition) -> void:
 	var tint := item.tint
 	match item.id:
 		&"coal_sack":
-			d.box(Vector3(0, 0.3, 0), Vector3(0.48, 0.6, 0.38), tint)
-			d.box(Vector3(0, 0.62, 0), Vector3(0.26, 0.12, 0.24), tint.darkened(0.3))
+			add_child(preload("res://assets/models/coal_sack.glb").instantiate())
 			d.box(Vector3(0, 0.33, 0.195), Vector3(0.29, 0.25, 0.015), DetailBuilder.INK)
 			d.lettering(Vector3(0, 0.33, 0.21), "COAL", 0.08)
 		&"fuel_drum":

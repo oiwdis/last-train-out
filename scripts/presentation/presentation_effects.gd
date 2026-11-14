@@ -5,7 +5,10 @@ extends Node3D
 var _player: Player
 var _legs: Array[Node3D] = []
 var _arms: Array[Node3D] = []
+var _knees: Array[Node3D] = []
+var _elbows: Array[Node3D] = []
 var _phase := 0.0
+var _idle_time := 0.0
 var _impact := 0.0
 var _dust: CPUParticles3D
 var _motes: CPUParticles3D
@@ -16,29 +19,24 @@ func bind(player: Player) -> void:
 	if _player == null:
 		return
 	var visual := _player.visual
-	visual.get_node("Legs").hide()
-	var d := DetailBuilder.new(visual, "ClothingDetails")
-	for side in [-1.0, 1.0]:
-		var leg := Node3D.new()
-		leg.position = Vector3(side * 0.12, 0.78, 0)
-		visual.add_child(leg)
-		_legs.append(leg)
-		var ld := DetailBuilder.new(leg)
-		ld.box(Vector3(0, -0.35, 0), Vector3(0.16, 0.7, 0.24), Color("253540"))
-		ld.box(Vector3(0, -0.72, 0.06), Vector3(0.18, 0.12, 0.34), DetailBuilder.INK)
-		ld.finish()
-		var arm := Node3D.new()
-		arm.position = Vector3(side * 0.31, 1.34, 0)
-		visual.add_child(arm)
-		_arms.append(arm)
-		var ad := DetailBuilder.new(arm)
-		ad.box(Vector3(0, -0.23, 0), Vector3(0.14, 0.46, 0.19), Color("4a6269"))
-		ad.box(Vector3(0, -0.48, 0), Vector3(0.13, 0.13, 0.17), DetailBuilder.INK)
-		ad.finish()
-	d.box(Vector3(0, 1.05, 0.165), Vector3(0.04, 0.5, 0.02), DetailBuilder.INK)
-	d.box(Vector3(0, 0.88, 0), Vector3(0.53, 0.07, 0.32), DetailBuilder.INK)
-	d.box(Vector3(0.16, 1.25, 0.17), Vector3(0.1, 0.05, 0.02), DetailBuilder.AMBER)
-	d.finish()
+	for child in visual.get_children():
+		if child is GeometryInstance3D:
+			child.hide()
+	var worker := preload("res://assets/models/rail_worker.glb").instantiate() as Node3D
+	worker.name = "RailWorker"
+	visual.add_child(worker)
+	for side in ["L", "R"]:
+		_legs.append(worker.find_child("Leg" + side, true, false))
+		_arms.append(worker.find_child("Arm" + side, true, false))
+		_knees.append(worker.find_child("Knee" + side, true, false))
+		_elbows.append(worker.find_child("Elbow" + side, true, false))
+	for mesh: MeshInstance3D in worker.find_children("*", "MeshInstance3D", true, false):
+		for surface in mesh.mesh.get_surface_count():
+			var material := mesh.mesh.surface_get_material(surface)
+			if material.resource_name.contains("Waxed"):
+				mesh.set_surface_override_material(surface, preload("res://resources/materials/player_coat.tres"))
+			elif material.resource_name.contains("wool"):
+				mesh.set_surface_override_material(surface, preload("res://resources/materials/player_trousers.tres"))
 	_dust = particles(_player, Vector3(0, 0.08, 0), 10, Color(0.65, 0.7, 0.69, 0.28), 0.08, 0.4)
 	_dust.one_shot = true
 	_dust.explosiveness = 1.0
@@ -91,6 +89,7 @@ func _physics_process(delta: float) -> void:
 	if not is_instance_valid(_player):
 		return
 	var state := _player.state
+	_idle_time += delta
 	var speed := _player.get_horizontal_speed()
 	_phase += delta * (8.0 if state == Player.State.CLIMB else speed * 2.6)
 	_impact = move_toward(_impact, 0.0, delta * 1.8)
@@ -99,14 +98,20 @@ func _physics_process(delta: float) -> void:
 	for i in 2:
 		var swing := sin(_phase + i * PI) * (0.65 if state == Player.State.SPRINT else 0.4) if moving or climbing else 0.0
 		_legs[i].rotation.x = lerpf(_legs[i].rotation.x, swing, 1.0 - exp(-18 * delta))
+		var knee := maxf(0, -sin(_phase + i * PI)) * 0.75 if moving or climbing else 0.04
+		if state == Player.State.JUMP or state == Player.State.VAULT:
+			knee = 0.55
+		_knees[i].rotation.x = lerpf(_knees[i].rotation.x, knee, 1.0 - exp(-14 * delta))
 		var reach := -2.4 + swing if climbing else -swing
 		if state == Player.State.HANG or state == Player.State.MOUNT:
 			reach = -2.6
 		elif state == Player.State.VAULT:
 			reach = -1.2
 		if _player.carrying_heavy:
-			reach = -1.3
+			reach = -0.55
 		_arms[i].rotation.x = lerpf(_arms[i].rotation.x, reach, 1.0 - exp(-15 * delta))
+		_elbows[i].rotation.x = lerpf(_elbows[i].rotation.x, -1.1 if _player.carrying_heavy else -0.18 - absf(swing) * 0.4, 1.0 - exp(-15 * delta))
+		_arms[i].rotation.z = (0.035 + sin(_idle_time * 1.7) * 0.006) * (-1 if i == 0 else 1)
 	_player.visual.position.y = -_impact * 0.1 + (absf(sin(_phase)) * 0.025 if moving else 0.0)
 	_motes.global_position = _player.global_position + Vector3(0, 2, -1)
 

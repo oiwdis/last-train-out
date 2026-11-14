@@ -233,7 +233,7 @@ func test_freight_yard_ladders_roofs_and_gap() -> void:
 	# A second, shorter gap leads onto the loading gantry at the end of the siding.
 	ok = await bot.run([
 		{"to": _v(116.9, 0.3), "then": "jump"},
-		{"to": _v(119.2, 0.3), "timeout": 4.0},
+		{"to": _v(119.2, 0.3), "timeout": 4.0, "sprint": false},
 	])
 	check(ok, "jumped from the car roof onto the gantry: %s" % bot.failure)
 	await physics_frames(20)
