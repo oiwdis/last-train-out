@@ -1,6 +1,6 @@
 # Architecture notes
 
-How the Milestone 1.5 prototype is put together, and why. The short version is in
+How the Milestone 2 prototype is put together, and why. The short version is in
 the README; this file records the decisions that are not obvious from the code.
 
 ## Coordinate system and layout rules
@@ -29,10 +29,12 @@ the README; this file records the decisions that are not obvious from the code.
 | 1 | world | static environment |
 | 2 | player | the player body (mask: world + train) |
 | 3 | train | train cars (kinematic) |
-| 4 | interactable | ladder / railing areas, found by shape queries |
+| 4 | interactable | ladder / railing / supply areas, found by shape queries |
 | 5 | trigger | reserved for trigger volumes |
 
 Camera zones and cutaway triggers are areas that only *mask* the player layer.
+World supplies have collision layer 0 and mask world + train: they settle against geometry
+without blocking or pushing the player. Held objects disable their collision mask.
 
 ## The moving train
 
@@ -161,11 +163,10 @@ All scenes are ordinary `.tscn` files and can be edited in the Godot editor.
 
 ## Placeholder systems
 
-`FogSystem`, `PassengerSystem` and `InventorySystem` are small nodes under
-`Main/Systems`. They define the signals later milestones will use, hold the
-minimum state to make those signals meaningful, and are reset by
-`Game.reset_station()`. They are scene-owned rather than autoloads because
-nothing needs global access to them yet.
+`FogSystem` and `PassengerSystem` remain small placeholder nodes under `Main/Systems`,
+reset by `Game.reset_station()`. `InventorySystem` now owns real backpack and train-storage
+models. Its old inventory signal and coal adapter remain for compatibility with existing tests.
+All systems are scene-owned rather than autoloads.
 
 ## Presentation (Milestone 1.5)
 
@@ -182,3 +183,67 @@ context at 10 Hz and eases visual values each frame. `RailTheme` shares the indu
 palette with the independently toggled developer console.
 
 See [VISUAL_DESIGN.md](VISUAL_DESIGN.md) for art direction, budgets and constraints.
+
+## Scavenging and ownership (Milestone 2)
+
+`ItemDefinition` Resources contain stable IDs, descriptions, categories, stack limits,
+weights, icons, world scenes and inert future-use metadata. `ItemCatalog` restricts lookups
+to the nine registered definitions. Resource data is shared and treated as immutable.
+
+`InventoryModel` is a `RefCounted` object without scene or UI dependencies. It returns
+slot snapshots, fills existing stacks before empty slots and returns the accepted amount.
+Unaccepted items remain with their source. Transfers mutate both models before emitting
+`changed`; both models reject reentrant mutation until all callbacks return. There are no
+awaits inside a transaction. The six-slot backpack rejects heavy definitions; the configurable
+48-slot hold accepts them, with one slot per heavy object.
+
+`LootTable` contains weighted `LootEntry` Resources and a draw count. Each search location
+seeds a private RNG with the run seed XOR the stable cache ID hash. Cancellation never
+rerolls or consumes loot. `SearchContainer` owns a model large enough for its generated
+contents. A successful search moves fitting small items to the backpack, retains overflow
+and reveals heavy objects once. Search progress is temporary; all rewards remain available.
+
+`SupplyInteractable` adds reach, vertical-distance and world/train line-of-sight checks to
+the existing interaction base. `ScavengingSystem` coordinates searches and ownership changes,
+using explicit player/inventory/station/train references. It emits progress, completion,
+notices, storage-open and carrying signals. It runs physics only during an active search.
+The UI never mutates model internals; every storage operation rechecks physical reach.
+
+`WorldItem` is a `CharacterBody3D` using the same platform-velocity conventions as the
+player. It is reparented to the player's visual node while held, with collisions disabled.
+Dropping checks a capsule against world/train geometry, restores world parenting, and
+inherits player world velocity. Released cargo settles on train decks and follows them.
+A zero-length floating-mode move clears stale floor state while restoring transform and
+zeroing inherited velocity; train resets then suspend cargo for three ticks. Static settled
+items sleep, while train cargo continues its platform integration. Falls outside the station
+recover to the last safe floor position. Cargo bodies do not collide with one another.
+
+Only carrying adds a 2.5 m/s target-speed override and prevents sprint; the movement Resource
+and all unladen equations are unchanged. Ladder/rail interactables declare that they require
+free hands; vault and climb entry guards provide feedback too. Jump boarding remains allowed.
+The held model and arm pose are visual children, independent of player collision.
+
+`SupplyUI` builds the six-slot ledger, storage list, graphics selector, contextual progress
+and compact field summary. Changes refresh through signals; range checks run at 10 Hz only
+while the ledger is open. Opening it blocks movement input without pausing world physics.
+Closing releases input; a departing hold closes automatically if it leaves reach.
+
+`Game` owns lifecycle wiring. Player reset keeps backpack and held cargo with the player; train reset
+moves loose cargo with its car and preserves storage; station reset cancels searches,
+clears both models and physical items, then regenerates the same seeded caches. See
+[SCAVENGING.md](SCAVENGING.md) for player-facing rules and tuning locations.
+
+## Render settings and performance
+
+`GraphicsPreset` Resources describe Low / Medium / High. `GraphicsSettings` duplicates the
+scene Environment and caches authored lights/particles once, then changes rendering only.
+Resolution budgeting uses the window's pixel size, since stretched UI dimensions can stay
+1280×720 in a much larger full-screen window. UI rendering remains at window resolution.
+Preset changes affect resolution, MSAA, shadows, light fade distances, bloom, particle counts
+and supported volumetrics; they never change physics ticks, collisions, movement or train state.
+Only the preset preference is persisted in `user://graphics.cfg`.
+
+Existing batched scenery, opaque shared materials, transient cutaway fades and capability
+guards remain. New supplies add no dynamic lights and no blocking level geometry. Benchmarks
+use real-time `frame_post_draw` sampling, with hardware/settings recorded separately from
+fixed-step tests and Movie Maker evidence. See [PERFORMANCE.md](PERFORMANCE.md).

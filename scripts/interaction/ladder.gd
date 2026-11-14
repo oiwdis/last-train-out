@@ -2,9 +2,6 @@
 class_name Ladder
 extends Interactable
 
-
-func requires_free_hands() -> bool:
-	return true
 ## A climbable ladder. Works on static walls and on moving bodies alike.
 ##
 ## Local frame: the origin is the bottom of the ladder on the wall plane,
@@ -44,6 +41,10 @@ const RUNG_SPACING := 0.33
 
 var _visual_root: Node3D
 var _area_shape: CollisionShape3D
+
+
+func requires_free_hands() -> bool:
+	return true
 
 
 func _ready() -> void:

@@ -2,9 +2,6 @@
 class_name GrabRail
 extends Interactable
 
-
-func requires_free_hands() -> bool:
-	return true
 ## A railing the player can grab and cling to, then climb over.
 ##
 ## Local frame: the origin is the middle of the rail, +X runs along it and +Z
@@ -48,6 +45,10 @@ func requires_free_hands() -> bool:
 
 var _visual_root: Node3D
 var _area_shape: CollisionShape3D
+
+
+func requires_free_hands() -> bool:
+	return true
 
 
 func _ready() -> void:
