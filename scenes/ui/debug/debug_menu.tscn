@@ -7,16 +7,16 @@ content_margin_left = 14.0
 content_margin_top = 12.0
 content_margin_right = 14.0
 content_margin_bottom = 12.0
-bg_color = Color(0.05, 0.07, 0.09, 0.9)
+bg_color = Color(0.035, 0.065, 0.08, 0.98)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0.35, 0.42, 0.5, 0.6)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
 [node name="DebugMenu" type="CanvasLayer"]
 layer = 50
@@ -27,62 +27,67 @@ unique_name_in_owner = true
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -364.0
-offset_top = 12.0
-offset_right = -12.0
-offset_bottom = 12.0
+offset_left = -400.0
+offset_top = 24.0
+offset_right = -24.0
+offset_bottom = -24.0
+anchor_bottom = 1.0
 grow_horizontal = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_1")
 
-[node name="VBox" type="VBoxContainer" parent="Panel"]
+[node name="Scroll" type="ScrollContainer" parent="Panel"]
+horizontal_scroll_mode = 0
+
+[node name="VBox" type="VBoxContainer" parent="Panel/Scroll"]
+size_flags_horizontal = 3
 theme_override_constants/separation = 6
 
-[node name="Title" type="Label" parent="Panel/VBox"]
-text = "DEBUG MENU      F1 toggle   Esc close"
+[node name="Title" type="Label" parent="Panel/Scroll/VBox"]
+text = "ENGINEERING CONSOLE   /   F1 · ESC"
 theme_override_font_sizes/font_size = 13
 
-[node name="Sep0" type="HSeparator" parent="Panel/VBox"]
+[node name="Sep0" type="HSeparator" parent="Panel/Scroll/VBox"]
 
-[node name="TrainHeader" type="Label" parent="Panel/VBox"]
-text = "TRAIN"
+[node name="TrainHeader" type="Label" parent="Panel/Scroll/VBox"]
+text = "01  /  TRAIN CONTROL"
 modulate = Color(0.62, 0.72, 0.82, 1.0)
 theme_override_font_sizes/font_size = 12
 
-[node name="TrainButtons" type="HBoxContainer" parent="Panel/VBox"]
+[node name="TrainButtons" type="HBoxContainer" parent="Panel/Scroll/VBox"]
 
-[node name="StartButton" type="Button" parent="Panel/VBox/TrainButtons"]
+[node name="StartButton" type="Button" parent="Panel/Scroll/VBox/TrainButtons"]
 unique_name_in_owner = true
 focus_mode = 0
 text = "Start"
 size_flags_horizontal = 3
 
-[node name="StopButton" type="Button" parent="Panel/VBox/TrainButtons"]
+[node name="StopButton" type="Button" parent="Panel/Scroll/VBox/TrainButtons"]
 unique_name_in_owner = true
 focus_mode = 0
 text = "Stop"
 size_flags_horizontal = 3
 
-[node name="ResetTrainButton" type="Button" parent="Panel/VBox/TrainButtons"]
+[node name="ResetTrainButton" type="Button" parent="Panel/Scroll/VBox/TrainButtons"]
 unique_name_in_owner = true
 focus_mode = 0
 text = "Reset to platform"
 size_flags_horizontal = 3
 
-[node name="ModeLabel" type="Label" parent="Panel/VBox"]
+[node name="ModeLabel" type="Label" parent="Panel/Scroll/VBox"]
 text = "Departure mode"
 theme_override_font_sizes/font_size = 13
 
-[node name="ModeRow" type="VBoxContainer" parent="Panel/VBox"]
+[node name="ModeRow" type="VBoxContainer" parent="Panel/Scroll/VBox"]
 unique_name_in_owner = true
 theme_override_constants/separation = 3
 
-[node name="SpeedRow" type="HBoxContainer" parent="Panel/VBox"]
+[node name="SpeedRow" type="HBoxContainer" parent="Panel/Scroll/VBox"]
 
-[node name="SpeedLabel" type="Label" parent="Panel/VBox/SpeedRow"]
+[node name="SpeedLabel" type="Label" parent="Panel/Scroll/VBox/SpeedRow"]
 text = "Max speed"
 theme_override_font_sizes/font_size = 13
 
-[node name="SpeedSlider" type="HSlider" parent="Panel/VBox/SpeedRow"]
+[node name="SpeedSlider" type="HSlider" parent="Panel/Scroll/VBox/SpeedRow"]
 unique_name_in_owner = true
 focus_mode = 0
 size_flags_horizontal = 3
@@ -92,58 +97,58 @@ max_value = 30.0
 step = 0.5
 value = 12.0
 
-[node name="SpeedValue" type="Label" parent="Panel/VBox/SpeedRow"]
+[node name="SpeedValue" type="Label" parent="Panel/Scroll/VBox/SpeedRow"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(72.0, 0.0)
 text = "12.0 m/s"
 horizontal_alignment = 2
 
-[node name="Sep1" type="HSeparator" parent="Panel/VBox"]
+[node name="Sep1" type="HSeparator" parent="Panel/Scroll/VBox"]
 
-[node name="PlayerHeader" type="Label" parent="Panel/VBox"]
-text = "PLAYER"
+[node name="PlayerHeader" type="Label" parent="Panel/Scroll/VBox"]
+text = "02  /  PLAYER & STATION"
 modulate = Color(0.62, 0.72, 0.82, 1.0)
 theme_override_font_sizes/font_size = 12
 
-[node name="PlayerButtons" type="HBoxContainer" parent="Panel/VBox"]
+[node name="PlayerButtons" type="HBoxContainer" parent="Panel/Scroll/VBox"]
 
-[node name="ResetPlayerButton" type="Button" parent="Panel/VBox/PlayerButtons"]
+[node name="ResetPlayerButton" type="Button" parent="Panel/Scroll/VBox/PlayerButtons"]
 unique_name_in_owner = true
 focus_mode = 0
 text = "Reset position"
 size_flags_horizontal = 3
 
-[node name="ResetStaminaButton" type="Button" parent="Panel/VBox/PlayerButtons"]
+[node name="ResetStaminaButton" type="Button" parent="Panel/Scroll/VBox/PlayerButtons"]
 unique_name_in_owner = true
 focus_mode = 0
 text = "Reset stamina"
 size_flags_horizontal = 3
 
-[node name="ResetStationButton" type="Button" parent="Panel/VBox"]
+[node name="ResetStationButton" type="Button" parent="Panel/Scroll/VBox"]
 unique_name_in_owner = true
 focus_mode = 0
 text = "Reset entire station"
 
-[node name="Sep2" type="HSeparator" parent="Panel/VBox"]
+[node name="Sep2" type="HSeparator" parent="Panel/Scroll/VBox"]
 
-[node name="SystemsHeader" type="Label" parent="Panel/VBox"]
-text = "FUTURE SYSTEMS"
+[node name="SystemsHeader" type="Label" parent="Panel/Scroll/VBox"]
+text = "03  /  SYSTEM STUBS"
 modulate = Color(0.62, 0.72, 0.82, 1.0)
 theme_override_font_sizes/font_size = 12
 
-[node name="FogButton" type="Button" parent="Panel/VBox"]
+[node name="FogButton" type="Button" parent="Panel/Scroll/VBox"]
 unique_name_in_owner = true
 focus_mode = 0
 text = "Trigger fog surge (placeholder)"
 
-[node name="Sep3" type="HSeparator" parent="Panel/VBox"]
+[node name="Sep3" type="HSeparator" parent="Panel/Scroll/VBox"]
 
-[node name="DiagHeader" type="Label" parent="Panel/VBox"]
-text = "LIVE DIAGNOSTICS"
+[node name="DiagHeader" type="Label" parent="Panel/Scroll/VBox"]
+text = "04  /  LIVE TELEMETRY"
 modulate = Color(0.62, 0.72, 0.82, 1.0)
 theme_override_font_sizes/font_size = 12
 
-[node name="Diagnostics" type="GridContainer" parent="Panel/VBox"]
+[node name="Diagnostics" type="GridContainer" parent="Panel/Scroll/VBox"]
 unique_name_in_owner = true
 columns = 2
 theme_override_constants/h_separation = 16

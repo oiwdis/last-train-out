@@ -1,5 +1,7 @@
 [gd_scene format=3]
 
+[ext_resource type="Script" path="res://scripts/presentation/train_art.gd" id="90_art"]
+
 [ext_resource type="Script" path="res://scripts/train/train_car.gd" id="1_train_car"]
 [ext_resource type="Script" path="res://scripts/environment/box_part.gd" id="2_box_part"]
 [ext_resource type="Script" path="res://scripts/environment/box_visual.gd" id="3_box_visual"]
@@ -257,3 +259,7 @@ transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.6, 2.45, 
 script = ExtResource("3_box_visual")
 size = Vector3(0.16, 0.2, 0.16)
 material = ExtResource("12_lamp_warm")
+
+[node name="Presentation" type="Node3D" parent="."]
+script = ExtResource("90_art")
+kind = 2

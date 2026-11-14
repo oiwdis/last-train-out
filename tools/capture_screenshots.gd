@@ -10,6 +10,7 @@ const MAIN_SCENE := "res://scenes/main/main.tscn"
 
 var _out_dir := "res://docs/screenshots"
 var _only := ""
+var _fast := false
 var _game: Game
 var _player: Player
 var _train: Train
@@ -20,9 +21,13 @@ func _ready() -> void:
 	for argument in OS.get_cmdline_user_args():
 		if argument.begins_with("--out="):
 			_out_dir = argument.trim_prefix("--out=")
+		elif argument == "--fast":
+			_fast = true
 		elif argument.begins_with("--only="):
 			_only = argument.trim_prefix("--only=")
 	DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(_out_dir))
+	if _fast:
+		RenderingServer.set_render_loop_enabled(false)
 	_run.call_deferred()
 
 
@@ -68,11 +73,20 @@ func _place(position: Vector3, facing: Vector3 = Vector3.RIGHT, settle: float = 
 
 
 func _save(file_name: String) -> void:
+	# Optional capture acceleration: simulate the same physics without drawing
+	# every intermediate frame, then settle eight rendered frames for the image.
+	# Movie Maker never uses this path; it still draws every frame.
+	if _fast:
+		RenderingServer.set_render_loop_enabled(true)
+		for i in 8:
+			await RenderingServer.frame_post_draw
 	await RenderingServer.frame_post_draw
 	var image := get_viewport().get_texture().get_image()
 	var path := _out_dir.path_join(file_name)
 	var error := image.save_png(path)
 	print("[capture] %s -> %s (%s)" % [file_name, path, error_string(error)])
+	if _fast:
+		RenderingServer.set_render_loop_enabled(false)
 
 
 # --- Shots -------------------------------------------------------------------

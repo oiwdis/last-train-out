@@ -47,6 +47,7 @@ var _refresh_timer := 0.0
 
 
 func _ready() -> void:
+	_panel.theme = RailTheme.create()
 	(%StartButton as Button).pressed.connect(func() -> void: train_start_requested.emit())
 	(%StopButton as Button).pressed.connect(func() -> void: train_stop_requested.emit())
 	(%ResetTrainButton as Button).pressed.connect(func() -> void: train_reset_requested.emit())

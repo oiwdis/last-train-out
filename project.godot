@@ -11,8 +11,8 @@ config_version=5
 [application]
 
 config/name="Last Train Out"
-config/version="0.1.0"
-config/description="Milestone 1 gray-box prototype: Harlow Junction."
+config/version="0.1.5"
+config/description="Milestone 1.5: Harlow Junction visual and UI overhaul."
 run/main_scene="res://scenes/main/main.tscn"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"

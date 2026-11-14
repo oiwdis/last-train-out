@@ -30,6 +30,10 @@ const TRAIN_PROFILE_KEY := &"train_departure"
 
 
 func _ready() -> void:
+	var effects := PresentationEffects.new()
+	effects.name = "PresentationEffects"
+	add_child(effects)
+	effects.bind(player)
 	if debug_menu != null:
 		debug_menu.bind(player, train)
 		debug_menu.train_start_requested.connect(start_train)
@@ -42,7 +46,7 @@ func _ready() -> void:
 		debug_menu.station_reset_requested.connect(reset_station)
 		debug_menu.fog_surge_requested.connect(trigger_fog_surge)
 	if hud != null:
-		hud.bind(player)
+		hud.bind(player, train, station)
 	if player != null and hud != null:
 		player.grab_failed.connect(_on_player_grab_failed)
 	if train != null:
