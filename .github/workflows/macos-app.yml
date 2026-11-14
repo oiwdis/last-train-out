@@ -23,6 +23,7 @@ on:
       - claude/serene-turing-0vpdmt
       - codex/milestone-1-5-visual-overhaul
       - codex/milestone-2-scavenging
+      - feature/milestone-2-5-full-3d
   workflow_dispatch:
     inputs:
       sign_and_notarize:
@@ -42,7 +43,7 @@ env:
   DEV_ZIP: LastTrainOut-macos-universal.zip
   SIGNED_ZIP: LastTrainOut-macos-universal-signed.zip
   # The build fails if fewer tests than this pass, so tests cannot silently go missing.
-  MIN_TESTS: "168"
+  MIN_TESTS: "182"
 
 jobs:
   build:
@@ -74,6 +75,7 @@ jobs:
       # exported unless this passes.
       - name: Run the automated tests
         run: |
+          python3 tools/assets/check_assets.py
           tools/run_tests.sh "$GODOT"
           {
             echo "### Automated tests (Godot $("$GODOT" --version), macOS $(sw_vers -productVersion), $(uname -m))"
@@ -82,6 +84,17 @@ jobs:
             grep -E '^=== [0-9]+ passed' tests/_output/tests.log
             echo '```'
           } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Measure windowed rendering on hosted Apple Silicon
+        # Additional hardware evidence. A measurement timeout must not discard a
+        # playable build; failures/logs remain visible and are reported separately.
+        continue-on-error: true
+        run: |
+          mkdir -p "$RUNNER_TEMP/render-baseline" tests/_output/performance
+          git fetch --no-tags --depth=1 origin 8cde10cf78c1ea0cf7f7bafb5fc146d2e12514c2
+          git archive FETCH_HEAD | tar -x -C "$RUNNER_TEMP/render-baseline"
+          "$GODOT" --headless --path "$RUNNER_TEMP/render-baseline" --import > tests/_output/performance/baseline-import.log 2>&1
+          python3 tools/macos/benchmark_compare.py "$GODOT" "$RUNNER_TEMP/render-baseline" tests/_output/performance
 
       - name: Upload the test logs
         if: always()

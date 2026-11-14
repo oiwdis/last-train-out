@@ -1,0 +1,92 @@
+{
+  "failed": 0,
+  "godot": "4.5.1-stable (official)",
+  "passed": 12,
+  "physics_engine": "Jolt Physics",
+  "results": [
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_character_assets.gd",
+      "test": "test_authored_character_has_weighted_humanoid_and_individual_fingers"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_character_assets.gd",
+      "test": "test_all_required_animation_clips_import_without_root_motion_tracks"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_character_assets.gd",
+      "test": "test_real_movement_drives_blended_walk_sprint_and_idle"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_character_assets.gd",
+      "test": "test_jump_and_traversal_states_have_distinct_skeletal_presentations"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_character_assets.gd",
+      "test": "test_departing_train_does_not_make_stationary_passenger_walk"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_character_assets.gd",
+      "test": "test_first_person_renders_only_the_matching_arm_meshes"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_character_assets.gd",
+      "test": "test_carry_pose_places_both_hands_at_cargo_in_both_perspectives"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_character_assets.gd",
+      "test": "test_carry_walk_and_drop_animate_without_changing_ownership_rules"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_character_assets.gd",
+      "test": "test_operating_controls_plays_action_and_keeps_train_command_immediate"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_character_assets.gd",
+      "test": "test_station_uses_batched_licensed_geometry_and_preserves_thirteen_caches"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_character_assets.gd",
+      "test": "test_imported_locomotive_wheels_turn_with_the_original_train_speed"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_character_assets.gd",
+      "test": "test_presets_restore_normal_maps_on_batched_assets"
+    }
+  ]
+}

@@ -23,10 +23,26 @@ static func unit_box() -> Mesh:
 static func box(size: Vector3, material: Material) -> Mesh:
 	var key := "%s/%s" % [size, material.get_instance_id() if material != null else 0]
 	if not _shapes.has(key):
-		var surface := SurfaceTool.new()
-		surface.begin(Mesh.PRIMITIVE_TRIANGLES)
-		surface.append_from(unit_box(), 0, Transform3D(Basis.IDENTITY.scaled(size), Vector3.ZERO))
-		var shape := surface.commit()
+		var arrays := unit_box().surface_get_arrays(0).duplicate(true)
+		var vertices: PackedVector3Array = arrays[Mesh.ARRAY_VERTEX]
+		var normals: PackedVector3Array = arrays[Mesh.ARRAY_NORMAL]
+		var tangents: PackedFloat32Array = arrays[Mesh.ARRAY_TANGENT]
+		for index in vertices.size():
+			vertices[index] *= size
+			# Nonuniform scaling needs inverse-transpose normals. Scaling normals like
+			# positions tilted the ground's normal sideways and stretched triplanar maps.
+			normals[index] = (normals[index] / size).normalized()
+			if tangents.size() >= (index + 1) * 4:
+				var tangent := Vector3(tangents[index*4], tangents[index*4+1], tangents[index*4+2]) * size
+				tangent = (tangent - normals[index] * tangent.dot(normals[index])).normalized()
+				tangents[index*4] = tangent.x
+				tangents[index*4+1] = tangent.y
+				tangents[index*4+2] = tangent.z
+		arrays[Mesh.ARRAY_VERTEX] = vertices
+		arrays[Mesh.ARRAY_NORMAL] = normals
+		arrays[Mesh.ARRAY_TANGENT] = tangents
+		var shape := ArrayMesh.new()
+		shape.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arrays)
 		shape.surface_set_material(0, material)
 		_shapes[key] = shape
 	return _shapes[key]

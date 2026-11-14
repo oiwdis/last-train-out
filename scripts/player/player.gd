@@ -20,6 +20,8 @@ signal detached(anchor: Interactable)
 signal vault_started(kind: String)
 signal grab_failed(reason: String)
 signal teleported(position: Vector3, facing: Vector3)
+## Observed by the visual rigs; does not delay or change any gameplay transaction.
+signal presentation_action(action: StringName, seconds: float)
 
 enum State { IDLE, WALK, SPRINT, JUMP, FALL, CLIMB, HANG, VAULT, MOUNT }
 enum Mode { LOCOMOTION, ATTACHED, SCRIPTED, SUSPENDED }

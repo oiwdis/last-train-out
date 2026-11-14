@@ -49,6 +49,11 @@ func _finish_bind() -> void:
 
 
 func _collect(node: Node) -> void:
+	if node is MultiMeshInstance3D and node.multimesh != null and node.multimesh.mesh != null:
+		for surface in node.multimesh.mesh.get_surface_count():
+			var material := node.multimesh.mesh.surface_get_material(surface) as StandardMaterial3D
+			if material != null and not _materials.has(material):
+				_materials[material] = {"normal": material.normal_enabled, "roughness": material.roughness_texture}
 	if node is MeshInstance3D and node.mesh != null:
 		for surface in node.mesh.get_surface_count():
 			var material := node.get_active_material(surface) as StandardMaterial3D
@@ -93,6 +98,9 @@ func set_preset(index: int, persist: bool = false) -> void:
 		var particles := entry.particles as CPUParticles3D
 		particles.amount = maxi(4, roundi(int(entry.amount) * preset.particle_fraction))
 	get_viewport().msaa_3d = preset.msaa as Viewport.MSAA
+	# Detailed imported assets have generated LODs. Use a wider screen-space
+	# error budget on performance presets while retaining the same source models.
+	get_viewport().mesh_lod_threshold = [4.0, 2.0, 1.0][current_index]
 	get_viewport().positional_shadow_atlas_size = preset.shadow_atlas_size
 	RenderingServer.directional_shadow_atlas_set_size(preset.shadow_atlas_size * 2, true)
 	_apply_resolution()

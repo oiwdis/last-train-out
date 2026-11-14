@@ -1,0 +1,10 @@
+{
+  "id": "kloofendal_overcast_puresky",
+  "source": "https://polyhaven.com/a/kloofendal_overcast_puresky",
+  "license": "CC0-1.0",
+  "authors": {
+    "Greg Zaal": "All"
+  },
+  "download": "https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/kloofendal_overcast_puresky_1k.hdr",
+  "sha256": "5f98aa01d43a49cd899299751a978b3e5559a76300198b5dd2d9c68ecc4ad130"
+}

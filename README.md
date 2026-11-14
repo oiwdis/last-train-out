@@ -1,15 +1,16 @@
 # Last Train Out
 
 A survival adventure about the operator of the last working train in a city being swallowed by fog.
-**Milestone 2.5** adds full 3D exploration, switchable first- and third-person views,
-walkable train interiors, physical cab controls, and a wider Harlow Junction.
-Built in **Godot 4.5.1 and GDScript**, with original models and commercially usable CC0 materials.
+**Milestone 2.6** replaces the blockout worker with a licensed, skinned human and animations,
+adds an authored steam locomotive and industrial props, and improves the train interiors.
+Full 3D movement, perspective switching, scavenging and moving-train gameplay remain.
+Built in **Godot 4.5.1 and GDScript**, with original project art and commercially usable CC0 models, animations and PBR materials.
 
 Search the station, fill a six-slot backpack, carry bulky supplies back to the train,
 and secure them in its hold. Enter the cab, choose a departure mode, and start the train.
 Its existing acceleration, moving-platform physics, climbing and inventory rules remain.
 
-![Harlow Junction in first person](docs/screenshots/milestone25/01_first_person_platform.png)
+![The rigged survivor at Harlow Junction](docs/screenshots/milestone26/after/01_character_front.png)
 
 | | |
 |---|---|
@@ -18,15 +19,17 @@ Its existing acceleration, moving-platform physics, climbing and inventory rules
 | Renderer | Forward+ on desktop (Compatibility fallback configured for web) |
 | Physics | Jolt Physics, 60 ticks/s, physics interpolation on |
 | macOS app | Built automatically by GitHub Actions for Apple Silicon and Intel - [download and play](#play-on-macos-no-godot-needed) |
-| Status | See [docs/TEST_REPORT.md](docs/TEST_REPORT.md) for what is verified and what is not |
+| Status | See [docs/MILESTONE_2_6.md](docs/TEST_REPORT.md) for what is verified and what is not |
 
-[Watch the Milestone 2.5 tour](docs/recording/milestone25_tour.mp4): perspective switching,
+[Watch the Milestone 2.6 tour](docs/recording/milestone26_tour.mp4): perspective switching,
 walking inside a moving car, scavenging and carrying. The recording uses scripted gameplay
 inputs and explicit location cuts; it is not a frame-rate measurement.
 [Art and asset credits](docs/ASSET_CREDITS.md).
 Graphics default to **Medium**. On a 2020 M1 Mac in full-screen, try **Low** using
 **F2** (often **Fn+F2** on Mac) or **Tab → Graphics**. Low and Medium cap 3D rendering
-resolution while keeping the interface sharp. [Measurements and limits](docs/PERFORMANCE.md).
+resolution while keeping the interface sharp. [Matched performance comparison and limitations](docs/PERFORMANCE_MILESTONE26.md).
+[Before/after gallery](docs/screenshots/milestone26/README.md). The asset upgrade is substantial,
+but full photorealism and physical 2020 M1 full-screen performance remain unverified; see the milestone report.
 
 ---
 
@@ -345,7 +348,7 @@ in [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
 
 ## Tests
 
-The project has **168 automated tests** using a small Godot-native runner (no add-ons). Tests drive the
+The project has **182 automated tests** using a small Godot-native runner (no add-ons). Tests drive the
 real player through a scripted-input hook and run the real physics.
 
 ```bash
@@ -393,22 +396,22 @@ verified); the second writes `build/macos/Last Train Out.app`.
 
 ## Screenshots and recording
 
-[Milestone 2.5 screenshot gallery](docs/screenshots/milestone25/) and
-[gameplay recording](docs/recording/milestone25_tour.mp4), captured from the running game.
+[Milestone 2.6 comparison gallery](docs/screenshots/milestone26/README.md) and
+[gameplay recording](docs/recording/milestone26_tour.mp4), captured from the running game.
 Older milestone evidence remains in `docs/`.
 
 | First person | Third person |
 |---|---|
-| ![Cab controls](docs/screenshots/milestone25/04_cab_controls.png) | ![Train exterior](docs/screenshots/milestone25/02_third_person_train.png) |
-| ![Crew interior](docs/screenshots/milestone25/03_crew_interior.png) | ![Freight yard](docs/screenshots/milestone25/07_freight_yard.png) |
+| ![Cab controls](docs/screenshots/milestone26/after/09_cab.png) | ![Train exterior](docs/screenshots/milestone26/after/07_locomotive.png) |
+| ![Crew interior](docs/screenshots/milestone26/after/10_crew.png) | ![Freight yard](docs/screenshots/milestone26/after/14_freight_yard.png) |
 
 ---
 
 ## Scope
 
-Milestone 2.5 adds immersive cameras, train interiors and controls, expanded environments,
-PBR materials, an articulated worker and original ambient sound. The art is an original
-procedural interpretation; it is not a claim of AAA photorealism.
+Milestone 2.6 adds an authored rigged worker, retargeted animation, licensed locomotive and industrial assets,
+fitted carriage details and scanned materials. Full photorealism remains incomplete;
+see [the milestone report](docs/MILESTONE_2_6.md) for the specific gaps.
 There is no advancing dangerous fog, damage, consumption, healing, crafting, combat,
 passenger AI, train upgrades, route selection, additional stations or full save/load.
 Graphics and camera preferences persist across launches; inventory and train progress do not.

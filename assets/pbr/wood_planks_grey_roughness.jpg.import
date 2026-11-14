@@ -3,8 +3,8 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bcsyxu6ff6lwc"
-path.s3tc="res://.godot/imported/wood_planks_grey_roughness.jpg-32206f20a6a3635bc1dfc5e93811f55d.s3tc.ctex"
-path.etc2="res://.godot/imported/wood_planks_grey_roughness.jpg-32206f20a6a3635bc1dfc5e93811f55d.etc2.ctex"
+path.bptc="res://.godot/imported/wood_planks_grey_roughness.jpg-32206f20a6a3635bc1dfc5e93811f55d.bptc.ctex"
+path.astc="res://.godot/imported/wood_planks_grey_roughness.jpg-32206f20a6a3635bc1dfc5e93811f55d.astc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -13,12 +13,12 @@ metadata={
 [deps]
 
 source_file="res://assets/pbr/wood_planks_grey_roughness.jpg"
-dest_files=["res://.godot/imported/wood_planks_grey_roughness.jpg-32206f20a6a3635bc1dfc5e93811f55d.s3tc.ctex", "res://.godot/imported/wood_planks_grey_roughness.jpg-32206f20a6a3635bc1dfc5e93811f55d.etc2.ctex"]
+dest_files=["res://.godot/imported/wood_planks_grey_roughness.jpg-32206f20a6a3635bc1dfc5e93811f55d.bptc.ctex", "res://.godot/imported/wood_planks_grey_roughness.jpg-32206f20a6a3635bc1dfc5e93811f55d.astc.ctex"]
 
 [params]
 
 compress/mode=2
-compress/high_quality=false
+compress/high_quality=true
 compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0

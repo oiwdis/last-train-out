@@ -36,7 +36,7 @@ func _run() -> void:
 	])
 	for path in _find_suites():
 		var script := load(path) as GDScript
-		if script == null:
+		if script == null or not script.can_instantiate():
 			failed += 1
 			print("\n[SUITE] %s\n  FAIL  could not load script" % path)
 			results.append({"suite": path, "test": "<load>", "passed": false, "failures": ["could not load"], "notes": []})

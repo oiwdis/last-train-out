@@ -76,12 +76,14 @@ script = ExtResource("6_box")
 size = Vector3(0.1, 0.16, 0.1)
 material = ExtResource("11_lamp")
 
-[node name="LanternLight" type="OmniLight3D" parent="Visual"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.34, 0.95, 0.3)
+[node name="LanternLight" type="SpotLight3D" parent="."]
+position = Vector3(0.2, 1.0, 0)
+rotation = Vector3(-1.5707964, 0, 0)
 light_color = Color(1, 0.72, 0.45, 1)
-light_energy = 1.6
-omni_range = 5.5
-omni_attenuation = 1.4
+light_energy = 0.75
+spot_range = 5.5
+spot_angle = 52.0
+spot_attenuation = 1.4
 
 [node name="Input" type="Node" parent="."]
 script = ExtResource("2_input")

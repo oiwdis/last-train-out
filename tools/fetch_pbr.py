@@ -2,7 +2,7 @@
 """Fetch unmodified CC0 Poly Haven 1K maps; record source URLs and checksums."""
 import concurrent.futures, hashlib, json, pathlib, subprocess
 ROOT = pathlib.Path(__file__).resolve().parents[1]
-ASSETS = ['brick_wall_001', 'rusty_painted_metal', 'wood_planks_grey', 'concrete_floor_worn_001', 'asphalt_02', 'denim_fabric', 'rusty_corrugated_iron', 'green_metal_rust']
+ASSETS = ['brick_wall_001', 'rusty_painted_metal', 'wood_planks_grey', 'concrete_floor_worn_001', 'asphalt_02', 'denim_fabric', 'rusty_corrugated_iron', 'green_metal_rust', 'gravel_stones']
 
 def fetch(asset):
     metadata = json.loads(subprocess.check_output(['curl', '-L', '--fail', '--silent', '--retry', '3', 'https://api.polyhaven.com/files/' + asset]))
