@@ -2,21 +2,21 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ba82wqqwi27ip"
-path.bptc="res://.godot/imported/railway_survivor_Aksel_Skin_diffuse.png-381a65d36318ef97d5d307ec2abb2f8a.bptc.ctex"
-path.astc="res://.godot/imported/railway_survivor_Aksel_Skin_diffuse.png-381a65d36318ef97d5d307ec2abb2f8a.astc.ctex"
+uid="uid://lgntuul83m4k"
+path.bptc="res://.godot/imported/railway_survivor_eyelashes01.png-17498c1cb98219525bdab0231a1c69eb.bptc.ctex"
+path.astc="res://.godot/imported/railway_survivor_eyelashes01.png-17498c1cb98219525bdab0231a1c69eb.astc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "46a26aabf6b9218e61db32f4ae838956"
+"md5": "050add4f6a49b84709d4e478963163c9"
 }
 
 [deps]
 
-source_file="res://assets/characters/railway_survivor_Aksel_Skin_diffuse.png"
-dest_files=["res://.godot/imported/railway_survivor_Aksel_Skin_diffuse.png-381a65d36318ef97d5d307ec2abb2f8a.bptc.ctex", "res://.godot/imported/railway_survivor_Aksel_Skin_diffuse.png-381a65d36318ef97d5d307ec2abb2f8a.astc.ctex"]
+source_file="res://assets/characters/railway_survivor_eyelashes01.png"
+dest_files=["res://.godot/imported/railway_survivor_eyelashes01.png-17498c1cb98219525bdab0231a1c69eb.bptc.ctex", "res://.godot/imported/railway_survivor_eyelashes01.png-17498c1cb98219525bdab0231a1c69eb.astc.ctex"]
 
 [params]
 

@@ -43,6 +43,108 @@ static func box(size: Vector3, material: Material) -> Mesh:
 		arrays[Mesh.ARRAY_TANGENT] = tangents
 		var shape := ArrayMesh.new()
 		shape.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arrays)
-		shape.surface_set_material(0, material)
+		# Large flat walls/floors do not need three texture samples per pixel.
+		# Bake metre-scaled planar UVs once, retaining all scanned PBR maps.
+		if material is StandardMaterial3D and material.uv1_triplanar:
+			shape = _project_faces(shape, material)
+		else:
+			shape.surface_set_material(0, material)
 		_shapes[key] = shape
 	return _shapes[key]
+
+
+static func _project_faces(shape: ArrayMesh, material: StandardMaterial3D) -> ArrayMesh:
+	var source := shape.surface_get_arrays(0)
+	var positions: PackedVector3Array = source[Mesh.ARRAY_VERTEX]
+	var normals: PackedVector3Array = source[Mesh.ARRAY_NORMAL]
+	var indices: PackedInt32Array = source[Mesh.ARRAY_INDEX]
+	var surface := SurfaceTool.new()
+	surface.begin(Mesh.PRIMITIVE_TRIANGLES)
+	surface.set_material(planar_material(material))
+	for triangle in range(0, indices.size(), 3):
+		var a := positions[indices[triangle]]
+		var b := positions[indices[triangle+1]]
+		var c := positions[indices[triangle+2]]
+		var face := (b-a).cross(c-a).normalized()
+		var axis := face.abs().max_axis_index()
+		for corner in 3:
+			var index := indices[triangle+corner]
+			var p := positions[index]*material.uv1_scale
+			var uv := Vector2(p.x,-p.y)
+			if axis == Vector3.AXIS_X:
+				uv = Vector2(p.z,-p.y)
+			elif axis == Vector3.AXIS_Y:
+				uv = Vector2(p.x,p.z)
+			surface.set_uv(uv)
+			surface.set_normal(normals[index])
+			surface.add_vertex(positions[index])
+	surface.generate_tangents()
+	surface.index()
+	return surface.commit()
+
+
+static func planar_material(material: Material) -> Material:
+	if not material is StandardMaterial3D or not material.uv1_triplanar:
+		return material
+	var key := "planar/%d" % material.get_instance_id()
+	if not _shapes.has(key):
+		var projected := material.duplicate() as StandardMaterial3D
+		projected.uv1_triplanar = false
+		projected.uv1_scale = Vector3.ONE
+		_shapes[key] = projected
+	return _shapes[key]
+
+
+static func ladder(width: float, height: float, material: Material) -> Mesh:
+	var key := "ladder/%s/%s/%s" % [width,height,material.get_instance_id() if material != null else 0]
+	if _shapes.has(key):
+		return _shapes[key]
+	var surface := SurfaceTool.new()
+	surface.begin(Mesh.PRIMITIVE_TRIANGLES)
+	surface.set_material(planar_material(material))
+	# Open steel channel stiles, flanges and wall stand-offs. The interaction
+	# volume and original rung spacing stay in Ladder; this cache is art only.
+	for sign in [-1.0,1.0]:
+		var x: float = sign*width*.5
+		_append_box(surface,Vector3(x,height*.5,.05),Vector3(.014,height,.075),material)
+		for z in [.017,.083]:
+			_append_box(surface,Vector3(x-sign*.018,height*.5,z),Vector3(.05,height,.012),material)
+		for y in [.22,height-.22]:
+			_append_box(surface,Vector3(x,y,-.025),Vector3(.05,.045,.15),material)
+			_append_box(surface,Vector3(x,y,-.095),Vector3(.12,.12,.012),material)
+	var rung := CylinderMesh.new()
+	rung.top_radius = .022
+	rung.bottom_radius = .022
+	rung.height = width+.025
+	rung.radial_segments = 12
+	rung.rings = 1
+	var y := .22
+	while y < height-.05:
+		surface.append_from(rung,0,Transform3D(Basis(Vector3.FORWARD,PI/2),Vector3(0,y,.05)))
+		for sign in [-1.0,1.0]:
+			_append_box(surface,Vector3(sign*width*.5,y,.05),Vector3(.025,.054,.056),material)
+		y += .33
+	_shapes[key] = surface.commit()
+	return _shapes[key]
+
+
+static func steel_column(size: Vector3, material: Material) -> Mesh:
+	var key := "column/%s/%s" % [size,material.get_instance_id() if material != null else 0]
+	if _shapes.has(key):
+		return _shapes[key]
+	var surface := SurfaceTool.new()
+	surface.begin(Mesh.PRIMITIVE_TRIANGLES)
+	surface.set_material(planar_material(material))
+	_append_box(surface,Vector3.ZERO,Vector3(size.x*.15,size.y,size.z),material)
+	for sign in [-1.0,1.0]:
+		_append_box(surface,Vector3(0,0,sign*size.z*.43),Vector3(size.x,size.y,size.z*.14),material)
+		_append_box(surface,Vector3(0,sign*(size.y*.5-.018),0),Vector3(size.x*1.18,.036,size.z*1.18),material)
+		for x in [-1.0,1.0]:
+			for z in [-1.0,1.0]:
+				_append_box(surface,Vector3(x*size.x*.35,sign*(size.y*.5-.005),z*size.z*.35),Vector3(.025,.025,.025),material)
+	_shapes[key] = surface.commit()
+	return _shapes[key]
+
+
+static func _append_box(surface: SurfaceTool, at: Vector3, size: Vector3, material: Material) -> void:
+	surface.append_from(box(size,material),0,Transform3D(Basis.IDENTITY,at))

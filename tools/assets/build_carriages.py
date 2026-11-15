@@ -108,7 +108,6 @@ for crew in [False,True]:
     bpy.ops.mesh.primitive_cylinder_add(vertices=40,radius=radius,depth=depth,location=xyz((-1.65,2.52,z)),rotation=(0,math.pi/2,0));bpy.context.object.data.materials.append(mat)
    for i in range(13):
     a=math.radians(-130+i*260/12);tube('Pressure graduation',[(-1.7,2.52+math.cos(a)*.096,z+math.sin(a)*.096),(-1.7,2.52+math.cos(a)*.115,z+math.sin(a)*.115)],.003,steel)
-   tube('Instrument needle',[(-1.705,2.52,z),(-1.705,2.59,z-.04)],.004,steel)
   tube('Firebox hatch',[(-1.5,1.54+math.sin(i*math.tau/40)*.22,math.cos(i*math.tau/40)*.28) for i in range(41)],.018,brass) # Decorative rim; live controls stay separate.
  export('crew_car_finish' if crew else 'locomotive_cab_finish')
 # Hinged metal door with recessed panels, gasket, hinges and a rounded pull handle.

@@ -31,5 +31,19 @@
       "bytes": 8021888,
       "sha256": "bdc51bae52e30a553b456e138ef4267b64b4f06e61cdaaf9f2ddc1c80e86e563"
     }
-  ]
+  ],
+  "finalization_assets": {
+    "system_pack": [
+      "middleage_caucasian_male",
+      "male_casualsuit05",
+      "high-poly eyes",
+      "brown_eye",
+      "short04",
+      "eyebrow001",
+      "eyelashes01"
+    ],
+    "skins02_normal": "mindfront_skin_male_african_middleage/skin_male_african_middleage_NRM.png",
+    "shoes01": "toigo_ankle_boots_male",
+    "license": "CC0-1.0"
+  }
 }

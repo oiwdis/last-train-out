@@ -33,7 +33,7 @@ func interact(player: Player) -> bool:
 		1: train.stop()
 		2: train.set_mode_index((train.get_mode_index() + 1) % 3)
 	_refresh()
-	player.presentation_action.emit(&"operate", 0.8)
+	player.present_action(&"operate", .8, _handle.to_global(Vector3(-.19,.15,0)), _handle)
 	return true
 
 

@@ -2,21 +2,21 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dacwwxgm1mcs5"
-path.bptc="res://.godot/imported/railway_survivor_Aksel_Skin_NRM.png-dddfb072bbf2783c33c0111c93a5e3cd.bptc.ctex"
-path.astc="res://.godot/imported/railway_survivor_Aksel_Skin_NRM.png-dddfb072bbf2783c33c0111c93a5e3cd.astc.ctex"
+uid="uid://de8sixfy1o4vg"
+path.bptc="res://.godot/imported/railway_survivor_eyebrow001.png-54f62f28241300c657e71efd36120fe7.bptc.ctex"
+path.astc="res://.godot/imported/railway_survivor_eyebrow001.png-54f62f28241300c657e71efd36120fe7.astc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "ea4c8fcf075476c60deed6984ab84bc5"
+"md5": "67bd4a6045281c2f8aa7f28610223c5c"
 }
 
 [deps]
 
-source_file="res://assets/characters/railway_survivor_Aksel_Skin_NRM.png"
-dest_files=["res://.godot/imported/railway_survivor_Aksel_Skin_NRM.png-dddfb072bbf2783c33c0111c93a5e3cd.bptc.ctex", "res://.godot/imported/railway_survivor_Aksel_Skin_NRM.png-dddfb072bbf2783c33c0111c93a5e3cd.astc.ctex"]
+source_file="res://assets/characters/railway_survivor_eyebrow001.png"
+dest_files=["res://.godot/imported/railway_survivor_eyebrow001.png-54f62f28241300c657e71efd36120fe7.bptc.ctex", "res://.godot/imported/railway_survivor_eyebrow001.png-54f62f28241300c657e71efd36120fe7.astc.ctex"]
 
 [params]
 
@@ -26,7 +26,7 @@ compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
-compress/normal_map=1
+compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1

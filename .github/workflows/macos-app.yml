@@ -43,7 +43,7 @@ env:
   DEV_ZIP: LastTrainOut-macos-universal.zip
   SIGNED_ZIP: LastTrainOut-macos-universal-signed.zip
   # The build fails if fewer tests than this pass, so tests cannot silently go missing.
-  MIN_TESTS: "187"
+  MIN_TESTS: "194"
 
 jobs:
   build:
@@ -99,11 +99,16 @@ jobs:
         # playable build; failures/logs remain visible and are reported separately.
         continue-on-error: true
         run: |
-          mkdir -p "$RUNNER_TEMP/render-baseline" tests/_output/performance
+          mkdir -p "$RUNNER_TEMP/render-baseline/.godot" "$RUNNER_TEMP/render-previous/.godot" tests/_output/performance
           git fetch --no-tags --depth=1 origin 8cde10cf78c1ea0cf7f7bafb5fc146d2e12514c2
           git archive FETCH_HEAD | tar -x -C "$RUNNER_TEMP/render-baseline"
+          cp -R .godot/imported "$RUNNER_TEMP/render-baseline/.godot/"
+          git fetch --no-tags --depth=1 origin dfbfdf8ccf3e466788cc085ae5563a14e6382670
+          git archive FETCH_HEAD | tar -x -C "$RUNNER_TEMP/render-previous"
+          cp -R .godot/imported "$RUNNER_TEMP/render-previous/.godot/"
+          "$GODOT" --headless --path "$RUNNER_TEMP/render-previous" --import > tests/_output/performance/previous-import.log 2>&1
           "$GODOT" --headless --path "$RUNNER_TEMP/render-baseline" --import > tests/_output/performance/baseline-import.log 2>&1
-          python3 tools/macos/benchmark_compare.py "$GODOT" "$RUNNER_TEMP/render-baseline" tests/_output/performance
+          python3 tools/macos/benchmark_compare.py "$GODOT" "$RUNNER_TEMP/render-baseline" "$RUNNER_TEMP/render-previous" tests/_output/performance
 
       - name: Upload the test logs
         if: always()
@@ -239,6 +244,10 @@ jobs:
       - name: Launch the unzipped app with its window
         if: ${{ matrix.window }}
         run: tools/macos/run_selftest.sh "extracted/$APP_NAME.app" "${{ matrix.arch }}-window" --expect-arch "${{ matrix.arch }}"
+
+      - name: Validate the packaged M1 diagnostic
+        if: ${{ matrix.window }}
+        run: python3 tools/macos/check_packaged_benchmark.py "extracted/$APP_NAME.app" "$RUNNER_TEMP/selftest"
 
       - name: Upload the self-test reports
         if: always()

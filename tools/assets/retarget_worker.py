@@ -46,7 +46,7 @@ rest={b.name:b.matrix_local.copy() for b in target.data.bones}
 srest={b.name:b.matrix_local.copy() for b in source.data.bones}
 target.animation_data_create();target.animation_data.use_nla=False
 bpy.context.scene.render.fps=24
-clips={'idle':'Idle_Loop','walk':'Walk_Formal_Loop','jog':'Jog_Fwd_Loop','sprint':'Sprint_Loop','jump':'Jump_Start','fall':'Jump_Loop','land':'Jump_Land','pickup':'PickUp_Table','operate':'Interact','push':'Push_Loop'}
+clips={'idle':'Idle_Loop','walk':'Walk_Loop','jog':'Jog_Fwd_Loop','sprint':'Sprint_Loop','jump':'Jump_Start','fall':'Jump_Loop','land':'Jump_Land','pickup':'PickUp_Table','operate':'Interact','push':'Push_Loop'}
 produced={}
 for name,src in clips.items():
  original=bpy.data.actions[src+'_Armature'];source.animation_data.action=original;action=bpy.data.actions.new(name);target.animation_data.action=action
@@ -57,7 +57,11 @@ for name,src in clips.items():
    n=bone.name;parent=bone.parent;local=rest[parent.name].inverted()@rest[n] if parent else rest[n];parent_pose=posed[parent.name] if parent else Matrix.Identity(4);desired=parent_pose@local
    if n in mapping:
     sn=mapping[n];delta=source.pose.bones[sn].matrix.to_quaternion()@srest[sn].to_quaternion().inverted();rot=delta@rest[n].to_quaternion();location=desired.translation.copy();desired=rot.to_matrix().to_4x4();desired.translation=location
-    if n=='mixamorig:Hips':desired.translation=rest[n].translation+(source.pose.bones[sn].matrix.translation-srest[sn].translation)*.97
+    if n=='mixamorig:Hips':
+     hip_delta=source.pose.bones[sn].matrix.translation-srest[sn].translation
+     # In-place controller owns forward travel. Keep lateral sway and vertical
+     # bounce, discard forward translation even when the source action moves.
+     desired.translation=rest[n].translation+Vector((hip_delta.x,0,hip_delta.z))*.97
    basis=local.inverted()@parent_pose.inverted()@desired;p=target.pose.bones[n];p.matrix_basis=basis;p.rotation_mode='QUATERNION'
    if n in prev and p.rotation_quaternion.dot(prev[n])<0:p.rotation_quaternion.negate()
    prev[n]=p.rotation_quaternion.copy();p.keyframe_insert('rotation_quaternion',frame=frame,group=n);p.keyframe_insert('location',frame=frame,group=n);posed[n]=desired
@@ -70,7 +74,7 @@ def aim(bone_name, destination):
 def limb(side,upper,lower,end,destination,pole):
  a=target.pose.bones['mixamorig:'+side+upper];b=target.pose.bones['mixamorig:'+side+lower];c=target.pose.bones['mixamorig:'+side+end];start=a.head.copy();dest=Vector(destination);direction=dest-start;d=min(direction.length,a.length+b.length-.003);u=direction.normalized();v=(Vector(pole)-start);v=(v-u*v.dot(u)).normalized();x=(a.length*a.length-b.length*b.length+d*d)/(2*d);height=math.sqrt(max(0,a.length*a.length-x*x));elbow=start+u*x+v*height;aim(side+upper,elbow);aim(side+lower,start+u*d)
 def reset_from(clip,frame):
- target.animation_data.action=produced[clip];bpy.context.scene.frame_set(frame);bpy.context.view_layer.update();return {b.name:b.matrix_basis.copy() for b in target.pose.bones}
+ target.animation_data.action=produced[clip];bpy.context.scene.frame_set(int(frame), subframe=frame-int(frame));bpy.context.view_layer.update();return {b.name:b.matrix_basis.copy() for b in target.pose.bones}
 def restore(pose):
  target.animation_data.action=None
  for name,m in pose.items():target.pose.bones[name].matrix_basis=m
@@ -102,7 +106,9 @@ neutral.name='idle';neutral.use_fake_user=True;produced['idle']=neutral
 for name,length in [('carry',48),('carry_walk',32),('climb',32),('hang',48),('vault',24),('drop',20)]:
  action=bpy.data.actions.new(name)
  for frame in range(length+1):
-  clip='walk' if name=='carry_walk' else 'jump' if name=='vault' else 'idle';pose=reset_from(clip,frame if name in ['carry_walk','vault'] else frame%48);restore(pose)
+  clip='walk' if name=='carry_walk' else 'jump' if name=='vault' else 'idle'
+  sample_frame=frame/length*produced['walk'].frame_range[1] if name=='carry_walk' else frame if name=='vault' else frame%48
+  pose=reset_from(clip,sample_frame);restore(pose)
   for side,sign in [('Left',1),('Right',-1)]:
    if name in ['climb','hang']:
     phase=frame/length*2*math.pi+(0 if sign==1 else math.pi);reach=0 if name=='hang' else math.sin(phase)
@@ -148,6 +154,27 @@ for o in list(bpy.data.objects):
  if o not in meshes and o!=target:bpy.data.objects.remove(o,do_unlink=True)
 for a in list(bpy.data.actions):
  if a not in produced.values():bpy.data.actions.remove(a)
+target.animation_data.action=produced['idle'];bpy.context.scene.frame_set(0)
+# Measure the retargeted contact motion rather than guessing gait playback rates.
+# Positive Blender Y is rearward: a planted foot moves that way in model space.
+import statistics
+metrics={}
+for name in ['walk','jog','sprint','carry_walk']:
+ action=produced[name];target.animation_data.action=action
+ count=int(action.frame_range[1]);samples=[]
+ for frame in range(count+1):
+  bpy.context.scene.frame_set(frame);bpy.context.view_layer.update()
+  samples.append([target.pose.bones['mixamorig:'+side+'Foot'].head.copy() for side in ['Left','Right']])
+ speeds=[]
+ for side in range(2):
+  heights=sorted(row[side].z for row in samples);threshold=heights[len(heights)//3]+.01
+  for a,b in zip(samples,samples[1:]):
+   speed=(b[side].y-a[side].y)*24
+   if a[side].z<=threshold and b[side].z<=threshold and speed>.1:speeds.append(speed)
+ assert speeds, ('Missing stance samples',name)
+ metrics[name]={'duration_seconds':count/24,'stance_speed_mps':round(statistics.median(speeds),5),'stance_samples':len(speeds)}
+(ROOT/'assets/characters/locomotion_metrics.json').write_text(json.dumps(metrics,indent=2)+'\n')
+print('GAIT_METRICS',metrics,flush=True)
 target.animation_data.action=produced['idle'];bpy.context.scene.frame_set(0)
 # Limit resident textures to 2K; packed GLB includes original authored UV data.
 for im in bpy.data.images:

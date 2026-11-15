@@ -25,6 +25,7 @@ func build(station: Station) -> void:
 	_waiting_hall(station.get_node("ExplorationDistrict"))
 	for title in ["WarehouseA", "WarehouseB"]:
 		_warehouse(station.get_node(title), title == "WarehouseB")
+	_structural_steel(station)
 	for title in ["FreightCarA", "FreightCarB"]:
 		var car := station.get_node(title) as Node3D
 		for part in car.get_children():
@@ -194,6 +195,54 @@ func _warehouse(building: Node3D, damaged: bool) -> void:
 		place(building,DEBRIS,Vector3(x,.035,4.25),"WarehouseDebris",Vector3(.7,.7,.7),x)
 	if damaged:
 		place(building,DEBRIS,Vector3(16.8,.035,4.1),"BrokenLoadingPallet",Vector3.ONE,.2)
+		_deterioration(building)
+
+func _structural_steel(station: Station) -> void:
+	var steel := preload("res://resources/materials/environment_painted_steel.tres")
+	for part in station.find_children("*Pillar*", "BoxPart", true, false):
+		part.show_mesh = false
+		var column := MeshInstance3D.new()
+		column.name = "BoltedSteelColumn"
+		column.mesh = FabricatedMesh.steel_column(part.size, steel)
+		part.add_child(column)
+	var yard := station.get_node("FreightYard")
+	for part in yard.get_children():
+		if part is BoxVisual and String(part.name).begins_with("GantryLeg"):
+			part.mesh = FabricatedMesh.steel_column(part.size, steel)
+	var deck := yard.get_node("GantryDeck") as BoxPart
+	deck.show_mesh = false
+	var d := DetailBuilder.new(deck,"WeldedGratingAndRails")
+	for x in range(18):
+		d.box(Vector3(-.8+x*.094,.085,0),Vector3(.018,.03,1.98),DetailBuilder.STEEL)
+	for z in range(12):
+		d.box(Vector3(0,.055,-.96+z*.175),Vector3(1.68,.04,.016),DetailBuilder.STEEL)
+	for side in [-1.0,1.0]:
+		d.box(Vector3(side*.82,-.035,0),Vector3(.06,.16,2.0),DetailBuilder.INK)
+		for z in [-.96,.96]:
+			d.cylinder(Vector3(side*.81,.58,z),.024,1.0,DetailBuilder.AMBER)
+		for y in [.55,1.08]:
+			d.beam(Vector3(side*.81,y,-.96),Vector3(side*.81,y,.96),.038,DetailBuilder.STEEL)
+	for y in [.55,1.08]:
+		d.beam(Vector3(-.81,y,-.96),Vector3(.81,y,-.96),.038,DetailBuilder.STEEL)
+	# The ladder-facing end stays open at its existing exit; no new colliders.
+	d.finish()
+
+func _deterioration(building: Node3D) -> void:
+	var d := DetailBuilder.new(building,"TransferHallDamage")
+	# A failed roof bay and its debris share the same end-wall footprint. Keep
+	# the middle aisle and all cache approaches clear of art and collision.
+	for x in [1.0,2.15,3.3]:
+		d.beam(Vector3(x,5.12,3.8),Vector3(x+.18,4.05,4.6),.055,DetailBuilder.RUST)
+	for index in 9:
+		var x := 1.0+index*.23
+		d.box(Vector3(x,.055+fposmod(index*.017,.06),4.35),Vector3(.4,.055,.16),Color("5f5042"),Vector3(.1,index*.63,.07))
+	d.signboard(Vector3(4.2,1.65,4.62),"ROOF UNSAFE  /  BAY CLOSED",2.4,.28,Color("baa270"),PI)
+	for at in [Vector3(1.2,.07,4.2),Vector3(28.8,.07,4.3)]:
+		AssetDressing.place(building,"oil_can",at,Vector3.ONE*.8)
+	# Broken conduit hangs above the route, paired with the intact wall fixtures.
+	d.beam(Vector3(17,4.1,-.91),Vector3(18.6,3.85,-.88),.025,DetailBuilder.INK)
+	d.beam(Vector3(18.6,3.85,-.88),Vector3(18.9,3.1,-.66),.025,DetailBuilder.INK)
+	d.finish()
 
 func _weed(at: Vector3, size: float, yaw: float) -> void:
 	var key := floori(at.x/20)

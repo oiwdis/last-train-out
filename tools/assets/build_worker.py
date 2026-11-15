@@ -28,17 +28,19 @@ from mathutils import Vector
 from pathlib import Path
 D=HUMAN_DATA/'data'
 body.name='WorkerSkin';rig.name='WorkerRig'
-HumanService.set_character_skin(str(D/'skins/mindfront_aksel_skin/mindfront_aksel_skin.mhmat'),body,skin_type='MAKESKIN')
+HumanService.set_character_skin(str(D/'skins/middleage_caucasian_male/middleage_caucasian_male.mhmat'),body,skin_type='MAKESKIN')
 clothes=HumanService.add_mhclo_asset(str(D/'clothes/male_casualsuit05/male_casualsuit05.mhclo'),body,subdiv_levels=1)
 clothes.name='FieldJacketAndTrousers'
 boots=HumanService.add_mhclo_asset(str(D/'clothes/toigo_ankle_boots_male/toigo_ankle_boots_male.mhclo'),body,subdiv_levels=1)
 boots.name='LeatherWorkBoots'
-eyes=HumanService.add_mhclo_asset(str(D/'eyes/low-poly/low-poly.mhclo'),body,asset_type='Eyes',subdiv_levels=1)
+eyes=HumanService.add_mhclo_asset(str(D/'eyes/high-poly/high-poly.mhclo'),body,asset_type='Eyes',subdiv_levels=0)
 eyes.name='Eyes'
-brows=HumanService.add_mhclo_asset(str(D/'eyebrows/eyebrow004/eyebrow004.mhclo'),body,asset_type='Eyebrows',subdiv_levels=0)
+brows=HumanService.add_mhclo_asset(str(D/'eyebrows/eyebrow001/eyebrow001.mhclo'),body,asset_type='Eyebrows',subdiv_levels=0)
 brows.name='Eyebrows'
-hair=HumanService.add_mhclo_asset(str(D/'hair/short02/short02.mhclo'),body,asset_type='Hair',subdiv_levels=1)
+hair=HumanService.add_mhclo_asset(str(D/'hair/short04/short04.mhclo'),body,asset_type='Hair',subdiv_levels=1)
 hair.name='ShortHair'
+lashes=HumanService.add_mhclo_asset(str(D/'eyelashes/eyelashes01/eyelashes01.mhclo'),body,asset_type='Eyelashes',subdiv_levels=0)
+lashes.name='Eyelashes'
 # Standard glTF PBR materials: preserve authored UVs and source image data.
 def material(obj,name,diffuse,normal=None,rough=.7,alpha=False):
  m=bpy.data.materials.new(name);m.use_nodes=True;n=m.node_tree.nodes;l=m.node_tree.links;p=n.get('Principled BSDF');p.inputs['Roughness'].default_value=rough
@@ -50,18 +52,19 @@ def material(obj,name,diffuse,normal=None,rough=.7,alpha=False):
  if normal:
   t=tex(normal);t.image.colorspace_settings.name='Non-Color';nm=n.new('ShaderNodeNormalMap');l.new(t.outputs['Color'],nm.inputs['Color']);l.new(nm.outputs['Normal'],p.inputs['Normal'])
  obj.data.materials.clear();obj.data.materials.append(m)
-material(body,'Mindfront Aksel weathered skin',D/'skins/mindfront_aksel_skin/Aksel_Skin_diffuse.png',D/'skins/mindfront_aksel_skin/Aksel_Skin_NRM.png',.56)
+material(body,'Middle-aged worker skin',D/'skins/middleage_caucasian_male/middleage_lightskinned_male_diffuse.png',D/'skins/mindfront_skin_male_african_middleage/skin_male_african_middleage_NRM.png',.64)
 material(clothes,'Worn field jacket denim and leather',D/'clothes/male_casualsuit05/male_casualsuit05_diffuse.png',D/'clothes/male_casualsuit05/male_casualsuit05_normal.png',.82)
 material(boots,'Worn leather work boots',D/'clothes/toigo_ankle_boots_male/BootsAnkleM.png',D/'clothes/toigo_ankle_boots_male/BootsAnkle-norm.png',rough=.76)
-material(eyes,'Brown iris and sclera',D/'eyes/materials/brown_eye.png',rough=.23)
-material(brows,'Authored eyebrow cards',D/'eyebrows/eyebrow004/eyebrow004.png',rough=.85,alpha=True)
-material(hair,'Short cropped hair',D/'hair/short02/short02_diffuse.png',D/'hair/short02/short02_normal.png',.82,True)
+material(eyes,'Brown iris and sclera',D/'eyes/materials/brown_eye.png',rough=.17,alpha=True)
+material(brows,'Authored eyebrow cards',D/'eyebrows/eyebrow001/eyebrow001.png',rough=.9,alpha=True)
+material(hair,'Short cropped hair',D/'hair/short04/short04_diffuse.png',rough=.86,alpha=True)
+material(lashes,'Authored eyelash cards',D/'eyelashes/eyelashes01/eyelashes01.png',rough=.9,alpha=True)
 # Bake morph shape and masks. Leave skinning live. One subdivision retains fingers/face.
-for obj in [body,clothes,eyes,brows,hair,boots]:
+for obj in [body,clothes,eyes,brows,hair,boots,lashes]:
  bpy.context.view_layer.objects.active=obj;obj.select_set(True)
  if obj.data.shape_keys:bpy.ops.object.shape_key_remove(all=True,apply_mix=True)
  if obj==eyes:
-  sub=obj.modifiers.new('Iris curvature','SUBSURF');sub.levels=2
+  sub=obj.modifiers.new('Iris curvature','SUBSURF');sub.levels=1
  if obj==clothes:
   sub=obj.modifiers.new('Garment curvature','SUBSURF');sub.levels=1
  if obj==body:
@@ -83,7 +86,10 @@ for obj in [body,clothes,eyes,brows,hair,boots]:
 import bmesh
 bm=bmesh.new();bm.from_mesh(body.data);deform=bm.verts.layers.deform.active
 hand_ids={g.index for g in body.vertex_groups if any(part in g.name for part in ['Hand', 'ForeArm'])}
-remove=[v for v in bm.verts if v.co.z<1.18 and not any(v[deform].get(g,0)>.12 for g in hand_ids)]
+# Keep face/neck, the open collar, and the forearms needed by the FP mesh.
+# Skin beneath the opaque jacket/trousers otherwise adds tens of thousands of
+# invisible animated triangles. This is a visual mask, never body collision.
+remove=[v for v in bm.verts if not (v.co.z>1.43 or (v.co.z>1.24 and abs(v.co.x)<.13 and v.co.y<0) or any(v[deform].get(g,0)>.12 for g in hand_ids))]
 bmesh.ops.delete(bm,geom=remove,context='VERTS');bm.to_mesh(body.data);bm.free()
 # Presentation-only preview, never included in exported character.
 bpy.ops.wm.save_as_mainfile(filepath=str(BUILD/'worker-source.blend'))

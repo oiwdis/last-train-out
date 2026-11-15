@@ -70,6 +70,7 @@ func interact(player: Player) -> bool:
 	_stop_motion()
 	_motion = create_tween()
 	_motion.tween_property(_panel, "rotation:y", -PI / 2 if is_open else 0.0, 0.3)
+	player.present_action(&"operate", .4, _panel.to_global(Vector3(width*.82,height*.5,.08)), _panel)
 	_update_prompt()
 	return true
 

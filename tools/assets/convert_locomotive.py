@@ -12,7 +12,13 @@ bpy.ops.wm.open_mainfile(filepath=str(SOURCES/'roland_schuller_steam_locomotive_
 out=ROOT/'assets/train';out.mkdir(exist_ok=True);pbr=ROOT/'assets/pbr'
 # Baked source topology; adapt the rear cab to the existing walk-through footprint.
 deps=bpy.context.evaluated_depsgraph_get();source=list(bpy.context.scene.objects);meshes=[]
+# These source pieces form the static coupling/connecting rods and crank pins.
+# Runtime TrainMechanics replaces them with quartered slider-crank motion.
+linkages={'Cube','Cube.005','Cube.018','Cube.019','Cube.021','Cube.023',
+          'Cylinder','Cylinder.005','Cylinder.017','Cylinder.023'}
+linkages.update({'End'+('.%03d'%i if i else '') for i in range(11)})
 for obj in source:
+ if obj.name in linkages:continue
  if obj.type not in ['MESH','CURVE','FONT'] or obj.name.startswith(('Text','path')):continue
  mesh=bpy.data.meshes.new_from_object(obj.evaluated_get(deps),depsgraph=deps);matrix=obj.matrix_world.copy();new=bpy.data.objects.new(obj.name+'__game',mesh);bpy.context.collection.objects.link(new)
  for v in mesh.vertices:
@@ -60,7 +66,7 @@ for o in meshes:
 # Consolidate static geometry; wheels keep real axle pivots for speed-driven rotation.
 wheelgroups={};static=[]
 for o in meshes:
- if o.name.startswith('Wheel'):
+ if o.name.startswith('Wheel') or o.name == 'ScrewHead.027__game':
   centre=sum((v.co for v in o.data.vertices),Vector())/len(o.data.vertices);key=(round(centre.x,1),round(centre.y,1));wheelgroups.setdefault(key,[]).append(o)
  else:static.append(o)
 def join(objects,name,budget):

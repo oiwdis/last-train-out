@@ -22,6 +22,7 @@ func _exit_tree() -> void:
 	for material: StandardMaterial3D in _materials:
 		material.normal_enabled = _materials[material].normal
 		material.roughness_texture = _materials[material].roughness
+		material.subsurf_scatter_enabled = _materials[material].skin
 
 
 func bind(scene_root: Node3D, atmosphere: Atmosphere = null) -> void:
@@ -53,12 +54,12 @@ func _collect(node: Node) -> void:
 		for surface in node.multimesh.mesh.get_surface_count():
 			var material := node.multimesh.mesh.surface_get_material(surface) as StandardMaterial3D
 			if material != null and not _materials.has(material):
-				_materials[material] = {"normal": material.normal_enabled, "roughness": material.roughness_texture}
+				_materials[material] = {"normal": material.normal_enabled, "roughness": material.roughness_texture, "skin": material.subsurf_scatter_enabled}
 	if node is MeshInstance3D and node.mesh != null:
 		for surface in node.mesh.get_surface_count():
 			var material := node.get_active_material(surface) as StandardMaterial3D
 			if material != null and not _materials.has(material):
-				_materials[material] = {"normal": material.normal_enabled, "roughness": material.roughness_texture}
+				_materials[material] = {"normal": material.normal_enabled, "roughness": material.roughness_texture, "skin": material.subsurf_scatter_enabled}
 	if node is Light3D:
 		_lights.append({"light": node, "shadow": node.shadow_enabled})
 	if node is CPUParticles3D:
@@ -74,13 +75,14 @@ func set_preset(index: int, persist: bool = false) -> void:
 	var preset := PRESETS[current_index]
 	for material: StandardMaterial3D in _materials:
 		# Low retains textured colour but avoids the triplanar normal/roughness fetches.
-		material.normal_enabled = bool(_materials[material].normal) and current_index > 0
-		material.roughness_texture = _materials[material].roughness if current_index > 0 else null
+		material.normal_enabled = bool(_materials[material].normal) and preset.normal_maps
+		material.roughness_texture = _materials[material].roughness if preset.roughness_maps else null
+		material.subsurf_scatter_enabled = bool(_materials[material].skin) and preset.skin_scattering
 	if _atmosphere != null:
 		var environment := _atmosphere.get_environment()
 		environment.volumetric_fog_enabled = preset.volumetric_fog and _atmosphere.use_volumetric_fog and _atmosphere._volumetric_fog_is_supported()
 		environment.glow_enabled = preset.glow
-		environment.ssao_enabled = current_index == 2 and RenderingServer.get_current_rendering_method() == "forward_plus"
+		environment.ssao_enabled = preset.ssao and RenderingServer.get_current_rendering_method() == "forward_plus"
 		environment.ssao_radius = 1.0
 		environment.ssao_intensity = 1.1
 	for entry in _lights:
@@ -90,7 +92,7 @@ func set_preset(index: int, persist: bool = false) -> void:
 			(light as DirectionalLight3D).directional_shadow_max_distance = preset.shadow_distance
 		else:
 			light.shadow_enabled = bool(entry.shadow) and preset.local_shadows
-			light.distance_fade_enabled = current_index < 2
+			light.distance_fade_enabled = preset.light_distance_fade
 			light.distance_fade_begin = preset.light_fade_distance
 			light.distance_fade_shadow = preset.light_fade_distance * 0.75
 			light.distance_fade_length = 10
@@ -100,7 +102,7 @@ func set_preset(index: int, persist: bool = false) -> void:
 	get_viewport().msaa_3d = preset.msaa as Viewport.MSAA
 	# Detailed imported assets have generated LODs. Use a wider screen-space
 	# error budget on performance presets while retaining the same source models.
-	get_viewport().mesh_lod_threshold = [4.0, 2.0, 1.0][current_index]
+	get_viewport().mesh_lod_threshold = preset.mesh_lod_threshold
 	get_viewport().positional_shadow_atlas_size = preset.shadow_atlas_size
 	RenderingServer.directional_shadow_atlas_set_size(preset.shadow_atlas_size * 2, true)
 	_apply_resolution()

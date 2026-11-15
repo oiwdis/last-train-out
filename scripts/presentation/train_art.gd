@@ -6,6 +6,7 @@ extends Node3D
 var _steam: CPUParticles3D
 var _drive_wheels: Array[MeshInstance3D] = []
 var _wheel_phase := 0.0
+var mechanics: TrainMechanics
 
 
 func _ready() -> void:
@@ -28,6 +29,12 @@ func _ready() -> void:
 		add_child(machinery)
 		for mesh: MeshInstance3D in machinery.find_children("DrivingWheel*", "MeshInstance3D", true, false):
 			_drive_wheels.append(mesh)
+		mechanics = TrainMechanics.new()
+		mechanics.name = "LiveRunningGearAndInstruments"
+		add_child(mechanics)
+		var train := car.get_parent() as Train
+		if train != null:
+			train.reset_finished.connect(func() -> void: _wheel_phase = 0.0)
 		_steam = PresentationEffects.particles(self, Vector3(5.15, 3.55, 0), 22, Color(0.6, 0.67, 0.7, 0.24), 0.32, 2.1)
 		_steam.direction = Vector3(-0.4, 1, 0)
 		_steam.initial_velocity_min = 0.35
@@ -92,6 +99,9 @@ func _process(delta: float) -> void:
 		for wheel in _drive_wheels:
 			var radius := maxf(wheel.mesh.get_aabb().size.y * 0.5, 0.2)
 			wheel.rotation.z = -_wheel_phase / radius
+			if radius > .5 and wheel.position.z>0:
+				wheel.rotation.z += PI/2
+		mechanics.update_mechanism(_wheel_phase,train)
 		_steam.initial_velocity_max = 0.8 + minf(train.speed, 12.0) * 0.1
 		_steam.direction.x = -0.4 - train.speed * 0.1
 
