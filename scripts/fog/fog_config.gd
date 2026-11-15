@@ -12,6 +12,10 @@ extends Resource
 @export var station_speed_factor := 0.85
 @export var exposure_per_second := 3.0
 @export var depth_scale := 35.0
+@export var maximum_depth_multiplier := 3.0
+@export var movement_penalty_threshold := 70.0
+@export var minimum_movement_multiplier := 0.82
+@export var minimum_regen_multiplier := 0.35
 @export var recovery_per_second := 5.0
 @export var damage_per_second := 5.0
 @export var damage_threshold := 15.0
@@ -20,6 +24,7 @@ extends Resource
 @export var protection_open := 0.12
 @export var protection_building := 0.25
 @export var visibility_density := 0.095
+@export var visibility_falloff_distance := 65.0
 @export var audio_intensity := 0.7
 @export var events_enabled := true
 @export var event_interval_min := 50.0

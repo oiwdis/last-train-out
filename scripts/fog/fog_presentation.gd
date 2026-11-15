@@ -47,7 +47,7 @@ func _process(delta: float) -> void:
 	var dose := system.players[player_id].exposure as FogExposure
 	var gap := dose.progress - sim.front
 	# Visibility is local to the observer, never global while the front is distant.
-	var target := clampf(1 - gap / 65.0, 0, 1)
+	var target := clampf(1 - gap / maxf(1, system.config.visibility_falloff_distance), 0, 1)
 	if sim.event == "dense" and gap < system.config.approach_distance:
 		target = maxf(target, 0.55)
 	_blend = move_toward(_blend, target, delta * 0.6)

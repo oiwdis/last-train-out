@@ -1,7 +1,7 @@
 {
   "failed": 0,
   "godot": "4.5.1-stable (official)",
-  "passed": 211,
+  "passed": 214,
   "physics_engine": "Jolt Physics",
   "results": [
     {
@@ -280,7 +280,7 @@
     {
       "failures": [],
       "notes": [
-        "100 scripts compiled"
+        "103 scripts compiled"
       ],
       "passed": true,
       "suite": "test_project_integrity.gd",
@@ -298,7 +298,7 @@
     {
       "failures": [],
       "notes": [
-        "24 scenes instantiated"
+        "25 scenes instantiated"
       ],
       "passed": true,
       "suite": "test_project_integrity.gd",
@@ -752,6 +752,27 @@
       "passed": true,
       "suite": "test_fog_gameplay.gd",
       "test": "test_station_transition_survives_live_event"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_fog_gameplay.gd",
+      "test": "test_multiple_registered_survivors_have_independent_danger"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_fog_gameplay.gd",
+      "test": "test_restoring_living_save_after_death_reenables_player"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_fog_gameplay.gd",
+      "test": "test_warning_action_changes_after_boarding_and_departure"
     },
     {
       "failures": [],

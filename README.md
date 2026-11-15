@@ -2,7 +2,7 @@
 
 This branch adds survival pressure to the stable M2.5 gameplay baseline. See [Milestone 3](docs/MILESTONE_3.md), [fog architecture](docs/FOG_ARCHITECTURE.md) and [balancing](docs/FOG_BALANCING.md). F3 shows fog diagnostics; R restarts after fog death. E at the locomotive bunker burns one coal sack from train storage. Closed doors reduce exposure, but no interior is immune.
 
-The historical milestone notes below describe the baseline; their statements that advancing fog/fuel are absent are superseded on this branch.
+The historical milestone notes below describe the baseline. Milestone 3 validation and remaining scope are tracked separately in the linked report.
 
 # Last Train Out
 
@@ -260,7 +260,7 @@ working while it is open.
   (Emergency Steam 6 s / Normal 10 s / Slow Departure 16 s to full speed),
   maximum speed slider.
 - **Player:** Reset position, Reset stamina, Reset entire station.
-- **Future systems:** Trigger fog surge (prints a message; placeholder only).
+- **Fog:** Warn of a surge, with a configurable lead time before acceleration.
 - **Live diagnostics:** FPS, player speed, stamina, movement state, grounded,
   on train, train speed, train state, departure mode.
 
@@ -295,7 +295,7 @@ last-train-out/
 │   ├── settings/        render-only graphics presets
 │   ├── main/            game.gd - wires the systems together
 │   └── ui/              debug_menu, hud, supply_ui
-├── systems/             inventory_system; fog and passenger placeholders
+├── systems/             inventory_system; advancing fog; passenger placeholder
 ├── assets/icons/items/  original SVG inventory icons
 ├── resources/           tunable data: movement, departure modes, camera profiles, materials
 ├── tests/               test runner, unit and integration tests
@@ -342,7 +342,7 @@ last-train-out/
   **ScavengingSystem** coordinates caches, backpack, physical cargo and the moving train hold.
   **SupplyUI** subscribes to state signals.
 - **GraphicsSettings** applies Resource-based rendering presets without changing physics.
-- **Fog and passengers** remain small scene-owned placeholders. Nothing is an autoload.
+- **Fog** has a scene-owned survival authority; **passengers** remain a placeholder. Nothing is an autoload.
 
 More detail, including the reasoning behind the moving-platform approach, is
 in [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
@@ -415,8 +415,9 @@ Older milestone evidence remains in `docs/`.
 Milestone 2.5 adds immersive cameras, train interiors and controls, expanded environments,
 PBR materials, an articulated worker and original ambient sound. The art is an original
 procedural interpretation; it is not a claim of AAA photorealism.
-There is no advancing dangerous fog, damage, consumption, healing, crafting, combat,
-passenger AI, train upgrades, route selection, additional stations or full save/load.
+Milestone 3 adds advancing fog, exposure damage and boiler fuel consumption on this baseline.
+Healing, crafting, combat, passenger AI, train upgrades, route selection, additional stations
+and complete save/load are not implemented.
 Graphics and camera preferences persist across launches; inventory and train progress do not.
 
 [Scavenging rules and reset semantics](docs/SCAVENGING.md).

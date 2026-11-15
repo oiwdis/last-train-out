@@ -20,7 +20,7 @@ func bind(owner_game: Game, tuning: FogConfig) -> void:
 	bunker.reach = 1.7
 	bunker.action = func(_who: Player) -> bool:
 		var added := refuel()
-		game.hud.show_message("Boiler stoked · +45 fuel" if added else "Deposit a coal sack in train storage first · boiler must have room", 4)
+		game.hud.show_message("Boiler stoked · +%d fuel" % roundi(config.fuel_per_sack) if added else "Deposit a coal sack in train storage first · boiler must have room", 4)
 		return true
 	train.get_node("Locomotive").add_child(bunker)
 

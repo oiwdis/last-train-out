@@ -89,8 +89,8 @@ func _update_players(delta: float) -> void:
 		var cover := shelter_at(player.global_position, player.is_on_train())
 		dose.shelter = cover.title
 		dose.tick(delta, simulation.front - dose.progress, cover.protection, config)
-		player.stamina.regen_multiplier = lerpf(1, 0.35, dose.exposure / 100)
-		player.survival_speed_multiplier = lerpf(1, 0.82, clampf((dose.exposure - 70) / 30, 0, 1))
+		player.stamina.regen_multiplier = lerpf(1, config.minimum_regen_multiplier, dose.exposure / 100)
+		player.survival_speed_multiplier = lerpf(1, config.minimum_movement_multiplier, clampf((dose.exposure - config.movement_penalty_threshold) / maxf(1, 100 - config.movement_penalty_threshold), 0, 1))
 
 func shelter_at(point: Vector3, on_train: bool = false) -> Dictionary:
 	for shelter in shelters:

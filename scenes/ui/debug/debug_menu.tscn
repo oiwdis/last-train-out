@@ -139,7 +139,7 @@ theme_override_font_sizes/font_size = 12
 [node name="FogButton" type="Button" parent="Panel/Scroll/VBox"]
 unique_name_in_owner = true
 focus_mode = 0
-text = "Trigger fog surge (placeholder)"
+text = "Warn of a fog surge"
 
 [node name="Sep3" type="HSeparator" parent="Panel/Scroll/VBox"]
 

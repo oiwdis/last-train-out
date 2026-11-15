@@ -240,7 +240,7 @@ func _on_player_grab_failed(reason: String) -> void:
 
 func _on_fog_surge_triggered(_intensity: float) -> void:
 	if hud != null:
-		hud.show_message("Fog surge warning — acceleration in 10 seconds")
+		hud.show_message("Fog surge warning — acceleration in %d seconds" % ceili(fog_system.config.event_warning_seconds))
 
 
 func _on_passenger_state_changed(passenger_id: StringName, state: PassengerSystem.PassengerState) -> void:

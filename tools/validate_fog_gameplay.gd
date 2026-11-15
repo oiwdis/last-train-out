@@ -34,21 +34,31 @@ func _run() -> void:
 	await _walk([{"to": Vector3(13, 1, 0.3)}, {"to": Vector3(27.2, 1, 0.3)}, {"to": Vector3(27.2, 1, 1.2)}])
 	await _search(&"platform_locker")
 	_check(game.inventory_system.backpack.used_slots() > 0 and dose.health == 100, "A: two real searches completed safely")
-	await _seconds(1)
+	var normal_loco := game.train.get_node("Locomotive") as TrainCar
+	await _cut(normal_loco.to_global(Vector3(-2.7, 1.05, 0)), normal_loco.interior.controls[0].global_position, "A · BOARDING CUT / safe departure with the scavenged supplies")
+	game.player.input.script_interact()
+	await _seconds(5)
+	_check(game.train.is_moving() and game.player.is_on_train() and dose.health == 100, "A: safe departure with collected supplies")
+	game.reset_station()
+	await _seconds(0.2)
 	# A labeled scenario cut avoids making viewers wait several minutes.
 	await _cut(Vector3(98.2, 0.05, 1.45), Vector3(98.2, 1, 2.5), "B · SETUP CUT / Warehouse B, escape route now critical")
 	fog.simulation.front = -14
 	await _seconds(0.3)
 	await _search(&"b_precision")
 	await _save("02_critical_warehouse_b")
-	_caption("Extra supplies secured. Now get back to the train.", 5)
+	_caption("Heavy machinery revealed. Leave it — get back to the train.", 5)
 	view.request_perspective(1)
 	var health_before := dose.health
 	await _walk(_return_route())
 	await _walk([{"to": game.player.global_position, "then": "climb_up"}])
 	_check(game.player.is_on_train(), "B: physically returned, vaulted and climbed onto train")
+	print("[fog-gameplay] boarding clearance ", fog.train_progress - fog.simulation.front, " health ", dose.health)
 	await _save("03_last_second_boarding")
 	var loco := game.train.get_node("Locomotive") as TrainCar
+	await _walk([{"to": Vector3(19.15, 1.05, -3.5), "radius": 0.12, "sprint": false}])
+	await _seconds(1)
+	_check(game.player.global_position.y < 1.2, "B: dropped from roof onto connecting gangway")
 	await _walk([{"to": loco.to_global(Vector3(-2.7, 1.05, 0)), "sprint": false}])
 	view.request_perspective(0)
 	await _seconds(1)
@@ -182,7 +192,7 @@ func _check(ok: bool, label: String) -> void:
 
 func _finish() -> void:
 	var file := FileAccess.open("res://docs/validation/milestone3/gameplay.json", FileAccess.WRITE)
-	file.store_string(JSON.stringify({"godot": Engine.get_version_info().string, "headless": DisplayServer.get_name() == "headless", "checks": checks, "passed": not _failed}, "  "))
+	file.store_string(JSON.stringify({"godot": Engine.get_version_info().string, "headless": DisplayServer.get_name() == "headless", "viewport": str(get_viewport().get_visible_rect().size), "preset": "Low", "setup_cuts": "A cab boarding; B Warehouse B/front=-14; C coal reserve/front=-12; D cab/fuel=0.4; E platform/front=5; final surge/front=-25. No cuts within B return/boarding/departure/recovery.", "checks": checks, "passed": not _failed}, "  "))
 	get_tree().quit(1 if _failed else 0)
 
 func _return_route() -> Array:

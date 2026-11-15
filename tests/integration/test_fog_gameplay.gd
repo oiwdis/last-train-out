@@ -188,3 +188,43 @@ func test_station_transition_survives_live_event() -> void:
 	check_eq(fog.simulation.station_id, "next", "destination active")
 	check_eq(fog.simulation.event, "surge", "surge starts through transition")
 	check_greater(fog.simulation.front, front, "front never resets")
+
+func test_multiple_registered_survivors_have_independent_danger() -> void:
+	var remote := await spawn_scene("res://scenes/player/player.tscn", 2) as Player
+	remote.teleport_to(Vector3(90, 1, 10))
+	remote.input.scripted = true
+	var remote_dose := fog.register_player("remote", remote)
+	fog.simulation.front = 10
+	await seconds(1)
+	check_greater(dose.exposure, 0, "local survivor exposed")
+	check_near(remote_dose.exposure, 0, 0.001, "remote survivor still clear")
+	check_eq(fog.snapshot().players.size(), 2, "both doses serialized")
+	fog.unregister_player("remote")
+	check_eq(fog.players.size(), 1, "disconnect removes only that survivor")
+
+func test_restoring_living_save_after_death_reenables_player() -> void:
+	var saved := fog.snapshot()
+	dose.health = 0.1
+	dose.exposure = 100
+	fog.simulation.front = 100
+	await seconds(0.2)
+	check(dose.dead, "setup death")
+	game.reset_player()
+	check(dose.dead, "debug position reset cannot heal")
+	check(fog.restore(saved), "live survival state restored")
+	check(not game.player.input.blocked, "input unblocked")
+	game.player.input.script_move(1)
+	var start := game.player.global_position.x
+	await seconds(0.6)
+	check_greater(game.player.global_position.x, start + 1, "restored player moves")
+
+func test_warning_action_changes_after_boarding_and_departure() -> void:
+	fog.simulation.front = -20
+	var crew := game.train.get_node("CrewCar") as TrainCar
+	game.player.teleport_to(crew.to_global(Vector3(0, 1.05, 0)))
+	await seconds(0.5)
+	check(fog.survival_hud.status.text.contains("DEPART NOW"), "aboard stopped train gets departure instruction")
+	game.train.start()
+	await seconds(2)
+	check(fog.survival_hud.status.text.contains("KEEP STEAM UP"), "moving survivor gets escape instruction")
+	check(not fog.survival_hud.status.text.contains("RETURN"), "never tells aboard survivor to return")

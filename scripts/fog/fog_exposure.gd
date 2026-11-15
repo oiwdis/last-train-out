@@ -14,7 +14,7 @@ func tick(delta: float, depth: float, cover: float, config: FogConfig) -> void:
 		return
 	protection = clampf(cover, 0, 0.95)
 	if depth >= 0:
-		var intensity := (1.0 + clampf(depth / config.depth_scale, 0, 2)) * config.difficulty
+		var intensity := (1.0 + clampf(depth / maxf(1, config.depth_scale), 0, maxf(0, config.maximum_depth_multiplier - 1))) * config.difficulty
 		exposure = minf(100, exposure + delta * config.exposure_per_second * intensity * (1 - protection))
 		if exposure > config.damage_threshold:
 			var dose := (exposure - config.damage_threshold) / (100 - config.damage_threshold)

@@ -8,7 +8,7 @@ Milestone 3 starts at M2.5 commit `8cde10cf78c1ea0cf7f7bafb5fc146d2e12514c2` (PR
 
 `FogRoute` is an ordered itinerary of `FogRouteSegment` resources containing baked Curve3D geometry, stable segment IDs and outgoing IDs. It converts route metres to world points/tangents and projects world positions back onto the route. Segment hints disambiguate crossings. Segments must be connected, nonzero-length, and ordered in travel direction. Route sample points are world coordinates. A future branch authority chooses the itinerary; propagating several simultaneous branch fronts is **not implemented**. Extension before the first/after the last segment prevents clamping players to safe endpoints.
 
-The shipped Harlow route follows the actual M2.5 track from `(15, 0, -3.5)` in +X. `FogSystem` is the only adapter aware that the existing train uses a straight route and `Train.distance`. Curved sampling/projection and segment crossing are tested independently; the train itself does **not** gain curved-track physics.
+The shipped Harlow route follows the actual M2.5 track from `(15, 0, -3.5)` in +X. `FogSystem` is the only adapter aware that the existing train uses a straight route and `Train.distance`. Curved sampling/projection and segment crossing are tested independently; the train itself does **not** gain curved-track physics or reverse driving. Reverse route-distance danger is tested independently.
 
 `enter_station(id)` selects an authored station marker without resetting time, front, RNG, warnings, or doses. The baseline contains only Harlow Junction and about 480 m of train travel. No second station, route streaming, or endless-world content was invented. Station transitions are API/integration tested, not a playable second stop.
 
@@ -46,12 +46,14 @@ All character, train, station, animation, material and environment assets are un
 
 Shared-file changes that may need manual merging:
 
+- `project.godot`: application version/description only (0.3.0); preserve renderer settings.
 - `scripts/main/game.gd`: deferred fog binding after interiors/graphics, reset ordering, real surge message and fuel failure feedback.
 - `scripts/player/player.gd`: one survival multiplier after the existing heavy-carry speed cap.
 - `scripts/player/player_stamina.gd`: one regeneration multiplier.
 - `scripts/train/train.gd`: optional departure gate only; no integrator edits.
 - `scripts/main/self_test.gd`: six exported-fog checks.
 - `.github/workflows/macos-app.yml`: M2.5 PR target and minimum test count only; retain M2.6's asset-validation/cache/benchmark additions when integrating.
+- `scenes/ui/debug/debug_menu.tscn`: fog button caption no longer says placeholder.
 - Existing placeholder assertions in `test_station_systems.gd` now expect real danger/warnings.
 
 Cab/crew shelter bounds and bunker interaction currently match the M2.5 collision interiors, and read `TrainInterior.doors`. If M2.6 changes collision layout, adjust those explicit bounds in `_build_shelters`, not the art. `FogPresentation` obtains the current per-scene Environment **after** GraphicsSettings duplicates it; keep that ordering. Route curves must be authored in world space or transformed by a future route adapter. Always rerun the combined test suite and graphical smoke after integration.

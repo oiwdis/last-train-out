@@ -6,16 +6,23 @@ Implemented: route-driven advancing danger; four proximity states; seeded, warne
 
 - [Architecture and M2.6 integration](FOG_ARCHITECTURE.md)
 - [Tuning and rationale](FOG_BALANCING.md)
+- [Coverage and gameplay method](FOG_VALIDATION.md)
+- [Measured performance](PERFORMANCE_MILESTONE3.md)
 - [Raw validation](validation/milestone3)
 - [Screenshots](screenshots/milestone3)
+- [113-second gameplay recording](recording/milestone3_survival.mp4) · [capture method](recording/milestone3_survival.md)
+- [PR #5, final CI and universal macOS download](https://github.com/oiwdis/last-train-out/pull/5)
 
 ## Validation status
 
-Godot **4.5.1** Linux baseline: **168/168**. Updated full suite: **211/211** (43 additional fog tests), plus import and 600-frame scene smoke. The two obsolete placeholder assertions were updated to expect real fog behavior; existing gameplay cases remain. Raw logs/reports are committed under `docs/validation/milestone3`.
+Godot **4.5.1** Linux baseline: **168/168**. Updated full suite: **214/214** (46 additional fog tests), plus import and 600-frame scene smoke. The two obsolete placeholder assertions were updated to expect real fog behavior; existing gameplay cases remain. Raw logs/reports are committed under `docs/validation/milestone3`.
 
 Coverage includes route movement/segments/curves, danger boundaries, escalation, surge timing, calm/dense behavior, event determinism, difficulty, malformed saves, JSON continuation, independent doses, health/recovery, shelter doors/roofs, existing train escape and stopped catch-up, reverse progress, moving-train exit, live search, heavy cargo, death/restart, fuel/refueling, graphics independence, FP/TP and station-transition APIs.
 
-Graphical gameplay recording, performance comparison and macOS CI results are being collected; no success is claimed until linked evidence exists. The preserved macOS workflow adds six exported survival checks and still exports a universal app, checks bundle/ZIP integrity, runs Apple Silicon headless/windowed and fresh-download checks, and Intel headless validation. Optional signing/notarization remains unchanged.
+Graphical validation: **60/60 scenario checks passed** in the actual recorded scene; nine screenshots and the complete 113.125-second recording are committed. The movie shutdown reported an ObjectDB cleanup warning, documented in the capture notes. This was a scripted demonstration with explicit setup cuts, not independent human playtesting.
+
+The initial macOS [run 18](https://github.com/oiwdis/last-train-out/actions/runs/43758080250) passed the 211-test implementation, universal export, bundle/ZIP checks, Apple Silicon exported/fresh-download headless/windowed launches and Intel fresh-download headless launch. Final-source CI and downloadable ZIP links are maintained in [PR #5](https://github.com/oiwdis/last-train-out/pull/5), so build IDs are not embedded into the source commit they validate. Match the run's head SHA to the reported source revision. The preserved workflow now requires 214 tests and six additional exported survival checks; optional signing/notarization is unchanged.
+
 
 ## Explicit limitations
 
@@ -24,4 +31,4 @@ Graphical gameplay recording, performance comparison and macOS CI results are be
 - Boundaries use economical translucent sheets and observer haze; not volumetric sculpting or photorealistic replacement assets. No humanoid silhouette assets.
 - Difficulty/seed are configurable resources, not new player-facing mission selectors.
 - Physical Apple Silicon performance and human play feel remain unverified. Linux software rendering is not an M1 result. Hosted Mac evidence, when available, is labeled as such.
-- Final screenshots/video/build links and measured performance are pending in this initial review commit. The PR remains a draft until validation evidence is attached; incomplete world progression remains stated even after those checks succeed.
+- The PR remains a draft because the complete requested between-station campaign loop is not implemented on the one-station baseline, even when all build/scenario checks pass.

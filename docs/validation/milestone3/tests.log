@@ -57,11 +57,11 @@ Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
 
 [SUITE] test_project_integrity.gd
   PASS  test_all_scripts_compile
-          . 100 scripts compiled
+          . 103 scripts compiled
   PASS  test_all_resources_load
           . 65 resources loaded
   PASS  test_all_scenes_instantiate
-          . 24 scenes instantiated
+          . 25 scenes instantiated
   PASS  test_main_scene_is_configured
   PASS  test_input_map_has_all_actions
   PASS  test_physics_layers_are_named
@@ -141,6 +141,9 @@ Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
   PASS  test_world_snapshot_roundtrip_and_invalid_save_atomicity
   PASS  test_individual_resets_do_not_reset_fog
   PASS  test_station_transition_survives_live_event
+  PASS  test_multiple_registered_survivors_have_independent_danger
+  PASS  test_restoring_living_save_after_death_reenables_player
+  PASS  test_warning_action_changes_after_boarding_and_departure
 
 [SUITE] test_keyboard_input.gd
   PASS  test_d_and_a_walk_right_and_left
@@ -292,6 +295,6 @@ Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
   PASS  test_walking_onto_moving_deck_carries_the_player
   PASS  test_obstacle_in_the_way_knocks_a_climber_off_instead_of_dragging_through
 
-=== 211 passed, 0 failed, 211 total (93.4 s wall clock) ===
+=== 214 passed, 0 failed, 214 total (88.1 s wall clock) ===
 
 ALL CHECKS PASSED

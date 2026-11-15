@@ -16,7 +16,7 @@ func bind(authority: FogSystem, id: String) -> void:
 	layer = 45
 	panel = PanelContainer.new()
 	panel.theme = RailTheme.create()
-	panel.position = Vector2(30, 118)
+	panel.position = Vector2(30, 206)
 	panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(panel)
 	var column := VBoxContainer.new()
@@ -55,6 +55,10 @@ func _process(delta: float) -> void:
 	var state := int(sim.danger(minf(dose.progress, system.train_progress)))
 	var gap := minf(dose.progress, system.train_progress) - sim.front
 	status.text = ["FOG DISTANT", "FOG APPROACHING", "FOG CRITICAL · RETURN TO TRAIN", "FOG EXPOSURE · SEEK SHELTER"][state]
+	if state == 3 and dose.progress > sim.front:
+		status.text = "ESCAPE ROUTE ENGULFED · RETURN NOW"
+	if state >= 2 and system.game.player.is_on_train():
+		status.text = "FOG AT TRAIN · KEEP STEAM UP" if system.game.train.is_moving() else "FOG AT TRAIN · DEPART NOW"
 	status.modulate = RailTheme.MUTED if state == 0 else (RailTheme.AMBER if state == 1 else RailTheme.ALERT)
 	panel.modulate.a = 0.8 if state == 0 else 1.0
 	details.text = "Escape route: ~%d m clear" % (maxi(0, roundi(gap / 10)) * 10) if gap > 0 else "Escape route engulfed · keep steam up"
