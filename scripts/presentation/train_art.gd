@@ -7,51 +7,65 @@ var _steam: CPUParticles3D
 
 
 func _ready() -> void:
-	var d := DetailBuilder.new(self, "TrainDetails")
-	var ink := DetailBuilder.INK
-	var brass := DetailBuilder.AMBER.darkened(0.18)
-	var cream := DetailBuilder.PALE
-	for x in [-3.3, -2.3, 2.3, 3.3]:
-		d.box(Vector3(x, 0.7, 1.12), Vector3(0.7, 0.14, 0.18), ink)
-		d.cylinder(Vector3(x, 0.52, 1.0), 0.13, 0.11, brass, Vector3(PI / 2, 0, 0))
+	var car := get_parent()
+	# Original mechanical meshes share materials and stay on the existing body.
+	for child in car.get_children():
+		if child is MeshInstance3D and kind == 0:
+			child.hide()
+	var wheels := car.get_node_or_null("Wheels")
+	if wheels != null:
+		for wheel in wheels.get_children():
+			for old in wheel.get_children():
+				if old is GeometryInstance3D:
+					old.hide()
+			wheel.add_child(preload("res://assets/models/rail_wheel.glb").instantiate())
 	if kind == 0:
-		for x in [-0.3, 1.1, 2.6, 3.7]:
-			var ring := TorusMesh.new()
-			ring.inner_radius = 0.96
-			ring.outer_radius = 1.01
-			ring.rings = 20
-			ring.ring_segments = 6
-			d.mesh(ring, Vector3(x, 2.02, 0), brass, Vector3(0, 0, PI / 2))
-		d.beam(Vector3(-0.8, 2.6, 0.9), Vector3(3.9, 2.6, 0.9), 0.045, brass)
-		d.box(Vector3(1, 1.35, 1.18), Vector3(4.9, 0.15, 0.12), ink)
-		d.cylinder(Vector3(3.5, 3.87, 0), 0.38, 0.15, ink)
-		d.signboard(Vector3(-2.2, 1.38, 1.34), "L T O   /   07", 2.0, 0.45, cream)
-		_frame_window(d, Vector3(-2.3, 2.55, 1.34), Vector2(1.3, 0.75))
+		var machinery := preload("res://assets/models/locomotive_machinery.glb").instantiate()
+		add_child(machinery)
+		for mesh: MeshInstance3D in machinery.find_children("*", "MeshInstance3D", true, false):
+			for surface in mesh.mesh.get_surface_count():
+				if mesh.mesh.surface_get_material(surface).resource_name.contains("Blackened"):
+					mesh.set_surface_override_material(surface, preload("res://resources/materials/metal_dark.tres"))
 		_steam = PresentationEffects.particles(self, Vector3(3.5, 3.98, 0), 22, Color(0.6, 0.67, 0.7, 0.24), 0.32, 2.1)
 		_steam.direction = Vector3(-0.4, 1, 0)
 		_steam.initial_velocity_min = 0.35
 		_steam.initial_velocity_max = 0.8
 		_steam.gravity = Vector3(-0.1, 0.2, 0)
 		_steam.emitting = true
-	elif kind == 1:
-		for x in [-2.2, -0.75, 0.75, 2.2]:
-			_frame_window(d, Vector3(x, 2.45, 1.34), Vector2(0.9, 0.7))
-			# Curtains and a lower sash give the warm windows an inhabited scale.
-			d.box(Vector3(x - 0.32, 2.47, 1.36), Vector3(0.15, 0.6, 0.025), Color("ab683e"))
-		for x in range(-3, 4):
-			d.box(Vector3(x, 1.35, 1.315), Vector3(0.025, 0.55, 0.025), brass)
-		d.signboard(Vector3(0.5, 3.13, 1.34), "LAST TRAIN OUT", 3.8, 0.42, cream)
-		d.lettering(Vector3(0.4, 1.38, 1.35), "CREW   /   02", 0.18, cream)
-		for x in [-2.6, -1.1, 1.1, 2.6]:
-			d.box(Vector3(x, 3.64, 0), Vector3(0.035, 0.03, 2.58), brass)
+	var d := DetailBuilder.new(self, "TrainDetails")
+	if kind == 1:
+		d.signboard(Vector3(0, 3.2, 1.34), "LAST TRAIN OUT  /  CREW", 4.5, 0.35)
+	elif kind == 0:
+		d.signboard(Vector3(-2.6, 1.5, 1.34), "L T O   /   07", 2, 0.3)
 	else:
-		for x in range(-4, 5):
-			d.box(Vector3(x * 0.95, 1.015, 0), Vector3(0.025, 0.015, 2.45), ink)
-		d.lettering(Vector3(0, 0.78, 1.28), "SUPPLY   /   03", 0.2, cream)
-	# Small rivet rows are baked into the same batch as the brass fittings.
+		d.lettering(Vector3(0, 0.78, 1.28), "SUPPLY   /   03", 0.2, DetailBuilder.PALE)
 	for i in 25:
-		d.box(Vector3(-4.2 + i * 0.35, 0.91, 1.28), Vector3(0.035, 0.035, 0.025), brass)
+		for side in [-1.0, 1.0]:
+			d.cylinder(Vector3(-4.2 + i * 0.35, 0.9, side * 1.28), 0.018, 0.025, DetailBuilder.STEEL, Vector3(PI / 2, 0, 0))
 	d.finish()
+	if kind != 2:
+		_curved_roof(0.0 if kind == 1 else -2.6, 7.0 if kind == 1 else 3.45)
+
+
+func _curved_roof(centre: float, length: float) -> void:
+	var surface := SurfaceTool.new()
+	surface.begin(Mesh.PRIMITIVE_TRIANGLES)
+	for index in 20:
+		var z0 := -1.37 + index * 2.74 / 20
+		var z1 := z0 + 2.74 / 20
+		var y0 := 3.62 - 0.13 * pow(z0 / 1.37, 2)
+		var y1 := 3.62 - 0.13 * pow(z1 / 1.37, 2)
+		var a := Vector3(centre - length / 2, y0, z0)
+		var b := Vector3(centre + length / 2, y0, z0)
+		var c := Vector3(centre + length / 2, y1, z1)
+		var d := Vector3(centre - length / 2, y1, z1)
+		for point in [a, c, b, a, d, c]:
+			surface.add_vertex(point)
+	surface.generate_normals()
+	var mesh := MeshInstance3D.new()
+	mesh.mesh = surface.commit()
+	mesh.material_override = preload("res://resources/materials/roof_metal.tres")
+	add_child(mesh)
 
 
 func _process(_delta: float) -> void:

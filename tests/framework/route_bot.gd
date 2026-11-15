@@ -97,6 +97,7 @@ func _perform(action: String, _step: Dictionary, index: int) -> bool:
 			return true
 		"interact":
 			_player.input.script_move(0.0)
+			await _aim_for_interaction()
 			_player.input.script_interact()
 			for i in 30:
 				await _tick()
@@ -141,6 +142,36 @@ func _perform(action: String, _step: Dictionary, index: int) -> bool:
 			return false
 	failure = "step %d: unknown action '%s'" % [index, action]
 	return false
+
+
+## Routes now have to look at their targets, just like physical mouse input.
+func _aim_for_interaction() -> void:
+	var eye := _player.interactor.aim_camera
+	if eye == null:
+		return
+	var view := eye.get_parent().get_node_or_null("ExplorationCamera") as ExplorationCamera
+	if view == null:
+		return
+	if not _player.interactor.find_vault(_player.facing).is_empty():
+		view.aim_at(_player.global_position + _player.facing * 2 + Vector3.UP * 1.4)
+		await _tree.process_frame
+		return
+	var best: Interactable
+	var distance := INF
+	for node in _player.get_parent().find_children("*", "Interactable", true, false):
+		if (node is Ladder or node is GrabRail) and node.can_interact(_player):
+			var separation: float = node.get_interaction_distance(_player)
+			if separation < distance:
+				best = node
+				distance = separation
+	if best != null:
+		var target := best.get_interaction_point(_player)
+		if best is Ladder:
+			target = best.to_global(Vector3(0, clampf(best.to_local(_player.global_position).y + 1.0, 0, best.height), 0.1))
+		view.aim_at(target)
+	else:
+		view.aim_at(_player.global_position + _player.facing * 2 + Vector3.UP * 1.4)
+	await _tree.process_frame
 
 
 func _wants_sprint() -> bool:

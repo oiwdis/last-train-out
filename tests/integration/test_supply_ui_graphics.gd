@@ -48,13 +48,16 @@ func test_graphics_presets_switch_render_features_without_touching_physics() -> 
 	var tick_rate := Engine.physics_ticks_per_second
 	var train_speed := game.train.max_speed
 	var environment := (game.station.get_node("Atmosphere") as Atmosphere).get_environment()
+	var metal := preload("res://resources/materials/train_body.tres")
 	game.graphics.set_preset(0)
+	check(not metal.normal_enabled and metal.roughness_texture == null, "Low removes costly triplanar normal/roughness samples")
 	check(not environment.volumetric_fog_enabled and not environment.glow_enabled, "Low disables expensive fog and bloom")
 	check_eq(get_viewport().msaa_3d, Viewport.MSAA_DISABLED, "Low avoids MSAA")
 	check_less(get_viewport().scaling_3d_scale, 0.66, "Low reduces 3D render resolution")
 	for entry in game.graphics._lights:
 		check(not (entry.light as Light3D).shadow_enabled, "Low disables shadow passes")
 	game.graphics.set_preset(1)
+	check(metal.normal_enabled and metal.roughness_texture != null, "Medium restores authored PBR maps")
 	check(not environment.volumetric_fog_enabled and environment.glow_enabled, "Medium keeps readable depth haze and glow")
 	game.graphics.set_preset(2)
 	check_eq(get_viewport().msaa_3d, Viewport.MSAA_2X, "High restores antialiasing")

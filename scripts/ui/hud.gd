@@ -52,7 +52,7 @@ func _build() -> void:
 	_status.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	_speed = _label(status_row, "00 km/h", 13, RailTheme.PAPER)
 	_train_gauge = _bar(train_rows, 3)
-	_label(train_rows, "ROOF & DECK BOARDING", 10, RailTheme.MUTED)
+	_label(train_rows, "CAB · CREW · SUPPLY DECK", 10, RailTheme.MUTED)
 	var stamina_box := _panel("Endurance", Vector2(30, -112), Vector2(248, 82), Vector2(0, 1))
 	var stamina_rows := _rows(stamina_box)
 	var stamina_header := HBoxContainer.new()
@@ -73,7 +73,14 @@ func _build() -> void:
 	_message.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_message.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	_message_panel.modulate.a = 0
-	var controls := _label(_root, "WASD MOVE   SPACE JUMP   E USE   TAB PACK   G CARGO   F2 GRAPHICS", 11, RailTheme.MUTED)
+	var reticle := _label(_root, "·", 25, RailTheme.PAPER)
+	reticle.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
+	reticle.offset_left = -7
+	reticle.offset_top = -18
+	reticle.offset_right = 7
+	reticle.offset_bottom = 18
+	reticle.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	var controls := _label(_root, "WASD MOVE   MOUSE LOOK   V VIEW   E USE   TAB PACK   G DROP", 11, RailTheme.MUTED)
 	controls.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_RIGHT)
 	controls.offset_left = -610
 	controls.offset_top = -42

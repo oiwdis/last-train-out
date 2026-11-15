@@ -97,6 +97,7 @@ func _build_visual() -> void:
 	_indicator.material_override = mat
 	add_child(_indicator)
 	_label = Label3D.new()
+	_label.billboard = BaseMaterial3D.BILLBOARD_ENABLED
 	_label.position = Vector3(0, height + 0.28, 0)
 	_label.font_size = 32
 	_label.pixel_size = 0.005

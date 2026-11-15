@@ -10,6 +10,15 @@ extends Node3D
 @export var train_stop: Marker3D
 
 
+func _ready() -> void:
+	# Old painted scenery now sits beyond the walkable perimeter.
+	var backdrop := get_node_or_null("Background") as Node3D
+	if backdrop != null:
+		backdrop.position.z = -20
+	var district := ExplorationDistrict.new()
+	add_child(district)
+
+
 func get_player_spawn_position() -> Vector3:
 	return player_spawn.global_position if player_spawn != null else global_position
 

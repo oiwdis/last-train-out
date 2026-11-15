@@ -39,8 +39,8 @@ func _platform(station: Node3D) -> void:
 		d.box(Vector3(x - 0.12, 1.17, 2.68), Vector3(0.04, 0.22, 0.015), D.AMBER)
 	# Retaining wall piers and recessed brick courses.
 	for x in range(-10, 150, 4):
-		d.box(Vector3(x, 1.2, -5.05), Vector3(0.35, 2.4, 0.2), D.STEEL)
-		d.box(Vector3(x, 2.4, -5.15), Vector3(4.0, 0.12, 0.55), D.INK)
+		d.box(Vector3(x, 1.2, -25.05), Vector3(0.35, 2.4, 0.2), D.STEEL)
+		d.box(Vector3(x, 2.4, -25.15), Vector3(4.0, 0.12, 0.55), D.INK)
 	d.finish()
 
 

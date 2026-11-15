@@ -11,8 +11,8 @@ config_version=5
 [application]
 
 config/name="Last Train Out"
-config/version="0.2.0"
-config/description="Milestone 2: scavenging, inventory and physical cargo."
+config/version="0.2.5"
+config/description="Milestone 2.5: full 3D exploration, train interiors and physical cargo."
 run/main_scene="res://scenes/main/main.tscn"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
@@ -92,6 +92,11 @@ drop_cargo={
 graphics_cycle={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"physical_keycode":4194333)]
+}
+
+perspective_toggle={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"physical_keycode":86)]
 }
 
 [layer_names]

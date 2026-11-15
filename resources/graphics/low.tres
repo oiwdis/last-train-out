@@ -3,7 +3,7 @@
 [resource]
 script = ExtResource("1")
 display_name = "Low"
-description = "65% 3D resolution with a 720p budget. Depth haze, no shadows or bloom. Full-resolution UI."
+description = "65% 3D resolution, 720p budget. Textured surfaces, simplified shading, no shadows/bloom. Sharp UI."
 render_scale = 0.65
 maximum_3d_height = 720
 glow = false

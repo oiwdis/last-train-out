@@ -14,6 +14,14 @@ var _atmosphere: Atmosphere
 var _lights: Array[Dictionary] = []
 var _particles: Array[Dictionary] = []
 var _ready_to_apply := false
+var _materials: Dictionary = {}
+
+
+func _exit_tree() -> void:
+	# Resources are shared across instances; restore authored values on scene teardown.
+	for material: StandardMaterial3D in _materials:
+		material.normal_enabled = _materials[material].normal
+		material.roughness_texture = _materials[material].roughness
 
 
 func bind(scene_root: Node3D, atmosphere: Atmosphere = null) -> void:
@@ -41,6 +49,11 @@ func _finish_bind() -> void:
 
 
 func _collect(node: Node) -> void:
+	if node is MeshInstance3D and node.mesh != null:
+		for surface in node.mesh.get_surface_count():
+			var material := node.get_active_material(surface) as StandardMaterial3D
+			if material != null and not _materials.has(material):
+				_materials[material] = {"normal": material.normal_enabled, "roughness": material.roughness_texture}
 	if node is Light3D:
 		_lights.append({"light": node, "shadow": node.shadow_enabled})
 	if node is CPUParticles3D:
@@ -54,10 +67,17 @@ func set_preset(index: int, persist: bool = false) -> void:
 	if not _ready_to_apply:
 		return
 	var preset := PRESETS[current_index]
+	for material: StandardMaterial3D in _materials:
+		# Low retains textured colour but avoids the triplanar normal/roughness fetches.
+		material.normal_enabled = bool(_materials[material].normal) and current_index > 0
+		material.roughness_texture = _materials[material].roughness if current_index > 0 else null
 	if _atmosphere != null:
 		var environment := _atmosphere.get_environment()
 		environment.volumetric_fog_enabled = preset.volumetric_fog and _atmosphere.use_volumetric_fog and _atmosphere._volumetric_fog_is_supported()
 		environment.glow_enabled = preset.glow
+		environment.ssao_enabled = current_index == 2 and RenderingServer.get_current_rendering_method() == "forward_plus"
+		environment.ssao_radius = 1.0
+		environment.ssao_intensity = 1.1
 	for entry in _lights:
 		var light := entry.light as Light3D
 		if light is DirectionalLight3D:

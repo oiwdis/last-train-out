@@ -36,6 +36,7 @@ func _approach(cache: SearchContainer) -> bool:
 			continue
 		game.player.teleport_to(point, Vector3(-offset.x, 0, -offset.z).normalized() if offset.length() > 0.1 else Vector3.RIGHT)
 		await seconds(0.3)
+		game.camera_rig.exploration.aim_at(cache.global_position + Vector3.UP * 0.65)
 		if game.player.is_grounded() and cache.can_interact(game.player) and game.player._choose_interaction().get("interactable") == cache:
 			return true
 	return false

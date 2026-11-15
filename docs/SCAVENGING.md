@@ -1,7 +1,8 @@
 # Scavenging at Harlow Junction
 
 Thirteen marked caches span the platform, both warehouses and the freight yard. Approach a
-SUPPLIES marker and press E. Searching takes 1–4 seconds; E, Esc, movement, jumping or leaving
+SUPPLIES marker, aim the centre reticle at the cache and press E. Targeting in both camera
+modes checks reach and line of sight. Searching takes 1–4 seconds; E, Esc, movement, jumping or leaving
 reach cancels without changing loot. A brief highlight and a notice confirm completion.
 Searched caches turn green. E collects remaining items after you make room in the backpack.
 
@@ -42,13 +43,15 @@ Heavy objects occupy your hands, not backpack slots. E lifts one while standing 
 ground, movement slows to 2.5 m/s and sprint is disabled. G immediately releases it; it
 remains recoverable in the world. Ladders, rail grabs, vaulting and climbing require putting
 it down first and show a hands-full notice. Jumping and boarding the flat car remain possible.
-Held objects cannot block or push the player. Released cargo collides with world/train floors
+V switches perspectives while preserving the same cargo object: a camera anchor holds it
+in first person, and an animated body anchor holds it in third person. Held objects cannot
+block or push the player. Released cargo collides with world/train floors
 but not the player or other cargo; this is reliable carrying, not a stacking physics puzzle.
 
 ## Train hold
 
 The marked SUPPLY HOLD is on the flat car and moves with it. Approach from the platform or
-deck and press E. R deposits all backpack supplies and held cargo. Deposit selected moves
+deck, look at the hold and press E. R deposits all backpack supplies and held cargo. Deposit selected moves
 one selected backpack stack. Click a storage row (or use ↑/↓), then Enter or Withdraw selected
 moves a stack into available backpack space; heavy cargo goes directly into free hands.
 
@@ -71,5 +74,5 @@ checks reach again. Close the ledger to resume walking; G remains available for 
 | Reset entire station | All inventories, held/loose items and search progress clear; the original seeded caches regenerate |
 | Quit and relaunch | A fresh station; supplies are not saved |
 
-The graphics choice alone persists. Item future-use metadata is inert: no crafting, healing,
+Graphics and camera preferences persist. Item future-use metadata is inert: no crafting, healing,
 fuel consumption, upgrades, damage or dangerous advancing fog is implemented.

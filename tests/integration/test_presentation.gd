@@ -93,28 +93,28 @@ func test_message_expiry_and_rebinding() -> void:
 	check_eq(game.player.stamina.changed.get_connections().filter(func(c: Dictionary) -> bool: return c.callable.get_object() == game.hud).size(), 1, "rebind does not duplicate stamina callbacks")
 
 
-func test_facade_details_hide_with_cutaway_and_restore() -> void:
+func test_facade_details_remain_opaque_during_interior_exploration() -> void:
 	var wall := game.station.get_node("WarehouseA/FrontWall") as CutawayWall
 	var meshes := _meshes(wall.get_node("FacadeDetails"))
 	check_greater(meshes.size(), 3, "facade includes batched trim and text meshes")
 	game.player.teleport_to(Vector3(44.5, 0.05, 1.2))
 	await seconds(0.8)
 	for mesh in meshes:
-		check(not mesh.visible, "decorative facade does not obstruct the interior")
+		check(mesh.visible, "physical facade stays visible from inside")
 	game.reset_player()
 	await seconds(0.8)
 	for mesh in meshes:
 		check(mesh.visible, "facade detail returns on exit")
 
 
-func test_rear_details_hide_when_riding_behind_building() -> void:
+func test_rear_details_remain_opaque_when_riding_behind_building() -> void:
 	var wall := game.station.get_node("WarehouseB/BackWall") as CutawayWall
 	var meshes := _meshes(wall.get_node("InteriorDetails"))
 	game.player.teleport_to(Vector3(80, 3.7, -3.2))
 	await seconds(0.8)
-	check(wall.is_cut_away(), "track lane opens the rear wall")
+	check(not wall.is_cut_away(), "track lane keeps the rear wall opaque")
 	for mesh in meshes:
-		check(not mesh.visible, "rear signs and conduit do not float over rider")
+		check(mesh.visible, "rear signs and conduit remain attached to physical walls")
 
 
 func test_new_art_contains_no_collision_or_excess_lights() -> void:

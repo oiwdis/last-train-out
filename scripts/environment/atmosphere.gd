@@ -17,6 +17,21 @@ func _ready() -> void:
 	var environment := _world_environment.environment
 	if environment == null:
 		return
+	var sky_material := ProceduralSkyMaterial.new()
+	sky_material.sky_top_color = Color(0.16, 0.21, 0.25)
+	sky_material.sky_horizon_color = Color(0.43, 0.46, 0.46)
+	sky_material.ground_bottom_color = Color(0.06, 0.075, 0.08)
+	sky_material.ground_horizon_color = sky_material.sky_horizon_color
+	sky_material.sky_curve = 0.35
+	sky_material.sun_angle_max = 2
+	var sky := Sky.new()
+	sky.sky_material = sky_material
+	sky.radiance_size = Sky.RADIANCE_SIZE_128
+	environment.sky = sky
+	environment.background_mode = Environment.BG_SKY
+	environment.ambient_light_source = Environment.AMBIENT_SOURCE_SKY
+	environment.ambient_light_energy = 0.65
+	environment.fog_density = 0.004
 	environment.volumetric_fog_enabled = use_volumetric_fog and _volumetric_fog_is_supported()
 
 

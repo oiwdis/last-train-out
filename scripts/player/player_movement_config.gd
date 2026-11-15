@@ -13,7 +13,7 @@ extends Resource
 ## How quickly the player stops or turns around on the ground (m/s^2).
 @export var ground_deceleration := 55.0
 ## Multiplier applied to movement along the depth (Z) axis.
-@export_range(0.1, 1.0, 0.05) var depth_speed_scale := 0.8
+@export_range(0.1, 1.0, 0.05) var depth_speed_scale := 1.0
 
 @export_group("Air movement")
 ## Steering strength while airborne (m/s^2).

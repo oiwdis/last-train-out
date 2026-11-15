@@ -55,7 +55,10 @@ func _button(button_name: String) -> Button:
 
 # --- Building cutaways -----------------------------------------------------------
 
-func test_cutaway_opens_and_closes_per_building() -> void:
+func test_legacy_cutaway_component_opens_and_closes_per_building() -> void:
+	# Retained component regression; immersive gameplay keeps these disabled.
+	for trigger in game.find_children("*", "CutawayTrigger", true, false):
+		trigger.immersive = false
 	await seconds(0.5)
 	check(not wall_a_front.is_cut_away() and not wall_b_front.is_cut_away(), "walls are intact while the player is outside")
 	check_near(wall_a_front.get_fade(), 0.0, 0.001, "Warehouse A front wall is fully visible")
@@ -84,7 +87,8 @@ func test_cutaway_opens_and_closes_per_building() -> void:
 	check(wall_b_front.is_cut_away(), "the building's front wall stays cut away as well")
 
 
-func test_cutaway_fades_instead_of_popping() -> void:
+func test_legacy_cutaway_fades_without_changing_collision() -> void:
+	wall_a_front.request_cut(self)
 	player.teleport_to(Vector3(44.0, 0.05, 1.1))
 	var saw_partial := false
 	for i in 40:
@@ -101,12 +105,12 @@ func test_cutaway_fades_instead_of_popping() -> void:
 	check_less(player.global_position.z, 4.4, "the cut-away wall still blocks movement")
 
 
-func test_buildings_open_when_player_passes_behind_them() -> void:
+func test_buildings_stay_opaque_when_player_passes_behind_them() -> void:
 	# Standing in the track lane behind Warehouse A (where the train runs).
 	player.teleport_to(Vector3(47.0, 0.05, -3.0))
 	await seconds(1.0)
-	check(wall_a_front.is_cut_away(), "front wall opens when the player is behind the building")
-	check(wall_a_back.is_cut_away(), "back wall opens too, so the player stays visible")
+	check(not wall_a_front.is_cut_away(), "front wall stays opaque behind the building")
+	check(not wall_a_back.is_cut_away(), "back wall stays opaque in immersive views")
 	check(not wall_b_front.is_cut_away(), "the other warehouse is unaffected")
 	player.teleport_to(Vector3(65.0, 0.05, -3.0))
 	await seconds(1.0)
@@ -115,23 +119,16 @@ func test_buildings_open_when_player_passes_behind_them() -> void:
 
 # --- Camera -------------------------------------------------------------------------
 
-func test_camera_zooms_in_indoors_and_out_again() -> void:
-	await seconds(1.5)
-	var outdoor: float = camera.get_framing()["distance"]
-	check_near(outdoor, 21.0, 0.3, "outdoor framing uses the outdoor distance")
-	player.teleport_to(Vector3(44.0, 0.05, 1.1))
-	await seconds(3.5)
-	var indoor: float = camera.get_framing()["distance"]
-	check_near(indoor, 14.5, 0.3, "the camera zooms in inside a warehouse")
-	player.teleport_to(Vector3(65.0, 0.05, 0.4))
-	await seconds(3.5)
-	check_near(camera.get_framing()["distance"], 21.0, 0.3, "the camera zooms back out outdoors")
-	player.teleport_to(Vector3(78.0, 0.05, 0.75))
-	await seconds(3.5)
-	check_near(camera.get_framing()["distance"], 14.5, 0.3, "the second warehouse zooms in as well")
+func test_camera_keeps_selected_distance_between_location_profiles() -> void:
+	for point in [Vector3(130, 0.05, 8), Vector3(44, 0.05, 1.1), Vector3(65, 0.05, 0.4), Vector3(78, 0.05, 0.75)]:
+		player.teleport_to(point, Vector3.RIGHT)
+		await seconds(0.8)
+		check_near(camera.exploration._boom, camera.exploration.settings.third_person_distance, 0.05, "location does not override player-selected view distance")
+		check_less(camera.get_framing().distance, camera.exploration._boom + 0.1, "collision may only shorten the boom")
 
 
 func test_camera_moves_smoothly_through_a_doorway() -> void:
+	camera.exploration.request_perspective(0)
 	# Sprint from the yard into Warehouse A and out the other side, watching the
 	# camera every tick: it must never jump.
 	player.teleport_to(Vector3(31.0, 0.05, 1.1))
@@ -163,14 +160,14 @@ func test_camera_moves_smoothly_through_a_doorway() -> void:
 	check_less(worst_fov_step, 0.5, "the field of view never jumps")
 
 
-func test_camera_keeps_player_in_frame_and_looks_ahead() -> void:
+func test_camera_keeps_player_in_frame_and_follows_body() -> void:
 	player.teleport_to(Vector3(8.0, 1.05, 0.5))
 	await seconds(1.0)
 	player.input.script_move(1.0, 0.0, true)
 	await seconds(2.0)
 	var focus: Vector3 = camera.get_framing()["focus"]
 	player.input.script_move(0.0)
-	check_greater(focus.x, player.global_position.x + 0.8, "the camera leads the player when running right")
+	check_near(focus.x, player.global_position.x, 0.25, "camera follows player without side-scrolling look-ahead")
 	check_less(focus.x, player.global_position.x + 4.0, "but keeps the player well inside the frame")
 	var on_screen := camera.get_camera().unproject_position(player.global_position + Vector3.UP)
 	var viewport := camera.get_viewport().get_visible_rect().size
@@ -178,14 +175,14 @@ func test_camera_keeps_player_in_frame_and_looks_ahead() -> void:
 	check(on_screen.y > viewport.y * 0.15 and on_screen.y < viewport.y * 0.85, "player is vertically within the middle of the screen")
 
 
-func test_camera_widens_for_departure_but_stays_with_the_player() -> void:
+func test_camera_keeps_selected_view_and_stays_with_the_player_during_departure() -> void:
 	await seconds(1.5)
 	var resting: float = camera.get_framing()["distance"]
 	train.set_mode_index(1)
 	train.start()
 	await seconds(3.0)
 	var widened: float = camera.get_framing()["distance"]
-	check_greater(widened, resting + 2.0, "the framing widens when the train starts moving")
+	check_near(widened, resting, 0.1, "departure does not force a view change")
 	# Let the train run away: the camera must stay with the player on the platform.
 	for i in 900:
 		await physics_frames(1)
@@ -388,8 +385,8 @@ func test_ride_on_roof_through_entire_station() -> void:
 	check(not fell_off, "the rider is never knocked off while passing the station")
 	check_greater(train.distance, 170.0, "the train carried the rider out of the station")
 	check_less(worst_drift, 0.03, "no sliding on the roof")
-	check(opened_a, "Warehouse A opened up while the rider passed behind it")
-	check(opened_b, "Warehouse B opened up while the rider passed behind it")
+	check(not opened_a, "Warehouse A stays opaque while rider passes behind")
+	check(not opened_b, "Warehouse B stays opaque while rider passes behind")
 	await seconds(1.0)
 	check(not wall_b_front.is_cut_away(), "the last building closed again behind the train")
 

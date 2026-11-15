@@ -167,11 +167,6 @@ script = ExtResource("3_box_visual")
 size = Vector3(0.714, 0.09, 0.17)
 material = ExtResource("7_rail_steel")
 
-[node name="Cabin" type="CollisionShape3D" parent="."]
-transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 2.25, 0.0)
-script = ExtResource("2_box_part")
-size = Vector3(6.8, 2.5, 2.6)
-material = ExtResource("8_train_body")
 
 [node name="Roof" type="CollisionShape3D" parent="."]
 transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 3.56, 0.0)
@@ -179,65 +174,15 @@ script = ExtResource("2_box_part")
 size = Vector3(7.0, 0.12, 2.6)
 material = ExtResource("9_roof_metal")
 
-[node name="Window1" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, -2.2, 2.45, 1.305)
-script = ExtResource("3_box_visual")
-size = Vector3(0.9, 0.7, 0.03)
-material = ExtResource("10_window_warm")
 
-[node name="Window2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, -0.75, 2.45, 1.305)
-script = ExtResource("3_box_visual")
-size = Vector3(0.9, 0.7, 0.03)
-material = ExtResource("10_window_warm")
 
-[node name="Window3" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.75, 2.45, 1.305)
-script = ExtResource("3_box_visual")
-size = Vector3(0.9, 0.7, 0.03)
-material = ExtResource("10_window_warm")
 
-[node name="Window4" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 2.2, 2.45, 1.305)
-script = ExtResource("3_box_visual")
-size = Vector3(0.9, 0.7, 0.03)
-material = ExtResource("10_window_warm")
 
-[node name="DoorRear" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, -3.405, 1.9, 0.0)
-script = ExtResource("3_box_visual")
-size = Vector3(0.03, 1.7, 0.8)
-material = ExtResource("4_train_trim")
 
-[node name="DoorFront" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 3.405, 1.9, 0.0)
-script = ExtResource("3_box_visual")
-size = Vector3(0.03, 1.7, 0.8)
-material = ExtResource("4_train_trim")
 
-[node name="DoorWindowRear" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, -3.406, 2.45, 0.0)
-script = ExtResource("3_box_visual")
-size = Vector3(0.035, 0.45, 0.5)
-material = ExtResource("10_window_warm")
 
-[node name="DoorWindowFront" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 3.406, 2.45, 0.0)
-script = ExtResource("3_box_visual")
-size = Vector3(0.035, 0.45, 0.5)
-material = ExtResource("10_window_warm")
 
-[node name="TrimBand" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.75, 0.0)
-script = ExtResource("3_box_visual")
-size = Vector3(6.82, 0.12, 2.62)
-material = ExtResource("11_train_stripe")
 
-[node name="RoofEdge" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 3.47, 0.0)
-script = ExtResource("3_box_visual")
-size = Vector3(7.02, 0.06, 2.64)
-material = ExtResource("11_train_stripe")
 
 [node name="DeckBoardRear" type="CollisionShape3D" parent="."]
 transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, -3.9, 1.25, 1.27)

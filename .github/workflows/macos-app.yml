@@ -22,6 +22,7 @@ on:
     branches:
       - claude/serene-turing-0vpdmt
       - codex/milestone-1-5-visual-overhaul
+      - codex/milestone-2-scavenging
   workflow_dispatch:
     inputs:
       sign_and_notarize:
@@ -41,7 +42,7 @@ env:
   DEV_ZIP: LastTrainOut-macos-universal.zip
   SIGNED_ZIP: LastTrainOut-macos-universal-signed.zip
   # The build fails if fewer tests than this pass, so tests cannot silently go missing.
-  MIN_TESTS: "147"
+  MIN_TESTS: "168"
 
 jobs:
   build:

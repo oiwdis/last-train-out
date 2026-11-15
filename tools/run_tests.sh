@@ -40,9 +40,13 @@ else
 fi
 
 echo "== 3/3  Automated tests =="
-"$GODOT" --headless --path . --fixed-fps 60 tests/test_runner.tscn -- --report=tests/_output/results.json \
+"$GODOT" --headless --path . --fixed-fps 60 tests/test_runner.tscn -- --report=tests/_output/results.json 2>&1 \
 	| tee tests/_output/tests.log
 if [ "${PIPESTATUS[0]}" -ne 0 ]; then
+	status=1
+fi
+if grep -nE "^(ERROR|SCRIPT ERROR)|Parse Error" tests/_output/tests.log; then
+	echo "FAILED: engine errors in test run or shutdown"
 	status=1
 fi
 
