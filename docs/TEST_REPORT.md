@@ -1,3 +1,13 @@
+# Test reports
+
+Current Milestone 2.6 environment continuation: **187/187** automated tests, after a
+**182/182** baseline. The [current report](MILESTONE_2_6.md#environment-continuation)
+and [raw results](validation/milestone26/environment/tests.json) include the new
+asset, collision, material, instancing and cache coverage. Native build and download
+checks are linked from PR #4.
+
+The Milestone 2.5 report below is retained as historical evidence.
+
 # Test report — Milestone 2.5
 
 ## Baseline and automated coverage

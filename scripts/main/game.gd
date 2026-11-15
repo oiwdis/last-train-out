@@ -43,6 +43,10 @@ func _ready() -> void:
 		dressing.name = "AuthoredAssets"
 		station.add_child(dressing)
 		dressing.build(station)
+		var architecture := EnvironmentArt.new()
+		architecture.name = "EnvironmentArt"
+		station.add_child(architecture)
+		architecture.build(station)
 	var effects := PresentationEffects.new()
 	effects.name = "PresentationEffects"
 	add_child(effects)

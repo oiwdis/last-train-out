@@ -42,13 +42,14 @@ def inspect(path):
     return {'file': str(path.relative_to(ROOT)), 'bytes': len(data), 'meshes': len(doc['meshes']), 'images': len(doc.get('images', [])), 'sha256': __import__('hashlib').sha256(data).hexdigest()}
 
 if __name__ == '__main__':
-    rows = [inspect(p) for folder in ['characters', 'props', 'train'] for p in sorted((ROOT/'assets'/folder).glob('*.glb'))]
+    rows = [inspect(p) for folder in ['characters', 'props', 'train', 'environment'] for p in sorted((ROOT/'assets'/folder).glob('*.glb'))]
     assert len(rows) >= 20, 'Production asset set is incomplete'
     textures = 0
-    for folder in ['characters', 'props', 'train', 'pbr', 'sky']:
+    for folder in ['characters', 'props', 'train', 'environment', 'pbr', 'sky']:
         for path in (ROOT/'assets'/folder).glob('*.import'):
             settings = path.read_text()
             if 'importer="texture"' in settings:
+                assert path.with_suffix('').is_file(), (path, 'missing extracted texture source')
                 assert 'compress/mode=2' in settings and 'mipmaps/generate=true' in settings, (path, '3D texture budget not configured')
                 textures += 1
     print(json.dumps({'validated': len(rows), 'compressed_mipmapped_textures': textures, 'assets': rows}, indent=2))

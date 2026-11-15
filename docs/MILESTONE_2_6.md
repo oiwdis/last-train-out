@@ -2,13 +2,14 @@
 
 This milestone delivers a substantial asset replacement, **not a completed photorealism claim**. The procedural humanoid is replaced with authored human anatomy, individual fingers, skin/clothing textures, a 52-bone skeleton and 21 animation clips. A licensed detailed steam locomotive and 14 licensed industrial props replace major blockout visuals. The cab, cars, doors, tracks, warehouse stairs and lighting receive additional geometry and material work.
 
-The station architecture, distant buildings, supply-cache shells and several freight-yard structures still look like a prototype. Facial shading and animation polish also fall short of a finished realistic survival game. Those gaps are visible in the evidence and remain open.
+The environment continuation replaces the station-house facades, warehouse fronts/windows, waiting-hall windows/roof/seating, freight containers, parked box vans and searchable supply props. Distant buildings, generic doors/ladders and several structural elements still look like a prototype. Facial shading and animation polish also fall short of a finished realistic survival game. Those gaps are visible in the evidence and remain open.
 
 ## Branch and preserved systems
 
 - Development branch: `feature/milestone-2-6-photorealism`.
 - Base: `feature/milestone-2-5-full-3d`, PR #3, commit `8cde10cf78c1ea0cf7f7bafb5fc146d2e12514c2`.
 - No PR is merged by this work.
+- The repository owner subsequently merged Milestone 2.5. PR #4 now targets `claude/serene-turing-0vpdmt`, which contains that milestone; the continuation keeps this existing PR/base and development branch.
 - Train acceleration/integration, player collision/movement, stamina, inventory, scavenging and storage rules remain intact. Presentation listens to successful pickup/drop/control actions; it does not postpone ownership or train commands.
 - Existing colliders, warehouse routes, carriage openings and all 13 caches remain. New equipment sits in wall recesses and loading areas; decorative models do not introduce mesh collision.
 
@@ -21,6 +22,18 @@ Roland Schuller's CC0 locomotive supplies detailed authored boiler, pipes, wheel
 Poly Haven shelving, crates, drill presses, work carts, hand trucks, lamps, barrels, luggage and tools populate the platform, both warehouses and freight area. Repeated objects use spatial MultiMesh batches. Tracks have rail head/web/foot profiles, fastening plates and bolts; warehouse stairs use open treads/stringers while retaining the original smooth collision wedge. Scanned gravel replaces unsuitable ballast mapping. A photographic overcast HDR sky, warm industrial lamps and softer steam sprites support the scene.
 
 ## Evidence and validation
+
+### Environment continuation
+
+- [Eight new matched before/after views](screenshots/milestone26/environment/README.md) compare against `86b2473`; all sixteen PNGs are 1280×720 High/Forward+ with identical named camera poses. The freight camera is clear of warehouse trim in both versions.
+- [Environment implementation and validation](ENVIRONMENT_PASS.md) records the additional licensed assets, original meshes, rendering budgets and remaining gaps.
+- The existing **182/182** tests passed before this pass. The updated Linux suite passes **187/187** with no import, main-scene or test errors. Five new integration tests cover container/van collision dimensions, existing ladders, wall-local instancing and cutaway restoration, all thirteen searchable models, and texture/preset/foliage budgets. [Raw results](validation/milestone26/environment/tests.json).
+- The asset validator now covers **31 GLBs** and **137 compressed, mipmapped texture imports**, including missing extracted-source detection. Original environment meshes share existing texture sets instead of embedding additional copies. [Asset integrity report](validation/milestone26/environment/asset-integrity.json).
+
+- [Environment gameplay tour](recording/environment_tour.mp4) exercises a cache search, V switching and the existing container ladder/roof. [Capture method](recording/environment_tour.md).
+- [Matched environment performance comparison](PERFORMANCE_ENVIRONMENT.md) records the hardware, uncapped frame times, draw counts and limitations.
+
+### Initial character/train delivery
 
 - [Matched before/after gallery](screenshots/milestone26/README.md), including close face/hands and gameplay views. Original PNGs and camera metadata are included.
 - [Scripted gameplay recording](recording/milestone26_tour.mp4), with explicit tour cuts and real interaction/perspective inputs. [Capture settings and checks](recording/milestone26_tour.md): Low, 854×480, offline 24 FPS. This is not a performance recording.
@@ -41,7 +54,7 @@ The macOS workflow also attempts matched windowed before/after benchmarks on its
 | Dedicated first-person hands, actions and carrying | Implemented and tested; grips remain approximate for different cargo shapes |
 | Locomotive exterior | Substantially replaced; connecting-rod animation remains incomplete |
 | Cab and train cars | Improved with fitted assets; professional-quality instrumentation/interior finish remains incomplete |
-| Station, warehouses and freight yard | Authored equipment and infrastructure added; the complete environment rebuild remains incomplete |
+| Station, warehouses and freight yard | Authored architecture, windows/roofs/seating, detailed containers/box vans, cache models and equipment implemented; distant scenery, heavy damage/clutter and several structural elements remain incomplete |
 | PBR materials, overcast/warm lighting, asset licenses | Implemented and documented |
 | Existing gameplay, 13 caches and graphics presets | Regression suite passes; collision and train movement rules preserved |
 | 2020 M1 full-screen playability / 60 FPS target | Unverified; requires the actual device and full-screen resolution |
@@ -50,7 +63,7 @@ The macOS workflow also attempts matched windowed before/after benchmarks on its
 ## Remaining limitations
 
 - **Full photorealism is incomplete.** The character is an authored, realistically proportioned rigged human, but face/eye/hair shading and clothing presentation need further art direction. Some animation transitions, finger grips and limb poses need hand polishing; there is no runtime foot-placement IK, facial animation or cloth simulation.
-- Station architecture, far skyline, supply-cache shells, freight containers and parked freight cars retain substantial procedural construction. Warehouse B has better authored equipment and shelving but lacks the requested full bespoke damage/debris pass. Rail switches and overgrowth are not comprehensively rebuilt.
+- The station-house and warehouse facades now use authored licensed masonry/window modules; the hall and freight structures have fitted detailed meshes. The far skyline, generic doors/ladders, some retaining walls, structural columns, gantry and platform furniture remain simplified. Warehouse B has broken panes and timber debris but still lacks a full bespoke deterioration pass. Sparse verge weeds do not constitute complete overgrowth; rail switches remain incomplete.
 - The locomotive's connecting rods are detailed static source geometry; only the wheel assemblies rotate. Gauges are decorative, not simulated pressure instruments. The adapted cab/carriage joinery remains visibly simpler than a professional photorealistic interior.
 - The original coal sack and other physical supply-item models remain; the sack receives scanned fabric but is not a new scanned model. Generic carrying poses fit these item classes approximately, without per-item finger IK.
 - No physical 2020 M1 Mac or full-screen macOS performance test was available. Cloud software rendering and hosted Apple Silicon launch checks cannot establish M1 frame rate. Intel graphical rendering is not validated by the headless CI runner.

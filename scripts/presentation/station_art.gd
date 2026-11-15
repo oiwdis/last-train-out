@@ -128,18 +128,12 @@ func _window(d: DetailBuilder, p: Vector3, s: Vector3) -> void:
 
 func _background(background: Node3D) -> void:
 	var d := D.new(background, "CityDetails")
-	# Station facade: recessed panels, stone piers, cornice and an illuminated clock.
-	for x in range(4, 21, 2):
-		d.box(Vector3(x, 4.2, -7.02), Vector3(0.18, 8.3, 0.2), D.STEEL)
-	for y in [2.8, 4.4, 6.4, 8.3]:
-		d.box(Vector3(12, y, -6.96), Vector3(16.4, 0.12, 0.25), D.STEEL)
-	for i in 6:
-		_window(d, Vector3(5.6 + i * 2.6, 5.5, -7.0), Vector3(0.8, 1.1, 0.05))
-	d.signboard(Vector3(12, 6.7, -6.95), "ALL SERVICES SUSPENDED", 8, 0.6, D.AMBER)
-	d.cylinder(Vector3(12, 9.55, -7), 0.92, 0.18, D.INK, Vector3(PI / 2, 0, 0))
-	d.cylinder(Vector3(12, 9.55, -6.89), 0.78, 0.03, D.PALE, Vector3(PI / 2, 0, 0))
-	d.beam(Vector3(12, 9.55, -6.84), Vector3(12, 10.13, -6.84), 0.05, D.INK)
-	d.beam(Vector3(12, 9.55, -6.83), Vector3(12.38, 9.3, -6.83), 0.05, D.INK)
+	# The imported facade supplies masonry, windows and cornices. Keep a clock
+	# mounted on the solid storey band, below the new pitched roof.
+	d.cylinder(Vector3(12, 4.35, -6.97), 0.42, 0.14, D.INK, Vector3(PI / 2, 0, 0))
+	d.cylinder(Vector3(12, 4.35, -6.88), 0.37, 0.03, D.PALE, Vector3(PI / 2, 0, 0))
+	d.beam(Vector3(12, 4.35, -6.85), Vector3(12, 4.63, -6.85), 0.025, D.INK)
+	d.beam(Vector3(12, 4.35, -6.84), Vector3(12.2, 4.2, -6.84), 0.025, D.INK)
 	# Gabled mill roofs, chimneys and sparse dark windows break up the old blocks.
 	for child in background.get_children():
 		if not child is BoxVisual:

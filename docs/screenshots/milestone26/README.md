@@ -1,5 +1,7 @@
 # Milestone 2.6 — matched visual comparison
 
+[Environment continuation: eight additional matched comparisons](environment/README.md) show the later station, warehouse, freight and supply-prop replacements.
+
 Godot 4.5.1, Forward+, High, 1280×720. Both revisions use identical feet, camera, target and FOV values from `tools/capture_milestone26.gd`. Baseline is M2.5 commit `8cde10cf78c1ea0cf7f7bafb5fc146d2e12514c2`. Camera metadata accompanies the original PNGs. Character inspection uses each revision’s idle pose; first-person inspection carries the same coal-sack item. HUD notices and particle timing can differ.
 
 **These images demonstrate an asset replacement, not completed photorealism.** Read the [milestone report](../../MILESTONE_2_6.md) for remaining visual gaps.

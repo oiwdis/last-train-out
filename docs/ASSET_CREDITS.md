@@ -70,6 +70,27 @@ All models below are CC0 under [Poly Haven’s asset license](https://polyhaven.
 | [Caged Hanging Light](https://polyhaven.com/a/caged_hanging_light) | Ulan Cabanilla | Warehouse ceiling fixtures |
 | [Vintage Flashlight](https://polyhaven.com/a/vintage_flashlight) | Omar M. El-Safy | Worker utility belt; skeleton-mounted with original belt geometry |
 
+## Milestone 2.6 environment continuation
+
+These individual models are [CC0 1.0](https://polyhaven.com/license); no purchase or
+account was required. `assets/environment/sources.json` records every source file,
+resolution, download URL and SHA-256. The conversion retains authored UVs and PBR
+maps and exports no collision. The original source layout is not shipped.
+
+| Asset and source | Creator | Modifications and usage |
+|---|---|---|
+| [Modular Factory Facade](https://polyhaven.com/a/modular_factory_facade) | James Ray Cock | Selected masonry/window/loading-bay/cornice/plinth modules; normalized pivots; material-separated meshes; removed selected panes for damaged windows. 2K maps. Rebuilds station-house facades, warehouse fronts, warehouse windows and waiting-hall glazing. |
+| [Painted Wooden Bench](https://polyhaven.com/a/painted_wooden_bench) | Kirill Sannikov | Grounded pivot, 1K maps, mesh budget, fitted to the existing waiting-hall seating volumes. |
+| [Weed Plant 02](https://polyhaven.com/a/weed_plant_02) | Rob Tuytel (photography), Rico Cilliers (modeling) | Variant A, 1K maps, mesh budget, grounded pivot; alpha scissor and spatial instances along wall/container verges. |
+
+Original Blender models in `tools/assets/build_railway_environment.py` provide the
+fitted 20-foot freight container, timber box van, pitched hall/station roofs,
+broken pallet cluster, supply locker, medical cabinet and toolbox. These include
+folded sheet profiles, door seals/locking bars, lifting pockets, wheel flanges,
+axleboxes, leaf springs, brake gear, trusses and gutters. Their existing scanned
+materials are credited above; runtime materials share those maps. Supply-crate
+and luggage caches reuse the credited Wooden Crate 01 and Vintage Suitcase.
+
 ## Original work for this repository
 
 - Legacy Milestone 2.5 `assets/models/*.glb`: procedural worker and steam machinery (retired from active use),

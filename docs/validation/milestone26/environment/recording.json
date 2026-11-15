@@ -1,0 +1,31 @@
+{
+  "programs": [],
+  "stream_groups": [],
+  "streams": [
+    {
+      "codec_name": "h264",
+      "width": 854,
+      "height": 480,
+      "r_frame_rate": "24/1",
+      "nb_frames": "439"
+    },
+    {
+      "codec_name": "aac",
+      "channels": 2,
+      "r_frame_rate": "0/0",
+      "nb_frames": "859"
+    }
+  ],
+  "format": {
+    "duration": "18.291667",
+    "size": "3560215"
+  },
+  "godot": "4.5.1",
+  "renderer": "Forward+ / lavapipe LLVM 19.1.7",
+  "preset": "Low",
+  "capture": "offline Movie Maker; not a real-time FPS measurement",
+  "decode_check": "full ffmpeg decode passed",
+  "interaction_checks": 4,
+  "sha256": "b067ce16c2e321b850b4a65e9d138dfd85dd13359e59f8f4108ec0cfdc7b9b04",
+  "recorder_sha256": "da2e990e3291bcaac1f00b4dd9d16a51492698b5de17fa7d5fc163bc4c778484"
+}

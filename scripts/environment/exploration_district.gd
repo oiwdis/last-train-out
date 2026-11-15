@@ -32,7 +32,7 @@ func _part(title: String, at: Vector3, size: Vector3, material_name: String, sol
 	part.size = size
 	part.solid = solid
 	part.material = load("res://resources/materials/%s.tres" % material_name)
-	add_child(part)
+	add_child(part, true)
 	return part
 
 
@@ -79,11 +79,9 @@ func _waiting_hall() -> void:
 	_part("TicketCounter", Vector3(20, 0.55, 14.5), Vector3(3.3, 1.1, 0.65), "floor_wood")
 	_part("CounterTop", Vector3(20, 1.14, 14.5), Vector3(3.5, 0.1, 0.85), "metal_dark")
 	var d := DetailBuilder.new(self, "HallFittings")
-	d.signboard(Vector3(15, 3.35, 7.8), "HARLOW JUNCTION", 5.3, 0.65)
-	# Front-facing sign is rotated toward arrivals from the platform.
-	d.root.rotation.y = 0 # Individual signage below faces into the hall.
-	d.signboard(Vector3(20, 2.4, 16.78), "TICKETS  /  ALL SERVICES SUSPENDED", 4.8, 0.5)
-	d.signboard(Vector3(9, 2.4, 16.78), "EVACUATE TO PLATFORM 01", 4, 0.5)
+	d.signboard(Vector3(15, 3.35, 7.8), "HARLOW JUNCTION", 5.3, 0.65,DetailBuilder.AMBER,PI)
+	d.signboard(Vector3(20, 2.4, 16.78), "TICKETS  /  ALL SERVICES SUSPENDED", 4.8, 0.5,DetailBuilder.AMBER,PI)
+	d.signboard(Vector3(9, 2.4, 16.78), "EVACUATE TO PLATFORM 01", 4, 0.5,DetailBuilder.AMBER,PI)
 	for i in 7:
 		d.box(Vector3(17.9 + i * 0.31, 1.23, 14.5), Vector3(0.22, 0.018, 0.3), Color("a9a291"), Vector3(0, i * 0.5, 0))
 	d.finish()
@@ -116,7 +114,7 @@ func _yard_routes() -> void:
 		ladder.position = spec + Vector3(2.3, 0, 1.32)
 		ladder.height = 2.7
 		ladder.material = preload("res://resources/materials/interact_yellow.tres")
-		add_child(ladder)
+		add_child(ladder, true)
 	for x in [40.0, 56.0, 78.0, 96.0]:
 		_part("LoadingPallet", Vector3(x, 0.12, 10.7), Vector3(1.8, 0.24, 1.3), "crate_wood")
 		_part("PackedSupplies", Vector3(x, 0.7, 10.7), Vector3(1.5, 0.9, 1.1), "crate_dark")

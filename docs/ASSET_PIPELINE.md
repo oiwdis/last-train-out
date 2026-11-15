@@ -34,9 +34,44 @@ Do not move a linked intermediate `.blend` into another directory without remapp
 
 ## Validation and evidence
 
+### Environment continuation
+
+The additional CC0 architectural kit, bench and vegetation sources are pinned in
+`assets/environment/sources.json`. Rebuild just this pass with:
+
+```sh
+python3 tools/assets/fetch_environment.py
+blender -b -t 4 --python-exit-code 1 --python tools/assets/convert_environment.py
+blender -b -t 4 --python-exit-code 1 --python tools/assets/build_railway_environment.py
+/path/to/godot --headless --path . --import
+python3 tools/assets/configure_imports.py
+/path/to/godot --headless --path . --import
+```
+
+`LTO_ENV_SOURCE` relocates the downloaded sources (default `/tmp/lto27-sources`).
+The converter also extracts the GLB image payloads to Godot's adjacent paths;
+commit these images and their import settings. Do not delete extracted source
+images while retaining their cached imported scenes. The original railway GLBs
+omit embedded image copies: `EnvironmentArt` resolves their named materials to
+shared existing PBR maps with the authored metre UVs. The GLB alone is therefore
+not the complete shaded presentation; validate the real game scene.
+
+Factory modules retain separate single-material source meshes and use wall-local
+MultiMeshes, so their materials survive the wall fade while repeated bays share
+draw calls. Source meshes generate Godot LODs.
+Verge vegetation uses 20 m spatial batches, alpha scissor and a 35 m visibility
+range. The parked van's source budget is below 40,000 triangles; its laminar
+springs use swept strips instead of hundreds of bevelled blocks.
+
+The continuation camera script is `tools/capture_environment.tscn`. It uses eight
+fixed 1280×720 High views and moves the freight camera clear of Warehouse B's
+trim. Copy the same script to the baseline checkout; do not compare the new
+freight view to the old camera which intersected the wall. Use the same renderer
+and preset for both captures; an OpenGL fallback is not a Forward+ comparison.
+
 ```sh
 python3 tools/assets/check_assets.py
-MIN_TESTS=182 tools/run_tests.sh /path/to/godot
+MIN_TESTS=187 tools/run_tests.sh /path/to/godot
 /path/to/godot --path . --resolution 1280x720 tools/capture_milestone26.tscn
 /path/to/godot --path . --resolution 1280x720 --script tools/benchmark_milestone25.gd -- --suite=presets --samples=24 --out=/tmp/performance.json
 ```

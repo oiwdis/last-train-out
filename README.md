@@ -3,6 +3,8 @@
 A survival adventure about the operator of the last working train in a city being swallowed by fog.
 **Milestone 2.6** replaces the blockout worker with a licensed, skinned human and animations,
 adds an authored steam locomotive and industrial props, and improves the train interiors.
+The environment continuation adds modeled factory facades, recessed windows, pitched roofs,
+weathered benches, detailed freight vans/containers and replacement supply props.
 Full 3D movement, perspective switching, scavenging and moving-train gameplay remain.
 Built in **Godot 4.5.1 and GDScript**, with original project art and commercially usable CC0 models, animations and PBR materials.
 
@@ -25,6 +27,9 @@ Its existing acceleration, moving-platform physics, climbing and inventory rules
 walking inside a moving car, scavenging and carrying. The recording uses scripted gameplay
 inputs and explicit location cuts; it is not a frame-rate measurement.
 [Art and asset credits](docs/ASSET_CREDITS.md).
+[Environment continuation and matched screenshots](docs/ENVIRONMENT_PASS.md).
+[Watch the environment tour](docs/recording/environment_tour.mp4) and
+[review its measured rendering comparison](docs/PERFORMANCE_ENVIRONMENT.md).
 Graphics default to **Medium**. On a 2020 M1 Mac in full-screen, try **Low** using
 **F2** (often **Fn+F2** on Mac) or **Tab → Graphics**. Low and Medium cap 3D rendering
 resolution while keeping the interface sharp. [Matched performance comparison and limitations](docs/PERFORMANCE_MILESTONE26.md).
@@ -348,7 +353,7 @@ in [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
 
 ## Tests
 
-The project has **182 automated tests** using a small Godot-native runner (no add-ons). Tests drive the
+The project has **187 automated tests** using a small Godot-native runner (no add-ons). Tests drive the
 real player through a scripted-input hook and run the real physics.
 
 ```bash
@@ -403,7 +408,7 @@ Older milestone evidence remains in `docs/`.
 | First person | Third person |
 |---|---|
 | ![Cab controls](docs/screenshots/milestone26/after/09_cab.png) | ![Train exterior](docs/screenshots/milestone26/after/07_locomotive.png) |
-| ![Crew interior](docs/screenshots/milestone26/after/10_crew.png) | ![Freight yard](docs/screenshots/milestone26/after/14_freight_yard.png) |
+| ![Crew interior](docs/screenshots/milestone26/after/10_crew.png) | ![Rebuilt freight yard](docs/screenshots/milestone26/environment/after/06_freight_yard.png) |
 
 ---
 

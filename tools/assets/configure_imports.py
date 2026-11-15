@@ -3,7 +3,7 @@
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 count = 0
-for folder in ['characters', 'props', 'train', 'pbr', 'sky']:
+for folder in ['characters', 'props', 'train', 'environment', 'pbr', 'sky']:
     for path in (ROOT/'assets'/folder).glob('*.import'):
         text = path.read_text()
         if 'importer="texture"' not in text:
