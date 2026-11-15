@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ItemDefinition" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/items/item_definition.gd" id="1"]
+[ext_resource type="Texture2D" path="res://assets/icons/items/lantern_oil.svg" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/items/item_visual.tscn" id="3"]
+
+[resource]
+script = ExtResource("1")
+id = &"lantern_oil"
+display_name = "Lantern oil"
+description = "A small sealed bottle of refined lamp oil."
+category = 4
+stack_limit = 3
+weight = 0.7
+heavy = false
+icon = ExtResource("2")
+world_scene = ExtResource("3")
+tint = Color(0.8275, 0.7255, 0.4078, 1)

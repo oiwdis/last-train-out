@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ItemDefinition" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/items/item_definition.gd" id="1"]
+[ext_resource type="Texture2D" path="res://assets/icons/items/medicine.svg" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/items/item_visual.tscn" id="3"]
+
+[resource]
+script = ExtResource("1")
+id = &"medicine"
+display_name = "Medicine"
+description = "Sealed medicine from the transfer hall infirmary."
+category = 1
+stack_limit = 3
+weight = 0.3
+heavy = false
+icon = ExtResource("2")
+world_scene = ExtResource("3")
+tint = Color(0.5333, 0.7255, 0.6745, 1)

@@ -1,17 +1,18 @@
 # Last Train Out
 
 A survival game about the operator of the last working train in a city that is
-being swallowed by fog. This repository holds **Milestone 1.5: a playable, atmospheric presentation pass
-of the first station, Harlow Junction**, built with
+being swallowed by fog. This repository holds **Milestone 2: scavenging, a six-slot backpack and physical cargo
+at the first station, Harlow Junction**, built with
 **Godot 4 and GDScript** using only primitive meshes and built-in engine
-features (no plugins, no paid or imported art).
+features, with small original SVG inventory icons (no plugins or paid art).
 
 The train is a warm refuge in a cold, abandoned railway: detailed rolling stock,
 industrial buildings with readable cutaways, a railway instrument HUD and subtle
 movement feedback. [Visual design and before/after comparisons](docs/VISUAL_DESIGN.md).
 
-The milestone is about one thing above all: sprint along the platform, time a
-jump, grab the moving train, climb aboard and ride away.
+Search the station, decide what fits in your backpack, carry bulky supplies back to the
+train and secure them in its hold. **How much can you bring back before you need to leave?**
+The approved movement, climbing and moving-train physics are preserved.
 
 ![The train at Harlow Junction](docs/screenshots/02_train_and_platform.png)
 
@@ -24,14 +25,19 @@ jump, grab the moving train, climb aboard and ride away.
 | macOS app | Built automatically by GitHub Actions for Apple Silicon and Intel - [download and play](#play-on-macos-no-godot-needed) |
 | Status | See [docs/TEST_REPORT.md](docs/TEST_REPORT.md) for what is verified and what is not |
 
-[Watch the Milestone 1.5 gameplay tour](docs/recording/milestone1_5_demo.mp4) — scripted
-movement, warehouse cutaways, freight-yard traversal and two ways to catch the train.
+[Watch the Milestone 2 scavenging tour](docs/recording/milestone2_tour.mp4) — searches in both
+warehouses, inventory, carrying, recovery and train storage. Scripted inputs and explicit
+location cuts; this is a gameplay demonstration, not a performance measurement.
+
+Graphics default to **Medium**. On a 2020 M1 Mac in full-screen, try **Low** using
+**F2** (often **Fn+F2** on Mac) or **Tab → Graphics**. Low and Medium cap 3D rendering
+resolution while keeping the interface sharp. [Measurements and limits](docs/PERFORMANCE.md).
 
 ---
 
 ## Play on macOS (no Godot needed)
 
-Every push to the development branch and pull request targeting it is tested and built by GitHub Actions into a standalone
+Milestone pull requests and configured development branches are tested by GitHub Actions and built into a standalone
 **Last Train Out.app**: one universal app for Apple Silicon and Intel Macs that contains the
 Godot runtime and all game data. You do not need Godot, Xcode or anything else to play it.
 
@@ -104,7 +110,8 @@ Each build is only uploaded after the workflow has:
 3. checked the bundle: executable for both architectures, `Info.plist`, the game data pack
    (every scene, script and resource of the project), a valid code signature;
 4. launched the exported app on the runner, without and with its window, in a self-test that
-   loads the real game, walks and jumps the player and rides the departing train;
+   loads the real game, walks and jumps, rides the departing train, searches for supplies,
+   transfers inventory and carries cargo;
 5. checked that the ZIP holds the complete bundle, file for file.
 
 Two more jobs then download the ZIP the way you would, unzip it and launch it again - one on an
@@ -115,7 +122,7 @@ run without a window: the game logic is checked on Intel, the picture is not.
 This shows that the app starts and the game runs on GitHub's Macs. It does not replace a person
 playing it: nobody sees the picture or feels the controls in CI, and GitHub's Macs are virtual
 machines (their GPU cannot render the game's volumetric haze, so that effect is switched off
-there and is only seen on a real Mac).
+there; High enables it only on hardware that reports support).
 
 ### Signed and notarized builds
 
@@ -151,7 +158,7 @@ You only need this to change the game or run it from source. To just play, use t
 
 ### 1. Install Godot
 
-Download the standard (non-.NET) build of **Godot 4.5 or newer** from
+Download the standard (non-.NET) build of **Godot 4.5.1** (the tested version) from
 <https://godotengine.org/download>. On macOS the universal build runs natively
 on Apple Silicon and Intel; drag `Godot.app` into `/Applications`.
 
@@ -184,9 +191,15 @@ To open the isolated movement test scene instead of the station:
 | **W / S** (or ↑ / ↓) | Move into / out of the scene; climb up / down on ladders |
 | **Shift** | Sprint (drains stamina) |
 | **Space** | Jump (hold for full height, tap for a short hop) |
-| **E** | Contextual interaction: grab a ladder or railing, vault / climb an obstacle, let go |
+| **E** | Search / cancel / collect, lift cargo, open train hold; grab / release ladders and railings, vault |
+| **Tab / I** | Open or close backpack and graphics settings |
+| **1–6** | Select backpack slot |
+| **Q** | Drop one item from selected slot (ledger also offers Drop stack) |
+| **G** | Immediately put down heavy cargo |
+| **↑ / ↓**, **Enter**, **R** in storage | Select stored item, withdraw selected stack / cargo, deposit all + cargo |
+| **F2** | Cycle Low / Medium / High graphics |
 | **F1** (or **`**) | Toggle the debug menu |
-| **Esc** | Close the debug menu |
+| **Esc** | Close inventory / debug menu, or cancel a search |
 
 All actions are defined in the Input Map (**Project → Project Settings → Input
 Map**) and can be rebound there. `` ` `` is a second binding for the debug menu
@@ -197,6 +210,18 @@ On a railing: push toward it (**W** on the train) to climb over, **A / D** to
 shimmy, **Space** to jump off, **E** to let go.
 
 ### Things to try
+
+1. **Scavenge and return.** Press **E** by the marked platform luggage, then search the
+   toolboxes in Warehouse A and medical cabinets in Warehouse B. **Tab** shows six slots,
+   stack limits and tooltips. Overflow stays in its cache.
+2. **Bring back something heavy.** Find coal in A or the machine component in B.
+   **E** lifts one object; speed drops to 2.5 m/s and sprint is unavailable. **G** drops it.
+   Jump onto the flat car or use the hold from the platform; set cargo down before climbing.
+3. **Secure supplies.** Open the marked **SUPPLY HOLD** on the flat car with **E**.
+   **R** deposits everything; select a storage row and press **Enter** to withdraw.
+   The world keeps moving while the ledger is open.
+
+Movement routes to revisit:
 
 1. **Jump aboard.** Press **F1** and click **Start** (Normal departure). Sprint
    along the platform edge beside the flat car, then hold **W** and press
@@ -218,7 +243,9 @@ shimmy, **Space** to jump off, **E** to let go.
 
 The HUD shows your current area, stamina and train status. Exhaustion is labelled explicitly;
 the bar eases between values. Interaction hints reflect actions the player can actually perform,
-then switch to climbing or hanging controls when attached. A brief notice confirms boarding.
+then switch to climbing or hanging controls when attached. A brief notice confirms boarding. A small backpack summary shows selected supplies and the
+quantity secured aboard. Search progress appears only during a search; heavy cargo has an
+amber marker and a dedicated carrying summary.
 The departure instrument distinguishes parked, departing, cruising, braking and stopped states.
 
 ## Debug menu
@@ -246,7 +273,8 @@ last-train-out/
 ├── scenes/
 │   ├── main/            main.tscn (the game), movement_sandbox.tscn (isolated test scene),
 │   │                    self_test.tscn (what an exported build runs to test itself in CI)
-│   ├── station/         harlow_junction.tscn
+│   ├── station/         harlow_junction.tscn, scavenging_sites.tscn
+│   ├── items/           reusable world item visual
 │   ├── buildings/       warehouse_a.tscn, warehouse_b.tscn
 │   ├── train/           train.tscn, locomotive.tscn, crew_car.tscn, flat_car.tscn
 │   ├── player/          player.tscn
@@ -259,9 +287,13 @@ last-train-out/
 │   ├── interaction/     interactable (base), ladder, grab_rail
 │   ├── environment/     collision blocks, stairs, racks, track, cutaway walls, station
 │   ├── presentation/    batched station/train art and visual movement feedback
+│   ├── items/           item resources, catalog, inventory model, physical world items
+│   ├── scavenging/      loot tables, searchable containers, transaction coordinator
+│   ├── settings/        render-only graphics presets
 │   ├── main/            game.gd - wires the systems together
-│   └── ui/              debug_menu, hud
-├── systems/             fog_system, passenger_system, inventory_system (placeholders)
+│   └── ui/              debug_menu, hud, supply_ui
+├── systems/             inventory_system; fog and passenger placeholders
+├── assets/icons/items/  original SVG inventory icons
 ├── resources/           tunable data: movement, departure modes, camera profiles, materials
 ├── tests/               test runner, unit and integration tests
 ├── tools/               run_tests.sh, screenshot capture, demo recording
@@ -279,6 +311,12 @@ last-train-out/
 | Train maximum speed, braking, track length | `Train` node in `scenes/train/train.tscn` |
 | Camera framings (outdoor, indoor, train departure) | `resources/camera/*.tres` |
 | Haze, moonlight, glow | `Atmosphere` in `scenes/station/harlow_junction.tscn` |
+| Item stacks, weights, future metadata | `resources/items/*.tres` |
+| Loot weights / amounts / draws | `resources/loot/*.tres` |
+| Search positions, duration, assigned table | `scenes/station/scavenging_sites.tscn` |
+| Reproducible loot seed | `ScavengingSystem.loot_seed` (default 2017) |
+| Train storage capacity | `InventorySystem.storage_slots` (default 48) |
+| Graphics budgets | `resources/graphics/*.tres` |
 
 ### Architecture in brief
 
@@ -298,8 +336,11 @@ last-train-out/
   inside a building, or passing behind it on the train.
 - **Game** (`scripts/main/game.gd`) is the only script that knows about all of
   the above; everything else talks through signals and exported references.
-- **Fog, passengers and inventory** are small scene-owned placeholder nodes
-  with their final signal names. They are not autoloads.
+- **InventoryModel** is a UI-independent slot model with atomic, capacity-aware transfers.
+  **ScavengingSystem** coordinates caches, backpack, physical cargo and the moving train hold.
+  **SupplyUI** subscribes to state signals.
+- **GraphicsSettings** applies Resource-based rendering presets without changing physics.
+- **Fog and passengers** remain small scene-owned placeholders. Nothing is an autoload.
 
 More detail, including the reasoning behind the moving-platform approach, is
 in [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
@@ -308,7 +349,7 @@ in [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
 
 ## Tests
 
-The project has a small Godot-native test runner (no add-ons). Tests drive the
+The project has **147 automated tests** using a small Godot-native runner (no add-ons). Tests drive the
 real player through a scripted-input hook and run the real physics.
 
 ```bash
@@ -356,24 +397,24 @@ verified); the second writes `build/macos/Last Train Out.app`.
 
 ## Screenshots and recording
 
-The updated screenshots in `docs/screenshots/` and recordings in `docs/recording/` were rendered from the
-running game by `tools/capture_screenshots.tscn` and `tools/record_demo.tscn`;
-the player in them is driven by scripted input. See the test report for how
-they were produced.
+[Milestone 2 screenshot gallery](docs/screenshots/milestone2/) and
+[short gameplay recording](docs/recording/milestone2_tour.mp4), captured from the running game.
+The reproducible tour uses real search and transfer operations, scripted input and explicit
+teleports between locations. The older movement and visual-overhaul evidence remains in `docs/`.
 
-| | |
+| Scavenging | Inventory |
 |---|---|
-| ![Overview](docs/screenshots/01_harlow_junction_overview.png) | ![Warehouse A](docs/screenshots/03_warehouse_a_ground_floor.png) |
-| Harlow Junction, platform to freight yard | Warehouse A, ground floor (front wall cut away) |
-| ![Warehouse B](docs/screenshots/05_warehouse_b_main_hall.png) | ![Ladder](docs/screenshots/08_grabbing_moving_ladder.png) |
-| Warehouse B, main hall | Climbing the ladder of the departing train |
-| ![Riding](docs/screenshots/09_riding_the_moving_train.png) | ![Debug menu](docs/screenshots/10_debug_menu.png) |
-| Riding the roof behind Warehouse A | Debug menu |
+| ![Warehouse search](docs/screenshots/milestone2/02_search_warehouse_b.png) | ![Six-slot backpack](docs/screenshots/milestone2/03_six_slot_inventory.png) |
+| ![Physical carrying](docs/screenshots/milestone2/04_heavy_carrying.png) | ![Train storage](docs/screenshots/milestone2/06_train_storage.png) |
+| Heavy cargo | Supplies secured aboard |
 
 ---
 
 ## Scope
 
-Milestone 1.5 polishes the playable prototype: there is no advancing fog,
-passenger AI, inventory, train upgrades, route selection, dialogue, audio,
-menus or saving. Those arrive in later milestones.
+Milestone 2 implements scavenging, inventory, physical carrying and train storage.
+There is no advancing dangerous fog, damage, consumption, healing, crafting, combat,
+passenger AI, train upgrades, route selection, additional stations or full save/load.
+Only the graphics preference persists across launches. Audio remains outside this prototype.
+
+[Scavenging rules and reset semantics](docs/SCAVENGING.md).

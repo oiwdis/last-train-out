@@ -1,0 +1,130 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/scavenging/search_container.gd" id="script"]
+[ext_resource type="Resource" path="res://resources/loot/coal_reserve.tres" id="coal_reserve"]
+[ext_resource type="Resource" path="res://resources/loot/freight.tres" id="freight"]
+[ext_resource type="Resource" path="res://resources/loot/fuel_reserve.tres" id="fuel_reserve"]
+[ext_resource type="Resource" path="res://resources/loot/medical.tres" id="medical"]
+[ext_resource type="Resource" path="res://resources/loot/platform.tres" id="platform"]
+[ext_resource type="Resource" path="res://resources/loot/precision.tres" id="precision"]
+[ext_resource type="Resource" path="res://resources/loot/warehouse_a.tres" id="warehouse_a"]
+[ext_resource type="Resource" path="res://resources/loot/warehouse_b.tres" id="warehouse_b"]
+
+[node name="ScavengingSites" type="Node3D"]
+
+[node name="platform_luggage" type="Area3D" parent="."]
+position = Vector3(13, 1.02, 2.35)
+script = ExtResource("script")
+cache_id = &"platform_luggage"
+title = "Abandoned luggage"
+loot_table = ExtResource("platform")
+style = 3
+search_seconds = 1.5
+
+[node name="platform_locker" type="Area3D" parent="."]
+position = Vector3(27.2, 1.02, 2.3)
+script = ExtResource("script")
+cache_id = &"platform_locker"
+title = "Platform locker"
+loot_table = ExtResource("platform")
+style = 1
+search_seconds = 1.7
+
+[node name="a_toolbox" type="Area3D" parent="."]
+position = Vector3(39, 0.03, 3.8)
+script = ExtResource("script")
+cache_id = &"a_toolbox"
+title = "Maintenance toolbox"
+loot_table = ExtResource("warehouse_a")
+style = 2
+search_seconds = 2.0
+
+[node name="a_stores" type="Area3D" parent="."]
+position = Vector3(53, 0.03, 2.7)
+script = ExtResource("script")
+cache_id = &"a_stores"
+title = "Stores crate"
+loot_table = ExtResource("warehouse_a")
+style = 0
+search_seconds = 2.3
+
+[node name="a_coal" type="Area3D" parent="."]
+position = Vector3(57, 0.03, 3.9)
+script = ExtResource("script")
+cache_id = &"a_coal"
+title = "Coal reserve"
+loot_table = ExtResource("coal_reserve")
+style = 0
+search_seconds = 2.5
+
+[node name="a_upper" type="Area3D" parent="."]
+position = Vector3(47, 3.63, 3.8)
+script = ExtResource("script")
+cache_id = &"a_upper"
+title = "Dispatch locker"
+loot_table = ExtResource("warehouse_a")
+style = 1
+search_seconds = 2.5
+
+[node name="b_cabinet" type="Area3D" parent="."]
+position = Vector3(72.3, 0.03, 3.85)
+script = ExtResource("script")
+cache_id = &"b_cabinet"
+title = "Infirmary cabinet"
+loot_table = ExtResource("medical")
+style = 4
+search_seconds = 2.6
+
+[node name="b_tools" type="Area3D" parent="."]
+position = Vector3(77, 0.03, 3.9)
+script = ExtResource("script")
+cache_id = &"b_tools"
+title = "Transfer supplies"
+loot_table = ExtResource("warehouse_b")
+style = 2
+search_seconds = 2.8
+
+[node name="b_room" type="Area3D" parent="."]
+position = Vector3(90, 0.03, -0.65)
+script = ExtResource("script")
+cache_id = &"b_room"
+title = "Service-room cabinet"
+loot_table = ExtResource("warehouse_b")
+style = 4
+search_seconds = 3.0
+
+[node name="b_precision" type="Area3D" parent="."]
+position = Vector3(98.2, 0.03, 2.5)
+script = ExtResource("script")
+cache_id = &"b_precision"
+title = "Precision shipping case"
+loot_table = ExtResource("precision")
+style = 0
+search_seconds = 3.5
+
+[node name="freight_roof" type="Area3D" parent="."]
+position = Vector3(105, 3.83, -0.5)
+script = ExtResource("script")
+cache_id = &"freight_roof"
+title = "Freight tool chest"
+loot_table = ExtResource("freight")
+style = 2
+search_seconds = 3.0
+
+[node name="freight_fuel" type="Area3D" parent="."]
+position = Vector3(115, 0.03, 2.5)
+script = ExtResource("script")
+cache_id = &"freight_fuel"
+title = "Fuel reserve"
+loot_table = ExtResource("fuel_reserve")
+style = 0
+search_seconds = 3.5
+
+[node name="freight_end" type="Area3D" parent="."]
+position = Vector3(119, 0.03, 2.4)
+script = ExtResource("script")
+cache_id = &"freight_end"
+title = "Industrial stores"
+loot_table = ExtResource("freight")
+style = 0
+search_seconds = 3.7

@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="GraphicsPreset" format=3]
+[ext_resource type="Script" path="res://scripts/settings/graphics_preset.gd" id="1"]
+[resource]
+script = ExtResource("1")
+display_name = "Medium"
+description = "85% 3D resolution with a 1080p budget. Moon shadows, depth haze and warm bloom. Full-resolution UI."

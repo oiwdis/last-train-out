@@ -1,0 +1,41 @@
+[gd_resource type="Resource" script_class="LootTable" format=3]
+
+[ext_resource type="Script" path="res://scripts/scavenging/loot_table.gd" id="table"]
+[ext_resource type="Script" path="res://scripts/scavenging/loot_entry.gd" id="entry"]
+[ext_resource type="Resource" path="res://resources/items/scrap_metal.tres" id="item0"]
+[ext_resource type="Resource" path="res://resources/items/tools.tres" id="item1"]
+[ext_resource type="Resource" path="res://resources/items/coal_sack.tres" id="item2"]
+[ext_resource type="Resource" path="res://resources/items/lantern_oil.tres" id="item3"]
+
+[sub_resource type="Resource" id="entry0"]
+script = ExtResource("entry")
+item = ExtResource("item0")
+weight = 4.0
+minimum = 2
+maximum = 4
+
+[sub_resource type="Resource" id="entry1"]
+script = ExtResource("entry")
+item = ExtResource("item1")
+weight = 3.0
+minimum = 1
+maximum = 1
+
+[sub_resource type="Resource" id="entry2"]
+script = ExtResource("entry")
+item = ExtResource("item2")
+weight = 2.0
+minimum = 1
+maximum = 1
+
+[sub_resource type="Resource" id="entry3"]
+script = ExtResource("entry")
+item = ExtResource("item3")
+weight = 2.0
+minimum = 1
+maximum = 2
+
+[resource]
+script = ExtResource("table")
+rolls = 3
+entries = Array[ExtResource("entry")]([SubResource("entry0"), SubResource("entry1"), SubResource("entry2"), SubResource("entry3")])

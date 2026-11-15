@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="GraphicsPreset" format=3]
+[ext_resource type="Script" path="res://scripts/settings/graphics_preset.gd" id="1"]
+[resource]
+script = ExtResource("1")
+display_name = "Low"
+description = "65% 3D resolution with a 720p budget. Depth haze, no shadows or bloom. Full-resolution UI."
+render_scale = 0.65
+maximum_3d_height = 720
+glow = false
+directional_shadows = false
+local_shadows = false
+shadow_atlas_size = 512
+shadow_distance = 25.0
+particle_fraction = 0.5
+light_fade_distance = 28.0

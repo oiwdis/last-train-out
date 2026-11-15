@@ -43,6 +43,11 @@ func can_interact(_player: Player) -> bool:
 	return enabled
 
 
+## Climbing interactions override this; ordinary supplies remain usable with occupied hands.
+func requires_free_hands() -> bool:
+	return false
+
+
 ## Performs the interaction. Returns true when something actually started.
 func interact(_player: Player) -> bool:
 	return false

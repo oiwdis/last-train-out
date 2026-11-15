@@ -1,116 +1,115 @@
-# Test report — Milestone 1.5
+# Test report — Milestone 2
 
-## Automated baseline and regression results
+## Baseline and regression results
 
-The unmodified development branch at `10bf758` passed **102/102** tests using the official
-Godot **4.5.1-stable** Linux x86_64 build and Jolt. After the visual/UI overhaul,
-**114/114** pass: the original 102 plus 12 presentation regressions. Import and the
-600-frame headless main-scene smoke test also pass with no engine/script errors.
+The completed visual-overhaul branch at `7571753` passed **114/114** tests with official
+Godot **4.5.1-stable** on Linux x86_64, Jolt and 60 Hz physics. The Milestone 2 implementation
+passes **147/147**: all 114 original tests unchanged, plus 33 new tests. Import and the
+600-frame main-scene smoke test pass without engine/script errors. The local full suite took
+31.3 seconds of wall time; this is accelerated test execution, not gameplay FPS.
 
-The final local run took 23.7 seconds of wall time for the test suite. This measures
-fast-forward testing, not gameplay frame rate. The test runner and original tests are
-unchanged. The macOS workflow now requires at least 114 passing tests.
+| New suite | Tests | Coverage |
+|---|---:|---|
+| Inventory unit | 10 | All nine definitions, limits, six slots, heavy rejection, snapshots, partial transfers, reentrant signals, 500 transfer cycles and seeded loot |
+| Scavenging integration | 10 | All thirteen cache approaches using the real interaction selector, both warehouses, search/cancel, overflow, drop/recovery, one-time heavy spawns, storage range and reset |
+| Carrying integration | 8 | 2.5 m/s, no sprint, unchanged unladen config, one-object limit, ladder/vault feedback, jump boarding, loose-cargo riding/reset and conservation |
+| UI and graphics integration | 5 | Keyboard/mouse ledger controls, tooltips, immediate storage updates, physics isolation across presets and 2560×1600 resolution budgets |
 
-New coverage checks:
+Existing traversal, jump timing, climbing, moving train, collision and interpolation tests
+remain intact. Rider/climber interpolation still reports zero measured relative drift and
+jitter in those tests. No test-runner assertion was weakened and CI requires at least 147 tests.
 
-- Actual parked/departing/cruising/braking/stopped train states and reset; a train stopped
-  away from the platform is not incorrectly labelled as parked there.
-- Ground/upper-floor, trackside, back-room, freight-yard and onboard location labels.
-- Sustained boarding contact, a single confirmation and its expiry.
-- Interaction prompts agreeing with the player's real eligibility and attached controls.
-- Explicit exhaustion text, recovery, message fades and safe HUD rebinding.
-- Front and rear decorative meshes hiding with their walls, then restoring on exit.
-- No collision objects or lights inside new detail groups; bounded decorative mesh count.
-- Landing feedback leaving the player's body scale, movement configuration and camera
-  profile unchanged.
-
-The existing interpolation tests still report **0.00000 m** relative drift and jitter for
-both the train rider and attached climber. All full-station traversal, coyote-time,
-jump-buffer, ladder/railing, moving-platform and reset tests still pass.
+The app self-test now also searches a real cache, deposits and withdraws supplies, checks
+conservation, holds/releases cargo, switches all three presets and opens the inventory. Its
+headless source-project run passed all checks with no engine errors. The scripted evidence
+tour also passed: 12 supplies secured aboard, including one machine component, with an empty
+backpack after the final deposit and no failed route steps.
 
 ## Reproduction
 
 ```bash
 tools/run_tests.sh /path/to/Godot_v4.5.1-stable
+/path/to/Godot_v4.5.1-stable --headless --path . --fixed-fps 60 \
+  scenes/main/self_test.tscn -- --selftest-report=/tmp/selftest.json
 ```
 
-Reports are written to `tests/_output/`. On a sandbox with a read-only home directory,
-set `XDG_DATA_HOME`, `XDG_CONFIG_HOME` and `XDG_CACHE_HOME` to writable scratch directories.
-The environment's preinstalled Godot 4.6.3 could not write its default data directories;
-all reported baseline and final verification used 4.5.1 with writable XDG directories.
+Logs are in `tests/_output/`. Use writable XDG data/config/cache directories in a sandbox.
+All reported baseline and final results use the supported 4.5.1 build, not the environment's
+preinstalled newer Godot. UI tests exercise input handling and real models; screenshots below
+supply the separate visual check.
 
 ## Graphical evidence
 
-The final evidence is captured from the running game, with the original ten camera
-placements and scripted actions. The overview alone uses a detached camera and thinner
-fog, just as in Milestone 1. Originals are preserved in `screenshots/before/`.
-
-`tools/capture_screenshots.tscn` accepts an optional `--fast` switch. It runs the same
-physics/settle intervals without drawing intermediate frames, then draws eight settling
-frames before saving each image. This is useful on a software renderer; it does not
-measure motion smoothness. Movie Maker does not use this shortcut.
+Eight [screenshots](screenshots/milestone2/) show searches in both warehouses, the six-slot
+backpack, held and dropped cargo, the train hold and Low/High rendering. Captures come from
+Forward+ under Linux Xvfb with Mesa lavapipe. They use the normal camera and UI, with explicit
+teleports between tour locations. No screenshots have been painted or composited.
 
 ```bash
-godot --path . --fixed-fps 60 tools/capture_screenshots.tscn -- --fast --out=docs/screenshots
-godot --path . --rendering-method gl_compatibility --resolution 960x540 \
-  --write-movie /tmp/demo.avi --fixed-fps 24 tools/record_demo.tscn
-ffmpeg -i /tmp/demo.avi -c:v libx264 -crf 22 -pix_fmt yuv420p \
-  -movflags +faststart -an docs/recording/milestone1_5_demo.mp4
+godot --path . --audio-driver Dummy --resolution 1280x720 --fixed-fps 60 \
+  tools/capture_milestone2.tscn -- --fast
+godot --path . --audio-driver Dummy --rendering-method gl_compatibility \
+  --resolution 960x540 --write-movie /tmp/milestone2.avi --fixed-fps 24 \
+  tools/capture_milestone2.tscn -- --out=/tmp/video-captures
+ffmpeg -i /tmp/milestone2.avi -c:v libx264 -crf 22 -pix_fmt yuv420p \
+  -movflags +faststart -an docs/recording/milestone2_tour.mp4
 ```
 
-Captures use Xvfb and Mesa software rendering on Linux. Forward+ is exercised with
-lavapipe; desktop Compatibility is exercised with llvmpipe. The recording includes
-movement, both warehouses, freight-yard climbing, jump boarding, moving-ladder boarding
-and riding through building cutaways. It uses real scripted player input for actions,
-and explicitly teleports between tour locations. It is not a human playtest.
+The `--fast` screenshot option suppresses intermediate drawing and renders eight settling
+frames at each capture. The recording does not use it. Actions use real searches, inventory
+transactions and cargo objects; location changes are scripted tour cuts. These are automated
+observations, not a human playtest, and Movie Maker's frame rate is not measured performance.
+The [performance report](PERFORMANCE.md) uses a separate real-time benchmark.
 
-The [updated recording](recording/milestone1_5_demo.mp4) contains **1,408 frames at 24 FPS**
-(58.67 seconds, 960 × 540, H.264). The script completed with `aboard the train: true`,
-reported no failed route steps, and the encoded file decoded fully without errors.
-Sampled frames were reviewed for movement, both warehouse interiors, jump boarding,
-ladder boarding and the final roof ride. Movie Maker took 8 minutes 26 seconds to render
-on the shared software GPU; the output's 24 FPS is a capture setting, not measured game
-performance.
+The [recording](recording/milestone2_tour.mp4) contains **951 frames at 24 FPS**, **39.625 seconds**,
+960×540 H.264, without audio. It completed every route step and its final conservation report
+showed 12 supplies secured aboard. The entire encoded file decoded without errors; sampled
+frames were checked for searches, the inventory, carrying, drop/recovery and the storage ledger.
+The Compatibility renderer used Mesa llvmpipe; its driver emitted a VSync-control warning.
+The capture frame rate is a Movie Maker output setting, not gameplay FPS.
 
 ## macOS export verification
 
-The existing Godot 4.5.1 universal export, bundle validation, ad-hoc signing, app self-test,
-ZIP validation and downloaded-artifact checks are preserved. The workflow now also runs
-on pull requests targeting `claude/serene-turing-0vpdmt`, so this milestone can be tested
-and downloaded before merging. Developer ID signing remains manual and optional.
+The existing universal export, ad-hoc signing, bundle/ZIP validation and downloaded-app tests
+remain. The pack verifier includes new SVG icon imports. Pull requests targeting the completed
+visual-overhaul branch run the same pipeline before merging. Developer ID signing/notarization
+remains optional and manual.
 
-[macOS app run #5](https://github.com/oiwdis/last-train-out/actions/runs/43550493035)
-passed for implementation commit `eeac435` on 14 November 2026 UTC:
+[macOS app run #7](https://github.com/oiwdis/last-train-out/actions/runs/43559838372)
+passed for implementation `0146f29` (PR merge checkout `edc2b1f`) on 14 November 2026 UTC:
 
-- **114/114 tests passed** on macOS with Godot 4.5.1 (15.3 seconds of suite wall time).
-- Exported a universal executable containing **arm64 and x86_64**; all **25 bundle checks**
-  and **11 ZIP checks** passed, including all 94 game project files in the pack.
-- The exported app passed both headless and windowed self-tests on Apple Silicon.
-- Fresh jobs downloaded and unzipped the artifact: Apple Silicon passed both launch modes;
-  Intel passed its headless launch. The Intel windowed check is intentionally skipped.
-- The optional Developer ID/notarization job was not requested and was skipped.
+- **147/147 tests passed** on Apple Silicon macOS with Godot 4.5.1 (31.5 seconds of suite wall time).
+- The universal executable contains **arm64 and x86_64**. All **25 bundle checks** and
+  **11 ZIP checks** passed, with all **138 game project files** present, including the icons.
+- Both headless and windowed exported-app self-tests passed on Apple Silicon.
+- Fresh jobs downloaded the ZIP, verified it and launched it: Apple Silicon passed headless
+  and windowed checks; Intel passed headless on macOS 15.7.9 / Core i7-8700B. Intel windowed
+  rendering is intentionally skipped.
+- Apple Silicon reported macOS 26.7.2, Apple M1 (Virtual), Apple Paravirtual device (Apple5),
+  Forward+ / Metal. The engine reported its existing Metal sampler LOD-bias warning; no engine
+  errors or failed self-test checks occurred. This VM is not the user's physical M1.
+- Optional Developer ID signing/notarization was not requested and was skipped.
 
-The [universal app artifact](https://github.com/oiwdis/last-train-out/actions/runs/43550493035/artifacts/14096090579)
-is approximately 63.5 MB and requires GitHub sign-in. Artifacts expire after 30 days;
-the [workflow page](https://github.com/oiwdis/last-train-out/actions/workflows/macos-app.yml)
-has subsequent builds. This run verifies the complete implementation; the follow-up
-evidence commit changes documentation, screenshots and the recording only.
+[Download the universal app](https://github.com/oiwdis/last-train-out/actions/runs/43559838372/artifacts/14099838445)
+(63.6 MB, GitHub sign-in required). SHA-256:
+`a5172d46e9b55b97ff5842462f9e5cb470c55e37bd4527cedd20e60eee9966be`.
+This run verifies the implementation; the following evidence/documentation commit preserves
+its gameplay behavior. The PR checks show the latest run.
 
-## Remaining limitations
+## Remaining limits
 
-- **60 FPS on a real MacBook Air is unmeasured.** Software-rendered captures and Movie
-  Maker output cannot establish real-time GPU performance.
-- **No human has playtested this update.** Automated input, routing and screenshots do
-  not establish how movement feels with real hardware.
-- GitHub's Apple Silicon GPU is virtual. The original capability check still disables
-  unsupported volumetric fog there. Haze on a real Mac remains unverified.
-- GitHub's Intel runner tests the app without a window; Intel rendering remains unverified.
-- Development exports are ad-hoc signed, not Developer ID signed/notarized. The existing
-  macOS download instructions and optional signing workflow still apply.
-- Train interiors are visual only; boarding uses roofs, decks, ladders and railings.
-- Named HUD zones and procedural dressing are authored for Harlow Junction. Art is
-  generated when the scene runs; a future station needs its own zones and dressing.
-- Fog surge, passengers, inventory, damage, audio and saving remain outside this milestone.
+- The user tested Milestone 1.5 full-screen on a 2020 M1 Mac and approved the movement. This
+  update has not been human-playtested there. Its macOS version and display resolution are
+  unspecified. There is no measured M1 FPS improvement claim.
+- Linux rendering uses software Vulkan/OpenGL. GitHub Apple Silicon rendering uses a virtual
+  GPU; unsupported volumetric fog remains guarded. Intel CI launches headlessly, so it does
+  not establish Intel graphical performance or correctness.
+- Development downloads are ad-hoc signed, not notarized; the existing first-launch macOS
+  instructions still apply. Artifacts require GitHub sign-in and expire after 30 days.
+- Supplies reset on relaunch; only the graphics preference persists. Heavy objects do not
+  collide with each other or block the player. Train interiors remain visual only.
+- Advancing dangerous fog, damage, consumption, healing, crafting, passengers, combat, train
+  upgrades, additional stations and full save/load are outside this milestone. Audio is absent.
 
-The historical baseline report is preserved in
-[MILESTONE_1_TEST_REPORT.md](MILESTONE_1_TEST_REPORT.md).
+Historical reports: [Milestone 1.5](MILESTONE_1_5_TEST_REPORT.md) and
+[Milestone 1](MILESTONE_1_TEST_REPORT.md).

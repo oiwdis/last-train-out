@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ItemDefinition" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/items/item_definition.gd" id="1"]
+[ext_resource type="Texture2D" path="res://assets/icons/items/canned_food.svg" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/items/item_visual.tscn" id="3"]
+
+[resource]
+script = ExtResource("1")
+id = &"canned_food"
+display_name = "Canned food"
+description = "A dented tin with an intact seal. Food for the journey."
+category = 0
+stack_limit = 4
+weight = 0.5
+heavy = false
+icon = ExtResource("2")
+world_scene = ExtResource("3")
+tint = Color(0.7137, 0.6471, 0.4824, 1)

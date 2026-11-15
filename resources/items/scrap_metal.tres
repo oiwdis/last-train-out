@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ItemDefinition" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/items/item_definition.gd" id="1"]
+[ext_resource type="Texture2D" path="res://assets/icons/items/scrap_metal.svg" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/items/item_visual.tscn" id="3"]
+
+[resource]
+script = ExtResource("1")
+id = &"scrap_metal"
+display_name = "Scrap metal"
+description = "Salvageable steel brackets and plate offcuts."
+category = 2
+stack_limit = 8
+weight = 0.8
+heavy = false
+icon = ExtResource("2")
+world_scene = ExtResource("3")
+tint = Color(0.6118, 0.6824, 0.7255, 1)
