@@ -49,7 +49,7 @@ jobs:
   build:
     name: Test, export and package
     runs-on: macos-latest # GitHub's macos-latest runners are Apple Silicon (arm64)
-    timeout-minutes: 45
+    timeout-minutes: 60
     env:
       APP: build/macos/Last Train Out.app
     steps:
@@ -121,6 +121,14 @@ jobs:
           "$GODOT" --headless --path "$RUNNER_TEMP/render-previous" --import > tests/_output/performance/previous-import.log 2>&1
           "$GODOT" --headless --path "$RUNNER_TEMP/render-baseline" --import > tests/_output/performance/baseline-import.log 2>&1
           python3 tools/macos/benchmark_compare.py "$GODOT" "$RUNNER_TEMP/render-baseline" "$RUNNER_TEMP/render-previous" tests/_output/performance
+
+      - name: Record the finalization gameplay tour
+        # Runs after all timed benchmarks, so Movie Maker cannot contaminate them.
+        continue-on-error: true
+        timeout-minutes: 10
+        run: |
+          command -v ffmpeg || brew install ffmpeg
+          python3 tools/macos/record_finalization.py "$GODOT" tests/_output/visual
 
       - name: Upload the test logs
         if: always()

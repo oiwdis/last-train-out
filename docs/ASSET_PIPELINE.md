@@ -95,7 +95,8 @@ hand/foot orientation while solving limb positions to prevent wrist/boot roll.
 
 `retarget_worker.py` emits `assets/characters/locomotion_metrics.json`, measuring
 rearward ankle motion during low foot-height stance samples. Runtime cadence uses
-the resulting walk/sprint values; a lightweight `SkeletonModifier3D` corrects
+the resulting walk/sprint values, capped at the reviewed walking/carrying/sprint
+cadences to avoid rapid shuffling at controller speeds; a lightweight `SkeletonModifier3D` corrects
 contacts after animation and keeps foot points in the supporting body's local
 space. Grip tests read its post-modification snapshots because Godot restores
 the unmodified animation pose after skeleton evaluation. No animation moves the

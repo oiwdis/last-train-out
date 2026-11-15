@@ -717,7 +717,7 @@
     {
       "failures": [],
       "notes": [
-        "fully planted samples=66, max ankle contact error=0.0000 m"
+        "fully planted samples=41, max ankle contact error=0.0000 m"
       ],
       "passed": true,
       "suite": "test_photoreal_finalization.gd",

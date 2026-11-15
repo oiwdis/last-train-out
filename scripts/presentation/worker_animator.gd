@@ -121,9 +121,12 @@ func _physics_process(delta: float) -> void:
 	var speed := player.get_horizontal_speed()
 	var rate := 1.0
 	if next in [&"walk", &"carry_walk"]:
-		rate = clampf(speed / WALK_STANCE_SPEED, 0.5, 3.4)
+		# The controller's 3 m/s walk exceeds the source's relaxed gait. Limit
+		# cadence and let support contacts absorb the small remaining stride
+		# difference instead of accelerating the legs into a rapid shuffle.
+		rate = clampf(speed / WALK_STANCE_SPEED, 0.5, 2.0 if next == &"carry_walk" else 2.4)
 	elif next == &"sprint":
-		rate = clampf(speed / SPRINT_STANCE_SPEED, 0.65, 2.2)
+		rate = clampf(speed / SPRINT_STANCE_SPEED, 0.65, 1.6)
 	elif next == &"climb":
 		rate = 1.6 if player.input.move.length() > 0.01 else 0.0
 	# Smooth cadence changes without delaying the controller or preserving a
