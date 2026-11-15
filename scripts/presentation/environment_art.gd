@@ -14,6 +14,7 @@ const DEBRIS := preload("res://assets/environment/broken_pallet.glb")
 static var _shared_materials: Dictionary = {}
 
 var _kit: Node3D
+var _liner_mesh: Mesh
 var _foliage_batches: Dictionary = {}
 var _architecture_batches: Dictionary = {}
 var replaced_containers := 0
@@ -111,6 +112,8 @@ func _flush_architecture() -> void:
 			var multi := MultiMesh.new()
 			multi.transform_format = MultiMesh.TRANSFORM_3D
 			multi.mesh = mesh.mesh
+			if entry.parent.get_meta("damaged_glazing",false) and entry.title == "FacadeWindow" and mesh.mesh.surface_get_material(0).resource_name.contains("glass"):
+				multi.mesh = _broken_glass(mesh.mesh)
 			multi.instance_count = entry.poses.size()
 			for index in multi.instance_count:
 				multi.set_instance_transform(index,entry.poses[index]*mesh.transform)
@@ -160,6 +163,7 @@ func _warehouse(building: Node3D, damaged: bool) -> void:
 	var length := 30.0 if damaged else 25.0
 	var height := 5.5 if damaged else 7.4
 	var front := building.get_node("FrontWall") as CutawayWall
+	front.set_meta("damaged_glazing",damaged)
 	for child in front.get_children():
 		if child is BoxPart:
 			child.show_mesh = false
@@ -233,6 +237,13 @@ func _deterioration(building: Node3D) -> void:
 	# the middle aisle and all cache approaches clear of art and collision.
 	for x in [1.0,2.15,3.3]:
 		d.beam(Vector3(x,5.12,3.8),Vector3(x+.18,4.05,4.6),.055,DetailBuilder.RUST)
+	for x in [5.8,14.5]:
+		var sheet := MeshInstance3D.new()
+		sheet.name = "BuckledCeilingLiner"
+		sheet.mesh = _buckled_sheet()
+		sheet.position = Vector3(x,5.35,4.64)
+		building.add_child(sheet,true)
+	place(building,DEBRIS,Vector3(6.1,.035,4.42),"FallenLinerDebris",Vector3(.65,.65,.45),.7)
 	for index in 9:
 		var x := 1.0+index*.23
 		d.box(Vector3(x,.055+fposmod(index*.017,.06),4.35),Vector3(.4,.055,.16),Color("5f5042"),Vector3(.1,index*.63,.07))
@@ -243,6 +254,47 @@ func _deterioration(building: Node3D) -> void:
 	d.beam(Vector3(17,4.1,-.91),Vector3(18.6,3.85,-.88),.025,DetailBuilder.INK)
 	d.beam(Vector3(18.6,3.85,-.88),Vector3(18.9,3.1,-.66),.025,DetailBuilder.INK)
 	d.finish()
+
+func _buckled_sheet() -> Mesh:
+	if _liner_mesh != null:
+		return _liner_mesh
+	var surface := SurfaceTool.new()
+	surface.begin(Mesh.PRIMITIVE_TRIANGLES)
+	var material := FabricatedMesh.planar_material(preload("res://resources/materials/roof_metal.tres")).duplicate() as StandardMaterial3D
+	material.cull_mode = BaseMaterial3D.CULL_DISABLED
+	surface.set_material(material)
+	for x in 24:
+		for y in 10:
+			for corner in [Vector2(0,0),Vector2(1,0),Vector2(1,1),Vector2(0,0),Vector2(1,1),Vector2(0,1)]:
+				var u: float = (x+corner.x)/24.0
+				var v: float = (y+corner.y)/10.0
+				# Folded corrugations, a sagging free edge and an irregular tear.
+				var drop: float = v*v*(.7+.18*sin(u*9))
+				var edge: float = .15*sin(u*27)*v*v
+				var point := Vector3((u-.5)*2.2,-drop+sin(u*TAU*12)*.025,-v*.85+edge)
+				surface.set_uv(Vector2(u*1.1,v*.5))
+				surface.add_vertex(point)
+	surface.generate_normals()
+	surface.generate_tangents()
+	surface.index()
+	_liner_mesh = surface.commit()
+	return _liner_mesh
+
+func _broken_glass(source: Mesh) -> Mesh:
+	var arrays := source.surface_get_arrays(0).duplicate()
+	var vertices: PackedVector3Array = arrays[Mesh.ARRAY_VERTEX]
+	var indices: PackedInt32Array = arrays[Mesh.ARRAY_INDEX]
+	var kept := PackedInt32Array()
+	for triangle in range(0,indices.size(),3):
+		var centre := (vertices[indices[triangle]]+vertices[indices[triangle+1]]+vertices[indices[triangle+2]])/3
+		if centre.x > -.35 and centre.y < 1.71:
+			for corner in 3:
+				kept.append(indices[triangle+corner])
+	arrays[Mesh.ARRAY_INDEX] = kept
+	var mesh := ArrayMesh.new()
+	mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES,arrays)
+	mesh.surface_set_material(0,source.surface_get_material(0))
+	return mesh
 
 func _weed(at: Vector3, size: float, yaw: float) -> void:
 	var key := floori(at.x/20)

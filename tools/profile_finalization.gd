@@ -37,6 +37,9 @@ func _run() -> void:
 		for rig in _game.find_children("*", "WorkerAnimator", true, false):
 			rig.set_physics_process(label != "No animation")
 			rig.animation.active = label != "No animation"
+			var correction: SkeletonModifier3D = rig.get("pose_correction")
+			if correction != null:
+				correction.active = label != "No animation"
 		if label == "No normal or roughness maps":
 			for material: StandardMaterial3D in _game.graphics._materials:
 				material.normal_enabled = false

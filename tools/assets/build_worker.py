@@ -81,6 +81,15 @@ for obj in [body,clothes,eyes,brows,hair,boots,lashes]:
      print('INACTIVE',obj.name,mod.name,mod.type);obj.modifiers.remove(mod)
    else:obj.modifiers.remove(mod)
  for f in obj.data.polygons:f.use_smooth=True
+ # MPFB stores some valid bone weights with totals below/above one. Blender
+ # and glTF normalize these for skinning, but geometric masks must use the
+ # same normalized values or they cut holes through wrists, palms and cuffs.
+ bone_ids={g.index for g in obj.vertex_groups if g.name in rig.data.bones}
+ for vertex in obj.data.vertices:
+  influences=[(g.group,g.weight) for g in vertex.groups if g.group in bone_ids]
+  total=sum(weight for _,weight in influences)
+  if total>0:
+   for index,weight in influences:obj.vertex_groups[index].add([vertex.index],weight/total,'REPLACE')
  obj.select_set(False)
  print('MESH',obj.name,len(obj.data.vertices),len(obj.data.polygons),'bounds',obj.dimensions[:])
 import bmesh

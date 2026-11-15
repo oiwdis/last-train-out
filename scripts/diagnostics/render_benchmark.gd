@@ -42,14 +42,20 @@ func _run() -> void:
 	RenderingServer.viewport_set_measure_render_time(root.get_viewport_rid(), true)
 	var cases: Array = ["Low", "Medium", "High"] if _suite in ["presets", "route"] else ["Milestone 1.5", "No volumetrics", "No shadows", "No local lights", "65% render scale"]
 	for view in (["Warehouse entry pan"] if _suite == "route" else ["Platform", "Warehouse B"]):
-		_game.player.teleport_to(Vector3(13, 1.05, 0.4) if view == "Platform" else Vector3(80.5, 0.05, 1))
+		var warm_platform: bool = view != "Warehouse B"
+		_game.player.teleport_to(Vector3(13, 1.05, 0.4) if warm_platform else Vector3(80.5, 0.05, 1))
 		var eye: Camera3D = _game.camera_rig.get_camera()
-		eye.global_position = Vector3(26, 2.6, 0.5) if view == "Platform" else Vector3(74, 1.6, 3)
-		eye.look_at(Vector3(23, 2.1, -3.5) if view == "Platform" else Vector3(83, 1.6, 2))
+		eye.global_position = Vector3(26, 2.6, 0.5) if warm_platform else Vector3(74, 1.6, 3)
+		eye.look_at(Vector3(23, 2.1, -3.5) if warm_platform else Vector3(83, 1.6, 2))
 		eye.fov = 78
 		await _render_frames(_warmup)
 		for index in cases.size():
 			_apply_case(index)
+			if _suite == "route":
+				# Warm up on the platform, so the first warehouse entry still
+				# exposes its own newly encountered rendering work.
+				eye.global_position = Vector3(26,2.6,.5)
+				eye.look_at(Vector3(23,2.1,-3.5))
 			await _render_frames(_warmup)
 			var samples: Array[float] = []
 			var calls := 0.0

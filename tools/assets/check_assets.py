@@ -49,6 +49,7 @@ if __name__ == '__main__':
         for path in (ROOT/'assets'/folder).glob('*.import'):
             settings = path.read_text()
             if 'importer="texture"' in settings:
+                assert 'valid=false' not in settings, (path, 'failed texture import record committed')
                 assert path.with_suffix('').is_file(), (path, 'missing extracted texture source')
                 assert 'compress/mode=2' in settings and 'mipmaps/generate=true' in settings, (path, '3D texture budget not configured')
                 textures += 1

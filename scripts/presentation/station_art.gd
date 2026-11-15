@@ -135,20 +135,34 @@ func _background(background: Node3D) -> void:
 	d.beam(Vector3(12, 4.35, -6.85), Vector3(12, 4.63, -6.85), 0.025, D.INK)
 	d.beam(Vector3(12, 4.35, -6.84), Vector3(12.2, 4.2, -6.84), 0.025, D.INK)
 	# Gabled mill roofs, chimneys and sparse dark windows break up the old blocks.
+	var masonry := preload("res://resources/materials/wall_brick.tres").duplicate() as StandardMaterial3D
+	masonry.albedo_color = Color(.45,.48,.5)
 	for child in background.get_children():
 		if not child is BoxVisual:
 			continue
 		var title := String(child.name)
+		if title.begins_with("SkylineWindow"):
+			child.hide()
 		if not (title.begins_with("Block") or title.begins_with("Factory") or title.begins_with("Shed")):
 			continue
 		var p: Vector3 = child.position
 		var s: Vector3 = child.size
+		# The existing envelopes stay cheap, but use metre-scaled masonry and
+		# continuous closed roofs instead of disconnected tilted roof strips.
+		child.mesh = FabricatedMesh.box(s,masonry)
+		var roof := MeshInstance3D.new()
+		roof.name = "ContinuousGabledRoof"
+		roof.mesh = FabricatedMesh.gabled_roof(Vector2(s.x+.4,s.z+.4),minf(s.z*.22,2.0),preload("res://resources/materials/roof_metal.tres"))
+		roof.position.y = s.y*.5
+		roof.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+		child.add_child(roof)
 		var front_z := p.z + s.z / 2 + 0.04
 		for x in range(int(-s.x / 2) + 2, int(s.x / 2), 4):
 			for y in range(3, int(s.y) - 1, 3):
 				d.box(Vector3(p.x + x, y, front_z), Vector3(1.25, 1.4, 0.03), Color("24343d"))
-		for x in range(int(-s.x / 2), int(s.x / 2), 7):
-			d.box(Vector3(p.x + x + 2, s.y + 0.7, p.z), Vector3(4.5, 0.2, s.z), D.INK, Vector3(0, 0, 0.22))
+				if title.begins_with("Factory") or title in ["ShedA","ShedB"]:
+					d.box(Vector3(p.x+x,y-.73,front_z+.02),Vector3(1.38,.09,.09),Color("535951"))
+					d.box(Vector3(p.x+x,y,front_z+.03),Vector3(.04,1.4,.035),Color("535951"))
 		d.box(Vector3(p.x + s.x * 0.28, s.y + 1.8, p.z), Vector3(0.8, 3.6, 0.8), D.INK)
 	# Cable runs sag between the existing poles, safely behind the train envelope.
 	for x in range(-20, 150, 25):

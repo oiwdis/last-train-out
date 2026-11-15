@@ -3,11 +3,17 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b3n8grp053ase"
-valid=false
+path.bptc="res://.godot/imported/factory_kit_modular_factory_facade_garage_nor_gl_2k.jpg-4ea30dc5899aae947c42ecef98d04347.bptc.ctex"
+path.astc="res://.godot/imported/factory_kit_modular_factory_facade_garage_nor_gl_2k.jpg-4ea30dc5899aae947c42ecef98d04347.astc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
+}
 
 [deps]
 
 source_file="res://assets/environment/factory_kit_modular_factory_facade_garage_nor_gl_2k.jpg"
+dest_files=["res://.godot/imported/factory_kit_modular_factory_facade_garage_nor_gl_2k.jpg-4ea30dc5899aae947c42ecef98d04347.bptc.ctex", "res://.godot/imported/factory_kit_modular_factory_facade_garage_nor_gl_2k.jpg-4ea30dc5899aae947c42ecef98d04347.astc.ctex"]
 
 [params]
 

@@ -77,3 +77,65 @@ MIN_TESTS=187 tools/run_tests.sh /path/to/godot
 ```
 
 Capture uses the same feet/camera/target/FOV for baseline and result. `--only=first_person_hands` or `--only=running_gear` selects additional views. Performance sampling uses real frame intervals with VSync off, no fixed FPS and no Movie Maker. A recording is gameplay evidence, not a benchmark. Inspect the images and animation recording in addition to the automated checks: the validator cannot establish realism or detect every skinning artifact.
+
+## Finalization
+
+`build_worker.py` now selects the system-pack middle-aged skin, high-poly eyes,
+short04 hair, eyebrow001 and eyelashes01. The eyes' alpha channel is essential:
+the high-poly mesh has an outer shell whose transparent region reveals the iris.
+Keep that alpha connection in the GLB. Runtime eyes use scissor transparency;
+hair/brows/lashes also use MSAA coverage on High. Skin normals come from the
+credited Mindfront middle-aged normal map. Covered skin is removed conservatively
+at the collar/cuffs; both FP meshes remain weighted to the 52-bone rig.
+Normalize bone weights before applying the extraction mask: MPFB's source
+weights are not normalized. Thresholding those raw weights removed parts of
+the wrists/palms and cuffs. The regression suite now checks that all 15,334
+fully arm-weighted skin vertices survive extraction. Preserve the animated
+hand/foot orientation while solving limb positions to prevent wrist/boot roll.
+
+`retarget_worker.py` emits `assets/characters/locomotion_metrics.json`, measuring
+rearward ankle motion during low foot-height stance samples. Runtime cadence uses
+the resulting walk/sprint values; a lightweight `SkeletonModifier3D` corrects
+contacts after animation and keeps foot points in the supporting body's local
+space. Grip tests read its post-modification snapshots because Godot restores
+the unmodified animation pose after skeleton evaluation. No animation moves the
+player collider. Forward hip translation is discarded during retargeting.
+
+`convert_locomotive.py` removes the named source rod/crank pieces from the static
+body, keeps the source wheel pivots, and recognizes the source's small wheel
+misnamed `ScrewHead.027`. `TrainMechanics` supplies constant-length coupling rods,
+quartered crank motion, crossheads and speed/regulator/brake needles. Gauges do
+not claim a boiler-pressure simulation. `build_carriages.py` omits the old baked
+needles so they cannot overlap the live ones.
+
+`FabricatedMesh` projects metre-scaled UVs once for flat bevelled surfaces, with
+fresh tangents and shared materials. This removes triplanar sampling from those
+walls/floors while preserving the same PBR maps and independent collision shapes.
+The same geometry service supplies channel ladders, bolted columns and continuous
+background roofs. Detail dressing never adds collision.
+
+Final comparison: `tools/capture_finalization.tscn`, High, 960×540, Forward+.
+Copy this script and its parent capture script to both reference checkouts.
+The comparison fixture uses the final licensed HDR, ambient energy, depth haze
+and SSAO in all revisions; copy the HDR and its import metadata into the M2.5
+capture checkout as an additional fixture. Moon direction/energy and tonemapping
+are identical in the source scenes. Each revision keeps its authored local
+light fixtures. This isolates artwork changes; it is not M2.5's original night
+lighting. Performance measurements use each revision's actual game presets.
+Setup frames execute real physics with the viewport's 3D drawing disabled;
+each saved view re-enables drawing. The walk/run, carry and moving-wheel shots
+come from the gameplay controller. `tools/record_finalization.tscn` uses real
+E/V inputs, with explicit labelled tour cuts between sites; it additionally
+asserts gantry climbing. Record it with Movie Maker at a fixed capture rate;
+that recording is not a performance measurement.
+
+The shipped `scripts/diagnostics/render_benchmark.gd` is the same preset/entry-pan
+diagnostic used by native CI. See [M1_BENCHMARK.md](M1_BENCHMARK.md) for the physical
+fullscreen procedure and [MILESTONE3_INTEGRATION.md](MILESTONE3_INTEGRATION.md) for
+stable interfaces and likely merge conflicts.
+
+Never commit a texture `.import` containing `valid=false`. The asset validator
+rejects that failed-import state. CI retains compressed texture caches but
+rebuilds imported scenes, whose dependency UIDs can reference removed images
+after a character replacement. Historical benchmark imports repair only failed
+metadata for byte-identical image sources, with an explicit equality check.

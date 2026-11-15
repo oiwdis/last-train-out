@@ -3,11 +3,17 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://o37k0ovmowij"
-valid=false
+path.bptc="res://.godot/imported/factory_kit_modular_factory_facade_windows_nor_gl_2k.jpg-cfda3fedcde33969200ed699a7ff7db0.bptc.ctex"
+path.astc="res://.godot/imported/factory_kit_modular_factory_facade_windows_nor_gl_2k.jpg-cfda3fedcde33969200ed699a7ff7db0.astc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
+}
 
 [deps]
 
 source_file="res://assets/environment/factory_kit_modular_factory_facade_windows_nor_gl_2k.jpg"
+dest_files=["res://.godot/imported/factory_kit_modular_factory_facade_windows_nor_gl_2k.jpg-cfda3fedcde33969200ed699a7ff7db0.bptc.ctex", "res://.godot/imported/factory_kit_modular_factory_facade_windows_nor_gl_2k.jpg-cfda3fedcde33969200ed699a7ff7db0.astc.ctex"]
 
 [params]
 

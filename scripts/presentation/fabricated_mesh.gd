@@ -148,3 +148,21 @@ static func steel_column(size: Vector3, material: Material) -> Mesh:
 
 static func _append_box(surface: SurfaceTool, at: Vector3, size: Vector3, material: Material) -> void:
 	surface.append_from(box(size,material),0,Transform3D(Basis.IDENTITY,at))
+
+
+static func gabled_roof(size: Vector2, rise: float, material: Material) -> Mesh:
+	var x := size.x*.5
+	var z := size.y*.5
+	var points := [Vector3(-x,0,-z),Vector3(-x,0,z),Vector3(-x,rise,0),Vector3(x,0,-z),Vector3(x,0,z),Vector3(x,rise,0)]
+	var surface := SurfaceTool.new()
+	surface.begin(Mesh.PRIMITIVE_TRIANGLES)
+	surface.set_material(planar_material(material))
+	for triangle in [[0,3,5],[0,5,2],[2,5,4],[2,4,1],[0,2,1],[3,4,5]]:
+		for index in triangle:
+			var p: Vector3 = points[index]
+			surface.set_uv(Vector2(p.x,p.z+p.y)*.5)
+			surface.add_vertex(p)
+	surface.generate_normals()
+	surface.generate_tangents()
+	surface.index()
+	return surface.commit()

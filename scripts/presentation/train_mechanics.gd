@@ -36,7 +36,8 @@ func _ready() -> void:
 		var label := Label3D.new()
 		label.text = ["km/h\n0       144","REGULATOR\n0       100%","BRAKE\n0       100%"][index]
 		label.font_size = 32
-		label.pixel_size = .0011
+		label.pixel_size = .00065
+		label.outline_size = 0
 		label.modulate = Color("242b2b")
 		label.no_depth_test = false
 		label.shaded = true
@@ -95,4 +96,4 @@ func update_mechanism(phase: float, train: Train) -> void:
 	# Existing gameplay exposes speed and regulator/brake states, not pressure.
 	gauge_values = Vector3(clampf(train.speed/40.0,0,1),1 if train.state in [Train.State.ACCELERATING,Train.State.CRUISING] else 0,1 if train.state in [Train.State.BRAKING,Train.State.STOPPED] else 0)
 	for index in 3:
-		gauges[index].rotation.x = deg_to_rad(130.0-260.0*gauge_values[index])
+		gauges[index].rotation.x = deg_to_rad(-130.0+260.0*gauge_values[index])

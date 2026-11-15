@@ -141,6 +141,7 @@ static func _solve(skeleton: Skeleton3D, chain: Array[int], target: Vector3, pol
 	var a := skeleton.get_bone_global_pose(chain[0]).origin
 	var b := skeleton.get_bone_global_pose(chain[1]).origin
 	var c := skeleton.get_bone_global_pose(chain[2]).origin
+	var tip_rotation := skeleton.get_bone_global_pose(chain[2]).basis.orthonormalized().get_rotation_quaternion()
 	var upper := a.distance_to(b)
 	var lower := b.distance_to(c)
 	var offset := target-a
@@ -157,6 +158,12 @@ static func _solve(skeleton: Skeleton3D, chain: Array[int], target: Vector3, pol
 	b = skeleton.get_bone_global_pose(chain[1]).origin
 	c = skeleton.get_bone_global_pose(chain[2]).origin
 	_rotate(skeleton,chain[1],c-b,a+axis*distance-b,weight)
+	# Moving the elbow/knee must not roll the authored palm or boot with it.
+	# Preserve the end effector's animation orientation in skeleton space.
+	var current := skeleton.get_bone_global_pose(chain[2]).basis.orthonormalized().get_rotation_quaternion()
+	var parent_basis := skeleton.get_bone_global_pose(chain[1]).basis
+	var local := parent_basis.inverse()*Basis(current.slerp(tip_rotation,weight))
+	skeleton.set_bone_pose_rotation(chain[2],local.orthonormalized().get_rotation_quaternion())
 
 static func _rotate(skeleton: Skeleton3D, index: int, from: Vector3, to: Vector3, weight: float) -> void:
 	if from.length_squared() < .00001 or to.length_squared() < .00001:

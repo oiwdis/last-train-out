@@ -13,6 +13,40 @@ func before_each() -> void:
 func after_each() -> void:
 	await free_spawned()
 
+func test_first_person_extraction_keeps_complete_hand_and_forearm_skin() -> void:
+	var body := worker.model.find_child("WorkerSkin",true,false) as MeshInstance3D
+	var hands := worker.model.find_child("FPHands",true,false) as MeshInstance3D
+	var fp_vertices: Dictionary = {}
+	for surface in hands.mesh.get_surface_count():
+		var positions: PackedVector3Array = hands.mesh.surface_get_arrays(surface)[Mesh.ARRAY_VERTEX]
+		for point in positions:
+			fp_vertices[point.snapped(Vector3.ONE*.00001)] = true
+	var arm_binds: Dictionary = {}
+	for bind in body.skin.get_bind_count():
+		var title := String(body.skin.get_bind_name(bind))
+		if title.contains("Hand") or title.contains("ForeArm"):
+			arm_binds[bind] = true
+	var checked := 0
+	var missing := 0
+	for surface in body.mesh.get_surface_count():
+		var arrays := body.mesh.surface_get_arrays(surface)
+		var positions: PackedVector3Array = arrays[Mesh.ARRAY_VERTEX]
+		var bones: PackedInt32Array = arrays[Mesh.ARRAY_BONES]
+		var weights: PackedFloat32Array = arrays[Mesh.ARRAY_WEIGHTS]
+		var stride := bones.size()/positions.size()
+		for index in positions.size():
+			var arm_weight := 0.0
+			for slot in stride:
+				if arm_binds.has(bones[index*stride+slot]):
+					arm_weight += weights[index*stride+slot]
+			if arm_weight>.99:
+				checked += 1
+				if not fp_vertices.has(positions[index].snapped(Vector3.ONE*.00001)):
+					missing += 1
+	check_greater(checked,2000,"checks authored finger, palm, wrist and forearm vertices")
+	check_eq(missing,0,"FP extraction cannot punch holes in fully arm-weighted skin")
+	note("complete arm-weighted skin vertices retained: %d" % checked)
+
 func test_cargo_wrists_reach_each_real_object_in_both_perspectives() -> void:
 	for perspective in [1,0]:
 		game.camera_rig.exploration.request_perspective(perspective)
@@ -86,6 +120,8 @@ func test_gauges_follow_start_brake_stop_and_speed_without_mutating_train() -> v
 	game.train.reset_to_station()
 	await physics_frames(3)
 	check_near(mechanics.gauge_values.x,0,.001,"speed needle returns to zero")
+	check_near(mechanics.gauges[0].rotation.x,deg_to_rad(-130),.001,"zero speed points toward the printed zero on the left")
+	check_near(mechanics.gauges[2].rotation.x,deg_to_rad(130),.001,"applied brake points toward 100 percent on the right")
 	check_near(art._wheel_phase,0,.001,"visual crank resets with the train")
 
 func test_planar_pbr_preserves_metres_normals_and_shared_materials() -> void:

@@ -27,6 +27,13 @@ func _ready() -> void:
 		var machinery := preload("res://assets/train/steam_locomotive.glb").instantiate()
 		machinery.name = "AuthoredLocomotive"
 		add_child(machinery)
+		for piece: MeshInstance3D in machinery.find_children("*","MeshInstance3D",true,false):
+			for surface in piece.mesh.get_surface_count():
+				var material := piece.mesh.surface_get_material(surface) as StandardMaterial3D
+				if material != null and material.resource_name in ["LTO Black","LTO Black Metal Paint","LTO Black.001"]:
+					# Source dark paint was multiplied into an already dark scan at
+					# conversion. Restore charcoal detail without adding emission.
+					material.albedo_color = Color(1.85,1.85,1.85)
 		for mesh: MeshInstance3D in machinery.find_children("DrivingWheel*", "MeshInstance3D", true, false):
 			_drive_wheels.append(mesh)
 		mechanics = TrainMechanics.new()

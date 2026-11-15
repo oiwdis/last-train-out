@@ -43,7 +43,7 @@ env:
   DEV_ZIP: LastTrainOut-macos-universal.zip
   SIGNED_ZIP: LastTrainOut-macos-universal-signed.zip
   # The build fails if fewer tests than this pass, so tests cannot silently go missing.
-  MIN_TESTS: "194"
+  MIN_TESTS: "195"
 
 jobs:
   build:
@@ -80,6 +80,14 @@ jobs:
           key: godot-imports-macos-arm64-4.5.1-v1-${{ hashFiles('project.godot', 'assets/**', 'resources/**') }}
           restore-keys: godot-imports-macos-arm64-4.5.1-v1-
 
+      - name: Discard cached scenes with obsolete texture UIDs
+        # Keep expensive compressed textures, but rebuild scene dependencies
+        # from source when a restored cache predates an asset replacement.
+        run: |
+          if [ -d .godot/imported ]; then
+            find .godot/imported -name '*.scn' -delete
+          fi
+
       # Import, a headless run of the main scene, then every automated test. Nothing is
       # exported unless this passes.
       - name: Run the automated tests
@@ -106,6 +114,10 @@ jobs:
           git fetch --no-tags --depth=1 origin dfbfdf8ccf3e466788cc085ae5563a14e6382670
           git archive FETCH_HEAD | tar -x -C "$RUNNER_TEMP/render-previous"
           cp -R .godot/imported "$RUNNER_TEMP/render-previous/.godot/"
+          find "$RUNNER_TEMP/render-baseline/.godot/imported" "$RUNNER_TEMP/render-previous/.godot/imported" -name '*.scn' -delete
+          # The historical tree contains failed import records. Repair only the
+          # metadata for byte-identical image sources, never baseline artwork.
+          python3 tools/macos/repair_baseline_imports.py "$RUNNER_TEMP/render-previous"
           "$GODOT" --headless --path "$RUNNER_TEMP/render-previous" --import > tests/_output/performance/previous-import.log 2>&1
           "$GODOT" --headless --path "$RUNNER_TEMP/render-baseline" --import > tests/_output/performance/baseline-import.log 2>&1
           python3 tools/macos/benchmark_compare.py "$GODOT" "$RUNNER_TEMP/render-baseline" "$RUNNER_TEMP/render-previous" tests/_output/performance
