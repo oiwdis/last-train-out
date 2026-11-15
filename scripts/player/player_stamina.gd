@@ -19,6 +19,7 @@ signal recovered
 ## Stamina needed to sprint again after being exhausted.
 @export var exhausted_recovery_threshold := 25.0
 
+var regen_multiplier := 1.0
 var current := 100.0
 var is_exhausted := false
 
@@ -46,7 +47,7 @@ func tick(delta: float, sprinting: bool) -> void:
 	elif _regen_cooldown > 0.0:
 		_regen_cooldown -= delta
 	else:
-		current = minf(current + regen_per_second * delta, max_stamina)
+		current = minf(current + regen_per_second * regen_multiplier * delta, max_stamina)
 		if is_exhausted and current >= exhausted_recovery_threshold:
 			is_exhausted = false
 			recovered.emit()

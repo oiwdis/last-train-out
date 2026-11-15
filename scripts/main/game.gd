@@ -1,7 +1,7 @@
 class_name Game
 extends Node3D
 ## Wires the long-lived gameplay objects together: player, train, camera, UI and
-## the (placeholder) world systems. Each of those stays independent; this script
+## the world systems. Each of those stays independent; this script
 ## is the only place that knows about all of them.
 
 @export var player: Player
@@ -94,6 +94,9 @@ func _ready() -> void:
 			supply_ui.open_changed.connect(func(open: bool) -> void: camera_rig.exploration.set_menu_open(&"inventory", open))
 			supply_ui.add_camera_settings(camera_rig.exploration)
 
+	if fog_system != null:
+		fog_system.bind.call_deferred(self)
+
 
 func _physics_process(_delta: float) -> void:
 	if player != null and player.global_position.y < kill_plane_y:
@@ -106,7 +109,7 @@ func start_train() -> void:
 	if train == null:
 		return
 	if not train.start() and hud != null:
-		hud.show_message("The train is at the end of the line  -  reset it first", 3.0)
+		hud.show_message("Cannot depart — check boiler fuel or the end of the line", 3.0)
 
 
 func stop_train() -> void:
@@ -180,6 +183,8 @@ func get_spawn_position() -> Vector3:
 
 ## Puts the train, the player and the environment back to their starting state.
 func reset_station() -> void:
+	if fog_system != null:
+		fog_system.reset()
 	if scavenging != null:
 		scavenging.reset_world()
 	if train != null:
@@ -192,8 +197,6 @@ func reset_station() -> void:
 	reset_stamina()
 	if station != null:
 		station.reset_state()
-	if fog_system != null:
-		fog_system.reset()
 	if passenger_system != null:
 		passenger_system.reset()
 	if inventory_system != null:
@@ -237,7 +240,7 @@ func _on_player_grab_failed(reason: String) -> void:
 
 func _on_fog_surge_triggered(_intensity: float) -> void:
 	if hud != null:
-		hud.show_message("Fog surge triggered (placeholder)")
+		hud.show_message("Fog surge warning — acceleration in 10 seconds")
 
 
 func _on_passenger_state_changed(passenger_id: StringName, state: PassengerSystem.PassengerState) -> void:

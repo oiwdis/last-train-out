@@ -1,3 +1,9 @@
+# Milestone 3: advancing fog
+
+This branch adds survival pressure to the stable M2.5 gameplay baseline. See [Milestone 3](docs/MILESTONE_3.md), [fog architecture](docs/FOG_ARCHITECTURE.md) and [balancing](docs/FOG_BALANCING.md). F3 shows fog diagnostics; R restarts after fog death. E at the locomotive bunker burns one coal sack from train storage. Closed doors reduce exposure, but no interior is immune.
+
+The historical milestone notes below describe the baseline; their statements that advancing fog/fuel are absent are superseded on this branch.
+
 # Last Train Out
 
 A survival adventure about the operator of the last working train in a city being swallowed by fog.

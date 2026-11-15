@@ -195,6 +195,7 @@ func _check_game() -> void:
 	player.input.clear()
 	await _check_immersive_train(game)
 	await _check_scavenging(game)
+	await _check_fog(game)
 
 
 func _check_immersive_train(game: Game) -> void:
@@ -346,3 +347,25 @@ func _finish(fatal: String) -> void:
 			push_warning("Self-test could not write its report to %s" % _report_path)
 	print("[self-test] %s" % ("PASSED" if passed else "FAILED" + ((": " + fatal) if fatal != "" else "")))
 	get_tree().quit(0 if passed else (2 if fatal != "" else 1))
+
+
+func _check_fog(game: Game) -> void:
+	game.reset_station()
+	await _physics_frames(6)
+	var fog := game.fog_system
+	var dose := fog.players.local.exposure as FogExposure
+	_check("fog_authority_and_hud_in_export", fog.simulation != null and fog.survival_hud.status != null)
+	var before := fog.simulation.front
+	await _physics_frames(30)
+	_check("fog_advances_in_export", fog.simulation.front > before)
+	fog.simulation.front = dose.progress + 10
+	dose.exposure = 65
+	await _physics_frames(60)
+	_check("fog_damages_in_export", dose.health < 100 and dose.exposure > 65)
+	var saved := fog.snapshot()
+	_check("fog_snapshot_in_export", fog.restore(saved))
+	fog.fuel.amount = 0
+	_check("fuel_failure_in_export", not game.train.start())
+	game.reset_station()
+	await _physics_frames(6)
+	_check("fog_new_run_in_export", dose.health == 100 and dose.exposure == 0 and fog.simulation.front < -209)

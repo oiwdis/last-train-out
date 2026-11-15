@@ -38,6 +38,8 @@ enum State { STOPPED, ACCELERATING, CRUISING, BRAKING }
 ## How quickly a change of [member max_speed] is followed while moving (m/s^2).
 @export var max_speed_change_rate := 4.0
 
+## Optional supply gate; the motion integrator remains independent.
+var departure_allowed: Callable
 var state := State.STOPPED
 ## Current speed along the track in m/s.
 var speed := 0.0
@@ -82,6 +84,8 @@ func _physics_process(delta: float) -> void:
 ## Starts (or resumes) accelerating using the current departure mode.
 ## Returns false when the train cannot depart (it is at the end of the track).
 func start() -> bool:
+	if departure_allowed.is_valid() and not departure_allowed.call():
+		return false
 	if state == State.ACCELERATING or state == State.CRUISING:
 		return true
 	if is_at_end_of_track():

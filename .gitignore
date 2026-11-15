@@ -16,6 +16,7 @@
 *.avi
 *.wav
 !assets/audio/*.wav
+!assets/audio/fog/*.wav
 __pycache__/
 
 # OS noise

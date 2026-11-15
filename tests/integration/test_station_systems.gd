@@ -268,13 +268,13 @@ func test_debug_menu_player_and_station_controls() -> void:
 	check_near(train.distance, 0.0, 0.001, "station reset parks the train")
 	check_eq(train.state, Train.State.STOPPED, "station reset stops the train")
 	check_near(player.stamina.current, player.stamina.max_stamina, 0.001, "station reset refills stamina")
-	# Fog surge placeholder.
+	# Fog surge warning.
 	var surges := [0]
 	game.fog_system.surge_triggered.connect(func(_intensity: float) -> void: surges[0] += 1)
 	_button("FogButton").pressed.emit()
 	check_eq(surges[0], 1, "the fog surge button reaches the FogSystem")
 	check_eq(game.fog_system.surge_count, 1, "the FogSystem recorded the surge")
-	check(game.hud.get_message().contains("placeholder"), "the HUD announces the placeholder surge")
+	check(game.hud.get_message().contains("warning"), "the HUD announces the surge warning")
 
 
 func test_debug_menu_diagnostics_are_live() -> void:
@@ -337,8 +337,8 @@ func test_system_stubs_are_wired() -> void:
 	check(game.fog_system != null and game.passenger_system != null and game.inventory_system != null, "all three stubs exist in the main scene")
 	var fog_states: Array = []
 	game.fog_system.fog_state_changed.connect(func(state: FogSystem.FogState) -> void: fog_states.append(state))
-	game.fog_system.set_state(FogSystem.FogState.ADVANCING)
-	check_eq(fog_states, [FogSystem.FogState.ADVANCING], "FogSystem announces state changes")
+	game.fog_system.set_state(FogSystem.FogState.APPROACHING)
+	check_eq(fog_states, [FogSystem.FogState.APPROACHING], "FogSystem announces state changes")
 	var passenger_events: Array = []
 	game.passenger_system.passenger_state_changed.connect(
 		func(id: StringName, state: PassengerSystem.PassengerState) -> void: passenger_events.append([id, state]))
@@ -351,7 +351,7 @@ func test_system_stubs_are_wired() -> void:
 	check_eq(game.inventory_system.remove_item(&"coal", 5), 3, "InventorySystem never removes more than it holds")
 	check_eq(inventory_events, [[&"coal", 3], [&"coal", 0]], "InventorySystem announces changes")
 	game.reset_station()
-	check_eq(game.fog_system.state, FogSystem.FogState.DORMANT, "station reset returns the fog to dormant")
+	check_eq(game.fog_system.state, FogSystem.FogState.DISTANT, "station reset returns the fog to distant")
 	check_eq(game.passenger_system.get_passenger_count(), 0, "station reset clears passengers")
 	check_eq(game.inventory_system.get_amount(&"coal"), 0, "station reset clears the inventory")
 

@@ -1,0 +1,4 @@
+[gd_resource type="Resource" script_class="FogConfig" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/fog/fog_config.gd" id="config"]
+[resource]
+script = ExtResource("config")
