@@ -1,8 +1,15 @@
 {
-  "passed": false,
-  "scope": "960x540 software Vulkan diagnostic; not a native Mac result",
+  "passed": true,
+  "process_exit_code": 0,
+  "scope": "960x540 software Vulkan route with the proposed shipping 0.9 worker-pool ratio; not a native Mac result",
+  "source_commit": "ff3578f plus project worker-ratio and graphics readiness patches",
   "route_samples_completed": true,
   "new_route_pipeline_compilations": 0,
-  "clean_shutdown": false,
-  "note": "Scene sampling completed, but process hung at renderer shutdown. Native validation remains required."
+  "clean_shutdown": true,
+  "control_320x180": {
+    "default_exit_code": 124,
+    "override_exit_code": 0
+  },
+  "note": "Default 0.3 control repeatedly times out; 1.0 experimental override and the proposed shipping 0.9 setting exit normally. Original raw failure and debugger trace are retained. Native validation of the final commit is still required.",
+  "low_priority_thread_ratio": 0.9
 }

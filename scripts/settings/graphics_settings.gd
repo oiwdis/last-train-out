@@ -118,11 +118,13 @@ func set_preset(index: int, persist: bool = false) -> void:
 		var config := ConfigFile.new()
 		config.set_value("graphics", "preset", current_index)
 		config.save(SETTINGS_PATH)
-	changed.emit(current_index)
 	if DisplayServer.get_name() != "headless" and not _warmup_pending:
 		_warmup_pending = true
 		if not _warming:
 			_prepare_rendering.call_deferred()
+	# Signal listeners may await readiness immediately. Publish the pending state
+	# before notifying them, so they cannot observe a false ready interval.
+	changed.emit(current_index)
 
 
 func _prepare_rendering() -> void:

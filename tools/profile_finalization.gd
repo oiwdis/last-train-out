@@ -76,6 +76,8 @@ func _run() -> void:
 		_results.append(totals)
 		print("[profile] ", JSON.stringify(totals))
 	var report := {"godot":Engine.get_version_info()["string"],"processor":OS.get_processor_name(),"adapter":RenderingServer.get_video_adapter_name(),"renderer":RenderingServer.get_current_rendering_method(),"resolution":str(root.size),"vsync":"disabled","fixed_fps":false,"view":"Warehouse B","volumetric_policy":"disabled for the ablation series to match Apple Paravirtual CI capability","results":_results}
+	report["processor_count"] = OS.get_processor_count()
+	report["low_priority_thread_ratio"] = ProjectSettings.get_setting("threading/worker_pool/low_priority_thread_ratio")
 	var file := FileAccess.open(_out,FileAccess.WRITE)
 	file.store_string(JSON.stringify(report,"  "))
 	file.close()

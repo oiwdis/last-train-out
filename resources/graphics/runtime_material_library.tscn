@@ -1,6 +1,6 @@
 [gd_scene load_steps=2127 format=3]
 
-[sub_resource type="Image" id="Image_vhenk"]
+[sub_resource type="Image" id="ShaderImage"]
 data = {
 "data": PackedByteArray(255, 255, 255, 255),
 "format": "RGBA8",
@@ -10,7 +10,7 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ShaderTexture"]
-image = SubResource("Image_vhenk")
+image = SubResource("ShaderImage")
 
 [sub_resource type="StandardMaterial3D" id="Material0"]
 resource_name = "ground_asphalt"

@@ -1,0 +1,325 @@
+warning: Error disabling address space randomization: Operation not permitted
+warning: opening /proc/self/mem file failed: Read-only file system (30)
+warning: opening /proc/PID/mem file for lwp 67272.67272 failed: Read-only file system (30)
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+warning: opening /proc/PID/mem file for lwp 67275.67275 failed: Read-only file system (30)
+[Detaching after vfork from child process 67275]
+[New Thread 0x7f4e9eb106c0 (LWP 67276)]
+[New Thread 0x7f4e9e30f6c0 (LWP 67277)]
+[New Thread 0x7f4e97fff6c0 (LWP 67278)]
+[New Thread 0x7f4e9db0e6c0 (LWP 67279)]
+[New Thread 0x7f4e9d30d6c0 (LWP 67280)]
+[New Thread 0x7f4e9cb0c6c0 (LWP 67281)]
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+warning: opening /proc/PID/mem file for lwp 67282.67282 failed: Read-only file system (30)
+[Detaching after fork from child process 67282]
+[New Thread 0x7f4e94a876c0 (LWP 67289)]
+[New Thread 0x7f4e948866c0 (LWP 67290)]
+[Thread 0x7f4e94a876c0 (LWP 67289) exited]
+[New Thread 0x7f4e73fff6c0 (LWP 67291)]
+[New Thread 0x7f4e737fe6c0 (LWP 67292)]
+[New Thread 0x7f4e6bfff6c0 (LWP 67293)]
+[New Thread 0x7f4e72ffd6c0 (LWP 67294)]
+[New Thread 0x7f4e727fc6c0 (LWP 67295)]
+[New Thread 0x7f4e71ffb6c0 (LWP 67296)]
+[New Thread 0x7f4e717fa6c0 (LWP 67297)]
+[New Thread 0x7f4e70ff96c0 (LWP 67298)]
+[New Thread 0x7f4e6b7fe6c0 (LWP 67299)]
+[New Thread 0x7f4e6affd6c0 (LWP 67300)]
+Vulkan 1.4.305 - Forward+ - Using Device #0: Unknown - llvmpipe (LLVM 19.1.7, 256 bits)
+[New Thread 0x7f4e4bfff6c0 (LWP 67301)]
+warning: opening /proc/PID/mem file for lwp 67302.67302 failed: Read-only file system (30)
+[Detaching after fork from child process 67302]
+[Thread 0x7f4e948866c0 (LWP 67290) exited]
+[New Thread 0x7f4e4b7fe6c0 (LWP 67307)]
+[New Thread 0x7f4e4affd6c0 (LWP 67308)]
+warning: opening /proc/PID/mem file for lwp 67309.67309 failed: Read-only file system (30)
+[Detaching after fork from child process 67309]
+[Thread 0x7f4e4affd6c0 (LWP 67308) exited]
+warning: opening /proc/PID/mem file for lwp 67314.67314 failed: Read-only file system (30)
+[Detaching after fork from child process 67314]
+[New Thread 0x7f4e3ffff6c0 (LWP 67319)]
+
+[New Thread 0x7f4e3f7fe6c0 (LWP 67320)]
+[New Thread 0x7f4e3effd6c0 (LWP 67321)]
+[New Thread 0x7f4e3dbff6c0 (LWP 67322)]
+[benchmark-stage] 14943 ms / loading scene / {"canvas":0.0,"draw":0.0,"mesh":0.0,"specialization":0.0,"surface":0.0}
+[benchmark-stage] 19787 ms / scene ready / {"canvas":0.0,"draw":0.0,"mesh":45.0,"specialization":0.0,"surface":0.0}
+[Thread 0x7f4e3effd6c0 (LWP 67321) exited]
+[Thread 0x7f4e3f7fe6c0 (LWP 67320) exited]
+[New Thread 0x7f4e3effd6c0 (LWP 67323)]
+[New Thread 0x7f4e3f7fe6c0 (LWP 67324)]
+[render-warmup] 6 views / 12680 ms / draw pipelines=51.0
+[benchmark-stage] 37116 ms / Warehouse entry pan / Low / applying preset / {"canvas":2.0,"draw":52.0,"mesh":45.0,"specialization":85.0,"surface":57.0}
+[render-warmup] 6 views / 5973 ms / draw pipelines=84.0
+[benchmark-stage] 44061 ms / Warehouse entry pan / Low / sampling / {"canvas":2.0,"draw":84.0,"mesh":45.0,"specialization":124.0,"surface":114.0}
+[benchmark] {"case":"Low","draw_calls":268.166666666667,"fps_from_mean":5.48244111172941,"max_frame_ms":201.707,"mean_frame_ms":182.4005,"median_frame_ms":179.082,"p95_frame_ms":201.707,"physics_ms":0.648,"pipeline_compilations":{"canvas":2.0,"draw":84.0,"mesh":45.0,"specialization":124.0,"surface":114.0},"primitives":373577.75,"process_ms":180.3865,"render_cpu_ms":0.572833334406217,"render_gpu_ms":164.054750442505,"render_scale":0.649999976158142,"samples":12,"texture_bytes":430813568.0,"view":"Warehouse entry pan"}
+[benchmark-stage] 46251 ms / Warehouse entry pan / Medium / applying preset / {"canvas":2.0,"draw":84.0,"mesh":45.0,"specialization":124.0,"surface":114.0}
+[render-warmup] 6 views / 8345 ms / draw pipelines=116.0
+[benchmark-stage] 56882 ms / Warehouse entry pan / Medium / sampling / {"canvas":2.0,"draw":116.0,"mesh":45.0,"specialization":179.0,"surface":174.0}
+[benchmark] {"case":"Medium","draw_calls":484.083333333333,"fps_from_mean":2.2660873791963,"max_frame_ms":524.467,"mean_frame_ms":441.28925,"median_frame_ms":436.407,"p95_frame_ms":524.467,"physics_ms":1.45058333333333,"pipeline_compilations":{"canvas":2.0,"draw":116.0,"mesh":45.0,"specialization":179.0,"surface":174.0},"primitives":722988.416666667,"process_ms":437.935333333333,"render_cpu_ms":0.816999996701876,"render_gpu_ms":410.904421488444,"render_scale":0.850000023841858,"samples":12,"texture_bytes":440064896.0,"view":"Warehouse entry pan"}
+[benchmark-stage] 62178 ms / Warehouse entry pan / High / applying preset / {"canvas":2.0,"draw":116.0,"mesh":45.0,"specialization":179.0,"surface":174.0}
+[render-warmup] 6 views / 10539 ms / draw pipelines=116.0
+[benchmark-stage] 77182 ms / Warehouse entry pan / High / sampling / {"canvas":2.0,"draw":116.0,"mesh":45.0,"specialization":256.0,"surface":200.0}
+[benchmark] {"case":"High","draw_calls":543.166666666667,"fps_from_mean":1.40235523223996,"max_frame_ms":879.482,"mean_frame_ms":713.086083333333,"median_frame_ms":720.205,"p95_frame_ms":879.482,"physics_ms":0.8005,"pipeline_compilations":{"canvas":2.0,"draw":116.0,"mesh":45.0,"specialization":256.0,"surface":200.0},"primitives":837266.583333333,"process_ms":703.920333333333,"render_cpu_ms":1.08683333297571,"render_gpu_ms":676.717666625977,"render_scale":1.0,"samples":12,"texture_bytes":488360064.0,"view":"Warehouse entry pan"}
+[benchmark] wrote /tmp/lto-route-gdb.json
+[benchmark-stage] 86362 ms / scene released / {"canvas":2.0,"draw":116.0,"mesh":45.0,"specialization":256.0,"surface":200.0}
+[benchmark-stage] 86368 ms / material updates drained / {"canvas":2.0,"draw":116.0,"mesh":45.0,"specialization":256.0,"surface":200.0}
+[benchmark-stage] 86369 ms / quitting / {"canvas":2.0,"draw":116.0,"mesh":45.0,"specialization":256.0,"surface":200.0}
+
+Thread 1 "Godot_v4.5.1-st" received signal SIGINT, Interrupt.
+0x00007f4e9efad72e in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+
+Thread 28 (Thread 0x7f4e3f7fe6c0 (LWP 67324) "WSI swapchain e"):
+#0  0x00007f4e9efad72e in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#1  0x00007f4e9efa2388 in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#2  0x00007f4e9efa29ac in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#3  0x00007f4e9efa4e98 in pthread_cond_wait () from /lib/x86_64-linux-gnu/libc.so.6
+#4  0x00007f4e96c691cd in ?? () from /tmp/lto-vulkan/usr/lib/x86_64-linux-gnu/libvulkan_lvp.so
+#5  0x00007f4e96b8f081 in ?? () from /tmp/lto-vulkan/usr/lib/x86_64-linux-gnu/libvulkan_lvp.so
+#6  0x00007f4e96ca764b in ?? () from /tmp/lto-vulkan/usr/lib/x86_64-linux-gnu/libvulkan_lvp.so
+#7  0x00007f4e9efa58bb in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#8  0x00007f4e9f023370 in clone () from /lib/x86_64-linux-gnu/libc.so.6
+
+Thread 27 (Thread 0x7f4e3effd6c0 (LWP 67323) "WSI swapchain q"):
+#0  0x00007f4e9efad72e in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#1  0x00007f4e9efa2388 in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#2  0x00007f4e9efa29ac in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#3  0x00007f4e9efa505d in pthread_cond_timedwait () from /lib/x86_64-linux-gnu/libc.so.6
+#4  0x00007f4e96c6919d in ?? () from /tmp/lto-vulkan/usr/lib/x86_64-linux-gnu/libvulkan_lvp.so
+#5  0x00007f4e96b8e59e in ?? () from /tmp/lto-vulkan/usr/lib/x86_64-linux-gnu/libvulkan_lvp.so
+#6  0x00007f4e96ca764b in ?? () from /tmp/lto-vulkan/usr/lib/x86_64-linux-gnu/libvulkan_lvp.so
+#7  0x00007f4e9efa58bb in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#8  0x00007f4e9f023370 in clone () from /lib/x86_64-linux-gnu/libc.so.6
+
+Thread 26 (Thread 0x7f4e3dbff6c0 (LWP 67322) "Godot_v4.5.1-st"):
+#0  0x00007f4e9efad72e in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#1  0x00007f4e9efa2388 in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#2  0x00007f4e9efa29ac in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#3  0x00007f4e9efa4e98 in pthread_cond_wait () from /lib/x86_64-linux-gnu/libc.so.6
+#4  0x000000000072db66 in ?? ()
+#5  0x00000000050db243 in ?? ()
+#6  0x00007f4e9efa58bb in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#7  0x00007f4e9f023370 in clone () from /lib/x86_64-linux-gnu/libc.so.6
+
+Thread 23 (Thread 0x7f4e3ffff6c0 (LWP 67319) "Godot_v4.5.1-st"):
+#0  0x00007f4e9efad72e in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#1  0x00007f4e9efa2388 in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#2  0x00007f4e9efeecfa in clock_nanosleep () from /lib/x86_64-linux-gnu/libc.so.6
+#3  0x00007f4e9effa113 in nanosleep () from /lib/x86_64-linux-gnu/libc.so.6
+#4  0x0000000004c60d7a in ?? ()
+#5  0x0000000003b11cae in ?? ()
+#6  0x0000000004332c55 in ?? ()
+#7  0x00000000050db243 in ?? ()
+#8  0x00007f4e9efa58bb in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#9  0x00007f4e9f023370 in clone () from /lib/x86_64-linux-gnu/libc.so.6
+
+Thread 21 (Thread 0x7f4e4b7fe6c0 (LWP 67307) "Godot_v4.5.1-st"):
+#0  0x00007f4e9efad72e in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#1  0x00007f4e9efa2388 in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#2  0x00007f4e9efeecfa in clock_nanosleep () from /lib/x86_64-linux-gnu/libc.so.6
+#3  0x00007f4e9effa113 in nanosleep () from /lib/x86_64-linux-gnu/libc.so.6
+#4  0x00000000004fd833 in ?? ()
+#5  0x0000000004332c55 in ?? ()
+#6  0x00000000050db243 in ?? ()
+#7  0x00007f4e9efa58bb in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#8  0x00007f4e9f023370 in clone () from /lib/x86_64-linux-gnu/libc.so.6
+
+Thread 20 (Thread 0x7f4e4bfff6c0 (LWP 67301) "Godot_v4.5.1-st"):
+#0  0x00007f4e9efad72e in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#1  0x00007f4e9efa2388 in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#2  0x00007f4e9efa23cd in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#3  0x00007f4e9f020f59 in select () from /lib/x86_64-linux-gnu/libc.so.6
+#4  0x00000000004a08a5 in ?? ()
+#5  0x00000000004b0df6 in ?? ()
+#6  0x0000000004332c55 in ?? ()
+#7  0x00000000050db243 in ?? ()
+#8  0x00007f4e9efa58bb in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#9  0x00007f4e9f023370 in clone () from /lib/x86_64-linux-gnu/libc.so.6
+
+Thread 19 (Thread 0x7f4e6affd6c0 (LWP 67300) "Godot_v:disk$0"):
+#0  0x00007f4e9efad72e in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#1  0x00007f4e9efa2388 in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#2  0x00007f4e9efa29ac in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#3  0x00007f4e9efa4e98 in pthread_cond_wait () from /lib/x86_64-linux-gnu/libc.so.6
+#4  0x00007f4e96ca771d in ?? () from /tmp/lto-vulkan/usr/lib/x86_64-linux-gnu/libvulkan_lvp.so
+#5  0x00007f4e96c75edb in ?? () from /tmp/lto-vulkan/usr/lib/x86_64-linux-gnu/libvulkan_lvp.so
+#6  0x00007f4e96ca764b in ?? () from /tmp/lto-vulkan/usr/lib/x86_64-linux-gnu/libvulkan_lvp.so
+#7  0x00007f4e9efa58bb in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#8  0x00007f4e9f023370 in clone () from /lib/x86_64-linux-gnu/libc.so.6
+
+Thread 18 (Thread 0x7f4e6b7fe6c0 (LWP 67299) "Godot_v4.5.1-st"):
+#0  0x00007f4e9efad72e in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#1  0x00007f4e9efa2388 in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#2  0x00007f4e9efa29ac in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#3  0x00007f4e9efa4e98 in pthread_cond_wait () from /lib/x86_64-linux-gnu/libc.so.6
+#4  0x00007f4e96ca771d in ?? () from /tmp/lto-vulkan/usr/lib/x86_64-linux-gnu/libvulkan_lvp.so
+#5  0x00007f4e96df1d7b in ?? () from /tmp/lto-vulkan/usr/lib/x86_64-linux-gnu/libvulkan_lvp.so
+#6  0x00007f4e96ca764b in ?? () from /tmp/lto-vulkan/usr/lib/x86_64-linux-gnu/libvulkan_lvp.so
+#7  0x00007f4e9efa58bb in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#8  0x00007f4e9f023370 in clone () from /lib/x86_64-linux-gnu/libc.so.6
+
+Thread 17 (Thread 0x7f4e70ff96c0 (LWP 67298) "Godot_v4.5.1-st"):
+#0  0x00007f4e9efad72e in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#1  0x00007f4e9efa2388 in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#2  0x00007f4e9efa29ac in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#3  0x00007f4e9efa4e98 in pthread_cond_wait () from /lib/x86_64-linux-gnu/libc.so.6
+#4  0x00007f4e96ca771d in ?? () from /tmp/lto-vulkan/usr/lib/x86_64-linux-gnu/libvulkan_lvp.so
+#5  0x00007f4e96df1d7b in ?? () from /tmp/lto-vulkan/usr/lib/x86_64-linux-gnu/libvulkan_lvp.so
+#6  0x00007f4e96ca764b in ?? () from /tmp/lto-vulkan/usr/lib/x86_64-linux-gnu/libvulkan_lvp.so
+#7  0x00007f4e9efa58bb in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#8  0x00007f4e9f023370 in clone () from /lib/x86_64-linux-gnu/libc.so.6
+
+Thread 16 (Thread 0x7f4e717fa6c0 (LWP 67297) "Godot_v4.5.1-st"):
+#0  0x00007f4e9efad72e in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#1  0x00007f4e9efa2388 in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#2  0x00007f4e9efa29ac in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#3  0x00007f4e9efa4e98 in pthread_cond_wait () from /lib/x86_64-linux-gnu/libc.so.6
+#4  0x00007f4e96ca771d in ?? () from /tmp/lto-vulkan/usr/lib/x86_64-linux-gnu/libvulkan_lvp.so
+#5  0x00007f4e96df1d7b in ?? () from /tmp/lto-vulkan/usr/lib/x86_64-linux-gnu/libvulkan_lvp.so
+#6  0x00007f4e96ca764b in ?? () from /tmp/lto-vulkan/usr/lib/x86_64-linux-gnu/libvulkan_lvp.so
+#7  0x00007f4e9efa58bb in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#8  0x00007f4e9f023370 in clone () from /lib/x86_64-linux-gnu/libc.so.6
+
+Thread 15 (Thread 0x7f4e71ffb6c0 (LWP 67296) "Godot_v4.5.1-st"):
+#0  0x00007f4e9efad72e in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#1  0x00007f4e9efa2388 in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#2  0x00007f4e9efa29ac in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#3  0x00007f4e9efa4e98 in pthread_cond_wait () from /lib/x86_64-linux-gnu/libc.so.6
+#4  0x00007f4e96ca771d in ?? () from /tmp/lto-vulkan/usr/lib/x86_64-linux-gnu/libvulkan_lvp.so
+#5  0x00007f4e96df1d7b in ?? () from /tmp/lto-vulkan/usr/lib/x86_64-linux-gnu/libvulkan_lvp.so
+#6  0x00007f4e96ca764b in ?? () from /tmp/lto-vulkan/usr/lib/x86_64-linux-gnu/libvulkan_lvp.so
+#7  0x00007f4e9efa58bb in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#8  0x00007f4e9f023370 in clone () from /lib/x86_64-linux-gnu/libc.so.6
+
+Thread 14 (Thread 0x7f4e727fc6c0 (LWP 67295) "llvmpipe-3"):
+#0  0x00007f4e9efad72e in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#1  0x00007f4e9efa2388 in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#2  0x00007f4e9efa29ac in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#3  0x00007f4e9efa4e98 in pthread_cond_wait () from /lib/x86_64-linux-gnu/libc.so.6
+#4  0x00007f4e96ca771d in ?? () from /tmp/lto-vulkan/usr/lib/x86_64-linux-gnu/libvulkan_lvp.so
+#5  0x00007f4e96df548b in ?? () from /tmp/lto-vulkan/usr/lib/x86_64-linux-gnu/libvulkan_lvp.so
+#6  0x00007f4e96ca764b in ?? () from /tmp/lto-vulkan/usr/lib/x86_64-linux-gnu/libvulkan_lvp.so
+#7  0x00007f4e9efa58bb in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#8  0x00007f4e9f023370 in clone () from /lib/x86_64-linux-gnu/libc.so.6
+
+Thread 13 (Thread 0x7f4e72ffd6c0 (LWP 67294) "llvmpipe-2"):
+#0  0x00007f4e9efad72e in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#1  0x00007f4e9efa2388 in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#2  0x00007f4e9efa29ac in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#3  0x00007f4e9efa4e98 in pthread_cond_wait () from /lib/x86_64-linux-gnu/libc.so.6
+#4  0x00007f4e96ca771d in ?? () from /tmp/lto-vulkan/usr/lib/x86_64-linux-gnu/libvulkan_lvp.so
+#5  0x00007f4e96df548b in ?? () from /tmp/lto-vulkan/usr/lib/x86_64-linux-gnu/libvulkan_lvp.so
+#6  0x00007f4e96ca764b in ?? () from /tmp/lto-vulkan/usr/lib/x86_64-linux-gnu/libvulkan_lvp.so
+#7  0x00007f4e9efa58bb in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#8  0x00007f4e9f023370 in clone () from /lib/x86_64-linux-gnu/libc.so.6
+
+Thread 12 (Thread 0x7f4e6bfff6c0 (LWP 67293) "llvmpipe-1"):
+#0  0x00007f4e9efad72e in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#1  0x00007f4e9efa2388 in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#2  0x00007f4e9efa29ac in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#3  0x00007f4e9efa4e98 in pthread_cond_wait () from /lib/x86_64-linux-gnu/libc.so.6
+#4  0x00007f4e96ca771d in ?? () from /tmp/lto-vulkan/usr/lib/x86_64-linux-gnu/libvulkan_lvp.so
+#5  0x00007f4e96df548b in ?? () from /tmp/lto-vulkan/usr/lib/x86_64-linux-gnu/libvulkan_lvp.so
+#6  0x00007f4e96ca764b in ?? () from /tmp/lto-vulkan/usr/lib/x86_64-linux-gnu/libvulkan_lvp.so
+#7  0x00007f4e9efa58bb in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#8  0x00007f4e9f023370 in clone () from /lib/x86_64-linux-gnu/libc.so.6
+
+Thread 11 (Thread 0x7f4e737fe6c0 (LWP 67292) "llvmpipe-0"):
+#0  0x00007f4e9efad72e in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#1  0x00007f4e9efa2388 in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#2  0x00007f4e9efa29ac in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#3  0x00007f4e9efa4e98 in pthread_cond_wait () from /lib/x86_64-linux-gnu/libc.so.6
+#4  0x00007f4e96ca771d in ?? () from /tmp/lto-vulkan/usr/lib/x86_64-linux-gnu/libvulkan_lvp.so
+#5  0x00007f4e96df548b in ?? () from /tmp/lto-vulkan/usr/lib/x86_64-linux-gnu/libvulkan_lvp.so
+#6  0x00007f4e96ca764b in ?? () from /tmp/lto-vulkan/usr/lib/x86_64-linux-gnu/libvulkan_lvp.so
+#7  0x00007f4e9efa58bb in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#8  0x00007f4e9f023370 in clone () from /lib/x86_64-linux-gnu/libc.so.6
+
+Thread 10 (Thread 0x7f4e73fff6c0 (LWP 67291) "Godot_v4.5.1-st"):
+#0  0x00007f4e9efad72e in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#1  0x00007f4e9efa2388 in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#2  0x00007f4e9efa29ac in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#3  0x00007f4e9efa4e98 in pthread_cond_wait () from /lib/x86_64-linux-gnu/libc.so.6
+#4  0x00007f4e96ca771d in ?? () from /tmp/lto-vulkan/usr/lib/x86_64-linux-gnu/libvulkan_lvp.so
+#5  0x00007f4e96baa4d7 in ?? () from /tmp/lto-vulkan/usr/lib/x86_64-linux-gnu/libvulkan_lvp.so
+#6  0x00007f4e96ca764b in ?? () from /tmp/lto-vulkan/usr/lib/x86_64-linux-gnu/libvulkan_lvp.so
+#7  0x00007f4e9efa58bb in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#8  0x00007f4e9f023370 in clone () from /lib/x86_64-linux-gnu/libc.so.6
+
+Thread 7 (Thread 0x7f4e9cb0c6c0 (LWP 67281) "WorkerThread 4"):
+#0  0x00007f4e9efad72e in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#1  0x00007f4e9efa2388 in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#2  0x00007f4e9efa29ac in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#3  0x00007f4e9efa4e98 in pthread_cond_wait () from /lib/x86_64-linux-gnu/libc.so.6
+#4  0x00000000047f415d in ?? ()
+#5  0x0000000004332c55 in ?? ()
+#6  0x00000000050db243 in ?? ()
+#7  0x00007f4e9efa58bb in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#8  0x00007f4e9f023370 in clone () from /lib/x86_64-linux-gnu/libc.so.6
+
+Thread 6 (Thread 0x7f4e9d30d6c0 (LWP 67280) "WorkerThread 3"):
+#0  0x00007f4e9efad72e in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#1  0x00007f4e9efa2388 in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#2  0x00007f4e9efa29ac in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#3  0x00007f4e9efa4e98 in pthread_cond_wait () from /lib/x86_64-linux-gnu/libc.so.6
+#4  0x00000000047f415d in ?? ()
+#5  0x0000000004332c55 in ?? ()
+#6  0x00000000050db243 in ?? ()
+#7  0x00007f4e9efa58bb in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#8  0x00007f4e9f023370 in clone () from /lib/x86_64-linux-gnu/libc.so.6
+
+Thread 5 (Thread 0x7f4e9db0e6c0 (LWP 67279) "WorkerThread 2"):
+#0  0x00007f4e9efad72e in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#1  0x00007f4e9efa2388 in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#2  0x00007f4e9efa29ac in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#3  0x00007f4e9efa4e98 in pthread_cond_wait () from /lib/x86_64-linux-gnu/libc.so.6
+#4  0x00000000047f415d in ?? ()
+#5  0x0000000004332c55 in ?? ()
+#6  0x00000000050db243 in ?? ()
+#7  0x00007f4e9efa58bb in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#8  0x00007f4e9f023370 in clone () from /lib/x86_64-linux-gnu/libc.so.6
+
+Thread 4 (Thread 0x7f4e97fff6c0 (LWP 67278) "WorkerThread 1"):
+#0  0x00007f4e9efad72e in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#1  0x00007f4e9efa2388 in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#2  0x00007f4e9efa29ac in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#3  0x00007f4e9efa4e98 in pthread_cond_wait () from /lib/x86_64-linux-gnu/libc.so.6
+#4  0x00000000047f415d in ?? ()
+#5  0x0000000004332c55 in ?? ()
+#6  0x00000000050db243 in ?? ()
+#7  0x00007f4e9efa58bb in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#8  0x00007f4e9f023370 in clone () from /lib/x86_64-linux-gnu/libc.so.6
+
+Thread 3 (Thread 0x7f4e9e30f6c0 (LWP 67277) "WorkerThread 0"):
+#0  0x00007f4e9efad72e in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#1  0x00007f4e9efa2388 in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#2  0x00007f4e9efa29ac in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#3  0x00007f4e9efa4e98 in pthread_cond_wait () from /lib/x86_64-linux-gnu/libc.so.6
+#4  0x00000000047f415d in ?? ()
+#5  0x0000000004332c55 in ?? ()
+#6  0x00000000050db243 in ?? ()
+#7  0x00007f4e9efa58bb in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#8  0x00007f4e9f023370 in clone () from /lib/x86_64-linux-gnu/libc.so.6
+
+Thread 2 (Thread 0x7f4e9eb106c0 (LWP 67276) "Godot_v4.5.1-st"):
+#0  0x00007f4e9efad72e in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#1  0x00007f4e9efa2388 in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#2  0x00007f4e9efa29ac in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#3  0x00007f4e9efa4e98 in pthread_cond_wait () from /lib/x86_64-linux-gnu/libc.so.6
+#4  0x000000000440ffe3 in ?? ()
+#5  0x0000000004332c55 in ?? ()
+#6  0x00000000050db243 in ?? ()
+#7  0x00007f4e9efa58bb in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#8  0x00007f4e9f023370 in clone () from /lib/x86_64-linux-gnu/libc.so.6
+
+Thread 1 (Thread 0x7f4e9ef11240 (LWP 67272) "Godot_v4.5.1-st"):
+#0  0x00007f4e9efad72e in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#1  0x00007f4e9efa2388 in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#2  0x00007f4e9efa29ac in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#3  0x00007f4e9efa4e98 in pthread_cond_wait () from /lib/x86_64-linux-gnu/libc.so.6
+#4  0x000000000042e33b in ?? ()
+#5  0x00007f4e9ef3cca8 in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#6  0x00007f4e9ef3cd65 in __libc_start_main () from /lib/x86_64-linux-gnu/libc.so.6
+#7  0x000000000046ca2a in ?? ()

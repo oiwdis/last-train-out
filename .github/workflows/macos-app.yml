@@ -110,7 +110,27 @@ jobs:
           path: .godot/imported
           key: godot-imports-macos-arm64-4.5.1-v1-${{ hashFiles('project.godot', 'assets/**', 'resources/**') }}
 
+      - name: Select rendering diagnostics for changed runtime
+        id: diagnostics
+        env:
+          SOURCE_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          # Documentation/evidence-only commits still run every test, export and
+          # fresh-download launch check. Their unchanged runtime does not need
+          # another fifteen-minute comparison and identical gameplay recording.
+          git fetch --no-tags --depth=2 origin "$SOURCE_SHA"
+          if [ "$EVENT_NAME" = workflow_dispatch ] || ! git rev-parse "$SOURCE_SHA^" > /dev/null 2>&1; then
+            echo 'render=true' >> "$GITHUB_OUTPUT"
+          elif git diff --name-only "$SOURCE_SHA^" "$SOURCE_SHA" | grep -Ev '^(docs/|README\.md$|$)' > /dev/null; then
+            echo 'render=true' >> "$GITHUB_OUTPUT"
+          else
+            echo 'render=false' >> "$GITHUB_OUTPUT"
+            echo 'Runtime unchanged: retaining the documented comparison and tour; all release checks still run.'
+          fi
+
       - name: Measure windowed rendering on hosted Apple Silicon
+        if: steps.diagnostics.outputs.render == 'true'
         # Additional hardware evidence. A measurement timeout must not discard a
         # playable build; failures/logs remain visible and are reported separately.
         continue-on-error: true
@@ -131,6 +151,7 @@ jobs:
           python3 tools/macos/benchmark_compare.py "$GODOT" "$RUNNER_TEMP/render-baseline" "$RUNNER_TEMP/render-previous" tests/_output/performance
 
       - name: Record the finalization gameplay tour
+        if: steps.diagnostics.outputs.render == 'true'
         # Runs after all timed benchmarks, so Movie Maker cannot contaminate them.
         continue-on-error: true
         timeout-minutes: 10
@@ -151,9 +172,13 @@ jobs:
         id: shaders
         uses: actions/cache/restore@v6
         with:
-          path: .godot/exported/*/shader_baker
-          key: godot-metal-bake-4.5.1-v1-${{ hashFiles('project.godot', 'export_presets.cfg', 'scripts/**', 'resources/**', 'assets/**') }}
-          restore-keys: godot-metal-bake-4.5.1-v1-
+          # Resource-customization metadata is needed as well as the shader files.
+          # Godot validates source/configuration hashes before reusing either.
+          path: .godot/exported
+          key: godot-metal-bake-4.5.1-v2-${{ hashFiles('project.godot', 'export_presets.cfg', 'scripts/**', 'resources/**', 'assets/**') }}
+          restore-keys: |
+            godot-metal-bake-4.5.1-v2-
+            godot-metal-bake-4.5.1-v1-
 
       - name: Export Last Train Out.app
         env:
@@ -166,7 +191,7 @@ jobs:
         if: steps.shaders.outputs.cache-hit != 'true'
         uses: actions/cache/save@v6
         with:
-          path: .godot/exported/*/shader_baker
+          path: .godot/exported
           key: ${{ steps.shaders.outputs.cache-primary-key }}
 
       - name: Check the bundle

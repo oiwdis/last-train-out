@@ -157,6 +157,10 @@ This export-only inventory samples actual generated materials across all three p
 dynamic labels/particles. One-pixel maps retain shader features without duplicating
 source textures. The library is never instantiated during gameplay. Rebuild it
 after changing material features; the Mac export also refreshes it automatically.
+Its placeholder Image ID is canonicalized; two consecutive rebuilds produce
+identical scene bytes. CI caches the complete `.godot/exported` directory,
+including resource-customization metadata that Godot checks before reusing
+baked shaders. Caching shader files alone does not avoid recustomizing resources.
 
 Texture import settings disable automatic 3D/normal/roughness detection after
 choosing explicit compression, channel handling and mipmaps. Otherwise the
@@ -172,3 +176,9 @@ the scene, preparing destination-GPU pipelines left after shader baking while
 preserving the player, train and active camera. It does not change fog/visibility. Diagnostics wait through
 `GraphicsSettings.wait_for_render_ready()` and log the preparation time separately
 from entry-pan samples. The marker group is extensible to future stations.
+
+The project uses a 0.9 low-priority worker ratio for Godot 4.5.1. Local route
+runs repeatedly hung in the worker-pool shutdown wait with the default limit;
+controlled runs with a larger background budget exited normally. Native and
+software reports record the processor count and configured ratio. This controls
+compilation scheduling, not physics rates or shader quality.

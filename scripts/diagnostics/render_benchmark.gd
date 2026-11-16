@@ -101,6 +101,8 @@ func _run() -> void:
 			print("[benchmark] ", JSON.stringify(row))
 	var report := {"suite": _suite, "godot": Engine.get_version_info()["string"],
 		"os": OS.get_name(), "processor": OS.get_processor_name(),
+		"processor_count": OS.get_processor_count(),
+		"low_priority_thread_ratio": ProjectSettings.get_setting("threading/worker_pool/low_priority_thread_ratio"),
 		"renderer": RenderingServer.get_current_rendering_method(),
 		"adapter": RenderingServer.get_video_adapter_name(), "resolution": str(root.size),
 		"vsync": "disabled", "fixed_fps": false, "matched_camera": true, "warmup_frames":_warmup, "window_mode":DisplayServer.window_get_mode(), "results": _results}

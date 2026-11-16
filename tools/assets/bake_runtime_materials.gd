@@ -58,6 +58,8 @@ func _run() -> void:
 	var error := packed.pack(library)
 	if error == OK:
 		error = ResourceSaver.save(packed, "res://resources/graphics/runtime_material_library.tscn")
+	if error == OK:
+		error = _stable_image_id("res://resources/graphics/runtime_material_library.tscn")
 	print("[shader-library] ",count," authored preset/material/label entries: ",error_string(error))
 	library.free()
 	game.queue_free()
@@ -72,3 +74,23 @@ func _feature_material(material: Material, placeholder: Texture2D) -> Material:
 		if copy.get(property.name) is Texture2D:
 			copy.set(property.name, placeholder)
 	return copy
+
+func _stable_image_id(path: String) -> Error:
+	# ImageTexture serializes a fresh Image copy, losing the ID assigned above.
+	# Canonicalize its two resource references so unchanged inputs have identical
+	# scene bytes and Godot can reuse its resource-customization/shader-bake cache.
+	var source := FileAccess.get_file_as_string(path)
+	var expression := RegEx.create_from_string('sub_resource type="Image" id="([^"]+)"')
+	var matches := expression.search_all(source)
+	if matches.size() != 1:
+		push_error("The shader inventory must contain exactly one placeholder Image")
+		return ERR_INVALID_DATA
+	var previous := matches[0].get_string(1)
+	source = source.replace('id="'+previous+'"', 'id="ShaderImage"')
+	source = source.replace('SubResource("'+previous+'")', 'SubResource("ShaderImage")')
+	var file := FileAccess.open(path, FileAccess.WRITE)
+	if file == null:
+		return FileAccess.get_open_error()
+	file.store_string(source)
+	file.close()
+	return OK

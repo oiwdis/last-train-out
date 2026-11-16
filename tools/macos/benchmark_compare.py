@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Matched source revisions on hosted Mac; not a physical 2020 M1 result."""
 import json
+import os
 import platform
 import shutil
 import subprocess
@@ -14,6 +15,7 @@ godot, original, previous, destination = [arg for arg in sys.argv[1:] if arg != 
 output = Path(destination).resolve()
 output.mkdir(parents=True, exist_ok=True)
 host = {'platform': platform.platform(), 'machine': platform.machine(),
+        'processor_count': os.cpu_count(),
         'requested_resolution': '(960, 540)', 'samples': 600, 'warmup_frames': 120,
         'scope': 'hosted windowed runner; not physical 2020 M1 fullscreen'}
 (output/'host.json').write_text(json.dumps(host, indent=2))

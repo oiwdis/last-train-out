@@ -278,4 +278,5 @@ Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
   PASS  test_walking_onto_moving_deck_carries_the_player
   PASS  test_obstacle_in_the_way_knocks_a_climber_off_instead_of_dragging_through
 
-=== 196 passed, 0 failed, 196 total (82.6 s wall clock) ===
+=== 196 passed, 0 failed, 196 total (81.0 s wall clock) ===
+
