@@ -25,10 +25,12 @@ func _initialize() -> void:
 
 
 func _run() -> void:
+	_stage("loading scene")
 	Engine.max_fps = 0
 	DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
 	_game = load("res://scenes/main/main.tscn").instantiate()
 	root.add_child(_game)
+	_stage("scene ready")
 	_game.player.input.scripted = true
 	_game.player.input.clear()
 	_collect(_game)
@@ -50,6 +52,7 @@ func _run() -> void:
 		eye.fov = 78
 		await _render_frames(_warmup)
 		for index in cases.size():
+			_stage(view+" / "+String(cases[index])+" / applying preset")
 			_apply_case(index)
 			if _suite == "route":
 				# Warm up on the platform, so the first warehouse entry still
@@ -57,6 +60,7 @@ func _run() -> void:
 				eye.global_position = Vector3(26,2.6,.5)
 				eye.look_at(Vector3(23,2.1,-3.5))
 			await _render_frames(_warmup)
+			_stage(view+" / "+String(cases[index])+" / sampling")
 			var samples: Array[float] = []
 			var calls := 0.0
 			var primitives := 0.0
@@ -92,6 +96,7 @@ func _run() -> void:
 				"fps_from_mean": 1000.0 / mean, "draw_calls": calls / _frames,
 				"primitives": primitives / _frames, "process_ms": process_ms / _frames,
 				"physics_ms": physics_ms / _frames, "render_cpu_ms":cpu_ms/_frames, "render_gpu_ms":gpu_ms/_frames, "texture_bytes":texture_bytes/_frames, "max_frame_ms":samples[-1], "render_scale": root.scaling_3d_scale}
+			row["pipeline_compilations"] = _pipeline_counts()
 			_results.append(row)
 			print("[benchmark] ", JSON.stringify(row))
 	var report := {"suite": _suite, "godot": Engine.get_version_info()["string"],
@@ -107,6 +112,17 @@ func _run() -> void:
 	file.store_string(JSON.stringify(report, "  "))
 	print("[benchmark] wrote ", _out)
 	quit()
+
+func _pipeline_counts() -> Dictionary:
+	var counts := {}
+	var labels := ["canvas","mesh","surface","draw","specialization"]
+	var monitors := [Performance.PIPELINE_COMPILATIONS_CANVAS,Performance.PIPELINE_COMPILATIONS_MESH,Performance.PIPELINE_COMPILATIONS_SURFACE,Performance.PIPELINE_COMPILATIONS_DRAW,Performance.PIPELINE_COMPILATIONS_SPECIALIZATION]
+	for index in labels.size():
+		counts[labels[index]] = Performance.get_monitor(monitors[index])
+	return counts
+
+func _stage(label: String) -> void:
+	print("[benchmark-stage] ",Time.get_ticks_msec()," ms / ",label," / ",JSON.stringify(_pipeline_counts()))
 
 
 func _collect(node: Node) -> void:

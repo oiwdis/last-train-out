@@ -5,6 +5,7 @@ import platform
 import shutil
 import subprocess
 import sys
+import time
 from pathlib import Path
 
 root = Path(__file__).resolve().parents[2]
@@ -15,7 +16,7 @@ host = {'platform': platform.platform(), 'machine': platform.machine(),
         'requested_resolution': '(960, 540)', 'samples': 120, 'warmup_frames': 60,
         'scope': 'hosted windowed runner; not physical 2020 M1 fullscreen'}
 (output/'host.json').write_text(json.dumps(host, indent=2))
-for name, project in [('milestone25', Path(original).resolve()), ('previous26', Path(previous).resolve()), ('final26', root)]:
+for name, project in [('final26', root), ('milestone25', Path(original).resolve()), ('previous26', Path(previous).resolve())]:
     # Run identical diagnostics, including warmup, against every source revision.
     if project != root:
         (project/'scripts/diagnostics').mkdir(exist_ok=True)
@@ -35,3 +36,29 @@ for name, project in [('milestone25', Path(original).resolve()), ('previous26', 
         print(stem, result['processor'], result['adapter'], result['renderer'])
         for row in result['results']:
             print(row.get('view', 'Warehouse B'), row['case'], 'median_ms', row.get('median_frame_ms', row.get('median_ms')), 'p95_ms', row.get('p95_frame_ms', row.get('p95_ms')))
+
+# Isolate the optional effect that introduced a separate-specular render path.
+# A bounded diagnostic timeout is evidence, not a successful game benchmark.
+probe = [godot, '--path', str(root), '--audio-driver', 'Dummy', '--resolution', '960x540',
+         '--script', 'tools/profile_finalization.gd', '--', '--suite=skin_probe',
+         '--samples=24', '--warmup=8', '--out='+str(output/'skin-probe.json')]
+started = time.monotonic()
+with (output/'skin-probe.log').open('w') as log:
+    process = subprocess.Popen(probe, stdout=log, stderr=subprocess.STDOUT)
+    try:
+        code = process.wait(timeout=90)
+        status = {'completed':code == 0, 'exit_code':code, 'timed_out':False}
+    except subprocess.TimeoutExpired:
+        try:
+            subprocess.run(['sample', str(process.pid), '3', '-file', str(output/'skin-probe-stack.txt')],
+                           stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT, timeout=12)
+        except (OSError, subprocess.TimeoutExpired):
+            pass
+        finally:
+            process.kill()
+            process.wait()
+        status = {'completed':False, 'timed_out':True, 'timeout_seconds':90}
+status['elapsed_seconds'] = time.monotonic()-started
+status['scope'] = 'Diagnostic only: skin scattering is disabled in shipped presets.'
+(output/'skin-probe-status.json').write_text(json.dumps(status, indent=2))
+print('Optional skin-scattering probe:', status)

@@ -140,3 +140,8 @@ rejects that failed-import state. CI retains compressed texture caches but
 rebuilds imported scenes, whose dependency UIDs can reference removed images
 after a character replacement. Historical benchmark imports repair only failed
 metadata for byte-identical image sources, with an explicit equality check.
+
+Skin scattering remains an available quality field but is disabled in the shipped
+presets. Its separate-specular pipeline is isolated by the native diagnostic;
+ordinary skin keeps the authored diffuse/normal maps and roughness. The macOS
+export enables Godot 4.5 shader baking to include intermediate Metal shader code.

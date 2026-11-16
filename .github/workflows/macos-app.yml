@@ -74,6 +74,7 @@ jobs:
       # Cold GPU texture compression takes roughly half an hour on this runner.
       # Godot still checks source/import hashes and rebuilds changed resources.
       - name: Restore imported assets
+        id: imports
         uses: actions/cache@v6
         with:
           path: .godot/imported
@@ -101,6 +102,13 @@ jobs:
             grep -E '^=== [0-9]+ passed' tests/_output/tests.log
             echo '```'
           } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Save validated asset imports before rendering checks
+        if: steps.imports.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v6
+        with:
+          path: .godot/imported
+          key: godot-imports-macos-arm64-4.5.1-v1-${{ hashFiles('project.godot', 'assets/**', 'resources/**') }}
 
       - name: Measure windowed rendering on hosted Apple Silicon
         # Additional hardware evidence. A measurement timeout must not discard a
@@ -192,6 +200,14 @@ jobs:
             echo "- Unzip it once to get **$APP_NAME.app**. This build is not notarized, so macOS asks for"
             echo "  confirmation the first time: see *Play on macOS* in the README."
           } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Retain export diagnostics
+        if: always()
+        run: |
+          if [ -f build/macos/export.log ]; then
+            mkdir -p "$RUNNER_TEMP/selftest"
+            cp build/macos/export.log "$RUNNER_TEMP/selftest/export.log"
+          fi
 
       - name: Upload the self-test reports
         if: always()

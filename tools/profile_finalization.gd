@@ -2,10 +2,12 @@ extends "res://tools/benchmark_milestone25.gd"
 ## Controlled Warehouse B ablations. Diagnostic omissions are never saved as presets.
 
 func _run() -> void:
+	_stage("loading profile scene")
 	Engine.max_fps = 0
 	DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
 	_game = load("res://scenes/main/main.tscn").instantiate()
 	root.add_child(_game)
+	_stage("profile scene ready")
 	_game.player.input.scripted = true
 	_game.player.input.clear()
 	_game.camera_rig.set_physics_process(false)
@@ -25,8 +27,15 @@ func _run() -> void:
 	# The normal game presets and their physical-GPU fog path are unchanged.
 	_game.station.get_node("Atmosphere").use_volumetric_fog = false
 	var cases := ["High", "No local shadows", "No directional shadows", "No shadows", "No local lights", "No SSAO", "No MSAA", "No normal or roughness maps", "LOD 2.5", "65% pixels", "No animation", "High repeat"]
+	if _suite == "skin_probe":
+		cases = ["Skin scattering enabled"]
 	for label in cases:
+		_stage(label+" / applying profile case")
 		_game.graphics.set_preset(2)
+		if label == "Skin scattering enabled":
+			for material: StandardMaterial3D in _game.graphics._materials:
+				if material.resource_name.contains("worker skin"):
+					material.subsurf_scatter_enabled = true
 		for entry in _game.graphics._lights:
 			var light: Light3D = entry.light
 			light.visible = label != "No local lights" or light is DirectionalLight3D
@@ -47,6 +56,7 @@ func _run() -> void:
 		if label == "LOD 2.5": root.mesh_lod_threshold = 2.5
 		if label == "65% pixels": root.scaling_3d_scale = .65
 		await _render_frames(_warmup)
+		_stage(label+" / sampling profile case")
 		var intervals: Array[float] = []
 		var totals := {"draw_calls":0.0,"primitives":0.0,"render_cpu_ms":0.0,"render_gpu_ms":0.0,"texture_bytes":0.0}
 		var last := Time.get_ticks_usec()
@@ -62,6 +72,7 @@ func _run() -> void:
 			totals.texture_bytes += Performance.get_monitor(Performance.RENDER_TEXTURE_MEM_USED)/_frames
 		intervals.sort()
 		totals.merge({"case":label,"median_ms":intervals[intervals.size()/2],"p95_ms":intervals[mini(ceili(intervals.size()*.95)-1,intervals.size()-1)],"samples":_frames,"volumetric_fog":environment.volumetric_fog_enabled,"render_scale":root.scaling_3d_scale})
+		totals["pipeline_compilations"] = _pipeline_counts()
 		_results.append(totals)
 		print("[profile] ", JSON.stringify(totals))
 	var report := {"godot":Engine.get_version_info()["string"],"processor":OS.get_processor_name(),"adapter":RenderingServer.get_video_adapter_name(),"renderer":RenderingServer.get_current_rendering_method(),"resolution":str(root.size),"vsync":"disabled","fixed_fps":false,"view":"Warehouse B","volumetric_policy":"disabled for the ablation series to match Apple Paravirtual CI capability","results":_results}

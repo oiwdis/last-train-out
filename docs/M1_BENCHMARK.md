@@ -11,6 +11,9 @@ internal/external display and native pixel resolution, display scaling, power
 mode and whether the Mac is connected to power. Close competing applications;
 let the machine reach a stable temperature. Do not run tests or recordings at
 the same time as these measurements.
+Record cold-launch time until the player can move, as well as the first preset
+change. The benchmark logs include elapsed stage times and pipeline-compilation
+counters; retain them when reporting an initial stall.
 
 The diagnostic is included in the app; no Godot editor/source checkout is needed.
 Set the app path below to the actual unzipped app. From Terminal:

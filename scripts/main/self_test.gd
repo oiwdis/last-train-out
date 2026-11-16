@@ -311,7 +311,7 @@ func _check(check_name: String, passed: bool, detail: String = "") -> bool:
 	_checks[check_name] = passed
 	if detail != "":
 		_details[check_name] = detail
-	print("[self-test] %s  %s%s" % ["ok  " if passed else "FAIL", check_name, ("  (%s)" % detail) if detail != "" else ""])
+	print("[self-test] %s  %s%s [%d ms]" % ["ok  " if passed else "FAIL", check_name, ("  (%s)" % detail) if detail != "" else "", Time.get_ticks_msec()])
 	return passed
 
 

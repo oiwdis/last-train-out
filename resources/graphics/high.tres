@@ -14,5 +14,5 @@ msaa = 1
 light_fade_distance = 70.0
 light_distance_fade = false
 ssao = true
-skin_scattering = true
+skin_scattering = false
 mesh_lod_threshold = 1.0
