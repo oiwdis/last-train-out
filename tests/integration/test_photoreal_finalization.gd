@@ -162,3 +162,20 @@ func test_gantry_and_columns_keep_existing_traversal_volumes() -> void:
 	var pillar := game.station.get_node("WarehouseB/MainHall/HallPillarA") as BoxPart
 	check_eq((pillar.shape as BoxShape3D).size,Vector3(.35,5.5,.35),"column collision stays authored size")
 	check(pillar.get_node("BoltedSteelColumn") is MeshInstance3D,"close column has replacement steelwork")
+
+func test_render_preparation_restores_camera_without_advancing_gameplay() -> void:
+	var camera := game.get_viewport().get_camera_3d()
+	var pose := camera.global_transform
+	var player_at := game.player.global_position
+	var train_at := game.train.global_position
+	var speed := game.train.speed
+	var ticks := Engine.get_physics_frames()
+	# Dummy rendering still exercises the camera/lifecycle contract. Real pipeline
+	# timing and the entry route are checked separately on the native Mac renderer.
+	RenderWarmup.prepare(game)
+	check_eq(game.get_viewport().get_camera_3d(),camera,"original camera remains current")
+	check_eq(camera.global_transform,pose,"preparation never moves the gameplay camera")
+	check_eq(game.player.global_position,player_at,"player is not teleported or simulated")
+	check_eq(game.train.global_position,train_at,"train is not moved")
+	check_eq(game.train.speed,speed,"train integrator is untouched")
+	check_eq(Engine.get_physics_frames(),ticks,"offscreen draws do not advance physics")

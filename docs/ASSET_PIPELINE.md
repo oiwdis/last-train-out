@@ -145,15 +145,22 @@ Skin scattering remains an available quality field but is disabled in the shippe
 presets. Its separate-specular pipeline was isolated by the native diagnostic in
 run 24; `benchmark_compare.py --skin-probe` explicitly repeats that investigation.
 Ordinary CI omits the unsafe probe so a timed-out Metal compiler service cannot
-compete with the subsequent release checks;
-ordinary skin keeps the authored diffuse/normal maps and roughness. The macOS
+compete with the subsequent release checks.
+Ordinary skin keeps the authored diffuse/normal maps and roughness. The macOS
 export enables Godot 4.5 shader baking to include intermediate Metal shader code.
 The native export must initialize Forward+ Metal: Godot silently skips its baker
 under the headless dummy renderer. `export_app.sh` refreshes the generated
 `resources/graphics/runtime_material_library.tscn` using
 `tools/assets/bake_runtime_materials.gd`, then exports with the real backend and
-requires the Metal backend in the log and shader-cache entries in the pack. This export-only
-inventory samples actual generated materials across all three presets plus
+requires the Metal backend in the log and shader-cache entries in the pack.
+This export-only inventory samples actual generated materials across all three presets plus
 dynamic labels/particles. One-pixel maps retain shader features without duplicating
 source textures. The library is never instantiated during gameplay. Rebuild it
 after changing material features; the Mac export also refreshes it automatically.
+
+`RenderWarmup` draws scene-authored marker views without a visible buffer swap
+after startup/preset application. This prepares destination-GPU pipelines left
+after shader baking, while preserving the player, train and active camera. It
+does not advance simulation or change fog/visibility. Diagnostics wait through
+`GraphicsSettings.wait_for_render_ready()` and log the preparation time separately
+from entry-pan samples. The marker group is extensible to future stations.

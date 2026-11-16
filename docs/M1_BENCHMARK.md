@@ -12,7 +12,8 @@ mode and whether the Mac is connected to power. Close competing applications;
 let the machine reach a stable temperature. Do not run tests or recordings at
 the same time as these measurements.
 Record cold-launch time until the player can move, as well as the first preset
-change. The benchmark logs include elapsed stage times and pipeline-compilation
+change. The game prepares scene-authored views at startup/preset changes; retain
+the `[render-warmup]` elapsed times rather than counting that work as free. The benchmark logs include elapsed stage times and pipeline-compilation
 counters; retain them when reporting an initial stall.
 
 The diagnostic is included in the app; no Godot editor/source checkout is needed.
@@ -27,10 +28,12 @@ system_profiler SPHardwareDataType SPDisplaysDataType > "$LTO_REPORTS/hardware.t
 shasum -a 256 "$HOME/Downloads/LastTrainOut-macos-universal.zip"
 "$LTO_APP/Contents/MacOS/Last Train Out" --fullscreen --audio-driver Dummy \
   --script res://scripts/diagnostics/render_benchmark.gd -- \
-  --suite=presets --warmup=120 --samples=600 --out="$LTO_REPORTS/presets-1.json"
+  --suite=presets --warmup=120 --samples=600 --out="$LTO_REPORTS/presets-1.json" \
+  > "$LTO_REPORTS/presets-1.log" 2>&1
 "$LTO_APP/Contents/MacOS/Last Train Out" --fullscreen --audio-driver Dummy \
   --script res://scripts/diagnostics/render_benchmark.gd -- \
-  --suite=route --warmup=120 --samples=600 --out="$LTO_REPORTS/entry-pan-1.json"
+  --suite=route --warmup=120 --samples=600 --out="$LTO_REPORTS/entry-pan-1.json" \
+  > "$LTO_REPORTS/entry-pan-1.log" 2>&1
 ```
 
 Repeat three times, changing the output suffix to `-2` and `-3`. Keep every run.

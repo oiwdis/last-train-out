@@ -147,5 +147,8 @@ func _apply_case(index: int) -> void:
 
 
 func _render_frames(count: int) -> void:
+	var graphics: Node = _game.get("graphics")
+	if graphics != null and graphics.has_method("wait_for_render_ready"):
+		await graphics.call("wait_for_render_ready")
 	for i in count:
 		await RenderingServer.frame_post_draw

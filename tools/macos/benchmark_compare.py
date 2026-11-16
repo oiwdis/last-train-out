@@ -14,7 +14,7 @@ godot, original, previous, destination = [arg for arg in sys.argv[1:] if arg != 
 output = Path(destination).resolve()
 output.mkdir(parents=True, exist_ok=True)
 host = {'platform': platform.platform(), 'machine': platform.machine(),
-        'requested_resolution': '(960, 540)', 'samples': 120, 'warmup_frames': 60,
+        'requested_resolution': '(960, 540)', 'samples': 600, 'warmup_frames': 120,
         'scope': 'hosted windowed runner; not physical 2020 M1 fullscreen'}
 (output/'host.json').write_text(json.dumps(host, indent=2))
 for name, project in [('final26', root), ('milestone25', Path(original).resolve()), ('previous26', Path(previous).resolve())]:
@@ -27,7 +27,7 @@ for name, project in [('final26', root), ('milestone25', Path(original).resolve(
     for suite in ['presets', 'route'] + ([] if name == 'milestone25' else ['ablations']):
         stem = name+'-'+suite
         script = 'tools/profile_finalization.gd' if suite == 'ablations' else 'tools/benchmark_milestone25.gd'
-        command = [godot, '--path', str(project), '--audio-driver', 'Dummy', '--resolution', '960x540', '--position', '32,64', '--script', script, '--', '--suite='+suite, '--samples=120', '--warmup=60', '--out='+str(output/(stem+'.json'))]
+        command = [godot, '--path', str(project), '--audio-driver', 'Dummy', '--resolution', '960x540', '--position', '32,64', '--script', script, '--', '--suite='+suite, '--samples=600', '--warmup=120', '--out='+str(output/(stem+'.json'))]
         with (output/(stem+'.log')).open('w') as log:
             subprocess.run(command, stdout=log, stderr=subprocess.STDOUT, check=True, timeout=300)
         result = json.loads((output/(stem+'.json')).read_text())

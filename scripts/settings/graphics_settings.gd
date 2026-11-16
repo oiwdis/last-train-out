@@ -15,6 +15,8 @@ var _lights: Array[Dictionary] = []
 var _particles: Array[Dictionary] = []
 var _ready_to_apply := false
 var _materials: Dictionary = {}
+var _warmup_pending := false
+var _warming := false
 
 
 func _exit_tree() -> void:
@@ -117,6 +119,32 @@ func set_preset(index: int, persist: bool = false) -> void:
 		config.set_value("graphics", "preset", current_index)
 		config.save(SETTINGS_PATH)
 	changed.emit(current_index)
+	if DisplayServer.get_name() != "headless" and not _warmup_pending:
+		_warmup_pending = true
+		_prepare_rendering.call_deferred()
+
+
+func _prepare_rendering() -> void:
+	# BaseMaterial3D flushes pending shader-feature changes before a normal draw.
+	# force_draw alone would otherwise prepare the previous preset's shaders.
+	await RenderingServer.frame_post_draw
+	_draw_preparation.call_deferred()
+
+
+func _draw_preparation() -> void:
+	# Keep force_draw out of frame_post_draw signal callbacks.
+	_warmup_pending = false
+	if not is_instance_valid(_scene_root) or not _scene_root.is_inside_tree():
+		return
+	_warming = true
+	RenderWarmup.prepare(_scene_root)
+	_warming = false
+
+
+func wait_for_render_ready() -> void:
+	# Diagnostics must not accidentally count the offscreen preparation draws.
+	while not _ready_to_apply or _warmup_pending or _warming:
+		await get_tree().process_frame
 
 
 func _apply_resolution() -> void:

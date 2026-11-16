@@ -17,6 +17,7 @@ func _run() -> void:
 	game.player.input.scripted = true
 	view = game.camera_rig.exploration
 	game.graphics.set_preset(quality)
+	await game.graphics.wait_for_render_ready()
 	await _cut(Vector3(28,1.05,0.4), Vector3(32,2,0.4), 1, "Milestone 2.6 finalization / character and railway inspection")
 	# The tour caption otherwise covers the face throughout this inspection shot.
 	game.hud.show_message("", 0)

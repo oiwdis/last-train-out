@@ -6,6 +6,8 @@ func _run() -> void:
 	game.player.input.scripted = true
 	game.player.input.camera_relative = false
 	game.graphics.set_preset(2)
+	if game.graphics.has_method("wait_for_render_ready"):
+		await game.graphics.call("wait_for_render_ready")
 	game.camera_rig.set_physics_process(false)
 	game.camera_rig.exploration.set_process(false)
 	game.camera_rig.exploration.request_perspective(1)
