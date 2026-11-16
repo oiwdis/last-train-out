@@ -56,6 +56,10 @@ sed \
 
 rm -rf "$APP"
 mkdir -p "$(dirname "$APP")"
+# The graphical editor keeps scanning while shaders bake. Do not import the
+# bundle being written inside this project's build directory (including .icns).
+mkdir -p "$ROOT/build"
+touch "$ROOT/build/.gdignore"
 LOG="$(dirname "$APP")/export.log"
 
 echo "Exporting build $BUILD_NUMBER ($BUILD_KIND, commit $BUILD_COMMIT) to $APP"
