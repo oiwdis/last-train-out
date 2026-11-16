@@ -54,18 +54,24 @@ func _collect(node: Node) -> void:
 		for surface in node.multimesh.mesh.get_surface_count():
 			var material := node.multimesh.mesh.surface_get_material(surface) as StandardMaterial3D
 			if material != null and not _materials.has(material):
-				_materials[material] = {"normal": material.normal_enabled, "roughness": material.roughness_texture, "skin": material.subsurf_scatter_enabled}
+				_materials[material] = _authored_material_state(material)
 	if node is MeshInstance3D and node.mesh != null:
 		for surface in node.mesh.get_surface_count():
 			var material := node.get_active_material(surface) as StandardMaterial3D
 			if material != null and not _materials.has(material):
-				_materials[material] = {"normal": material.normal_enabled, "roughness": material.roughness_texture, "skin": material.subsurf_scatter_enabled}
+				_materials[material] = _authored_material_state(material)
 	if node is Light3D:
 		_lights.append({"light": node, "shadow": node.shadow_enabled})
 	if node is CPUParticles3D:
 		_particles.append({"particles": node, "amount": node.amount})
 	for child in node.get_children(true):
 		_collect(child)
+
+
+func _authored_material_state(material: StandardMaterial3D) -> Dictionary:
+	return {"normal": material.normal_enabled, "roughness": material.roughness_texture,
+		"skin": material.subsurf_scatter_enabled,
+		"skin_capable": material.subsurf_scatter_enabled or material.get_meta("skin_scattering_candidate", false)}
 
 
 func set_preset(index: int, persist: bool = false) -> void:
@@ -77,7 +83,7 @@ func set_preset(index: int, persist: bool = false) -> void:
 		# Low retains textured colour but avoids the triplanar normal/roughness fetches.
 		material.normal_enabled = bool(_materials[material].normal) and preset.normal_maps
 		material.roughness_texture = _materials[material].roughness if preset.roughness_maps else null
-		material.subsurf_scatter_enabled = bool(_materials[material].skin) and preset.skin_scattering
+		material.subsurf_scatter_enabled = bool(_materials[material].skin_capable) and preset.skin_scattering
 	if _atmosphere != null:
 		var environment := _atmosphere.get_environment()
 		environment.volumetric_fog_enabled = preset.volumetric_fog and _atmosphere.use_volumetric_fog and _atmosphere._volumetric_fog_is_supported()

@@ -140,6 +140,10 @@ func test_planar_pbr_preserves_metres_normals_and_shared_materials() -> void:
 	for index in 3:
 		game.graphics.set_preset(index)
 		check_eq(material.normal_enabled,index>0,"preset toggles cached projected material normals")
+		for skin: StandardMaterial3D in game.graphics._materials:
+			if skin.get_meta("skin_scattering_candidate",false):
+				check(not skin.subsurf_scatter_enabled,"shipped presets avoid the expensive separate-specular path")
+				check(not game.graphics._materials[skin].skin,"scene teardown cannot restore a transient SSS-enabled state")
 
 func test_gantry_and_columns_keep_existing_traversal_volumes() -> void:
 	var ladder := game.station.get_node("GantryLadder") as Ladder

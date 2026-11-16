@@ -207,6 +207,7 @@ jobs:
           if [ -f build/macos/export.log ]; then
             mkdir -p "$RUNNER_TEMP/selftest"
             cp build/macos/export.log "$RUNNER_TEMP/selftest/export.log"
+            cp build/macos/shader-inventory.log "$RUNNER_TEMP/selftest/shader-inventory.log"
           fi
 
       - name: Upload the self-test reports

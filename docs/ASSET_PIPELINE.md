@@ -142,6 +142,18 @@ after a character replacement. Historical benchmark imports repair only failed
 metadata for byte-identical image sources, with an explicit equality check.
 
 Skin scattering remains an available quality field but is disabled in the shipped
-presets. Its separate-specular pipeline is isolated by the native diagnostic;
+presets. Its separate-specular pipeline was isolated by the native diagnostic in
+run 24; `benchmark_compare.py --skin-probe` explicitly repeats that investigation.
+Ordinary CI omits the unsafe probe so a timed-out Metal compiler service cannot
+compete with the subsequent release checks;
 ordinary skin keeps the authored diffuse/normal maps and roughness. The macOS
 export enables Godot 4.5 shader baking to include intermediate Metal shader code.
+The native export must initialize Forward+ Metal: Godot silently skips its baker
+under the headless dummy renderer. `export_app.sh` refreshes the generated
+`resources/graphics/runtime_material_library.tscn` using
+`tools/assets/bake_runtime_materials.gd`, then exports with the real backend and
+requires the Metal backend in the log and shader-cache entries in the pack. This export-only
+inventory samples actual generated materials across all three presets plus
+dynamic labels/particles. One-pixel maps retain shader features without duplicating
+source textures. The library is never instantiated during gameplay. Rebuild it
+after changing material features; the Mac export also refreshes it automatically.

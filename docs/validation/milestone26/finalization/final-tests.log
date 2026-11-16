@@ -25,11 +25,11 @@ Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
 
 [SUITE] test_project_integrity.gd
   PASS  test_all_scripts_compile
-          . 105 scripts compiled
+          . 106 scripts compiled
   PASS  test_all_resources_load
           . 65 resources loaded
   PASS  test_all_scenes_instantiate
-          . 30 scenes instantiated
+          . 31 scenes instantiated
   PASS  test_main_scene_is_configured
   PASS  test_input_map_has_all_actions
   PASS  test_physics_layers_are_named
@@ -276,4 +276,5 @@ Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
   PASS  test_walking_onto_moving_deck_carries_the_player
   PASS  test_obstacle_in_the_way_knocks_a_climber_off_instead_of_dragging_through
 
-=== 195 passed, 0 failed, 195 total (85.9 s wall clock) ===
+=== 195 passed, 0 failed, 195 total (80.0 s wall clock) ===
+

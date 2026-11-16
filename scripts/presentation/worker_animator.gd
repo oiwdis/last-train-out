@@ -36,7 +36,10 @@ func bind(who: Player, arms_only := false) -> void:
 				material.normal_scale = 0.12
 				material.roughness = .64
 				material.metallic_specular = .28
-				material.subsurf_scatter_enabled = true
+				# Keep capability separate from its initial state: even a brief SSS
+				# enable can request the expensive separate-specular pipeline on Metal.
+				material.set_meta("skin_scattering_candidate", true)
+				material.subsurf_scatter_enabled = false
 				material.subsurf_scatter_skin_mode = true
 				material.subsurf_scatter_strength = .08
 			elif material.resource_name == "Brown iris and sclera":

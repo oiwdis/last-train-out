@@ -105,7 +105,7 @@
     {
       "failures": [],
       "notes": [
-        "105 scripts compiled"
+        "106 scripts compiled"
       ],
       "passed": true,
       "suite": "test_project_integrity.gd",
@@ -123,7 +123,7 @@
     {
       "failures": [],
       "notes": [
-        "30 scenes instantiated"
+        "31 scenes instantiated"
       ],
       "passed": true,
       "suite": "test_project_integrity.gd",

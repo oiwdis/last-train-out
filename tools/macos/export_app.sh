@@ -59,8 +59,17 @@ mkdir -p "$(dirname "$APP")"
 LOG="$(dirname "$APP")/export.log"
 
 echo "Exporting build $BUILD_NUMBER ($BUILD_KIND, commit $BUILD_COMMIT) to $APP"
+# Refresh the export-only inventory from the actual generated game materials.
+# Its one-pixel maps preserve shader features without duplicating source images.
+"$GODOT" --headless --path "$ROOT" --script tools/assets/bake_runtime_materials.gd > "$(dirname "$APP")/shader-inventory.log" 2>&1
+# Godot 4.5 silently skips shader baking with the dummy/headless renderer.
+# Native Mac exports need a real Metal renderer, even though no editor UI is used.
+EXPORT_RENDERER=(--headless)
+if [ "$(uname -s)" = Darwin ]; then
+	EXPORT_RENDERER=(--rendering-method forward_plus --rendering-driver metal --audio-driver Dummy)
+fi
 set +e
-"$GODOT" --headless --path "$ROOT" --export-release "macOS" "$APP" > "$LOG" 2>&1
+"$GODOT" "${EXPORT_RENDERER[@]}" --path "$ROOT" --export-release "macOS" "$APP" > "$LOG" 2>&1
 CODE=$?
 set -e
 
@@ -77,6 +86,10 @@ if grep -q "Project export for preset .* failed" "$LOG"; then
 fi
 if [ ! -d "$APP" ]; then
 	echo "The export finished but $APP does not exist (full log: $LOG)." >&2
+	exit 1
+fi
+if [ "$(uname -s)" = Darwin ] && ! grep -q 'Metal.*Forward+' "$LOG"; then
+	echo "The native export did not initialize the Metal shader-baking backend (full log: $LOG)." >&2
 	exit 1
 fi
 echo "Exported $APP ($(du -sh "$APP" | cut -f1))"

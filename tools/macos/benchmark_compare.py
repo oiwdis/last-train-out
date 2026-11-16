@@ -9,7 +9,8 @@ import time
 from pathlib import Path
 
 root = Path(__file__).resolve().parents[2]
-godot, original, previous, destination = sys.argv[1:]
+probe_enabled = '--skin-probe' in sys.argv[1:]
+godot, original, previous, destination = [arg for arg in sys.argv[1:] if arg != '--skin-probe']
 output = Path(destination).resolve()
 output.mkdir(parents=True, exist_ok=True)
 host = {'platform': platform.platform(), 'machine': platform.machine(),
@@ -37,7 +38,12 @@ for name, project in [('final26', root), ('milestone25', Path(original).resolve(
         for row in result['results']:
             print(row.get('view', 'Warehouse B'), row['case'], 'median_ms', row.get('median_frame_ms', row.get('median_ms')), 'p95_ms', row.get('p95_frame_ms', row.get('p95_ms')))
 
-# Isolate the optional effect that introduced a separate-specular render path.
+# The unsafe optional effect was isolated in run 24. Do not routinely leave its
+# Metal compiler service work competing with release validation after a timeout.
+if not probe_enabled:
+    sys.exit(0)
+
+# Explicit forensic mode: isolate the separate-specular render path.
 # A bounded diagnostic timeout is evidence, not a successful game benchmark.
 probe = [godot, '--path', str(root), '--audio-driver', 'Dummy', '--resolution', '960x540',
          '--script', 'tools/profile_finalization.gd', '--', '--suite=skin_probe',
