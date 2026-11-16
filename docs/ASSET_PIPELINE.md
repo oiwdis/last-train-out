@@ -147,12 +147,18 @@ run 24; `benchmark_compare.py --skin-probe` explicitly repeats that investigatio
 Ordinary CI omits the unsafe probe so a timed-out Metal compiler service cannot
 compete with the subsequent release checks.
 Ordinary skin keeps the authored diffuse/normal maps and roughness. The macOS
-export enables Godot 4.5 shader baking to include intermediate Metal shader code.
-The native export must initialize Forward+ Metal: Godot silently skips its baker
+export enables Godot 4.5 shader baking to include intermediate Vulkan shader code.
+The native export must initialize the configured Forward+ Vulkan driver: Godot silently skips its baker
 under the headless dummy renderer. `export_app.sh` refreshes the generated
 `resources/graphics/runtime_material_library.tscn` using
 `tools/assets/bake_runtime_materials.gd`, then exports with the real backend and
-requires the Metal backend in the log and shader-cache entries in the pack.
+requires that backend in the log and shader-cache entries in the pack.
+Godot's bundled MoltenVK supplies Vulkan on macOS; players install nothing extra.
+Run 33's controlled exported-app comparison found a baked Metal library rejected
+as generated for a newer Apple GPU. The same app passed all 34 graphical checks
+with Vulkan in 79.1 seconds, within the unchanged 120-second watchdog.
+That diagnostic also logged two MoltenVK pipeline-cache `VK_INCOMPLETE` messages;
+it is evidence for the driver choice, not a clean final release result.
 This export-only inventory samples actual generated materials across all three presets plus
 dynamic labels/particles. One-pixel maps retain shader features without duplicating
 source textures. The library is never instantiated during gameplay. Rebuild it
@@ -161,6 +167,8 @@ Its placeholder Image ID is canonicalized; two consecutive rebuilds produce
 identical scene bytes. CI caches the complete `.godot/exported` directory,
 including resource-customization metadata that Godot checks before reusing
 baked shaders. Caching shader files alone does not avoid recustomizing resources.
+Metal and Vulkan use separate cache namespaces, including their customization
+metadata. Do not restore the old Metal cache into a Vulkan export.
 
 Texture import settings disable automatic 3D/normal/roughness detection after
 choosing explicit compression, channel handling and mipmaps. Otherwise the
@@ -181,4 +189,5 @@ The project uses a 0.9 low-priority worker ratio for Godot 4.5.1. Local route
 runs repeatedly hung in the worker-pool shutdown wait with the default limit;
 controlled runs with a larger background budget exited normally. Native and
 software reports record the processor count and configured ratio. This controls
-compilation scheduling, not physics rates or shader quality.
+background task scheduling, not physics rates or shader quality. It did not cure
+the packaged Metal startup problem; the driver comparison above is separate evidence.

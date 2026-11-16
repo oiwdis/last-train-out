@@ -67,10 +67,12 @@ echo "Exporting build $BUILD_NUMBER ($BUILD_KIND, commit $BUILD_COMMIT) to $APP"
 # Its one-pixel maps preserve shader features without duplicating source images.
 "$GODOT" --headless --path "$ROOT" --script tools/assets/bake_runtime_materials.gd > "$(dirname "$APP")/shader-inventory.log" 2>&1
 # Godot 4.5 silently skips shader baking with the dummy/headless renderer.
-# Native Mac exports need a real Metal renderer, even though no editor UI is used.
+# Native Mac exports need the configured real renderer, even without an editor UI.
 EXPORT_RENDERER=(--headless)
 if [ "$(uname -s)" = Darwin ]; then
-	EXPORT_RENDERER=(--rendering-method forward_plus --rendering-driver metal --audio-driver Dummy)
+	MAC_DRIVER="$(python3 -c 'from tools.macos.verify_app import project_setting; print(project_setting("rendering_device/driver.macos") or "metal")')"
+	case "$MAC_DRIVER" in metal|vulkan) ;; *) echo "Unsupported Mac rendering driver: $MAC_DRIVER" >&2; exit 1 ;; esac
+	EXPORT_RENDERER=(--rendering-method forward_plus --rendering-driver "$MAC_DRIVER" --audio-driver Dummy)
 fi
 set +e
 "$GODOT" "${EXPORT_RENDERER[@]}" --path "$ROOT" --export-release "macOS" "$APP" > "$LOG" 2>&1
@@ -92,8 +94,8 @@ if [ ! -d "$APP" ]; then
 	echo "The export finished but $APP does not exist (full log: $LOG)." >&2
 	exit 1
 fi
-if [ "$(uname -s)" = Darwin ] && ! grep -q 'Metal.*Forward+' "$LOG"; then
-	echo "The native export did not initialize the Metal shader-baking backend (full log: $LOG)." >&2
+if [ "$(uname -s)" = Darwin ] && ! grep -qi "$MAC_DRIVER.*Forward+" "$LOG"; then
+	echo "The native export did not initialize the $MAC_DRIVER shader-baking backend (full log: $LOG)." >&2
 	exit 1
 fi
 echo "Exported $APP ($(du -sh "$APP" | cut -f1))"

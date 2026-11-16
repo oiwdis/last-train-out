@@ -45,11 +45,12 @@ if report.exists():
     result = json.loads(report.read_text())
     status.update(selftest_passed=result.get("passed", False),
                   fatal=result.get("fatal"),
-                  actual_driver=result.get("rendering_driver"))
+                  actual_driver=result.get("rendering_driver"),
+                  requested_driver_used=result.get("rendering_driver") == driver)
 stem.with_suffix(".status.json").write_text(json.dumps(status, indent=2) + "\n")
 print(json.dumps(status))
 check = Path(__file__).with_name("check_selftest.py")
-raise SystemExit(subprocess.run([sys.executable, str(check), str(report),
-                                "--exit-code", str(code), "--expect-window",
-                                "--expect-arch", "arm64",
-                                "--label", "diagnostic-" + driver]).returncode)
+checked = subprocess.run([sys.executable, str(check), str(report),
+                          "--exit-code", str(code), "--expect-window",
+                          "--expect-arch", "arm64", "--label", "diagnostic-" + driver])
+raise SystemExit(checked.returncode if status.get("requested_driver_used") else 1)

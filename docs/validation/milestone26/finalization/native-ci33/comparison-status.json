@@ -1,0 +1,18 @@
+{
+  "run_url": "https://github.com/oiwdis/last-train-out/actions/runs/43796061709",
+  "source_commit": "5227affd56136d09c6b7902610c6d819d542242e",
+  "workflow_conclusion": "failure",
+  "same_export_same_runner": true,
+  "metal_passed": false,
+  "metal_error": "Shader was generated for a newer Apple GPU",
+  "forced_vulkan_passed": true,
+  "forced_vulkan_checks": 34,
+  "forced_vulkan_seconds": 79.096791625,
+  "unchanged_selftest_watchdog_seconds": 120,
+  "vulkan_log_limitations": [
+    "Two MoltenVK VK_INCOMPLETE pipeline-cache write messages",
+    "ObjectDB instances leaked at exit"
+  ],
+  "release_zip_produced": false,
+  "physical_M1_result": "unverified"
+}

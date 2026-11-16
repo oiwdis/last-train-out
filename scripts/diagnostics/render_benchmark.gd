@@ -104,6 +104,7 @@ func _run() -> void:
 		"processor_count": OS.get_processor_count(),
 		"low_priority_thread_ratio": ProjectSettings.get_setting("threading/worker_pool/low_priority_thread_ratio"),
 		"renderer": RenderingServer.get_current_rendering_method(),
+		"rendering_driver": RenderingServer.get_current_rendering_driver_name(),
 		"adapter": RenderingServer.get_video_adapter_name(), "resolution": str(root.size),
 		"vsync": "disabled", "fixed_fps": false, "matched_camera": true, "warmup_frames":_warmup, "window_mode":DisplayServer.window_get_mode(), "results": _results}
 	var file := FileAccess.open(_out, FileAccess.WRITE)

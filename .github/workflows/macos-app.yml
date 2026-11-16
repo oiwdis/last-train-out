@@ -110,17 +110,17 @@ jobs:
           path: .godot/imported
           key: godot-imports-macos-arm64-4.5.1-v1-${{ hashFiles('project.godot', 'assets/**', 'resources/**') }}
 
-      - name: Restore baked Metal shaders
+      - name: Restore baked Vulkan shaders
         id: shaders
         uses: actions/cache/restore@v6
         with:
           # Resource-customization metadata is needed as well as the shader files.
           # Godot validates source/configuration hashes before reusing either.
           path: .godot/exported
-          key: godot-metal-bake-4.5.1-v2-${{ hashFiles('project.godot', 'export_presets.cfg', 'scripts/**', 'resources/**', 'assets/**') }}
-          restore-keys: |
-            godot-metal-bake-4.5.1-v2-
-            godot-metal-bake-4.5.1-v1-
+          # Keep backend families separate: customization metadata must never
+          # skip baking after a Metal/Vulkan switch.
+          key: godot-vulkan-bake-4.5.1-v1-${{ hashFiles('project.godot', 'export_presets.cfg', 'scripts/**', 'resources/**', 'assets/**') }}
+          restore-keys: godot-vulkan-bake-4.5.1-v1-
 
       - name: Export Last Train Out.app
         env:
@@ -129,7 +129,7 @@ jobs:
           BUILD_KIND: development
         run: tools/macos/export_app.sh "$GODOT" "$APP"
 
-      - name: Save baked Metal shaders
+      - name: Save baked Vulkan shaders
         if: steps.shaders.outputs.cache-hit != 'true'
         uses: actions/cache/save@v6
         with:
@@ -153,7 +153,7 @@ jobs:
           else
             # Preserve the original failure. This bounded alternative-driver probe
             # is diagnostic evidence only; it cannot publish or pass a broken build.
-            python3 tools/macos/probe_renderer.py "$APP" "$RUNNER_TEMP/selftest" vulkan || true
+            python3 tools/macos/probe_renderer.py "$APP" "$RUNNER_TEMP/selftest" metal || true
             exit 1
           fi
 
