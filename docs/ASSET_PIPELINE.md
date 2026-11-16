@@ -158,6 +158,14 @@ dynamic labels/particles. One-pixel maps retain shader features without duplicat
 source textures. The library is never instantiated during gameplay. Rebuild it
 after changing material features; the Mac export also refreshes it automatically.
 
+Texture import settings disable automatic 3D/normal/roughness detection after
+choosing explicit compression, channel handling and mipmaps. Otherwise the
+graphical exporter schedules another full texture import after signing the app;
+run 25 exposed this on 133 already-compressed images. `configure_imports.py`
+sets these flags and `check_assets.py` rejects accidental auto-detection.
+These flags preserve the existing pixel/channel choices, including RGB storage
+where a normal-map compression override was not already authored.
+
 `RenderWarmup` draws scene-authored marker views on normal rendered frames behind
 a loading panel after startup/preset application. It pauses and restores
 the scene, preparing destination-GPU pipelines left after shader baking while

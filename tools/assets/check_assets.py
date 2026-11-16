@@ -52,5 +52,7 @@ if __name__ == '__main__':
                 assert 'valid=false' not in settings, (path, 'failed texture import record committed')
                 assert path.with_suffix('').is_file(), (path, 'missing extracted texture source')
                 assert 'compress/mode=2' in settings and 'mipmaps/generate=true' in settings, (path, '3D texture budget not configured')
+                assert 'detect_3d/compress_to=0' in settings, (path, 'editor 3D detection would reimport this explicit texture budget')
+                assert 'compress/normal_map=0' not in settings and 'roughness/mode=0' not in settings, (path, 'texture channel handling must be explicit')
                 textures += 1
     print(json.dumps({'validated': len(rows), 'compressed_mipmapped_textures': textures, 'assets': rows}, indent=2))
