@@ -269,6 +269,7 @@ func _check_scavenging(game: Game) -> void:
 		await _physics_frames(2)
 	_check("graphics_presets_work_in_export", game.graphics.current_index == 2)
 	game.graphics.set_preset(1)
+	await game.graphics.wait_for_render_ready()
 	game.supply_ui.open()
 	_check("inventory_ui_opens_in_export", game.supply_ui.is_open())
 
