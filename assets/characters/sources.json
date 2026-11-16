@@ -1,0 +1,49 @@
+{
+  "makehuman": {
+    "mpfb_commit": "9de0707fdc88438d7c53a1a2ac7937d9221e2431",
+    "source": "https://github.com/makehumancommunity/mpfb2",
+    "assets_license": "CC0-1.0",
+    "tool_license": "GPL-3.0-or-later"
+  },
+  "archives": [
+    {
+      "file": "makehuman_system_assets_cc0.zip",
+      "bytes": 280737770,
+      "sha256": "b542127a8e25547c7c29c19f2d1d2adb9a664c80396ecd694095dbc8028a0107"
+    },
+    {
+      "file": "skins02_cc0.zip",
+      "bytes": 76112708,
+      "sha256": "1613f1ef3afca53094511d26620ed7cf1d2dedc29ed3d384d60bdebe250698ae"
+    },
+    {
+      "file": "shoes01_cc0.zip",
+      "bytes": 82953569,
+      "sha256": "ded3f70428505eabbf1f6d7b5f61196a7366ef20757103d276ad0ed336c35ada"
+    },
+    {
+      "file": "quaternius_universal_animations_standard.zip",
+      "bytes": 15904933,
+      "sha256": "cc73fc4e495b82958207316596317a3f40b9fa38065bde1027937452da537724"
+    },
+    {
+      "file": "roland_schuller_steam_locomotive_2k.blend",
+      "bytes": 8021888,
+      "sha256": "bdc51bae52e30a553b456e138ef4267b64b4f06e61cdaaf9f2ddc1c80e86e563"
+    }
+  ],
+  "finalization_assets": {
+    "system_pack": [
+      "middleage_caucasian_male",
+      "male_casualsuit05",
+      "high-poly eyes",
+      "brown_eye",
+      "short04",
+      "eyebrow001",
+      "eyelashes01"
+    ],
+    "skins02_normal": "mindfront_skin_male_african_middleage/skin_male_african_middleage_NRM.png",
+    "shoes01": "toigo_ankle_boots_male",
+    "license": "CC0-1.0"
+  }
+}

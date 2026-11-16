@@ -113,21 +113,7 @@ func _rebuild() -> void:
 		_visual_root.queue_free()
 	_visual_root = Node3D.new()
 	add_child(_visual_root, false, Node.INTERNAL_MODE_BACK)
-	var rail_mesh := BoxMesh.new()
-	rail_mesh.size = Vector3(0.06, height, 0.06)
-	rail_mesh.material = material
-	for side: float in [-1.0, 1.0]:
-		var rail := MeshInstance3D.new()
-		rail.mesh = rail_mesh
-		rail.position = Vector3(side * width * 0.5, height * 0.5, 0.05)
-		_visual_root.add_child(rail)
-	var rung_mesh := BoxMesh.new()
-	rung_mesh.size = Vector3(width, 0.04, 0.04)
-	rung_mesh.material = material
-	var y := 0.22
-	while y < height - 0.05:
-		var rung := MeshInstance3D.new()
-		rung.mesh = rung_mesh
-		rung.position = Vector3(0.0, y, 0.05)
-		_visual_root.add_child(rung)
-		y += RUNG_SPACING
+	var steel := MeshInstance3D.new()
+	steel.name = "ChannelStilesAndRoundRungs"
+	steel.mesh = FabricatedMesh.ladder(width,height,material)
+	_visual_root.add_child(steel)

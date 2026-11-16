@@ -1,0 +1,47 @@
+[mvk-error] VK_INCOMPLETE: Error writing pipeline cache data: Failed to write 4 bytes to output stream! Wrote 0
+[mvk-error] VK_INCOMPLETE: Error writing pipeline cache data: Failed to write 4 bytes to output stream! Wrote 0
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+     at: cleanup (core/object/object.cpp:2514)
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+Vulkan 1.2.283 - Forward+ - Using Device #0: Apple - Apple Paravirtual device
+
+[self-test] ok    main_scene_loads  (res://scenes/main/main.tscn) [17552 ms]
+[self-test] ok    main_scene_is_the_game [17555 ms]
+[render-warmup] 6 views / 18302 ms / draw pipelines=51.0
+[self-test] ok    station_is_harlow_junction [42638 ms]
+[self-test] ok    train_has_locomotive_and_two_cars [42638 ms]
+[self-test] ok    player_stands_on_the_platform  ((16.0, 1.0, 0.6)) [42639 ms]
+[self-test] ok    input_map_is_complete [42639 ms]
+[self-test] ok    player_walks  (1.93 m) [43304 ms]
+[self-test] ok    player_jumps [43688 ms]
+[self-test] ok    player_lands [44205 ms]
+[self-test] ok    flat_car_exists [44205 ms]
+[self-test] ok    train_departs  (5.00 m/s after 5.0 m) [47372 ms]
+[self-test] ok    player_rides_the_moving_train  (drift 0.0000 m) [47372 ms]
+[self-test] ok    debug_menu_reports_live_state  (On train: yes, train state: ACCELERATING) [47707 ms]
+[self-test] ok    immersive_camera_present [47790 ms]
+[self-test] ok    first_person_eye_in_export [48807 ms]
+[self-test] ok    walk_inside_moving_car_in_export [49788 ms]
+[self-test] ok    perspective_switch_preserves_motion_in_export [49788 ms]
+[self-test] ok    third_person_camera_in_export [50788 ms]
+[self-test] ok    physical_cab_control_in_export [52038 ms]
+[self-test] ok    scavenging_system_present [52120 ms]
+[self-test] ok    search_completes_in_export [54154 ms]
+[self-test] ok    supplies_deposit_in_export [54490 ms]
+[self-test] ok    exported_loot_is_conserved [54490 ms]
+[self-test] ok    supplies_withdraw_in_export [54491 ms]
+[self-test] ok    physical_cargo_is_carried_in_export [55360 ms]
+[self-test] ok    cargo_anchor_perspective_1_in_export [55492 ms]
+[self-test] ok    cargo_anchor_perspective_0_in_export [55498 ms]
+[self-test] ok    physical_cargo_is_released_in_export [55499 ms]
+[render-warmup] 6 views / 10341 ms / draw pipelines=81.0
+[render-warmup] 6 views / 2784 ms / draw pipelines=109.0
+[render-warmup] 6 views / 7416 ms / draw pipelines=109.0
+[self-test] ok    graphics_presets_work_in_export [76509 ms]
+[render-warmup] 6 views / 213 ms / draw pipelines=109.0
+[self-test] ok    inventory_ui_opens_in_export [76726 ms]
+[self-test] ok    frames_are_produced  (120 frames in 2.0 s) [78737 ms]
+[self-test] ok    frame_can_be_captured [78756 ms]
+[self-test] ok    frame_is_not_blank  (45 distinct colours) [78830 ms]
+[self-test] ok    no_engine_errors [78836 ms]
+[self-test] PASSED

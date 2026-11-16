@@ -162,6 +162,7 @@ func pick_up(who: Player, world: WorldItem) -> bool:
 			_hold(world)
 			notice.emit("Carrying %s · 2.5 m/s · G to drop" % world.item.display_name)
 		return true
+	var pickup_focus := world.global_position + Vector3.UP * .18
 	_transaction = true
 	world.available = false
 	var accepted := inventories.backpack.add(world.item, world.amount)
@@ -172,6 +173,8 @@ func pick_up(who: Player, world: WorldItem) -> bool:
 		world.available = true
 		world.interaction.prompt = "Take %s ×%d" % [world.item.display_name, world.amount]
 	_transaction = false
+	if accepted > 0:
+		player.present_action(&"pickup", 0.65, pickup_focus)
 	notice.emit("+%d %s" % [accepted, world.item.display_name] if accepted > 0 else "Backpack full — drop or deposit a stack first")
 	return true
 
@@ -180,6 +183,7 @@ func _hold(world: WorldItem) -> void:
 	carried = world
 	player.carrying_heavy = true
 	world.hold(player)
+	player.present_action(&"pickup", 0.55, world.to_global(Vector3(0,.34,0)), world)
 	carrying_changed.emit(world.item)
 
 
@@ -191,6 +195,7 @@ func drop_heavy() -> bool:
 	carried = null
 	player.carrying_heavy = false
 	world.release(world_root, find_drop_position(), player.get_world_velocity())
+	player.presentation_action.emit(&"drop", 0.6)
 	carrying_changed.emit(null)
 	_transaction = false
 	notice.emit("Set down %s — E to recover" % world.item.display_name)

@@ -1,0 +1,138 @@
+{
+  "adapter": "llvmpipe (LLVM 19.1.7, 256 bits)",
+  "lighting": "Shared final HDR, ambient, haze and SSAO; original scene fixtures retained",
+  "poses": [
+    {
+      "eye": "(28.65, 2.66, 0.48)",
+      "feet": "(28.0, 1.02, 0.4)",
+      "fov": 46.0,
+      "name": "01_character_face",
+      "target": "(28.0, 2.61, 0.4)"
+    },
+    {
+      "eye": "(30.9, 2.12, 0.4)",
+      "feet": "(28.0, 1.02, 0.4)",
+      "fov": 46.0,
+      "name": "02_character_front",
+      "target": "(28.0, 1.92, 0.4)"
+    },
+    {
+      "eye": "(28.0, 2.12, 3.3)",
+      "feet": "(28.0, 1.02, 0.4)",
+      "fov": 46.0,
+      "name": "03_character_side",
+      "target": "(28.0, 1.92, 0.4)"
+    },
+    {
+      "eye": "(25.1, 2.12, 0.4)",
+      "feet": "(28.0, 1.02, 0.4)",
+      "fov": 46.0,
+      "name": "04_character_rear",
+      "target": "(28.0, 1.92, 0.4)"
+    },
+    {
+      "eye": "(30.73415, 2.101, 2.8)",
+      "feet": "(29.18415, 1.001, 0.4)",
+      "fov": 55.0,
+      "name": "05_walking",
+      "player_speed": 3.0,
+      "target": "(29.03415, 1.901, 0.4)",
+      "train_speed": 0.0
+    },
+    {
+      "eye": "(31.56251, 2.101, 2.8)",
+      "feet": "(30.1625, 1.000904, 0.4)",
+      "fov": 55.0,
+      "name": "06_sprinting",
+      "player_speed": 6.0,
+      "target": "(29.8625, 1.901, 0.4)",
+      "train_speed": 0.0
+    },
+    {
+      "eye": "(30.6, 2.17, 2.0)",
+      "feet": "(28.0, 1.000147, 0.4)",
+      "fov": 52.0,
+      "name": "07_heavy_carry",
+      "player_speed": 0.0,
+      "target": "(28.0, 2.02, 0.4)",
+      "train_speed": 0.0
+    },
+    {
+      "eye": "(28.0, 2.62, 0.4)",
+      "feet": "(28.0, 1.000147, 0.4)",
+      "fov": 78.0,
+      "name": "08_first_person_hands",
+      "player_speed": 0.0,
+      "target": "(35.0, 2.32, -0.5)",
+      "train_speed": 0.0
+    },
+    {
+      "eye": "(30.0, 4.4, 3.9)",
+      "feet": "(18.0, 1.05, 0.5)",
+      "fov": 64.0,
+      "name": "09_locomotive",
+      "target": "(23.0, 2.0, -3.5)"
+    },
+    {
+      "eye": "(26.11122, 1.05, -8.3)",
+      "feet": "(18.0, 0.999846, 0.5)",
+      "fov": 65.0,
+      "name": "10_moving_wheels",
+      "player_speed": 0.0,
+      "target": "(24.11122, 0.85, -3.5)",
+      "train_speed": 0.357919309928389
+    },
+    {
+      "eye": "(21.0, 2.65, -3.5)",
+      "feet": "(21.0, 1.05, -3.5)",
+      "fov": 78.0,
+      "name": "11_cab",
+      "target": "(22.5, 2.2, -3.5)"
+    },
+    {
+      "eye": "(13.0, 2.65, -3.5)",
+      "feet": "(13.0, 1.05, -3.5)",
+      "fov": 78.0,
+      "name": "12_crew",
+      "target": "(18.0, 2.5, -3.5)"
+    },
+    {
+      "eye": "(26.0, 2.65, 0.5)",
+      "feet": "(26.0, 1.05, 0.5)",
+      "fov": 78.0,
+      "name": "13_platform",
+      "target": "(17.0, 2.1, 2.8)"
+    },
+    {
+      "eye": "(36.0, 1.65, 1.1)",
+      "feet": "(36.0, 0.05, 1.1)",
+      "fov": 78.0,
+      "name": "14_warehouse_a",
+      "target": "(47.0, 2.3, 1.0)"
+    },
+    {
+      "eye": "(74.0, 1.65, 3.0)",
+      "feet": "(74.0, 0.05, 3.0)",
+      "fov": 78.0,
+      "name": "15_warehouse_b",
+      "target": "(83.0, 1.6, 2.0)"
+    },
+    {
+      "eye": "(101.0, 2.5, 6.6)",
+      "feet": "(101.0, 0.05, 6.6)",
+      "fov": 78.0,
+      "name": "16_freight_yard",
+      "target": "(117.0, 2.1, 9.0)"
+    },
+    {
+      "eye": "(28.0, 3.8, 5.7)",
+      "feet": "(28.0, 1.05, 0.4)",
+      "fov": 78.0,
+      "name": "17_distant_environment",
+      "target": "(15.0, 5.0, -17.0)"
+    }
+  ],
+  "preset": "High",
+  "renderer": "forward_plus",
+  "resolution": "(960, 540)"
+}

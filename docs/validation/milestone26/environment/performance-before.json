@@ -1,0 +1,49 @@
+{
+  "adapter": "llvmpipe (LLVM 19.1.7, 256 bits)",
+  "fixed_fps": false,
+  "godot": "4.5.1-stable (official)",
+  "matched_camera": true,
+  "os": "Linux",
+  "processor": "INTEL(R) XEON(R) PLATINUM 8573C",
+  "renderer": "forward_plus",
+  "resolution": "(1280, 720)",
+  "results": [
+    {
+      "case": "Low",
+      "draw_calls": 217.0,
+      "fps_from_mean": 1.81918760842169,
+      "mean_frame_ms": 549.695916666667,
+      "median_frame_ms": 588.645,
+      "p95_frame_ms": 651.428,
+      "primitives": 357892.0,
+      "render_scale": 0.649999976158142,
+      "samples": 24,
+      "view": "Platform"
+    },
+    {
+      "case": "Low",
+      "draw_calls": 307.0,
+      "fps_from_mean": 1.42625766509497,
+      "mean_frame_ms": 701.135583333333,
+      "median_frame_ms": 701.948,
+      "p95_frame_ms": 708.803,
+      "primitives": 268187.0,
+      "render_scale": 0.649999976158142,
+      "samples": 24,
+      "view": "Warehouse B"
+    },
+    {
+      "case": "Low",
+      "draw_calls": 166.0,
+      "fps_from_mean": 2.39818529318864,
+      "mean_frame_ms": 416.981958333333,
+      "median_frame_ms": 389.663,
+      "p95_frame_ms": 506.293,
+      "primitives": 164727.0,
+      "render_scale": 0.649999976158142,
+      "samples": 24,
+      "view": "Freight yard"
+    }
+  ],
+  "vsync": "disabled"
+}

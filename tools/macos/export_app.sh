@@ -56,11 +56,26 @@ sed \
 
 rm -rf "$APP"
 mkdir -p "$(dirname "$APP")"
+# The graphical editor keeps scanning while shaders bake. Do not import the
+# bundle being written inside this project's build directory (including .icns).
+mkdir -p "$ROOT/build"
+touch "$ROOT/build/.gdignore"
 LOG="$(dirname "$APP")/export.log"
 
 echo "Exporting build $BUILD_NUMBER ($BUILD_KIND, commit $BUILD_COMMIT) to $APP"
+# Refresh the export-only inventory from the actual generated game materials.
+# Its one-pixel maps preserve shader features without duplicating source images.
+"$GODOT" --headless --path "$ROOT" --script tools/assets/bake_runtime_materials.gd > "$(dirname "$APP")/shader-inventory.log" 2>&1
+# Godot 4.5 silently skips shader baking with the dummy/headless renderer.
+# Native Mac exports need the configured real renderer, even without an editor UI.
+EXPORT_RENDERER=(--headless)
+if [ "$(uname -s)" = Darwin ]; then
+	MAC_DRIVER="$(python3 -c 'from tools.macos.verify_app import project_setting; print(project_setting("rendering_device/driver.macos") or "metal")')"
+	case "$MAC_DRIVER" in metal|vulkan) ;; *) echo "Unsupported Mac rendering driver: $MAC_DRIVER" >&2; exit 1 ;; esac
+	EXPORT_RENDERER=(--rendering-method forward_plus --rendering-driver "$MAC_DRIVER" --audio-driver Dummy)
+fi
 set +e
-"$GODOT" --headless --path "$ROOT" --export-release "macOS" "$APP" > "$LOG" 2>&1
+"$GODOT" "${EXPORT_RENDERER[@]}" --path "$ROOT" --export-release "macOS" "$APP" > "$LOG" 2>&1
 CODE=$?
 set -e
 
@@ -77,6 +92,10 @@ if grep -q "Project export for preset .* failed" "$LOG"; then
 fi
 if [ ! -d "$APP" ]; then
 	echo "The export finished but $APP does not exist (full log: $LOG)." >&2
+	exit 1
+fi
+if [ "$(uname -s)" = Darwin ] && ! grep -qi "$MAC_DRIVER.*Forward+" "$LOG"; then
+	echo "The native export did not initialize the $MAC_DRIVER shader-baking backend (full log: $LOG)." >&2
 	exit 1
 fi
 echo "Exported $APP ($(du -sh "$APP" | cut -f1))"

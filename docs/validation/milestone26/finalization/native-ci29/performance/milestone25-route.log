@@ -1,0 +1,20 @@
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+Metal 3.2 - Forward+ - Using Device #0: Apple - Apple Paravirtual device (Apple5)
+
+[benchmark-stage] 5007 ms / loading scene / {"canvas":0.0,"draw":0.0,"mesh":0.0,"specialization":0.0,"surface":0.0}
+[benchmark-stage] 14995 ms / scene ready / {"canvas":0.0,"draw":0.0,"mesh":9.0,"specialization":0.0,"surface":0.0}
+WARNING: Metal does not support LOD bias for samplers.
+     at: sampler_create (drivers/metal/rendering_device_driver_metal.mm:771)
+[benchmark-stage] 20706 ms / Warehouse entry pan / Low / applying preset / {"canvas":2.0,"draw":13.0,"mesh":9.0,"specialization":19.0,"surface":16.0}
+[benchmark-stage] 22044 ms / Warehouse entry pan / Low / sampling / {"canvas":2.0,"draw":15.0,"mesh":9.0,"specialization":22.0,"surface":18.0}
+[benchmark] {"case":"Low","draw_calls":346.571666666667,"fps_from_mean":143.880820638649,"max_frame_ms":63.857,"mean_frame_ms":6.95019666666667,"median_frame_ms":6.341,"p95_frame_ms":10.099,"physics_ms":1.20405499999999,"pipeline_compilations":{"canvas":2.0,"draw":16.0,"mesh":9.0,"specialization":23.0,"surface":18.0},"primitives":185103.376666667,"process_ms":27.0293966666667,"render_cpu_ms":0.792535000890493,"render_gpu_ms":0.0,"render_scale":0.649999976158142,"samples":600,"texture_bytes":32505856.0,"view":"Warehouse entry pan"}
+[benchmark-stage] 26215 ms / Warehouse entry pan / Medium / applying preset / {"canvas":2.0,"draw":16.0,"mesh":9.0,"specialization":23.0,"surface":18.0}
+[benchmark-stage] 27810 ms / Warehouse entry pan / Medium / sampling / {"canvas":2.0,"draw":18.0,"mesh":9.0,"specialization":26.0,"surface":20.0}
+[benchmark] {"case":"Medium","draw_calls":617.453333333333,"fps_from_mean":130.433251435744,"max_frame_ms":24.04,"mean_frame_ms":7.66675666666666,"median_frame_ms":7.608,"p95_frame_ms":10.483,"physics_ms":1.78565333333332,"pipeline_compilations":{"canvas":2.0,"draw":18.0,"mesh":9.0,"specialization":26.0,"surface":20.0},"primitives":201907.236666667,"process_ms":30.0528116666661,"render_cpu_ms":0.881128333508968,"render_gpu_ms":0.0,"render_scale":0.850000023841858,"samples":600,"texture_bytes":48381952.0,"view":"Warehouse entry pan"}
+[benchmark-stage] 32411 ms / Warehouse entry pan / High / applying preset / {"canvas":2.0,"draw":18.0,"mesh":9.0,"specialization":26.0,"surface":20.0}
+[benchmark-stage] 35993 ms / Warehouse entry pan / High / sampling / {"canvas":2.0,"draw":18.0,"mesh":9.0,"specialization":43.0,"surface":26.0}
+[benchmark] {"case":"High","draw_calls":686.725,"fps_from_mean":99.71130254204,"max_frame_ms":78.955,"mean_frame_ms":10.0289533333333,"median_frame_ms":9.485,"p95_frame_ms":14.344,"physics_ms":1.07655166666667,"pipeline_compilations":{"canvas":2.0,"draw":18.0,"mesh":9.0,"specialization":45.0,"surface":26.0},"primitives":216817.346666667,"process_ms":32.3743083333337,"render_cpu_ms":1.16128499895334,"render_gpu_ms":0.0,"render_scale":1.0,"samples":600,"texture_bytes":106018242.56,"view":"Warehouse entry pan"}
+[benchmark] wrote /Users/runner/work/last-train-out/last-train-out/tests/_output/performance/milestone25-route.json
+[benchmark-stage] 42069 ms / scene released / {"canvas":2.0,"draw":18.0,"mesh":9.0,"specialization":45.0,"surface":26.0}
+[benchmark-stage] 42074 ms / material updates drained / {"canvas":2.0,"draw":18.0,"mesh":9.0,"specialization":45.0,"surface":26.0}
+[benchmark-stage] 42074 ms / quitting / {"canvas":2.0,"draw":18.0,"mesh":9.0,"specialization":45.0,"surface":26.0}

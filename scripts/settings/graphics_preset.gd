@@ -14,3 +14,9 @@ extends Resource
 @export var msaa := 0
 @export var particle_fraction := 1.0
 @export var light_fade_distance := 40.0
+@export var light_distance_fade := true
+@export var normal_maps := true
+@export var roughness_maps := true
+@export var skin_scattering := false
+@export var ssao := false
+@export_range(0.5, 8.0) var mesh_lod_threshold := 2.0

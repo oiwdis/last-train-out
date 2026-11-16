@@ -4,6 +4,9 @@ extends Node3D
 
 @export_enum("Locomotive", "Crew", "Flat") var kind := 0
 var _steam: CPUParticles3D
+var _drive_wheels: Array[MeshInstance3D] = []
+var _wheel_phase := 0.0
+var mechanics: TrainMechanics
 
 
 func _ready() -> void:
@@ -18,20 +21,34 @@ func _ready() -> void:
 			for old in wheel.get_children():
 				if old is GeometryInstance3D:
 					old.hide()
-			wheel.add_child(preload("res://assets/models/rail_wheel.glb").instantiate())
+			if kind != 0:
+				wheel.add_child(preload("res://assets/models/rail_wheel.glb").instantiate())
 	if kind == 0:
-		var machinery := preload("res://assets/models/locomotive_machinery.glb").instantiate()
+		var machinery := preload("res://assets/train/steam_locomotive.glb").instantiate()
+		machinery.name = "AuthoredLocomotive"
 		add_child(machinery)
-		for mesh: MeshInstance3D in machinery.find_children("*", "MeshInstance3D", true, false):
-			for surface in mesh.mesh.get_surface_count():
-				if mesh.mesh.surface_get_material(surface).resource_name.contains("Blackened"):
-					mesh.set_surface_override_material(surface, preload("res://resources/materials/metal_dark.tres"))
-		_steam = PresentationEffects.particles(self, Vector3(3.5, 3.98, 0), 22, Color(0.6, 0.67, 0.7, 0.24), 0.32, 2.1)
+		for piece: MeshInstance3D in machinery.find_children("*","MeshInstance3D",true,false):
+			for surface in piece.mesh.get_surface_count():
+				var material := piece.mesh.surface_get_material(surface) as StandardMaterial3D
+				if material != null and material.resource_name in ["LTO Black","LTO Black Metal Paint","LTO Black.001"]:
+					# Source dark paint was multiplied into an already dark scan at
+					# conversion. Restore charcoal detail without adding emission.
+					material.albedo_color = Color(1.85,1.85,1.85)
+		for mesh: MeshInstance3D in machinery.find_children("DrivingWheel*", "MeshInstance3D", true, false):
+			_drive_wheels.append(mesh)
+		mechanics = TrainMechanics.new()
+		mechanics.name = "LiveRunningGearAndInstruments"
+		add_child(mechanics)
+		var train := car.get_parent() as Train
+		if train != null:
+			train.reset_finished.connect(func() -> void: _wheel_phase = 0.0)
+		_steam = PresentationEffects.particles(self, Vector3(5.15, 3.55, 0), 22, Color(0.6, 0.67, 0.7, 0.24), 0.32, 2.1)
 		_steam.direction = Vector3(-0.4, 1, 0)
 		_steam.initial_velocity_min = 0.35
 		_steam.initial_velocity_max = 0.8
 		_steam.gravity = Vector3(-0.1, 0.2, 0)
 		_steam.emitting = true
+		_soft_steam()
 	var d := DetailBuilder.new(self, "TrainDetails")
 	if kind == 1:
 		d.signboard(Vector3(0, 3.2, 1.34), "LAST TRAIN OUT  /  CREW", 4.5, 0.35)
@@ -44,35 +61,54 @@ func _ready() -> void:
 			d.cylinder(Vector3(-4.2 + i * 0.35, 0.9, side * 1.28), 0.018, 0.025, DetailBuilder.STEEL, Vector3(PI / 2, 0, 0))
 	d.finish()
 	if kind != 2:
-		_curved_roof(0.0 if kind == 1 else -2.6, 7.0 if kind == 1 else 3.45)
+		var finish := (preload("res://assets/train/crew_car_finish.glb") if kind == 1 else preload("res://assets/train/locomotive_cab_finish.glb")).instantiate()
+		finish.name = "CarriageFinish"
+		add_child(finish)
+		for mesh: MeshInstance3D in finish.find_children("*", "MeshInstance3D", true, false):
+			for surface in mesh.mesh.get_surface_count():
+				if mesh.mesh.surface_get_material(surface).resource_name == "Black oxide hardware":
+					mesh.set_surface_override_material(surface, preload("res://resources/materials/metal_dark.tres"))
+		AssetDressing.place(self, "sconce", Vector3(-0.8 if kind == 1 else -2.8, 2.9, 1.15), Vector3.ONE * 0.65, PI)
+		if kind == 1:
+			AssetDressing.place(self, "suitcase", Vector3(1.8, 1.5, 0.95), Vector3.ONE * 0.7)
+		else:
+			AssetDressing.place(self, "oil_can", Vector3(-3.6, 1.6, -0.9), Vector3.ONE)
+
+func _soft_steam() -> void:
+	var gradient := Gradient.new()
+	gradient.offsets = PackedFloat32Array([0.0, 0.35, 1.0])
+	gradient.colors = PackedColorArray([Color(1,1,1,0.32), Color(1,1,1,0.18), Color(1,1,1,0)])
+	var texture := GradientTexture2D.new()
+	texture.gradient = gradient
+	texture.width = 64
+	texture.height = 64
+	texture.fill = GradientTexture2D.FILL_RADIAL
+	texture.fill_from = Vector2(0.5,0.5)
+	texture.fill_to = Vector2(1,0.5)
+	var material := StandardMaterial3D.new()
+	material.albedo_texture = texture
+	material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+	material.billboard_mode = BaseMaterial3D.BILLBOARD_PARTICLES
+	material.vertex_color_use_as_albedo = true
+	material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+	var quad := QuadMesh.new()
+	quad.size = Vector2(1.4,1.4)
+	quad.material = material
+	_steam.mesh = quad
 
 
-func _curved_roof(centre: float, length: float) -> void:
-	var surface := SurfaceTool.new()
-	surface.begin(Mesh.PRIMITIVE_TRIANGLES)
-	for index in 20:
-		var z0 := -1.37 + index * 2.74 / 20
-		var z1 := z0 + 2.74 / 20
-		var y0 := 3.62 - 0.13 * pow(z0 / 1.37, 2)
-		var y1 := 3.62 - 0.13 * pow(z1 / 1.37, 2)
-		var a := Vector3(centre - length / 2, y0, z0)
-		var b := Vector3(centre + length / 2, y0, z0)
-		var c := Vector3(centre + length / 2, y1, z1)
-		var d := Vector3(centre - length / 2, y1, z1)
-		for point in [a, c, b, a, d, c]:
-			surface.add_vertex(point)
-	surface.generate_normals()
-	var mesh := MeshInstance3D.new()
-	mesh.mesh = surface.commit()
-	mesh.material_override = preload("res://resources/materials/roof_metal.tres")
-	add_child(mesh)
-
-
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	if _steam == null:
 		return
 	var train := get_parent().get_parent() as Train
 	if train != null:
+		_wheel_phase += train.speed * delta
+		for wheel in _drive_wheels:
+			var radius := maxf(wheel.mesh.get_aabb().size.y * 0.5, 0.2)
+			wheel.rotation.z = -_wheel_phase / radius
+			if radius > .5 and wheel.position.z>0:
+				wheel.rotation.z += PI/2
+		mechanics.update_mechanism(_wheel_phase,train)
 		_steam.initial_velocity_max = 0.8 + minf(train.speed, 12.0) * 0.1
 		_steam.direction.x = -0.4 - train.speed * 0.1
 

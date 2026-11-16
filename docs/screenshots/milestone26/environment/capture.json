@@ -1,0 +1,76 @@
+{
+  "baseline": "86b247337348ead8aaaf03f841c2277498f8b08e",
+  "renderer": "Godot 4.5.1 Forward+ / lavapipe LLVM 19.1.7",
+  "preset": "High",
+  "viewport": [
+    1280,
+    720
+  ],
+  "matched_camera_poses": true,
+  "images": [
+    {
+      "path": "after/01_platform.png",
+      "sha256": "c61c65a8f9e51668e6477e9ab1d26889888f4f5aad1ec8584ae7893b030456bf"
+    },
+    {
+      "path": "after/02_waiting_hall.png",
+      "sha256": "839b4237c2daa41e6f217809004ce8a35a0db0cc253c42aca54cecdbba4e4e54"
+    },
+    {
+      "path": "after/03_station_house.png",
+      "sha256": "7fb83123a4ee58a5b31eeab1e9f2bae46e4396e0d47a9fcdd02c07506324fc85"
+    },
+    {
+      "path": "after/04_warehouse_a.png",
+      "sha256": "390bf141c075addacd8be6e1d9412b13b69244002adbe020ee78be6d71a0a967"
+    },
+    {
+      "path": "after/05_warehouse_b.png",
+      "sha256": "c813132e688286f622723505a14ec7c832830d0a631803d411f1d1f3ca8717fb"
+    },
+    {
+      "path": "after/06_freight_yard.png",
+      "sha256": "eddcb1ff20bfa27df8cd4f663b79f3ceb7ec0121a424b60db5eb8f6d4b4eb729"
+    },
+    {
+      "path": "after/07_freight_car.png",
+      "sha256": "52c87569786fdaa7d9556b10d21ed87aa566f4a268f939f1275dc7f8b3471b56"
+    },
+    {
+      "path": "after/08_container.png",
+      "sha256": "27b7f939ac664e19bcc7e9c4cecbcc6e5fd419c2e869541fb7506c593b19f271"
+    },
+    {
+      "path": "before/01_platform.png",
+      "sha256": "319ff6f488418bf15a71ebae662a9ef77f867afc8f7b34946cdae62e2efbed22"
+    },
+    {
+      "path": "before/02_waiting_hall.png",
+      "sha256": "47833cb498b8bbcc642ada2c0e3c715a2efb779eca04159cb10a515850f71736"
+    },
+    {
+      "path": "before/03_station_house.png",
+      "sha256": "a401b5613f890dc3e68a92308963d081b288bac7e480ada747748403349869f9"
+    },
+    {
+      "path": "before/04_warehouse_a.png",
+      "sha256": "f33a56b21e01b21b3b36782f9f53002fadeb73c1a33c328ff979619fbc83e956"
+    },
+    {
+      "path": "before/05_warehouse_b.png",
+      "sha256": "e860b340c4a239397a4a9e0e09de17e9e3797431084ac2526dc89d6564572990"
+    },
+    {
+      "path": "before/06_freight_yard.png",
+      "sha256": "e35f18c6d03468a54fcc605b91a0f7294094c34e7142c362dd7b0bfd14f74587"
+    },
+    {
+      "path": "before/07_freight_car.png",
+      "sha256": "4cf08b2e81aaf620e2cf5bab0e36c7646f4408ce47b8aee2692eb9f9ae8dd9e2"
+    },
+    {
+      "path": "before/08_container.png",
+      "sha256": "3a5fb7f37fa1f0d2377bbf6425500ceda9058f20611ba917d7d6bd542b92daef"
+    }
+  ]
+}

@@ -23,6 +23,7 @@ on:
       - claude/serene-turing-0vpdmt
       - codex/milestone-1-5-visual-overhaul
       - codex/milestone-2-scavenging
+      - feature/milestone-2-5-full-3d
   workflow_dispatch:
     inputs:
       sign_and_notarize:
@@ -42,13 +43,13 @@ env:
   DEV_ZIP: LastTrainOut-macos-universal.zip
   SIGNED_ZIP: LastTrainOut-macos-universal-signed.zip
   # The build fails if fewer tests than this pass, so tests cannot silently go missing.
-  MIN_TESTS: "168"
+  MIN_TESTS: "196"
 
 jobs:
   build:
     name: Test, export and package
     runs-on: macos-latest # GitHub's macos-latest runners are Apple Silicon (arm64)
-    timeout-minutes: 45
+    timeout-minutes: 60
     env:
       APP: build/macos/Last Train Out.app
     steps:
@@ -70,10 +71,29 @@ jobs:
       - name: Install Godot 4.5.1 and its macOS export template
         run: tools/macos/install_godot.sh
 
+      # Cold GPU texture compression takes roughly half an hour on this runner.
+      # Godot still checks source/import hashes and rebuilds changed resources.
+      - name: Restore imported assets
+        id: imports
+        uses: actions/cache@v6
+        with:
+          path: .godot/imported
+          key: godot-imports-macos-arm64-4.5.1-v1-${{ hashFiles('project.godot', 'assets/**', 'resources/**') }}
+          restore-keys: godot-imports-macos-arm64-4.5.1-v1-
+
+      - name: Discard cached scenes with obsolete texture UIDs
+        # Keep expensive compressed textures, but rebuild scene dependencies
+        # from source when a restored cache predates an asset replacement.
+        run: |
+          if [ -d .godot/imported ]; then
+            find .godot/imported -name '*.scn' -delete
+          fi
+
       # Import, a headless run of the main scene, then every automated test. Nothing is
       # exported unless this passes.
       - name: Run the automated tests
         run: |
+          python3 tools/assets/check_assets.py
           tools/run_tests.sh "$GODOT"
           {
             echo "### Automated tests (Godot $("$GODOT" --version), macOS $(sw_vers -productVersion), $(uname -m))"
@@ -83,14 +103,24 @@ jobs:
             echo '```'
           } >> "$GITHUB_STEP_SUMMARY"
 
-      - name: Upload the test logs
-        if: always()
-        uses: actions/upload-artifact@v7
+      - name: Save validated asset imports before rendering checks
+        if: steps.imports.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v6
         with:
-          name: test-logs
-          path: tests/_output/
-          if-no-files-found: warn
-          retention-days: 14
+          path: .godot/imported
+          key: godot-imports-macos-arm64-4.5.1-v1-${{ hashFiles('project.godot', 'assets/**', 'resources/**') }}
+
+      - name: Restore baked Vulkan shaders
+        id: shaders
+        uses: actions/cache/restore@v6
+        with:
+          # Resource-customization metadata is needed as well as the shader files.
+          # Godot validates source/configuration hashes before reusing either.
+          path: .godot/exported
+          # Keep backend families separate: customization metadata must never
+          # skip baking after a Metal/Vulkan switch.
+          key: godot-vulkan-bake-4.5.1-v1-${{ hashFiles('project.godot', 'export_presets.cfg', 'scripts/**', 'resources/**', 'assets/**') }}
+          restore-keys: godot-vulkan-bake-4.5.1-v1-
 
       - name: Export Last Train Out.app
         env:
@@ -98,6 +128,13 @@ jobs:
           BUILD_COMMIT: ${{ github.sha }}
           BUILD_KIND: development
         run: tools/macos/export_app.sh "$GODOT" "$APP"
+
+      - name: Save baked Vulkan shaders
+        if: steps.shaders.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v6
+        with:
+          path: .godot/exported
+          key: ${{ steps.shaders.outputs.cache-primary-key }}
 
       - name: Check the bundle
         run: |
@@ -110,7 +147,73 @@ jobs:
         run: tools/macos/run_selftest.sh "$APP" build-headless --headless --expect-arch arm64
 
       - name: Launch the exported app with its window
-        run: tools/macos/run_selftest.sh "$APP" build-window --expect-arch arm64
+        run: |
+          if tools/macos/run_selftest.sh "$APP" build-window --expect-arch arm64; then
+            echo 'The default rendering driver passed the exported launch gate.'
+          else
+            # Preserve the original failure. This bounded alternative-driver probe
+            # is diagnostic evidence only; it cannot publish or pass a broken build.
+            python3 tools/macos/probe_renderer.py "$APP" "$RUNNER_TEMP/selftest" metal || true
+            exit 1
+          fi
+
+      - name: Select rendering diagnostics for changed runtime
+        id: diagnostics
+        env:
+          SOURCE_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          # Documentation/evidence-only commits still run every test, export and
+          # fresh-download launch check. Their unchanged runtime does not need
+          # another fifteen-minute comparison and identical gameplay recording.
+          git fetch --no-tags --depth=2 origin "$SOURCE_SHA"
+          if [ "$EVENT_NAME" = workflow_dispatch ] || ! git rev-parse "$SOURCE_SHA^" > /dev/null 2>&1; then
+            echo 'render=true' >> "$GITHUB_OUTPUT"
+          elif git diff --name-only "$SOURCE_SHA^" "$SOURCE_SHA" | grep -Ev '^(docs/|README\.md$|$)' > /dev/null; then
+            echo 'render=true' >> "$GITHUB_OUTPUT"
+          else
+            echo 'render=false' >> "$GITHUB_OUTPUT"
+            echo 'Runtime unchanged: retaining the documented comparison and tour; all release checks still run.'
+          fi
+
+      - name: Measure windowed rendering on hosted Apple Silicon
+        if: steps.diagnostics.outputs.render == 'true'
+        # Additional hardware evidence. A measurement timeout must not discard a
+        # playable build; failures/logs remain visible and are reported separately.
+        continue-on-error: true
+        run: |
+          mkdir -p "$RUNNER_TEMP/render-baseline/.godot" "$RUNNER_TEMP/render-previous/.godot" tests/_output/performance
+          git fetch --no-tags --depth=1 origin 8cde10cf78c1ea0cf7f7bafb5fc146d2e12514c2
+          git archive FETCH_HEAD | tar -x -C "$RUNNER_TEMP/render-baseline"
+          cp -R .godot/imported "$RUNNER_TEMP/render-baseline/.godot/"
+          git fetch --no-tags --depth=1 origin dfbfdf8ccf3e466788cc085ae5563a14e6382670
+          git archive FETCH_HEAD | tar -x -C "$RUNNER_TEMP/render-previous"
+          cp -R .godot/imported "$RUNNER_TEMP/render-previous/.godot/"
+          find "$RUNNER_TEMP/render-baseline/.godot/imported" "$RUNNER_TEMP/render-previous/.godot/imported" -name '*.scn' -delete
+          # The historical tree contains failed import records. Repair only the
+          # metadata for byte-identical image sources, never baseline artwork.
+          python3 tools/macos/repair_baseline_imports.py "$RUNNER_TEMP/render-previous"
+          "$GODOT" --headless --path "$RUNNER_TEMP/render-previous" --import > tests/_output/performance/previous-import.log 2>&1
+          "$GODOT" --headless --path "$RUNNER_TEMP/render-baseline" --import > tests/_output/performance/baseline-import.log 2>&1
+          python3 tools/macos/benchmark_compare.py "$GODOT" "$RUNNER_TEMP/render-baseline" "$RUNNER_TEMP/render-previous" tests/_output/performance
+
+      - name: Record the finalization gameplay tour
+        if: steps.diagnostics.outputs.render == 'true'
+        # Runs after all timed benchmarks, so Movie Maker cannot contaminate them.
+        continue-on-error: true
+        timeout-minutes: 10
+        run: |
+          command -v ffmpeg || brew install ffmpeg
+          python3 tools/macos/record_finalization.py "$GODOT" tests/_output/visual
+
+      - name: Upload the test logs
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: test-logs
+          path: tests/_output/
+          if-no-files-found: warn
+          retention-days: 14
 
       # upload-artifact would drop executable bits if it zipped the bundle itself, which breaks
       # an .app. So the ZIP is made here with ditto and uploaded as it is (archive: false):
@@ -145,6 +248,15 @@ jobs:
             echo "- Unzip it once to get **$APP_NAME.app**. This build is not notarized, so macOS asks for"
             echo "  confirmation the first time: see *Play on macOS* in the README."
           } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Retain export diagnostics
+        if: always()
+        run: |
+          if [ -f build/macos/export.log ]; then
+            mkdir -p "$RUNNER_TEMP/selftest"
+            cp build/macos/export.log "$RUNNER_TEMP/selftest/export.log"
+            cp build/macos/shader-inventory.log "$RUNNER_TEMP/selftest/shader-inventory.log"
+          fi
 
       - name: Upload the self-test reports
         if: always()
@@ -217,6 +329,10 @@ jobs:
       - name: Launch the unzipped app with its window
         if: ${{ matrix.window }}
         run: tools/macos/run_selftest.sh "extracted/$APP_NAME.app" "${{ matrix.arch }}-window" --expect-arch "${{ matrix.arch }}"
+
+      - name: Validate the packaged M1 diagnostic
+        if: ${{ matrix.window }}
+        run: python3 tools/macos/check_packaged_benchmark.py "extracted/$APP_NAME.app" "$RUNNER_TEMP/selftest"
 
       - name: Upload the self-test reports
         if: always()

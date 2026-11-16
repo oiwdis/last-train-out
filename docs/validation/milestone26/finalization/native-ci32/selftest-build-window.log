@@ -1,0 +1,67 @@
+WARNING: Metal does not support LOD bias for samplers.
+     at: sampler_create (drivers/metal/rendering_device_driver_metal.mm:771)
+ERROR: 6 RID allocations of type 'P11JoltShape3D' were leaked at exit.
+ERROR: 4 shaders of type SceneForwardClusteredShaderRD were never freed
+   at: ~ShaderRD (servers/rendering/renderer_rd/shader_rd.cpp:1044)
+ERROR: 1 RID allocations of type 'N10RendererRD5SkyRD3SkyE' were leaked at exit.
+ERROR: 1 RID allocations of type 'N26RendererEnvironmentStorage11EnvironmentE' were leaked at exit.
+ERROR: 8 RID allocations of type 'N10RendererRD11MeshStorage4MeshE' were leaked at exit.
+ERROR: 30 RID allocations of type 'N10RendererRD15MaterialStorage8MaterialE' were leaked at exit.
+ERROR: 4 RID allocations of type 'N10RendererRD15MaterialStorage6ShaderE' were leaked at exit.
+ERROR: 25 RID allocations of type 'N10RendererRD14TextureStorage7TextureE' were leaked at exit.
+WARNING: 29 RIDs of type "UniformBuffer" were leaked.
+     at: _free_rids (servers/rendering/rendering_device.cpp:6981)
+WARNING: 8 RIDs of type "IndexArray" were leaked.
+     at: _free_rids (servers/rendering/rendering_device.cpp:6981)
+WARNING: 8 RIDs of type "IndexBuffer" were leaked.
+     at: _free_rids (servers/rendering/rendering_device.cpp:6981)
+WARNING: 2 RIDs of type "VertexArray" were leaked.
+     at: _free_rids (servers/rendering/rendering_device.cpp:6981)
+WARNING: 16 RIDs of type "VertexBuffer" were leaked.
+     at: _free_rids (servers/rendering/rendering_device.cpp:6981)
+WARNING: 384 RIDs of type "Framebuffer" were leaked.
+     at: _free_rids (servers/rendering/rendering_device.cpp:6981)
+WARNING: 507 RIDs of type "Texture" were leaked.
+     at: finalize (servers/rendering/rendering_device.cpp:7191)
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+     at: cleanup (core/object/object.cpp:2514)
+ERROR: 128 resources still in use at exit (run with --verbose for details).
+   at: clear (core/io/resource.cpp:795)
+ERROR: Pages in use exist at exit in PagedAllocator: N7Variant5Pools12BucketMediumE
+   at: ~PagedAllocator (./core/templates/paged_allocator.h:169)
+While attempting to print an error, another error was printed:
+ERROR: Condition "!configured" is true.
+   at: unref (core/string/string_name.cpp:110)
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+Metal 3.2 - Forward+ - Using Device #0: Apple - Apple Paravirtual device (Apple5)
+
+[self-test] ok    main_scene_loads  (res://scenes/main/main.tscn) [47463 ms]
+[self-test] ok    main_scene_is_the_game [47472 ms]
+[render-warmup] 6 views / 82500 ms / draw pipelines=51.0
+[self-test] ok    station_is_harlow_junction [144279 ms]
+[self-test] ok    train_has_locomotive_and_two_cars [144280 ms]
+[self-test] ok    player_stands_on_the_platform  ((16.0, 1.0, 0.6)) [144280 ms]
+[self-test] ok    input_map_is_complete [144280 ms]
+[self-test] ok    player_walks  (1.93 m) [144934 ms]
+[self-test] ok    player_jumps [145315 ms]
+[self-test] ok    player_lands [145833 ms]
+[self-test] ok    flat_car_exists [145833 ms]
+[self-test] ok    train_departs  (5.00 m/s after 5.0 m) [149009 ms]
+[self-test] ok    player_rides_the_moving_train  (drift 0.0000 m) [149010 ms]
+[self-test] ok    debug_menu_reports_live_state  (On train: yes, train state: ACCELERATING) [149347 ms]
+[self-test] ok    immersive_camera_present [149423 ms]
+[self-test] ok    first_person_eye_in_export [150417 ms]
+[self-test] ok    walk_inside_moving_car_in_export [151417 ms]
+[self-test] ok    perspective_switch_preserves_motion_in_export [151417 ms]
+[self-test] ok    third_person_camera_in_export [152417 ms]
+[self-test] ok    physical_cab_control_in_export [153666 ms]
+[self-test] ok    scavenging_system_present [153750 ms]
+[self-test] ok    search_completes_in_export [155784 ms]
+[self-test] ok    supplies_deposit_in_export [156118 ms]
+[self-test] ok    exported_loot_is_conserved [156118 ms]
+[self-test] ok    supplies_withdraw_in_export [156120 ms]
+[self-test] ok    physical_cargo_is_carried_in_export [158886 ms]
+[self-test] ok    cargo_anchor_perspective_1_in_export [159054 ms]
+[self-test] ok    cargo_anchor_perspective_0_in_export [159057 ms]
+[self-test] ok    physical_cargo_is_released_in_export [159059 ms]
+[self-test] FAILED: timed out after 120 seconds

@@ -1,0 +1,198 @@
+[
+  {
+    "id": "modular_factory_facade",
+    "license": "CC0-1.0",
+    "source": "https://polyhaven.com/a/modular_factory_facade",
+    "authors": {
+      "James Ray Cock": "All"
+    },
+    "resolution": "2k",
+    "files": [
+      {
+        "file": "modular_factory_facade_2k.gltf",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/2k/modular_factory_facade/modular_factory_facade_2k.gltf",
+        "sha256": "f659bc368b07878202dbacca63bc60c8150bb61a3ede4869b540864e4dcb1e48",
+        "bytes": 372666
+      },
+      {
+        "file": "textures/modular_factory_facade_trim_01_diff_2k.jpg",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/modular_factory_facade/modular_factory_facade_trim_01_diff_2k.jpg",
+        "sha256": "bc4e041d46829466f8a7cb45b2b84f26e6cd7a41464b89590423d7ba65075c6d",
+        "bytes": 2537009
+      },
+      {
+        "file": "textures/modular_factory_facade_brick_nor_gl_2k.jpg",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/modular_factory_facade/modular_factory_facade_brick_nor_gl_2k.jpg",
+        "sha256": "a31341b4b1329bb2c27ce74da866aa56b359a5a60fcddbc6cd5be0029e410611",
+        "bytes": 3471100
+      },
+      {
+        "file": "textures/modular_factory_facade_doors_nor_gl_2k.jpg",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/modular_factory_facade/modular_factory_facade_doors_nor_gl_2k.jpg",
+        "sha256": "4c885d8170310e9b26c80780458eee000dcb67ea057cb14b782d10e835b2a698",
+        "bytes": 2099914
+      },
+      {
+        "file": "textures/modular_factory_facade_garage_nor_gl_2k.jpg",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/modular_factory_facade/modular_factory_facade_garage_nor_gl_2k.jpg",
+        "sha256": "d42a8cbcffe9a08d4fea5d12dbac82da0622efa49ad083361eead5b94927a086",
+        "bytes": 3235785
+      },
+      {
+        "file": "textures/modular_factory_facade_trim_01_arm_2k.jpg",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/modular_factory_facade/modular_factory_facade_trim_01_arm_2k.jpg",
+        "sha256": "3c70a0bb5e9f4d46183bebe5494d7665a775ea13c428af0dcea2fc29c950d48f",
+        "bytes": 3129201
+      },
+      {
+        "file": "textures/modular_factory_facade_garage_diff_2k.jpg",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/modular_factory_facade/modular_factory_facade_garage_diff_2k.jpg",
+        "sha256": "83722741c6bbdfafd285b6f5d0a2913c133d91b11705fb684d526a6695da0537",
+        "bytes": 2189076
+      },
+      {
+        "file": "textures/modular_factory_facade_trim_01_nor_gl_2k.jpg",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/modular_factory_facade/modular_factory_facade_trim_01_nor_gl_2k.jpg",
+        "sha256": "1f43fa78247a60f4f06096c95df26b95b94727167e917a18962963b2993eb650",
+        "bytes": 3717593
+      },
+      {
+        "file": "textures/modular_factory_facade_brick_arm_2k.jpg",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/modular_factory_facade/modular_factory_facade_brick_arm_2k.jpg",
+        "sha256": "dc313e13bd12687bd8827b5e439c1ea2b56fbc883d935f26132b44781a21be14",
+        "bytes": 2567917
+      },
+      {
+        "file": "textures/modular_factory_facade_windows_nor_gl_2k.jpg",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/modular_factory_facade/modular_factory_facade_windows_nor_gl_2k.jpg",
+        "sha256": "7d66b69bf4715555085b1d3c0f95fc2e28f325d8a1ab7a68d1078dca7db7ab04",
+        "bytes": 2675074
+      },
+      {
+        "file": "textures/modular_factory_facade_garage_arm_2k.jpg",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/modular_factory_facade/modular_factory_facade_garage_arm_2k.jpg",
+        "sha256": "0efc9b69568cf6b13bb22256edf8bec347fbc0ac5496d5736c8dc3eb69e800dd",
+        "bytes": 2542492
+      },
+      {
+        "file": "textures/modular_factory_facade_windows_diff_2k.jpg",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/modular_factory_facade/modular_factory_facade_windows_diff_2k.jpg",
+        "sha256": "2ca66aa0a753ab7fb6dcf605ec64a90fe116d6271719b20ee1a2069b568d2edd",
+        "bytes": 2316599
+      },
+      {
+        "file": "textures/modular_factory_facade_doors_arm_2k.jpg",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/modular_factory_facade/modular_factory_facade_doors_arm_2k.jpg",
+        "sha256": "07af095d6ecb4966ec029968ff7b0d111de8b2e1910bbea168dc9c958a4da3d1",
+        "bytes": 2628673
+      },
+      {
+        "file": "textures/modular_factory_facade_windows_arm_2k.jpg",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/modular_factory_facade/modular_factory_facade_windows_arm_2k.jpg",
+        "sha256": "963ececefba6c4a104a32258e611f250ea1f715fba747f7a0a640b7e4603f1b6",
+        "bytes": 3333067
+      },
+      {
+        "file": "textures/modular_factory_facade_doors_diff_2k.jpg",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/modular_factory_facade/modular_factory_facade_doors_diff_2k.jpg",
+        "sha256": "1189acbe5ed4ecaccda9ec40f0a4a4a454016a22dbab0f18d3bdb61a01d9821a",
+        "bytes": 2081334
+      },
+      {
+        "file": "modular_factory_facade.bin",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/modular_factory_facade/modular_factory_facade.bin",
+        "sha256": "12702fb065a838695e0621e1aac3947af92d32c439fb965c8b0563ad691fed70",
+        "bytes": 6269260
+      },
+      {
+        "file": "textures/modular_factory_facade_brick_diff_2k.jpg",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/modular_factory_facade/modular_factory_facade_brick_diff_2k.jpg",
+        "sha256": "02204a7971f406dcd2b6e1e3bc90e5656c5749a4417cfd5977dc7dfa5042a5d4",
+        "bytes": 4421090
+      }
+    ]
+  },
+  {
+    "id": "painted_wooden_bench",
+    "license": "CC0-1.0",
+    "source": "https://polyhaven.com/a/painted_wooden_bench",
+    "authors": {
+      "Kirill Sannikov": "All"
+    },
+    "resolution": "1k",
+    "files": [
+      {
+        "file": "painted_wooden_bench_1k.gltf",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/painted_wooden_bench/painted_wooden_bench_1k.gltf",
+        "sha256": "2289ab82f3fe3045bf18f7b9541743d2c65b9f071cb34bbe424d2bc998f3e507",
+        "bytes": 2835
+      },
+      {
+        "file": "textures/painted_wooden_bench_diff_1k.jpg",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/painted_wooden_bench/painted_wooden_bench_diff_1k.jpg",
+        "sha256": "9bc533313091ee71eaca5fa6334b71d27935d9d75311f64df6a53c28a67c435c",
+        "bytes": 545216
+      },
+      {
+        "file": "textures/painted_wooden_bench_nor_gl_1k.jpg",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/painted_wooden_bench/painted_wooden_bench_nor_gl_1k.jpg",
+        "sha256": "a0f53740d77fc61aac01de0b7e1ae6109445d1756839f739ae31fdf10c9911f2",
+        "bytes": 830104
+      },
+      {
+        "file": "textures/painted_wooden_bench_arm_1k.jpg",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/painted_wooden_bench/painted_wooden_bench_arm_1k.jpg",
+        "sha256": "878785565eeff706b8f1e4db7e3d794a544e9cf0e56cee424d9a271ab4ead47e",
+        "bytes": 586040
+      },
+      {
+        "file": "painted_wooden_bench.bin",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/painted_wooden_bench/painted_wooden_bench.bin",
+        "sha256": "5799bcb20924105cccd6424de8cdb8e67eb57fddc19c395befeac634a7b2e013",
+        "bytes": 25444
+      }
+    ]
+  },
+  {
+    "id": "weed_plant_02",
+    "license": "CC0-1.0",
+    "source": "https://polyhaven.com/a/weed_plant_02",
+    "authors": {
+      "Rob Tuytel": "Photography",
+      "Rico Cilliers": "Modeling"
+    },
+    "resolution": "1k",
+    "files": [
+      {
+        "file": "weed_plant_02_1k.gltf",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/weed_plant_02/weed_plant_02_1k.gltf",
+        "sha256": "20fe9aa14ec8160de54d8027422ce6db93bcc6211299509067ee3edbceff218b",
+        "bytes": 9128
+      },
+      {
+        "file": "textures/weed_plant_02_nor_gl_1k.jpg",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/weed_plant_02/weed_plant_02_nor_gl_1k.jpg",
+        "sha256": "53e277362656eaea87a59bc7c5b551e73d2cdb5b852b21d0ffb84becfc7b941d",
+        "bytes": 679362
+      },
+      {
+        "file": "textures/weed_plant_02_diff_1k.jpg",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/weed_plant_02/weed_plant_02_diff_1k.jpg",
+        "sha256": "6bcbf7f0b8eaf5156b9021f998dd9233ba4b095aa590f3621b94f47550e21eb9",
+        "bytes": 457595
+      },
+      {
+        "file": "textures/weed_plant_02_arm_1k.jpg",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/weed_plant_02/weed_plant_02_arm_1k.jpg",
+        "sha256": "82dd00b135a605aecf09d46bdaa6e71cdfc221d7b53e20e6f446da6e9e5bf942",
+        "bytes": 571490
+      },
+      {
+        "file": "weed_plant_02.bin",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/weed_plant_02/weed_plant_02.bin",
+        "sha256": "2b77b91a881055365a56156e8a131277187f72b82c1d55806bb5b0a5053e5e9d",
+        "bytes": 330884
+      }
+    ]
+  }
+]

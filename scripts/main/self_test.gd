@@ -120,6 +120,7 @@ func _check_game() -> void:
 	if not _check("main_scene_is_the_game", game != null):
 		return
 	add_child(game)
+	await game.graphics.wait_for_render_ready()
 	await _physics_frames(45)
 
 	var player := game.player
@@ -264,9 +265,11 @@ func _check_scavenging(game: Game) -> void:
 	_check("physical_cargo_is_released_in_export", cargo.available and not game.player.carrying_heavy)
 	for i in 3:
 		game.graphics.set_preset(i)
+		await game.graphics.wait_for_render_ready()
 		await _physics_frames(2)
 	_check("graphics_presets_work_in_export", game.graphics.current_index == 2)
 	game.graphics.set_preset(1)
+	await game.graphics.wait_for_render_ready()
 	game.supply_ui.open()
 	_check("inventory_ui_opens_in_export", game.supply_ui.is_open())
 
@@ -311,7 +314,7 @@ func _check(check_name: String, passed: bool, detail: String = "") -> bool:
 	_checks[check_name] = passed
 	if detail != "":
 		_details[check_name] = detail
-	print("[self-test] %s  %s%s" % ["ok  " if passed else "FAIL", check_name, ("  (%s)" % detail) if detail != "" else ""])
+	print("[self-test] %s  %s%s [%d ms]" % ["ok  " if passed else "FAIL", check_name, ("  (%s)" % detail) if detail != "" else "", Time.get_ticks_msec()])
 	return passed
 
 

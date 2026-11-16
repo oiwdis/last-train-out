@@ -20,6 +20,8 @@ signal detached(anchor: Interactable)
 signal vault_started(kind: String)
 signal grab_failed(reason: String)
 signal teleported(position: Vector3, facing: Vector3)
+## Observed by the visual rigs; does not delay or change any gameplay transaction.
+signal presentation_action(action: StringName, seconds: float)
 
 enum State { IDLE, WALK, SPRINT, JUMP, FALL, CLIMB, HANG, VAULT, MOUNT }
 enum Mode { LOCOMOTION, ATTACHED, SCRIPTED, SUSPENDED }
@@ -44,6 +46,22 @@ var facing := Vector3.RIGHT
 var carrying_heavy := false
 var carry_anchor: Node3D
 var carried_visual: Node3D
+## Optional presentation focus. Gameplay commits immediately; rigs only observe it.
+var presentation_reference: Node3D
+var presentation_focus := Vector3.ZERO
+var _presentation_local_focus := Vector3.ZERO
+
+func present_action(action: StringName, seconds: float, at: Vector3, reference: Node3D = null) -> void:
+	presentation_focus = at
+	presentation_reference = reference
+	_presentation_local_focus = reference.to_local(at) if is_instance_valid(reference) else at
+	presentation_action.emit(action, seconds)
+
+func get_presentation_focus() -> Vector3:
+	return presentation_reference.to_global(_presentation_local_focus) if is_instance_valid(presentation_reference) else presentation_focus
+
+func get_traversal_anchor() -> Interactable:
+	return _anchor if is_instance_valid(_anchor) else null
 
 
 func set_carry_anchor(anchor: Node3D) -> void:
@@ -780,3 +798,7 @@ func _update_visual(delta: float) -> void:
 	elif state == State.JUMP:
 		lean = 0.1
 	visual.rotation.x = lerpf(visual.rotation.x, lean, 1.0 - exp(-10.0 * delta))
+	# The authored clips already lean through the hips/spine. Tilting the entire
+	# skinned rig around the player's feet adds a second lean and lifts the soles.
+	if visual.has_node("RailWorker"):
+		visual.rotation.x = 0
