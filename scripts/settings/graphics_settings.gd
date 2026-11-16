@@ -121,24 +121,19 @@ func set_preset(index: int, persist: bool = false) -> void:
 	changed.emit(current_index)
 	if DisplayServer.get_name() != "headless" and not _warmup_pending:
 		_warmup_pending = true
-		_prepare_rendering.call_deferred()
+		if not _warming:
+			_prepare_rendering.call_deferred()
 
 
 func _prepare_rendering() -> void:
-	# BaseMaterial3D flushes pending shader-feature changes before a normal draw.
-	# force_draw alone would otherwise prepare the previous preset's shaders.
-	await RenderingServer.frame_post_draw
-	_draw_preparation.call_deferred()
-
-
-func _draw_preparation() -> void:
-	# Keep force_draw out of frame_post_draw signal callbacks.
 	_warmup_pending = false
 	if not is_instance_valid(_scene_root) or not _scene_root.is_inside_tree():
 		return
 	_warming = true
-	RenderWarmup.prepare(_scene_root)
+	await RenderWarmup.prepare(_scene_root)
 	_warming = false
+	if _warmup_pending:
+		_prepare_rendering.call_deferred()
 
 
 func wait_for_render_ready() -> void:

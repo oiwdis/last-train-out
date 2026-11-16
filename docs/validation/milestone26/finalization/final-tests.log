@@ -147,7 +147,7 @@ Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
   PASS  test_gauges_follow_start_brake_stop_and_speed_without_mutating_train
   PASS  test_planar_pbr_preserves_metres_normals_and_shared_materials
   PASS  test_gantry_and_columns_keep_existing_traversal_volumes
-[render-warmup] 6 views / 0 ms / draw pipelines=0.0
+[render-warmup] 6 views / 3 ms / draw pipelines=0.0
   PASS  test_render_preparation_restores_camera_without_advancing_gameplay
 
 [SUITE] test_player_movement.gd
@@ -278,4 +278,4 @@ Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
   PASS  test_walking_onto_moving_deck_carries_the_player
   PASS  test_obstacle_in_the_way_knocks_a_climber_off_instead_of_dragging_through
 
-=== 196 passed, 0 failed, 196 total (80.9 s wall clock) ===
+=== 196 passed, 0 failed, 196 total (82.6 s wall clock) ===

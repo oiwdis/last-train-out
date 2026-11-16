@@ -110,7 +110,19 @@ func _run() -> void:
 		quit(1)
 		return
 	file.store_string(JSON.stringify(report, "  "))
+	file.close()
 	print("[benchmark] wrote ", _out)
+	# Let scene teardown restore shared material state while rendering is alive,
+	# consistently with the ablation diagnostic, and record shutdown progress.
+	_game.queue_free()
+	await process_frame
+	_stage("scene released")
+	await process_frame
+	_stage("material updates drained")
+	var geometry_path := "res://scripts/presentation/fabricated_mesh.gd"
+	if ResourceLoader.exists(geometry_path):
+		load(geometry_path).clear_cache()
+	_stage("quitting")
 	quit()
 
 func _pipeline_counts() -> Dictionary:

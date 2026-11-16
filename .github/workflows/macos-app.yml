@@ -147,12 +147,27 @@ jobs:
           if-no-files-found: warn
           retention-days: 14
 
+      - name: Restore baked Metal shaders
+        id: shaders
+        uses: actions/cache/restore@v6
+        with:
+          path: .godot/exported/*/shader_baker
+          key: godot-metal-bake-4.5.1-v1-${{ hashFiles('project.godot', 'export_presets.cfg', 'scripts/**', 'resources/**', 'assets/**') }}
+          restore-keys: godot-metal-bake-4.5.1-v1-
+
       - name: Export Last Train Out.app
         env:
           BUILD_NUMBER: ${{ github.run_number }}
           BUILD_COMMIT: ${{ github.sha }}
           BUILD_KIND: development
         run: tools/macos/export_app.sh "$GODOT" "$APP"
+
+      - name: Save baked Metal shaders
+        if: steps.shaders.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v6
+        with:
+          path: .godot/exported/*/shader_baker
+          key: ${{ steps.shaders.outputs.cache-primary-key }}
 
       - name: Check the bundle
         run: |

@@ -158,9 +158,9 @@ dynamic labels/particles. One-pixel maps retain shader features without duplicat
 source textures. The library is never instantiated during gameplay. Rebuild it
 after changing material features; the Mac export also refreshes it automatically.
 
-`RenderWarmup` draws scene-authored marker views without a visible buffer swap
-after startup/preset application. This prepares destination-GPU pipelines left
-after shader baking, while preserving the player, train and active camera. It
-does not advance simulation or change fog/visibility. Diagnostics wait through
+`RenderWarmup` draws scene-authored marker views on normal rendered frames behind
+a loading panel after startup/preset application. It pauses and restores
+the scene, preparing destination-GPU pipelines left after shader baking while
+preserving the player, train and active camera. It does not change fog/visibility. Diagnostics wait through
 `GraphicsSettings.wait_for_render_ready()` and log the preparation time separately
 from entry-pan samples. The marker group is extensible to future stations.

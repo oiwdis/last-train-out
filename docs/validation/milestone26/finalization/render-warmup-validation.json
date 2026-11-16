@@ -1,0 +1,8 @@
+{
+  "passed": false,
+  "scope": "960x540 software Vulkan diagnostic; not a native Mac result",
+  "route_samples_completed": true,
+  "new_route_pipeline_compilations": 0,
+  "clean_shutdown": false,
+  "note": "Scene sampling completed, but process hung at renderer shutdown. Native validation remains required."
+}
