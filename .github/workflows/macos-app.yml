@@ -110,6 +110,53 @@ jobs:
           path: .godot/imported
           key: godot-imports-macos-arm64-4.5.1-v1-${{ hashFiles('project.godot', 'assets/**', 'resources/**') }}
 
+      - name: Restore baked Metal shaders
+        id: shaders
+        uses: actions/cache/restore@v6
+        with:
+          # Resource-customization metadata is needed as well as the shader files.
+          # Godot validates source/configuration hashes before reusing either.
+          path: .godot/exported
+          key: godot-metal-bake-4.5.1-v2-${{ hashFiles('project.godot', 'export_presets.cfg', 'scripts/**', 'resources/**', 'assets/**') }}
+          restore-keys: |
+            godot-metal-bake-4.5.1-v2-
+            godot-metal-bake-4.5.1-v1-
+
+      - name: Export Last Train Out.app
+        env:
+          BUILD_NUMBER: ${{ github.run_number }}
+          BUILD_COMMIT: ${{ github.sha }}
+          BUILD_KIND: development
+        run: tools/macos/export_app.sh "$GODOT" "$APP"
+
+      - name: Save baked Metal shaders
+        if: steps.shaders.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v6
+        with:
+          path: .godot/exported
+          key: ${{ steps.shaders.outputs.cache-primary-key }}
+
+      - name: Check the bundle
+        run: |
+          python3 tools/macos/verify_app.py "$APP" --expect-signature adhoc --title "Exported bundle"
+          du -sh "$APP"
+
+      # Start the real bundle (no editor, no project folder) and let it test itself:
+      # once without a window, once with its window so the renderer is exercised too.
+      - name: Launch the exported app without a window
+        run: tools/macos/run_selftest.sh "$APP" build-headless --headless --expect-arch arm64
+
+      - name: Launch the exported app with its window
+        run: |
+          if tools/macos/run_selftest.sh "$APP" build-window --expect-arch arm64; then
+            echo 'The default rendering driver passed the exported launch gate.'
+          else
+            # Preserve the original failure. This bounded alternative-driver probe
+            # is diagnostic evidence only; it cannot publish or pass a broken build.
+            python3 tools/macos/probe_renderer.py "$APP" "$RUNNER_TEMP/selftest" vulkan || true
+            exit 1
+          fi
+
       - name: Select rendering diagnostics for changed runtime
         id: diagnostics
         env:
@@ -167,45 +214,6 @@ jobs:
           path: tests/_output/
           if-no-files-found: warn
           retention-days: 14
-
-      - name: Restore baked Metal shaders
-        id: shaders
-        uses: actions/cache/restore@v6
-        with:
-          # Resource-customization metadata is needed as well as the shader files.
-          # Godot validates source/configuration hashes before reusing either.
-          path: .godot/exported
-          key: godot-metal-bake-4.5.1-v2-${{ hashFiles('project.godot', 'export_presets.cfg', 'scripts/**', 'resources/**', 'assets/**') }}
-          restore-keys: |
-            godot-metal-bake-4.5.1-v2-
-            godot-metal-bake-4.5.1-v1-
-
-      - name: Export Last Train Out.app
-        env:
-          BUILD_NUMBER: ${{ github.run_number }}
-          BUILD_COMMIT: ${{ github.sha }}
-          BUILD_KIND: development
-        run: tools/macos/export_app.sh "$GODOT" "$APP"
-
-      - name: Save baked Metal shaders
-        if: steps.shaders.outputs.cache-hit != 'true'
-        uses: actions/cache/save@v6
-        with:
-          path: .godot/exported
-          key: ${{ steps.shaders.outputs.cache-primary-key }}
-
-      - name: Check the bundle
-        run: |
-          python3 tools/macos/verify_app.py "$APP" --expect-signature adhoc --title "Exported bundle"
-          du -sh "$APP"
-
-      # Start the real bundle (no editor, no project folder) and let it test itself:
-      # once without a window, once with its window so the renderer is exercised too.
-      - name: Launch the exported app without a window
-        run: tools/macos/run_selftest.sh "$APP" build-headless --headless --expect-arch arm64
-
-      - name: Launch the exported app with its window
-        run: tools/macos/run_selftest.sh "$APP" build-window --expect-arch arm64
 
       # upload-artifact would drop executable bits if it zipped the bundle itself, which breaks
       # an .app. So the ZIP is made here with ditto and uploaded as it is (archive: false):
