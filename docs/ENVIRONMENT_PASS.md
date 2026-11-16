@@ -1,5 +1,8 @@
 # Milestone 2.6 — environment continuation
 
+This is the earlier milestone/pass report. See [the finalization review](FINALIZATION_REVIEW.md) for the latest changes and validation.
+
+
 This pass replaces prominent blockout structures while keeping the existing movement,
 train, inventory and scavenging rules. It continues draft PR #4 on
 `feature/milestone-2-6-photorealism`; no PR is merged by this work.

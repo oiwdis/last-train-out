@@ -158,7 +158,9 @@ Run 33's controlled exported-app comparison found a baked Metal library rejected
 as generated for a newer Apple GPU. The same app passed all 34 graphical checks
 with Vulkan in 79.1 seconds, within the unchanged 120-second watchdog.
 That diagnostic also logged two MoltenVK pipeline-cache `VK_INCOMPLETE` messages;
-it is evidence for the driver choice, not a clean final release result.
+it is evidence for the driver choice, not a clean final release result. Run 34
+subsequently passes the default Vulkan build and fresh-download graphical gates;
+its shader-cache persistence messages are retained in the performance report.
 This export-only inventory samples actual generated materials across all three presets plus
 dynamic labels/particles. One-pixel maps retain shader features without duplicating
 source textures. The library is never instantiated during gameplay. Rebuild it

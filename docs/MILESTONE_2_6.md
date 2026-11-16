@@ -1,5 +1,8 @@
 # Milestone 2.6 — authored character and railway assets
 
+This is the earlier milestone/pass report. See [the finalization review](FINALIZATION_REVIEW.md) for the latest changes and validation.
+
+
 This milestone delivers a substantial asset replacement, **not a completed photorealism claim**. The procedural humanoid is replaced with authored human anatomy, individual fingers, skin/clothing textures, a 52-bone skeleton and 21 animation clips. A licensed detailed steam locomotive and 14 licensed industrial props replace major blockout visuals. The cab, cars, doors, tracks, warehouse stairs and lighting receive additional geometry and material work.
 
 The environment continuation replaces the station-house facades, warehouse fronts/windows, waiting-hall windows/roof/seating, freight containers, parked box vans and searchable supply props. Distant buildings, generic doors/ladders and several structural elements still look like a prototype. Facial shading and animation polish also fall short of a finished realistic survival game. Those gaps are visible in the evidence and remain open.

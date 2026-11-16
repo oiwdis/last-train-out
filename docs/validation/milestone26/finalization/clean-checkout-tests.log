@@ -25,11 +25,11 @@ Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
 
 [SUITE] test_project_integrity.gd
   PASS  test_all_scripts_compile
-          . 105 scripts compiled
+          . 107 scripts compiled
   PASS  test_all_resources_load
           . 65 resources loaded
   PASS  test_all_scenes_instantiate
-          . 30 scenes instantiated
+          . 31 scenes instantiated
   PASS  test_main_scene_is_configured
   PASS  test_input_map_has_all_actions
   PASS  test_physics_layers_are_named
@@ -141,12 +141,14 @@ Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
           . complete arm-weighted skin vertices retained: 15334
   PASS  test_cargo_wrists_reach_each_real_object_in_both_perspectives
   PASS  test_stance_contacts_hold_to_their_support_during_walk
-          . fully planted samples=66, max ankle contact error=0.0000 m
+          . fully planted samples=41, max ankle contact error=0.0000 m
   PASS  test_stationary_feet_follow_the_moving_car
   PASS  test_running_gear_preserves_rod_length_and_quartering
   PASS  test_gauges_follow_start_brake_stop_and_speed_without_mutating_train
   PASS  test_planar_pbr_preserves_metres_normals_and_shared_materials
   PASS  test_gantry_and_columns_keep_existing_traversal_volumes
+[render-warmup] 6 views / 4 ms / draw pipelines=0.0
+  PASS  test_render_preparation_restores_camera_without_advancing_gameplay
 
 [SUITE] test_player_movement.gd
   PASS  test_idle_at_rest
@@ -276,4 +278,4 @@ Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
   PASS  test_walking_onto_moving_deck_carries_the_player
   PASS  test_obstacle_in_the_way_knocks_a_climber_off_instead_of_dragging_through
 
-=== 195 passed, 0 failed, 195 total (102.4 s wall clock) ===
+=== 196 passed, 0 failed, 196 total (84.5 s wall clock) ===

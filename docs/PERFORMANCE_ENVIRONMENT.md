@@ -1,5 +1,8 @@
 # Environment continuation — rendering comparison
 
+This is the earlier milestone/pass report. See [the finalization review](FINALIZATION_REVIEW.md) for the latest changes and validation.
+
+
 The same Godot 4.5.1 script and cameras compare the previous M2.6 commit `86b2473` with this environment pass. These are short, uncapped **Low** samples on Linux with an Intel Xeon Platinum 8573C and Mesa lavapipe/llvmpipe LLVM 19.1.7 software rendering, Forward+, 1280×720, `LP_NUM_THREADS=4`, VSync off, 65% 3D scale. No tests, imports, video captures or other rendering jobs ran during either measurement. Eight warmup frames precede 24 measured frame intervals in each view.
 
 This CPU renderer is not playable in either version and does not predict physical M1 performance. The timings are noisy short samples on a shared host. Draw-call counts show the effect of replacing old decorative batches and instancing the new facades; higher triangle counts reflect the added geometry. Do not treat these changes as a sustained FPS guarantee.

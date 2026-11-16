@@ -1,5 +1,8 @@
 # Milestone 2.6 performance comparison
 
+This is the earlier milestone/pass report. See [the finalization review](FINALIZATION_REVIEW.md) for the latest changes and validation.
+
+
 These are **cloud software-rendering measurements, not physical M1 results**. They cannot establish 60 FPS or full-screen playability on the user's 2020 M1 Mac. Hosted macOS launch checks exercise the exported app but are not a frame-rate benchmark. A separate CI step runs this same benchmark against both revisions on the hosted Apple Silicon runner; its raw results are in the run’s test-logs artifact and the pull request reports whether it succeeded. Those are windowed editor-runtime measurements, not the user’s full-screen device. The Mac helper uses a 960×540 window that fits inside the hosted desktop and verifies both actual viewports exactly match that size. This is a separate cohort from the Linux 1280×720 samples below; comparisons between platforms are not controlled.
 
 Both samples use Godot 4.5.1 Forward+, Linux x86_64, an Intel Xeon Platinum 8573C host, Mesa llvmpipe/lavapipe LLVM 19.1.7, `LP_NUM_THREADS=4`, a 1280×720 Xvfb window, VSync disabled and no fixed FPS/Movie Maker. There were no concurrent test/render/build jobs during the after sample. Each cell uses 8 warmup frames and 24 measured frame intervals after selecting the same camera and preset. Short samples on a shared CPU are noisy, particularly during resource/shader activity; these are directional comparisons, not statistically precise device benchmarks.

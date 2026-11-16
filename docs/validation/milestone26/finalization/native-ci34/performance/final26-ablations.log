@@ -1,0 +1,54 @@
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+Vulkan 1.2.283 - Forward+ - Using Device #0: Apple - Apple Paravirtual device
+
+[benchmark-stage] 4140 ms / loading profile scene / {"canvas":0.0,"draw":0.0,"mesh":3.0,"specialization":0.0,"surface":0.0}
+[benchmark-stage] 10564 ms / profile scene ready / {"canvas":0.0,"draw":0.0,"mesh":45.0,"specialization":0.0,"surface":0.0}
+[render-warmup] 6 views / 9612 ms / draw pipelines=51.0
+[benchmark-stage] 21727 ms / High / applying profile case / {"canvas":2.0,"draw":52.0,"mesh":45.0,"specialization":85.0,"surface":57.0}
+[render-warmup] 6 views / 8795 ms / draw pipelines=52.0
+[benchmark-stage] 32018 ms / High / sampling profile case / {"canvas":2.0,"draw":52.0,"mesh":45.0,"specialization":169.0,"surface":83.0}
+[profile] {"case":"High","draw_calls":636.999999999994,"median_ms":12.699,"p95_ms":14.239,"pipeline_compilations":{"canvas":2.0,"draw":52.0,"mesh":45.0,"specialization":169.0,"surface":83.0},"primitives":1024169.0,"render_cpu_ms":0.832333333889643,"render_gpu_ms":0.0,"render_scale":1.0,"samples":600,"texture_bytes":371139375.999999,"volumetric_fog":false}
+[benchmark-stage] 39688 ms / No local shadows / applying profile case / {"canvas":2.0,"draw":52.0,"mesh":45.0,"specialization":169.0,"surface":83.0}
+[render-warmup] 6 views / 1592 ms / draw pipelines=52.0
+[benchmark-stage] 42679 ms / No local shadows / sampling profile case / {"canvas":2.0,"draw":52.0,"mesh":45.0,"specialization":169.0,"surface":83.0}
+[profile] {"case":"No local shadows","draw_calls":493.999999999996,"median_ms":11.066,"p95_ms":12.123,"pipeline_compilations":{"canvas":2.0,"draw":52.0,"mesh":45.0,"specialization":169.0,"surface":83.0},"primitives":803583.000000008,"render_cpu_ms":0.637746666570506,"render_gpu_ms":0.0,"render_scale":1.0,"samples":600,"texture_bytes":371139375.999999,"volumetric_fog":false}
+[benchmark-stage] 49338 ms / No directional shadows / applying profile case / {"canvas":2.0,"draw":52.0,"mesh":45.0,"specialization":169.0,"surface":83.0}
+[render-warmup] 6 views / 126 ms / draw pipelines=52.0
+[benchmark-stage] 50742 ms / No directional shadows / sampling profile case / {"canvas":2.0,"draw":52.0,"mesh":45.0,"specialization":169.0,"surface":83.0}
+[profile] {"case":"No directional shadows","draw_calls":432.000000000006,"median_ms":10.739,"p95_ms":12.247,"pipeline_compilations":{"canvas":2.0,"draw":52.0,"mesh":45.0,"specialization":169.0,"surface":83.0},"primitives":660305.000000002,"render_cpu_ms":0.619184999416272,"render_gpu_ms":0.0,"render_scale":1.0,"samples":600,"texture_bytes":371139375.999999,"volumetric_fog":false}
+[benchmark-stage] 57255 ms / No shadows / applying profile case / {"canvas":2.0,"draw":52.0,"mesh":45.0,"specialization":169.0,"surface":83.0}
+[render-warmup] 6 views / 150 ms / draw pipelines=52.0
+[benchmark-stage] 58638 ms / No shadows / sampling profile case / {"canvas":2.0,"draw":52.0,"mesh":45.0,"specialization":169.0,"surface":83.0}
+[profile] {"case":"No shadows","draw_calls":288.999999999998,"median_ms":9.316,"p95_ms":10.097,"pipeline_compilations":{"canvas":2.0,"draw":52.0,"mesh":45.0,"specialization":169.0,"surface":83.0},"primitives":439698.999999999,"render_cpu_ms":0.441546666820844,"render_gpu_ms":0.0,"render_scale":1.0,"samples":600,"texture_bytes":371139375.999999,"volumetric_fog":false}
+[benchmark-stage] 64258 ms / No local lights / applying profile case / {"canvas":2.0,"draw":52.0,"mesh":45.0,"specialization":169.0,"surface":83.0}
+[render-warmup] 6 views / 123 ms / draw pipelines=52.0
+[benchmark-stage] 65572 ms / No local lights / sampling profile case / {"canvas":2.0,"draw":52.0,"mesh":45.0,"specialization":169.0,"surface":83.0}
+[profile] {"case":"No local lights","draw_calls":492.999999999997,"median_ms":10.2,"p95_ms":11.369,"pipeline_compilations":{"canvas":2.0,"draw":52.0,"mesh":45.0,"specialization":169.0,"surface":83.0},"primitives":803583.000000008,"render_cpu_ms":0.634446667283773,"render_gpu_ms":0.0,"render_scale":1.0,"samples":600,"texture_bytes":371139375.999999,"volumetric_fog":false}
+[benchmark-stage] 71722 ms / No SSAO / applying profile case / {"canvas":2.0,"draw":52.0,"mesh":45.0,"specialization":169.0,"surface":83.0}
+[render-warmup] 6 views / 462 ms / draw pipelines=52.0
+[benchmark-stage] 73488 ms / No SSAO / sampling profile case / {"canvas":2.0,"draw":52.0,"mesh":45.0,"specialization":195.0,"surface":83.0}
+[profile] {"case":"No SSAO","draw_calls":635.999999999995,"median_ms":11.432,"p95_ms":13.385,"pipeline_compilations":{"canvas":2.0,"draw":52.0,"mesh":45.0,"specialization":195.0,"surface":83.0},"primitives":1024189.00000001,"render_cpu_ms":0.730886665781338,"render_gpu_ms":0.0,"render_scale":1.0,"samples":600,"texture_bytes":371139375.999999,"volumetric_fog":false}
+[benchmark-stage] 80433 ms / No MSAA / applying profile case / {"canvas":2.0,"draw":52.0,"mesh":45.0,"specialization":195.0,"surface":83.0}
+[render-warmup] 6 views / 859 ms / draw pipelines=78.0
+[benchmark-stage] 82593 ms / No MSAA / sampling profile case / {"canvas":2.0,"draw":78.0,"mesh":45.0,"specialization":226.0,"surface":83.0}
+[profile] {"case":"No MSAA","draw_calls":635.999999999995,"median_ms":11.078,"p95_ms":12.558,"pipeline_compilations":{"canvas":2.0,"draw":78.0,"mesh":45.0,"specialization":226.0,"surface":83.0},"primitives":1024189.00000001,"render_cpu_ms":0.724638334810733,"render_gpu_ms":0.0,"render_scale":1.0,"samples":600,"texture_bytes":362844975.999999,"volumetric_fog":false}
+[benchmark-stage] 89325 ms / No normal or roughness maps / applying profile case / {"canvas":2.0,"draw":78.0,"mesh":45.0,"specialization":226.0,"surface":83.0}
+[render-warmup] 6 views / 5588 ms / draw pipelines=78.0
+[benchmark-stage] 96511 ms / No normal or roughness maps / sampling profile case / {"canvas":2.0,"draw":78.0,"mesh":45.0,"specialization":297.0,"surface":158.0}
+[profile] {"case":"No normal or roughness maps","draw_calls":636.999999999994,"median_ms":12.167,"p95_ms":13.766,"pipeline_compilations":{"canvas":2.0,"draw":78.0,"mesh":45.0,"specialization":297.0,"surface":158.0},"primitives":1024189.00000001,"render_cpu_ms":0.847153335412344,"render_gpu_ms":0.0,"render_scale":1.0,"samples":600,"texture_bytes":371139375.999999,"volumetric_fog":false}
+[benchmark-stage] 103842 ms / LOD 2.5 / applying profile case / {"canvas":2.0,"draw":78.0,"mesh":45.0,"specialization":297.0,"surface":158.0}
+[render-warmup] 6 views / 2991 ms / draw pipelines=78.0
+[benchmark-stage] 108303 ms / LOD 2.5 / sampling profile case / {"canvas":2.0,"draw":78.0,"mesh":45.0,"specialization":368.0,"surface":236.0}
+[profile] {"case":"LOD 2.5","draw_calls":639.000000000006,"median_ms":13.38,"p95_ms":16.583,"pipeline_compilations":{"canvas":2.0,"draw":78.0,"mesh":45.0,"specialization":368.0,"surface":236.0},"primitives":1010213.00000001,"render_cpu_ms":0.989349999427796,"render_gpu_ms":0.0,"render_scale":1.0,"samples":600,"texture_bytes":371139375.999999,"volumetric_fog":false}
+[benchmark-stage] 116544 ms / 65% pixels / applying profile case / {"canvas":2.0,"draw":78.0,"mesh":45.0,"specialization":368.0,"surface":236.0}
+[render-warmup] 6 views / 1104 ms / draw pipelines=78.0
+[benchmark-stage] 118881 ms / 65% pixels / sampling profile case / {"canvas":2.0,"draw":78.0,"mesh":45.0,"specialization":368.0,"surface":236.0}
+[profile] {"case":"65% pixels","draw_calls":638.000000000006,"median_ms":10.27,"p95_ms":12.384,"pipeline_compilations":{"canvas":2.0,"draw":78.0,"mesh":45.0,"specialization":368.0,"surface":236.0},"primitives":1024189.00000001,"render_cpu_ms":0.775093332926432,"render_gpu_ms":0.0,"render_scale":0.649999976158142,"samples":600,"texture_bytes":355861488.000001,"volumetric_fog":false}
+[benchmark-stage] 125187 ms / No animation / applying profile case / {"canvas":2.0,"draw":78.0,"mesh":45.0,"specialization":368.0,"surface":236.0}
+[render-warmup] 6 views / 208 ms / draw pipelines=78.0
+[benchmark-stage] 126838 ms / No animation / sampling profile case / {"canvas":2.0,"draw":78.0,"mesh":45.0,"specialization":368.0,"surface":236.0}
+[profile] {"case":"No animation","draw_calls":494.999999999995,"median_ms":10.988,"p95_ms":11.872,"pipeline_compilations":{"canvas":2.0,"draw":78.0,"mesh":45.0,"specialization":368.0,"surface":236.0},"primitives":803583.000000008,"render_cpu_ms":0.614418333768845,"render_gpu_ms":0.0,"render_scale":1.0,"samples":600,"texture_bytes":371139375.999999,"volumetric_fog":false}
+[benchmark-stage] 133466 ms / High repeat / applying profile case / {"canvas":2.0,"draw":78.0,"mesh":45.0,"specialization":368.0,"surface":236.0}
+[render-warmup] 6 views / 151 ms / draw pipelines=78.0
+[benchmark-stage] 135172 ms / High repeat / sampling profile case / {"canvas":2.0,"draw":78.0,"mesh":45.0,"specialization":368.0,"surface":236.0}
+[profile] {"case":"High repeat","draw_calls":638.000000000006,"median_ms":12.173,"p95_ms":14.014,"pipeline_compilations":{"canvas":2.0,"draw":78.0,"mesh":45.0,"specialization":368.0,"surface":236.0},"primitives":1024189.00000001,"render_cpu_ms":0.768598333795866,"render_gpu_ms":0.0,"render_scale":1.0,"samples":600,"texture_bytes":371139375.999999,"volumetric_fog":false}

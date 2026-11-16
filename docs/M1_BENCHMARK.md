@@ -37,7 +37,7 @@ shasum -a 256 "$HOME/Downloads/LastTrainOut-macos-universal.zip"
 ```
 
 Repeat three times, changing the output suffix to `-2` and `-3`. Keep every run.
-The reports include actual viewport resolution/window mode, GPU, renderer,
+The reports include actual viewport resolution/window mode, GPU, renderer/driver,
 render scale, median/p95/worst frame interval, render CPU/GPU time, draw calls,
 primitives and texture memory. VSync is disabled; neither fixed FPS nor Movie
 Maker is used. Presets are selected without persisting them. The route is a

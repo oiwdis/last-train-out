@@ -1,7 +1,7 @@
 {
   "failed": 0,
   "godot": "4.5.1-stable (official)",
-  "passed": 195,
+  "passed": 196,
   "physics_engine": "Jolt Physics",
   "results": [
     {
@@ -105,7 +105,7 @@
     {
       "failures": [],
       "notes": [
-        "105 scripts compiled"
+        "107 scripts compiled"
       ],
       "passed": true,
       "suite": "test_project_integrity.gd",
@@ -123,7 +123,7 @@
     {
       "failures": [],
       "notes": [
-        "30 scenes instantiated"
+        "31 scenes instantiated"
       ],
       "passed": true,
       "suite": "test_project_integrity.gd",
@@ -717,7 +717,7 @@
     {
       "failures": [],
       "notes": [
-        "fully planted samples=66, max ankle contact error=0.0000 m"
+        "fully planted samples=41, max ankle contact error=0.0000 m"
       ],
       "passed": true,
       "suite": "test_photoreal_finalization.gd",
@@ -757,6 +757,13 @@
       "passed": true,
       "suite": "test_photoreal_finalization.gd",
       "test": "test_gantry_and_columns_keep_existing_traversal_volumes"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_photoreal_finalization.gd",
+      "test": "test_render_preparation_restores_camera_without_advancing_gameplay"
     },
     {
       "failures": [],

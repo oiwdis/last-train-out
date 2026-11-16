@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "png_count": 51,
+  "matched_views": 17,
+  "dimensions": [
+    960,
+    540
+  ],
+  "preset": "High",
+  "renderer": "forward_plus",
+  "baselines": [
+    "8cde10cf78c1ea0cf7f7bafb5fc146d2e12514c2",
+    "dfbfdf8ccf3e466788cc085ae5563a14e6382670"
+  ],
+  "visual_source": "8fbaa34ef6a85cfe306f1be43b728a005a83159b",
+  "scope": "PNG decode/dimensions, SHA-256, identical cameras/targets/FOV and common lighting metadata"
+}

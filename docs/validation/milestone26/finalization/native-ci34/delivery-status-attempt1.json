@@ -1,0 +1,18 @@
+{
+  "passed": false,
+  "run": 43797534032,
+  "attempt": 1,
+  "source_commit": "c86d6f31ffaef820e72994cc031a317634bd8c57",
+  "universal_export_integrity_passed": true,
+  "build_headless_checks": 31,
+  "build_window_checks": 34,
+  "fresh_intel_headless_checks": 31,
+  "fresh_arm_headless_checks": 31,
+  "fresh_arm_window_checks": 34,
+  "packaged_presets_cases": 6,
+  "packaged_route_passed": false,
+  "failure": "VK_TIMEOUT / Vulkan device lost during next process initial render preparation; SIGTRAP",
+  "zip_produced": true,
+  "notarized": false,
+  "note": "Fresh-runner reproduction requested; this failure remains evidence, not a successful release gate."
+}

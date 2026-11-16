@@ -1,0 +1,282 @@
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+
+
+=== Last Train Out - automated tests (Godot 4.5.1-stable (official), physics: Jolt Physics) ===
+
+[SUITE] test_fabricated_normals.gd
+  PASS  test_long_tracks_cull_small_fittings_in_local_sections
+  PASS  test_large_ground_surface_keeps_upward_normals_and_orthogonal_tangents
+
+[SUITE] test_inventory.gd
+  PASS  test_catalog_has_complete_reusable_definitions
+  PASS  test_stacking_fills_existing_slots_before_new_ones
+  PASS  test_capacity_returns_unaccepted_quantity_to_caller
+  PASS  test_heavy_items_do_not_enter_backpack
+  PASS  test_invalid_mutations_leave_inventory_unchanged
+  PASS  test_partial_transfer_preserves_both_sides
+  PASS  test_transfer_signals_observe_atomic_state_and_reject_reentrancy
+  PASS  test_many_repeated_transfers_never_create_or_lose_items
+  PASS  test_loot_tables_use_a_private_seeded_rng
+  PASS  test_loot_distribution_uses_authored_tables_and_valid_quantities
+
+[SUITE] test_presentation_labels.gd
+  PASS  test_location_labels_cover_track_detour_and_yard
+  PASS  test_departure_labels_do_not_promise_a_countdown
+
+[SUITE] test_project_integrity.gd
+  PASS  test_all_scripts_compile
+          . 107 scripts compiled
+  PASS  test_all_resources_load
+          . 65 resources loaded
+  PASS  test_all_scenes_instantiate
+          . 31 scenes instantiated
+  PASS  test_main_scene_is_configured
+  PASS  test_input_map_has_all_actions
+  PASS  test_physics_layers_are_named
+  PASS  test_player_and_train_use_the_documented_collision_layers
+
+[SUITE] test_stamina.gd
+  PASS  test_starts_full
+  PASS  test_drains_while_sprinting
+  PASS  test_does_not_drain_when_not_sprinting
+  PASS  test_regeneration_waits_for_delay
+  PASS  test_regenerates_to_full_and_stops
+  PASS  test_exhaustion_locks_sprinting_until_recovered
+  PASS  test_reset_restores_everything
+
+[SUITE] test_train_motion.gd
+  PASS  test_emergency_steam_mode
+          . Emergency Steam: full speed after 6.00 s, peak acceleration 3.00 m/s^2, 36.1 m travelled
+  PASS  test_normal_mode
+          . Normal: full speed after 10.00 s, peak acceleration 1.80 m/s^2, 60.1 m travelled
+  PASS  test_slow_departure_mode
+          . Slow Departure: full speed after 16.00 s, peak acceleration 1.12 m/s^2, 96.1 m travelled
+  PASS  test_default_mode_is_normal
+  PASS  test_acceleration_modifier_scales_time
+  PASS  test_max_speed_is_configurable
+  PASS  test_max_speed_change_is_eased_while_moving
+  PASS  test_stop_brakes_smoothly_to_standstill
+  PASS  test_stop_and_restart_mid_acceleration_is_continuous
+  PASS  test_mode_change_mid_acceleration_is_continuous
+  PASS  test_reset_returns_to_station
+  PASS  test_brakes_before_end_of_track
+          . stopped at 150.0 m of a 150 m track
+
+[SUITE] test_carrying.gd
+  PASS  test_heavy_carry_limits_speed_and_prevents_sprint_without_changing_config
+  PASS  test_one_object_limit_and_drop_recovery
+  PASS  test_carrying_blocks_ladder_with_feedback_then_allows_climb_after_drop
+  PASS  test_carrying_blocks_vault_without_changing_normal_jump
+  PASS  test_heavy_cargo_can_jump_aboard_and_ride_the_train
+  PASS  test_loose_cargo_rides_acceleration_and_follows_train_reset
+  PASS  test_heavy_deposit_withdraw_and_repeat_clicks_conserve_cargo
+  PASS  test_player_reset_preserves_cargo_and_station_reset_clears_it
+
+[SUITE] test_character_assets.gd
+  PASS  test_authored_character_has_weighted_humanoid_and_individual_fingers
+  PASS  test_all_required_animation_clips_import_without_root_motion_tracks
+  PASS  test_real_movement_drives_blended_walk_sprint_and_idle
+  PASS  test_jump_and_traversal_states_have_distinct_skeletal_presentations
+  PASS  test_departing_train_does_not_make_stationary_passenger_walk
+  PASS  test_first_person_renders_only_the_matching_arm_meshes
+  PASS  test_carry_pose_places_both_hands_at_cargo_in_both_perspectives
+  PASS  test_carry_walk_and_drop_animate_without_changing_ownership_rules
+  PASS  test_operating_controls_plays_action_and_keeps_train_command_immediate
+  PASS  test_station_uses_batched_licensed_geometry_and_preserves_thirteen_caches
+  PASS  test_imported_locomotive_wheels_turn_with_the_original_train_speed
+  PASS  test_presets_restore_normal_maps_on_batched_assets
+
+[SUITE] test_environment_assets.gd
+  PASS  test_container_art_keeps_roof_and_ladder_collision_dimensions
+  PASS  test_box_vans_preserve_climbable_roofs_and_do_not_add_mesh_collision
+  PASS  test_cutaway_keeps_replaced_blockouts_hidden_and_restores_authored_windows
+  PASS  test_thirteen_searchable_models_retain_identity_and_loot_actions
+  PASS  test_architecture_and_foliage_follow_material_and_distance_budgets
+
+[SUITE] test_exploration_camera.gd
+  PASS  test_first_person_eye_and_third_person_initialization
+  PASS  test_mouse_look_is_unbounded_horizontally_and_limited_vertically
+  PASS  test_physical_v_key_switches_view_without_reset
+  PASS  test_physical_wasd_follows_camera_in_all_four_directions
+  PASS  test_swept_sphere_prevents_camera_crossing_warehouse_wall
+  PASS  test_switch_preserves_motion_stamina_and_held_object
+  PASS  test_switch_queues_until_scripted_traversal_finishes
+  PASS  test_switching_during_acceleration_has_no_train_relative_drift
+  PASS  test_both_perspectives_target_and_search_with_camera_ray
+  PASS  test_targeting_rejects_objects_behind_wall_or_beyond_reach
+  PASS  test_held_cargo_does_not_block_storage_targeting_in_either_view
+  PASS  test_camera_preferences_persist_and_menu_sources_are_independent
+
+[SUITE] test_exploration_district.gd
+  PASS  test_service_and_trackside_routes_connect_freight_to_platform
+  PASS  test_waiting_hall_and_platform_approach_are_walkable
+  PASS  test_added_container_ladder_reaches_roof
+  PASS  test_station_reset_restores_door_states_and_preserves_camera
+
+[SUITE] test_keyboard_input.gd
+  PASS  test_d_and_a_walk_right_and_left
+  PASS  test_arrow_keys_also_move
+  PASS  test_w_and_s_move_in_depth
+  PASS  test_shift_sprints
+  PASS  test_space_jumps
+  PASS  test_e_interacts
+  PASS  test_debug_menu_keys
+
+[SUITE] test_moving_platform.gd
+  PASS  test_player_stands_on_stationary_train
+  PASS  test_player_rides_accelerating_train_without_sliding
+          . train speed 12.00 m/s, max drift 0.0000 m, max per-tick jitter 0.00000 m
+  PASS  test_player_walks_on_moving_train
+          . walked 1.44 m along the deck in 0.5 s of input
+  PASS  test_jump_on_train_keeps_platform_momentum
+          . jump apex 1.24 m above the deck, landed 0.000 m from take-off spot
+  PASS  test_jump_off_train_preserves_momentum
+  PASS  test_train_stops_smoothly_with_rider
+          . max drift while braking 0.0000 m
+  PASS  test_reset_with_player_aboard
+  PASS  test_reset_does_not_disturb_player_on_platform
+
+[SUITE] test_photoreal_finalization.gd
+  PASS  test_first_person_extraction_keeps_complete_hand_and_forearm_skin
+          . complete arm-weighted skin vertices retained: 15334
+  PASS  test_cargo_wrists_reach_each_real_object_in_both_perspectives
+  PASS  test_stance_contacts_hold_to_their_support_during_walk
+          . fully planted samples=41, max ankle contact error=0.0000 m
+  PASS  test_stationary_feet_follow_the_moving_car
+  PASS  test_running_gear_preserves_rod_length_and_quartering
+  PASS  test_gauges_follow_start_brake_stop_and_speed_without_mutating_train
+  PASS  test_planar_pbr_preserves_metres_normals_and_shared_materials
+  PASS  test_gantry_and_columns_keep_existing_traversal_volumes
+[render-warmup] 6 views / 2 ms / draw pipelines=0.0
+  PASS  test_render_preparation_restores_camera_without_advancing_gameplay
+
+[SUITE] test_player_movement.gd
+  PASS  test_idle_at_rest
+  PASS  test_walk_speed_and_responsiveness
+  PASS  test_sprint_speed_and_state_transitions
+  PASS  test_turnaround_is_quick
+  PASS  test_depth_movement
+  PASS  test_jump_height_and_states
+          . apex 1.241 m, air time 0.63 s
+  PASS  test_short_hop_when_jump_released_early
+          . tap-jump apex 0.273 m
+  PASS  test_holding_jump_does_not_repeat
+  PASS  test_sprint_jump_covers_distance
+          . sprint jump length 3.90 m
+  PASS  test_stamina_drains_only_while_sprinting_then_regenerates
+  PASS  test_exhaustion_forces_walking
+  PASS  test_coyote_time_allows_late_jump
+  PASS  test_coyote_time_expires
+  PASS  test_jump_buffer_executes_on_landing
+  PASS  test_jump_buffer_expires
+  PASS  test_reset_player_returns_to_spawn
+
+[SUITE] test_presentation.gd
+  PASS  test_departure_instrument_tracks_real_train_states
+  PASS  test_location_changes_follow_interior_and_upper_floor
+  PASS  test_boarding_confirmation_requires_sustained_contact
+  PASS  test_interaction_prompt_uses_player_eligibility
+  PASS  test_exhaustion_is_readable_and_recovers
+  PASS  test_message_expiry_and_rebinding
+  PASS  test_facade_details_remain_opaque_during_interior_exploration
+  PASS  test_rear_details_remain_opaque_when_riding_behind_building
+  PASS  test_new_art_contains_no_collision_or_excess_lights
+          . decorative mesh instances: 208
+  PASS  test_feedback_does_not_change_body_scale_or_camera
+
+[SUITE] test_render_smoothness.gd
+  PASS  test_interpolated_rider_does_not_jitter
+          . 600 rendered frames (301 between physics ticks), train 12.0 m/s, drift 0.00000 m, frame-to-frame jitter 0.00000 m
+  PASS  test_interpolated_ladder_climber_does_not_jitter
+          . climber drift against the rendered car: 0.00000 m at 12.0 m/s
+
+[SUITE] test_scavenging.gd
+  PASS  test_every_authored_search_location_is_reachable_and_selectable
+  PASS  test_search_both_warehouses_through_the_real_interaction_input
+  PASS  test_search_cancellation_does_not_reroll_or_consume_loot
+  PASS  test_full_backpack_leaves_overflow_inside_the_searched_cache
+  PASS  test_pickup_drop_and_repeated_interactions_conserve_items
+  PASS  test_search_reveals_a_single_heavy_object_exactly_once
+  PASS  test_storage_deposit_withdraw_and_partial_capacity
+  PASS  test_storage_out_of_range_and_moving_away_reject_transactions
+  PASS  test_station_reset_restores_seeded_caches_and_clears_collected_supplies
+  PASS  test_search_cancelled_by_reset_and_backpack_opening
+
+[SUITE] test_station.gd
+  PASS  test_main_scene_starts_at_harlow_junction
+  PASS  test_station_dimensions
+  PASS  test_traverse_station_end_to_end
+          . platform -> freight yard in 19.3 s
+  PASS  test_warehouse_a_stairs_and_upper_floor
+  PASS  test_warehouse_b_doorway_is_blocked_but_back_room_gets_around
+  PASS  test_freight_yard_ladders_roofs_and_gap
+  PASS  test_every_freight_ladder_reaches_the_roof
+  PASS  test_warehouse_b_takes_longer_to_cross_than_warehouse_a
+          . Warehouse A door to door: 4.9 s, Warehouse B door to door: 6.9 s
+  PASS  test_return_run_from_warehouse_b_to_train
+          . return run: 18.6 s (design target: about 20 s)
+
+[SUITE] test_station_systems.gd
+  PASS  test_legacy_cutaway_component_opens_and_closes_per_building
+  PASS  test_legacy_cutaway_fades_without_changing_collision
+  PASS  test_buildings_stay_opaque_when_player_passes_behind_them
+  PASS  test_camera_keeps_selected_distance_between_location_profiles
+  PASS  test_camera_moves_smoothly_through_a_doorway
+          . largest camera move in one tick: 0.100 m
+  PASS  test_camera_keeps_player_in_frame_and_follows_body
+  PASS  test_camera_keeps_selected_view_and_stays_with_the_player_during_departure
+  PASS  test_debug_menu_toggles_with_f1_and_closes_with_escape
+  PASS  test_debug_menu_train_controls
+[FogSystem] Fog surge #1 triggered (placeholder - fog behaviour arrives in Week 3).
+  PASS  test_debug_menu_player_and_station_controls
+  PASS  test_debug_menu_diagnostics_are_live
+  PASS  test_debug_menu_does_not_steal_player_input
+[Game] Passenger test_passenger -> ABOARD
+[Game] Inventory coal = 3
+[Game] Inventory coal = 0
+[Game] Inventory coal = 0
+  PASS  test_system_stubs_are_wired
+  PASS  test_ride_on_roof_through_entire_station
+          . rode 170 m at up to 12.0 m/s, max drift 0.0000 m
+  PASS  test_cling_to_ladder_through_entire_station
+  PASS  test_reset_train_while_clinging_to_it
+  PASS  test_player_on_track_is_pushed_not_swallowed
+          . after 7 s the player is 5.07 m ahead of the locomotive's centre, y 0.00
+
+[SUITE] test_supply_ui_graphics.gd
+  PASS  test_keyboard_inventory_selection_drop_and_close
+  PASS  test_mouse_slot_actions_and_tooltips_match_inventory
+  PASS  test_graphics_presets_switch_render_features_without_touching_physics
+  PASS  test_train_storage_controls_refresh_immediately
+  PASS  test_fullscreen_resolution_budget_uses_window_pixels_not_ui_coordinates
+
+[SUITE] test_train_interiors.gd
+  PASS  test_walk_inside_crew_car_during_departure_and_braking
+  PASS  test_walk_between_all_three_cars_while_moving
+  PASS  test_cab_controls_start_brake_and_select_all_departure_modes_by_looking
+  PASS  test_closed_door_blocks_walk_and_refuses_to_close_through_player
+  PASS  test_interior_jump_switch_and_reset_keep_platform_motion
+
+[SUITE] test_traversal.gd
+  PASS  test_vault_over_low_crate
+  PASS  test_climb_onto_deep_obstacle
+  PASS  test_tall_wall_cannot_be_vaulted
+  PASS  test_interact_with_nothing_nearby_does_nothing
+  PASS  test_climb_static_ladder_to_the_top
+  PASS  test_climb_down_ladder_from_the_top
+  PASS  test_jump_off_ladder
+  PASS  test_regrab_is_blocked_briefly_after_letting_go
+  PASS  test_grab_moving_ladder_and_climb_to_roof
+  PASS  test_fast_ladder_cannot_be_grabbed_standing_still
+  PASS  test_sprinting_player_catches_fast_ladder
+  PASS  test_grab_railing_and_climb_over
+  PASS  test_grab_moving_railing_from_the_ground
+  PASS  test_vault_crate_on_moving_flat_car
+          . landed at car-local x -3.21, y 1.00
+  PASS  test_jump_from_platform_onto_moving_flat_car
+          . jumped at train speed 4.0 m/s
+  PASS  test_walking_onto_moving_deck_carries_the_player
+  PASS  test_obstacle_in_the_way_knocks_a_climber_off_instead_of_dragging_through
+
+=== 196 passed, 0 failed, 196 total (55.2 s wall clock) ===
+

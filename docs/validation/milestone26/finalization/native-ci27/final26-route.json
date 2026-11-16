@@ -1,0 +1,91 @@
+{
+  "adapter": "Apple Paravirtual device (Apple5)",
+  "fixed_fps": false,
+  "godot": "4.5.1-stable (official)",
+  "matched_camera": true,
+  "os": "macOS",
+  "processor": "Apple M1 (Virtual)",
+  "renderer": "forward_plus",
+  "resolution": "(960, 540)",
+  "results": [
+    {
+      "case": "Low",
+      "draw_calls": 266.783333333333,
+      "fps_from_mean": 195.465589260339,
+      "max_frame_ms": 9.049,
+      "mean_frame_ms": 5.11598999999999,
+      "median_frame_ms": 4.981,
+      "p95_frame_ms": 7.019,
+      "physics_ms": 0.961183333333336,
+      "pipeline_compilations": {
+        "canvas": 2.0,
+        "draw": 84.0,
+        "mesh": 45.0,
+        "specialization": 124.0,
+        "surface": 114.0
+      },
+      "primitives": 386552.948333333,
+      "process_ms": 22.6276016666666,
+      "render_cpu_ms": 0.46936333373189,
+      "render_gpu_ms": 0.0,
+      "render_scale": 0.649999976158142,
+      "samples": 600,
+      "texture_bytes": 299466752.0,
+      "view": "Warehouse entry pan"
+    },
+    {
+      "case": "Medium",
+      "draw_calls": 485.478333333333,
+      "fps_from_mean": 162.769865655179,
+      "max_frame_ms": 11.211,
+      "mean_frame_ms": 6.14364333333333,
+      "median_frame_ms": 5.854,
+      "p95_frame_ms": 8.374,
+      "physics_ms": 0.953568333333328,
+      "pipeline_compilations": {
+        "canvas": 2.0,
+        "draw": 116.0,
+        "mesh": 45.0,
+        "specialization": 179.0,
+        "surface": 174.0
+      },
+      "primitives": 748015.748333333,
+      "process_ms": 10.6804683333334,
+      "render_cpu_ms": 0.630991666267316,
+      "render_gpu_ms": 0.0,
+      "render_scale": 0.850000023841858,
+      "samples": 600,
+      "texture_bytes": 315342848.0,
+      "view": "Warehouse entry pan"
+    },
+    {
+      "case": "High",
+      "draw_calls": 540.528333333333,
+      "fps_from_mean": 115.91461265973,
+      "max_frame_ms": 15.188,
+      "mean_frame_ms": 8.62703999999999,
+      "median_frame_ms": 8.322,
+      "p95_frame_ms": 11.41,
+      "physics_ms": 0.896134999999998,
+      "pipeline_compilations": {
+        "canvas": 2.0,
+        "draw": 116.0,
+        "mesh": 45.0,
+        "specialization": 256.0,
+        "surface": 200.0
+      },
+      "primitives": 851204.556666667,
+      "process_ms": 12.65936,
+      "render_cpu_ms": 0.846909999301036,
+      "render_gpu_ms": 0.0,
+      "render_scale": 1.0,
+      "samples": 600,
+      "texture_bytes": 373374976.0,
+      "view": "Warehouse entry pan"
+    }
+  ],
+  "suite": "route",
+  "vsync": "disabled",
+  "warmup_frames": 120,
+  "window_mode": 0
+}
