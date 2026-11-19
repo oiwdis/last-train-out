@@ -235,6 +235,63 @@ func test_falling_out_of_route_fails_without_teleporting_to_harlow() -> void:
 	check_eq(journey.mission.status,"failed","fall ends run")
 	check_greater(game.player.global_position.x,900,"no normal-gameplay teleport to Harlow")
 
+func test_walk_between_all_three_cars_on_a_live_curve() -> void:
+	await place_on_route(950)
+	var flat := game.train.get_node("FlatCar") as TrainCar
+	var loco := game.train.get_node("Locomotive") as TrainCar
+	game.player.teleport_to(flat.to_global(Vector3(4.0,1.05,0)))
+	await seconds(0.3)
+	game.train.start()
+	var fell := false
+	for tick in 420:
+		var target := loco.to_global(Vector3(-2.7,1,0))
+		var offset := target-game.player.global_position
+		if Vector2(offset.x,offset.z).length() < 0.3:
+			break
+		var heading := Vector2(offset.x,offset.z/game.player.config.depth_speed_scale).normalized()
+		game.player.input.script_move(heading.x,heading.y)
+		await physics_frames(1)
+		if game.player.global_position.y < journey.route.sample(game.train.distance).y+0.8:
+			fell = true
+	game.player.input.clear()
+	check(not fell,"curve gangways keep a continuous walking floor")
+	check_eq(game.player.get_ride_body(),loco,"walked from flatcar through crew car into moving cab")
+
+func test_aimed_boarding_and_ladder_climb_during_curved_departure() -> void:
+	await place_on_route(900)
+	var crew := game.train.get_node("CrewCar") as TrainCar
+	var ladder := crew.get_node("RoofLadder") as Ladder
+	var at := ladder.global_position+crew.global_basis.x*2.0+crew.global_basis.z*0.6
+	at.y = journey.route.sample(journey.route.project(at)).y+0.05
+	game.player.teleport_to(at)
+	game.camera_rig.exploration.request_perspective(0)
+	await seconds(0.5)
+	game.train.start()
+	var grabbed := false
+	for tick in 480:
+		game.camera_rig.exploration.aim_at(ladder.global_position+Vector3.UP)
+		await physics_frames(1)
+		if game.player.interactor.find_interactable() == ladder:
+			game.player.input.script_interact()
+			await physics_frames(4)
+			grabbed = game.player.state == Player.State.CLIMB
+			if grabbed: break
+	check(grabbed,"look ray and E grab the ladder while departing on a curve")
+	game.player.input.script_move(0,-1)
+	var mounted := false
+	for tick in 300:
+		await physics_frames(1)
+		if game.player.state == Player.State.MOUNT:
+			mounted = true
+		if mounted and game.player.is_grounded():
+			break
+	game.player.input.clear()
+	check(mounted,"ladder reaches the roof exit")
+	game.camera_rig.exploration.request_perspective(1)
+	await seconds(0.5)
+	check(game.player.is_on_train(),"ladder rider remains attached through curve")
+	check_near(crew.to_local(game.player.global_position).y,3.62,0.12,"climbed onto the moving roof")
+
 func place_on_route(progress: float) -> void:
 	# Explicit test fixture only. Gameplay validation uses no repositioning.
 	game.train.distance = progress

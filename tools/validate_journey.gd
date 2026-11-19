@@ -6,11 +6,15 @@ var view: ExplorationCamera
 var checks: Array = []
 var failed := false
 var finished := false
+var source_commit := ""
 var teleports := 0
 var late_escape := false
 var output := "res://docs/validation/milestone3-finalization"
 
 func _ready() -> void:
+	var revision: Array = []
+	if OS.execute("git",["rev-parse","HEAD"],revision) == 0 and not revision.is_empty():
+		source_commit = str(revision[0]).strip_edges()
 	for arg in OS.get_cmdline_user_args():
 		if arg == "--late-escape": late_escape = true
 	_run.call_deferred()
@@ -27,7 +31,7 @@ func _run() -> void:
 	await shot("01_harlow_departure")
 	await walk(Vector3(5,1,1.2))
 	await search("harlow_departure_coal")
-	await pickup_coal()
+	await pickup_cargo()
 	await walk(Vector3(5,1,0))
 	await walk(Vector3(5,1,-0.8))
 	await deposit()
@@ -40,7 +44,7 @@ func _run() -> void:
 	var station := game.journey.stations[0]
 	await walk(station.to_global(Vector3(-12,1,3.4)))
 	await search("ashford_coal_a")
-	await pickup_coal()
+	await pickup_cargo()
 	await walk(station.to_global(Vector3(-10,1,2)))
 	await deposit()
 	await walk(station.to_global(Vector3(-12,1,6)))
@@ -48,7 +52,7 @@ func _run() -> void:
 	await walk(station.to_global(Vector3(22,0,33)))
 	await walk(station.to_global(Vector3(22,0,26.4)))
 	await search("ashford_coal_b")
-	await pickup_coal()
+	await pickup_cargo()
 	await shot("03_ashford_heavy_cargo")
 	await walk(station.to_global(Vector3(22,0,33)))
 	await walk(station.to_global(Vector3(-12,0,15)))
@@ -59,9 +63,32 @@ func _run() -> void:
 	await stoke()
 	await stoke()
 	if late_escape:
-		game.hud.show_message("VALIDATION · waiting for the advancing fog before the Ashford escape",12)
-		while game.train.distance-game.fog_system.simulation.front > 140:
+		# Optional mechanical salvage: a long heavy return with a naturally approaching front.
+		await disembark()
+		await walk(station.to_global(Vector3(-12,1,6)))
+		await walk(station.to_global(Vector3(-12,0,15)))
+		await walk(station.to_global(Vector3(-12,0,35)))
+		await walk(station.to_global(Vector3(122,0,46)))
+		await walk(station.to_global(Vector3(122,0,42)))
+		await walk(station.to_global(Vector3(126.7,0,39)))
+		await search("ashford_components")
+		await pickup_cargo(&"machine_component")
+		game.hud.show_message("VALIDATION · waiting for the actual fog before returning with heavy workshop spares",12)
+		while game.fog_system.players.local.exposure.progress-game.fog_system.simulation.front > 390 and not failed:
 			await seconds(1)
+		await shot("04_ashford_heavy_return")
+		await walk(station.to_global(Vector3(122,0,42)))
+		await walk(station.to_global(Vector3(122,0,46)))
+		await walk(station.to_global(Vector3(65,0,36)))
+		key(KEY_G)
+		await seconds(0.3)
+		check(game.scavenging.carried == null,"abandoned heavy spares using G as fog closes")
+		game.hud.show_message("Leave the spares. Get back to the train.",8)
+		await walk(station.to_global(Vector3(-12,0,36)))
+		await walk(station.to_global(Vector3(-12,0,15)))
+		await walk(station.to_global(Vector3(-12,1,6)))
+		await walk(station.to_global(Vector3(-10,1,2)))
+		await board()
 		await shot("04_ashford_late_escape")
 	await depart()
 	await travel("blackwater")
@@ -115,18 +142,18 @@ func search(id: String) -> void:
 			return
 	check(false,"cache missing "+id)
 
-func pickup_coal() -> void:
+func pickup_cargo(item_id: StringName = &"coal_sack") -> void:
 	if failed: return
 	var closest: WorldItem
 	for item in game.scavenging.world_items:
-		if is_instance_valid(item) and item.available and item.item.id == &"coal_sack":
+		if is_instance_valid(item) and item.available and item.item.id == item_id:
 			if closest == null or item.global_position.distance_to(game.player.global_position) < closest.global_position.distance_to(game.player.global_position):
 				closest = item
 	if closest == null:
-		check(false,"coal revealed")
+		check(false,"cargo revealed")
 		return
 	await interact(closest.interaction,Vector3.UP*0.45)
-	check(game.scavenging.carried == closest,"physical heavy coal pickup")
+	check(game.scavenging.carried == closest,"physical heavy pickup: " + str(item_id))
 
 func deposit() -> void:
 	if failed: return
@@ -236,7 +263,7 @@ func check(ok: bool, caption: String) -> void:
 func finish() -> void:
 	if finished: return
 	finished = true
-	var report := {"checks":checks,"failed":failed,"teleports":teleports,"late_escape":late_escape,
+	var report := {"source_commit":source_commit,"checks":checks,"failed":failed,"teleports":teleports,"late_escape":late_escape,
 		"results":game.journey.mission.results(game.fog_system.simulation.elapsed,game.train.distance)}
 	FileAccess.open(output.path_join("continuous-journey.json"),FileAccess.WRITE).store_string(JSON.stringify(report,"  "))
 	get_tree().quit(1 if failed else 0)

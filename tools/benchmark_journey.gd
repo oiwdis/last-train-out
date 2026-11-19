@@ -1,6 +1,7 @@
 extends SceneTree
 ## Matched real-time samples. Fixture repositioning is only for profiling, never gameplay footage.
 var mission := false
+var stations_only := false
 var output := "/tmp/journey-performance.json"
 var game: Node3D
 var samples := 24
@@ -13,6 +14,9 @@ var loading_ms := 0
 func _initialize() -> void:
 	for arg in OS.get_cmdline_user_args():
 		if arg == "--mission": mission = true
+		elif arg == "--stations-only":
+			mission = true
+			stations_only = true
 		elif arg.begins_with("--out="): output = arg.trim_prefix("--out=")
 		elif arg.begins_with("--samples="): samples = int(arg.trim_prefix("--samples="))
 	run.call_deferred()
@@ -32,6 +36,7 @@ func run() -> void:
 	if mission: game.journey.set_physics_process(false)
 	var views := ["Harlow platform","Harlow warehouse"]
 	if mission: views.append_array(["Curve travel","Ashford yard","Ashford workshop","Blackwater crossing","Blackwater stores"])
+	if stations_only: views = views.slice(2)
 	for title in views:
 		var gaps := [210.0,8.0] if title.begins_with("Harlow") else [8.0] if title == "Ashford workshop" else [210.0]
 		for gap in gaps:
@@ -62,7 +67,14 @@ func run() -> void:
 				results.append(row)
 				print("[journey-benchmark] ",JSON.stringify(row))
 				if mission and preset == 1 and title in ["Ashford yard","Ashford workshop","Blackwater crossing","Blackwater stores"]:
+					var layers: Array[CanvasLayer] = []
+					for layer in game.find_children("*","CanvasLayer",true,false):
+						if layer.visible:
+							layers.append(layer)
+							layer.hide()
+					await RenderingServer.frame_post_draw
 					root.get_texture().get_image().save_png("res://docs/validation/milestone3-finalization/"+title.to_lower().replace(" ","-")+".png")
+					for layer in layers: layer.show()
 	var report := {"mission":mission,"godot":Engine.get_version_info().string,"cpu":OS.get_processor_name(),"adapter":RenderingServer.get_video_adapter_name(),
 		"renderer":RenderingServer.get_current_rendering_method(),"viewport":str(root.size),"fixed_fps":false,"warmup_frames":10,"startup_to_8_frames_ms":loading_ms,"world_setup_ms":game.journey.load_milliseconds if mission else null,"results":results}
 	FileAccess.open(output,FileAccess.WRITE).store_string(JSON.stringify(report,"  "))
@@ -113,6 +125,7 @@ func setup_view(title: String, gap: float) -> void:
 			eye = feet+Vector3.UP*1.6
 			target = origin+Vector3(172,1.6,46)
 	game.player.teleport_to(feet)
+	game.player.visual.visible = title.begins_with("Harlow") or travel
 	game.fog_system.simulation.front = game.fog_system.route.project(feet)-gap
 	game.fog_system._update_players(0)
 	game.camera_rig.get_camera().global_position = eye

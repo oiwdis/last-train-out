@@ -6,7 +6,7 @@ Compared with PR #4 at `a8f58ec57c218c3944d038a9d1640e78597042be`, the directly 
 
 | File | Reconcile |
 |---|---|
-| `.github/workflows/macos-app.yml` | Retain PR #4's improved export/startup checks and this PR's 244-test floor and continuous-journey step. Combined suite count must be determined by discovery, not copied from either branch. |
+| `.github/workflows/macos-app.yml` | Retain PR #4's improved export/startup checks and this PR's 246-test floor and continuous-journey step. Combined suite count must be determined by discovery, not copied from either branch. |
 | `project.godot` | Preserve PR #4's renderer decision, shader warmup/loading configuration and title/version conventions; launch the inherited Harlow Escape mission. |
 | `scripts/main/game.gd` | Run journey setup early enough to install the route/config before fog binding; let PR #4's startup warmup cover the added station materials and hold simulation consistently. Reconcile reset/restart routing explicitly. |
 | `scripts/main/self_test.gd` | Keep both branches' checks. Load the shipped mission first, then run legacy mechanics fixtures without invoking a mission reload under the self-test scene. |
