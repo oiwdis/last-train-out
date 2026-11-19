@@ -138,7 +138,11 @@ func place(location: String) -> void:
 		"Ashford Depot", "Ashford workshop", "Blackwater Crossing":
 			var station: Node3D = journey.stations[1 if location == "Blackwater Crossing" else 0]
 			at = station.to_global(Vector3(-12,1.05,3))
-			camera = station.to_global(Vector3(-20,4,9)); target = station.to_global(Vector3(22,2,24))
+			# Face the occupied yard and building entrances, including their props
+			# and signs, rather than measuring only the plain rear walls.
+			camera = station.to_global(Vector3(-4,4,47)); target = station.to_global(Vector3(22,2,24))
+			if location == "Blackwater Crossing":
+				camera = station.to_global(Vector3(-6,3.1,40)); target = station.to_global(Vector3(12,1.8,22))
 			if location == "Ashford workshop":
 				at = station.to_global(Vector3(122,.05,41)); camera = at+Vector3(3,1.6,0); target = station.to_global(Vector3(119,1.6,35))
 		"Near advancing fog", "Inside dangerous fog":
@@ -153,13 +157,25 @@ func place(location: String) -> void:
 	game.player.teleport_to(at,Vector3.RIGHT)
 	var track := game.get_node_or_null("RouteTrack")
 	if track != null: track._update_visibility()
+	if location != "Mission completion":
+		# Establish real floor/car support before freezing this static fixture.
+		# Keep the measurement camera at its previous view until settling ends,
+		# so the new view's first draw remains in the entry-frame samples.
+		game.player.set_physics_process(true)
+		for tick in 10: await physics_frame
+		game.player.set_physics_process(false)
 	if journey != null:
 		fog.train_progress = game.train.distance
 		fog.players.local.exposure.progress = journey.route.project(at)
 		fog.set_state(int(fog.simulation.danger(fog.players.local.exposure.progress)))
 	eye.global_position = camera
 	eye.look_at(target)
-	game.camera_rig.exploration.request_perspective(1)
+	# Cab/car views sit at eye height. The fixture camera bypasses the normal
+	# rig's visibility update, so apply its first-person body rule explicitly;
+	# otherwise these measurements render the inside of the survivor's head.
+	var first_person := location in ["Locomotive cab", "Passenger car"]
+	game.camera_rig.exploration.request_perspective(0 if first_person else 1)
+	game.player.visual.visible = not first_person
 	game.hud._refresh_context()
 	if location == "Curved railway":
 		game.train.start()
