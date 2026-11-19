@@ -41,7 +41,7 @@ func _build() -> void:
 	add_child(_root)
 	var location_box := _panel("Location", Vector2(30, 28), Vector2(320, 78))
 	var location_rows := _rows(location_box)
-	_label(location_rows, "LAST TRAIN OUT     /     HARLOW JUNCTION", 11, RailTheme.MUTED)
+	_label(location_rows, "LAST TRAIN OUT     /     TRAIN 07", 11, RailTheme.MUTED)
 	_location = _label(location_rows, "01  /  PLATFORM", 20, RailTheme.PAPER)
 	var train_box := _panel("Departure", Vector2(-294, 28), Vector2(264, 104), Vector2(1, 0))
 	var train_rows := _rows(train_box)

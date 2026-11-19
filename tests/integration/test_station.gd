@@ -115,7 +115,7 @@ func test_main_scene_starts_at_harlow_junction() -> void:
 	check_eq(train.get_cars().size(), 3, "train is a locomotive plus two cars")
 	check(train.get_cars()[2].name == "Locomotive", "the locomotive leads")
 	check_near(train.global_position.x, station.train_stop.global_position.x, 0.01, "train sits at the station stop")
-	check_eq(ProjectSettings.get_setting("application/run/main_scene"), MAIN, "project launches straight into the station")
+	check_eq(ProjectSettings.get_setting("application/run/main_scene"), "res://scenes/missions/harlow_escape.tscn", "project launches the mission at Harlow")
 
 
 func test_station_dimensions() -> void:

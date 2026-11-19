@@ -42,6 +42,8 @@ var state := State.IDLE
 var facing := Vector3.RIGHT
 ## The only carrying modifier. The original movement configuration is never edited.
 var carrying_heavy := false
+## Independent survival modifier, applied after the existing cargo limit.
+var survival_speed_multiplier := 1.0
 var carry_anchor: Node3D
 var carried_visual: Node3D
 
@@ -281,6 +283,7 @@ func _tick_locomotion(delta: float) -> void:
 	var target_speed := config.sprint_speed if _is_sprinting else config.walk_speed
 	if carrying_heavy:
 		target_speed = 2.5
+	target_speed *= survival_speed_multiplier
 	var target := Vector3(direction.x, 0.0, direction.z * config.depth_speed_scale) * target_speed
 
 	# Horizontal movement. On the floor `velocity` is relative to the floor

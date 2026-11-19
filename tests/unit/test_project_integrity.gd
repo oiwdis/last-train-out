@@ -59,7 +59,7 @@ func test_all_scenes_instantiate() -> void:
 
 func test_main_scene_is_configured() -> void:
 	var main_scene: String = ProjectSettings.get_setting("application/run/main_scene", "")
-	check_eq(main_scene, "res://scenes/main/main.tscn", "main scene is set")
+	check_eq(main_scene, "res://scenes/missions/harlow_escape.tscn", "main scene is the three-station mission")
 	check(ResourceLoader.exists(main_scene), "main scene file exists")
 
 

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="FogRoute" load_steps=6 format=3]
+[ext_resource type="Script" path="res://scripts/fog/fog_route.gd" id="route"]
+[ext_resource type="Script" path="res://scripts/fog/fog_route_segment.gd" id="segment"]
+[sub_resource type="Curve3D" id="curve"]
+_data = {"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 15, 0, -3.5, 0, 0, 0, 0, 0, 0, 515, 0, -3.5), "tilts": PackedFloat32Array(0, 0)}
+[sub_resource type="Resource" id="segment_main"]
+script = ExtResource("segment")
+id = "harlow_main"
+curve = SubResource("curve")
+[resource]
+script = ExtResource("route")
+segments = Array[ExtResource("segment")]([SubResource("segment_main")])

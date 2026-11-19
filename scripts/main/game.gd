@@ -1,8 +1,11 @@
 class_name Game
 extends Node3D
 ## Wires the long-lived gameplay objects together: player, train, camera, UI and
-## the (placeholder) world systems. Each of those stays independent; this script
+## the world systems. Each of those stays independent; this script
 ## is the only place that knows about all of them.
+
+@export var journey_definition: JourneyDefinition
+var journey: JourneyController
 
 @export var player: Player
 @export var train: Train
@@ -38,6 +41,11 @@ func _exit_tree() -> void:
 
 
 func _ready() -> void:
+	if journey_definition != null:
+		journey = JourneyController.new()
+		journey.name = "Journey"
+		add_child(journey)
+		journey.setup(self,journey_definition)
 	var effects := PresentationEffects.new()
 	effects.name = "PresentationEffects"
 	add_child(effects)
@@ -94,10 +102,22 @@ func _ready() -> void:
 			supply_ui.open_changed.connect(func(open: bool) -> void: camera_rig.exploration.set_menu_open(&"inventory", open))
 			supply_ui.add_camera_settings(camera_rig.exploration)
 
+	if fog_system != null:
+		fog_system.bind.call_deferred(self)
+	if journey != null:
+		journey.bind.call_deferred()
+
 
 func _physics_process(_delta: float) -> void:
 	if player != null and player.global_position.y < kill_plane_y:
-		reset_player()
+		if journey != null and journey.ready_to_play:
+			var dose: FogExposure = fog_system.players.local.exposure
+			if not dose.dead:
+				dose.health = 0
+				dose.dead = true
+				dose.died.emit()
+		else:
+			reset_player()
 
 
 # --- Train ---------------------------------------------------------------------
@@ -106,7 +126,7 @@ func start_train() -> void:
 	if train == null:
 		return
 	if not train.start() and hud != null:
-		hud.show_message("The train is at the end of the line  -  reset it first", 3.0)
+		hud.show_message("Cannot depart — check boiler fuel or the end of the line", 3.0)
 
 
 func stop_train() -> void:
@@ -180,6 +200,11 @@ func get_spawn_position() -> Vector3:
 
 ## Puts the train, the player and the environment back to their starting state.
 func reset_station() -> void:
+	if journey != null:
+		journey.new_game(fog_system.scenario_seed,fog_system.config.difficulty)
+		return
+	if fog_system != null:
+		fog_system.reset()
 	if scavenging != null:
 		scavenging.reset_world()
 	if train != null:
@@ -192,8 +217,6 @@ func reset_station() -> void:
 	reset_stamina()
 	if station != null:
 		station.reset_state()
-	if fog_system != null:
-		fog_system.reset()
 	if passenger_system != null:
 		passenger_system.reset()
 	if inventory_system != null:
@@ -237,7 +260,7 @@ func _on_player_grab_failed(reason: String) -> void:
 
 func _on_fog_surge_triggered(_intensity: float) -> void:
 	if hud != null:
-		hud.show_message("Fog surge triggered (placeholder)")
+		hud.show_message("Fog surge warning — acceleration in %d seconds" % ceili(fog_system.config.event_warning_seconds))
 
 
 func _on_passenger_state_changed(passenger_id: StringName, state: PassengerSystem.PassengerState) -> void:

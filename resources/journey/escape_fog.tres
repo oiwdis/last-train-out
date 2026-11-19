@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="FogConfig" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/fog/fog_config.gd" id="1"]
+[resource]
+script = ExtResource("1")
+initial_distance = 1050.0
+base_speed = 2.3
+escalation_per_minute = 0.08
+maximum_speed = 4.3
+approach_distance = 400.0
+critical_distance = 130.0
+station_slow_radius = 110.0
+surge_multiplier = 1.45
+initial_fuel = 55.0
+fuel_per_second = 0.32

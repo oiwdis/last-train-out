@@ -1,6 +1,6 @@
 class_name Train
 extends Node3D
-## Drives the consist along a straight track.
+## Drives the consist along an optional railway itinerary (straight in the sandbox).
 ##
 ## Motion is integrated on the physics tick and applied to each [TrainCar]
 ## (kinematic AnimatableBody3D) so collision, platform riding and rendering all
@@ -38,6 +38,9 @@ enum State { STOPPED, ACCELERATING, CRUISING, BRAKING }
 ## How quickly a change of [member max_speed] is followed while moving (m/s^2).
 @export var max_speed_change_rate := 4.0
 
+## Optional supply gate; the motion integrator remains independent.
+var route: FogRoute
+var departure_allowed: Callable
 var state := State.STOPPED
 ## Current speed along the track in m/s.
 var speed := 0.0
@@ -82,6 +85,8 @@ func _physics_process(delta: float) -> void:
 ## Starts (or resumes) accelerating using the current departure mode.
 ## Returns false when the train cannot depart (it is at the end of the track).
 func start() -> bool:
+	if departure_allowed.is_valid() and not departure_allowed.call():
+		return false
 	if state == State.ACCELERATING or state == State.CRUISING:
 		return true
 	if is_at_end_of_track():
@@ -155,7 +160,7 @@ func get_cars() -> Array[TrainCar]:
 
 
 func get_velocity() -> Vector3:
-	return global_basis * (travel_direction.normalized() * speed)
+	return route.tangent(distance) * speed if route != null else global_basis * (travel_direction.normalized() * speed)
 
 
 ## World transform [param car] has when the train is parked at the station.
@@ -163,6 +168,8 @@ func get_rest_transform(car: TrainCar) -> Transform3D:
 	var index := _cars.find(car)
 	if index < 0:
 		return car.global_transform
+	if route != null:
+		return RouteTrack.frame(route, _rest_positions[index].x)
 	return global_transform * Transform3D(car.transform.basis, _rest_positions[index])
 
 
@@ -182,6 +189,14 @@ func is_point_in_rest_footprint(world_point: Vector3, margin: float = 0.4) -> bo
 func get_camera_interest_point(from: Vector3) -> Vector3:
 	if _cars.is_empty():
 		return global_position
+	if route != null:
+		var nearest := _cars[0].global_position
+		for car in _cars:
+			var along := clampf(car.to_local(from).x,-car.car_length/2,car.car_length/2)
+			var point := car.to_global(Vector3(along,0,0))
+			if point.distance_squared_to(from) < nearest.distance_squared_to(from):
+				nearest = point
+		return nearest
 	var axis := (global_basis * travel_direction).normalized()
 	var low := INF
 	var high := -INF
@@ -240,7 +255,12 @@ func _speed_fraction() -> float:
 func _apply_positions(distance_delta: float) -> void:
 	var offset := travel_direction.normalized() * distance
 	for i in _cars.size():
-		_cars[i].position = _rest_positions[i] + offset
+		if route == null:
+			_cars[i].position = _rest_positions[i] + offset
+		else:
+			var t := RouteTrack.frame(route, distance + _rest_positions[i].x)
+			t.origin += t.basis * Vector3(0, _rest_positions[i].y, _rest_positions[i].z)
+			_cars[i].global_transform = t
 		if distance_delta != 0.0:
 			_cars[i].roll_wheels(distance_delta)
 

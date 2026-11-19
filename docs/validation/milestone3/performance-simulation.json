@@ -1,0 +1,10 @@
+{
+  "godot": "4.5.1-stable (official)",
+  "includes": "simulation, seeded events and four exposure components; excludes route projection, rendering and scene integration",
+  "microseconds_per_tick": 4.08927,
+  "os": "Linux",
+  "players": 4,
+  "processor": "INTEL(R) XEON(R) PLATINUM 8573C",
+  "ticks": 100000,
+  "total_ms": 408.927
+}

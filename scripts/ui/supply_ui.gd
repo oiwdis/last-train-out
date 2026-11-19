@@ -93,7 +93,7 @@ func _build() -> void:
 	_panel.add_child(rows)
 	var header := HBoxContainer.new()
 	rows.add_child(header)
-	var title := _label(header, "SUPPLY LEDGER  /  HARLOW JUNCTION", 23)
+	var title := _label(header, "SUPPLY LEDGER  /  TRAIN 07", 23)
 	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	_button(header, "Close  [Esc]", close)
 	var columns := HBoxContainer.new()
