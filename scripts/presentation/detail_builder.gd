@@ -16,7 +16,7 @@ var _unit_box: Mesh
 
 
 func _init(parent: Node3D, title: String = "Details") -> void:
-	_unit_box = FabricatedMesh.unit_box()
+	_unit_box = FabricatedMesh.unit_box_source()
 	root = Node3D.new()
 	root.name = title
 	root.add_to_group(&"presentation_detail")
@@ -85,7 +85,7 @@ func cylinder(at: Vector3, radius: float, height: float, color: Color, rotation:
 		var surface := SurfaceTool.new()
 		surface.begin(Mesh.PRIMITIVE_TRIANGLES)
 		_batches[mat] = surface
-	(_batches[mat] as SurfaceTool).append_from(shape, 0, Transform3D(Basis.from_euler(rotation), at))
+	(_batches[mat] as SurfaceTool).append_from(CpuMeshSource.new(shape.get_mesh_arrays()), 0, Transform3D(Basis.from_euler(rotation), at))
 
 
 func lettering(at: Vector3, text: String, height: float, color: Color = PALE) -> MeshInstance3D:

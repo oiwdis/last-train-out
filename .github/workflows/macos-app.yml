@@ -57,7 +57,7 @@ env:
   DEV_ZIP: LastTrainOut-macos-universal.zip
   SIGNED_ZIP: LastTrainOut-macos-universal-signed.zip
   # The build fails if fewer tests than this pass, so tests cannot silently go missing.
-  MIN_TESTS: "292"
+  MIN_TESTS: "298"
 
 jobs:
   investigate:
@@ -201,6 +201,20 @@ jobs:
         with:
           name: performance-startup
           path: tests/_output/startup/
+          retention-days: 30
+
+      - name: Stress rendered preparation, preset switching and Continue
+        timeout-minutes: 10
+        run: |
+          "$GODOT" --verbose --path . --audio-driver Dummy --resolution 960x540 --fixed-fps 60 tests/test_runner.tscn -- --only=preparation_lifecycle --graphics=low --report=tests/_output/renderer-stress.json > tests/_output/renderer-stress.log 2>&1
+          if grep -E '^(ERROR|SCRIPT ERROR)|ObjectDB instances leaked|resources still in use' tests/_output/renderer-stress.log; then exit 1; fi
+
+      - name: Retain renderer stress evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: renderer-stress
+          path: tests/_output/renderer-stress.*
           retention-days: 30
 
       - name: Validate journey, fuel, fog and cold resume

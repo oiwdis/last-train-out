@@ -32,7 +32,7 @@ fi
 
 echo "== 2/3  Main scene smoke test (600 frames, headless) =="
 "$GODOT" --headless --path . --fixed-fps 60 --quit-after 600 >tests/_output/main_scene.log 2>&1
-if grep -nE "ERROR|Parse Error" tests/_output/main_scene.log; then
+if grep -nE "ERROR|Parse Error|ObjectDB instances leaked|resources still in use" tests/_output/main_scene.log; then
 	echo "FAILED: errors while running the main scene (see tests/_output/main_scene.log)"
 	status=1
 else
@@ -45,7 +45,7 @@ echo "== 3/3  Automated tests =="
 if [ "${PIPESTATUS[0]}" -ne 0 ]; then
 	status=1
 fi
-if grep -nE "^(ERROR|SCRIPT ERROR)|Parse Error" tests/_output/tests.log; then
+if grep -nE "^(ERROR|SCRIPT ERROR)|Parse Error|ObjectDB instances leaked|resources still in use" tests/_output/tests.log; then
 	echo "FAILED: engine errors in test run or shutdown"
 	status=1
 fi

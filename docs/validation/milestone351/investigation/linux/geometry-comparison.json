@@ -1,0 +1,26 @@
+{
+  "bevel": {
+    "triangles": 108,
+    "max_position_delta": 0.0,
+    "max_normal_delta": 0.0,
+    "max_uv_delta": 0.0
+  },
+  "column": {
+    "triangles": 1404,
+    "max_position_delta": 0.0,
+    "max_normal_delta": 0.00014710426330499793,
+    "max_uv_delta": 0.0
+  },
+  "ladder": {
+    "triangles": 3240,
+    "max_position_delta": 0.0,
+    "max_normal_delta": 0.00021487474441500565,
+    "max_uv_delta": 0.0
+  },
+  "planar": {
+    "triangles": 108,
+    "max_position_delta": 0.0,
+    "max_normal_delta": 7.399916648800908e-05,
+    "max_uv_delta": 0.0
+  }
+}

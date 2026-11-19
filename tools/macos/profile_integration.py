@@ -39,8 +39,10 @@ def run(name, script, arguments, timeout=900, capture_stacks=False):
         def consume():
             for line in process.stdout:
                 log.write(line)
-                if line.startswith(('[startup]', '[phase]', 'Godot Engine', 'Vulkan ', 'Metal ', 'OpenGL ', 'Loading resource:')):
-                    arrivals.append({'process_wall_ms': (time.monotonic()-started)*1000, 'line': line.rstrip()})
+                # Include cache saves and driver errors, not just our phase labels.
+                # Arrival time is approximate (engine stdout may be buffered).
+                arrivals.append({'process_wall_ms': (time.monotonic()-started)*1000, 'line': line.rstrip()})
+                log.flush()
         reader = threading.Thread(target=consume)
         reader.start()
         try:
@@ -106,5 +108,5 @@ if suite == 'cleanup':
     for attempt in range(3):
         run('cleanup-' + str(attempt + 1), 'integration_benchmark.gd',
             ['--suite=matrix', '--samples=24', '--warmup=8'])
-if any(r['returncode'] != 0 or not r['report_exists'] for r in metadata['runs']):
+if any(r['returncode'] != 0 or not r['report_exists'] or r['engine_diagnostics'] for r in metadata['runs']):
     raise SystemExit(1)

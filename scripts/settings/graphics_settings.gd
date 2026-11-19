@@ -138,7 +138,7 @@ func _prepare_rendering() -> void:
 	_warming = true
 	await RenderWarmup.prepare(_scene_root)
 	_warming = false
-	if _warmup_pending:
+	if _warmup_pending and is_inside_tree() and not _scene_root.is_queued_for_deletion():
 		_prepare_rendering.call_deferred()
 
 

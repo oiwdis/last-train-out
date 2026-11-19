@@ -4,11 +4,17 @@ extends RefCounted
 
 static var _unit: Mesh
 static var _shapes: Dictionary = {}
+static var _unit_arrays: Array = []
+static var _cpu_shapes: Dictionary = {}
+static var _unit_source: Mesh
 
 
 static func clear_cache() -> void:
 	_shapes.clear()
 	_unit = null
+	_unit_arrays.clear()
+	_cpu_shapes.clear()
+	_unit_source = null
 
 
 static func unit_box() -> Mesh:
@@ -20,10 +26,32 @@ static func unit_box() -> Mesh:
 	return _unit
 
 
+static func unit_box_source() -> Mesh:
+	if _unit_source == null:
+		_unit_arrays = unit_box().surface_get_arrays(0)
+		_unit_source = CpuMeshSource.new(_unit_arrays)
+	return _unit_source
+
+
 static func box(size: Vector3, material: Material) -> Mesh:
 	var key := "%s/%s" % [size, material.get_instance_id() if material != null else 0]
 	if not _shapes.has(key):
-		var arrays := unit_box().surface_get_arrays(0).duplicate(true)
+		var shape := ArrayMesh.new()
+		shape.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, _box_arrays(size,material))
+		shape.surface_set_material(0, planar_material(material))
+		_shapes[key] = shape
+	return _shapes[key]
+
+
+static func _box_arrays(size: Vector3, material: Material) -> Array:
+	var key := "%s/%s" % [size, material.get_instance_id() if material != null else 0]
+	if not _cpu_shapes.has(key):
+		# ArrayMesh.surface_get_arrays() downloads GPU buffers on RenderingDevice.
+		# Read the imported source once. Keep subsequent construction on the CPU:
+		# uploading an intermediate box just to project/append it stalls the driver.
+		if _unit_arrays.is_empty():
+			unit_box_source()
+		var arrays := _unit_arrays.duplicate(true)
 		var vertices: PackedVector3Array = arrays[Mesh.ARRAY_VERTEX]
 		var normals: PackedVector3Array = arrays[Mesh.ARRAY_NORMAL]
 		var tangents: PackedFloat32Array = arrays[Mesh.ARRAY_TANGENT]
@@ -41,20 +69,15 @@ static func box(size: Vector3, material: Material) -> Mesh:
 		arrays[Mesh.ARRAY_VERTEX] = vertices
 		arrays[Mesh.ARRAY_NORMAL] = normals
 		arrays[Mesh.ARRAY_TANGENT] = tangents
-		var shape := ArrayMesh.new()
-		shape.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arrays)
 		# Large flat walls/floors do not need three texture samples per pixel.
 		# Bake metre-scaled planar UVs once, retaining all scanned PBR maps.
 		if material is StandardMaterial3D and material.uv1_triplanar:
-			shape = _project_faces(shape, material)
-		else:
-			shape.surface_set_material(0, material)
-		_shapes[key] = shape
-	return _shapes[key]
+			arrays = _project_faces(arrays, material)
+		_cpu_shapes[key] = arrays
+	return _cpu_shapes[key]
 
 
-static func _project_faces(shape: ArrayMesh, material: StandardMaterial3D) -> ArrayMesh:
-	var source := shape.surface_get_arrays(0)
+static func _project_faces(source: Array, material: StandardMaterial3D) -> Array:
 	var positions: PackedVector3Array = source[Mesh.ARRAY_VERTEX]
 	var normals: PackedVector3Array = source[Mesh.ARRAY_NORMAL]
 	var indices: PackedInt32Array = source[Mesh.ARRAY_INDEX]
@@ -80,7 +103,7 @@ static func _project_faces(shape: ArrayMesh, material: StandardMaterial3D) -> Ar
 			surface.add_vertex(positions[index])
 	surface.generate_tangents()
 	surface.index()
-	return surface.commit()
+	return surface.commit_to_arrays()
 
 
 static func planar_material(material: Material) -> Material:
@@ -118,9 +141,10 @@ static func ladder(width: float, height: float, material: Material) -> Mesh:
 	rung.height = width+.025
 	rung.radial_segments = 12
 	rung.rings = 1
+	var rung_arrays := rung.get_mesh_arrays()
 	var y := .22
 	while y < height-.05:
-		surface.append_from(rung,0,Transform3D(Basis(Vector3.FORWARD,PI/2),Vector3(0,y,.05)))
+		_append_arrays(surface,rung_arrays,Transform3D(Basis(Vector3.FORWARD,PI/2),Vector3(0,y,.05)))
 		for sign in [-1.0,1.0]:
 			_append_box(surface,Vector3(sign*width*.5,y,.05),Vector3(.025,.054,.056),material)
 		y += .33
@@ -147,7 +171,11 @@ static func steel_column(size: Vector3, material: Material) -> Mesh:
 
 
 static func _append_box(surface: SurfaceTool, at: Vector3, size: Vector3, material: Material) -> void:
-	surface.append_from(box(size,material),0,Transform3D(Basis.IDENTITY,at))
+	_append_arrays(surface,_box_arrays(size,material),Transform3D(Basis.IDENTITY,at))
+
+
+static func _append_arrays(surface: SurfaceTool, arrays: Array, transform: Transform3D) -> void:
+	surface.append_from(CpuMeshSource.new(arrays),0,transform)
 
 
 static func gabled_roof(size: Vector2, rise: float, material: Material) -> Mesh:

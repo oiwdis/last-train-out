@@ -1,0 +1,85 @@
+{
+  "source": "948fa8965f379c18ffee94ab02b8451ae4b69a10",
+  "platform": "macOS-26.7.2-arm64-arm-64bit-Mach-O",
+  "processor_count": 3,
+  "scope": "hosted exploratory investigation; not physical M1",
+  "runs": [
+    {
+      "name": "startup-1",
+      "command": [
+        "/Users/runner/godot-ci/Godot.app/Contents/MacOS/Godot",
+        "--verbose",
+        "--path",
+        "/Users/runner/work/last-train-out/last-train-out",
+        "--audio-driver",
+        "Dummy",
+        "--resolution",
+        "960x540",
+        "--script",
+        "res://scripts/diagnostics/startup_probe.gd",
+        "--",
+        "--graphics=low",
+        "--profile-phases",
+        "--out=/Users/runner/work/last-train-out/last-train-out/tests/_output/startup/startup-1.json"
+      ],
+      "returncode": 0,
+      "wall_seconds": 73.14921479200001,
+      "sampling_profiler": false,
+      "report_exists": true,
+      "peak_rss_bytes": 473612288,
+      "engine_diagnostics": [
+        "ERROR: VALIDATION - Message Id Number: 0 | Message Id Name: mvk-error"
+      ]
+    },
+    {
+      "name": "startup-2",
+      "command": [
+        "/Users/runner/godot-ci/Godot.app/Contents/MacOS/Godot",
+        "--verbose",
+        "--path",
+        "/Users/runner/work/last-train-out/last-train-out",
+        "--audio-driver",
+        "Dummy",
+        "--resolution",
+        "960x540",
+        "--script",
+        "res://scripts/diagnostics/startup_probe.gd",
+        "--",
+        "--graphics=low",
+        "--profile-phases",
+        "--out=/Users/runner/work/last-train-out/last-train-out/tests/_output/startup/startup-2.json"
+      ],
+      "returncode": 0,
+      "wall_seconds": 24.590223041,
+      "sampling_profiler": false,
+      "report_exists": true,
+      "peak_rss_bytes": 521519104,
+      "engine_diagnostics": []
+    },
+    {
+      "name": "startup-3",
+      "command": [
+        "/Users/runner/godot-ci/Godot.app/Contents/MacOS/Godot",
+        "--verbose",
+        "--path",
+        "/Users/runner/work/last-train-out/last-train-out",
+        "--audio-driver",
+        "Dummy",
+        "--resolution",
+        "960x540",
+        "--script",
+        "res://scripts/diagnostics/startup_probe.gd",
+        "--",
+        "--graphics=low",
+        "--profile-phases",
+        "--out=/Users/runner/work/last-train-out/last-train-out/tests/_output/startup/startup-3.json"
+      ],
+      "returncode": 0,
+      "wall_seconds": 23.420698458000004,
+      "sampling_profiler": false,
+      "report_exists": true,
+      "peak_rss_bytes": 521863168,
+      "engine_diagnostics": []
+    }
+  ]
+}
