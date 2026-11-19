@@ -57,7 +57,7 @@ env:
   DEV_ZIP: LastTrainOut-macos-universal.zip
   SIGNED_ZIP: LastTrainOut-macos-universal-signed.zip
   # The build fails if fewer tests than this pass, so tests cannot silently go missing.
-  MIN_TESTS: "301"
+  MIN_TESTS: "302"
 
 jobs:
   investigate:
@@ -477,13 +477,43 @@ jobs:
           if-no-files-found: warn
           retention-days: 14
 
+  stress:
+    name: Exported Vulkan launch and lifetime stress
+    needs: build
+    runs-on: macos-latest
+    timeout-minutes: 45
+    env:
+      SOURCE_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/download-artifact@v8
+        with:
+          name: ${{ env.DEV_ZIP }}
+          path: download
+          skip-decompress: true
+      - name: Verify and unpack the exact development artifact
+        run: |
+          ZIP_PATH="$(find download -type f -name '*.zip' | head -n 1)"
+          test -n "$ZIP_PATH"
+          python3 tools/macos/verify_app.py --zip "$ZIP_PATH" --title "Stress ZIP"
+          ditto -x -k "$ZIP_PATH" extracted
+          python3 tools/macos/verify_app.py "extracted/$APP_NAME.app" --expect-signature adhoc --title "Stress bundle"
+      - name: Retain every cold, warm and lifecycle attempt
+        run: python3 tools/macos/stress_release.py "extracted/$APP_NAME.app" tests/_output/release-stress
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: release-stress
+          path: tests/_output/release-stress/
+          retention-days: 30
+
   # Optional, manual only. Signs the build that was tested above with a Developer ID
   # Application certificate (hardened runtime), has Apple notarize it and staples the ticket.
   # Credentials come from encrypted repository secrets; nothing secret is in the repository.
   sign:
     name: Sign with Developer ID, notarize and staple
     if: ${{ github.event_name == 'workflow_dispatch' && inputs.sign_and_notarize }}
-    needs: [build, check]
+    needs: [build, check, stress]
     runs-on: macos-latest
     timeout-minutes: 90
     env:

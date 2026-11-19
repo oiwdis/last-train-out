@@ -1,0 +1,11 @@
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+
+
+=== Last Train Out - automated tests (Godot 4.5.1-stable (official), physics: Jolt Physics) ===
+
+[SUITE] test_scene_retirement.gd
+  PASS  test_stopped_looping_audio_releases_mixer_owners_before_scene_completion
+  PASS  test_spawned_fixture_cleanup_retires_audio_owners_before_returning
+
+=== 2 passed, 0 failed, 2 total (0.7 s wall clock) ===
+

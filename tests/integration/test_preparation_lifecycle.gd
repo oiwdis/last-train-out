@@ -51,7 +51,7 @@ func test_rapid_preset_requests_finish_on_last_quality_without_orphan_preparatio
 	check_eq(game.get_child_count(),children,"temporary render camera and overlay removed")
 	check(game.journey.ready_to_play,"mission remains ready")
 
-func test_fog_preparation_isolates_its_proxy_and_preserves_the_game_camera() -> void:
+func test_fog_preparation_reuses_material_and_preserves_the_game_camera() -> void:
 	var original := game.get_viewport().get_camera_3d()
 	var mask := original.cull_mask
 	var source := game.fog_system.presentation.layers[0]
@@ -60,8 +60,7 @@ func test_fog_preparation_isolates_its_proxy_and_preserves_the_game_camera() -> 
 	var job := game.get_node("RenderPreparation")
 	var camera: Camera3D = job.get("_camera")
 	var proxy: MeshInstance3D = job.get("_proxy")
-	check_eq(camera.cull_mask,proxy.layers,"only representative material is visible during its preparation")
-	check_eq(camera.cull_mask & source_layers,0,"the initial fog pass does not render the station behind it")
+	check_eq(camera.cull_mask,mask,"preparation includes the initial world view before the full station view")
 	check_eq(proxy.get_active_material(0),source.get_active_material(0),"prepare the real fog material")
 	await completion
 	check_eq(game.get_viewport().get_camera_3d(),original,"restore actual gameplay camera")

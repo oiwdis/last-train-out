@@ -23,3 +23,21 @@ func test_stopped_looping_audio_releases_mixer_owners_before_scene_completion() 
 		check(owner.get_ref() == null,"scene freed before completion")
 		for playback in playbacks:
 			check(playback.get_ref() == null,"mixer retired stopped playback before completion")
+
+func test_spawned_fixture_cleanup_retires_audio_owners_before_returning() -> void:
+	var scene := Node.new()
+	add_child(scene)
+	_spawned.append(scene)
+	var playbacks: Array[WeakRef] = []
+	for path in ["rumble","wind","breath"]:
+		var voice := AudioStreamPlayer.new()
+		var stream := load("res://assets/audio/fog/%s.wav" % path).duplicate() as AudioStreamWAV
+		stream.loop_mode = AudioStreamWAV.LOOP_FORWARD
+		stream.loop_end = int(stream.get_length()*stream.mix_rate)
+		voice.stream = stream
+		scene.add_child(voice)
+		voice.play()
+		playbacks.append(weakref(voice.get_stream_playback()))
+	await free_spawned()
+	for playback in playbacks:
+		check(playback.get_ref() == null,"fixture teardown cannot leave mixer-owned playback at test runner exit")

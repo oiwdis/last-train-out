@@ -4,8 +4,6 @@ extends Node
 ## Real draws prepare destination-GPU pipelines while gameplay stays paused.
 signal completed
 
-const MATERIAL_PREPARATION_LAYER := 1 << 19
-
 var _scene: Node3D
 var _tree: SceneTree
 var _original: Camera3D
@@ -85,10 +83,10 @@ func _begin(scene: Node3D) -> void:
 	_camera.near = _original.near
 	_camera.far = _original.far
 	_camera.physics_interpolation_mode = Node.PHYSICS_INTERPOLATION_MODE_OFF
-	# The representative fog quad is unshaded. Rendering the entire station
-	# behind its temporary camera at the world origin prepared unrelated views
-	# and pipelines before any of the authored destinations were visited.
-	_camera.cull_mask = MATERIAL_PREPARATION_LAYER
+	# Keep the initial surrounding geometry in this pass. Isolating the fog
+	# quad concentrated the next view's pipeline work into one burst and
+	# reproduced device loss on two independent native runners (3.5.2).
+	_camera.cull_mask = _original.cull_mask
 	add_child(_camera)
 	_camera.make_current()
 	_frame_signal = _tree.process_frame if DisplayServer.get_name() == "headless" else RenderingServer.frame_post_draw
@@ -105,7 +103,6 @@ func _show_next_source() -> void:
 	quad.size = Vector2(4,4)
 	quad.material = _sources[_source_index].get_active_material(0)
 	_proxy.mesh = quad
-	_proxy.layers = MATERIAL_PREPARATION_LAYER
 	_proxy.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	_camera.add_child(_proxy)
 	_proxy.position = Vector3(0,0,-4)
@@ -115,7 +112,6 @@ func _show_next_source() -> void:
 
 
 func _show_next_view() -> void:
-	_camera.cull_mask = _original.cull_mask
 	_view_index += 1
 	if _view_index >= _views.size():
 		_original.make_current()

@@ -94,6 +94,8 @@ func spawn_scene(path: String, settle_frames: int = 3) -> Node:
 func free_spawned() -> void:
 	for node in _spawned:
 		if is_instance_valid(node):
-			node.queue_free()
+			# Native fixed-step tests can end before the audio mixer relinquishes
+			# stopped WAV playbacks. Retire real owners, not just scene nodes.
+			await DiagnosticSceneRetirement.release(node)
 	_spawned.clear()
 	await physics_frames(2)
