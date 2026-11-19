@@ -51,6 +51,24 @@ func test_rapid_preset_requests_finish_on_last_quality_without_orphan_preparatio
 	check_eq(game.get_child_count(),children,"temporary render camera and overlay removed")
 	check(game.journey.ready_to_play,"mission remains ready")
 
+func test_fog_preparation_isolates_its_proxy_and_preserves_the_game_camera() -> void:
+	var original := game.get_viewport().get_camera_3d()
+	var mask := original.cull_mask
+	var source := game.fog_system.presentation.layers[0]
+	var source_layers := source.layers
+	var completion := RenderWarmup.prepare(game)
+	var job := game.get_node("RenderPreparation")
+	var camera: Camera3D = job.get("_camera")
+	var proxy: MeshInstance3D = job.get("_proxy")
+	check_eq(camera.cull_mask,proxy.layers,"only representative material is visible during its preparation")
+	check_eq(camera.cull_mask & source_layers,0,"the initial fog pass does not render the station behind it")
+	check_eq(proxy.get_active_material(0),source.get_active_material(0),"prepare the real fog material")
+	await completion
+	check_eq(game.get_viewport().get_camera_3d(),original,"restore actual gameplay camera")
+	check_eq(original.cull_mask,mask,"gameplay visibility is unchanged")
+	check_eq(source.layers,source_layers,"actual fog remains on its authored layer")
+	check(not get_tree().paused,"preparation releases gameplay")
+
 func test_idle_hud_reuses_style_but_exhaustion_still_changes_color() -> void:
 	var changes := {"count":0}
 	game.hud._fill.changed.connect(func() -> void: changes.count += 1)

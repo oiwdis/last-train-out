@@ -52,7 +52,7 @@ The final native [run 44583413439](https://github.com/oiwdis/last-train-out/acti
 
 ## Acceptance status
 
-The multi-second Harlow entry stall is substantially reduced (High 2393.057 → 89.192 ms; Medium 1866.183 → 65.721 ms). The complete 100 ms entry target remains unmet: High Warehouse A reaches 168.372 ms. Warm startup improves to 18.579/19.052 seconds but remains above the next milestone's 15-second target. Several steady cases regress, including High Warehouse B p99 34.907 → 63.724 ms. All unfavorable samples remain in the report.
+The multi-second Harlow entry stall is substantially reduced (High 2393.057 → 89.192 ms; Medium 1866.183 → 65.718 ms). The complete 100 ms entry target remains unmet: High Warehouse A reaches 168.372 ms. Warm startup improves to 18.579/19.052 seconds but remains above the next milestone's 15-second target. Several steady cases regress, including High Warehouse B p99 34.907 → 63.724 ms. All unfavorable samples remain in the report.
 
 Coroutine and audio-retirement fixes survive the full recording and exported/fresh-download diagnostics without ObjectDB or resource-in-use warnings. The verbose engine `servers` StringName remains documented. The historical fatal Vulkan timeout is investigated but not proven fixed. Physical 2020 M1 acceptance remains a blocker.
 

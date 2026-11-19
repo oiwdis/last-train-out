@@ -33,7 +33,7 @@ on:
       profile_suite:
         description: Exploratory profiling suite
         type: choice
-        options: [all, startup, matrix, cleanup, quick]
+        options: [all, startup, matrix, cleanup, quick, preparation]
         default: all
       import_run:
         description: Optional successful PR test run containing validated-imports (avoids a cold texture import)
@@ -57,7 +57,7 @@ env:
   DEV_ZIP: LastTrainOut-macos-universal.zip
   SIGNED_ZIP: LastTrainOut-macos-universal-signed.zip
   # The build fails if fewer tests than this pass, so tests cannot silently go missing.
-  MIN_TESTS: "300"
+  MIN_TESTS: "301"
 
 jobs:
   investigate:
@@ -94,10 +94,10 @@ jobs:
           "$GODOT" --headless --path . --import > tests/_output/investigation/import.log 2>&1
           if grep -E '^(ERROR|SCRIPT ERROR)|Parse Error' tests/_output/investigation/import.log; then exit 1; fi
       - name: Collect startup traces
-        if: ${{ inputs.profile_suite == 'all' || inputs.profile_suite == 'startup' }}
+        if: ${{ inputs.profile_suite == 'all' || inputs.profile_suite == 'startup' || inputs.profile_suite == 'preparation' }}
         run: python3 tools/macos/profile_integration.py "$GODOT" tests/_output/investigation startup
       - name: Retain startup evidence before longer measurements
-        if: always() && (inputs.profile_suite == 'all' || inputs.profile_suite == 'startup')
+        if: always() && (inputs.profile_suite == 'all' || inputs.profile_suite == 'startup' || inputs.profile_suite == 'preparation')
         uses: actions/upload-artifact@v7
         with:
           name: performance-startup

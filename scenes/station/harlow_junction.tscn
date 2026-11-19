@@ -364,6 +364,10 @@ rotation = Vector3(0, 0.6435, 0)
 position = Vector3(36, 1.6, 1)
 rotation = Vector3(0, -1.5708, 0)
 
+[node name="WarehouseAInterior" type="Marker3D" parent="RenderWarmupViews" groups=["render_warmup_view"]]
+position = Vector3(38, 1.6, 3)
+rotation = Vector3(0, -1.4601391, 0)
+
 [node name="WarehouseBEntry" type="Marker3D" parent="RenderWarmupViews" groups=["render_warmup_view"]]
 position = Vector3(69, 1.6, 3)
 rotation = Vector3(0, -1.5708, 0)

@@ -247,3 +247,7 @@ omni_attenuation = 1.3
 [node name="Presentation" type="Node3D" parent="."]
 script = ExtResource("90_art")
 kind = 1
+
+[node name="PassengerInteriorPreparation" type="Marker3D" parent="." groups=["render_warmup_view"]]
+position = Vector3(-2.5, 2.65, 0)
+rotation = Vector3(0, -1.5707963, 0)
