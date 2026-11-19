@@ -12,8 +12,8 @@ config_version=5
 
 config/name="Last Train Out"
 config/version="0.3.0"
-config/description="Milestone 3: advancing fog, exposure and train survival."
-run/main_scene="res://scenes/main/main.tscn"
+config/description="Milestone 3: The Harlow Escape, a three-station survival journey."
+run/main_scene="res://scenes/missions/harlow_escape.tscn"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 

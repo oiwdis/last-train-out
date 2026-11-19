@@ -4,6 +4,9 @@ extends Node3D
 ## the world systems. Each of those stays independent; this script
 ## is the only place that knows about all of them.
 
+@export var journey_definition: JourneyDefinition
+var journey: JourneyController
+
 @export var player: Player
 @export var train: Train
 @export var camera_rig: CameraRig
@@ -38,6 +41,11 @@ func _exit_tree() -> void:
 
 
 func _ready() -> void:
+	if journey_definition != null:
+		journey = JourneyController.new()
+		journey.name = "Journey"
+		add_child(journey)
+		journey.setup(self,journey_definition)
 	var effects := PresentationEffects.new()
 	effects.name = "PresentationEffects"
 	add_child(effects)
@@ -96,6 +104,8 @@ func _ready() -> void:
 
 	if fog_system != null:
 		fog_system.bind.call_deferred(self)
+	if journey != null:
+		journey.bind.call_deferred()
 
 
 func _physics_process(_delta: float) -> void:
@@ -183,6 +193,9 @@ func get_spawn_position() -> Vector3:
 
 ## Puts the train, the player and the environment back to their starting state.
 func reset_station() -> void:
+	if journey != null:
+		journey.new_game(fog_system.scenario_seed,fog_system.config.difficulty)
+		return
 	if fog_system != null:
 		fog_system.reset()
 	if scavenging != null:

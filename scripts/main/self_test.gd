@@ -122,6 +122,17 @@ func _check_game() -> void:
 	add_child(game)
 	await _physics_frames(45)
 
+	if game.journey != null:
+		_check("exported_journey_ready", game.journey.ready_to_play)
+		_check("exported_three_station_route", game.journey.stations.size() == 2 and game.train.track_length > 4200)
+		_check("exported_save_schema", JourneySave.valid(game.journey, JourneySave.snapshot(game.journey)))
+		game.queue_free()
+		await _physics_frames(3)
+		# Retain every legacy mechanics assertion against its original sandbox.
+		game = (load("res://scenes/main/main.tscn") as PackedScene).instantiate() as Game
+		add_child(game)
+		await _physics_frames(45)
+
 	var player := game.player
 	var train := game.train
 	var atmosphere := game.station.get_node_or_null(^"Atmosphere") as Atmosphere if game.station != null else null

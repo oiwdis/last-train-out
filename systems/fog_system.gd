@@ -71,7 +71,7 @@ func _physics_process(delta: float) -> void:
 	if game != null:
 		# The existing controller supplies authoritative distance. Only this adapter
 		# knows that the baseline train travels a straight authored segment.
-		train_progress = route.project(game.train.to_global(game.train.travel_direction.normalized() * game.train.distance))
+		train_progress = game.train.distance if game.train.route == route else route.project(game.train.to_global(game.train.travel_direction.normalized() * game.train.distance))
 		var danger := int(simulation.danger(train_progress))
 		for entry: Dictionary in players.values():
 			danger = maxi(danger, int(simulation.danger(entry.exposure.progress)))

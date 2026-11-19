@@ -43,7 +43,7 @@ env:
   DEV_ZIP: LastTrainOut-macos-universal.zip
   SIGNED_ZIP: LastTrainOut-macos-universal-signed.zip
   # The build fails if fewer tests than this pass, so tests cannot silently go missing.
-  MIN_TESTS: "214"
+  MIN_TESTS: "242"
 
 jobs:
   build:
@@ -83,6 +83,12 @@ jobs:
             grep -E '^=== [0-9]+ passed' tests/_output/tests.log
             echo '```'
           } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Validate continuous three-station gameplay
+        run: |
+          "$GODOT" --headless --path . --fixed-fps 60 tools/validate_journey.tscn > tests/_output/journey.log 2>&1
+          cp docs/validation/milestone3-finalization/continuous-journey.json tests/_output/continuous-journey.json
+          if grep -E '^(ERROR|SCRIPT ERROR)|\[journey\] FAIL' tests/_output/journey.log; then exit 1; fi
 
       - name: Upload the test logs
         if: always()

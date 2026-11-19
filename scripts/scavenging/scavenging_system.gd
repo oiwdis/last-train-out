@@ -2,6 +2,7 @@ class_name ScavengingSystem
 extends Node
 ## Coordinates world ownership and inventory transactions. Data models know no UI or nodes.
 
+signal collected(cache_id: String, item_id: String, amount: int)
 signal notice(text: String)
 signal search_progress(title: String, fraction: float)
 signal search_finished(completed: bool)
@@ -20,6 +21,7 @@ var active_search: SearchContainer
 var search_elapsed := 0.0
 var _search_origin := Vector3.ZERO
 var _transaction := false
+var _item_serial := 0
 
 
 func bind(player_ref: Player, inventory_ref: InventorySystem, station: Station, train: Train, world_parent: Node3D) -> void:
@@ -111,7 +113,7 @@ func collect_container(cache: SearchContainer) -> void:
 	if _transaction or not cache.is_searched or not cache.is_reachable(player):
 		return
 	_transaction = true
-	var collected := 0
+	var gathered := 0
 	var cargo := 0
 	for i in cache.contents.slot_count:
 		var slot := cache.contents.get_slot(i)
@@ -124,14 +126,18 @@ func collect_container(cache: SearchContainer) -> void:
 				if world != null:
 					cache.contents.remove_at(i, 1)
 					cargo += 1
+					collected.emit(cache.cache_id, str(definition.id), 1)
 		else:
-			collected += cache.contents.transfer_to(inventories.backpack, i)
+			var accepted := cache.contents.transfer_to(inventories.backpack, i)
+			gathered += accepted
+			if accepted > 0:
+				collected.emit(cache.cache_id, str(definition.id), accepted)
 	cache.refresh_prompt()
 	_transaction = false
 	if cache.contents.used_slots() > 0:
-		notice.emit("Backpack full — %d collected; remaining supplies stay here" % collected)
-	elif collected + cargo > 0:
-		notice.emit("Search complete · +%d supplies%s" % [collected, " · %d heavy cargo revealed" % cargo if cargo > 0 else ""])
+		notice.emit("Backpack full — %d collected; remaining supplies stay here" % gathered)
+	elif gathered + cargo > 0:
+		notice.emit("Search complete · +%d supplies%s" % [gathered, " · %d heavy cargo revealed" % cargo if cargo > 0 else ""])
 	else:
 		notice.emit("Already searched — this cache is empty")
 
@@ -140,6 +146,8 @@ func spawn_world(definition: ItemDefinition, amount: int, at: Vector3) -> WorldI
 	if definition == null or amount <= 0 or (definition.heavy and amount != 1):
 		return null
 	var world := WorldItem.new()
+	_item_serial += 1
+	world.persistent_id = "supply_%d" % _item_serial
 	world.item = definition
 	world.amount = amount
 	world.position = world_root.to_local(at)
@@ -316,3 +324,11 @@ func reset_loose_train_cargo(train: Train) -> void:
 			var car := world.resting_body
 			var local := car.to_local(world.global_position)
 			world.reset_on_train(train.get_rest_transform(car) * local + Vector3.UP * 0.02)
+
+
+func register_container(cache: SearchContainer) -> void:
+	if containers.has(cache):
+		return
+	containers.append(cache)
+	cache.action = func(who: Player) -> bool: return use_container(who, cache)
+	cache.reset_loot(loot_seed)

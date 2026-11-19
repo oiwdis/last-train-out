@@ -3,6 +3,7 @@ extends CharacterBody3D
 ## Non-blocking supplies collide with world/train floors, never with the player.
 ## Godot's normal moving-platform support carries released cargo on train decks.
 
+var persistent_id := ""
 var item: ItemDefinition
 var amount := 1
 var held := false

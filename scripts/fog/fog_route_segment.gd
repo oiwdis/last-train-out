@@ -5,3 +5,6 @@ extends Resource
 @export var id := "main"
 @export var curve: Curve3D
 @export var next_ids: PackedStringArray = []
+
+@export var connected_stations: PackedStringArray = []
+@export var environment_events: Dictionary = {}

@@ -1,6 +1,7 @@
 class_name FogFuel
 extends Node
 ## Supply adapter: consumes stored coal and calls existing start/stop APIs.
+signal refueled
 var amount := 0.0
 var train: Train
 var game: Game
@@ -39,5 +40,6 @@ func refuel() -> bool:
 		if not slot.is_empty() and slot.item.id == &"coal_sack":
 			if inventory.remove_at(i, 1) == 1:
 				amount += config.fuel_per_sack
+				refueled.emit()
 				return true
 	return false
