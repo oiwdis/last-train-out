@@ -1,0 +1,4662 @@
+{
+  "status": {
+    "name": "startup-1",
+    "command": [
+      "/Users/runner/godot-ci/Godot.app/Contents/MacOS/Godot",
+      "--verbose",
+      "--path",
+      "/Users/runner/work/last-train-out/last-train-out",
+      "--audio-driver",
+      "Dummy",
+      "--resolution",
+      "960x540",
+      "--script",
+      "res://scripts/diagnostics/startup_probe.gd",
+      "--",
+      "--graphics=low",
+      "--profile-phases",
+      "--out=/Users/runner/work/last-train-out/last-train-out/tests/_output/startup/startup-1.json"
+    ],
+    "returncode": 0,
+    "wall_seconds": 99.38249845799999,
+    "sampling_profiler": false,
+    "report_exists": true,
+    "peak_rss_bytes": 509722624,
+    "engine_diagnostics": [
+      "ERROR: VALIDATION - Message Id Number: 0 | Message Id Name: mvk-error",
+      "ERROR: VALIDATION - Message Id Number: 0 | Message Id Name: mvk-error"
+    ]
+  },
+  "rss": [
+    {
+      "seconds": 0.013816749999989497,
+      "bytes": 917504
+    },
+    {
+      "seconds": 0.6053594159999989,
+      "bytes": 75137024
+    },
+    {
+      "seconds": 1.217671208000013,
+      "bytes": 103350272
+    },
+    {
+      "seconds": 1.7291406660000348,
+      "bytes": 103350272
+    },
+    {
+      "seconds": 2.5612067499999966,
+      "bytes": 103366656
+    },
+    {
+      "seconds": 3.2163817910000034,
+      "bytes": 139296768
+    },
+    {
+      "seconds": 3.7781095830000027,
+      "bytes": 140115968
+    },
+    {
+      "seconds": 4.433850957999994,
+      "bytes": 145588224
+    },
+    {
+      "seconds": 5.0833706660000075,
+      "bytes": 146194432
+    },
+    {
+      "seconds": 5.661909291000029,
+      "bytes": 146767872
+    },
+    {
+      "seconds": 6.177994624999997,
+      "bytes": 147161088
+    },
+    {
+      "seconds": 6.833672707999995,
+      "bytes": 161169408
+    },
+    {
+      "seconds": 7.414651165999999,
+      "bytes": 169967616
+    },
+    {
+      "seconds": 7.978505916000017,
+      "bytes": 173326336
+    },
+    {
+      "seconds": 8.595723166000028,
+      "bytes": 173686784
+    },
+    {
+      "seconds": 9.128754915999991,
+      "bytes": 173899776
+    },
+    {
+      "seconds": 9.732172041000013,
+      "bytes": 174161920
+    },
+    {
+      "seconds": 10.328136666000034,
+      "bytes": 174374912
+    },
+    {
+      "seconds": 10.864342082999997,
+      "bytes": 175128576
+    },
+    {
+      "seconds": 11.408047291000003,
+      "bytes": 175423488
+    },
+    {
+      "seconds": 12.012700916000028,
+      "bytes": 175669248
+    },
+    {
+      "seconds": 12.579260040999998,
+      "bytes": 175931392
+    },
+    {
+      "seconds": 13.204189583000016,
+      "bytes": 176291840
+    },
+    {
+      "seconds": 13.861731415999998,
+      "bytes": 178225152
+    },
+    {
+      "seconds": 14.460186040999986,
+      "bytes": 178618368
+    },
+    {
+      "seconds": 14.999777208000012,
+      "bytes": 179535872
+    },
+    {
+      "seconds": 15.55962312500003,
+      "bytes": 180109312
+    },
+    {
+      "seconds": 16.212148833000015,
+      "bytes": 180600832
+    },
+    {
+      "seconds": 16.866553375000024,
+      "bytes": 182534144
+    },
+    {
+      "seconds": 17.51625679099999,
+      "bytes": 183140352
+    },
+    {
+      "seconds": 18.166260040999987,
+      "bytes": 183549952
+    },
+    {
+      "seconds": 18.793028832999994,
+      "bytes": 184320000
+    },
+    {
+      "seconds": 19.328505915999983,
+      "bytes": 184926208
+    },
+    {
+      "seconds": 19.982908415999987,
+      "bytes": 185286656
+    },
+    {
+      "seconds": 20.491503540999986,
+      "bytes": 185516032
+    },
+    {
+      "seconds": 21.109738625000034,
+      "bytes": 186105856
+    },
+    {
+      "seconds": 21.76067195799999,
+      "bytes": 186384384
+    },
+    {
+      "seconds": 22.334784541000033,
+      "bytes": 186695680
+    },
+    {
+      "seconds": 22.946428791000017,
+      "bytes": 187449344
+    },
+    {
+      "seconds": 23.454251375000013,
+      "bytes": 187875328
+    },
+    {
+      "seconds": 24.108570791000034,
+      "bytes": 188432384
+    },
+    {
+      "seconds": 24.763698250000004,
+      "bytes": 192987136
+    },
+    {
+      "seconds": 25.420505290999984,
+      "bytes": 255033344
+    },
+    {
+      "seconds": 26.048116458000038,
+      "bytes": 306266112
+    },
+    {
+      "seconds": 26.70498737500003,
+      "bytes": 308281344
+    },
+    {
+      "seconds": 27.241601000000003,
+      "bytes": 312393728
+    },
+    {
+      "seconds": 27.833736291000037,
+      "bytes": 313868288
+    },
+    {
+      "seconds": 28.34506266599999,
+      "bytes": 313868288
+    },
+    {
+      "seconds": 29.02359899999999,
+      "bytes": 321273856
+    },
+    {
+      "seconds": 29.664112999999986,
+      "bytes": 321421312
+    },
+    {
+      "seconds": 30.35081812499999,
+      "bytes": 336625664
+    },
+    {
+      "seconds": 31.01631037499999,
+      "bytes": 334987264
+    },
+    {
+      "seconds": 31.663027124999985,
+      "bytes": 335855616
+    },
+    {
+      "seconds": 32.192759916,
+      "bytes": 335659008
+    },
+    {
+      "seconds": 32.82931662499999,
+      "bytes": 338444288
+    },
+    {
+      "seconds": 33.51118287500003,
+      "bytes": 348340224
+    },
+    {
+      "seconds": 34.28363858300003,
+      "bytes": 347062272
+    },
+    {
+      "seconds": 35.088950958,
+      "bytes": 327188480
+    },
+    {
+      "seconds": 35.784475250000014,
+      "bytes": 289898496
+    },
+    {
+      "seconds": 36.786119208,
+      "bytes": 289652736
+    },
+    {
+      "seconds": 37.598599665999984,
+      "bytes": 292077568
+    },
+    {
+      "seconds": 38.302488832999984,
+      "bytes": 281460736
+    },
+    {
+      "seconds": 39.01047762500002,
+      "bytes": 285851648
+    },
+    {
+      "seconds": 39.713638083000035,
+      "bytes": 288145408
+    },
+    {
+      "seconds": 40.317758458000014,
+      "bytes": 290635776
+    },
+    {
+      "seconds": 41.23431575000001,
+      "bytes": 287522816
+    },
+    {
+      "seconds": 41.829841250000015,
+      "bytes": 300597248
+    },
+    {
+      "seconds": 42.500034374999984,
+      "bytes": 296452096
+    },
+    {
+      "seconds": 43.18297870800001,
+      "bytes": 307855360
+    },
+    {
+      "seconds": 43.98429929100001,
+      "bytes": 320929792
+    },
+    {
+      "seconds": 44.58271558300004,
+      "bytes": 330498048
+    },
+    {
+      "seconds": 45.20907529100003,
+      "bytes": 344408064
+    },
+    {
+      "seconds": 45.88293250000004,
+      "bytes": 366477312
+    },
+    {
+      "seconds": 46.56638320799999,
+      "bytes": 366919680
+    },
+    {
+      "seconds": 47.21976083300001,
+      "bytes": 377389056
+    },
+    {
+      "seconds": 47.747733083000014,
+      "bytes": 400916480
+    },
+    {
+      "seconds": 48.34499729100003,
+      "bytes": 446529536
+    },
+    {
+      "seconds": 49.05506137500004,
+      "bytes": 456638464
+    },
+    {
+      "seconds": 49.70461908300001,
+      "bytes": 459816960
+    },
+    {
+      "seconds": 50.349942250000026,
+      "bytes": 461979648
+    },
+    {
+      "seconds": 50.96136250000001,
+      "bytes": 462127104
+    },
+    {
+      "seconds": 51.59293254100004,
+      "bytes": 463781888
+    },
+    {
+      "seconds": 52.20879991600003,
+      "bytes": 464814080
+    },
+    {
+      "seconds": 52.829357458000004,
+      "bytes": 465682432
+    },
+    {
+      "seconds": 53.45886945800004,
+      "bytes": 466386944
+    },
+    {
+      "seconds": 54.1203615,
+      "bytes": 467042304
+    },
+    {
+      "seconds": 54.773237041000016,
+      "bytes": 467042304
+    },
+    {
+      "seconds": 55.394109749999984,
+      "bytes": 467714048
+    },
+    {
+      "seconds": 56.042149541000015,
+      "bytes": 468205568
+    },
+    {
+      "seconds": 56.582837832999985,
+      "bytes": 468860928
+    },
+    {
+      "seconds": 57.23482425000003,
+      "bytes": 468860928
+    },
+    {
+      "seconds": 57.755724541000006,
+      "bytes": 469286912
+    },
+    {
+      "seconds": 58.323203500000034,
+      "bytes": 469614592
+    },
+    {
+      "seconds": 58.942694958000004,
+      "bytes": 469614592
+    },
+    {
+      "seconds": 59.47181962500002,
+      "bytes": 470106112
+    },
+    {
+      "seconds": 60.132831791,
+      "bytes": 471449600
+    },
+    {
+      "seconds": 60.72063404099998,
+      "bytes": 471449600
+    },
+    {
+      "seconds": 61.289334457999985,
+      "bytes": 472350720
+    },
+    {
+      "seconds": 61.946887083000036,
+      "bytes": 473284608
+    },
+    {
+      "seconds": 62.58754408300001,
+      "bytes": 473284608
+    },
+    {
+      "seconds": 63.167207082999994,
+      "bytes": 474169344
+    },
+    {
+      "seconds": 63.70451516600002,
+      "bytes": 474300416
+    },
+    {
+      "seconds": 64.28749225000001,
+      "bytes": 475430912
+    },
+    {
+      "seconds": 64.89869579100002,
+      "bytes": 476200960
+    },
+    {
+      "seconds": 65.45781891600001,
+      "bytes": 476790784
+    },
+    {
+      "seconds": 66.11843866600003,
+      "bytes": 476790784
+    },
+    {
+      "seconds": 66.72780025000003,
+      "bytes": 477954048
+    },
+    {
+      "seconds": 67.32949224999999,
+      "bytes": 478576640
+    },
+    {
+      "seconds": 67.95246529100001,
+      "bytes": 480346112
+    },
+    {
+      "seconds": 68.60986504100003,
+      "bytes": 480903168
+    },
+    {
+      "seconds": 69.20460816600001,
+      "bytes": 481443840
+    },
+    {
+      "seconds": 69.80844350000001,
+      "bytes": 481820672
+    },
+    {
+      "seconds": 70.45273887500002,
+      "bytes": 482148352
+    },
+    {
+      "seconds": 71.04787112500003,
+      "bytes": 482902016
+    },
+    {
+      "seconds": 71.68041104100001,
+      "bytes": 483950592
+    },
+    {
+      "seconds": 72.29233204100001,
+      "bytes": 484425728
+    },
+    {
+      "seconds": 72.83684975,
+      "bytes": 484622336
+    },
+    {
+      "seconds": 73.42112883300001,
+      "bytes": 485883904
+    },
+    {
+      "seconds": 74.00576454100002,
+      "bytes": 486768640
+    },
+    {
+      "seconds": 74.64610920799998,
+      "bytes": 487505920
+    },
+    {
+      "seconds": 75.28929012500004,
+      "bytes": 488308736
+    },
+    {
+      "seconds": 75.82938645799999,
+      "bytes": 488505344
+    },
+    {
+      "seconds": 76.45639299999999,
+      "bytes": 489684992
+    },
+    {
+      "seconds": 76.97717658300002,
+      "bytes": 491814912
+    },
+    {
+      "seconds": 77.62691541600003,
+      "bytes": 491814912
+    },
+    {
+      "seconds": 78.208621666,
+      "bytes": 491814912
+    },
+    {
+      "seconds": 78.842267666,
+      "bytes": 491814912
+    },
+    {
+      "seconds": 79.36294337499999,
+      "bytes": 491831296
+    },
+    {
+      "seconds": 80.02631520800003,
+      "bytes": 491831296
+    },
+    {
+      "seconds": 80.67110945799999,
+      "bytes": 495058944
+    },
+    {
+      "seconds": 81.20891412500004,
+      "bytes": 495337472
+    },
+    {
+      "seconds": 81.82941962500001,
+      "bytes": 495960064
+    },
+    {
+      "seconds": 82.47206462500003,
+      "bytes": 497451008
+    },
+    {
+      "seconds": 83.07960933300001,
+      "bytes": 498286592
+    },
+    {
+      "seconds": 83.606624291,
+      "bytes": 498417664
+    },
+    {
+      "seconds": 84.21880383300004,
+      "bytes": 499400704
+    },
+    {
+      "seconds": 84.83738929100002,
+      "bytes": 500563968
+    },
+    {
+      "seconds": 85.42806820800001,
+      "bytes": 500563968
+    },
+    {
+      "seconds": 86.02031783300004,
+      "bytes": 500563968
+    },
+    {
+      "seconds": 86.5299455,
+      "bytes": 500563968
+    },
+    {
+      "seconds": 87.17896554100003,
+      "bytes": 500563968
+    },
+    {
+      "seconds": 87.72613004100003,
+      "bytes": 500563968
+    },
+    {
+      "seconds": 88.256532333,
+      "bytes": 500563968
+    },
+    {
+      "seconds": 88.79261816600001,
+      "bytes": 501415936
+    },
+    {
+      "seconds": 89.45426170799999,
+      "bytes": 501612544
+    },
+    {
+      "seconds": 90.110858958,
+      "bytes": 502022144
+    },
+    {
+      "seconds": 90.73296070800001,
+      "bytes": 502448128
+    },
+    {
+      "seconds": 91.37763341600004,
+      "bytes": 503103488
+    },
+    {
+      "seconds": 91.99505791600001,
+      "bytes": 504217600
+    },
+    {
+      "seconds": 92.57673887499999,
+      "bytes": 504414208
+    },
+    {
+      "seconds": 93.209728541,
+      "bytes": 506003456
+    },
+    {
+      "seconds": 93.86668012500002,
+      "bytes": 507101184
+    },
+    {
+      "seconds": 94.48764208300003,
+      "bytes": 507166720
+    },
+    {
+      "seconds": 95.077882708,
+      "bytes": 507248640
+    },
+    {
+      "seconds": 95.70498550000002,
+      "bytes": 507248640
+    },
+    {
+      "seconds": 96.27066004099999,
+      "bytes": 508329984
+    },
+    {
+      "seconds": 96.89230141600001,
+      "bytes": 509181952
+    },
+    {
+      "seconds": 97.44215650000001,
+      "bytes": 509722624
+    },
+    {
+      "seconds": 97.96453683300001,
+      "bytes": 502972416
+    },
+    {
+      "seconds": 98.67404129100004,
+      "bytes": 0
+    }
+  ],
+  "stdout_arrival_timeline": [
+    {
+      "process_wall_ms": 659.0321660000313,
+      "line": "WorkerThreadPool: 3 threads, 2 max low-priority."
+    },
+    {
+      "process_wall_ms": 671.1342909999871,
+      "line": "Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org"
+    },
+    {
+      "process_wall_ms": 671.1857500000065,
+      "line": "TextServer: Added interface \"Dummy\""
+    },
+    {
+      "process_wall_ms": 685.2572079999959,
+      "line": "TextServer: Added interface \"ICU / HarfBuzz / Graphite (Built-in)\""
+    },
+    {
+      "process_wall_ms": 685.2911660000132,
+      "line": "Unrecognized output string \"misc2\" in mapping:"
+    },
+    {
+      "process_wall_ms": 685.3045830000042,
+      "line": "030000007e0500006920000001010000,Nintendo Switch 2 Pro Controller,a:b0,b:b1,back:b14,dpdown:b8,dpleft:b10,dpright:b9,dpup:b11,guide:b16,leftshoulder:b12,leftstick:b15,lefttrigger:b13,leftx:a0,lefty:a1~,misc1:b17,misc2:b20,paddle1:b18,paddle2:b19,rightshoulder:b4,rightstick:b7,righttrigger:b5,rightx:a2,righty:a3~,start:b6,x:b2,y:b3,platform:Mac OS X,"
+    },
+    {
+      "process_wall_ms": 700.1322080000136,
+      "line": "SDL: Init OK!"
+    },
+    {
+      "process_wall_ms": 736.6567910000299,
+      "line": "[mvk-info] MoltenVK version 1.2.9, supporting Vulkan version 1.2.283."
+    },
+    {
+      "process_wall_ms": 736.7659999999887,
+      "line": "\tThe following 110 Vulkan extensions are supported:"
+    },
+    {
+      "process_wall_ms": 736.7894580000325,
+      "line": "\t\tVK_KHR_16bit_storage v1"
+    },
+    {
+      "process_wall_ms": 736.7960000000267,
+      "line": "\t\tVK_KHR_8bit_storage v1"
+    },
+    {
+      "process_wall_ms": 736.8007499999862,
+      "line": "\t\tVK_KHR_bind_memory2 v1"
+    },
+    {
+      "process_wall_ms": 736.8046249999907,
+      "line": "\t\tVK_KHR_buffer_device_address v1"
+    },
+    {
+      "process_wall_ms": 736.8170000000305,
+      "line": "\t\tVK_KHR_calibrated_timestamps v1"
+    },
+    {
+      "process_wall_ms": 736.8230410000365,
+      "line": "\t\tVK_KHR_copy_commands2 v1"
+    },
+    {
+      "process_wall_ms": 736.8406660000346,
+      "line": "\t\tVK_KHR_create_renderpass2 v1"
+    },
+    {
+      "process_wall_ms": 736.8473750000248,
+      "line": "\t\tVK_KHR_dedicated_allocation v3"
+    },
+    {
+      "process_wall_ms": 736.8523330000016,
+      "line": "\t\tVK_KHR_deferred_host_operations v4"
+    },
+    {
+      "process_wall_ms": 736.8563329999915,
+      "line": "\t\tVK_KHR_depth_stencil_resolve v1"
+    },
+    {
+      "process_wall_ms": 736.8604160000132,
+      "line": "\t\tVK_KHR_descriptor_update_template v1"
+    },
+    {
+      "process_wall_ms": 736.8644580000137,
+      "line": "\t\tVK_KHR_device_group v4"
+    },
+    {
+      "process_wall_ms": 736.8685410000353,
+      "line": "\t\tVK_KHR_device_group_creation v1"
+    },
+    {
+      "process_wall_ms": 736.8718750000198,
+      "line": "\t\tVK_KHR_driver_properties v1"
+    },
+    {
+      "process_wall_ms": 736.8751660000044,
+      "line": "\t\tVK_KHR_dynamic_rendering v1"
+    },
+    {
+      "process_wall_ms": 736.8784999999889,
+      "line": "\t\tVK_KHR_external_fence v1"
+    },
+    {
+      "process_wall_ms": 736.8820410000012,
+      "line": "\t\tVK_KHR_external_fence_capabilities v1"
+    },
+    {
+      "process_wall_ms": 736.8850830000042,
+      "line": "\t\tVK_KHR_external_memory v1"
+    },
+    {
+      "process_wall_ms": 736.8882910000139,
+      "line": "\t\tVK_KHR_external_memory_capabilities v1"
+    },
+    {
+      "process_wall_ms": 736.8914159999918,
+      "line": "\t\tVK_KHR_external_semaphore v1"
+    },
+    {
+      "process_wall_ms": 736.8944159999842,
+      "line": "\t\tVK_KHR_external_semaphore_capabilities v1"
+    },
+    {
+      "process_wall_ms": 736.8976660000044,
+      "line": "\t\tVK_KHR_fragment_shader_barycentric v1"
+    },
+    {
+      "process_wall_ms": 736.9009580000352,
+      "line": "\t\tVK_KHR_format_feature_flags2 v2"
+    },
+    {
+      "process_wall_ms": 736.904165999988,
+      "line": "\t\tVK_KHR_get_memory_requirements2 v1"
+    },
+    {
+      "process_wall_ms": 736.9080409999924,
+      "line": "\t\tVK_KHR_get_physical_device_properties2 v2"
+    },
+    {
+      "process_wall_ms": 736.9119159999968,
+      "line": "\t\tVK_KHR_get_surface_capabilities2 v1"
+    },
+    {
+      "process_wall_ms": 736.915582999984,
+      "line": "\t\tVK_KHR_imageless_framebuffer v1"
+    },
+    {
+      "process_wall_ms": 736.9194160000347,
+      "line": "\t\tVK_KHR_image_format_list v1"
+    },
+    {
+      "process_wall_ms": 736.923499999989,
+      "line": "\t\tVK_KHR_incremental_present v2"
+    },
+    {
+      "process_wall_ms": 736.927541,
+      "line": "\t\tVK_KHR_maintenance1 v2"
+    },
+    {
+      "process_wall_ms": 736.931291000019,
+      "line": "\t\tVK_KHR_maintenance2 v1"
+    },
+    {
+      "process_wall_ms": 736.9351250000022,
+      "line": "\t\tVK_KHR_maintenance3 v1"
+    },
+    {
+      "process_wall_ms": 736.946291000038,
+      "line": "\t\tVK_KHR_map_memory2 v1"
+    },
+    {
+      "process_wall_ms": 736.9507910000266,
+      "line": "\t\tVK_KHR_multiview v1"
+    },
+    {
+      "process_wall_ms": 736.9543330000283,
+      "line": "\t\tVK_KHR_portability_subset v1"
+    },
+    {
+      "process_wall_ms": 736.9574580000062,
+      "line": "\t\tVK_KHR_push_descriptor v2"
+    },
+    {
+      "process_wall_ms": 736.9615410000279,
+      "line": "\t\tVK_KHR_relaxed_block_layout v1"
+    },
+    {
+      "process_wall_ms": 736.969208000005,
+      "line": "\t\tVK_KHR_sampler_mirror_clamp_to_edge v3"
+    },
+    {
+      "process_wall_ms": 736.9728330000385,
+      "line": "\t\tVK_KHR_sampler_ycbcr_conversion v14"
+    },
+    {
+      "process_wall_ms": 736.976707999986,
+      "line": "\t\tVK_KHR_separate_depth_stencil_layouts v1"
+    },
+    {
+      "process_wall_ms": 736.9805000000156,
+      "line": "\t\tVK_KHR_shader_draw_parameters v1"
+    },
+    {
+      "process_wall_ms": 736.9842500000345,
+      "line": "\t\tVK_KHR_shader_float_controls v4"
+    },
+    {
+      "process_wall_ms": 736.9880830000284,
+      "line": "\t\tVK_KHR_shader_float16_int8 v1"
+    },
+    {
+      "process_wall_ms": 736.9930410000052,
+      "line": "\t\tVK_KHR_shader_integer_dot_product v1"
+    },
+    {
+      "process_wall_ms": 737.0072909999976,
+      "line": "\t\tVK_KHR_shader_non_semantic_info v1"
+    },
+    {
+      "process_wall_ms": 737.0132500000182,
+      "line": "\t\tVK_KHR_shader_subgroup_extended_types v1"
+    },
+    {
+      "process_wall_ms": 737.0163329999855,
+      "line": "\t\tVK_KHR_spirv_1_4 v1"
+    },
+    {
+      "process_wall_ms": 737.0193330000347,
+      "line": "\t\tVK_KHR_storage_buffer_storage_class v1"
+    },
+    {
+      "process_wall_ms": 737.0223330000272,
+      "line": "\t\tVK_KHR_surface v25"
+    },
+    {
+      "process_wall_ms": 737.0253330000196,
+      "line": "\t\tVK_KHR_swapchain v70"
+    },
+    {
+      "process_wall_ms": 737.0283750000226,
+      "line": "\t\tVK_KHR_swapchain_mutable_format v1"
+    },
+    {
+      "process_wall_ms": 737.0315000000005,
+      "line": "\t\tVK_KHR_synchronization2 v1"
+    },
+    {
+      "process_wall_ms": 737.0393749999948,
+      "line": "\t\tVK_KHR_timeline_semaphore v2"
+    },
+    {
+      "process_wall_ms": 737.0501660000173,
+      "line": "\t\tVK_KHR_uniform_buffer_standard_layout v1"
+    },
+    {
+      "process_wall_ms": 737.0613329999856,
+      "line": "\t\tVK_KHR_variable_pointers v1"
+    },
+    {
+      "process_wall_ms": 737.0966249999924,
+      "line": "\t\tVK_KHR_vertex_attribute_divisor v1"
+    },
+    {
+      "process_wall_ms": 737.1929160000263,
+      "line": "\t\tVK_EXT_4444_formats v1"
+    },
+    {
+      "process_wall_ms": 737.2139160000302,
+      "line": "\t\tVK_EXT_buffer_device_address v2"
+    },
+    {
+      "process_wall_ms": 737.2261660000277,
+      "line": "\t\tVK_EXT_calibrated_timestamps v2"
+    },
+    {
+      "process_wall_ms": 737.2542080000244,
+      "line": "\t\tVK_EXT_debug_marker v4"
+    },
+    {
+      "process_wall_ms": 737.275875000023,
+      "line": "\t\tVK_EXT_debug_report v10"
+    },
+    {
+      "process_wall_ms": 737.2848750000003,
+      "line": "\t\tVK_EXT_debug_utils v2"
+    },
+    {
+      "process_wall_ms": 737.2889160000113,
+      "line": "\t\tVK_EXT_descriptor_indexing v2"
+    },
+    {
+      "process_wall_ms": 737.292291000017,
+      "line": "\t\tVK_EXT_extended_dynamic_state v1"
+    },
+    {
+      "process_wall_ms": 737.29533300002,
+      "line": "\t\tVK_EXT_extended_dynamic_state2 v1"
+    },
+    {
+      "process_wall_ms": 737.2992909999994,
+      "line": "\t\tVK_EXT_extended_dynamic_state3 v2"
+    },
+    {
+      "process_wall_ms": 737.3028330000011,
+      "line": "\t\tVK_EXT_external_memory_host v1"
+    },
+    {
+      "process_wall_ms": 737.3058329999935,
+      "line": "\t\tVK_EXT_fragment_shader_interlock v1"
+    },
+    {
+      "process_wall_ms": 737.3115409999969,
+      "line": "\t\tVK_EXT_hdr_metadata v2"
+    },
+    {
+      "process_wall_ms": 737.3147499999959,
+      "line": "\t\tVK_EXT_headless_surface v1"
+    },
+    {
+      "process_wall_ms": 737.3178750000307,
+      "line": "\t\tVK_EXT_host_image_copy v1"
+    },
+    {
+      "process_wall_ms": 737.3209159999874,
+      "line": "\t\tVK_EXT_host_query_reset v1"
+    },
+    {
+      "process_wall_ms": 737.3241660000076,
+      "line": "\t\tVK_EXT_image_robustness v1"
+    },
+    {
+      "process_wall_ms": 737.3272500000212,
+      "line": "\t\tVK_EXT_inline_uniform_block v1"
+    },
+    {
+      "process_wall_ms": 737.3306659999912,
+      "line": "\t\tVK_EXT_layer_settings v2"
+    },
+    {
+      "process_wall_ms": 737.3340409999969,
+      "line": "\t\tVK_EXT_memory_budget v1"
+    },
+    {
+      "process_wall_ms": 737.3370409999893,
+      "line": "\t\tVK_EXT_metal_objects v2"
+    },
+    {
+      "process_wall_ms": 737.3402080000346,
+      "line": "\t\tVK_EXT_metal_surface v1"
+    },
+    {
+      "process_wall_ms": 737.3432500000376,
+      "line": "\t\tVK_EXT_pipeline_creation_cache_control v3"
+    },
+    {
+      "process_wall_ms": 737.346500000001,
+      "line": "\t\tVK_EXT_pipeline_creation_feedback v1"
+    },
+    {
+      "process_wall_ms": 737.3495410000146,
+      "line": "\t\tVK_EXT_post_depth_coverage v1"
+    },
+    {
+      "process_wall_ms": 737.3524580000321,
+      "line": "\t\tVK_EXT_private_data v1"
+    },
+    {
+      "process_wall_ms": 737.35558300001,
+      "line": "\t\tVK_EXT_robustness2 v1"
+    },
+    {
+      "process_wall_ms": 737.3587499999985,
+      "line": "\t\tVK_EXT_sample_locations v1"
+    },
+    {
+      "process_wall_ms": 737.3657080000271,
+      "line": "\t\tVK_EXT_scalar_block_layout v1"
+    },
+    {
+      "process_wall_ms": 737.3687909999944,
+      "line": "\t\tVK_EXT_separate_stencil_usage v1"
+    },
+    {
+      "process_wall_ms": 737.371708000012,
+      "line": "\t\tVK_EXT_shader_atomic_float v1"
+    },
+    {
+      "process_wall_ms": 737.3747080000044,
+      "line": "\t\tVK_EXT_shader_demote_to_helper_invocation v1"
+    },
+    {
+      "process_wall_ms": 737.3778749999929,
+      "line": "\t\tVK_EXT_shader_stencil_export v1"
+    },
+    {
+      "process_wall_ms": 737.3845000000188,
+      "line": "\t\tVK_EXT_shader_subgroup_ballot v1"
+    },
+    {
+      "process_wall_ms": 737.3876660000178,
+      "line": "\t\tVK_EXT_shader_subgroup_vote v1"
+    },
+    {
+      "process_wall_ms": 737.3906660000102,
+      "line": "\t\tVK_EXT_shader_viewport_index_layer v1"
+    },
+    {
+      "process_wall_ms": 737.3936660000027,
+      "line": "\t\tVK_EXT_subgroup_size_control v2"
+    },
+    {
+      "process_wall_ms": 737.3966250000308,
+      "line": "\t\tVK_EXT_surface_maintenance1 v1"
+    },
+    {
+      "process_wall_ms": 737.3996250000232,
+      "line": "\t\tVK_EXT_swapchain_colorspace v4"
+    },
+    {
+      "process_wall_ms": 737.4025409999945,
+      "line": "\t\tVK_EXT_swapchain_maintenance1 v1"
+    },
+    {
+      "process_wall_ms": 737.4071660000254,
+      "line": "\t\tVK_EXT_texel_buffer_alignment v1"
+    },
+    {
+      "process_wall_ms": 737.4102910000033,
+      "line": "\t\tVK_EXT_texture_compression_astc_hdr v1"
+    },
+    {
+      "process_wall_ms": 737.4132500000314,
+      "line": "\t\tVK_EXT_vertex_attribute_divisor v3"
+    },
+    {
+      "process_wall_ms": 737.4161250000384,
+      "line": "\t\tVK_AMD_gpu_shader_half_float v2"
+    },
+    {
+      "process_wall_ms": 737.42175000001,
+      "line": "\t\tVK_AMD_negative_viewport_height v1"
+    },
+    {
+      "process_wall_ms": 737.4247079999918,
+      "line": "\t\tVK_AMD_shader_image_load_store_lod v1"
+    },
+    {
+      "process_wall_ms": 737.4320000000125,
+      "line": "\t\tVK_AMD_shader_trinary_minmax v1"
+    },
+    {
+      "process_wall_ms": 737.445374999993,
+      "line": "\t\tVK_IMG_format_pvrtc v1"
+    },
+    {
+      "process_wall_ms": 737.4482079999893,
+      "line": "\t\tVK_INTEL_shader_integer_functions2 v1"
+    },
+    {
+      "process_wall_ms": 737.453749999986,
+      "line": "\t\tVK_GOOGLE_display_timing v1"
+    },
+    {
+      "process_wall_ms": 737.4583330000064,
+      "line": "\t\tVK_MVK_macos_surface v3"
+    },
+    {
+      "process_wall_ms": 737.4610410000173,
+      "line": "\t\tVK_MVK_moltenvk v37"
+    },
+    {
+      "process_wall_ms": 737.4635830000216,
+      "line": "\t\tVK_NV_fragment_shader_barycentric v1"
+    },
+    {
+      "process_wall_ms": 737.4661250000258,
+      "line": "\t\tVK_NV_glsl_shader v1"
+    },
+    {
+      "process_wall_ms": 767.6254579999977,
+      "line": "[mvk-info] GPU device:"
+    },
+    {
+      "process_wall_ms": 767.6766659999998,
+      "line": "\t\tmodel: Apple Paravirtual device"
+    },
+    {
+      "process_wall_ms": 767.6821250000216,
+      "line": "\t\ttype: Integrated"
+    },
+    {
+      "process_wall_ms": 767.6859580000155,
+      "line": "\t\tvendorID: 0x106b"
+    },
+    {
+      "process_wall_ms": 767.6898330000199,
+      "line": "\t\tdeviceID: 0x1a0703ed"
+    },
+    {
+      "process_wall_ms": 767.6977909999891,
+      "line": "\t\tpipelineCacheUUID: BF097EDC-1A07-03ED-0000-000000000000"
+    },
+    {
+      "process_wall_ms": 767.7027080000016,
+      "line": "\t\tGPU memory available: 4778 MB"
+    },
+    {
+      "process_wall_ms": 767.7059580000218,
+      "line": "\t\tGPU memory used: 0 MB"
+    },
+    {
+      "process_wall_ms": 767.7091660000315,
+      "line": "\tsupports the following Metal Versions, GPU's and Feature Sets:"
+    },
+    {
+      "process_wall_ms": 767.7122499999882,
+      "line": "\t\tMetal Shading Language 3.1"
+    },
+    {
+      "process_wall_ms": 767.7169579999941,
+      "line": "\t\tGPU Family Apple 5"
+    },
+    {
+      "process_wall_ms": 767.7202500000249,
+      "line": "\t\tGPU Family Apple 4"
+    },
+    {
+      "process_wall_ms": 767.7231250000318,
+      "line": "\t\tGPU Family Apple 3"
+    },
+    {
+      "process_wall_ms": 767.7254580000294,
+      "line": "\t\tGPU Family Apple 2"
+    },
+    {
+      "process_wall_ms": 767.7277910000271,
+      "line": "\t\tGPU Family Apple 1"
+    },
+    {
+      "process_wall_ms": 767.7301250000141,
+      "line": "\t\tGPU Family Mac 2"
+    },
+    {
+      "process_wall_ms": 767.7326250000078,
+      "line": "\t\tGPU Family Mac 1"
+    },
+    {
+      "process_wall_ms": 767.7455830000213,
+      "line": "\t\tGPU Family Common 3"
+    },
+    {
+      "process_wall_ms": 767.7512500000034,
+      "line": "\t\tGPU Family Common 2"
+    },
+    {
+      "process_wall_ms": 767.7543750000382,
+      "line": "\t\tGPU Family Common 1"
+    },
+    {
+      "process_wall_ms": 767.7575410000372,
+      "line": "\t\tmacOS GPU Family 2 v1"
+    },
+    {
+      "process_wall_ms": 767.7605829999834,
+      "line": "\t\tmacOS GPU Family 1 v4"
+    },
+    {
+      "process_wall_ms": 767.7635000000009,
+      "line": "\t\tmacOS GPU Family 1 v3"
+    },
+    {
+      "process_wall_ms": 767.766416000029,
+      "line": "\t\tmacOS GPU Family 1 v2"
+    },
+    {
+      "process_wall_ms": 767.769291000036,
+      "line": "\t\tmacOS GPU Family 1 v1"
+    },
+    {
+      "process_wall_ms": 767.7819580000005,
+      "line": "[mvk-info] Created VkInstance for Vulkan version 1.2.0, as requested by app, with the following 4 Vulkan extensions enabled:"
+    },
+    {
+      "process_wall_ms": 767.7867080000169,
+      "line": "\t\tVK_KHR_get_physical_device_properties2 v2"
+    },
+    {
+      "process_wall_ms": 767.7892500000212,
+      "line": "\t\tVK_KHR_surface v25"
+    },
+    {
+      "process_wall_ms": 767.7917080000043,
+      "line": "\t\tVK_EXT_debug_utils v2"
+    },
+    {
+      "process_wall_ms": 767.7945000000364,
+      "line": "\t\tVK_EXT_metal_surface v1"
+    },
+    {
+      "process_wall_ms": 975.813415999994,
+      "line": "Devices:"
+    },
+    {
+      "process_wall_ms": 975.8364580000034,
+      "line": "  #0: Apple Apple Paravirtual device - Supported, Integrated"
+    },
+    {
+      "process_wall_ms": 975.8403750000184,
+      "line": "Optional extension VK_KHR_fragment_shading_rate not found"
+    },
+    {
+      "process_wall_ms": 975.843416000032,
+      "line": "Optional extension VK_EXT_fragment_density_map not found"
+    },
+    {
+      "process_wall_ms": 975.8460410000112,
+      "line": "Optional extension VK_EXT_astc_decode_mode not found"
+    },
+    {
+      "process_wall_ms": 975.8485830000154,
+      "line": "Optional extension VK_KHR_vulkan_memory_model not found"
+    },
+    {
+      "process_wall_ms": 975.8510830000091,
+      "line": "Optional extension VK_EXT_texture_compression_astc_hdr not found"
+    },
+    {
+      "process_wall_ms": 975.8535409999922,
+      "line": "Optional extension VK_KHR_external_memory_fd not found"
+    },
+    {
+      "process_wall_ms": 975.8560409999859,
+      "line": "Optional extension VK_EXT_device_fault not found"
+    },
+    {
+      "process_wall_ms": 975.8584580000047,
+      "line": "- Vulkan Variable Rate Shading not supported"
+    },
+    {
+      "process_wall_ms": 975.8610410000301,
+      "line": "- Vulkan Fragment Density Map not supported"
+    },
+    {
+      "process_wall_ms": 975.8637909999948,
+      "line": "- Vulkan multiview supported:"
+    },
+    {
+      "process_wall_ms": 975.8665410000162,
+      "line": "  max view count: 32"
+    },
+    {
+      "process_wall_ms": 975.8690410000099,
+      "line": "  max instances: 134217727"
+    },
+    {
+      "process_wall_ms": 975.8727079999971,
+      "line": "- Vulkan subgroup:"
+    },
+    {
+      "process_wall_ms": 975.8751660000371,
+      "line": "  size: 32"
+    },
+    {
+      "process_wall_ms": 975.8776660000308,
+      "line": "  min size: 32"
+    },
+    {
+      "process_wall_ms": 975.880041000039,
+      "line": "  max size: 32"
+    },
+    {
+      "process_wall_ms": 975.8823750000261,
+      "line": "  stages: STAGE_TESSELLATION_CONTROL, STAGE_FRAGMENT, STAGE_COMPUTE"
+    },
+    {
+      "process_wall_ms": 975.8849579999946,
+      "line": "  supported ops: FEATURE_BASIC, FEATURE_VOTE, FEATURE_ARITHMETIC, FEATURE_BALLOT, FEATURE_SHUFFLE, FEATURE_SHUFFLE_RELATIVE, FEATURE_QUAD"
+    },
+    {
+      "process_wall_ms": 975.8878330000016,
+      "line": "  quad operations in all stages"
+    },
+    {
+      "process_wall_ms": 975.8945410000024,
+      "line": "[mvk-info] Vulkan semaphores using MTLEvent."
+    },
+    {
+      "process_wall_ms": 2690.676790999987,
+      "line": "[mvk-info] Created VkDevice to run on GPU Apple Paravirtual device with the following 12 Vulkan extensions enabled:"
+    },
+    {
+      "process_wall_ms": 2690.7892080000124,
+      "line": "\t\tVK_KHR_16bit_storage v1"
+    },
+    {
+      "process_wall_ms": 2690.81349999999,
+      "line": "\t\tVK_KHR_buffer_device_address v1"
+    },
+    {
+      "process_wall_ms": 2690.8236250000073,
+      "line": "\t\tVK_KHR_create_renderpass2 v1"
+    },
+    {
+      "process_wall_ms": 2690.8325410000202,
+      "line": "\t\tVK_KHR_image_format_list v1"
+    },
+    {
+      "process_wall_ms": 2690.841333000037,
+      "line": "\t\tVK_KHR_maintenance2 v1"
+    },
+    {
+      "process_wall_ms": 2690.8496249999985,
+      "line": "\t\tVK_KHR_multiview v1"
+    },
+    {
+      "process_wall_ms": 2690.8591659999956,
+      "line": "\t\tVK_KHR_shader_float16_int8 v1"
+    },
+    {
+      "process_wall_ms": 2690.868082999998,
+      "line": "\t\tVK_KHR_storage_buffer_storage_class v1"
+    },
+    {
+      "process_wall_ms": 2690.8767500000295,
+      "line": "\t\tVK_KHR_swapchain v70"
+    },
+    {
+      "process_wall_ms": 2690.885165999987,
+      "line": "\t\tVK_EXT_debug_marker v4"
+    },
+    {
+      "process_wall_ms": 2690.8935829999905,
+      "line": "\t\tVK_EXT_pipeline_creation_cache_control v3"
+    },
+    {
+      "process_wall_ms": 2690.901832999998,
+      "line": "\t\tVK_EXT_subgroup_size_control v2"
+    },
+    {
+      "process_wall_ms": 2691.475582999999,
+      "line": "Vulkan 1.2.283 - Forward+ - Using Device #0: Apple - Apple Paravirtual device"
+    },
+    {
+      "process_wall_ms": 2694.1750830000046,
+      "line": "Startup PSO cache (0.0 MiB)"
+    },
+    {
+      "process_wall_ms": 2829.615832999991,
+      "line": "Using \"default\" pen tablet driver..."
+    },
+    {
+      "process_wall_ms": 2837.800915999992,
+      "line": "Creating VMA small objects pool for memory type index 0"
+    },
+    {
+      "process_wall_ms": 2842.73758300003,
+      "line": "Shader 'CanvasSdfShaderRD' (group 0) SHA256: e3e36a196484fd7752bf3d5dca5d9ff7512a4e981b5f5f57e6f0a0fc50640721"
+    },
+    {
+      "process_wall_ms": 2844.779000000017,
+      "line": "Shader cache miss for CanvasSdfShaderRD/e3e36a196484fd7752bf3d5dca5d9ff7512a4e981b5f5f57e6f0a0fc50640721/087916079fba7c625e62b0c2cca570e0fb87c99a"
+    },
+    {
+      "process_wall_ms": 3910.249415999999,
+      "line": "Shader 'SkeletonShaderRD' (group 0) SHA256: e0325885d3b45ea42d045525d1c732805f14a5a6cc4b6b67ce336626653e9573"
+    },
+    {
+      "process_wall_ms": 3911.141999999984,
+      "line": "Shader cache miss for SkeletonShaderRD/e0325885d3b45ea42d045525d1c732805f14a5a6cc4b6b67ce336626653e9573/087916079fba7c625e62b0c2cca570e0fb87c99a"
+    },
+    {
+      "process_wall_ms": 4116.227625000021,
+      "line": "Shader 'SortShaderRD' (group 0) SHA256: ce9b4120b1d1a35c1bea19b12a6206dee2526af5e61fd4520555d6b447f15e34"
+    },
+    {
+      "process_wall_ms": 4116.36095800003,
+      "line": "Shader cache miss for SortShaderRD/ce9b4120b1d1a35c1bea19b12a6206dee2526af5e61fd4520555d6b447f15e34/087916079fba7c625e62b0c2cca570e0fb87c99a"
+    },
+    {
+      "process_wall_ms": 4183.798707999984,
+      "line": "Shader 'ParticlesShaderRD' (group 0) SHA256: c77129ff51da9b8bd8037785c1a2afcdca1f25aa602d8d22c4973640d55305a4"
+    },
+    {
+      "process_wall_ms": 4184.366624999995,
+      "line": "Shader cache miss for ParticlesShaderRD/c77129ff51da9b8bd8037785c1a2afcdca1f25aa602d8d22c4973640d55305a4/f128cab0b22fb7e0d9f023d6cdb81309be392d95"
+    },
+    {
+      "process_wall_ms": 4424.202416000015,
+      "line": "Shader 'ParticlesCopyShaderRD' (group 0) SHA256: 76ee6b7648ff369a05e8340a639ce08c065370fd23e6d18634d522db1c3ac055"
+    },
+    {
+      "process_wall_ms": 4424.349415999985,
+      "line": "Shader cache miss for ParticlesCopyShaderRD/76ee6b7648ff369a05e8340a639ce08c065370fd23e6d18634d522db1c3ac055/087916079fba7c625e62b0c2cca570e0fb87c99a"
+    },
+    {
+      "process_wall_ms": 6244.776208000019,
+      "line": "Shader 'CanvasShaderRD' (group 0) SHA256: 8f73ea59600218c7f4a72f38f0a825d4b9edae392f00688807259ea2faf43974"
+    },
+    {
+      "process_wall_ms": 6244.864833000009,
+      "line": "Shader cache miss for CanvasShaderRD/8f73ea59600218c7f4a72f38f0a825d4b9edae392f00688807259ea2faf43974/087916079fba7c625e62b0c2cca570e0fb87c99a"
+    },
+    {
+      "process_wall_ms": 6257.772499999987,
+      "line": "Shader 'CanvasOcclusionShaderRD' (group 0) SHA256: 2e1e40e085c85bd3960b7bad3be9bad88a3e02174708138d2eb3215933437ede"
+    },
+    {
+      "process_wall_ms": 6258.017290999987,
+      "line": "Shader cache miss for CanvasOcclusionShaderRD/2e1e40e085c85bd3960b7bad3be9bad88a3e02174708138d2eb3215933437ede/087916079fba7c625e62b0c2cca570e0fb87c99a"
+    },
+    {
+      "process_wall_ms": 6566.369582999982,
+      "line": "Shader cache miss for CanvasShaderRD/8f73ea59600218c7f4a72f38f0a825d4b9edae392f00688807259ea2faf43974/8a7277c8d3ac029b087c3fa9c55de85560be5119"
+    },
+    {
+      "process_wall_ms": 6566.616415999988,
+      "line": "Shader cache miss for CanvasShaderRD/8f73ea59600218c7f4a72f38f0a825d4b9edae392f00688807259ea2faf43974/45fb1ddc6499e56682916a355ce2839e61f42dfe"
+    },
+    {
+      "process_wall_ms": 6581.636000000003,
+      "line": "Shader 'ClusterRenderShaderRD' (group 0) SHA256: 5520632edde9dc7efc467666b1888d0f07fe10e4c2e113e68f1757bab97a847b"
+    },
+    {
+      "process_wall_ms": 6581.691707999994,
+      "line": "Shader cache miss for ClusterRenderShaderRD/5520632edde9dc7efc467666b1888d0f07fe10e4c2e113e68f1757bab97a847b/087916079fba7c625e62b0c2cca570e0fb87c99a"
+    },
+    {
+      "process_wall_ms": 6679.515165999987,
+      "line": "Shader 'ClusterStoreShaderRD' (group 0) SHA256: 9ca626ebec243544ae7398e49713da5e69391ab29de1ced02b03e718a013c28f"
+    },
+    {
+      "process_wall_ms": 6679.621457999985,
+      "line": "Shader cache miss for ClusterStoreShaderRD/9ca626ebec243544ae7398e49713da5e69391ab29de1ced02b03e718a013c28f/087916079fba7c625e62b0c2cca570e0fb87c99a"
+    },
+    {
+      "process_wall_ms": 6718.949375000022,
+      "line": "Shader 'ClusterDebugShaderRD' (group 0) SHA256: 7253e84e6deaaf9cd1391aff49a754db31e162f9ecaf776485fde4bc31121aa6"
+    },
+    {
+      "process_wall_ms": 6718.98545800002,
+      "line": "Shader cache miss for ClusterDebugShaderRD/7253e84e6deaaf9cd1391aff49a754db31e162f9ecaf776485fde4bc31121aa6/087916079fba7c625e62b0c2cca570e0fb87c99a"
+    },
+    {
+      "process_wall_ms": 6813.3142500000195,
+      "line": "Shader 'SceneForwardClusteredShaderRD' (group 0) SHA256: df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f"
+    },
+    {
+      "process_wall_ms": 6813.490208000019,
+      "line": "Shader 'SceneForwardClusteredShaderRD' (group 1) SHA256: 6a184745fdc168cf1854f82e467b075c7754389099dd4260c7cfd820f974abb7"
+    },
+    {
+      "process_wall_ms": 6813.697750000018,
+      "line": "Shader 'SceneForwardClusteredShaderRD' (group 2) SHA256: e54e15eb9546bd2ff28fdb8fc19e33bec138fb364a5418eb6d90e784252ee190"
+    },
+    {
+      "process_wall_ms": 6813.856291000036,
+      "line": "Shader 'SceneForwardClusteredShaderRD' (group 3) SHA256: 210d14d006d21a3471e63300f334a93a8076f61ad1c3147dbd14466d95970249"
+    },
+    {
+      "process_wall_ms": 6814.298415999985,
+      "line": "Shader cache miss for SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/a38af1e47720abf30ca44f3d3c099c07b046df81"
+    },
+    {
+      "process_wall_ms": 6912.565874999984,
+      "line": "Shader cache miss for SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/ab0b960474f1491b42ef9f2ca13dbd4ccaf64911"
+    },
+    {
+      "process_wall_ms": 6912.591958000007,
+      "line": "Shader cache miss for SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/111f8cfd3c260d918df85827eb251dc36a43cb13"
+    },
+    {
+      "process_wall_ms": 6912.598333000005,
+      "line": "Shader 'BestFitNormalShaderRD' (group 0) SHA256: 8c748b5176971d04b037d61fe8ee9c0da50efc42fb21ff2f4fc11dbf138ac284"
+    },
+    {
+      "process_wall_ms": 6912.603332999993,
+      "line": "Shader cache miss for BestFitNormalShaderRD/8c748b5176971d04b037d61fe8ee9c0da50efc42fb21ff2f4fc11dbf138ac284/087916079fba7c625e62b0c2cca570e0fb87c99a"
+    },
+    {
+      "process_wall_ms": 7091.95758300001,
+      "line": "Shader 'IntegrateDfgShaderRD' (group 0) SHA256: 287328d7c084c243ad82ac05423c4a58662ea18582b5b369f3288be49e4a66d8"
+    },
+    {
+      "process_wall_ms": 7092.274750000001,
+      "line": "Shader cache miss for IntegrateDfgShaderRD/287328d7c084c243ad82ac05423c4a58662ea18582b5b369f3288be49e4a66d8/087916079fba7c625e62b0c2cca570e0fb87c99a"
+    },
+    {
+      "process_wall_ms": 7229.176250000023,
+      "line": "Shader 'ResolveShaderRD' (group 0) SHA256: 5e0937d6a862fc03f2a42b11dd8fcc8ca9fa948bc51bc5504f3e3a92e954cc33"
+    },
+    {
+      "process_wall_ms": 7229.521000000033,
+      "line": "Shader cache miss for ResolveShaderRD/5e0937d6a862fc03f2a42b11dd8fcc8ca9fa948bc51bc5504f3e3a92e954cc33/087916079fba7c625e62b0c2cca570e0fb87c99a"
+    },
+    {
+      "process_wall_ms": 7550.905750000027,
+      "line": "Shader 'TaaResolveShaderRD' (group 0) SHA256: 8e863ed5b6e6cf5b67a722559308f90a5653d397bdedd8d8c2abe45a89893049"
+    },
+    {
+      "process_wall_ms": 7550.955291000037,
+      "line": "Shader cache miss for TaaResolveShaderRD/8e863ed5b6e6cf5b67a722559308f90a5653d397bdedd8d8c2abe45a89893049/087916079fba7c625e62b0c2cca570e0fb87c99a"
+    },
+    {
+      "process_wall_ms": 7811.289458000033,
+      "line": "Shader 'Fsr2DepthClipPassShaderRD' (group 0) SHA256: 4130c931008b9d81bce5757c91876fb1c64a992525002d1a9d24c756cdaeb55f"
+    },
+    {
+      "process_wall_ms": 7811.6570409999895,
+      "line": "Shader 'Fsr2ReconstructPreviousDepthPassShaderRD' (group 0) SHA256: 7ef7cdf239edd510c42b9e6ef2ca760f08ac92b57c6b2e5562cf430770b69d49"
+    },
+    {
+      "process_wall_ms": 7811.989332999985,
+      "line": "Shader 'Fsr2LockPassShaderRD' (group 0) SHA256: 50c95f98dbda1ad902b8fac4668d32cbfc11a3e86b890460da50600750d6d636"
+    },
+    {
+      "process_wall_ms": 7812.246875000028,
+      "line": "Shader 'Fsr2AccumulatePassShaderRD' (group 0) SHA256: acf7ce56f0f217fbe6fc54b42313d025af58be39a197ea6e6a9c10b1c03de903"
+    },
+    {
+      "process_wall_ms": 7812.52062499999,
+      "line": "Shader 'Fsr2RcasPassShaderRD' (group 0) SHA256: 3f4d394a0080ce37da6dc5f05c36e082efc8f3a0a333428f23697d21a1e665cd"
+    },
+    {
+      "process_wall_ms": 7812.8351660000135,
+      "line": "Shader 'Fsr2ComputeLuminancePyramidPassShaderRD' (group 0) SHA256: 246789de2d6807e12325bb146b5b960cbec70a2119fe15f67d12c0a1d55213dd"
+    },
+    {
+      "process_wall_ms": 7813.7726660000335,
+      "line": "Shader 'Fsr2AutogenReactivePassShaderRD' (group 0) SHA256: ea81f3d2612452e92eebad3230c8885356cf352779194322ac0b390d949e0a9f"
+    },
+    {
+      "process_wall_ms": 7813.805833000004,
+      "line": "Shader 'Fsr2TcrAutogenPassShaderRD' (group 0) SHA256: c6b965d8d141ea41ff88aa0df571ed29f4b8b5c974713f24b7fa44f23e3db020"
+    },
+    {
+      "process_wall_ms": 7815.328500000021,
+      "line": "Shader 'SsEffectsDownsampleShaderRD' (group 0) SHA256: 47ce5b07a7399a4ea52ee0ba0ba0016f7c1b3429f72c2ef29b4382bf8f1d92e7"
+    },
+    {
+      "process_wall_ms": 7815.3674160000155,
+      "line": "Shader cache miss for SsEffectsDownsampleShaderRD/47ce5b07a7399a4ea52ee0ba0ba0016f7c1b3429f72c2ef29b4382bf8f1d92e7/087916079fba7c625e62b0c2cca570e0fb87c99a"
+    },
+    {
+      "process_wall_ms": 8525.382833000038,
+      "line": "Shader 'SsilShaderRD' (group 0) SHA256: 335e8f9954286db1ee28430b2c9ef17fb01fb4bb8b74d688be9cec967dee41e6"
+    },
+    {
+      "process_wall_ms": 8525.58833300003,
+      "line": "Shader cache miss for SsilShaderRD/335e8f9954286db1ee28430b2c9ef17fb01fb4bb8b74d688be9cec967dee41e6/087916079fba7c625e62b0c2cca570e0fb87c99a"
+    },
+    {
+      "process_wall_ms": 9276.275333000001,
+      "line": "Shader 'SsilImportanceMapShaderRD' (group 0) SHA256: 3d668b995f5f00c0cdb73fd8c13cd3bed37bf5f45c10621fcc2475eefd50a7bd"
+    },
+    {
+      "process_wall_ms": 9276.364333000003,
+      "line": "Shader cache miss for SsilImportanceMapShaderRD/3d668b995f5f00c0cdb73fd8c13cd3bed37bf5f45c10621fcc2475eefd50a7bd/087916079fba7c625e62b0c2cca570e0fb87c99a"
+    },
+    {
+      "process_wall_ms": 9752.009458000031,
+      "line": "Shader 'SsilBlurShaderRD' (group 0) SHA256: 9d2d3e521c5d1601e636d8fc3e533a52362ad011112fde07a344fe3511cea943"
+    },
+    {
+      "process_wall_ms": 9752.37045800003,
+      "line": "Shader cache miss for SsilBlurShaderRD/9d2d3e521c5d1601e636d8fc3e533a52362ad011112fde07a344fe3511cea943/087916079fba7c625e62b0c2cca570e0fb87c99a"
+    },
+    {
+      "process_wall_ms": 10096.121125000025,
+      "line": "Shader 'SsilInterleaveShaderRD' (group 0) SHA256: 36d769d4532c446edf161d4b3d932557d4fad2904fda9c5f6861ae7fd162c9ee"
+    },
+    {
+      "process_wall_ms": 10096.295457999986,
+      "line": "Shader cache miss for SsilInterleaveShaderRD/36d769d4532c446edf161d4b3d932557d4fad2904fda9c5f6861ae7fd162c9ee/087916079fba7c625e62b0c2cca570e0fb87c99a"
+    },
+    {
+      "process_wall_ms": 10479.523666000034,
+      "line": "Shader 'SsaoShaderRD' (group 0) SHA256: 6831fded981ced729634af4cf4f5515538ff84cbb773c0d583873e29462e1080"
+    },
+    {
+      "process_wall_ms": 10479.62445799999,
+      "line": "Shader cache miss for SsaoShaderRD/6831fded981ced729634af4cf4f5515538ff84cbb773c0d583873e29462e1080/087916079fba7c625e62b0c2cca570e0fb87c99a"
+    },
+    {
+      "process_wall_ms": 11233.357291000004,
+      "line": "Shader 'SsaoImportanceMapShaderRD' (group 0) SHA256: fe84d24f104b577d6ae2183f611ddfa9ef6ba4834d972f00460c66aa67c6e788"
+    },
+    {
+      "process_wall_ms": 11233.477250000022,
+      "line": "Shader cache miss for SsaoImportanceMapShaderRD/fe84d24f104b577d6ae2183f611ddfa9ef6ba4834d972f00460c66aa67c6e788/087916079fba7c625e62b0c2cca570e0fb87c99a"
+    },
+    {
+      "process_wall_ms": 11335.868624999988,
+      "line": "Shader 'SsaoBlurShaderRD' (group 0) SHA256: 4d3910b2d37af6bb5a68153677dd3f49c424b932871284ee1bb2e31936b31ca0"
+    },
+    {
+      "process_wall_ms": 11335.945665999987,
+      "line": "Shader cache miss for SsaoBlurShaderRD/4d3910b2d37af6bb5a68153677dd3f49c424b932871284ee1bb2e31936b31ca0/087916079fba7c625e62b0c2cca570e0fb87c99a"
+    },
+    {
+      "process_wall_ms": 11622.27020800003,
+      "line": "Shader 'SsaoInterleaveShaderRD' (group 0) SHA256: b804d0579b589636ca331298d9f8885e277e5fd8be1d20d4560044000a029a49"
+    },
+    {
+      "process_wall_ms": 11622.309583000004,
+      "line": "Shader cache miss for SsaoInterleaveShaderRD/b804d0579b589636ca331298d9f8885e277e5fd8be1d20d4560044000a029a49/087916079fba7c625e62b0c2cca570e0fb87c99a"
+    },
+    {
+      "process_wall_ms": 12086.084874999982,
+      "line": "Shader 'ScreenSpaceReflectionScaleShaderRD' (group 0) SHA256: f028513910f44db288a6d0d7315df152a910214dd680426d7817a0db185bb512"
+    },
+    {
+      "process_wall_ms": 12086.127874999987,
+      "line": "Shader cache miss for ScreenSpaceReflectionScaleShaderRD/f028513910f44db288a6d0d7315df152a910214dd680426d7817a0db185bb512/087916079fba7c625e62b0c2cca570e0fb87c99a"
+    },
+    {
+      "process_wall_ms": 12365.70125000003,
+      "line": "Shader 'ScreenSpaceReflectionShaderRD' (group 0) SHA256: aa7798f702ec7502be62da736ef869c792a69bb4310d9a535e0b6596ad1c4c8f"
+    },
+    {
+      "process_wall_ms": 12379.880291000007,
+      "line": "Shader cache miss for ScreenSpaceReflectionShaderRD/aa7798f702ec7502be62da736ef869c792a69bb4310d9a535e0b6596ad1c4c8f/087916079fba7c625e62b0c2cca570e0fb87c99a"
+    },
+    {
+      "process_wall_ms": 12897.160832999987,
+      "line": "Shader 'ScreenSpaceReflectionFilterShaderRD' (group 0) SHA256: b8974626c582dd282d9ca1bd58b6ffeda45b41e5b160baa199088657ad7eca95"
+    },
+    {
+      "process_wall_ms": 12897.212333000027,
+      "line": "Shader cache miss for ScreenSpaceReflectionFilterShaderRD/b8974626c582dd282d9ca1bd58b6ffeda45b41e5b160baa199088657ad7eca95/087916079fba7c625e62b0c2cca570e0fb87c99a"
+    },
+    {
+      "process_wall_ms": 13397.79091600002,
+      "line": "Shader 'SubsurfaceScatteringShaderRD' (group 0) SHA256: cfc79a4166aa45746b6bfa4b2a3345978e68ace79a0a82ab13fdda9f32a7a0b0"
+    },
+    {
+      "process_wall_ms": 13397.945750000019,
+      "line": "Shader cache miss for SubsurfaceScatteringShaderRD/cfc79a4166aa45746b6bfa4b2a3345978e68ace79a0a82ab13fdda9f32a7a0b0/087916079fba7c625e62b0c2cca570e0fb87c99a"
+    },
+    {
+      "process_wall_ms": 13698.115583000003,
+      "line": "Shader 'MotionVectorsStoreShaderRD' (group 0) SHA256: 05018280647fe1f752a156ae0d11f3a1a9841115e92e60702347a74051be9940"
+    },
+    {
+      "process_wall_ms": 13698.354332999997,
+      "line": "Shader cache miss for MotionVectorsStoreShaderRD/05018280647fe1f752a156ae0d11f3a1a9841115e92e60702347a74051be9940/087916079fba7c625e62b0c2cca570e0fb87c99a"
+    },
+    {
+      "process_wall_ms": 13819.676833000016,
+      "line": "Shader 'SkyShaderRD' (group 0) SHA256: 9c26bd5dc001c975a8ec36520d74f1e5aa9d8125c8172a160acf52f8ebf362f3"
+    },
+    {
+      "process_wall_ms": 13820.609083000021,
+      "line": "Shader cache miss for SkyShaderRD/9c26bd5dc001c975a8ec36520d74f1e5aa9d8125c8172a160acf52f8ebf362f3/de678811d1bad3cad4892a8db7b6ea0be197d51d"
+    },
+    {
+      "process_wall_ms": 13827.681291000034,
+      "line": "Shader cache miss for SkyShaderRD/9c26bd5dc001c975a8ec36520d74f1e5aa9d8125c8172a160acf52f8ebf362f3/03e3b11c69e24394b2d955a8c0ba85587bb70839"
+    },
+    {
+      "process_wall_ms": 13835.650791000035,
+      "line": "Shader 'VoxelGiShaderRD' (group 0) SHA256: 3d7b0b0258a2977a47dc0a84db7cb49a5e1bfaa74053e42ffae7d3e87d48965f"
+    },
+    {
+      "process_wall_ms": 13835.721165999985,
+      "line": "Shader cache miss for VoxelGiShaderRD/3d7b0b0258a2977a47dc0a84db7cb49a5e1bfaa74053e42ffae7d3e87d48965f/087916079fba7c625e62b0c2cca570e0fb87c99a"
+    },
+    {
+      "process_wall_ms": 14511.711332999994,
+      "line": "Shader 'VoxelGiDebugShaderRD' (group 0) SHA256: 49ee1e463ded1be1341dc6ee222f492cd9f8484aabe4cf39ca46f519abecbb6c"
+    },
+    {
+      "process_wall_ms": 14511.988625000015,
+      "line": "Shader cache miss for VoxelGiDebugShaderRD/49ee1e463ded1be1341dc6ee222f492cd9f8484aabe4cf39ca46f519abecbb6c/087916079fba7c625e62b0c2cca570e0fb87c99a"
+    },
+    {
+      "process_wall_ms": 14515.654041000005,
+      "line": "Shader 'SdfgiPreprocessShaderRD' (group 0) SHA256: 60c77a38319fd7cc123270bcc0dfbdddd8f74e985d1907c08c726e3d4dbf7b06"
+    },
+    {
+      "process_wall_ms": 14515.766750000012,
+      "line": "Shader cache miss for SdfgiPreprocessShaderRD/60c77a38319fd7cc123270bcc0dfbdddd8f74e985d1907c08c726e3d4dbf7b06/087916079fba7c625e62b0c2cca570e0fb87c99a"
+    },
+    {
+      "process_wall_ms": 15466.047457999992,
+      "line": "Shader 'SdfgiDirectLightShaderRD' (group 0) SHA256: a3474a0b60ebab5bb7010596e49cfb91bbfc3689c4df741b809ddc92e1fa90e9"
+    },
+    {
+      "process_wall_ms": 15466.179457999999,
+      "line": "Shader cache miss for SdfgiDirectLightShaderRD/a3474a0b60ebab5bb7010596e49cfb91bbfc3689c4df741b809ddc92e1fa90e9/087916079fba7c625e62b0c2cca570e0fb87c99a"
+    },
+    {
+      "process_wall_ms": 15772.914333000017,
+      "line": "Shader 'SdfgiIntegrateShaderRD' (group 0) SHA256: 62e2ae895bf90996b40c48aeab6a59c24d27c6c843ef9ee94adf3f6de80b26ac"
+    },
+    {
+      "process_wall_ms": 15772.963750000032,
+      "line": "Shader cache miss for SdfgiIntegrateShaderRD/62e2ae895bf90996b40c48aeab6a59c24d27c6c843ef9ee94adf3f6de80b26ac/087916079fba7c625e62b0c2cca570e0fb87c99a"
+    },
+    {
+      "process_wall_ms": 16455.501958000015,
+      "line": "Shader 'GiShaderRD' (group 0) SHA256: e4e3882307beba471cbf1d2ebf8ca49fedccbba528ef384e7d1e2461d14a71f0"
+    },
+    {
+      "process_wall_ms": 16455.76299999999,
+      "line": "Shader 'GiShaderRD' (group 1) SHA256: 69ca96412569cbef4a05e515b55b5744ab10048a32a6d2fef2a7c2ad984c9155"
+    },
+    {
+      "process_wall_ms": 16455.896208000013,
+      "line": "Shader cache miss for GiShaderRD/e4e3882307beba471cbf1d2ebf8ca49fedccbba528ef384e7d1e2461d14a71f0/087916079fba7c625e62b0c2cca570e0fb87c99a"
+    },
+    {
+      "process_wall_ms": 20404.36433299999,
+      "line": "Shader 'SdfgiDebugShaderRD' (group 0) SHA256: 6de37bb5aa871af3d348d47b0cbfc09f6873bf5a2500f0cf9280e404ff4ce97b"
+    },
+    {
+      "process_wall_ms": 20404.54758300001,
+      "line": "Shader cache miss for SdfgiDebugShaderRD/6de37bb5aa871af3d348d47b0cbfc09f6873bf5a2500f0cf9280e404ff4ce97b/087916079fba7c625e62b0c2cca570e0fb87c99a"
+    },
+    {
+      "process_wall_ms": 20605.345333,
+      "line": "Shader 'SdfgiDebugProbesShaderRD' (group 0) SHA256: c25d7a81827da688487a69637d3e61ae9f31c125940f4fbf05b6de4a2c1e78a9"
+    },
+    {
+      "process_wall_ms": 20605.372458000034,
+      "line": "Shader cache miss for SdfgiDebugProbesShaderRD/c25d7a81827da688487a69637d3e61ae9f31c125940f4fbf05b6de4a2c1e78a9/087916079fba7c625e62b0c2cca570e0fb87c99a"
+    },
+    {
+      "process_wall_ms": 20614.869250000025,
+      "line": "Shader 'VolumetricFogShaderRD' (group 0) SHA256: 6120947dc0a3cd4bff5b217e63490686b128f0319aabd6f96d597268f68d60e3"
+    },
+    {
+      "process_wall_ms": 20614.895165999995,
+      "line": "Shader 'VolumetricFogShaderRD' (group 1) SHA256: f44655a2103d6cb3b1d0a206e66c4427aca3de3b5de59f72bf7e08db5144f83c"
+    },
+    {
+      "process_wall_ms": 20614.90087499999,
+      "line": "Shader 'VolumetricFogShaderRD' (group 2) SHA256: 963b90021bd602c144aa8f80b75ecdf64c2abe48940f55cf2f25f2deda808186"
+    },
+    {
+      "process_wall_ms": 20614.904707999984,
+      "line": "Shader 'VolumetricFogShaderRD' (group 3) SHA256: 5929600387c20b3c1eead45ba7f6c87fde922e0e4f78f80366f58cdfb10e63f7"
+    },
+    {
+      "process_wall_ms": 20614.908875000026,
+      "line": "Shader cache miss for VolumetricFogShaderRD/f44655a2103d6cb3b1d0a206e66c4427aca3de3b5de59f72bf7e08db5144f83c/9a227745af2d65830f930370a9fbba551fbd6f60"
+    },
+    {
+      "process_wall_ms": 20712.228665999988,
+      "line": "Shader 'VolumetricFogProcessShaderRD' (group 0) SHA256: 2749f17fe5049db6df987d401e0fb5a52692635224ca129e06c3d6e15dd2dc29"
+    },
+    {
+      "process_wall_ms": 20712.25050000004,
+      "line": "Shader 'VolumetricFogProcessShaderRD' (group 1) SHA256: 8333ba62fcdf5c0ffe915641fe9faa88286844b2bb245d94b41eb48eca8e881d"
+    },
+    {
+      "process_wall_ms": 20712.256958000013,
+      "line": "Shader 'VolumetricFogProcessShaderRD' (group 2) SHA256: 6b05211651f14a1593c8b3be3b5932c64a3beba37ce1e1649b4ea67ac36d3c47"
+    },
+    {
+      "process_wall_ms": 20712.26150000001,
+      "line": "Shader 'VolumetricFogProcessShaderRD' (group 3) SHA256: 14fbd4a37cc30a2991dbfa525da8e6182def041c1eeaa20638fb2597e98f3c52"
+    },
+    {
+      "process_wall_ms": 20712.26658300003,
+      "line": "Shader cache miss for VolumetricFogProcessShaderRD/8333ba62fcdf5c0ffe915641fe9faa88286844b2bb245d94b41eb48eca8e881d/087916079fba7c625e62b0c2cca570e0fb87c99a"
+    },
+    {
+      "process_wall_ms": 21921.82604100003,
+      "line": "Shader 'BokehDofShaderRD' (group 0) SHA256: 5a14c722b7cad6a5d1853b764825b687b8e8c26d08a7edef6f50a28c2a237b9c"
+    },
+    {
+      "process_wall_ms": 21921.866125000008,
+      "line": "Shader cache miss for BokehDofShaderRD/5a14c722b7cad6a5d1853b764825b687b8e8c26d08a7edef6f50a28c2a237b9c/087916079fba7c625e62b0c2cca570e0fb87c99a"
+    },
+    {
+      "process_wall_ms": 22351.458458000023,
+      "line": "Shader 'CopyShaderRD' (group 0) SHA256: 363226e4e754f4dd97b1000777a12a1e717a0202ef34a8bb5cbbee343880d1a3"
+    },
+    {
+      "process_wall_ms": 22351.505833000032,
+      "line": "Shader cache miss for CopyShaderRD/363226e4e754f4dd97b1000777a12a1e717a0202ef34a8bb5cbbee343880d1a3/087916079fba7c625e62b0c2cca570e0fb87c99a"
+    },
+    {
+      "process_wall_ms": 23305.436625000028,
+      "line": "Shader 'CopyToFbShaderRD' (group 0) SHA256: 0adebb67e6205ddab89bef68d0541718044b8408d301ef90fcc572ab1f1dc3c1"
+    },
+    {
+      "process_wall_ms": 23305.67208299999,
+      "line": "Shader cache miss for CopyToFbShaderRD/0adebb67e6205ddab89bef68d0541718044b8408d301ef90fcc572ab1f1dc3c1/087916079fba7c625e62b0c2cca570e0fb87c99a"
+    },
+    {
+      "process_wall_ms": 23310.096291000038,
+      "line": "Shader 'CubeToDpShaderRD' (group 0) SHA256: f3ba78a7ce282686c1bace415c6d4852f8b5df07fd90aff0139030354b9c53e6"
+    },
+    {
+      "process_wall_ms": 23310.213165999983,
+      "line": "Shader cache miss for CubeToDpShaderRD/f3ba78a7ce282686c1bace415c6d4852f8b5df07fd90aff0139030354b9c53e6/087916079fba7c625e62b0c2cca570e0fb87c99a"
+    },
+    {
+      "process_wall_ms": 23312.26933300002,
+      "line": "Shader 'CubemapDownsamplerShaderRD' (group 0) SHA256: 831be8c39044041b2e1da3b55ee6c2d5d5242c0c11326369eda23b7ae42ee04c"
+    },
+    {
+      "process_wall_ms": 23312.36070800003,
+      "line": "Shader cache miss for CubemapDownsamplerShaderRD/831be8c39044041b2e1da3b55ee6c2d5d5242c0c11326369eda23b7ae42ee04c/087916079fba7c625e62b0c2cca570e0fb87c99a"
+    },
+    {
+      "process_wall_ms": 23403.056832999995,
+      "line": "Shader 'CubemapFilterShaderRD' (group 0) SHA256: 73d1b21cf27dc843bbcc28dc35d902623419ae7f0c17dba1d9c725d82959f576"
+    },
+    {
+      "process_wall_ms": 23403.149291000034,
+      "line": "Shader cache miss for CubemapFilterShaderRD/73d1b21cf27dc843bbcc28dc35d902623419ae7f0c17dba1d9c725d82959f576/087916079fba7c625e62b0c2cca570e0fb87c99a"
+    },
+    {
+      "process_wall_ms": 23729.863833000025,
+      "line": "Shader 'CubemapRoughnessShaderRD' (group 0) SHA256: bb92ea060a11d89f9121ad84bf077cdf954f39a59c3cc78038611f19f3d94533"
+    },
+    {
+      "process_wall_ms": 23729.957000000013,
+      "line": "Shader cache miss for CubemapRoughnessShaderRD/bb92ea060a11d89f9121ad84bf077cdf954f39a59c3cc78038611f19f3d94533/087916079fba7c625e62b0c2cca570e0fb87c99a"
+    },
+    {
+      "process_wall_ms": 23837.961915999982,
+      "line": "Shader 'SpecularMergeShaderRD' (group 0) SHA256: 99444119f03d2c92d5ab325e0fa261255c819d4cb4b019c0eaa369b2d0383a8f"
+    },
+    {
+      "process_wall_ms": 23837.98337500002,
+      "line": "Shader cache miss for SpecularMergeShaderRD/99444119f03d2c92d5ab325e0fa261255c819d4cb4b019c0eaa369b2d0383a8f/087916079fba7c625e62b0c2cca570e0fb87c99a"
+    },
+    {
+      "process_wall_ms": 23843.496166000023,
+      "line": "Shader 'ShadowFrustumShaderRD' (group 0) SHA256: 851c9007fbee11476e65c3cbb595c7113c7e98676c38d49b88056bdb1eb5904b"
+    },
+    {
+      "process_wall_ms": 23843.632333000016,
+      "line": "Shader cache miss for ShadowFrustumShaderRD/851c9007fbee11476e65c3cbb595c7113c7e98676c38d49b88056bdb1eb5904b/087916079fba7c625e62b0c2cca570e0fb87c99a"
+    },
+    {
+      "process_wall_ms": 23847.270707999996,
+      "line": "Shader 'MotionVectorsShaderRD' (group 0) SHA256: e9ac9ae0667a399f458196d55204937c545356cd64ba755844d9c9943cffdc55"
+    },
+    {
+      "process_wall_ms": 23847.427874999994,
+      "line": "Shader cache miss for MotionVectorsShaderRD/e9ac9ae0667a399f458196d55204937c545356cd64ba755844d9c9943cffdc55/087916079fba7c625e62b0c2cca570e0fb87c99a"
+    },
+    {
+      "process_wall_ms": 23850.824665999993,
+      "line": "Shader 'LuminanceReduceShaderRD' (group 0) SHA256: 62fd065f2a03f76e82ff0efdd729b029811828e67b3dc62b0dd4c1b2a8eb2c23"
+    },
+    {
+      "process_wall_ms": 23851.126791000013,
+      "line": "Shader cache miss for LuminanceReduceShaderRD/62fd065f2a03f76e82ff0efdd729b029811828e67b3dc62b0dd4c1b2a8eb2c23/087916079fba7c625e62b0c2cca570e0fb87c99a"
+    },
+    {
+      "process_wall_ms": 24245.59558300001,
+      "line": "Shader 'SmaaEdgeDetectionShaderRD' (group 0) SHA256: e4c623cbbd80f252ca1afe76f478a818c89eb124cff6ca285865b0ba733f1f07"
+    },
+    {
+      "process_wall_ms": 24245.721041000026,
+      "line": "Shader cache miss for SmaaEdgeDetectionShaderRD/e4c623cbbd80f252ca1afe76f478a818c89eb124cff6ca285865b0ba733f1f07/087916079fba7c625e62b0c2cca570e0fb87c99a"
+    },
+    {
+      "process_wall_ms": 24248.032000000025,
+      "line": "Shader 'SmaaWeightCalculationShaderRD' (group 0) SHA256: 604beebafad6f83aaaead58113c3a3e5b0ed7a7c5605fd197dd952e3821b5878"
+    },
+    {
+      "process_wall_ms": 24248.094916000013,
+      "line": "Shader cache miss for SmaaWeightCalculationShaderRD/604beebafad6f83aaaead58113c3a3e5b0ed7a7c5605fd197dd952e3821b5878/087916079fba7c625e62b0c2cca570e0fb87c99a"
+    },
+    {
+      "process_wall_ms": 24252.360041000033,
+      "line": "Shader 'SmaaBlendingShaderRD' (group 0) SHA256: 9f3b4dcf01e8d340348bba93235fb3c9c13964b1e1bd23e7d59891cc9748a71c"
+    },
+    {
+      "process_wall_ms": 24252.409290999993,
+      "line": "Shader cache miss for SmaaBlendingShaderRD/9f3b4dcf01e8d340348bba93235fb3c9c13964b1e1bd23e7d59891cc9748a71c/087916079fba7c625e62b0c2cca570e0fb87c99a"
+    },
+    {
+      "process_wall_ms": 24303.589416000024,
+      "line": "Shader 'TonemapShaderRD' (group 0) SHA256: 06d49e3e1e33f4e3f9069e4df65b734ffc54e7ad36b2b03be9c40766a30f7576"
+    },
+    {
+      "process_wall_ms": 24303.679291000037,
+      "line": "Shader cache miss for TonemapShaderRD/06d49e3e1e33f4e3f9069e4df65b734ffc54e7ad36b2b03be9c40766a30f7576/087916079fba7c625e62b0c2cca570e0fb87c99a"
+    },
+    {
+      "process_wall_ms": 24320.797583,
+      "line": "Shader 'FsrUpscaleShaderRD' (group 0) SHA256: 0715ca028e84f0a9b6f91a4ac308d37a5c185438f466e254fac8b7377dc10759"
+    },
+    {
+      "process_wall_ms": 24320.872957999996,
+      "line": "Shader cache miss for FsrUpscaleShaderRD/0715ca028e84f0a9b6f91a4ac308d37a5c185438f466e254fac8b7377dc10759/087916079fba7c625e62b0c2cca570e0fb87c99a"
+    },
+    {
+      "process_wall_ms": 24617.629375000037,
+      "line": "Shader 'BlitShaderRD' (group 0) SHA256: 25c59c709fcd7c8e69780f3edeaebc055b68c06b660c69bb43d8246614325591"
+    },
+    {
+      "process_wall_ms": 24617.749790999995,
+      "line": "Shader cache miss for BlitShaderRD/25c59c709fcd7c8e69780f3edeaebc055b68c06b660c69bb43d8246614325591/087916079fba7c625e62b0c2cca570e0fb87c99a"
+    },
+    {
+      "process_wall_ms": 24821.79987500001,
+      "line": ""
+    },
+    {
+      "process_wall_ms": 24850.172332999988,
+      "line": "[mvk-info] Created 3 swapchain images with size (960, 540) and contents scale 1.0 in layer CAMetalLayer: GodotContentView (0x853a27600) on screen Apple Virtual."
+    },
+    {
+      "process_wall_ms": 24868.047665999995,
+      "line": "TextServer: Primary interface set to: \"ICU / HarfBuzz / Graphite (Built-in)\"."
+    },
+    {
+      "process_wall_ms": 24960.44162499999,
+      "line": "CORE API HASH: 937899573"
+    },
+    {
+      "process_wall_ms": 24961.486165999988,
+      "line": "EDITOR API HASH: 1777164193"
+    },
+    {
+      "process_wall_ms": 24963.31200000003,
+      "line": "Loading resource: res://scripts/diagnostics/startup_probe.gd"
+    },
+    {
+      "process_wall_ms": 24974.70666600003,
+      "line": "SceneTreeFTI: traversal method DEFAULT"
+    },
+    {
+      "process_wall_ms": 25119.488916000024,
+      "line": "Loaded system CA certificates"
+    },
+    {
+      "process_wall_ms": 25119.577583000024,
+      "line": "[startup] {\"nodes\":0.0,\"phase\":\"script_initialized\",\"static_bytes\":41933479,\"texture_bytes\":0.0,\"ticks_ms\":24480}"
+    },
+    {
+      "process_wall_ms": 25662.890875000016,
+      "line": "[startup] {\"nodes\":1.0,\"phase\":\"load_begin\",\"static_bytes\":41940639,\"texture_bytes\":0.0,\"ticks_ms\":25023}"
+    },
+    {
+      "process_wall_ms": 25662.939125000037,
+      "line": "Loading resource: res://scenes/missions/harlow_escape.tscn"
+    },
+    {
+      "process_wall_ms": 25664.85908300001,
+      "line": "Loading resource: res://scenes/main/main.tscn"
+    },
+    {
+      "process_wall_ms": 25683.66179100002,
+      "line": "Loading resource: res://scripts/main/game.gd"
+    },
+    {
+      "process_wall_ms": 25780.587875000037,
+      "line": "Loading resource: res://resources/fog/standard.tres"
+    },
+    {
+      "process_wall_ms": 25780.859915999998,
+      "line": "Loading resource: res://scripts/fog/fog_config.gd"
+    },
+    {
+      "process_wall_ms": 25794.37475000003,
+      "line": "Loading resource: res://resources/journey/escape_fog.tres"
+    },
+    {
+      "process_wall_ms": 25827.70716600004,
+      "line": "Loading resource: res://resources/materials/platform_concrete.tres"
+    },
+    {
+      "process_wall_ms": 25827.85291599998,
+      "line": "Loading resource: res://assets/pbr/concrete_floor_worn_001_albedo.jpg"
+    },
+    {
+      "process_wall_ms": 25828.49083299999,
+      "line": "Loading resource: res://.godot/imported/concrete_floor_worn_001_albedo.jpg-3f77a254960a3cb272a82f8934c9d09b.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 25835.689750000027,
+      "line": "Loading resource: res://assets/pbr/concrete_floor_worn_001_normal.jpg"
+    },
+    {
+      "process_wall_ms": 25836.225000000013,
+      "line": "Loading resource: res://.godot/imported/concrete_floor_worn_001_normal.jpg-cb84dc9415e5f570bb309a539606a9f2.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 25843.777999999988,
+      "line": "Loading resource: res://assets/pbr/concrete_floor_worn_001_roughness.jpg"
+    },
+    {
+      "process_wall_ms": 25844.14650000002,
+      "line": "Loading resource: res://.godot/imported/concrete_floor_worn_001_roughness.jpg-ea220afa850f9a98e1d77917eba0026f.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 25849.662749999992,
+      "line": "Loading resource: res://resources/materials/ground_asphalt.tres"
+    },
+    {
+      "process_wall_ms": 25849.78404100002,
+      "line": "Loading resource: res://assets/pbr/asphalt_02_albedo.jpg"
+    },
+    {
+      "process_wall_ms": 25850.614250000035,
+      "line": "Loading resource: res://.godot/imported/asphalt_02_albedo.jpg-f6d3596155d4884cf4340198fd0459d4.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 25855.20274999999,
+      "line": "Loading resource: res://assets/pbr/asphalt_02_normal.jpg"
+    },
+    {
+      "process_wall_ms": 25855.609791000006,
+      "line": "Loading resource: res://.godot/imported/asphalt_02_normal.jpg-670e1d2471d602e2cbd85652912ba73d.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 25860.127707999993,
+      "line": "Loading resource: res://assets/pbr/asphalt_02_roughness.jpg"
+    },
+    {
+      "process_wall_ms": 25860.440708,
+      "line": "Loading resource: res://.godot/imported/asphalt_02_roughness.jpg-08aef1060e6a3b8e048751dd60442fc9.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 25866.026707999994,
+      "line": "Loading resource: res://resources/materials/ballast.tres"
+    },
+    {
+      "process_wall_ms": 25866.135708,
+      "line": "Loading resource: res://assets/pbr/gravel_stones_albedo.jpg"
+    },
+    {
+      "process_wall_ms": 25866.464915999983,
+      "line": "Loading resource: res://.godot/imported/gravel_stones_albedo.jpg-851ca137bc08161a3bb81e5e2fab0a89.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 25870.43775000001,
+      "line": "Loading resource: res://assets/pbr/gravel_stones_normal.jpg"
+    },
+    {
+      "process_wall_ms": 25871.064750000016,
+      "line": "Loading resource: res://.godot/imported/gravel_stones_normal.jpg-3146b4b1dae931f563abebefb199fa04.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 25875.50083299999,
+      "line": "Loading resource: res://assets/pbr/gravel_stones_roughness.jpg"
+    },
+    {
+      "process_wall_ms": 25875.816332999988,
+      "line": "Loading resource: res://.godot/imported/gravel_stones_roughness.jpg-42e92b79088e4313c177b6c8465fc954.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 25882.977583000014,
+      "line": "Loading resource: res://resources/materials/train_body.tres"
+    },
+    {
+      "process_wall_ms": 25883.29550000003,
+      "line": "Loading resource: res://assets/pbr/green_metal_rust_albedo.jpg"
+    },
+    {
+      "process_wall_ms": 25883.81479100002,
+      "line": "Loading resource: res://.godot/imported/green_metal_rust_albedo.jpg-f7fa696810f2b2f5cdcf32ac1f910655.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 25889.115583000035,
+      "line": "Loading resource: res://assets/pbr/green_metal_rust_normal.jpg"
+    },
+    {
+      "process_wall_ms": 25889.446666000025,
+      "line": "Loading resource: res://.godot/imported/green_metal_rust_normal.jpg-b400b461e9e772e9dd46795811b3164b.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 25893.68266600002,
+      "line": "Loading resource: res://assets/pbr/green_metal_rust_roughness.jpg"
+    },
+    {
+      "process_wall_ms": 25894.046375000016,
+      "line": "Loading resource: res://.godot/imported/green_metal_rust_roughness.jpg-3a7ecec798ed8c1a7ae75a9f071e4105.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 25905.75395799999,
+      "line": "Loading resource: res://assets/environment/supply_locker.glb"
+    },
+    {
+      "process_wall_ms": 25905.83970800003,
+      "line": "Loading resource: res://.godot/imported/supply_locker.glb-b68fff4219e057f3ab93fd838d7fd555.scn"
+    },
+    {
+      "process_wall_ms": 25908.53387499999,
+      "line": "Shader cache miss for SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/d5b65da8b54fd78c9941c2c7f18eed94888383af"
+    },
+    {
+      "process_wall_ms": 25992.836375000024,
+      "line": "Loading resource: res://assets/environment/supply_toolbox.glb"
+    },
+    {
+      "process_wall_ms": 25992.857166000023,
+      "line": "Loading resource: res://.godot/imported/supply_toolbox.glb-3cf2c8f288e4aaf0fa25724a1fda0db4.scn"
+    },
+    {
+      "process_wall_ms": 25995.829041000037,
+      "line": "Loading resource: res://assets/environment/medical_cabinet.glb"
+    },
+    {
+      "process_wall_ms": 25995.92787500001,
+      "line": "Loading resource: res://.godot/imported/medical_cabinet.glb-4a53fd910df944b0a36d96b973ff9bab.scn"
+    },
+    {
+      "process_wall_ms": 26039.17116600002,
+      "line": "Loading resource: res://assets/models/beveled_box.glb"
+    },
+    {
+      "process_wall_ms": 26039.31045799999,
+      "line": "Loading resource: res://.godot/imported/beveled_box.glb-32d35ef390ef2c8d388795260e360acd.scn"
+    },
+    {
+      "process_wall_ms": 26072.790166000006,
+      "line": "Loading resource: res://assets/props/wooden_crate_01.glb"
+    },
+    {
+      "process_wall_ms": 26073.00058300001,
+      "line": "Loading resource: res://.godot/imported/wooden_crate_01.glb-8c7be117d67679c9f8c80d9064935aae.scn"
+    },
+    {
+      "process_wall_ms": 26073.880374999986,
+      "line": "Loading resource: res://assets/props/wooden_crate_01_wooden_crate_01_diff_1k.jpg"
+    },
+    {
+      "process_wall_ms": 26074.700208000024,
+      "line": "Loading resource: res://.godot/imported/wooden_crate_01_wooden_crate_01_diff_1k.jpg-6bda0aa10f1569fbbab2a37a603f1d34.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 26102.714290999982,
+      "line": "Loading resource: res://assets/props/wooden_crate_01_wooden_crate_01_arm_1k.jpg"
+    },
+    {
+      "process_wall_ms": 26103.461332999985,
+      "line": "Loading resource: res://.godot/imported/wooden_crate_01_wooden_crate_01_arm_1k.jpg-de7db153f24a1849d0223dd6d65eb930.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 26107.87691600001,
+      "line": "Loading resource: res://assets/props/wooden_crate_01_wooden_crate_01_nor_gl_1k.jpg"
+    },
+    {
+      "process_wall_ms": 26108.323083000018,
+      "line": "Loading resource: res://.godot/imported/wooden_crate_01_wooden_crate_01_nor_gl_1k.jpg-ea644931ddaa013e8be91ccba7d1f202.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 26118.232000000033,
+      "line": "Shader cache miss for SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/f407568d0ae46b5742ff6f47048d32bfa75efa00"
+    },
+    {
+      "process_wall_ms": 27291.57429100002,
+      "line": "Loading resource: res://assets/props/wooden_military_crate.glb"
+    },
+    {
+      "process_wall_ms": 27291.748499999983,
+      "line": "Loading resource: res://.godot/imported/wooden_military_crate.glb-f19f6db0a7b6c97e256ce27aa7242a1d.scn"
+    },
+    {
+      "process_wall_ms": 27292.479458,
+      "line": "Loading resource: res://assets/props/wooden_military_crate_wooden_military_crate_diff_1k.jpg"
+    },
+    {
+      "process_wall_ms": 27293.240707999983,
+      "line": "Loading resource: res://.godot/imported/wooden_military_crate_wooden_military_crate_diff_1k.jpg-d66c71456a5409af0248c86650f8b01c.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 27297.947749999992,
+      "line": "Loading resource: res://assets/props/wooden_military_crate_wooden_military_crate_arm_1k.jpg"
+    },
+    {
+      "process_wall_ms": 27298.25433299999,
+      "line": "Loading resource: res://.godot/imported/wooden_military_crate_wooden_military_crate_arm_1k.jpg-5485b42ad6e285d4b01b1fc133a1165c.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 27303.40504100002,
+      "line": "Loading resource: res://assets/props/wooden_military_crate_wooden_military_crate_nor_gl_1k.jpg"
+    },
+    {
+      "process_wall_ms": 27303.96483300001,
+      "line": "Loading resource: res://.godot/imported/wooden_military_crate_wooden_military_crate_nor_gl_1k.jpg-8c1ba0535dcef4fe09ed294bad436a8b.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 27312.600540999996,
+      "line": "Loading resource: res://assets/props/worn_metal_rack.glb"
+    },
+    {
+      "process_wall_ms": 27312.662999999986,
+      "line": "Loading resource: res://.godot/imported/worn_metal_rack.glb-8a9629f4c3c31a2c09b9ab6db4ea6bfe.scn"
+    },
+    {
+      "process_wall_ms": 27313.308500000006,
+      "line": "Loading resource: res://assets/props/worn_metal_rack_worn_metal_rack_diff_1k.jpg"
+    },
+    {
+      "process_wall_ms": 27314.03241600003,
+      "line": "Loading resource: res://.godot/imported/worn_metal_rack_worn_metal_rack_diff_1k.jpg-fb6b987774029e8c2e14dfb4ec3d07e7.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 27317.72212499999,
+      "line": "Loading resource: res://assets/props/worn_metal_rack_worn_metal_rack_arm_1k.jpg"
+    },
+    {
+      "process_wall_ms": 27318.023665999986,
+      "line": "Loading resource: res://.godot/imported/worn_metal_rack_worn_metal_rack_arm_1k.jpg-455e9fad23c6856945a7d5cd91e82ba1.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 27323.499500000027,
+      "line": "Loading resource: res://assets/props/worn_metal_rack_worn_metal_rack_nor_gl_1k.jpg"
+    },
+    {
+      "process_wall_ms": 27323.854583000015,
+      "line": "Loading resource: res://.godot/imported/worn_metal_rack_worn_metal_rack_nor_gl_1k.jpg-5fa65802117abb1b9cfe28655182796a.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 27334.32691600001,
+      "line": "Loading resource: res://assets/props/steel_frame_shelves_02.glb"
+    },
+    {
+      "process_wall_ms": 27334.55858299999,
+      "line": "Loading resource: res://.godot/imported/steel_frame_shelves_02.glb-a0162c248bd3a4980f6a6d3f823cd6ee.scn"
+    },
+    {
+      "process_wall_ms": 27335.24779100003,
+      "line": "Loading resource: res://assets/props/steel_frame_shelves_02_steel_frame_shelves_02_diff_1k.jpg"
+    },
+    {
+      "process_wall_ms": 27335.596208000028,
+      "line": "Loading resource: res://.godot/imported/steel_frame_shelves_02_steel_frame_shelves_02_diff_1k.jpg-a7bfb8a5bb9a8489a209680b59309670.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 27379.41225000003,
+      "line": "Loading resource: res://assets/props/steel_frame_shelves_02_steel_frame_shelves_02_arm_1k.jpg"
+    },
+    {
+      "process_wall_ms": 27380.005125000025,
+      "line": "Loading resource: res://.godot/imported/steel_frame_shelves_02_steel_frame_shelves_02_arm_1k.jpg-dbfcf9779d6e97ccf23f793a17dc4248.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 27384.85345800001,
+      "line": "Loading resource: res://assets/props/steel_frame_shelves_02_steel_frame_shelves_02_nor_gl_1k.jpg"
+    },
+    {
+      "process_wall_ms": 27385.48754100003,
+      "line": "Loading resource: res://.godot/imported/steel_frame_shelves_02_steel_frame_shelves_02_nor_gl_1k.jpg-d340392f314e63b21d875f090f4cc39b.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 27394.314166000015,
+      "line": "Loading resource: res://assets/props/Barrel_02.glb"
+    },
+    {
+      "process_wall_ms": 27394.408375000014,
+      "line": "Loading resource: res://.godot/imported/Barrel_02.glb-fab46f08e09adfacf8662a64b474f26f.scn"
+    },
+    {
+      "process_wall_ms": 27394.82566600003,
+      "line": "Loading resource: res://assets/props/Barrel_02_Barrel_02_diff_1k.jpg"
+    },
+    {
+      "process_wall_ms": 27395.280291000006,
+      "line": "Loading resource: res://.godot/imported/Barrel_02_Barrel_02_diff_1k.jpg-86e26564195316561e1fad0564c0b9d6.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 27400.727500000015,
+      "line": "Loading resource: res://assets/props/Barrel_02_Barrel_02_arm_1k.jpg"
+    },
+    {
+      "process_wall_ms": 27401.359291000004,
+      "line": "Loading resource: res://.godot/imported/Barrel_02_Barrel_02_arm_1k.jpg-a7e4bb160ac45a220e810bac0edb07b1.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 27405.337666000036,
+      "line": "Loading resource: res://assets/props/Barrel_02_Barrel_02_nor_gl_1k.jpg"
+    },
+    {
+      "process_wall_ms": 27406.033125000024,
+      "line": "Loading resource: res://.godot/imported/Barrel_02_Barrel_02_nor_gl_1k.jpg-dd8dcd1d131052ec9edc8ec5a25bc8e8.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 27417.083916000025,
+      "line": "Loading resource: res://assets/props/vintage_suitcase.glb"
+    },
+    {
+      "process_wall_ms": 27417.327333,
+      "line": "Loading resource: res://.godot/imported/vintage_suitcase.glb-0786858f74589bb18f60531ee70a703e.scn"
+    },
+    {
+      "process_wall_ms": 27418.04324999998,
+      "line": "Loading resource: res://assets/props/vintage_suitcase_vintage_suitcase_01_diff_1k.jpg"
+    },
+    {
+      "process_wall_ms": 27418.52325000002,
+      "line": "Loading resource: res://.godot/imported/vintage_suitcase_vintage_suitcase_01_diff_1k.jpg-602f48069b4dc14aabb8219d6350404e.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 27429.539000000033,
+      "line": "Loading resource: res://assets/props/vintage_suitcase_vintage_suitcase_01_arm_1k.jpg"
+    },
+    {
+      "process_wall_ms": 27429.890833,
+      "line": "Loading resource: res://.godot/imported/vintage_suitcase_vintage_suitcase_01_arm_1k.jpg-c1b59dc48d48d74e213579532378106b.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 27434.40908299999,
+      "line": "Loading resource: res://assets/props/vintage_suitcase_vintage_suitcase_01_nor_gl_1k.jpg"
+    },
+    {
+      "process_wall_ms": 27435.155457999997,
+      "line": "Loading resource: res://.godot/imported/vintage_suitcase_vintage_suitcase_01_nor_gl_1k.jpg-fe80858bc622e1e76c83f906884b34f8.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 27444.97741600003,
+      "line": "Loading resource: res://assets/props/drill_press_01.glb"
+    },
+    {
+      "process_wall_ms": 27444.99620800002,
+      "line": "Loading resource: res://.godot/imported/drill_press_01.glb-712c4ed955e7d0f20ada7d9adeae6fc2.scn"
+    },
+    {
+      "process_wall_ms": 27445.947708000007,
+      "line": "Loading resource: res://assets/props/drill_press_01_drill_press_01_diff_1k.jpg"
+    },
+    {
+      "process_wall_ms": 27446.605165999983,
+      "line": "Loading resource: res://.godot/imported/drill_press_01_drill_press_01_diff_1k.jpg-97a37abd081cb39ebb8892d12970a2fd.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 27451.283541000008,
+      "line": "Loading resource: res://assets/props/drill_press_01_drill_press_01_arm_1k.jpg"
+    },
+    {
+      "process_wall_ms": 27451.53316599999,
+      "line": "Loading resource: res://.godot/imported/drill_press_01_drill_press_01_arm_1k.jpg-82765b5cb247cfd5ba3ca6bb33cd2696.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 27457.251250000012,
+      "line": "Loading resource: res://assets/props/drill_press_01_drill_press_01_nor_gl_1k.jpg"
+    },
+    {
+      "process_wall_ms": 27457.500583000012,
+      "line": "Loading resource: res://.godot/imported/drill_press_01_drill_press_01_nor_gl_1k.jpg-4011620a664561b4e831150ae613df31.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 27469.535791,
+      "line": "Loading resource: res://assets/props/industrial_storage_cart.glb"
+    },
+    {
+      "process_wall_ms": 27469.557082999985,
+      "line": "Loading resource: res://.godot/imported/industrial_storage_cart.glb-5d334953e88a6cc85d495b2fff01e6ca.scn"
+    },
+    {
+      "process_wall_ms": 27469.927125000027,
+      "line": "Loading resource: res://assets/props/industrial_storage_cart_industrial_storage_cart_diff_1k.jpg"
+    },
+    {
+      "process_wall_ms": 27470.64475000002,
+      "line": "Loading resource: res://.godot/imported/industrial_storage_cart_industrial_storage_cart_diff_1k.jpg-578f264126999235e48a7be8203fe27d.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 27476.289915999983,
+      "line": "Loading resource: res://assets/props/industrial_storage_cart_industrial_storage_cart_arm_1k.jpg"
+    },
+    {
+      "process_wall_ms": 27476.931791000028,
+      "line": "Loading resource: res://.godot/imported/industrial_storage_cart_industrial_storage_cart_arm_1k.jpg-650ee150954878dc5fedc37724ae43f6.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 27481.557666000015,
+      "line": "Loading resource: res://assets/props/industrial_storage_cart_industrial_storage_cart_nor_gl_1k.jpg"
+    },
+    {
+      "process_wall_ms": 27481.97670799999,
+      "line": "Loading resource: res://.godot/imported/industrial_storage_cart_industrial_storage_cart_nor_gl_1k.jpg-65b2ef46f86b276b68f8693c53ecd0cc.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 27490.254916000027,
+      "line": "Loading resource: res://assets/props/hand_truck.glb"
+    },
+    {
+      "process_wall_ms": 27490.35787500003,
+      "line": "Loading resource: res://.godot/imported/hand_truck.glb-b1f3f800d0c6f51432cc06b0fa6423f5.scn"
+    },
+    {
+      "process_wall_ms": 27490.954416000022,
+      "line": "Loading resource: res://assets/props/hand_truck_hand_truck_diff_1k.jpg"
+    },
+    {
+      "process_wall_ms": 27491.299083,
+      "line": "Loading resource: res://.godot/imported/hand_truck_hand_truck_diff_1k.jpg-dffa4e766266b03c92734438cd0c93e1.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 27496.117583,
+      "line": "Loading resource: res://assets/props/hand_truck_hand_truck_arm_1k.jpg"
+    },
+    {
+      "process_wall_ms": 27496.335499999986,
+      "line": "Loading resource: res://.godot/imported/hand_truck_hand_truck_arm_1k.jpg-039a502686f09b828b95ee1dadc071f1.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 27502.181957999994,
+      "line": "Loading resource: res://assets/props/hand_truck_hand_truck_nor_gl_1k.jpg"
+    },
+    {
+      "process_wall_ms": 27503.231500000027,
+      "line": "Loading resource: res://.godot/imported/hand_truck_hand_truck_nor_gl_1k.jpg-d08e4e3d31363499512bc63cd15effd7.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 27511.810000000027,
+      "line": "Loading resource: res://assets/props/industrial_caged_sconce.glb"
+    },
+    {
+      "process_wall_ms": 27511.881000000016,
+      "line": "Loading resource: res://.godot/imported/industrial_caged_sconce.glb-1dc4363a69075155e45e051dafd3c998.scn"
+    },
+    {
+      "process_wall_ms": 27512.256207999995,
+      "line": "Loading resource: res://assets/props/industrial_caged_sconce_industrial_caged_sconce_diff_1k.jpg"
+    },
+    {
+      "process_wall_ms": 27512.730833000034,
+      "line": "Loading resource: res://.godot/imported/industrial_caged_sconce_industrial_caged_sconce_diff_1k.jpg-9f4e1a534c350ebd178d315fb42d7721.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 27516.75154100002,
+      "line": "Loading resource: res://assets/props/industrial_caged_sconce_industrial_caged_sconce_arm_1k.jpg"
+    },
+    {
+      "process_wall_ms": 27517.14233300004,
+      "line": "Loading resource: res://.godot/imported/industrial_caged_sconce_industrial_caged_sconce_arm_1k.jpg-0c7b4056e294fe962751b64d962e8375.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 27521.39712500002,
+      "line": "Loading resource: res://assets/props/industrial_caged_sconce_industrial_caged_sconce_emissive_1k.jpg"
+    },
+    {
+      "process_wall_ms": 27522.07900000002,
+      "line": "Loading resource: res://.godot/imported/industrial_caged_sconce_industrial_caged_sconce_emissive_1k.jpg-28751585e504f241cfa3f527dfdadfc2.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 27526.40904100002,
+      "line": "Loading resource: res://assets/props/industrial_caged_sconce_industrial_caged_sconce_nor_gl_1k.jpg"
+    },
+    {
+      "process_wall_ms": 27526.764291000007,
+      "line": "Loading resource: res://.godot/imported/industrial_caged_sconce_industrial_caged_sconce_nor_gl_1k.jpg-c1cae6cfbf6236d946a2a714a366234f.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 27533.257166,
+      "line": "Shader cache miss for SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/61708cad501a5b3e5dd395c03a8dc7469ced5bc6"
+    },
+    {
+      "process_wall_ms": 28765.467,
+      "line": "Loading resource: res://assets/props/caged_hanging_light.glb"
+    },
+    {
+      "process_wall_ms": 28765.77770800003,
+      "line": "Loading resource: res://.godot/imported/caged_hanging_light.glb-3788c40e4209308a6cf06b138b2a200d.scn"
+    },
+    {
+      "process_wall_ms": 28766.867416000026,
+      "line": "Loading resource: res://assets/props/caged_hanging_light_caged_hanging_light_diff_1k.jpg"
+    },
+    {
+      "process_wall_ms": 28767.25691600001,
+      "line": "Loading resource: res://.godot/imported/caged_hanging_light_caged_hanging_light_diff_1k.jpg-7e35d4eb02e81edb6d2b5d10880fcc16.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 28800.02462499999,
+      "line": "Loading resource: res://assets/props/caged_hanging_light_caged_hanging_light_arm_1k.jpg"
+    },
+    {
+      "process_wall_ms": 28800.451457999996,
+      "line": "Loading resource: res://.godot/imported/caged_hanging_light_caged_hanging_light_arm_1k.jpg-360ed07c8c0b765f7cb2f666f7064a82.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 28804.757916000028,
+      "line": "Loading resource: res://assets/props/caged_hanging_light_caged_hanging_light_emissive_1k.jpg"
+    },
+    {
+      "process_wall_ms": 28805.084375000035,
+      "line": "Loading resource: res://.godot/imported/caged_hanging_light_caged_hanging_light_emissive_1k.jpg-f408c55392765d2933381e3af01ff72e.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 28811.485500000003,
+      "line": "Loading resource: res://assets/props/caged_hanging_light_caged_hanging_light_nor_gl_1k.jpg"
+    },
+    {
+      "process_wall_ms": 28811.97658299999,
+      "line": "Loading resource: res://.godot/imported/caged_hanging_light_caged_hanging_light_nor_gl_1k.jpg-2c180d8a98476040b490f6a5d7019815.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 28823.151166000003,
+      "line": "Loading resource: res://assets/props/small_oil_can_01.glb"
+    },
+    {
+      "process_wall_ms": 28823.401458000037,
+      "line": "Loading resource: res://.godot/imported/small_oil_can_01.glb-5d8adb67ffa8eed79c5b1938da4feab9.scn"
+    },
+    {
+      "process_wall_ms": 28824.205750000034,
+      "line": "Loading resource: res://assets/props/small_oil_can_01_small_oil_can_01_diff_1k.jpg"
+    },
+    {
+      "process_wall_ms": 28824.778958000024,
+      "line": "Loading resource: res://.godot/imported/small_oil_can_01_small_oil_can_01_diff_1k.jpg-c0f9f650b7ad355c6f20d4c503645272.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 28832.668541000032,
+      "line": "Loading resource: res://assets/props/small_oil_can_01_small_oil_can_01_arm_1k.jpg"
+    },
+    {
+      "process_wall_ms": 28833.193832999998,
+      "line": "Loading resource: res://.godot/imported/small_oil_can_01_small_oil_can_01_arm_1k.jpg-9950dac339d6a645b3eac8a54e8f9902.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 28838.60312500002,
+      "line": "Loading resource: res://assets/props/small_oil_can_01_small_oil_can_01_nor_gl_1k.jpg"
+    },
+    {
+      "process_wall_ms": 28838.957166,
+      "line": "Loading resource: res://.godot/imported/small_oil_can_01_small_oil_can_01_nor_gl_1k.jpg-fcf77313e15d731890d617b65f41c740.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 28847.490458000037,
+      "line": "Loading resource: res://assets/props/brass_blowtorch.glb"
+    },
+    {
+      "process_wall_ms": 28847.56283299998,
+      "line": "Loading resource: res://.godot/imported/brass_blowtorch.glb-581b53dbd9c1744a5b964196f3f91e99.scn"
+    },
+    {
+      "process_wall_ms": 28848.403625000003,
+      "line": "Loading resource: res://assets/props/brass_blowtorch_brass_blowtorch_diff_1k.jpg"
+    },
+    {
+      "process_wall_ms": 28849.14595800001,
+      "line": "Loading resource: res://.godot/imported/brass_blowtorch_brass_blowtorch_diff_1k.jpg-a813a9ff8cc5cbf8de1cc4a3c29055f6.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 28857.385833000022,
+      "line": "Loading resource: res://assets/props/brass_blowtorch_brass_blowtorch_arm_1k.jpg"
+    },
+    {
+      "process_wall_ms": 28858.261416000005,
+      "line": "Loading resource: res://.godot/imported/brass_blowtorch_brass_blowtorch_arm_1k.jpg-239bfed5de6e6691153934d914b890d0.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 28864.548082999987,
+      "line": "Loading resource: res://assets/props/brass_blowtorch_brass_blowtorch_nor_gl_1k.jpg"
+    },
+    {
+      "process_wall_ms": 28864.95770800002,
+      "line": "Loading resource: res://.godot/imported/brass_blowtorch_brass_blowtorch_nor_gl_1k.jpg-3628ee7399949306cc36389297210a9f.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 28873.474791000037,
+      "line": "Loading resource: res://assets/props/vintage_flashlight.glb"
+    },
+    {
+      "process_wall_ms": 28873.56729100003,
+      "line": "Loading resource: res://.godot/imported/vintage_flashlight.glb-7c234f0662c906660a6e27c345a22a65.scn"
+    },
+    {
+      "process_wall_ms": 28874.435290999998,
+      "line": "Loading resource: res://assets/props/vintage_flashlight_vintage_flashlight_diff_1k.jpg"
+    },
+    {
+      "process_wall_ms": 28875.070999999993,
+      "line": "Loading resource: res://.godot/imported/vintage_flashlight_vintage_flashlight_diff_1k.jpg-57ced1cf9ee02e284745497d92b3c0ca.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 28882.78174999999,
+      "line": "Loading resource: res://assets/props/vintage_flashlight_vintage_flashlight_arm_1k.jpg"
+    },
+    {
+      "process_wall_ms": 28882.95850000003,
+      "line": "Loading resource: res://.godot/imported/vintage_flashlight_vintage_flashlight_arm_1k.jpg-ccf245184d60caa93265ac1b9bdec02c.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 28890.515958000036,
+      "line": "Loading resource: res://assets/props/vintage_flashlight_vintage_flashlight_nor_gl_1k.jpg"
+    },
+    {
+      "process_wall_ms": 28890.934125,
+      "line": "Loading resource: res://.godot/imported/vintage_flashlight_vintage_flashlight_nor_gl_1k.jpg-59d57e619cbb18c17b2eccbe3d1e8330.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 28899.620207999986,
+      "line": "Loading resource: res://assets/props/vintage_flashlight_vintage_flashlight_diff_1k_3.png"
+    },
+    {
+      "process_wall_ms": 28900.443333,
+      "line": "Loading resource: res://.godot/imported/vintage_flashlight_vintage_flashlight_diff_1k_3.png-a9bffd8c935e69a01b19e2dadb0ff9e8.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 28921.72750000003,
+      "line": "Shader cache miss for SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/637e967d17b6f62c0806986fba9b4427add0cf03"
+    },
+    {
+      "process_wall_ms": 28921.75350000002,
+      "line": "Shader cache miss for SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/b1674463de1a81a30c97e621ea8a8dcc583a5446"
+    },
+    {
+      "process_wall_ms": 30272.403,
+      "line": "Loading resource: res://assets/environment/factory_kit.glb"
+    },
+    {
+      "process_wall_ms": 30272.504249999998,
+      "line": "Loading resource: res://.godot/imported/factory_kit.glb-94d8a63c716f7385beeba80db880f42c.scn"
+    },
+    {
+      "process_wall_ms": 30273.395666,
+      "line": "Loading resource: res://assets/environment/factory_kit_modular_factory_facade_windows_diff_2k.png"
+    },
+    {
+      "process_wall_ms": 30273.903415999997,
+      "line": "Loading resource: res://.godot/imported/factory_kit_modular_factory_facade_windows_diff_2k.png-bea3bbae6a9dcfd1f49201e186019727.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 30311.191833000008,
+      "line": "Loading resource: res://assets/environment/factory_kit_modular_factory_facade_windows_arm_2k.jpg"
+    },
+    {
+      "process_wall_ms": 30313.441875000022,
+      "line": "Loading resource: res://.godot/imported/factory_kit_modular_factory_facade_windows_arm_2k.jpg-3b000e78b00ac07539fd0f1b88499798.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 30411.662165999984,
+      "line": "Loading resource: res://assets/environment/factory_kit_modular_factory_facade_windows_nor_gl_2k.jpg"
+    },
+    {
+      "process_wall_ms": 30412.659625000004,
+      "line": "Loading resource: res://.godot/imported/factory_kit_modular_factory_facade_windows_nor_gl_2k.jpg-cfda3fedcde33969200ed699a7ff7db0.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 30437.60529100001,
+      "line": "Loading resource: res://assets/environment/factory_kit_modular_factory_facade_brick_diff_2k.jpg"
+    },
+    {
+      "process_wall_ms": 30438.714208000023,
+      "line": "Loading resource: res://.godot/imported/factory_kit_modular_factory_facade_brick_diff_2k.jpg-67b401927a672cc86548322700763083.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 30465.018750000014,
+      "line": "Loading resource: res://assets/environment/factory_kit_modular_factory_facade_brick_arm_2k.jpg"
+    },
+    {
+      "process_wall_ms": 30466.25612500003,
+      "line": "Loading resource: res://.godot/imported/factory_kit_modular_factory_facade_brick_arm_2k.jpg-f915a7564c1580e0adbf87fe77c0d856.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 30490.299250000022,
+      "line": "Loading resource: res://assets/environment/factory_kit_modular_factory_facade_brick_nor_gl_2k.jpg"
+    },
+    {
+      "process_wall_ms": 30491.06816599999,
+      "line": "Loading resource: res://.godot/imported/factory_kit_modular_factory_facade_brick_nor_gl_2k.jpg-0337208eabc4dad194cdfd0edd6834c5.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 30540.027624999995,
+      "line": "Loading resource: res://assets/environment/factory_kit_modular_factory_facade_windows_diff_2k_6.jpg"
+    },
+    {
+      "process_wall_ms": 30540.604958000018,
+      "line": "Loading resource: res://.godot/imported/factory_kit_modular_factory_facade_windows_diff_2k_6.jpg-96d1afd7a4274cea75ede949b0ab5833.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 30581.564415999994,
+      "line": "Loading resource: res://assets/environment/factory_kit_modular_factory_facade_doors_diff_2k.jpg"
+    },
+    {
+      "process_wall_ms": 30582.412207999994,
+      "line": "Loading resource: res://.godot/imported/factory_kit_modular_factory_facade_doors_diff_2k.jpg-5848fe4a7cd5cc2943757afe1c1d024d.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 30658.287374999985,
+      "line": "Loading resource: res://assets/environment/factory_kit_modular_factory_facade_doors_arm_2k.jpg"
+    },
+    {
+      "process_wall_ms": 30661.124374999985,
+      "line": "Loading resource: res://.godot/imported/factory_kit_modular_factory_facade_doors_arm_2k.jpg-64dd5aed4d48d8d8d8e94ea4756da756.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 30744.583000000035,
+      "line": "Loading resource: res://assets/environment/factory_kit_modular_factory_facade_doors_nor_gl_2k.jpg"
+    },
+    {
+      "process_wall_ms": 30745.22920800001,
+      "line": "Loading resource: res://.godot/imported/factory_kit_modular_factory_facade_doors_nor_gl_2k.jpg-fec05a0380113dd3b9ae6384ccc84588.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 30805.850166000026,
+      "line": "Loading resource: res://assets/environment/factory_kit_modular_factory_facade_garage_diff_2k.jpg"
+    },
+    {
+      "process_wall_ms": 30806.715541000016,
+      "line": "Loading resource: res://.godot/imported/factory_kit_modular_factory_facade_garage_diff_2k.jpg-6a721aa4e1fa82ded225f7310490e8e4.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 30838.44779100002,
+      "line": "Loading resource: res://assets/environment/factory_kit_modular_factory_facade_garage_arm_2k.jpg"
+    },
+    {
+      "process_wall_ms": 30839.18716599999,
+      "line": "Loading resource: res://.godot/imported/factory_kit_modular_factory_facade_garage_arm_2k.jpg-6d51189cb1fe3c93b08afa07d18559ef.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 30869.847125000037,
+      "line": "Loading resource: res://assets/environment/factory_kit_modular_factory_facade_garage_nor_gl_2k.jpg"
+    },
+    {
+      "process_wall_ms": 30871.683291000012,
+      "line": "Loading resource: res://.godot/imported/factory_kit_modular_factory_facade_garage_nor_gl_2k.jpg-4ea30dc5899aae947c42ecef98d04347.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 30897.26575000003,
+      "line": "Loading resource: res://assets/environment/factory_kit_modular_factory_facade_trim_01_diff_2k.jpg"
+    },
+    {
+      "process_wall_ms": 30897.690708000027,
+      "line": "Loading resource: res://.godot/imported/factory_kit_modular_factory_facade_trim_01_diff_2k.jpg-f8fca181073f4b9adfef16ee6e9c2d83.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 30913.688916000014,
+      "line": "Loading resource: res://assets/environment/factory_kit_modular_factory_facade_trim_01_arm_2k.jpg"
+    },
+    {
+      "process_wall_ms": 30916.328291000013,
+      "line": "Loading resource: res://.godot/imported/factory_kit_modular_factory_facade_trim_01_arm_2k.jpg-7725e85c16daeb197b19fa87934b5885.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 30931.569833000027,
+      "line": "Loading resource: res://assets/environment/factory_kit_modular_factory_facade_trim_01_nor_gl_2k.jpg"
+    },
+    {
+      "process_wall_ms": 30932.42379100002,
+      "line": "Loading resource: res://.godot/imported/factory_kit_modular_factory_facade_trim_01_nor_gl_2k.jpg-0d2fee5465de1c1358d69ed5659188cd.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 30949.286540999994,
+      "line": "Shader cache miss for SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/5bb40bb2938a55f05ebd16cc5899a27c86a28370"
+    },
+    {
+      "process_wall_ms": 32920.263541,
+      "line": "Loading resource: res://assets/environment/freight_container.glb"
+    },
+    {
+      "process_wall_ms": 32920.82558300001,
+      "line": "Loading resource: res://.godot/imported/freight_container.glb-84c516cb770f3438b98929c870a8439d.scn"
+    },
+    {
+      "process_wall_ms": 32931.74745800002,
+      "line": "Loading resource: res://assets/environment/parked_box_van.glb"
+    },
+    {
+      "process_wall_ms": 32931.78204100002,
+      "line": "Loading resource: res://.godot/imported/parked_box_van.glb-d60fefaa615383219030382f7edc717a.scn"
+    },
+    {
+      "process_wall_ms": 32957.31866599999,
+      "line": "Loading resource: res://assets/environment/waiting_hall_roof.glb"
+    },
+    {
+      "process_wall_ms": 32957.363874999995,
+      "line": "Loading resource: res://.godot/imported/waiting_hall_roof.glb-70c1c670afac67b8421d9334149facc8.scn"
+    },
+    {
+      "process_wall_ms": 32966.47520800002,
+      "line": "Loading resource: res://assets/environment/station_house_roof.glb"
+    },
+    {
+      "process_wall_ms": 32966.49887500001,
+      "line": "Loading resource: res://.godot/imported/station_house_roof.glb-501237dcf0ff23ba5687664d897d6fb7.scn"
+    },
+    {
+      "process_wall_ms": 32970.57725000002,
+      "line": "Loading resource: res://assets/environment/painted_wooden_bench.glb"
+    },
+    {
+      "process_wall_ms": 32970.61070800004,
+      "line": "Loading resource: res://.godot/imported/painted_wooden_bench.glb-6b4b816c3db8183fd3a660a0ca11529f.scn"
+    },
+    {
+      "process_wall_ms": 32971.961291000014,
+      "line": "Loading resource: res://assets/environment/painted_wooden_bench_painted_wooden_bench_diff_1k.jpg"
+    },
+    {
+      "process_wall_ms": 32971.98516600003,
+      "line": "Loading resource: res://.godot/imported/painted_wooden_bench_painted_wooden_bench_diff_1k.jpg-cac0b543479d5ad6c2954c8c3215c4df.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 32978.128916,
+      "line": "Loading resource: res://assets/environment/painted_wooden_bench_painted_wooden_bench_arm_1k.jpg"
+    },
+    {
+      "process_wall_ms": 32980.35458300001,
+      "line": "Loading resource: res://.godot/imported/painted_wooden_bench_painted_wooden_bench_arm_1k.jpg-68fc6f422c18478df286bf06d7e10157.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 33055.26650000001,
+      "line": "Loading resource: res://assets/environment/painted_wooden_bench_painted_wooden_bench_nor_gl_1k.jpg"
+    },
+    {
+      "process_wall_ms": 33061.67925,
+      "line": "Loading resource: res://.godot/imported/painted_wooden_bench_painted_wooden_bench_nor_gl_1k.jpg-95609816b0ad7c749612b53c48ea9f06.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 33071.962374999996,
+      "line": "Loading resource: res://assets/environment/weed_plant_02.glb"
+    },
+    {
+      "process_wall_ms": 33071.98750000003,
+      "line": "Loading resource: res://.godot/imported/weed_plant_02.glb-9f7b82fef0546222bf95398ea6f1ceea.scn"
+    },
+    {
+      "process_wall_ms": 33071.992083,
+      "line": "Loading resource: res://assets/environment/weed_plant_02_weed_plant_02_diff_1k.png"
+    },
+    {
+      "process_wall_ms": 33072.00116600001,
+      "line": "Loading resource: res://.godot/imported/weed_plant_02_weed_plant_02_diff_1k.png-aa27d01831d014f81ff4f58a08a69818.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 33077.09883300004,
+      "line": "Loading resource: res://assets/environment/weed_plant_02_weed_plant_02_arm_1k.jpg"
+    },
+    {
+      "process_wall_ms": 33079.06550000001,
+      "line": "Loading resource: res://.godot/imported/weed_plant_02_weed_plant_02_arm_1k.jpg-c0a49169f9bb391ad07572a6ba211ead.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 33081.881250000035,
+      "line": "Loading resource: res://assets/environment/weed_plant_02_weed_plant_02_nor_gl_1k.jpg"
+    },
+    {
+      "process_wall_ms": 33081.942000000025,
+      "line": "Loading resource: res://.godot/imported/weed_plant_02_weed_plant_02_nor_gl_1k.jpg-bdd560bfa4617f88fa2bec0cf612cde6.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 33087.638833000026,
+      "line": "Shader cache miss for SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/41b4245d37811b4aa90ab7df57a8c9843115d805"
+    },
+    {
+      "process_wall_ms": 34561.089958000026,
+      "line": "Loading resource: res://assets/environment/broken_pallet.glb"
+    },
+    {
+      "process_wall_ms": 34561.86054099999,
+      "line": "Loading resource: res://.godot/imported/broken_pallet.glb-7e4f6eee72e333ab4ac6e5be9237936c.scn"
+    },
+    {
+      "process_wall_ms": 35070.70675,
+      "line": "Loading resource: res://resources/materials/wall_brick.tres"
+    },
+    {
+      "process_wall_ms": 35071.56824999998,
+      "line": "Loading resource: res://assets/pbr/brick_wall_001_albedo.jpg"
+    },
+    {
+      "process_wall_ms": 35109.32804100003,
+      "line": "Loading resource: res://.godot/imported/brick_wall_001_albedo.jpg-9cfd87d007bdb8fc91ae3319fcdf30a4.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 35980.28541600001,
+      "line": "Loading resource: res://assets/pbr/brick_wall_001_normal.jpg"
+    },
+    {
+      "process_wall_ms": 35981.068833,
+      "line": "Loading resource: res://.godot/imported/brick_wall_001_normal.jpg-3f561ee76bbda3b3d70fab92dc942985.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 36010.99058300002,
+      "line": "Loading resource: res://assets/pbr/brick_wall_001_roughness.jpg"
+    },
+    {
+      "process_wall_ms": 36015.755500000014,
+      "line": "Loading resource: res://.godot/imported/brick_wall_001_roughness.jpg-b21df40a19dd5f7a1e2ff665c08075e6.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 36099.170625,
+      "line": "Loading resource: res://resources/materials/environment_painted_steel.tres"
+    },
+    {
+      "process_wall_ms": 36099.322166000034,
+      "line": "Loading resource: res://assets/pbr/rusty_painted_metal_albedo.jpg"
+    },
+    {
+      "process_wall_ms": 36143.67900000002,
+      "line": "Loading resource: res://.godot/imported/rusty_painted_metal_albedo.jpg-f58225a3dfdace63f9baf7eae2f1ba8b.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 36256.902791000015,
+      "line": "Loading resource: res://assets/pbr/rusty_painted_metal_normal.jpg"
+    },
+    {
+      "process_wall_ms": 36277.62462499999,
+      "line": "Loading resource: res://.godot/imported/rusty_painted_metal_normal.jpg-0ad643988f1f036664bccb15ae98ddfc.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 36854.99133299998,
+      "line": "Loading resource: res://assets/pbr/rusty_painted_metal_roughness.jpg"
+    },
+    {
+      "process_wall_ms": 36897.75991599998,
+      "line": "Loading resource: res://.godot/imported/rusty_painted_metal_roughness.jpg-771aabd5fb83b3eb3e5cdd14bbbe5b41.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 37019.73766600002,
+      "line": "Loading resource: res://resources/materials/roof_metal.tres"
+    },
+    {
+      "process_wall_ms": 37020.417958,
+      "line": "Loading resource: res://assets/pbr/rusty_corrugated_iron_albedo.jpg"
+    },
+    {
+      "process_wall_ms": 37033.970166000014,
+      "line": "Loading resource: res://.godot/imported/rusty_corrugated_iron_albedo.jpg-3e265e18a821f6dd61a02dcbee91977b.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 37038.586458,
+      "line": "Loading resource: res://assets/pbr/rusty_corrugated_iron_normal.jpg"
+    },
+    {
+      "process_wall_ms": 37038.615916000024,
+      "line": "Loading resource: res://.godot/imported/rusty_corrugated_iron_normal.jpg-53b84cbd2053ddc22df38c78f823ab0f.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 37073.461333000014,
+      "line": "Loading resource: res://assets/pbr/rusty_corrugated_iron_roughness.jpg"
+    },
+    {
+      "process_wall_ms": 37125.545208,
+      "line": "Loading resource: res://.godot/imported/rusty_corrugated_iron_roughness.jpg-d1b38c2fc1790c0053ad6fec1f38819f.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 37186.247916000015,
+      "line": "Loading resource: res://resources/materials/interact_yellow.tres"
+    },
+    {
+      "process_wall_ms": 37196.15162500003,
+      "line": "Loading resource: res://assets/train/carriage_door.glb"
+    },
+    {
+      "process_wall_ms": 37196.27445800001,
+      "line": "Loading resource: res://.godot/imported/carriage_door.glb-604c470890ead2733a28a2a79070150d.scn"
+    },
+    {
+      "process_wall_ms": 37197.924,
+      "line": "Loading resource: res://assets/train/carriage_door_green_metal_rust_albedo.jpg"
+    },
+    {
+      "process_wall_ms": 37198.878416000014,
+      "line": "Loading resource: res://.godot/imported/carriage_door_green_metal_rust_albedo.jpg-58a029c3634b6c5d4fa06a8c9aef3f46.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 37204.864791000036,
+      "line": "Loading resource: res://assets/train/carriage_door_green_metal_rust_roughness.png"
+    },
+    {
+      "process_wall_ms": 37205.629875,
+      "line": "Loading resource: res://.godot/imported/carriage_door_green_metal_rust_roughness.png-8ed1d10ef20e0a12ba050e340151ca80.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 37229.343625000016,
+      "line": "Loading resource: res://assets/train/carriage_door_green_metal_rust_normal.jpg"
+    },
+    {
+      "process_wall_ms": 37230.5275,
+      "line": "Loading resource: res://.godot/imported/carriage_door_green_metal_rust_normal.jpg-eef1099293773ef958b5c59f4590c6ca.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 37263.04912500001,
+      "line": "Loading resource: res://assets/train/carriage_door_wood_planks_grey_albedo.jpg"
+    },
+    {
+      "process_wall_ms": 37270.92054100001,
+      "line": "Loading resource: res://.godot/imported/carriage_door_wood_planks_grey_albedo.jpg-0300595cfb6533588679bb94faf758a4.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 37277.92012500003,
+      "line": "Loading resource: res://assets/train/carriage_door_wood_planks_grey_roughness.png"
+    },
+    {
+      "process_wall_ms": 37282.68945799999,
+      "line": "Loading resource: res://.godot/imported/carriage_door_wood_planks_grey_roughness.png-9c4d7fbf7ed420a5b3c24ff850c8a532.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 37296.45658300001,
+      "line": "Loading resource: res://assets/train/carriage_door_wood_planks_grey_normal.jpg"
+    },
+    {
+      "process_wall_ms": 37307.63200000001,
+      "line": "Loading resource: res://.godot/imported/carriage_door_wood_planks_grey_normal.jpg-c90fcf878c77e521e10060737b5b162c.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 37337.48120799998,
+      "line": "Shader cache miss for SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/d11c4bb7a8b6d42e743075e96df095753bd912fe"
+    },
+    {
+      "process_wall_ms": 37534.963,
+      "line": "Loading resource: res://assets/audio/latch.wav"
+    },
+    {
+      "process_wall_ms": 37534.990875,
+      "line": "Loading resource: res://.godot/imported/latch.wav-fc307c6c961de2689745bc2c552a728f.sample"
+    },
+    {
+      "process_wall_ms": 37572.54545800004,
+      "line": "Loading resource: res://resources/materials/metal_dark.tres"
+    },
+    {
+      "process_wall_ms": 37662.81674999999,
+      "line": "Loading resource: res://resources/materials/wall_industrial.tres"
+    },
+    {
+      "process_wall_ms": 37667.76362500002,
+      "line": "Loading resource: res://resources/materials/floor_interior.tres"
+    },
+    {
+      "process_wall_ms": 37670.01641600001,
+      "line": "Loading resource: res://resources/materials/floor_wood.tres"
+    },
+    {
+      "process_wall_ms": 37670.07695800004,
+      "line": "Loading resource: res://assets/pbr/wood_planks_grey_albedo.jpg"
+    },
+    {
+      "process_wall_ms": 37672.814125000004,
+      "line": "Loading resource: res://.godot/imported/wood_planks_grey_albedo.jpg-b424932ff21224c7566a833fed2d6f38.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 37778.697040999985,
+      "line": "Loading resource: res://assets/pbr/wood_planks_grey_normal.jpg"
+    },
+    {
+      "process_wall_ms": 37790.99416600002,
+      "line": "Loading resource: res://.godot/imported/wood_planks_grey_normal.jpg-77900876fa0c12a34f2027579a3b5001.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 37807.61779099998,
+      "line": "Loading resource: res://assets/pbr/wood_planks_grey_roughness.jpg"
+    },
+    {
+      "process_wall_ms": 37813.60254100002,
+      "line": "Loading resource: res://.godot/imported/wood_planks_grey_roughness.jpg-32206f20a6a3635bc1dfc5e93811f55d.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 38015.50737500003,
+      "line": "Loading resource: res://resources/materials/train_glass.tres"
+    },
+    {
+      "process_wall_ms": 38045.61087500002,
+      "line": "Loading resource: res://assets/train/control_lever.glb"
+    },
+    {
+      "process_wall_ms": 38045.642583000015,
+      "line": "Loading resource: res://.godot/imported/control_lever.glb-87b88210eba2716216304059ebadfab1.scn"
+    },
+    {
+      "process_wall_ms": 38051.459000000024,
+      "line": "Loading resource: res://assets/train/control_lever_wood_planks_grey_albedo.jpg"
+    },
+    {
+      "process_wall_ms": 38063.97512500001,
+      "line": "Loading resource: res://.godot/imported/control_lever_wood_planks_grey_albedo.jpg-f6f787eff396deddfbcb7cd141e394e5.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 38079.969208000024,
+      "line": "Loading resource: res://assets/train/control_lever_wood_planks_grey_roughness.png"
+    },
+    {
+      "process_wall_ms": 38082.563958000035,
+      "line": "Loading resource: res://.godot/imported/control_lever_wood_planks_grey_roughness.png-45eae4e8e7eca1f42c31d7ac33fd3d42.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 38089.71716600002,
+      "line": "Loading resource: res://assets/train/control_lever_wood_planks_grey_normal.jpg"
+    },
+    {
+      "process_wall_ms": 38090.74704099999,
+      "line": "Loading resource: res://.godot/imported/control_lever_wood_planks_grey_normal.jpg-1b9faab0fcd504496f5fd8d0d3f4fa10.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 38132.89500000002,
+      "line": "Loading resource: res://resources/materials/rail_steel.tres"
+    },
+    {
+      "process_wall_ms": 38192.85058299999,
+      "line": "Loading resource: res://assets/characters/railway_survivor.glb"
+    },
+    {
+      "process_wall_ms": 38193.21116600002,
+      "line": "Loading resource: res://.godot/imported/railway_survivor.glb-e4aaa97afa3a17afe374ea14645abd3f.scn"
+    },
+    {
+      "process_wall_ms": 38193.98825000002,
+      "line": "Loading resource: res://assets/characters/railway_survivor_eyebrow001.png"
+    },
+    {
+      "process_wall_ms": 38196.187208000025,
+      "line": "Loading resource: res://.godot/imported/railway_survivor_eyebrow001.png-54f62f28241300c657e71efd36120fe7.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 38199.886541000014,
+      "line": "Loading resource: res://assets/characters/railway_survivor_eyelashes01.png"
+    },
+    {
+      "process_wall_ms": 38200.24100000001,
+      "line": "Loading resource: res://.godot/imported/railway_survivor_eyelashes01.png-17498c1cb98219525bdab0231a1c69eb.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 38202.881583000024,
+      "line": "Loading resource: res://assets/characters/railway_survivor_brown_eye.png"
+    },
+    {
+      "process_wall_ms": 38203.60391600002,
+      "line": "Loading resource: res://.godot/imported/railway_survivor_brown_eye.png-34e10ea39e03e94d6bd06e88de2e1d28.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 38212.89895799998,
+      "line": "Loading resource: res://assets/characters/railway_survivor_male_casualsuit05_diffuse.png"
+    },
+    {
+      "process_wall_ms": 38214.168083000004,
+      "line": "Loading resource: res://.godot/imported/railway_survivor_male_casualsuit05_diffuse.png-3ee3d2c7a4d24fa8144007387c8badd3.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 38237.06141600002,
+      "line": "Loading resource: res://assets/characters/railway_survivor_male_casualsuit05_normal.png"
+    },
+    {
+      "process_wall_ms": 38238.38791600002,
+      "line": "Loading resource: res://.godot/imported/railway_survivor_male_casualsuit05_normal.png-31c9accb15e517415e3f8f40ef7f7753.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 38265.87633299999,
+      "line": "Loading resource: res://assets/characters/railway_survivor_middleage_lightskinned_male_diffuse.png"
+    },
+    {
+      "process_wall_ms": 38267.81445800003,
+      "line": "Loading resource: res://.godot/imported/railway_survivor_middleage_lightskinned_male_diffuse.png-b76f8538b55d9c630c4422ec81ea0f80.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 38336.98762500001,
+      "line": "Loading resource: res://assets/characters/railway_survivor_skin_male_african_middleage_NRM.png"
+    },
+    {
+      "process_wall_ms": 38337.137916000014,
+      "line": "Loading resource: res://.godot/imported/railway_survivor_skin_male_african_middleage_NRM.png-8a56666743742c4837537ad4e91386d9.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 38343.708541000015,
+      "line": "Loading resource: res://assets/characters/railway_survivor_BootsAnkleM.png"
+    },
+    {
+      "process_wall_ms": 38344.883041,
+      "line": "Loading resource: res://.godot/imported/railway_survivor_BootsAnkleM.png-44f8af70b3be8903e8c8cdc394e1ef54.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 38367.243500000026,
+      "line": "Loading resource: res://assets/characters/railway_survivor_BootsAnkle-norm.png"
+    },
+    {
+      "process_wall_ms": 38367.808458000014,
+      "line": "Loading resource: res://.godot/imported/railway_survivor_BootsAnkle-norm.png-e2c04f999b1b0656606679c4468fc2bc.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 38388.94400000004,
+      "line": "Loading resource: res://assets/characters/railway_survivor_short04_diffuse.png"
+    },
+    {
+      "process_wall_ms": 38392.05108300001,
+      "line": "Loading resource: res://.godot/imported/railway_survivor_short04_diffuse.png-9f65b855935ff4a0904bd33791686741.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 38431.67975,
+      "line": "Shader cache miss for SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/a901653044aaf2cadc9b710d733524faac5c54be"
+    },
+    {
+      "process_wall_ms": 38929.352625000036,
+      "line": "Updated PSO cache (3.0 MiB)"
+    },
+    {
+      "process_wall_ms": 39165.21295799998,
+      "line": "Loading resource: res://assets/models/coal_sack.glb"
+    },
+    {
+      "process_wall_ms": 39165.30170800001,
+      "line": "Loading resource: res://.godot/imported/coal_sack.glb-7b0f3794e81000548c3cbd585cde6aca.scn"
+    },
+    {
+      "process_wall_ms": 39173.55304099999,
+      "line": "Loading resource: res://resources/materials/coal_canvas.tres"
+    },
+    {
+      "process_wall_ms": 39173.57770800004,
+      "line": "Loading resource: res://assets/pbr/denim_fabric_albedo.jpg"
+    },
+    {
+      "process_wall_ms": 39173.98524999998,
+      "line": "Loading resource: res://.godot/imported/denim_fabric_albedo.jpg-1d7139cd50dc485d326742e6b119d2cb.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 39202.023875000006,
+      "line": "Loading resource: res://assets/pbr/denim_fabric_normal.jpg"
+    },
+    {
+      "process_wall_ms": 39219.11658300002,
+      "line": "Loading resource: res://.godot/imported/denim_fabric_normal.jpg-372825ca20cb8e7aeb9e30b8513ad919.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 39584.301708,
+      "line": "Loading resource: res://assets/pbr/denim_fabric_roughness.jpg"
+    },
+    {
+      "process_wall_ms": 39603.77404100001,
+      "line": "Loading resource: res://.godot/imported/denim_fabric_roughness.jpg-c8baed7be97d71b2658c7e1d8e56f653.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 39851.265291,
+      "line": "Loading resource: res://scripts/fog/fog_front.gdshader"
+    },
+    {
+      "process_wall_ms": 39881.62429100004,
+      "line": "Loading resource: res://assets/audio/fog/metal.wav"
+    },
+    {
+      "process_wall_ms": 39881.65683300002,
+      "line": "Loading resource: res://.godot/imported/metal.wav-7e9236e187d47f611fd5f132ede9a674.sample"
+    },
+    {
+      "process_wall_ms": 39888.075791,
+      "line": "Loading resource: res://resources/graphics/low.tres"
+    },
+    {
+      "process_wall_ms": 39888.104,
+      "line": "Loading resource: res://scripts/settings/graphics_preset.gd"
+    },
+    {
+      "process_wall_ms": 39889.18941600002,
+      "line": "Loading resource: res://resources/graphics/medium.tres"
+    },
+    {
+      "process_wall_ms": 39889.77237500001,
+      "line": "Loading resource: res://resources/graphics/high.tres"
+    },
+    {
+      "process_wall_ms": 39904.188874999985,
+      "line": "Loading resource: res://assets/sky/kloofendal_overcast_puresky_1k.hdr"
+    },
+    {
+      "process_wall_ms": 39904.210291000025,
+      "line": "Loading resource: res://.godot/imported/kloofendal_overcast_puresky_1k.hdr-fafe61f0c30cd0e8442d153a6222f638.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 40846.85675000003,
+      "line": "Loading resource: res://assets/audio/wind.wav"
+    },
+    {
+      "process_wall_ms": 40847.49358300002,
+      "line": "Loading resource: res://.godot/imported/wind.wav-26bd3f95e99896071b625821c2f0df7a.sample"
+    },
+    {
+      "process_wall_ms": 41048.63479099998,
+      "line": "Loading resource: res://assets/audio/engine.wav"
+    },
+    {
+      "process_wall_ms": 41048.65391600003,
+      "line": "Loading resource: res://.godot/imported/engine.wav-13a2907be8290064892a1d44408db00f.sample"
+    },
+    {
+      "process_wall_ms": 41167.33550000004,
+      "line": "Loading resource: res://assets/audio/step.wav"
+    },
+    {
+      "process_wall_ms": 41167.610707999986,
+      "line": "Loading resource: res://.godot/imported/step.wav-7c1afa4d3561f9fd67ecf320728c68cf.sample"
+    },
+    {
+      "process_wall_ms": 41193.777458,
+      "line": "Loading resource: res://resources/camera/train_departure.tres"
+    },
+    {
+      "process_wall_ms": 41196.309832999985,
+      "line": "Loading resource: res://scenes/station/harlow_junction.tscn"
+    },
+    {
+      "process_wall_ms": 41199.23566599999,
+      "line": "Loading resource: res://scripts/presentation/station_art.gd"
+    },
+    {
+      "process_wall_ms": 41242.28804099999,
+      "line": "Loading resource: res://resources/materials/sleeper_wood.tres"
+    },
+    {
+      "process_wall_ms": 41246.56987500004,
+      "line": "Loading resource: res://resources/materials/platform_edge.tres"
+    },
+    {
+      "process_wall_ms": 41255.79904099999,
+      "line": "Loading resource: res://resources/materials/crate_dark.tres"
+    },
+    {
+      "process_wall_ms": 41264.64383300004,
+      "line": "Loading resource: res://resources/materials/crate_wood.tres"
+    },
+    {
+      "process_wall_ms": 41284.32924999999,
+      "line": "Loading resource: res://scenes/props/station_lamp.tscn"
+    },
+    {
+      "process_wall_ms": 41296.52816600003,
+      "line": "Loading resource: res://scripts/environment/prop_light.gd"
+    },
+    {
+      "process_wall_ms": 41301.866958000006,
+      "line": "Loading resource: res://resources/materials/lamp_cool.tres"
+    },
+    {
+      "process_wall_ms": 41306.056541000034,
+      "line": "Loading resource: res://resources/materials/metal_rust.tres"
+    },
+    {
+      "process_wall_ms": 41307.315291000006,
+      "line": "Loading resource: res://scenes/buildings/warehouse_a.tscn"
+    },
+    {
+      "process_wall_ms": 41308.01408299999,
+      "line": "Loading resource: res://resources/materials/glass_dark.tres"
+    },
+    {
+      "process_wall_ms": 41309.930958,
+      "line": "Loading resource: res://resources/materials/shelf_metal.tres"
+    },
+    {
+      "process_wall_ms": 41312.96766600002,
+      "line": "Loading resource: res://scenes/props/hanging_lamp.tscn"
+    },
+    {
+      "process_wall_ms": 41313.30624999998,
+      "line": "Loading resource: res://resources/materials/lamp_warm.tres"
+    },
+    {
+      "process_wall_ms": 41313.90329100003,
+      "line": "Loading resource: res://resources/materials/window_warm.tres"
+    },
+    {
+      "process_wall_ms": 41314.97170800003,
+      "line": "Loading resource: res://scripts/environment/cutaway_trigger.gd"
+    },
+    {
+      "process_wall_ms": 41319.246540999986,
+      "line": "Loading resource: res://resources/camera/indoor.tres"
+    },
+    {
+      "process_wall_ms": 41340.47275,
+      "line": "Loading resource: res://scenes/buildings/warehouse_b.tscn"
+    },
+    {
+      "process_wall_ms": 41343.28712500002,
+      "line": "Loading resource: res://resources/materials/wall_interior.tres"
+    },
+    {
+      "process_wall_ms": 41343.887208000015,
+      "line": "Loading resource: res://resources/materials/window_dim.tres"
+    },
+    {
+      "process_wall_ms": 41356.90550000004,
+      "line": "Loading resource: res://scenes/props/freight_car.tscn"
+    },
+    {
+      "process_wall_ms": 41369.723083,
+      "line": "Loading resource: res://resources/materials/freight_body.tres"
+    },
+    {
+      "process_wall_ms": 41378.663000000015,
+      "line": "Loading resource: res://resources/materials/silhouette.tres"
+    },
+    {
+      "process_wall_ms": 41403.43637500001,
+      "line": "Loading resource: res://scenes/train/train.tscn"
+    },
+    {
+      "process_wall_ms": 41404.42512499999,
+      "line": "Loading resource: res://resources/train/departure_emergency.tres"
+    },
+    {
+      "process_wall_ms": 41405.27424999999,
+      "line": "Loading resource: res://resources/train/departure_normal.tres"
+    },
+    {
+      "process_wall_ms": 41405.89512500003,
+      "line": "Loading resource: res://resources/train/departure_slow.tres"
+    },
+    {
+      "process_wall_ms": 41406.470833000014,
+      "line": "Loading resource: res://scenes/train/flat_car.tscn"
+    },
+    {
+      "process_wall_ms": 41406.87474999999,
+      "line": "Loading resource: res://scripts/presentation/train_art.gd"
+    },
+    {
+      "process_wall_ms": 41415.500750000036,
+      "line": "Loading resource: res://assets/models/rail_wheel.glb"
+    },
+    {
+      "process_wall_ms": 41415.847541,
+      "line": "Loading resource: res://.godot/imported/rail_wheel.glb-46ffb59367c77c4fedc4a798a46e47ce.scn"
+    },
+    {
+      "process_wall_ms": 41426.031582999996,
+      "line": "Loading resource: res://assets/train/steam_locomotive.glb"
+    },
+    {
+      "process_wall_ms": 41427.388000000006,
+      "line": "Loading resource: res://.godot/imported/steam_locomotive.glb-a9c06e9e3b187b9a33fee7013a9ce14d.scn"
+    },
+    {
+      "process_wall_ms": 41428.36850000003,
+      "line": "Loading resource: res://assets/train/steam_locomotive_rusty_painted_metal_albedo.jpg"
+    },
+    {
+      "process_wall_ms": 41429.40650000003,
+      "line": "Loading resource: res://.godot/imported/steam_locomotive_rusty_painted_metal_albedo.jpg-18bb33c3e46f8ff88caa7a74427c5d21.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 41434.1445,
+      "line": "Loading resource: res://assets/train/steam_locomotive_rusty_painted_metal_roughness.png"
+    },
+    {
+      "process_wall_ms": 41434.98525000001,
+      "line": "Loading resource: res://.godot/imported/steam_locomotive_rusty_painted_metal_roughness.png-f1f1cde3454dee3ff128651975af1d54.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 41437.922541000036,
+      "line": "Loading resource: res://assets/train/steam_locomotive_rusty_painted_metal_normal.jpg"
+    },
+    {
+      "process_wall_ms": 41438.454416000015,
+      "line": "Loading resource: res://.godot/imported/steam_locomotive_rusty_painted_metal_normal.jpg-93586e24d7575eaeb7269014b4083560.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 41448.03141599999,
+      "line": "Loading resource: res://assets/train/steam_locomotive_rusty_painted_metal_albedo_3.jpg"
+    },
+    {
+      "process_wall_ms": 41449.036541,
+      "line": "Loading resource: res://.godot/imported/steam_locomotive_rusty_painted_metal_albedo_3.jpg-83210c5f9cb55bae8a230ce064466b28.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 41601.701041000015,
+      "line": "Loading resource: res://assets/train/steam_locomotive_rusty_painted_metal_albedo_4.jpg"
+    },
+    {
+      "process_wall_ms": 41607.34616600001,
+      "line": "Loading resource: res://.godot/imported/steam_locomotive_rusty_painted_metal_albedo_4.jpg-63c8488325fe071b9d2ae239aace19a2.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 41620.605958,
+      "line": "Loading resource: res://assets/train/steam_locomotive_rusty_painted_metal_albedo_5.jpg"
+    },
+    {
+      "process_wall_ms": 41625.322958000026,
+      "line": "Loading resource: res://.godot/imported/steam_locomotive_rusty_painted_metal_albedo_5.jpg-a6a5a8c79d1a5e683bd9a8e90f02bb7b.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 41630.20458300002,
+      "line": "Loading resource: res://assets/train/steam_locomotive_rusty_painted_metal_albedo_6.jpg"
+    },
+    {
+      "process_wall_ms": 41630.71074999999,
+      "line": "Loading resource: res://.godot/imported/steam_locomotive_rusty_painted_metal_albedo_6.jpg-ec8989444d9275a69e364d112054228d.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 41634.51058300001,
+      "line": "Loading resource: res://assets/train/steam_locomotive_rusty_painted_metal_albedo_7.jpg"
+    },
+    {
+      "process_wall_ms": 41634.96233300003,
+      "line": "Loading resource: res://.godot/imported/steam_locomotive_rusty_painted_metal_albedo_7.jpg-21e6249f9e15ee43890fa2e2acfcca8a.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 41639.004833,
+      "line": "Loading resource: res://assets/train/steam_locomotive_rusty_painted_metal_albedo_8.jpg"
+    },
+    {
+      "process_wall_ms": 41639.49866600001,
+      "line": "Loading resource: res://.godot/imported/steam_locomotive_rusty_painted_metal_albedo_8.jpg-7bedfbff6ed5fccd784f341da11d47d6.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 41654.90800000003,
+      "line": "Loading resource: res://assets/train/steam_locomotive_rusty_painted_metal_albedo_9.jpg"
+    },
+    {
+      "process_wall_ms": 41655.26283299999,
+      "line": "Loading resource: res://.godot/imported/steam_locomotive_rusty_painted_metal_albedo_9.jpg-0ebf1d0c408448bb151abf3987a3c2d8.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 41657.61991599999,
+      "line": "Loading resource: res://assets/train/steam_locomotive_rusty_painted_metal_albedo_10.jpg"
+    },
+    {
+      "process_wall_ms": 41658.00525000003,
+      "line": "Loading resource: res://.godot/imported/steam_locomotive_rusty_painted_metal_albedo_10.jpg-9e67f33475127c32c8fe7937ae0ca048.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 41743.67958300002,
+      "line": "Loading resource: res://assets/train/crew_car_finish.glb"
+    },
+    {
+      "process_wall_ms": 41744.85016599999,
+      "line": "Loading resource: res://.godot/imported/crew_car_finish.glb-29b7d7dd6ce10cebc0702df51d3aa824.scn"
+    },
+    {
+      "process_wall_ms": 41745.36762500003,
+      "line": "Loading resource: res://assets/train/crew_car_finish_green_metal_rust_albedo.jpg"
+    },
+    {
+      "process_wall_ms": 41746.72220799999,
+      "line": "Loading resource: res://.godot/imported/crew_car_finish_green_metal_rust_albedo.jpg-6048e42c92d90ab15814c8365f3399cd.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 42872.24383300003,
+      "line": "Loading resource: res://assets/train/crew_car_finish_green_metal_rust_roughness.png"
+    },
+    {
+      "process_wall_ms": 42874.843124999985,
+      "line": "Loading resource: res://.godot/imported/crew_car_finish_green_metal_rust_roughness.png-95a57d2900da7d41634990e44c18e8b1.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 42884.109583,
+      "line": "Loading resource: res://assets/train/crew_car_finish_green_metal_rust_normal.jpg"
+    },
+    {
+      "process_wall_ms": 42884.88516600001,
+      "line": "Loading resource: res://.godot/imported/crew_car_finish_green_metal_rust_normal.jpg-acb6e98de816418659fc3c3c17dfd4a7.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 42895.860166000035,
+      "line": "Loading resource: res://assets/train/crew_car_finish_wood_planks_grey_albedo.jpg"
+    },
+    {
+      "process_wall_ms": 42896.91241600002,
+      "line": "Loading resource: res://.godot/imported/crew_car_finish_wood_planks_grey_albedo.jpg-f6704aa623790f71f328e69aa711df2f.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 42906.391625000026,
+      "line": "Loading resource: res://assets/train/crew_car_finish_wood_planks_grey_roughness.png"
+    },
+    {
+      "process_wall_ms": 42907.09045800003,
+      "line": "Loading resource: res://.godot/imported/crew_car_finish_wood_planks_grey_roughness.png-4207a7ce51fc8edfec8d4fa22f0127d5.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 42921.72600000004,
+      "line": "Loading resource: res://assets/train/crew_car_finish_wood_planks_grey_normal.jpg"
+    },
+    {
+      "process_wall_ms": 42922.42458300001,
+      "line": "Loading resource: res://.godot/imported/crew_car_finish_wood_planks_grey_normal.jpg-e86bfea6a5957abe0563673e775a2325.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 42991.16191600001,
+      "line": "Loading resource: res://assets/train/locomotive_cab_finish.glb"
+    },
+    {
+      "process_wall_ms": 42991.424499999994,
+      "line": "Loading resource: res://.godot/imported/locomotive_cab_finish.glb-7f045b09a31d0c75bade7a9c05256599.scn"
+    },
+    {
+      "process_wall_ms": 42991.45470799999,
+      "line": "Loading resource: res://assets/train/locomotive_cab_finish_green_metal_rust_albedo.jpg"
+    },
+    {
+      "process_wall_ms": 42993.269833,
+      "line": "Loading resource: res://.godot/imported/locomotive_cab_finish_green_metal_rust_albedo.jpg-e9d8b2bd7eca64bc8d270725b84c2784.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 43002.04150000002,
+      "line": "Loading resource: res://assets/train/locomotive_cab_finish_green_metal_rust_roughness.png"
+    },
+    {
+      "process_wall_ms": 43002.29091599999,
+      "line": "Loading resource: res://.godot/imported/locomotive_cab_finish_green_metal_rust_roughness.png-a66baf1f4fa7be6ca24cbb56fc84d5b3.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 43018.124375000014,
+      "line": "Loading resource: res://assets/train/locomotive_cab_finish_green_metal_rust_normal.jpg"
+    },
+    {
+      "process_wall_ms": 43024.183832999996,
+      "line": "Loading resource: res://.godot/imported/locomotive_cab_finish_green_metal_rust_normal.jpg-88f36a78bd669980995676a7af03b3a4.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 43029.77895800001,
+      "line": "Loading resource: res://assets/train/locomotive_cab_finish_wood_planks_grey_albedo.jpg"
+    },
+    {
+      "process_wall_ms": 43031.71900000001,
+      "line": "Loading resource: res://.godot/imported/locomotive_cab_finish_wood_planks_grey_albedo.jpg-a5b8b1d4d009452b4029bfb8e002626f.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 43038.867874999996,
+      "line": "Loading resource: res://assets/train/locomotive_cab_finish_wood_planks_grey_roughness.png"
+    },
+    {
+      "process_wall_ms": 43039.32012500002,
+      "line": "Loading resource: res://.godot/imported/locomotive_cab_finish_wood_planks_grey_roughness.png-91eadb1c3da9e93cb55fbf843b266861.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 43090.914333,
+      "line": "Loading resource: res://assets/train/locomotive_cab_finish_wood_planks_grey_normal.jpg"
+    },
+    {
+      "process_wall_ms": 43091.373291000025,
+      "line": "Loading resource: res://.godot/imported/locomotive_cab_finish_wood_planks_grey_normal.jpg-a4a98618124e5689f710cdd17099eb5a.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 43142.283375000035,
+      "line": "Loading resource: res://resources/materials/train_trim.tres"
+    },
+    {
+      "process_wall_ms": 43143.61300000002,
+      "line": "Loading resource: res://resources/materials/train_deck.tres"
+    },
+    {
+      "process_wall_ms": 43144.819541000004,
+      "line": "Loading resource: res://resources/materials/train_stripe.tres"
+    },
+    {
+      "process_wall_ms": 43147.115125000026,
+      "line": "Loading resource: res://scenes/train/crew_car.tscn"
+    },
+    {
+      "process_wall_ms": 43151.129707999986,
+      "line": "Loading resource: res://scenes/train/locomotive.tscn"
+    },
+    {
+      "process_wall_ms": 43154.787957999986,
+      "line": "Loading resource: res://scenes/player/player.tscn"
+    },
+    {
+      "process_wall_ms": 43155.447665999985,
+      "line": "Loading resource: res://resources/player/default_movement.tres"
+    },
+    {
+      "process_wall_ms": 43160.34425000004,
+      "line": "Loading resource: res://resources/materials/player_coat.tres"
+    },
+    {
+      "process_wall_ms": 43161.90179099999,
+      "line": "Loading resource: res://resources/materials/player_trousers.tres"
+    },
+    {
+      "process_wall_ms": 43163.04675000004,
+      "line": "Loading resource: res://resources/materials/player_skin.tres"
+    },
+    {
+      "process_wall_ms": 43164.34304099999,
+      "line": "Loading resource: res://resources/materials/player_accent.tres"
+    },
+    {
+      "process_wall_ms": 43166.00425000001,
+      "line": "Loading resource: res://resources/camera/outdoor.tres"
+    },
+    {
+      "process_wall_ms": 43167.679291000015,
+      "line": "Loading resource: res://scenes/ui/hud.tscn"
+    },
+    {
+      "process_wall_ms": 43168.270583000034,
+      "line": "Loading resource: res://scenes/ui/debug/debug_menu.tscn"
+    },
+    {
+      "process_wall_ms": 43172.07683300001,
+      "line": "Loading resource: res://resources/journey/harlow_escape.tres"
+    },
+    {
+      "process_wall_ms": 43173.42558299998,
+      "line": "Loading resource: res://scenes/station/ashford_depot.tscn"
+    },
+    {
+      "process_wall_ms": 43174.78187500001,
+      "line": "Loading resource: res://scenes/station/blackwater_crossing.tscn"
+    },
+    {
+      "process_wall_ms": 43182.35175000001,
+      "line": "[startup] {\"nodes\":1.0,\"phase\":\"load_end\",\"static_bytes\":70117807,\"texture_bytes\":0.0,\"ticks_ms\":42538}"
+    },
+    {
+      "process_wall_ms": 43210.72445800002,
+      "line": "Shader cache miss for SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/70cc2f00359bdee8ec8605c1cb72ee9ff68d8393"
+    },
+    {
+      "process_wall_ms": 43282.89225000003,
+      "line": "Loading resource: res://resources/fog/harlow_route.tres"
+    },
+    {
+      "process_wall_ms": 43308.09633300004,
+      "line": "[startup] {\"nodes\":1.0,\"phase\":\"instantiate_end\",\"static_bytes\":77852887,\"texture_bytes\":0.0,\"ticks_ms\":42659}"
+    },
+    {
+      "process_wall_ms": 43349.649333,
+      "line": "Shader cache miss for SkyShaderRD/9c26bd5dc001c975a8ec36520d74f1e5aa9d8125c8172a160acf52f8ebf362f3/32cc5617eb497f4c22a8633d8afa36e8462ba8f9"
+    },
+    {
+      "process_wall_ms": 43712.938541000025,
+      "line": "Shader cache miss for SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/5b901de302fa1d5d32bb0646eae4835578e64d0f"
+    },
+    {
+      "process_wall_ms": 43804.07516600002,
+      "line": "Shader cache miss for SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/321e42e1280eb440cb08d0ceb1689cb32a542119"
+    },
+    {
+      "process_wall_ms": 44198.895083000025,
+      "line": "Shader cache miss for SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/7b5acd3f66bd89336d7260db8454507d0153401b"
+    },
+    {
+      "process_wall_ms": 44256.216666,
+      "line": "Shader cache miss for SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/61d761d28b7c6f56b1c947c1beea858d26a3e388"
+    },
+    {
+      "process_wall_ms": 45716.020958,
+      "line": "[phase] {\"duration_ms\":603.509,\"nodes\":1401.0,\"phase\":\"station_art\",\"pipeline_draw\":0.0,\"pipeline_mesh\":45.0,\"pipeline_specialization\":0.0,\"resources\":601.0,\"static_bytes\":123874138,\"texture_bytes\":0.0,\"ticks_ms\":45075.845}"
+    },
+    {
+      "process_wall_ms": 46314.398708,
+      "line": "[phase] {\"duration_ms\":483.355,\"nodes\":1663.0,\"phase\":\"train_art\",\"pipeline_draw\":0.0,\"pipeline_mesh\":45.0,\"pipeline_specialization\":0.0,\"resources\":601.0,\"static_bytes\":127680450,\"texture_bytes\":0.0,\"ticks_ms\":45674.7}"
+    },
+    {
+      "process_wall_ms": 46721.52291600002,
+      "line": "[phase] {\"duration_ms\":393.372,\"nodes\":1709.0,\"phase\":\"train_art\",\"pipeline_draw\":0.0,\"pipeline_mesh\":45.0,\"pipeline_specialization\":0.0,\"resources\":601.0,\"static_bytes\":128124330,\"texture_bytes\":0.0,\"ticks_ms\":46082.18}"
+    },
+    {
+      "process_wall_ms": 46840.30454100002,
+      "line": "Shader cache miss for SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/abf1ec7384caa29b0f4070b68f6ca530c1ba47ae"
+    },
+    {
+      "process_wall_ms": 46917.90708299999,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 0"
+    },
+    {
+      "process_wall_ms": 46918.312125,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 1"
+    },
+    {
+      "process_wall_ms": 46918.72454100002,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 2"
+    },
+    {
+      "process_wall_ms": 46919.120916,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 3"
+    },
+    {
+      "process_wall_ms": 46919.499333000036,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 4"
+    },
+    {
+      "process_wall_ms": 46919.797791000005,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 5"
+    },
+    {
+      "process_wall_ms": 46920.11637500002,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 6"
+    },
+    {
+      "process_wall_ms": 46920.53183299999,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 7"
+    },
+    {
+      "process_wall_ms": 47079.45895800003,
+      "line": "[phase] {\"duration_ms\":352.533,\"nodes\":1768.0,\"phase\":\"train_art\",\"pipeline_draw\":0.0,\"pipeline_mesh\":45.0,\"pipeline_specialization\":0.0,\"resources\":601.0,\"static_bytes\":128925634,\"texture_bytes\":0.0,\"ticks_ms\":46440.194}"
+    },
+    {
+      "process_wall_ms": 47083.61183300002,
+      "line": "[phase] {\"duration_ms\":2.47,\"nodes\":1788.0,\"phase\":\"worker_bind\",\"pipeline_draw\":0.0,\"pipeline_mesh\":45.0,\"pipeline_specialization\":0.0,\"resources\":601.0,\"static_bytes\":129334142,\"texture_bytes\":0.0,\"ticks_ms\":46444.331}"
+    },
+    {
+      "process_wall_ms": 47129.92429100001,
+      "line": "[phase] {\"duration_ms\":0.0,\"nodes\":1832.0,\"phase\":\"game_ready_begin\",\"pipeline_draw\":0.0,\"pipeline_mesh\":45.0,\"pipeline_specialization\":0.0,\"resources\":601.0,\"static_bytes\":130998290,\"texture_bytes\":0.0,\"ticks_ms\":46490.609}"
+    },
+    {
+      "process_wall_ms": 47338.722582999995,
+      "line": "Loading resource: res://resources/items/coal_sack.tres"
+    },
+    {
+      "process_wall_ms": 47339.762541000026,
+      "line": "Loading resource: res://assets/icons/items/coal_sack.svg"
+    },
+    {
+      "process_wall_ms": 47341.504291000034,
+      "line": "Loading resource: res://.godot/imported/coal_sack.svg-97c7acbb1820bf18ad463889dcbea987.ctex"
+    },
+    {
+      "process_wall_ms": 47343.254708000015,
+      "line": "Loading resource: res://scenes/items/item_visual.tscn"
+    },
+    {
+      "process_wall_ms": 47346.19225,
+      "line": "Loading resource: res://resources/items/tools.tres"
+    },
+    {
+      "process_wall_ms": 47346.85300000001,
+      "line": "Loading resource: res://assets/icons/items/tools.svg"
+    },
+    {
+      "process_wall_ms": 47347.39287500003,
+      "line": "Loading resource: res://.godot/imported/tools.svg-1cc4af35da2a3c215037c321d06493bf.ctex"
+    },
+    {
+      "process_wall_ms": 47349.10170800003,
+      "line": "Loading resource: res://resources/items/machine_component.tres"
+    },
+    {
+      "process_wall_ms": 47349.67054100002,
+      "line": "Loading resource: res://assets/icons/items/machine_component.svg"
+    },
+    {
+      "process_wall_ms": 47350.318749999984,
+      "line": "Loading resource: res://.godot/imported/machine_component.svg-8a7a1a788b58721837cbff8b1b95f783.ctex"
+    },
+    {
+      "process_wall_ms": 47352.088208,
+      "line": "Loading resource: res://resources/items/medicine.tres"
+    },
+    {
+      "process_wall_ms": 47352.686458,
+      "line": "Loading resource: res://assets/icons/items/medicine.svg"
+    },
+    {
+      "process_wall_ms": 47353.00041599999,
+      "line": "Loading resource: res://.godot/imported/medicine.svg-deab8f1b62a3c4d479d2109ee0f33c79.ctex"
+    },
+    {
+      "process_wall_ms": 47354.28520800002,
+      "line": "Loading resource: res://resources/items/canned_food.tres"
+    },
+    {
+      "process_wall_ms": 47354.86379100001,
+      "line": "Loading resource: res://assets/icons/items/canned_food.svg"
+    },
+    {
+      "process_wall_ms": 47355.18216600002,
+      "line": "Loading resource: res://.godot/imported/canned_food.svg-4d6e4b21810f0bada7056f3d76c2a341.ctex"
+    },
+    {
+      "process_wall_ms": 47356.235083,
+      "line": "Loading resource: res://resources/items/scrap_metal.tres"
+    },
+    {
+      "process_wall_ms": 47356.46183300002,
+      "line": "Loading resource: res://assets/icons/items/scrap_metal.svg"
+    },
+    {
+      "process_wall_ms": 47356.63979100002,
+      "line": "Loading resource: res://.godot/imported/scrap_metal.svg-989d8405fa9bbfff0d9d8e84e3a490ed.ctex"
+    },
+    {
+      "process_wall_ms": 47449.466540999994,
+      "line": "Loading resource: res://resources/items/bandages.tres"
+    },
+    {
+      "process_wall_ms": 47450.29491600002,
+      "line": "Loading resource: res://assets/icons/items/bandages.svg"
+    },
+    {
+      "process_wall_ms": 47450.73820800002,
+      "line": "Loading resource: res://.godot/imported/bandages.svg-8e4aa1dbc2903e9492f5097f709f400e.ctex"
+    },
+    {
+      "process_wall_ms": 47481.06804100001,
+      "line": "[phase] {\"duration_ms\":350.426,\"nodes\":3319.0,\"phase\":\"journey_setup\",\"pipeline_draw\":0.0,\"pipeline_mesh\":45.0,\"pipeline_specialization\":0.0,\"resources\":611.0,\"static_bytes\":145150631,\"texture_bytes\":0.0,\"ticks_ms\":46841.031}"
+    },
+    {
+      "process_wall_ms": 47486.05412500001,
+      "line": "[phase] {\"duration_ms\":5.6,\"nodes\":3356.0,\"phase\":\"harlow_props\",\"pipeline_draw\":0.0,\"pipeline_mesh\":45.0,\"pipeline_specialization\":0.0,\"resources\":611.0,\"static_bytes\":145372639,\"texture_bytes\":0.0,\"ticks_ms\":46846.77}"
+    },
+    {
+      "process_wall_ms": 47487.83629100001,
+      "line": "Shader cache miss for SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/6cf868b287d7a1e9fe6ec2ff3f766d68ada4ca0a"
+    },
+    {
+      "process_wall_ms": 47621.07470800004,
+      "line": "[phase] {\"duration_ms\":134.83,\"nodes\":3484.0,\"phase\":\"harlow_architecture\",\"pipeline_draw\":0.0,\"pipeline_mesh\":45.0,\"pipeline_specialization\":0.0,\"resources\":600.0,\"static_bytes\":147186319,\"texture_bytes\":0.0,\"ticks_ms\":46981.705}"
+    },
+    {
+      "process_wall_ms": 47622.255666,
+      "line": "[phase] {\"duration_ms\":1.061,\"nodes\":3505.0,\"phase\":\"worker_bind\",\"pipeline_draw\":0.0,\"pipeline_mesh\":45.0,\"pipeline_specialization\":0.0,\"resources\":600.0,\"static_bytes\":147320807,\"texture_bytes\":0.0,\"ticks_ms\":46983.008}"
+    },
+    {
+      "process_wall_ms": 47626.29512500001,
+      "line": "Loading resource: res://scenes/station/scavenging_sites.tscn"
+    },
+    {
+      "process_wall_ms": 47626.91899999999,
+      "line": "Loading resource: res://resources/loot/coal_reserve.tres"
+    },
+    {
+      "process_wall_ms": 47627.43208300003,
+      "line": "Loading resource: res://resources/loot/freight.tres"
+    },
+    {
+      "process_wall_ms": 47627.659666,
+      "line": "Loading resource: res://resources/items/fuel_drum.tres"
+    },
+    {
+      "process_wall_ms": 47627.86616599999,
+      "line": "Loading resource: res://assets/icons/items/fuel_drum.svg"
+    },
+    {
+      "process_wall_ms": 47628.380999999994,
+      "line": "Loading resource: res://.godot/imported/fuel_drum.svg-c1a5b0f5dc74f196a2524808841d55af.ctex"
+    },
+    {
+      "process_wall_ms": 47629.40970800003,
+      "line": "Loading resource: res://resources/loot/fuel_reserve.tres"
+    },
+    {
+      "process_wall_ms": 47629.98945800001,
+      "line": "Loading resource: res://resources/loot/medical.tres"
+    },
+    {
+      "process_wall_ms": 47630.35841600003,
+      "line": "Loading resource: res://resources/loot/platform.tres"
+    },
+    {
+      "process_wall_ms": 47630.64837500002,
+      "line": "Loading resource: res://resources/items/lantern_oil.tres"
+    },
+    {
+      "process_wall_ms": 47630.91120799998,
+      "line": "Loading resource: res://assets/icons/items/lantern_oil.svg"
+    },
+    {
+      "process_wall_ms": 47631.15429100003,
+      "line": "Loading resource: res://.godot/imported/lantern_oil.svg-f16be63b1c86e1e7594eb3ee6934d2cd.ctex"
+    },
+    {
+      "process_wall_ms": 47632.25125000002,
+      "line": "Loading resource: res://resources/loot/precision.tres"
+    },
+    {
+      "process_wall_ms": 47632.707208,
+      "line": "Loading resource: res://resources/loot/warehouse_a.tres"
+    },
+    {
+      "process_wall_ms": 47633.940290999984,
+      "line": "Loading resource: res://resources/loot/warehouse_b.tres"
+    },
+    {
+      "process_wall_ms": 47767.292790999985,
+      "line": "[phase] {\"duration_ms\":146.13,\"nodes\":3814.0,\"phase\":\"game_wiring\",\"pipeline_draw\":0.0,\"pipeline_mesh\":45.0,\"pipeline_specialization\":0.0,\"resources\":632.0,\"static_bytes\":156043815,\"texture_bytes\":0.0,\"ticks_ms\":47127.945}"
+    },
+    {
+      "process_wall_ms": 47767.416458000014,
+      "line": "[startup] {\"nodes\":3814.0,\"phase\":\"add_child_end\",\"static_bytes\":156044907,\"texture_bytes\":0.0,\"ticks_ms\":47128}"
+    },
+    {
+      "process_wall_ms": 47770.69608300002,
+      "line": "Shader cache miss for SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/b36709f3705989a3b9fe12a08e045c7a07a2f017"
+    },
+    {
+      "process_wall_ms": 47835.346333000016,
+      "line": "Shader cache miss for SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/aa9d0127eb5672f63de4cc15b9b89d35fbe6334b"
+    },
+    {
+      "process_wall_ms": 47908.89095800003,
+      "line": "Shader cache miss for SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/ba1b0683ef2844e2972039972dc99a779f9b343c"
+    },
+    {
+      "process_wall_ms": 47924.02420799999,
+      "line": "[phase] {\"duration_ms\":11.882,\"nodes\":3993.0,\"phase\":\"graphics_collect\",\"pipeline_draw\":0.0,\"pipeline_mesh\":45.0,\"pipeline_specialization\":0.0,\"resources\":632.0,\"static_bytes\":162345323,\"texture_bytes\":0.0,\"ticks_ms\":47284.48}"
+    },
+    {
+      "process_wall_ms": 47927.99374999999,
+      "line": "[phase] {\"duration_ms\":3.435,\"nodes\":3993.0,\"phase\":\"preset_apply_0\",\"pipeline_draw\":0.0,\"pipeline_mesh\":45.0,\"pipeline_specialization\":0.0,\"resources\":632.0,\"static_bytes\":162320879,\"texture_bytes\":0.0,\"ticks_ms\":47288.677}"
+    },
+    {
+      "process_wall_ms": 47935.88700000004,
+      "line": "Shader cache miss for SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/6728f7bd7005c04fe432972d0575e7918cce556e"
+    },
+    {
+      "process_wall_ms": 47941.696707999996,
+      "line": "Loading resource: res://assets/audio/fog/rumble.wav"
+    },
+    {
+      "process_wall_ms": 47942.85600000001,
+      "line": "Loading resource: res://.godot/imported/rumble.wav-132216cc68021fd18308db261aa6b9d8.sample"
+    },
+    {
+      "process_wall_ms": 47945.93783300002,
+      "line": "Loading resource: res://assets/audio/fog/wind.wav"
+    },
+    {
+      "process_wall_ms": 47946.50345799999,
+      "line": "Loading resource: res://.godot/imported/wind.wav-e6dbabd37679e079974d2bed445497eb.sample"
+    },
+    {
+      "process_wall_ms": 47949.50575000001,
+      "line": "Loading resource: res://assets/audio/fog/breath.wav"
+    },
+    {
+      "process_wall_ms": 47949.92029100001,
+      "line": "Loading resource: res://.godot/imported/breath.wav-1d862fa562288a1ff066a53d5827fc4c.sample"
+    },
+    {
+      "process_wall_ms": 47967.191415999994,
+      "line": "[phase] {\"duration_ms\":0.0,\"nodes\":4093.0,\"phase\":\"warmup_begin\",\"pipeline_draw\":0.0,\"pipeline_mesh\":45.0,\"pipeline_specialization\":0.0,\"resources\":632.0,\"static_bytes\":164452069,\"texture_bytes\":0.0,\"ticks_ms\":47327.836}"
+    },
+    {
+      "process_wall_ms": 48124.423916000014,
+      "line": "Shader cache miss for SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/33d11bdbda5317fef07f2c5597e686619835094b"
+    },
+    {
+      "process_wall_ms": 48128.77533300002,
+      "line": "Shader cache miss for SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/ec1ef4068505d10ee8e11e3434f234dbfb2746ab"
+    },
+    {
+      "process_wall_ms": 48133.49850000003,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 0"
+    },
+    {
+      "process_wall_ms": 48133.56300000004,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 1"
+    },
+    {
+      "process_wall_ms": 48133.56954099998,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 2"
+    },
+    {
+      "process_wall_ms": 48133.57324999999,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 3"
+    },
+    {
+      "process_wall_ms": 48133.57604100003,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 4"
+    },
+    {
+      "process_wall_ms": 48133.57866600001,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 5"
+    },
+    {
+      "process_wall_ms": 48133.58125000002,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 6"
+    },
+    {
+      "process_wall_ms": 48137.734249999994,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 7"
+    },
+    {
+      "process_wall_ms": 48137.755958000016,
+      "line": "Shader cache miss for SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/2c98fb908b9fe40c223fb3fa208b3c392e10987f"
+    },
+    {
+      "process_wall_ms": 48137.75974999998,
+      "line": "Shader cache miss for SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/7763795aad6cd981cf2fb53a45b1e2133d077c66"
+    },
+    {
+      "process_wall_ms": 48137.762624999996,
+      "line": "Shader cache miss for SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/6e60f1da0f59c693ebf78e53a2f5c1d65c380213"
+    },
+    {
+      "process_wall_ms": 48137.76554100002,
+      "line": "Shader cache miss for SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/b5fb3ce33b2b08397fda3642420386474951701c"
+    },
+    {
+      "process_wall_ms": 48137.76820800001,
+      "line": "Shader cache miss for SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/18c88fd93cec3f95e673ecb1eaa470e51cbdba18"
+    },
+    {
+      "process_wall_ms": 48147.26333300001,
+      "line": "Shader cache miss for SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/6ba29230d0fce99d2954d35dbd261ece67d54b5e"
+    },
+    {
+      "process_wall_ms": 48147.38979100002,
+      "line": "Shader cache miss for SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/ac73e4c30be277e8bf77a0cb83da9cb25725c565"
+    },
+    {
+      "process_wall_ms": 48159.99795800002,
+      "line": "Shader cache miss for SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/c375df82e30d3298efda75bd6444bcb9dd2cdc82"
+    },
+    {
+      "process_wall_ms": 48160.11679100001,
+      "line": "Shader cache miss for SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/ca91dd094afef91cbd2432a3675cef24cf741aa9"
+    },
+    {
+      "process_wall_ms": 67735.549875,
+      "line": "[mvk-error] VK_INCOMPLETE: Error writing pipeline cache data: Failed to write 4 bytes to output stream! Wrote 0"
+    },
+    {
+      "process_wall_ms": 67735.98387499999,
+      "line": "ERROR: VALIDATION - Message Id Number: 0 | Message Id Name: mvk-error"
+    },
+    {
+      "process_wall_ms": 67736.01004099999,
+      "line": "\tVK_INCOMPLETE: Error writing pipeline cache data: Failed to write 4 bytes to output stream! Wrote 0"
+    },
+    {
+      "process_wall_ms": 67736.02304100001,
+      "line": "\tObjects - 1"
+    },
+    {
+      "process_wall_ms": 67736.03624999999,
+      "line": "\t\tObject[0] - VK_OBJECT_TYPE_PIPELINE_CACHE, Handle 35753072576"
+    },
+    {
+      "process_wall_ms": 67736.08708300003,
+      "line": "   at: _debug_messenger_callback (drivers/vulkan/rendering_context_driver_vulkan.cpp:642)"
+    },
+    {
+      "process_wall_ms": 67737.46075000003,
+      "line": "Updated PSO cache (6.3 MiB)"
+    },
+    {
+      "process_wall_ms": 80231.95137499999,
+      "line": "[mvk-info] Created 3 swapchain images with size (960, 540) and contents scale 1.0 in layer CAMetalLayer: GodotContentView (0x853a27600) on screen Apple Virtual."
+    },
+    {
+      "process_wall_ms": 88402.72741600001,
+      "line": "[mvk-info] Created 3 swapchain images with size (960, 540) and contents scale 1.0 in layer CAMetalLayer: GodotContentView (0x853a27600) on screen Apple Virtual."
+    },
+    {
+      "process_wall_ms": 88403.67783300002,
+      "line": "[mvk-error] VK_INCOMPLETE: Error writing pipeline cache data: Failed to write 4 bytes to output stream! Wrote 0"
+    },
+    {
+      "process_wall_ms": 88403.96700000002,
+      "line": "ERROR: VALIDATION - Message Id Number: 0 | Message Id Name: mvk-error"
+    },
+    {
+      "process_wall_ms": 88404.01470800003,
+      "line": "\tVK_INCOMPLETE: Error writing pipeline cache data: Failed to write 4 bytes to output stream! Wrote 0"
+    },
+    {
+      "process_wall_ms": 88404.047208,
+      "line": "\tObjects - 1"
+    },
+    {
+      "process_wall_ms": 88404.07516599998,
+      "line": "\t\tObject[0] - VK_OBJECT_TYPE_PIPELINE_CACHE, Handle 35753072576"
+    },
+    {
+      "process_wall_ms": 88404.09895800002,
+      "line": "   at: _debug_messenger_callback (drivers/vulkan/rendering_context_driver_vulkan.cpp:642)"
+    },
+    {
+      "process_wall_ms": 88406.31466600002,
+      "line": "Updated PSO cache (9.4 MiB)"
+    },
+    {
+      "process_wall_ms": 88556.22108300003,
+      "line": "[phase] {\"duration_ms\":8298.963,\"nodes\":3905.0,\"phase\":\"warmup_view_Platform\",\"pipeline_draw\":46.0,\"pipeline_mesh\":45.0,\"pipeline_specialization\":50.0,\"resources\":632.0,\"static_bytes\":181417043,\"texture_bytes\":302972480.0,\"ticks_ms\":87915.266}"
+    },
+    {
+      "process_wall_ms": 94131.97279100001,
+      "line": "[phase] {\"duration_ms\":5573.993,\"nodes\":3905.0,\"phase\":\"warmup_view_WarehouseA\",\"pipeline_draw\":53.0,\"pipeline_mesh\":45.0,\"pipeline_specialization\":63.0,\"resources\":632.0,\"static_bytes\":182679781,\"texture_bytes\":302972480.0,\"ticks_ms\":93490.382}"
+    },
+    {
+      "process_wall_ms": 95938.41583300002,
+      "line": "[phase] {\"duration_ms\":1803.662,\"nodes\":3905.0,\"phase\":\"warmup_view_WarehouseBEntry\",\"pipeline_draw\":53.0,\"pipeline_mesh\":45.0,\"pipeline_specialization\":63.0,\"resources\":632.0,\"static_bytes\":182694237,\"texture_bytes\":302972480.0,\"ticks_ms\":95298.687}"
+    },
+    {
+      "process_wall_ms": 95970.42437499999,
+      "line": "[phase] {\"duration_ms\":32.113,\"nodes\":3905.0,\"phase\":\"warmup_view_WarehouseBHall\",\"pipeline_draw\":53.0,\"pipeline_mesh\":45.0,\"pipeline_specialization\":63.0,\"resources\":632.0,\"static_bytes\":182695569,\"texture_bytes\":302972480.0,\"ticks_ms\":95331.1}"
+    },
+    {
+      "process_wall_ms": 95993.12916600001,
+      "line": "[phase] {\"duration_ms\":22.503,\"nodes\":3905.0,\"phase\":\"warmup_view_WarehouseBStores\",\"pipeline_draw\":53.0,\"pipeline_mesh\":45.0,\"pipeline_specialization\":63.0,\"resources\":632.0,\"static_bytes\":182703381,\"texture_bytes\":302972480.0,\"ticks_ms\":95353.797}"
+    },
+    {
+      "process_wall_ms": 96026.95258300002,
+      "line": "[phase] {\"duration_ms\":33.001,\"nodes\":3905.0,\"phase\":\"warmup_view_Freight\",\"pipeline_draw\":53.0,\"pipeline_mesh\":45.0,\"pipeline_specialization\":63.0,\"resources\":632.0,\"static_bytes\":182791329,\"texture_bytes\":302972480.0,\"ticks_ms\":95387.068}"
+    },
+    {
+      "process_wall_ms": 96059.372875,
+      "line": "[phase] {\"duration_ms\":32.73,\"nodes\":3905.0,\"phase\":\"warmup_view_@Marker3D@1990\",\"pipeline_draw\":53.0,\"pipeline_mesh\":45.0,\"pipeline_specialization\":63.0,\"resources\":632.0,\"static_bytes\":182938557,\"texture_bytes\":302972480.0,\"ticks_ms\":95420.104}"
+    },
+    {
+      "process_wall_ms": 96093.05995800003,
+      "line": "[phase] {\"duration_ms\":33.292,\"nodes\":3905.0,\"phase\":\"warmup_view_@Marker3D@1991\",\"pipeline_draw\":53.0,\"pipeline_mesh\":45.0,\"pipeline_specialization\":63.0,\"resources\":632.0,\"static_bytes\":182989585,\"texture_bytes\":302972480.0,\"ticks_ms\":95453.52}"
+    },
+    {
+      "process_wall_ms": 96126.56783300002,
+      "line": "[phase] {\"duration_ms\":33.376,\"nodes\":3905.0,\"phase\":\"warmup_view_@Marker3D@2152\",\"pipeline_draw\":53.0,\"pipeline_mesh\":45.0,\"pipeline_specialization\":63.0,\"resources\":632.0,\"static_bytes\":183144877,\"texture_bytes\":302972480.0,\"ticks_ms\":95487.195}"
+    },
+    {
+      "process_wall_ms": 96159.12716600002,
+      "line": "[phase] {\"duration_ms\":32.306,\"nodes\":3905.0,\"phase\":\"warmup_view_@Marker3D@2153\",\"pipeline_draw\":53.0,\"pipeline_mesh\":45.0,\"pipeline_specialization\":63.0,\"resources\":632.0,\"static_bytes\":183186233,\"texture_bytes\":302972480.0,\"ticks_ms\":95519.878}"
+    },
+    {
+      "process_wall_ms": 96216.75508300001,
+      "line": "[phase] {\"duration_ms\":0.0,\"nodes\":3901.0,\"phase\":\"warmup_end\",\"pipeline_draw\":53.0,\"pipeline_mesh\":45.0,\"pipeline_specialization\":63.0,\"resources\":632.0,\"static_bytes\":183164469,\"texture_bytes\":302972480.0,\"ticks_ms\":95576.951}"
+    },
+    {
+      "process_wall_ms": 96216.927333,
+      "line": "[render-warmup] 10 views / 48250 ms / draw pipelines=53.0"
+    },
+    {
+      "process_wall_ms": 97056.89008299999,
+      "line": "[startup] {\"nodes\":3900.0,\"phase\":\"mission_ready\",\"static_bytes\":184347549,\"texture_bytes\":304021056.0,\"ticks_ms\":96417}"
+    },
+    {
+      "process_wall_ms": 97809.36304099999,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 0"
+    },
+    {
+      "process_wall_ms": 97809.54725000003,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 1"
+    },
+    {
+      "process_wall_ms": 97809.752833,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 2"
+    },
+    {
+      "process_wall_ms": 97809.94345800002,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 3"
+    },
+    {
+      "process_wall_ms": 97810.122583,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 4"
+    },
+    {
+      "process_wall_ms": 97810.31250000001,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 5"
+    },
+    {
+      "process_wall_ms": 97810.53474999999,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 6"
+    },
+    {
+      "process_wall_ms": 97811.17387500001,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 7"
+    },
+    {
+      "process_wall_ms": 97814.65200000003,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 0"
+    },
+    {
+      "process_wall_ms": 97814.923125,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 1"
+    },
+    {
+      "process_wall_ms": 97815.14141600001,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 2"
+    },
+    {
+      "process_wall_ms": 97815.35575000003,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 3"
+    },
+    {
+      "process_wall_ms": 97815.56966599998,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 4"
+    },
+    {
+      "process_wall_ms": 97815.77366599998,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 5"
+    },
+    {
+      "process_wall_ms": 97816.03012499999,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 6"
+    },
+    {
+      "process_wall_ms": 97817.11545799999,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 7"
+    },
+    {
+      "process_wall_ms": 97820.02529100004,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 0"
+    },
+    {
+      "process_wall_ms": 97820.304083,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 1"
+    },
+    {
+      "process_wall_ms": 97820.49287500001,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 2"
+    },
+    {
+      "process_wall_ms": 97820.72412500002,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 3"
+    },
+    {
+      "process_wall_ms": 97820.955416,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 4"
+    },
+    {
+      "process_wall_ms": 97821.187291,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 5"
+    },
+    {
+      "process_wall_ms": 97821.41575000003,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 6"
+    },
+    {
+      "process_wall_ms": 97822.43179099998,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 7"
+    },
+    {
+      "process_wall_ms": 97825.314166,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 0"
+    },
+    {
+      "process_wall_ms": 97825.64158299999,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 1"
+    },
+    {
+      "process_wall_ms": 97826.06633300002,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 2"
+    },
+    {
+      "process_wall_ms": 97826.36216600002,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 3"
+    },
+    {
+      "process_wall_ms": 97826.588416,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 4"
+    },
+    {
+      "process_wall_ms": 97826.84937499999,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 5"
+    },
+    {
+      "process_wall_ms": 97827.09570800001,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 6"
+    },
+    {
+      "process_wall_ms": 97828.3705,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 7"
+    },
+    {
+      "process_wall_ms": 97832.11425000001,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 0"
+    },
+    {
+      "process_wall_ms": 97832.36070800001,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 1"
+    },
+    {
+      "process_wall_ms": 97832.53937500001,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 2"
+    },
+    {
+      "process_wall_ms": 97832.73566600002,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 3"
+    },
+    {
+      "process_wall_ms": 97833.26629100004,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 4"
+    },
+    {
+      "process_wall_ms": 97833.478791,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 5"
+    },
+    {
+      "process_wall_ms": 97833.67887500003,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 6"
+    },
+    {
+      "process_wall_ms": 97835.02625,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 7"
+    },
+    {
+      "process_wall_ms": 97837.73829099999,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 0"
+    },
+    {
+      "process_wall_ms": 97837.94341600002,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 1"
+    },
+    {
+      "process_wall_ms": 97838.194541,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 2"
+    },
+    {
+      "process_wall_ms": 97838.402916,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 3"
+    },
+    {
+      "process_wall_ms": 97838.58412500001,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 4"
+    },
+    {
+      "process_wall_ms": 97838.74050000003,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 5"
+    },
+    {
+      "process_wall_ms": 97838.91891600001,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 6"
+    },
+    {
+      "process_wall_ms": 97839.65000000001,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 7"
+    },
+    {
+      "process_wall_ms": 97842.39687500002,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 0"
+    },
+    {
+      "process_wall_ms": 97842.64808300002,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 1"
+    },
+    {
+      "process_wall_ms": 97842.898375,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 2"
+    },
+    {
+      "process_wall_ms": 97843.12,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 3"
+    },
+    {
+      "process_wall_ms": 97843.391833,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 4"
+    },
+    {
+      "process_wall_ms": 97843.59012499999,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 5"
+    },
+    {
+      "process_wall_ms": 97843.81504100002,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 6"
+    },
+    {
+      "process_wall_ms": 97844.51091599998,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 7"
+    },
+    {
+      "process_wall_ms": 97847.61720800003,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 0"
+    },
+    {
+      "process_wall_ms": 97848.06804100004,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 1"
+    },
+    {
+      "process_wall_ms": 97848.45391599998,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 2"
+    },
+    {
+      "process_wall_ms": 97848.70833299999,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 3"
+    },
+    {
+      "process_wall_ms": 97849.36729100002,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 4"
+    },
+    {
+      "process_wall_ms": 97850.02133300003,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 5"
+    },
+    {
+      "process_wall_ms": 97850.69779100001,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 6"
+    },
+    {
+      "process_wall_ms": 97852.16033300004,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 7"
+    },
+    {
+      "process_wall_ms": 97853.897958,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 0"
+    },
+    {
+      "process_wall_ms": 97854.31691600001,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 1"
+    },
+    {
+      "process_wall_ms": 97854.49158300002,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 2"
+    },
+    {
+      "process_wall_ms": 97854.71541600004,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 3"
+    },
+    {
+      "process_wall_ms": 97855.07262499999,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 4"
+    },
+    {
+      "process_wall_ms": 97855.29550000001,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 5"
+    },
+    {
+      "process_wall_ms": 97855.49900000001,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 6"
+    },
+    {
+      "process_wall_ms": 97856.243791,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 7"
+    },
+    {
+      "process_wall_ms": 97859.95550000001,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 0"
+    },
+    {
+      "process_wall_ms": 97860.192166,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 1"
+    },
+    {
+      "process_wall_ms": 97860.342958,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 2"
+    },
+    {
+      "process_wall_ms": 97860.593166,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 3"
+    },
+    {
+      "process_wall_ms": 97860.797208,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 4"
+    },
+    {
+      "process_wall_ms": 97861.12233300002,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 5"
+    },
+    {
+      "process_wall_ms": 97861.29858300001,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 6"
+    },
+    {
+      "process_wall_ms": 97862.09204099998,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 7"
+    },
+    {
+      "process_wall_ms": 97864.744041,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 0"
+    },
+    {
+      "process_wall_ms": 97865.25379099998,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 1"
+    },
+    {
+      "process_wall_ms": 97865.71225,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 2"
+    },
+    {
+      "process_wall_ms": 97865.87220799999,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 3"
+    },
+    {
+      "process_wall_ms": 97866.07275,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 4"
+    },
+    {
+      "process_wall_ms": 97866.29162500003,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 5"
+    },
+    {
+      "process_wall_ms": 97866.49404100001,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 6"
+    },
+    {
+      "process_wall_ms": 97867.27491599998,
+      "line": "Loading cache for shader SceneForwardClusteredShaderRD, variant 7"
+    },
+    {
+      "process_wall_ms": 97980.66729100003,
+      "line": "XR: Clearing primary interface"
+    },
+    {
+      "process_wall_ms": 97981.52104100001,
+      "line": "XR: Removed interface \"Native mobile\""
+    },
+    {
+      "process_wall_ms": 97981.627166,
+      "line": "XR: Removed interface \"OpenXR\""
+    },
+    {
+      "process_wall_ms": 98354.21233300002,
+      "line": "Updated PSO cache (10.4 MiB)"
+    },
+    {
+      "process_wall_ms": 98393.33062500003,
+      "line": "[mvk-info] Destroyed VkDevice on GPU Apple Paravirtual device with 12 Vulkan extensions enabled."
+    },
+    {
+      "process_wall_ms": 98394.677291,
+      "line": "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 11 MB of GPU memory still allocated."
+    },
+    {
+      "process_wall_ms": 98394.75562500002,
+      "line": "[mvk-info] Destroying VkInstance for Vulkan version 1.2.0 with 4 Vulkan extensions enabled."
+    },
+    {
+      "process_wall_ms": 98465.68129100002,
+      "line": "Orphan StringName: servers (static: 1, total: 2)"
+    },
+    {
+      "process_wall_ms": 98479.71366600001,
+      "line": "StringName: 1 unclaimed string names at exit."
+    }
+  ]
+}

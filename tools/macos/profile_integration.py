@@ -108,5 +108,8 @@ if suite == 'cleanup':
     for attempt in range(3):
         run('cleanup-' + str(attempt + 1), 'integration_benchmark.gd',
             ['--suite=matrix', '--samples=24', '--warmup=8'])
+if suite == 'quick':
+    run('entry-probe', 'integration_benchmark.gd',
+        ['--suite=matrix', '--samples=24', '--warmup=8'], timeout=300)
 if any(r['returncode'] != 0 or not r['report_exists'] or r['engine_diagnostics'] for r in metadata['runs']):
     raise SystemExit(1)

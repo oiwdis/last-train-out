@@ -33,7 +33,7 @@ on:
       profile_suite:
         description: Exploratory profiling suite
         type: choice
-        options: [all, startup, matrix, cleanup]
+        options: [all, startup, matrix, cleanup, quick]
         default: all
       import_run:
         description: Optional successful PR test run containing validated-imports (avoids a cold texture import)

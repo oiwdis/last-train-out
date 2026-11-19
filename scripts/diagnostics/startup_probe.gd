@@ -35,6 +35,7 @@ func run() -> void:
 	var report := {"events":events,"godot":Engine.get_version_info().string,"adapter":RenderingServer.get_video_adapter_name(),
 		"renderer":RenderingServer.get_current_rendering_method(),"driver":RenderingServer.get_current_rendering_driver_name(),
 		"headless":DisplayServer.get_name()=="headless","mission_ready":bool(game.get("journey").get("ready_to_play")),
+		"user_data_directory":OS.get_user_data_dir(),
 		"phases":PerformanceTrace.events}
 	FileAccess.open(destination,FileAccess.WRITE).store_string(JSON.stringify(report,"  "))
 	game.queue_free()

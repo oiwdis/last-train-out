@@ -18,6 +18,11 @@ var _source_index := 0
 var _view_index := -1
 var _view_frames := 0
 var _view_started := 0
+var _source_started := 0
+var _source_frames := 0
+var _frames_required := 2
+var _drain_frames := 0
+var _drain_started := 0
 var _started := 0
 var _was_paused := false
 var _active := false
@@ -49,6 +54,11 @@ func _begin(scene: Node3D) -> void:
 		if node is MeshInstance3D and scene.is_ancestor_of(node): _sources.append(node)
 	PerformanceTrace.mark("warmup_begin")
 	_started = Time.get_ticks_msec()
+	var device := RenderingServer.get_rendering_device()
+	if device != null:
+		# frame_post_draw means submitted, not GPU-complete. Render through a
+		# whole queue rotation before leaving each view or releasing gameplay.
+		_frames_required = device.get_frame_delay()+1
 	_was_paused = _tree.paused
 	_active = true
 	_tree.paused = true
@@ -92,6 +102,8 @@ func _show_next_source() -> void:
 	_proxy.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	_camera.add_child(_proxy)
 	_proxy.position = Vector3(0,0,-4)
+	_source_frames = _frames_required
+	_source_started = Time.get_ticks_usec()
 	_progress(_source_index)
 
 
@@ -103,23 +115,31 @@ func _show_next_view() -> void:
 		_camera = null
 		# Consume preparation's last delta while physics is still paused.
 		_draining = true
+		_drain_frames = _frames_required+1
+		_drain_started = Time.get_ticks_usec()
 		_progress(_sources.size()+_views.size())
 		return
 	_camera.global_transform = _views[_view_index].global_transform
 	_view_started = Time.get_ticks_usec()
-	_view_frames = 2
+	_view_frames = _frames_required
 	_progress(_sources.size()+_view_index)
 
 
 func _on_frame() -> void:
 	if not _active: return
 	if _draining:
-		_finish()
+		_drain_frames -= 1
+		if _drain_frames == 0:
+			PerformanceTrace.mark("warmup_final_camera",_drain_started)
+			_finish()
 	elif is_instance_valid(_proxy):
-		_proxy.free()
-		_proxy = null
-		_source_index += 1
-		_show_next_source()
+		_source_frames -= 1
+		if _source_frames == 0:
+			PerformanceTrace.mark("warmup_fog_material",_source_started)
+			_proxy.free()
+			_proxy = null
+			_source_index += 1
+			_show_next_source()
 	else:
 		_view_frames -= 1
 		if _view_frames == 0:
@@ -128,7 +148,7 @@ func _on_frame() -> void:
 
 
 func _progress(done: int) -> void:
-	_label.text = "Preparing journey… %d / %d" % [done,_sources.size()+_views.size()]
+	_label.text = "Preparing journey… %d / %d" % [done,_sources.size()+_views.size()+1]
 
 
 func _disconnect_frame() -> void:

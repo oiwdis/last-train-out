@@ -116,6 +116,10 @@ common/physics_interpolation=true
 
 ; MoltenVK keeps Forward+ while avoiding GPU-specific baked Metal libraries.
 rendering_device/driver.macos="vulkan"
+; MoltenVK's cache can grow between size-query and serialization while pipelines
+; compile. Batch beyond the observed 10-20 MiB working set; Godot still saves on
+; clean shutdown, after preparation, instead of serializing during live draws.
+rendering_device/pipeline_cache/save_chunk_size_mb=128.0
 textures/vram_compression/import_etc2_astc=true
 anti_aliasing/quality/msaa_3d=1
 environment/defaults/default_clear_color=Color(0.035, 0.045, 0.06, 1)
