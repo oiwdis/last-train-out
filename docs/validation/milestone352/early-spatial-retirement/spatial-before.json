@@ -1,0 +1,38 @@
+{
+  "failed": 1,
+  "godot": "4.5.1-stable (official)",
+  "passed": 3,
+  "physics_engine": "Jolt Physics",
+  "results": [
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_scene_retirement.gd",
+      "test": "test_stopped_looping_audio_releases_mixer_owners_before_scene_completion"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_scene_retirement.gd",
+      "test": "test_spawned_fixture_cleanup_retires_audio_owners_before_returning"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_scene_retirement.gd",
+      "test": "test_retirement_deadline_requires_main_thread_update_opportunities"
+    },
+    {
+      "failures": [
+        "engine error during test: ERROR: Audio playback retirement timed out: 1 owners remain (core/variant/variant_utility.cpp:1024)"
+      ],
+      "notes": [],
+      "passed": false,
+      "suite": "test_scene_retirement.gd",
+      "test": "test_spatial_audio_stopped_before_first_physics_tick_releases_pending_owner"
+    }
+  ]
+}

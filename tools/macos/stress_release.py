@@ -113,14 +113,20 @@ def main():
                        diagnostics=[line for line in lines if line.startswith(('ERROR:', 'SCRIPT ERROR:',
                                     'WARNING:', 'Leaked instance:', 'Resource still in use:'))])
             if report.exists():
-                data = json.loads(report.read_text())
+                try:
+                    data = json.loads(report.read_text())
+                except (ValueError, OSError) as error:
+                    # A crash can interrupt report writing. Preserve that failed
+                    # attempt and continue the predetermined remaining matrix.
+                    row['report_error'] = str(error)
+                    data = {}
                 # A failed override would measure the wrong cache and could touch
                 # normal settings. Stop the entire series in that case.
                 if 'user_data_directory' in data and Path(data['user_data_directory']) != user_dir:
                     row['isolation_error'] = data['user_data_directory']
                 if script == 'startup_probe.gd':
                     row['complete'] = data.get('mission_ready', False)
-                    row['ready_ms'] = next((e['ticks_ms'] for e in data['events'] if e['phase'] == 'mission_ready'), None)
+                    row['ready_ms'] = next((e['ticks_ms'] for e in data.get('events', []) if e['phase'] == 'mission_ready'), None)
                 elif script == 'integration_benchmark.gd':
                     row['complete'] = len(data.get('results', [])) == 72
                 else:

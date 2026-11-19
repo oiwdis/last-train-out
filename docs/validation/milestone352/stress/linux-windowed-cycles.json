@@ -1,0 +1,185 @@
+{
+  "checks": [
+    {
+      "check": "preset preserves fog simulation",
+      "passed": true,
+      "ticks_ms": 48843
+    },
+    {
+      "check": "preset/fog preparation finishes",
+      "passed": true,
+      "ticks_ms": 61471
+    },
+    {
+      "check": "preset preserves fog simulation",
+      "passed": true,
+      "ticks_ms": 61479
+    },
+    {
+      "check": "preset/fog preparation finishes",
+      "passed": true,
+      "ticks_ms": 83373
+    },
+    {
+      "check": "preset preserves fog simulation",
+      "passed": true,
+      "ticks_ms": 83388
+    },
+    {
+      "check": "preset/fog preparation finishes",
+      "passed": true,
+      "ticks_ms": 250663
+    },
+    {
+      "check": "preset preserves fog simulation",
+      "passed": true,
+      "ticks_ms": 250674
+    },
+    {
+      "check": "preset/fog preparation finishes",
+      "passed": true,
+      "ticks_ms": 262941
+    },
+    {
+      "check": "Save button writes a valid fixture",
+      "passed": true,
+      "ticks_ms": 263157
+    },
+    {
+      "check": "Continue restores player position",
+      "passed": true,
+      "ticks_ms": 288879
+    },
+    {
+      "check": "Continue preserves cargo ownership",
+      "passed": true,
+      "ticks_ms": 288880
+    },
+    {
+      "check": "preset preserves fog simulation",
+      "passed": true,
+      "ticks_ms": 288889
+    },
+    {
+      "check": "preset/fog preparation finishes",
+      "passed": true,
+      "ticks_ms": 300346
+    },
+    {
+      "check": "preset preserves fog simulation",
+      "passed": true,
+      "ticks_ms": 300355
+    },
+    {
+      "check": "preset/fog preparation finishes",
+      "passed": true,
+      "ticks_ms": 317782
+    },
+    {
+      "check": "preset preserves fog simulation",
+      "passed": true,
+      "ticks_ms": 317793
+    },
+    {
+      "check": "preset/fog preparation finishes",
+      "passed": true,
+      "ticks_ms": 484157
+    },
+    {
+      "check": "preset preserves fog simulation",
+      "passed": true,
+      "ticks_ms": 484168
+    },
+    {
+      "check": "preset/fog preparation finishes",
+      "passed": true,
+      "ticks_ms": 496358
+    },
+    {
+      "check": "Save button writes a valid fixture",
+      "passed": true,
+      "ticks_ms": 496569
+    },
+    {
+      "check": "Continue restores player position",
+      "passed": true,
+      "ticks_ms": 521131
+    },
+    {
+      "check": "Continue preserves cargo ownership",
+      "passed": true,
+      "ticks_ms": 521131
+    },
+    {
+      "check": "preset preserves fog simulation",
+      "passed": true,
+      "ticks_ms": 521141
+    },
+    {
+      "check": "preset/fog preparation finishes",
+      "passed": true,
+      "ticks_ms": 532599
+    },
+    {
+      "check": "preset preserves fog simulation",
+      "passed": true,
+      "ticks_ms": 532608
+    },
+    {
+      "check": "preset/fog preparation finishes",
+      "passed": true,
+      "ticks_ms": 549171
+    },
+    {
+      "check": "preset preserves fog simulation",
+      "passed": true,
+      "ticks_ms": 549181
+    },
+    {
+      "check": "preset/fog preparation finishes",
+      "passed": true,
+      "ticks_ms": 700137
+    },
+    {
+      "check": "preset preserves fog simulation",
+      "passed": true,
+      "ticks_ms": 700150
+    },
+    {
+      "check": "preset/fog preparation finishes",
+      "passed": true,
+      "ticks_ms": 711738
+    },
+    {
+      "check": "Save button writes a valid fixture",
+      "passed": true,
+      "ticks_ms": 711998
+    },
+    {
+      "check": "Continue restores player position",
+      "passed": true,
+      "ticks_ms": 737943
+    },
+    {
+      "check": "Continue preserves cargo ownership",
+      "passed": true,
+      "ticks_ms": 737944
+    },
+    {
+      "check": "Restart returns a ready mission",
+      "passed": true,
+      "ticks_ms": 749045
+    },
+    {
+      "check": "final scene retirement leaves no preparation pause",
+      "passed": true,
+      "ticks_ms": 749317
+    }
+  ],
+  "complete": true,
+  "driver": "opengl3",
+  "failed": 0,
+  "renderer": "gl_compatibility",
+  "scenario": "cycles",
+  "user_data_directory": "/tmp/lto-m35-data/godot/app_userdata/Last Train Out"
+}
