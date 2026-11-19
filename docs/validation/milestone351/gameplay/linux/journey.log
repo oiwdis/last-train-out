@@ -1,25 +1,25 @@
 Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
 
 [journey] PASS walk: (13.0, 1.0, 1.2)
-[journey] PASS reticle selects platform_luggage (got platform_luggage:<Area3D#241172488397>)
+[journey] PASS reticle selects platform_luggage (got platform_luggage:<Area3D#241424146638>)
 [journey] PASS search platform_luggage
 [journey] PASS walk: (13.0, 1.0, 0.4)
 [journey] PASS walk: (27.2, 1.0, 0.4)
 [journey] PASS walk: (27.2, 1.0, 1.1)
-[journey] PASS reticle selects platform_locker (got platform_locker:<Area3D#241206042833>)
+[journey] PASS reticle selects platform_locker (got platform_locker:<Area3D#241457701074>)
 [journey] PASS search platform_locker
 [journey] PASS walk: (27.2, 1.0, 0.4)
 [journey] PASS walk: (30.0, 1.0, 0.4)
 [journey] PASS V selects detailed third-person survivor
 [journey] PASS walk: (13.0, 1.0, 0.4)
 [journey] PASS walk: (5.0, 1.0, 1.2)
-[journey] PASS reticle selects @Area3D@2536 (got @Area3D@2536:<Area3D#270515838739>)
+[journey] PASS reticle selects @Area3D@2536 (got @Area3D@2536:<Area3D#270767496980>)
 [journey] PASS search harlow_departure_coal
-[journey] PASS reticle selects @Area3D@2592 (got @Area3D@2592:<Area3D#372336758119>)
+[journey] PASS reticle selects @Area3D@2592 (got @Area3D@2592:<Area3D#372588416360>)
 [journey] PASS physical heavy pickup: coal_sack
 [journey] PASS walk: (5.0, 1.0, 0.0)
 [journey] PASS walk: (5.0, 1.0, -0.8)
-[journey] PASS reticle selects TrainStorage (got TrainStorage:<Area3D#243789734155>)
+[journey] PASS reticle selects TrainStorage (got TrainStorage:<Area3D#244041392396>)
 [journey] PASS storage opened using E
 [journey] PASS coal deposited using R
 [journey] PASS walk: (6.6, 1.0, -1.5)
@@ -30,9 +30,9 @@ Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
 [journey] PASS walk: (17.8, 1.0, -3.5)
 [journey] PASS walk: (21.3, 1.0, -3.5)
 [journey] PASS walked aboard and through cars to cab
-[journey] PASS reticle selects StokeBoiler (got StokeBoiler:<Area3D#268754232729>)
+[journey] PASS reticle selects StokeBoiler (got StokeBoiler:<Area3D#269005890970>)
 [journey] PASS stored coal stokes boiler
-[journey] PASS reticle selects Regulator (got Regulator:<Area3D#267663713629>)
+[journey] PASS reticle selects Regulator (got Regulator:<Area3D#267915371873>)
 [journey] PASS physical regulator starts departure
 [journey-travel] ashford distance=42.3333357175126 fuel=96.7040000000004 fog=-956.69532 hp=100.0
 [journey-travel] ashford distance=122.333335717515 fuel=93.5040000000007 fog=-933.09332 hp=100.0
@@ -64,27 +64,27 @@ Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
 [journey] PASS walk: (1806.5, 7.0, 180.6)
 [journey] PASS walk: (1806.5, 7.0, 182.0)
 [journey] PASS walk: (1803.0, 7.0, 183.4)
-[journey] PASS reticle selects coal_a (got coal_a:<Area3D#215637564765>)
+[journey] PASS reticle selects coal_a (got coal_a:<Area3D#215889223006>)
 [journey] PASS search ashford_coal_a
-[journey] PASS reticle selects @Area3D@2615 (got @Area3D@2615:<Area3D#1751910452726>)
+[journey] PASS reticle selects @Area3D@2615 (got @Area3D@2615:<Area3D#1752162110967>)
 [journey] PASS physical heavy pickup: coal_sack
 [journey] PASS walk: (1805.0, 7.0, 182.0)
-[journey] PASS reticle selects TrainStorage (got TrainStorage:<Area3D#243789734155>)
+[journey] PASS reticle selects TrainStorage (got TrainStorage:<Area3D#244041392396>)
 [journey] PASS storage opened using E
 [journey] PASS coal deposited using R
 [journey] PASS walk: (1803.0, 7.0, 186.0)
 [journey] PASS walk: (1803.0, 6.0, 195.0)
 [journey] PASS walk: (1837.0, 6.0, 213.0)
 [journey] PASS walk: (1837.0, 6.0, 206.4)
-[journey] PASS reticle selects coal_b (got coal_b:<Area3D#216342207854>)
+[journey] PASS reticle selects coal_b (got coal_b:<Area3D#216593866095>)
 [journey] PASS search ashford_coal_b
-[journey] PASS reticle selects @Area3D@2629 (got @Area3D@2629:<Area3D#1820747370195>)
+[journey] PASS reticle selects @Area3D@2629 (got @Area3D@2629:<Area3D#1820999028436>)
 [journey] PASS physical heavy pickup: coal_sack
 [journey] PASS walk: (1837.0, 6.0, 213.0)
 [journey] PASS walk: (1803.0, 6.0, 195.0)
 [journey] PASS walk: (1803.0, 7.0, 186.0)
 [journey] PASS walk: (1805.0, 7.0, 182.0)
-[journey] PASS reticle selects TrainStorage (got TrainStorage:<Area3D#243789734155>)
+[journey] PASS reticle selects TrainStorage (got TrainStorage:<Area3D#244041392396>)
 [journey] PASS storage opened using E
 [journey] PASS coal deposited using R
 [journey] PASS walk: (1806.5, 7.0, 182.0)
@@ -106,13 +106,13 @@ Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
 [journey] PASS walk: (1937.0, 6.0, 226.0)
 [journey] PASS walk: (1937.0, 6.0, 222.0)
 [journey] PASS walk: (1937.0, 6.0, 219.3)
-[journey] PASS reticle selects workshop (got workshop:<Area3D#216560311674>)
+[journey] PASS reticle selects workshop (got workshop:<Area3D#216811969915>)
 [journey] PASS search ashford_workshop
 [journey] PASS walk: (1937.0, 6.0, 222.0)
 [journey] PASS walk: (1941.7, 6.0, 219.0)
-[journey] PASS reticle selects components (got components:<Area3D#217113959816>)
+[journey] PASS reticle selects components (got components:<Area3D#217365618057>)
 [journey] PASS search ashford_components
-[journey] PASS reticle selects @Area3D@2651 (got @Area3D@2651:<Area3D#2093679120226>)
+[journey] PASS reticle selects @Area3D@2651 (got @Area3D@2651:<Area3D#2093930778467>)
 [journey] PASS physical heavy pickup: machine_component
 [journey] PASS walk: (1937.0, 6.0, 222.0)
 [journey] PASS walk: (1937.0, 6.0, 226.0)
@@ -130,11 +130,11 @@ Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
 [journey] PASS walk: (1817.8, 7.0, 180.0)
 [journey] PASS walk: (1821.2, 7.0, 180.0)
 [journey] PASS walked aboard and through cars to cab
-[journey] PASS reticle selects StokeBoiler (got StokeBoiler:<Area3D#268754232729>)
+[journey] PASS reticle selects StokeBoiler (got StokeBoiler:<Area3D#269005890970>)
 [journey] PASS stored coal stokes boiler
-[journey] PASS reticle selects StokeBoiler (got StokeBoiler:<Area3D#268754232729>)
+[journey] PASS reticle selects StokeBoiler (got StokeBoiler:<Area3D#269005890970>)
 [journey] PASS stored coal stokes boiler
-[journey] PASS reticle selects Regulator (got Regulator:<Area3D#267663713629>)
+[journey] PASS reticle selects Regulator (got Regulator:<Area3D#267915371873>)
 [journey] PASS physical regulator starts departure
 [journey-travel] blackwater distance=1865.13333667176 fuel=111.248000000008 fog=1783.1551293334 hp=100.0
 [journey-travel] blackwater distance=1945.13333667183 fuel=108.048000000008 fog=1813.71829600007 hp=100.0
@@ -167,18 +167,18 @@ Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
 [journey] PASS walk: (3403.0, 2.0, -65.0)
 [journey] PASS walk: (3427.0, 2.0, -51.0)
 [journey] PASS walk: (3427.0, 2.0, -56.7)
-[journey] PASS reticle selects food (got food:<Area3D#225519345378>)
+[journey] PASS reticle selects food (got food:<Area3D#225771003619>)
 [journey] PASS search blackwater_food
 [journey] PASS walk: (3427.0, 2.0, -51.0)
 [journey] PASS walk: (3497.0, 2.0, -35.0)
 [journey] PASS walk: (3497.0, 2.0, -40.7)
-[journey] PASS reticle selects medicine (got medicine:<Area3D#225737449198>)
+[journey] PASS reticle selects medicine (got medicine:<Area3D#225989107439>)
 [journey] PASS search blackwater_medicine
 [journey] PASS walk: (3497.0, 2.0, -35.0)
 [journey] PASS walk: (3583.0, 2.0, -25.0)
 [journey] PASS walk: (3583.0, 2.0, -30.0)
 [journey] PASS walk: (3579.2, 2.0, -31.0)
-[journey] PASS reticle selects EvacuationNote (got EvacuationNote:<Area3D#226945408801>)
+[journey] PASS reticle selects EvacuationNote (got EvacuationNote:<Area3D#227197067042>)
 [journey] PASS evacuation note read using E
 [journey] PASS walk: (3583.0, 2.0, -30.0)
 [journey] PASS walk: (3583.0, 2.0, -24.0)
@@ -186,7 +186,7 @@ Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
 [journey] PASS walk: (3403.0, 2.0, -65.0)
 [journey] PASS walk: (3403.0, 3.0, -74.0)
 [journey] PASS walk: (3405.0, 3.0, -78.0)
-[journey] PASS reticle selects TrainStorage (got TrainStorage:<Area3D#243789734155>)
+[journey] PASS reticle selects TrainStorage (got TrainStorage:<Area3D#244041392396>)
 [journey] PASS storage opened using E
 [journey] PASS coal deposited using R
 [journey] PASS walk: (3406.6, 3.0, -78.0)
@@ -206,7 +206,7 @@ Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
 [journey] PASS collected supplies survive Continue
 [journey] PASS evacuation note progress restored
 [journey] PASS Continue preserves cargo count without duplication
-[journey] PASS reticle selects Regulator (got Regulator:<Area3D#5418923329759>)
+[journey] PASS reticle selects Regulator (got Regulator:<Area3D#5419174988000>)
 [journey] PASS physical regulator starts departure
 [journey-travel] escape distance=3504.33333762432 fuel=43.1200000000154 fog=3007.71318200009 hp=100.0
 [journey-travel] escape distance=3584.33333762425 fuel=39.9200000000157 fog=3047.35374600009 hp=100.0

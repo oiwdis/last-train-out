@@ -38,3 +38,5 @@ Previously each generated box uploaded an intermediate mesh, downloaded it for
 UV projection, and downloaded it again when appended into a ladder/column.
 The revised construction retains CPU arrays and uploads only finished meshes.
 Native before/after phase measurements are required before claiming a speedup.
+
+Latest `cleanup-after-timeout.log`: 7a53907, Linux llvmpipe/OpenGL, 320×180, legacy preset diagnostic, 12 samples/8 settling frames. Timed out after 180 seconds during High preparation, as the pre-change attempt did. Completed Low/Medium rows remain in the log. This is not a clean shutdown result or physical-Mac performance. `cancel-lifetime-after.log` is a separate five-fixture rendered cancellation probe: no ObjectDB/resource-in-use warnings, stable node/resource counts, but the verbose `servers` StringName remains. Later Godot source review identifies `servers` as AudioServer's debug profiler label; the message remains preserved.

@@ -36,6 +36,9 @@ for run in 1 2 3 4 5; do
 done
 ```
 
+Repeat the startup series with `--graphics=medium` and `--graphics=high`; normal
+play defaults to Medium until a preference is saved.
+
 The JSON reports engine-tick phases, mission readiness and the actual user-data
 directory. The external time includes settling and teardown; do not label that
 whole duration mission-ready time. Keep the normal-launch stopwatch result too.
@@ -85,7 +88,10 @@ section, approach the fog and remain briefly in dangerous fog. Exercise all
 three presets while standing safely, then Save/Continue with rider and cargo
 on the train. Complete Harlow → Ashford → Blackwater → final escape, and test
 one mission failure separately. Note every visible hitch, its location and the
-wall-clock time so it can be related to logs.
+wall-clock time so it can be related to logs. F1 (or the backtick key) shows
+the existing live FPS diagnostic; record it in both camera modes without using
+the debug action buttons. That coarse FPS readout supplements the raw matrix
+frame distributions and does not measure individual hitches.
 
 For every failure, retain the complete log, partial JSON/JSONL and any macOS
 crash report. A successful retry does not erase the failed attempt. Report

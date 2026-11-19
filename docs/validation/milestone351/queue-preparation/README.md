@@ -7,3 +7,5 @@ Hosted Apple Silicon / Apple Paravirtual device, Godot 4.5.1 Vulkan, 960×540 wi
 - `stress.zip`: same run, all four lifecycle tests passed with Vulkan rendering, including all danger states/presets, repeated scenes, cancellation and rider/cargo Continue during preparation. Fixed FPS is used for functional determinism, not performance measurement. No ObjectDB/resource-in-use diagnostics.
 
 Changes under test: CPU mesh sources, scene-owned preparation, queued draw rotation, 128 MiB PSO serialization threshold. HUD redraw fix is **not** included in these measurements. No fatal device loss here; this does not establish that the historical GPU timeout is fixed.
+
+`native-tests-and-gameplay.zip` retains all 298 tests and 167 journey / 35 fuel / 24 stranded / 17 cold-resume checks from run 44573438825. The run was intentionally cancelled before release completion after these checks, startup and rendered stress completed, so the updated HUD/strict-cleanup candidate could use the workflow slot. No release build is claimed from it.
