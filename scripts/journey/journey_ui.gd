@@ -82,6 +82,11 @@ func button(parent: Node, title: String, action: Callable) -> Button:
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo and event.physical_keycode == KEY_J:
+		# Preparation owns the temporary pause. Opening the ledger underneath its
+		# cover would leave a visible ledger with an unpaused world on completion.
+		if journey.game.graphics.is_preparing():
+			get_viewport().set_input_as_handled()
+			return
 		toggle(not panel.visible)
 		get_viewport().set_input_as_handled()
 

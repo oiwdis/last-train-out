@@ -1,0 +1,701 @@
+{
+  "checks": [
+    {
+      "check": "walk: (13.0, 1.0, 1.2)",
+      "passed": true
+    },
+    {
+      "check": "reticle selects platform_luggage (got platform_luggage:<Area3D#236743303379>)",
+      "passed": true
+    },
+    {
+      "check": "search platform_luggage",
+      "passed": true
+    },
+    {
+      "check": "walk: (13.0, 1.0, 0.4)",
+      "passed": true
+    },
+    {
+      "check": "walk: (27.2, 1.0, 0.4)",
+      "passed": true
+    },
+    {
+      "check": "walk: (27.2, 1.0, 1.1)",
+      "passed": true
+    },
+    {
+      "check": "reticle selects platform_locker (got platform_locker:<Area3D#236776857815>)",
+      "passed": true
+    },
+    {
+      "check": "search platform_locker",
+      "passed": true
+    },
+    {
+      "check": "walk: (27.2, 1.0, 0.4)",
+      "passed": true
+    },
+    {
+      "check": "walk: (30.0, 1.0, 0.4)",
+      "passed": true
+    },
+    {
+      "check": "V selects detailed third-person survivor",
+      "passed": true
+    },
+    {
+      "check": "walk: (13.0, 1.0, 0.4)",
+      "passed": true
+    },
+    {
+      "check": "walk: (5.0, 1.0, 1.2)",
+      "passed": true
+    },
+    {
+      "check": "reticle selects @Area3D@2529 (got @Area3D@2529:<Area3D#265902104334>)",
+      "passed": true
+    },
+    {
+      "check": "search harlow_departure_coal",
+      "passed": true
+    },
+    {
+      "check": "reticle selects @Area3D@2585 (got @Area3D@2585:<Area3D#367723023715>)",
+      "passed": true
+    },
+    {
+      "check": "physical heavy pickup: coal_sack",
+      "passed": true
+    },
+    {
+      "check": "walk: (5.0, 1.0, 0.0)",
+      "passed": true
+    },
+    {
+      "check": "walk: (5.0, 1.0, -0.8)",
+      "passed": true
+    },
+    {
+      "check": "reticle selects TrainStorage (got TrainStorage:<Area3D#239360549137>)",
+      "passed": true
+    },
+    {
+      "check": "storage opened using E",
+      "passed": true
+    },
+    {
+      "check": "coal deposited using R",
+      "passed": true
+    },
+    {
+      "check": "walk: (6.6, 1.0, -1.5)",
+      "passed": true
+    },
+    {
+      "check": "walk: (6.6, 1.0, -2.9)",
+      "passed": true
+    },
+    {
+      "check": "walk: (9.7, 1.0, -2.9)",
+      "passed": true
+    },
+    {
+      "check": "walk: (10.2, 1.0, -3.5)",
+      "passed": true
+    },
+    {
+      "check": "walk: (12.4, 1.0, -3.5)",
+      "passed": true
+    },
+    {
+      "check": "walk: (17.8, 1.0, -3.5)",
+      "passed": true
+    },
+    {
+      "check": "walk: (21.3, 1.0, -3.5)",
+      "passed": true
+    },
+    {
+      "check": "walked aboard and through cars to cab",
+      "passed": true
+    },
+    {
+      "check": "reticle selects StokeBoiler (got StokeBoiler:<Area3D#264140498335>)",
+      "passed": true
+    },
+    {
+      "check": "stored coal stokes boiler",
+      "passed": true
+    },
+    {
+      "check": "reticle selects Regulator (got Regulator:<Area3D#263033202018>)",
+      "passed": true
+    },
+    {
+      "check": "physical regulator starts departure",
+      "passed": true
+    },
+    {
+      "check": "continuous arrival ashford",
+      "passed": true
+    },
+    {
+      "check": "walk: (1813.0, 7.0, 180.0)",
+      "passed": true
+    },
+    {
+      "check": "walk: (1810.1, 7.0, 180.0)",
+      "passed": true
+    },
+    {
+      "check": "walk: (1809.6, 7.0, 180.6)",
+      "passed": true
+    },
+    {
+      "check": "walk: (1806.5, 7.0, 180.6)",
+      "passed": true
+    },
+    {
+      "check": "walk: (1806.5, 7.0, 182.0)",
+      "passed": true
+    },
+    {
+      "check": "walk: (1803.0, 7.0, 183.4)",
+      "passed": true
+    },
+    {
+      "check": "reticle selects coal_a (got coal_a:<Area3D#211057384792>)",
+      "passed": true
+    },
+    {
+      "check": "search ashford_coal_a",
+      "passed": true
+    },
+    {
+      "check": "reticle selects @Area3D@2608 (got @Area3D@2608:<Area3D#1747296718321>)",
+      "passed": true
+    },
+    {
+      "check": "physical heavy pickup: coal_sack",
+      "passed": true
+    },
+    {
+      "check": "walk: (1805.0, 7.0, 182.0)",
+      "passed": true
+    },
+    {
+      "check": "reticle selects TrainStorage (got TrainStorage:<Area3D#239360549137>)",
+      "passed": true
+    },
+    {
+      "check": "storage opened using E",
+      "passed": true
+    },
+    {
+      "check": "coal deposited using R",
+      "passed": true
+    },
+    {
+      "check": "walk: (1803.0, 7.0, 186.0)",
+      "passed": true
+    },
+    {
+      "check": "walk: (1803.0, 6.0, 195.0)",
+      "passed": true
+    },
+    {
+      "check": "walk: (1837.0, 6.0, 213.0)",
+      "passed": true
+    },
+    {
+      "check": "walk: (1837.0, 6.0, 206.4)",
+      "passed": true
+    },
+    {
+      "check": "reticle selects coal_b (got coal_b:<Area3D#211762027881>)",
+      "passed": true
+    },
+    {
+      "check": "search ashford_coal_b",
+      "passed": true
+    },
+    {
+      "check": "reticle selects @Area3D@2622 (got @Area3D@2622:<Area3D#1816133635795>)",
+      "passed": true
+    },
+    {
+      "check": "physical heavy pickup: coal_sack",
+      "passed": true
+    },
+    {
+      "check": "walk: (1837.0, 6.0, 213.0)",
+      "passed": true
+    },
+    {
+      "check": "walk: (1803.0, 6.0, 195.0)",
+      "passed": true
+    },
+    {
+      "check": "walk: (1803.0, 7.0, 186.0)",
+      "passed": true
+    },
+    {
+      "check": "walk: (1805.0, 7.0, 182.0)",
+      "passed": true
+    },
+    {
+      "check": "reticle selects TrainStorage (got TrainStorage:<Area3D#239360549137>)",
+      "passed": true
+    },
+    {
+      "check": "storage opened using E",
+      "passed": true
+    },
+    {
+      "check": "coal deposited using R",
+      "passed": true
+    },
+    {
+      "check": "walk: (1806.5, 7.0, 182.0)",
+      "passed": true
+    },
+    {
+      "check": "walk: (1806.5, 7.0, 180.6)",
+      "passed": true
+    },
+    {
+      "check": "walk: (1809.6, 7.0, 180.6)",
+      "passed": true
+    },
+    {
+      "check": "walk: (1810.1, 7.0, 180.0)",
+      "passed": true
+    },
+    {
+      "check": "walk: (1812.4, 7.0, 180.0)",
+      "passed": true
+    },
+    {
+      "check": "walk: (1817.8, 7.0, 180.0)",
+      "passed": true
+    },
+    {
+      "check": "walk: (1821.2, 7.0, 180.0)",
+      "passed": true
+    },
+    {
+      "check": "walked aboard and through cars to cab",
+      "passed": true
+    },
+    {
+      "check": "walk: (1813.0, 7.0, 180.0)",
+      "passed": true
+    },
+    {
+      "check": "walk: (1810.1, 7.0, 180.0)",
+      "passed": true
+    },
+    {
+      "check": "walk: (1809.6, 7.0, 180.6)",
+      "passed": true
+    },
+    {
+      "check": "walk: (1806.5, 7.0, 180.6)",
+      "passed": true
+    },
+    {
+      "check": "walk: (1806.5, 7.0, 182.0)",
+      "passed": true
+    },
+    {
+      "check": "walk: (1803.0, 7.0, 186.0)",
+      "passed": true
+    },
+    {
+      "check": "walk: (1803.0, 6.0, 195.0)",
+      "passed": true
+    },
+    {
+      "check": "walk: (1803.0, 6.0, 215.0)",
+      "passed": true
+    },
+    {
+      "check": "walk: (1937.0, 6.0, 226.0)",
+      "passed": true
+    },
+    {
+      "check": "walk: (1937.0, 6.0, 222.0)",
+      "passed": true
+    },
+    {
+      "check": "walk: (1937.0, 6.0, 219.3)",
+      "passed": true
+    },
+    {
+      "check": "reticle selects workshop (got workshop:<Area3D#211980131701>)",
+      "passed": true
+    },
+    {
+      "check": "search ashford_workshop",
+      "passed": true
+    },
+    {
+      "check": "walk: (1937.0, 6.0, 222.0)",
+      "passed": true
+    },
+    {
+      "check": "walk: (1941.7, 6.0, 219.0)",
+      "passed": true
+    },
+    {
+      "check": "reticle selects components (got components:<Area3D#212533779843>)",
+      "passed": true
+    },
+    {
+      "check": "search ashford_components",
+      "passed": true
+    },
+    {
+      "check": "reticle selects @Area3D@2644 (got @Area3D@2644:<Area3D#2089048608611>)",
+      "passed": true
+    },
+    {
+      "check": "physical heavy pickup: machine_component",
+      "passed": true
+    },
+    {
+      "check": "walk: (1937.0, 6.0, 222.0)",
+      "passed": true
+    },
+    {
+      "check": "walk: (1937.0, 6.0, 226.0)",
+      "passed": true
+    },
+    {
+      "check": "walk: (1880.0, 6.0, 216.0)",
+      "passed": true
+    },
+    {
+      "check": "abandoned heavy spares using G as fog closes",
+      "passed": true
+    },
+    {
+      "check": "walk: (1803.0, 6.0, 216.0)",
+      "passed": true
+    },
+    {
+      "check": "walk: (1803.0, 6.0, 195.0)",
+      "passed": true
+    },
+    {
+      "check": "walk: (1803.0, 7.0, 186.0)",
+      "passed": true
+    },
+    {
+      "check": "walk: (1805.0, 7.0, 182.0)",
+      "passed": true
+    },
+    {
+      "check": "walk: (1806.5, 7.0, 182.0)",
+      "passed": true
+    },
+    {
+      "check": "walk: (1806.5, 7.0, 180.6)",
+      "passed": true
+    },
+    {
+      "check": "walk: (1809.6, 7.0, 180.6)",
+      "passed": true
+    },
+    {
+      "check": "walk: (1810.1, 7.0, 180.0)",
+      "passed": true
+    },
+    {
+      "check": "walk: (1812.4, 7.0, 180.0)",
+      "passed": true
+    },
+    {
+      "check": "walk: (1817.8, 7.0, 180.0)",
+      "passed": true
+    },
+    {
+      "check": "walk: (1821.2, 7.0, 180.0)",
+      "passed": true
+    },
+    {
+      "check": "walked aboard and through cars to cab",
+      "passed": true
+    },
+    {
+      "check": "reticle selects StokeBoiler (got StokeBoiler:<Area3D#264140498335>)",
+      "passed": true
+    },
+    {
+      "check": "stored coal stokes boiler",
+      "passed": true
+    },
+    {
+      "check": "reticle selects StokeBoiler (got StokeBoiler:<Area3D#264140498335>)",
+      "passed": true
+    },
+    {
+      "check": "stored coal stokes boiler",
+      "passed": true
+    },
+    {
+      "check": "reticle selects Regulator (got Regulator:<Area3D#263033202018>)",
+      "passed": true
+    },
+    {
+      "check": "physical regulator starts departure",
+      "passed": true
+    },
+    {
+      "check": "continuous arrival blackwater",
+      "passed": true
+    },
+    {
+      "check": "walk: (3413.0, 3.0, -80.0)",
+      "passed": true
+    },
+    {
+      "check": "walk: (3410.2, 3.0, -80.0)",
+      "passed": true
+    },
+    {
+      "check": "walk: (3409.7, 3.0, -79.4)",
+      "passed": true
+    },
+    {
+      "check": "walk: (3406.6, 3.0, -79.4)",
+      "passed": true
+    },
+    {
+      "check": "walk: (3406.6, 3.0, -78.0)",
+      "passed": true
+    },
+    {
+      "check": "walk: (3403.0, 3.0, -74.0)",
+      "passed": true
+    },
+    {
+      "check": "walk: (3403.0, 2.0, -65.0)",
+      "passed": true
+    },
+    {
+      "check": "walk: (3427.0, 2.0, -51.0)",
+      "passed": true
+    },
+    {
+      "check": "walk: (3427.0, 2.0, -56.7)",
+      "passed": true
+    },
+    {
+      "check": "reticle selects food (got food:<Area3D#221425704669>)",
+      "passed": true
+    },
+    {
+      "check": "search blackwater_food",
+      "passed": true
+    },
+    {
+      "check": "walk: (3427.0, 2.0, -51.0)",
+      "passed": true
+    },
+    {
+      "check": "walk: (3497.0, 2.0, -35.0)",
+      "passed": true
+    },
+    {
+      "check": "walk: (3497.0, 2.0, -40.7)",
+      "passed": true
+    },
+    {
+      "check": "reticle selects medicine (got medicine:<Area3D#221643808489>)",
+      "passed": true
+    },
+    {
+      "check": "search blackwater_medicine",
+      "passed": true
+    },
+    {
+      "check": "walk: (3497.0, 2.0, -35.0)",
+      "passed": true
+    },
+    {
+      "check": "walk: (3583.0, 2.0, -25.0)",
+      "passed": true
+    },
+    {
+      "check": "walk: (3583.0, 2.0, -30.0)",
+      "passed": true
+    },
+    {
+      "check": "walk: (3579.2, 2.0, -31.0)",
+      "passed": true
+    },
+    {
+      "check": "reticle selects EvacuationNote (got EvacuationNote:<Area3D#222851768092>)",
+      "passed": true
+    },
+    {
+      "check": "evacuation note read using E",
+      "passed": true
+    },
+    {
+      "check": "walk: (3583.0, 2.0, -30.0)",
+      "passed": true
+    },
+    {
+      "check": "walk: (3583.0, 2.0, -24.0)",
+      "passed": true
+    },
+    {
+      "check": "walk: (3403.0, 2.0, -24.0)",
+      "passed": true
+    },
+    {
+      "check": "walk: (3403.0, 2.0, -65.0)",
+      "passed": true
+    },
+    {
+      "check": "walk: (3403.0, 3.0, -74.0)",
+      "passed": true
+    },
+    {
+      "check": "walk: (3405.0, 3.0, -78.0)",
+      "passed": true
+    },
+    {
+      "check": "reticle selects TrainStorage (got TrainStorage:<Area3D#239360549137>)",
+      "passed": true
+    },
+    {
+      "check": "storage opened using E",
+      "passed": true
+    },
+    {
+      "check": "coal deposited using R",
+      "passed": true
+    },
+    {
+      "check": "walk: (3406.6, 3.0, -78.0)",
+      "passed": true
+    },
+    {
+      "check": "walk: (3406.6, 3.0, -79.4)",
+      "passed": true
+    },
+    {
+      "check": "walk: (3409.7, 3.0, -79.4)",
+      "passed": true
+    },
+    {
+      "check": "walk: (3410.2, 3.0, -80.0)",
+      "passed": true
+    },
+    {
+      "check": "walk: (3412.4, 3.0, -80.0)",
+      "passed": true
+    },
+    {
+      "check": "walk: (3417.8, 3.0, -80.0)",
+      "passed": true
+    },
+    {
+      "check": "walk: (3421.3, 3.0, -80.0)",
+      "passed": true
+    },
+    {
+      "check": "walked aboard and through cars to cab",
+      "passed": true
+    },
+    {
+      "check": "J opens actual save ledger",
+      "passed": true
+    },
+    {
+      "check": "Save Game button writes the played world",
+      "passed": true
+    },
+    {
+      "check": "Continue restores actual Blackwater stop",
+      "passed": true
+    },
+    {
+      "check": "saved camera perspective recovered",
+      "passed": true
+    },
+    {
+      "check": "saved player support recovered",
+      "passed": true
+    },
+    {
+      "check": "collected supplies survive Continue",
+      "passed": true
+    },
+    {
+      "check": "evacuation note progress restored",
+      "passed": true
+    },
+    {
+      "check": "Continue preserves cargo count without duplication",
+      "passed": true
+    },
+    {
+      "check": "reticle selects Regulator (got Regulator:<Area3D#5410970930358>)",
+      "passed": true
+    },
+    {
+      "check": "physical regulator starts departure",
+      "passed": true
+    },
+    {
+      "check": "continuous arrival escape",
+      "passed": true
+    },
+    {
+      "check": "mission completed through normal objectives",
+      "passed": true
+    },
+    {
+      "check": "zero player teleports across entire journey",
+      "passed": true
+    }
+  ],
+  "failed": false,
+  "graphics_preset": 0,
+  "integration_tour": true,
+  "late_escape": true,
+  "observations": [],
+  "results": {
+    "distance": 4260.00608047029,
+    "exposure_seconds": 0.0,
+    "mission": "harlow_escape_v1",
+    "peak_exposure": 0.0,
+    "stations_visited": [
+      "harlow",
+      "ashford",
+      "blackwater"
+    ],
+    "status": "escaped",
+    "supplies_collected": {
+      "ashford/coal_sack": 2,
+      "ashford/machine_component": 1,
+      "ashford/tools": 2,
+      "blackwater/canned_food": 3,
+      "blackwater/medicine": 2,
+      "harlow/bandages": 1,
+      "harlow/canned_food": 4,
+      "harlow/coal_sack": 1
+    },
+    "time_survived": 1392.79999999983,
+    "version": 1
+  },
+  "save_restore_repositions": 1,
+  "scenario": "journey",
+  "source_commit": "f4f0768df1212063e00b0936de397fc466a482ff",
+  "teleports": 0
+}

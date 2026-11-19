@@ -1,0 +1,50 @@
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+
+[journey] PASS walk: (5.0, 1.0, 1.2)
+[journey] PASS reticle selects @Area3D@2529 (got @Area3D@2529:<Area3D#265868549902>)
+[journey] PASS search harlow_departure_coal
+[journey] PASS reticle selects @Area3D@2585 (got @Area3D@2585:<Area3D#287964139203>)
+[journey] PASS physical heavy pickup: coal_sack
+[journey] PASS walk: (5.0, 1.0, 0.0)
+[journey] PASS walk: (5.0, 1.0, -0.8)
+[journey] PASS reticle selects TrainStorage (got TrainStorage:<Area3D#239326994705>)
+[journey] PASS storage opened using E
+[journey] PASS coal deposited using R
+[journey] PASS walk: (6.6, 1.0, -1.5)
+[journey] PASS walk: (6.6, 1.0, -2.9)
+[journey] PASS walk: (9.7, 1.0, -2.9)
+[journey] PASS walk: (10.2, 1.0, -3.5)
+[journey] PASS walk: (12.4, 1.0, -3.5)
+[journey] PASS walk: (17.8, 1.0, -3.5)
+[journey] PASS walk: (21.3, 1.0, -3.5)
+[journey] PASS walked aboard and through cars to cab
+[journey] PASS reticle selects Regulator (got Regulator:<Area3D#262999647586>)
+[journey] PASS physical regulator starts departure
+[journey-observation] {"distance":202.333335717511,"exposure":0.0,"front":-954.105626666666,"fuel":45.3040000000011,"health":100.0,"label":"initial fuel burning","time":41.2000000000003}
+[journey-observation] {"distance":442.333335717498,"exposure":0.0,"front":-882.855626666666,"fuel":35.7040000000021,"health":100.0,"label":"initial fuel burning","time":71.2000000000002}
+[journey-observation] {"distance":682.333335717484,"exposure":0.0,"front":-810.405626666666,"fuel":26.1040000000025,"health":100.0,"label":"initial fuel burning","time":101.199999999999}
+[journey-observation] {"distance":922.333335717471,"exposure":0.0,"front":-736.755626666667,"fuel":16.5040000000025,"health":100.0,"label":"initial fuel burning","time":131.199999999997}
+[journey-observation] {"distance":1162.33333571757,"exposure":0.0,"front":-661.905626666667,"fuel":6.90400000000251,"health":100.0,"label":"initial fuel burning","time":161.199999999995}
+[journey] PASS starting fuel exhausted through real train operation
+[journey] PASS empty boiler stops the moving train
+[journey] PASS stranded between Harlow and Ashford
+[journey] PASS rider remains aboard after fuel stop
+[journey] PASS walk: (1357.4, 7.2, 185.3)
+[journey] PASS reticle selects Regulator (got Regulator:<Area3D#262999647586>)
+[journey] PASS physical regulator cannot depart on an empty boiler
+[journey] PASS collected coal survives travel in storage
+[journey-observation] {"distance":1358.80000095388,"exposure":0.0,"front":-569.42924,"fuel":0.0,"health":100.0,"label":"out of fuel","time":190.499999999993}
+[journey] PASS reticle selects StokeBoiler (got StokeBoiler:<Area3D#264106943903>)
+[journey] PASS stored coal stokes boiler
+[journey] PASS refueling consumes the one collected sack
+[journey] PASS reticle selects Regulator (got Regulator:<Area3D#262999647586>)
+[journey] PASS physical regulator starts departure
+[journey-travel] ashford distance=1401.13333667139 fuel=41.7040000000004 fog=-540.996960000001 hp=100.0
+[journey-travel] ashford distance=1481.13333667146 fuel=38.5040000000007 fog=-515.241626666667 hp=100.0
+[journey-travel] ashford distance=1561.13333667152 fuel=35.3040000000011 fog=-489.352960000001 hp=100.0
+[journey-travel] ashford distance=1641.13333667159 fuel=32.1040000000014 fog=-463.330960000001 hp=100.0
+[journey-travel] ashford distance=1721.13333667165 fuel=28.9040000000014 fog=-437.175626666668 hp=100.0
+[journey-travel] ashford distance=1801.12796119894 fuel=25.7040000000014 fog=-410.886960000001 hp=100.0
+[journey] PASS continuous arrival ashford
+[journey-observation] {"distance":1822.80000190788,"exposure":0.0,"front":-397.427740000001,"fuel":23.8800000000014,"health":100.0,"label":"arrived after refueling","time":257.59999999999}
+[journey] PASS zero teleports during fuel-shortage recovery

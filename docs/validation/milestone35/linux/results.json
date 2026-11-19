@@ -1,7 +1,7 @@
 {
   "failed": 0,
   "godot": "4.5.1-stable (official)",
-  "passed": 288,
+  "passed": 291,
   "physics_engine": "Jolt Physics",
   "results": [
     {
@@ -1344,6 +1344,13 @@
       "notes": [],
       "passed": true,
       "suite": "test_photoreal_survival.gd",
+      "test": "test_visible_wheelsets_contact_common_rails_across_the_route"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_photoreal_survival.gd",
       "test": "test_route_phase_and_gauges_survive_fuel_exhaustion_and_restart"
     },
     {
@@ -1408,6 +1415,20 @@
       "passed": true,
       "suite": "test_photoreal_survival.gd",
       "test": "test_scene_detachment_does_not_read_retired_skeleton_transforms"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_photoreal_survival.gd",
+      "test": "test_ledger_hotkey_cannot_override_the_render_preparation_pause"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_photoreal_survival.gd",
+      "test": "test_hud_names_added_stations_and_their_train_stops"
     },
     {
       "failures": [],

@@ -31,15 +31,15 @@ func build(railway: FogRoute, player: Node3D) -> void:
 		for n in range(172):
 			var at := start + n * 0.7
 			var t := frame(route, at)
-			t.origin += t.basis.y * 0.06
+			t.origin += t.basis.y * 0.035
 			sleepers.append(t)
 		var earth := StaticBody3D.new()
 		chunk.add_child(earth)
 		for n in range(12):
 			var t := frame(route, start + n * 10 + 5)
-			for side in [-0.75,0.75]:
+			for side in [-Track.STANDARD_GAUGE/2,Track.STANDARD_GAUGE/2]:
 				var rail := t
-				rail.origin += t.basis * Vector3(0,0.16,side)
+				rail.origin += t.basis * Vector3(0,Track.STANDARD_RAIL_HEIGHT-0.03,side)
 				rails.append(rail)
 			var floor := BoxPart.new()
 			floor.size = Vector3(10.3,0.6,620)
@@ -47,8 +47,10 @@ func build(railway: FogRoute, player: Node3D) -> void:
 			floor.transform = t.translated_local(Vector3(0,-0.32,0))
 			floor.cast_shadow = false
 			earth.add_child(floor)
-		_instance(chunk, sleepers, Vector3(0.23,0.12,2.7), wood)
-		_instance(chunk, rails, Vector3(10.12,0.13,0.09), steel)
+		# Match Harlow's running surface. Only visible ties/rails change; the
+		# existing ground bodies, route frames and train integrator are untouched.
+		_instance(chunk, sleepers, Vector3(0.23,0.05,2.7), wood)
+		_instance(chunk, rails, Vector3(10.12,0.06,0.09), steel)
 		# Telegraph poles and broken fence lines provide speed/scale cues.
 		var detail := DetailBuilder.new(chunk)
 		for along in [15.0,75.0]:

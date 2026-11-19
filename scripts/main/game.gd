@@ -75,7 +75,7 @@ func _ready() -> void:
 		debug_menu.station_reset_requested.connect(reset_station)
 		debug_menu.fog_surge_requested.connect(trigger_fog_surge)
 	if hud != null:
-		hud.bind(player, train, station)
+		hud.bind(player, train, station, journey)
 	if player != null and hud != null:
 		player.grab_failed.connect(_on_player_grab_failed)
 	if train != null:

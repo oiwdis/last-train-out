@@ -3,8 +3,9 @@ extends Node3D
 ## Visual mechanism only. Reads Train, never applies forces or changes controls.
 ## Axle positions measured from the adapted Schuller model, in car-local metres.
 const AXLES := [-.468, .754, 2.005]
-const AXLE_HEIGHT := .614
 const WHEEL_RADIUS := .606
+const AXLE_HEIGHT := Track.STANDARD_RAIL_HEIGHT + WHEEL_RADIUS
+const ROD_PLANE := Track.STANDARD_GAUGE/2 + .1
 const CRANK_RADIUS := .24
 const CONNECTING_LENGTH := 2.25
 var rods: Array[Dictionary] = []
@@ -75,7 +76,7 @@ func _rod(length: float, material: Material) -> MeshInstance3D:
 static func crank(phase: float, side: float, axle: int) -> Vector3:
 	# Quartering prevents both cylinders reaching dead centre simultaneously.
 	var angle: float = -phase/WHEEL_RADIUS + (PI/2 if side>0 else 0)
-	return Vector3(AXLES[axle]+cos(angle)*CRANK_RADIUS,AXLE_HEIGHT+sin(angle)*CRANK_RADIUS,.71 if side>0 else -.81)
+	return Vector3(AXLES[axle]+cos(angle)*CRANK_RADIUS,AXLE_HEIGHT+sin(angle)*CRANK_RADIUS,side*ROD_PLANE)
 
 static func crosshead(pin: Vector3) -> Vector3:
 	var offset := pin.y-AXLE_HEIGHT

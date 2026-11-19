@@ -144,6 +144,10 @@ func wait_for_render_ready() -> void:
 		await get_tree().process_frame
 
 
+func is_preparing() -> bool:
+	return _warmup_pending or _warming
+
+
 func _apply_resolution() -> void:
 	var preset := PRESETS[current_index]
 	var scale := preset.render_scale

@@ -23,6 +23,9 @@ func _ready() -> void:
 					old.hide()
 			if kind != 0:
 				wheel.add_child(preload("res://assets/models/rail_wheel.glb").instantiate())
+				# The common carriage wheel has a 0.45 m outer tyre radius.
+				wheel.position.y = Track.STANDARD_RAIL_HEIGHT + .45
+				wheel.position.z = signf(wheel.position.z)*Track.STANDARD_GAUGE/2
 	if kind == 0:
 		var machinery := preload("res://assets/train/steam_locomotive.glb").instantiate()
 		machinery.name = "AuthoredLocomotive"
@@ -35,7 +38,15 @@ func _ready() -> void:
 					# conversion. Restore charcoal detail without adding emission.
 					material.albedo_color = Color(1.85,1.85,1.85)
 		for mesh: MeshInstance3D in machinery.find_children("DrivingWheel*", "MeshInstance3D", true, false):
+			# The source model's wheelset is narrower and off-centre. Fit only its
+			# rolling assemblies to the shared rails; cabin/boiler and collisions
+			# retain their authored dimensions and positions.
+			var at := to_local(mesh.global_position)
+			at.y = mesh.mesh.get_aabb().size.y*.5 + Track.STANDARD_RAIL_HEIGHT
+			at.z = signf(at.z)*Track.STANDARD_GAUGE/2
+			mesh.global_position = to_global(at)
 			_drive_wheels.append(mesh)
+		_fit_axles()
 		mechanics = TrainMechanics.new()
 		mechanics.name = "LiveRunningGearAndInstruments"
 		add_child(mechanics)
@@ -73,6 +84,26 @@ func _ready() -> void:
 			AssetDressing.place(self, "suitcase", Vector3(1.8, 1.5, 0.95), Vector3.ONE * 0.7)
 		else:
 			AssetDressing.place(self, "oil_can", Vector3(-3.6, 1.6, -0.9), Vector3.ONE)
+
+func _fit_axles() -> void:
+	var seen := {}
+	for wheel in _drive_wheels:
+		var at := to_local(wheel.global_position)
+		var key := Vector2(at.x,at.y).snapped(Vector2.ONE*.01)
+		if seen.has(key): continue
+		seen[key] = true
+		var axle := MeshInstance3D.new()
+		var cylinder := CylinderMesh.new()
+		cylinder.top_radius = .055
+		cylinder.bottom_radius = .055
+		cylinder.height = Track.STANDARD_GAUGE
+		cylinder.radial_segments = 16
+		cylinder.rings = 1
+		cylinder.material = preload("res://resources/materials/metal_dark.tres")
+		axle.mesh = cylinder
+		axle.position = Vector3(at.x,at.y,0)
+		axle.rotation.x = PI/2
+		add_child(axle)
 
 func _soft_steam() -> void:
 	var gradient := Gradient.new()

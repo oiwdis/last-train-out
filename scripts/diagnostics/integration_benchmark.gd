@@ -63,7 +63,7 @@ func run() -> void:
 		await ready_render()
 		prepared.append({"preset":preset,"milliseconds":Time.get_ticks_msec()-before,"pipelines":pipelines()})
 		for location: String in locations:
-			place(location)
+			await place(location)
 			# Capture initial entry frames separately, before settling at this view.
 			await measure(location,preset,"entry",mini(samples,60))
 			await frames(warmup)
@@ -111,7 +111,12 @@ func place(location: String) -> void:
 	game.player.set_physics_process(false)
 	game.train.speed = 0
 	game.train.state = 0
+	if location == "Curved railway": game.train.distance = 850.0
+	if location == "Mission completion": game.train.distance = journey.route.length()
 	game.train._apply_positions(0)
+	# AnimatableBody3D synchronizes on physics ticks. Read car-local positions
+	# only after that synchronization, just as the save system does.
+	for tick in 3: await physics_frame
 	if journey != null:
 		fog.simulation.front = -1050.0
 		fog.presentation._blend = 0.0
@@ -128,7 +133,6 @@ func place(location: String) -> void:
 			at = game.train.get_node("CrewCar").to_global(Vector3(-2.5,1.05,0))
 			camera = at+Vector3.UP*1.6; target = camera+Vector3(7,0,0)
 		"Curved railway":
-			game.train.distance = 850.0; game.train._apply_positions(0)
 			at = game.train.get_node("CrewCar").to_global(Vector3(0,1.05,0))
 			camera = at+Vector3(-9,6,14); target = at+Vector3(5,0,0)
 		"Ashford Depot", "Ashford workshop", "Blackwater Crossing":
@@ -142,17 +146,21 @@ func place(location: String) -> void:
 			camera = Vector3(18,3.2,6); target = Vector3(-35,2,-3.5)
 			fog.presentation._blend = 0.7 if location == "Near advancing fog" else 1.0
 		"Mission completion":
-			game.train.distance = journey.route.length(); game.train._apply_positions(0)
 			at = game.train.get_node("CrewCar").to_global(Vector3(0,1.05,0))
 			camera = at+Vector3(-9,6,14); target = at
 			journey.mission.status = "escaped"
 			journey.ui.show_results()
 	game.player.teleport_to(at,Vector3.RIGHT)
+	var track := game.get_node_or_null("RouteTrack")
+	if track != null: track._update_visibility()
 	if journey != null:
+		fog.train_progress = game.train.distance
 		fog.players.local.exposure.progress = journey.route.project(at)
+		fog.set_state(int(fog.simulation.danger(fog.players.local.exposure.progress)))
 	eye.global_position = camera
 	eye.look_at(target)
 	game.camera_rig.exploration.request_perspective(1)
+	game.hud._refresh_context()
 	if location == "Curved railway":
 		game.train.start()
 		game.train.set_physics_process(true)
@@ -165,6 +173,7 @@ func measure(location: String, preset: int, stage: String, count: int) -> void:
 	var last := Time.get_ticks_usec()
 	for i in count:
 		if location == "Curved railway":
+			fog.train_progress = game.train.distance
 			var car: Node3D = game.train.get_node("Locomotive")
 			eye.global_position = car.global_position+Vector3(-9,6,14)
 			eye.look_at(car.global_position+Vector3.UP)

@@ -101,8 +101,8 @@ func test_running_gear_preserves_rod_length_and_quartering() -> void:
 			var slide := TrainMechanics.crosshead(pin)
 			check_near(pin.distance_to(slide),TrainMechanics.CONNECTING_LENGTH,.0001,"slider-crank never stretches its rod")
 			check_near(slide.y,TrainMechanics.AXLE_HEIGHT,.0001,"crosshead stays in cylinder guide")
-		var left := TrainMechanics.crank(distance,-1,1)-Vector3(TrainMechanics.AXLES[1],TrainMechanics.AXLE_HEIGHT,-.81)
-		var right := TrainMechanics.crank(distance,1,1)-Vector3(TrainMechanics.AXLES[1],TrainMechanics.AXLE_HEIGHT,.71)
+		var left := TrainMechanics.crank(distance,-1,1)-Vector3(TrainMechanics.AXLES[1],TrainMechanics.AXLE_HEIGHT,-TrainMechanics.ROD_PLANE)
+		var right := TrainMechanics.crank(distance,1,1)-Vector3(TrainMechanics.AXLES[1],TrainMechanics.AXLE_HEIGHT,TrainMechanics.ROD_PLANE)
 		check_near(left.dot(right),0,.0001,"opposite cylinders are quartered")
 
 func test_gauges_follow_start_brake_stop_and_speed_without_mutating_train() -> void:

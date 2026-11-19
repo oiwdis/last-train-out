@@ -74,6 +74,24 @@ func test_authored_locomotive_and_rods_follow_curves_and_grade() -> void:
 		for rod in art.mechanics.rods:
 			check((rod.mesh as Node3D).global_transform.is_finite(),"running gear finite at grade change")
 
+func test_visible_wheelsets_contact_common_rails_across_the_route() -> void:
+	var loco := game.train.get_node("Locomotive") as TrainCar
+	for distance in [0.0,850.0,2700.0]:
+		await route_fixture(distance)
+		for wheel in art._drive_wheels:
+			var lowest := INF
+			for surface in wheel.mesh.get_surface_count():
+				for vertex in wheel.mesh.surface_get_arrays(surface)[Mesh.ARRAY_VERTEX]:
+					lowest = minf(lowest,loco.to_local(wheel.to_global(vertex)).y)
+			var center := loco.to_local(wheel.global_position)
+			check_near(absf(center.z),.75,.001,"imported wheel centered over standard-gauge rail")
+			check_near(lowest,.1,.004,"actual tyre vertices reach the running surface")
+		check_greater(TrainMechanics.ROD_PLANE,.83,"rods clear the outer tyre faces")
+	for car in game.train.get_cars():
+		if car == loco: continue
+		for wheel in car.get_node("Wheels").get_children():
+			check_near(absf(wheel.position.z),.75,.001,"carriage wheels share locomotive gauge")
+
 func test_route_phase_and_gauges_survive_fuel_exhaustion_and_restart() -> void:
 	await route_fixture(850)
 	game.fog_system.fuel.amount = .25
@@ -227,6 +245,33 @@ func test_scene_detachment_does_not_read_retired_skeleton_transforms() -> void:
 	check(not game.is_inside_tree(),"old scene detached during replacement")
 	check(is_instance_valid(worker.skeleton),"retired rig still exists until deletion")
 	game.free()
+
+func test_ledger_hotkey_cannot_override_the_render_preparation_pause() -> void:
+	# Exercise the real asynchronous preparation, including its input interval.
+	game.graphics._prepare_rendering()
+	check(game.graphics.is_preparing() and get_tree().paused,"preparation owns pause")
+	var event := InputEventKey.new()
+	event.physical_keycode = KEY_J
+	event.pressed = true
+	Input.parse_input_event(event)
+	event = event.duplicate()
+	event.pressed = false
+	Input.parse_input_event(event)
+	await game.graphics.wait_for_render_ready()
+	check(not game.journey.ui.panel.visible,"ledger cannot open beneath loading cover")
+	check(not get_tree().paused,"original running state restored")
+
+func test_hud_names_added_stations_and_their_train_stops() -> void:
+	for station in game.journey.stations:
+		game.player.teleport_to(station.to_global(station.boarding_point+Vector3.UP*.03))
+		await seconds(.3)
+		check(game.hud.get_location().contains(station.station_id.to_upper()),"site name replaces Harlow's outbound-zone label")
+	await route_fixture(830)
+	await seconds(.2)
+	check_eq(game.hud.get_departure_status(),"STOPPED","stranded train is not at a platform")
+	await route_fixture(game.journey.route.stations.ashford)
+	await seconds(.2)
+	check_eq(game.hud.get_departure_status(),"AT PLATFORM","Ashford arrival is labelled as a real station stop")
 
 func route_fixture(distance: float) -> void:
 	game.train.distance = distance

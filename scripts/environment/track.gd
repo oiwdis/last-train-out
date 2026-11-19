@@ -13,12 +13,15 @@ extends Node3D
 		_rebuild()
 
 ## Distance between the rail centres.
-@export var gauge := 1.5:
+const STANDARD_GAUGE := 1.5
+const STANDARD_RAIL_HEIGHT := 0.1
+
+@export var gauge := STANDARD_GAUGE:
 	set(value):
 		gauge = maxf(value, 0.3)
 		_rebuild()
 
-@export var rail_height := 0.1:
+@export var rail_height := STANDARD_RAIL_HEIGHT:
 	set(value):
 		rail_height = maxf(value, 0.02)
 		_rebuild()

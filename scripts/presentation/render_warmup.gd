@@ -7,6 +7,7 @@ extends RefCounted
 static func prepare(scene: Node3D) -> void:
 	var viewport := scene.get_viewport()
 	var original := viewport.get_camera_3d()
+	var previous_focus := viewport.gui_get_focus_owner()
 	if original == null or viewport.disable_3d:
 		return
 	var views: Array[Node3D] = []
@@ -31,7 +32,10 @@ static func prepare(scene: Node3D) -> void:
 	scene.add_child(cover)
 	var background := ColorRect.new()
 	background.color = Color("101a1e")
+	background.focus_mode = Control.FOCUS_ALL
 	cover.add_child(background)
+	background.grab_focus()
+	background.gui_input.connect(func(_event: InputEvent) -> void: background.accept_event())
 	background.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	var label := Label.new()
 	label.text = "Preparing scene…"
@@ -76,6 +80,8 @@ static func prepare(scene: Node3D) -> void:
 	if not state.active:
 		return
 	cover.free()
+	if is_instance_valid(previous_focus) and previous_focus.is_inside_tree():
+		previous_focus.grab_focus()
 	scene.tree_exiting.disconnect(restore_on_exit)
 	tree.paused = was_paused
 	state.active = false

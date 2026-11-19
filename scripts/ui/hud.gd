@@ -6,6 +6,7 @@ extends CanvasLayer
 var _player: Player
 var _train: Train
 var _station: Station
+var _journey: Node
 var _refresh := 0.0
 var _message_time := 0.0
 var _location_time := 0.0
@@ -142,12 +143,13 @@ func _ignore_mouse(node: Node) -> void:
 		_ignore_mouse(child)
 
 
-func bind(player: Player, train: Train = null, station: Station = null) -> void:
+func bind(player: Player, train: Train = null, station: Station = null, journey: Node = null) -> void:
 	if is_instance_valid(_player) and _player.stamina.changed.is_connected(_on_stamina_changed):
 		_player.stamina.changed.disconnect(_on_stamina_changed)
 	_player = player
 	_train = train
 	_station = station
+	_journey = journey
 	_aboard = false
 	_board_time = 0
 	if _player == null:
@@ -191,13 +193,21 @@ func _refresh_context() -> void:
 	_stamina_value.text = "%03d" % roundi(_player.stamina.current / maxf(_player.stamina.max_stamina, 1) * 100)
 	if is_instance_valid(_station):
 		var location := location_at(_station.to_local(_player.global_position), _player.is_on_train())
+		if is_instance_valid(_journey) and not _player.is_on_train():
+			var stop: String = _journey.current_station()
+			if stop == "ashford": location = "02  /  ASHFORD DEPOT"
+			elif stop == "blackwater": location = "03  /  BLACKWATER"
 		if location != _last_location:
 			_last_location = location
 			_location.text = location
 			_location.modulate.a = 0.3
 			_location_time = 3.0
 	if is_instance_valid(_train):
-		_status.text = departure_status(_train.state, _train.is_at_end_of_track(), _train.distance < 0.1)
+		var at_platform := _train.distance < 0.1
+		if is_instance_valid(_journey):
+			for progress in _journey.route.stations.values():
+				at_platform = at_platform or absf(_train.distance-float(progress)) < 4
+		_status.text = departure_status(_train.state, _train.is_at_end_of_track(), at_platform)
 		_status.modulate = RailTheme.ALERT if _train.state == Train.State.ACCELERATING and not _aboard else Color.WHITE
 		_speed.text = "%02d km/h" % roundi(_train.speed * 3.6)
 		_train_gauge.value = 100 * _train.speed / maxf(_train.max_speed, 0.1)

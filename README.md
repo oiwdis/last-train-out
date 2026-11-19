@@ -1,6 +1,6 @@
 # Last Train Out — Milestone 3.5 integration
 
-This draft combines PR #4’s detailed survivor, locomotive and Harlow art with PR #5’s continuous three-station survival journey. Press **J** for Save / Continue / New / Restart and **V** to switch camera. See [integration provenance and merge strategy](docs/MILESTONE3_INTEGRATION.md) and [current integration review](docs/MILESTONE35_REVIEW.md).
+This draft combines PR #4’s detailed survivor, locomotive and Harlow art with PR #5’s continuous three-station survival journey. Press **J** for Save / Continue / New / Restart and **V** to switch camera. See [draft integration PR #6](https://github.com/oiwdis/last-train-out/pull/6), [integration provenance and merge strategy](docs/MILESTONE3_INTEGRATION.md), [current integration review](docs/MILESTONE35_REVIEW.md) and the [physical M1 fullscreen procedure](docs/M1_MILESTONE35.md).
 
 The source milestone reports below retain their original evidence and limitations; they are not measurements of this combined build.
 
