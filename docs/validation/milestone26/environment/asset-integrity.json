@@ -1,0 +1,223 @@
+{
+  "validated": 31,
+  "compressed_mipmapped_textures": 137,
+  "assets": [
+    {
+      "file": "assets/characters/railway_survivor.glb",
+      "bytes": 30668376,
+      "meshes": 8,
+      "images": 10,
+      "sha256": "2f51681021fc850fbfad34585968cafcdc8e9de73d64497c478df2ae559523e3"
+    },
+    {
+      "file": "assets/props/Barrel_02.glb",
+      "bytes": 422416,
+      "meshes": 1,
+      "images": 3,
+      "sha256": "06e787d074a432122d4fc93d8d8de37987c15fc3d40d222dababeb6885767027"
+    },
+    {
+      "file": "assets/props/brass_blowtorch.glb",
+      "bytes": 2077008,
+      "meshes": 1,
+      "images": 3,
+      "sha256": "5cb99764495cb594b6c8d5baa931eb26a243554be802cc518b2336a3f5a585d1"
+    },
+    {
+      "file": "assets/props/caged_hanging_light.glb",
+      "bytes": 2605016,
+      "meshes": 1,
+      "images": 4,
+      "sha256": "89a8a38713ad49ef8348786b9ff842f722f002c7a1afb68b9b8f779a4f740c4c"
+    },
+    {
+      "file": "assets/props/drill_press_01.glb",
+      "bytes": 2550992,
+      "meshes": 1,
+      "images": 3,
+      "sha256": "6eaaace1a0bbd4f4daca8ae84dbd00442b30850a5a4844a5754cfdaf60636aaa"
+    },
+    {
+      "file": "assets/props/hand_truck.glb",
+      "bytes": 3018624,
+      "meshes": 1,
+      "images": 3,
+      "sha256": "27b895a8a7c8ff5c15c155c0d98bf8859a64a7b06e9dc727e824e5042fb1f1d3"
+    },
+    {
+      "file": "assets/props/industrial_caged_sconce.glb",
+      "bytes": 2317252,
+      "meshes": 1,
+      "images": 4,
+      "sha256": "c4ee0f8705bd0ab4666a91dfbc43c36c0e154c53d9185d995e8ca87374f27db6"
+    },
+    {
+      "file": "assets/props/industrial_storage_cart.glb",
+      "bytes": 2288080,
+      "meshes": 1,
+      "images": 3,
+      "sha256": "a0692fa3195f65ffe9bbf2c9d1fbbc7faea7906d49e3c0353b8aa790f690be8f"
+    },
+    {
+      "file": "assets/props/small_oil_can_01.glb",
+      "bytes": 548112,
+      "meshes": 1,
+      "images": 3,
+      "sha256": "08dc7c97a010ef4c9ca5179f573a089a139fa881e3e94687b4eb9c01f1faa4ea"
+    },
+    {
+      "file": "assets/props/steel_frame_shelves_02.glb",
+      "bytes": 539276,
+      "meshes": 1,
+      "images": 3,
+      "sha256": "18ee1c85a1b9a682eec18a9036e623c10a1c1c334d354bf29d91f58fa554e411"
+    },
+    {
+      "file": "assets/props/vintage_flashlight.glb",
+      "bytes": 3028236,
+      "meshes": 1,
+      "images": 4,
+      "sha256": "3c55d64caa1fc7ca39161eb9a55d98752e874d1a87ebb473241520af3e262059"
+    },
+    {
+      "file": "assets/props/vintage_suitcase.glb",
+      "bytes": 2093372,
+      "meshes": 1,
+      "images": 3,
+      "sha256": "6be84ee9b5bbfe1160122958cd836f84bf9c3eef036dec442bb9cb6d8af21835"
+    },
+    {
+      "file": "assets/props/wooden_crate_01.glb",
+      "bytes": 2163072,
+      "meshes": 1,
+      "images": 3,
+      "sha256": "983a18180dd1e208f964b9af695cccd1e594b2500809e978107fb53dc5ff2576"
+    },
+    {
+      "file": "assets/props/wooden_military_crate.glb",
+      "bytes": 2618504,
+      "meshes": 1,
+      "images": 3,
+      "sha256": "26cd74b2ac48feab91af6f8c1dd418aae5e3fa9a86379195ea5b3b72d2b88e07"
+    },
+    {
+      "file": "assets/props/worn_metal_rack.glb",
+      "bytes": 2008576,
+      "meshes": 1,
+      "images": 3,
+      "sha256": "7b09c75eec99ca2f0176f173f8fbb894db777adc4a21e5c0762d46a984db18ca"
+    },
+    {
+      "file": "assets/train/carriage_door.glb",
+      "bytes": 2272256,
+      "meshes": 1,
+      "images": 6,
+      "sha256": "0aafa006fb6dbc44d8d562dbced6cdadff8da6de7e79973e0dd36d2ffeea7a94"
+    },
+    {
+      "file": "assets/train/control_lever.glb",
+      "bytes": 1339800,
+      "meshes": 2,
+      "images": 3,
+      "sha256": "ac812a8425fce13a7f37fba11c7c50e7902b0d588b13c547b8b2311b12e433d0"
+    },
+    {
+      "file": "assets/train/crew_car_finish.glb",
+      "bytes": 4491348,
+      "meshes": 1,
+      "images": 6,
+      "sha256": "f482f14fabd1e6b69d81cedebf819d10952e13a24de3988bcea486647d6dc0d5"
+    },
+    {
+      "file": "assets/train/locomotive_cab_finish.glb",
+      "bytes": 3372260,
+      "meshes": 1,
+      "images": 6,
+      "sha256": "0a3585eac6228a7196d69ecf4145a67d8ff939b6db3e9ab65ee2269b77c2a10d"
+    },
+    {
+      "file": "assets/train/steam_locomotive.glb",
+      "bytes": 10999616,
+      "meshes": 14,
+      "images": 11,
+      "sha256": "e73bd579ac067775b8e6688d31fb57a67f728ea20bf5b177f43aa421dcbae3d2"
+    },
+    {
+      "file": "assets/environment/broken_pallet.glb",
+      "bytes": 114640,
+      "meshes": 1,
+      "images": 0,
+      "sha256": "a5e6044a8801742b693687344ef17eaa403a7f692d431c6312044f2a85b8cf2d"
+    },
+    {
+      "file": "assets/environment/factory_kit.glb",
+      "bytes": 48252720,
+      "meshes": 14,
+      "images": 16,
+      "sha256": "27a6a2b5a714bf9d715aece63f8825cca6f7dd843d7d3319ccbbcaf878243676"
+    },
+    {
+      "file": "assets/environment/freight_container.glb",
+      "bytes": 869052,
+      "meshes": 1,
+      "images": 0,
+      "sha256": "ed138678df88da8ad550f5602c86e6d9d7ead3e7950af1db6b27f267dc181571"
+    },
+    {
+      "file": "assets/environment/medical_cabinet.glb",
+      "bytes": 78648,
+      "meshes": 1,
+      "images": 0,
+      "sha256": "454c0dd326e0d725ce2d5c989f3e4bce232fb9b25cb64176db95679091459c54"
+    },
+    {
+      "file": "assets/environment/painted_wooden_bench.glb",
+      "bytes": 1988584,
+      "meshes": 1,
+      "images": 3,
+      "sha256": "19e1a3b5ee96c34d327caf2da19b81a9e77c4682b76ffb82a3829366ef3dd301"
+    },
+    {
+      "file": "assets/environment/parked_box_van.glb",
+      "bytes": 1861388,
+      "meshes": 1,
+      "images": 0,
+      "sha256": "84e9fa971c52872a4abdda9208b86f5ca3a66dd940a19424e74f7d0fd4f655b0"
+    },
+    {
+      "file": "assets/environment/station_house_roof.glb",
+      "bytes": 522448,
+      "meshes": 1,
+      "images": 0,
+      "sha256": "609e9e741f8c0bfe24e3ed70a0adfd46d3da11ad9662b06153945bc85e0ef296"
+    },
+    {
+      "file": "assets/environment/supply_locker.glb",
+      "bytes": 148696,
+      "meshes": 1,
+      "images": 0,
+      "sha256": "9bce5568d97f186527a07772480747967732f37ced3bf92439cb6b36425b70d9"
+    },
+    {
+      "file": "assets/environment/supply_toolbox.glb",
+      "bytes": 46096,
+      "meshes": 1,
+      "images": 0,
+      "sha256": "9723d8698056cd7508ee40ab2659432563f2d2536d2192377f33837c81b425c8"
+    },
+    {
+      "file": "assets/environment/waiting_hall_roof.glb",
+      "bytes": 711728,
+      "meshes": 1,
+      "images": 0,
+      "sha256": "74e470095dbc8f5332e2b577858d7c0e3746eb78de283d3fd04f9dfb87e15ed9"
+    },
+    {
+      "file": "assets/environment/weed_plant_02.glb",
+      "bytes": 2393516,
+      "meshes": 1,
+      "images": 3,
+      "sha256": "4bd5ba439b67fd55519537f583ad2254cae91ae56e41f7f399abb0236fe021b2"
+    }
+  ]
+}

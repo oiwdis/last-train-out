@@ -101,7 +101,7 @@ def expected_game_files() -> list[str]:
     files = []
     for directory in GAME_DIRECTORIES:
         for path in sorted((ROOT / directory).rglob("*")):
-            if path.suffix in (".tscn", ".tres", ".gd", ".svg", ".png", ".jpg", ".glb", ".wav"):
+            if path.suffix in (".tscn", ".tres", ".gd", ".svg", ".png", ".jpg", ".glb", ".wav", ".hdr"):
                 files.append(path.relative_to(ROOT).as_posix())
     return files
 
@@ -189,6 +189,8 @@ def verify_pack(pack: Path) -> None:
         return
     check(len(packed) > 50, "the game data pack can be read", f"{len(packed)} files, {pack.stat().st_size / 1000:.0f} kB")
     check("project.binary" in packed, "project settings are in the pack")
+    baked = [path for path in packed if "/shader_cache/" in path]
+    check(bool(baked), "baked shader code is included", f"{len(baked)} cache files")
     main_scene = project_setting("run/main_scene").removeprefix("res://")
     check(bool(main_scene) and in_pack(main_scene, packed), "the main scene is in the pack", main_scene)
     expected = expected_game_files()

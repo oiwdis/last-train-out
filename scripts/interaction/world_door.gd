@@ -26,15 +26,9 @@ func _ready() -> void:
 	_panel = Node3D.new()
 	_panel.position.x = -width / 2
 	add_child(_panel)
-	var visual := BoxVisual.new()
-	visual.size = Vector3(width, height, 0.07)
-	visual.position = Vector3(width / 2, height / 2, 0)
-	visual.material = preload("res://resources/materials/train_body.tres")
+	var visual := preload("res://assets/train/carriage_door.glb").instantiate() as Node3D
+	visual.scale = Vector3(width / 1.32, height / 2.2, 1)
 	_panel.add_child(visual)
-	var details := DetailBuilder.new(_panel)
-	details.box(Vector3(width - 0.12, height * 0.48, 0.07), Vector3(0.04, 0.19, 0.04), DetailBuilder.AMBER)
-	details.box(Vector3(width / 2, height * 0.73, 0.045), Vector3(width * 0.66, height * 0.24, 0.025), Color("32494d"))
-	details.finish()
 	_collider = CollisionShape3D.new()
 	var solid := BoxShape3D.new()
 	solid.size = Vector3(width, height, 0.09)
@@ -76,6 +70,7 @@ func interact(player: Player) -> bool:
 	_stop_motion()
 	_motion = create_tween()
 	_motion.tween_property(_panel, "rotation:y", -PI / 2 if is_open else 0.0, 0.3)
+	player.present_action(&"operate", .4, _panel.to_global(Vector3(width*.82,height*.5,.08)), _panel)
 	_update_prompt()
 	return true
 

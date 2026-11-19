@@ -1,0 +1,32 @@
+{
+  "programs": [],
+  "stream_groups": [],
+  "streams": [
+    {
+      "codec_name": "h264",
+      "width": 854,
+      "height": 480,
+      "r_frame_rate": "24/1",
+      "nb_frames": "1044"
+    },
+    {
+      "codec_name": "aac",
+      "channels": 2,
+      "r_frame_rate": "0/0",
+      "nb_frames": "2041"
+    }
+  ],
+  "format": {
+    "duration": "43.500000",
+    "size": "5737693"
+  },
+  "godot": "4.5.1",
+  "renderer": "Forward+",
+  "preset": "Low",
+  "capture": "offline Movie Maker; not a real-time FPS measurement",
+  "decode_check": "full ffmpeg decode passed",
+  "interaction_checks": 9,
+  "sha256": "3404c0d288425be1e16ebf2b6c2983ae5332dfa52936f6955485bfc89ad3fd2a",
+  "recorder_sha256": "03cf15b232e2ecb11030fb48c6bf8368d534cb74fcc5c0e07784aa7ee7fb1e4f",
+  "worker_animator_sha256": "671d18eecd2749664ecd4d81a35d0b1ab7a25e2469fe7c7fcb41183a38ed7135"
+}

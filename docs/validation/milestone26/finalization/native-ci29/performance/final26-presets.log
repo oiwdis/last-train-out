@@ -1,0 +1,36 @@
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+Metal 3.2 - Forward+ - Using Device #0: Apple - Apple Paravirtual device (Apple5)
+
+[benchmark-stage] 44908 ms / loading scene / {"canvas":0.0,"draw":0.0,"mesh":0.0,"specialization":0.0,"surface":0.0}
+[benchmark-stage] 95917 ms / scene ready / {"canvas":0.0,"draw":0.0,"mesh":45.0,"specialization":0.0,"surface":0.0}
+WARNING: Metal does not support LOD bias for samplers.
+     at: sampler_create (drivers/metal/rendering_device_driver_metal.mm:771)
+[render-warmup] 6 views / 31258 ms / draw pipelines=51.0
+[benchmark-stage] 131546 ms / Platform / Low / applying preset / {"canvas":2.0,"draw":52.0,"mesh":45.0,"specialization":85.0,"surface":57.0}
+[render-warmup] 6 views / 28402 ms / draw pipelines=84.0
+[benchmark-stage] 161876 ms / Platform / Low / sampling / {"canvas":2.0,"draw":84.0,"mesh":45.0,"specialization":124.0,"surface":114.0}
+[benchmark] {"case":"Low","draw_calls":231.106666666667,"fps_from_mean":153.156009305759,"max_frame_ms":13.999,"mean_frame_ms":6.52929,"median_frame_ms":6.575,"p95_frame_ms":8.26,"physics_ms":1.13230666666666,"pipeline_compilations":{"canvas":2.0,"draw":84.0,"mesh":45.0,"specialization":124.0,"surface":114.0},"primitives":395845.346666667,"process_ms":57.1614050000002,"render_cpu_ms":0.534938333084186,"render_gpu_ms":0.0,"render_scale":0.649999976158142,"samples":600,"texture_bytes":299466752.0,"view":"Platform"}
+[benchmark-stage] 165795 ms / Platform / Medium / applying preset / {"canvas":2.0,"draw":84.0,"mesh":45.0,"specialization":124.0,"surface":114.0}
+[render-warmup] 6 views / 6355 ms / draw pipelines=116.0
+[benchmark-stage] 173027 ms / Platform / Medium / sampling / {"canvas":2.0,"draw":116.0,"mesh":45.0,"specialization":179.0,"surface":174.0}
+[benchmark] {"case":"Medium","draw_calls":464.38,"fps_from_mean":142.068359032315,"max_frame_ms":11.463,"mean_frame_ms":7.03886500000001,"median_frame_ms":6.947,"p95_frame_ms":9.284,"physics_ms":0.867510000000008,"pipeline_compilations":{"canvas":2.0,"draw":116.0,"mesh":45.0,"specialization":179.0,"surface":174.0},"primitives":876232.72,"process_ms":12.4912950000001,"render_cpu_ms":0.645366665820281,"render_gpu_ms":0.0,"render_scale":0.850000023841858,"samples":600,"texture_bytes":315342848.0,"view":"Platform"}
+[benchmark-stage] 177251 ms / Platform / High / applying preset / {"canvas":2.0,"draw":116.0,"mesh":45.0,"specialization":179.0,"surface":174.0}
+[render-warmup] 6 views / 7584 ms / draw pipelines=116.0
+[benchmark-stage] 188125 ms / Platform / High / sampling / {"canvas":2.0,"draw":116.0,"mesh":45.0,"specialization":256.0,"surface":200.0}
+[benchmark] {"case":"High","draw_calls":564.313333333333,"fps_from_mean":107.03389281733,"max_frame_ms":13.665,"mean_frame_ms":9.34283500000001,"median_frame_ms":9.498,"p95_frame_ms":11.654,"physics_ms":0.99742333333333,"pipeline_compilations":{"canvas":2.0,"draw":116.0,"mesh":45.0,"specialization":256.0,"surface":200.0},"primitives":1086391.78666667,"process_ms":12.7264083333334,"render_cpu_ms":0.836840000053247,"render_gpu_ms":0.0,"render_scale":1.0,"samples":600,"texture_bytes":373374976.0,"view":"Platform"}
+[benchmark-stage] 195293 ms / Warehouse B / Low / applying preset / {"canvas":2.0,"draw":116.0,"mesh":45.0,"specialization":263.0,"surface":200.0}
+[render-warmup] 6 views / 5198 ms / draw pipelines=146.0
+[benchmark-stage] 201382 ms / Warehouse B / Low / sampling / {"canvas":2.0,"draw":146.0,"mesh":45.0,"specialization":300.0,"surface":274.0}
+[benchmark] {"case":"Low","draw_calls":290.0,"fps_from_mean":148.09128840655,"max_frame_ms":14.308,"mean_frame_ms":6.75259166666667,"median_frame_ms":6.774,"p95_frame_ms":9.134,"physics_ms":1.04402666666665,"pipeline_compilations":{"canvas":2.0,"draw":146.0,"mesh":45.0,"specialization":300.0,"surface":274.0},"primitives":431651.0,"process_ms":10.60359,"render_cpu_ms":0.628031667222579,"render_gpu_ms":0.0,"render_scale":0.649999976158142,"samples":600,"texture_bytes":284590080.0,"view":"Warehouse B"}
+[benchmark-stage] 205434 ms / Warehouse B / Medium / applying preset / {"canvas":2.0,"draw":146.0,"mesh":45.0,"specialization":300.0,"surface":274.0}
+[render-warmup] 6 views / 6020 ms / draw pipelines=178.0
+[benchmark-stage] 212614 ms / Warehouse B / Medium / sampling / {"canvas":2.0,"draw":178.0,"mesh":45.0,"specialization":355.0,"surface":352.0}
+[benchmark] {"case":"Medium","draw_calls":479.0,"fps_from_mean":119.103862538262,"max_frame_ms":15.957,"mean_frame_ms":8.39603333333333,"median_frame_ms":8.452,"p95_frame_ms":10.923,"physics_ms":1.079745,"pipeline_compilations":{"canvas":2.0,"draw":178.0,"mesh":45.0,"specialization":355.0,"surface":352.0},"primitives":789248.0,"process_ms":13.7009133333332,"render_cpu_ms":0.773330000340939,"render_gpu_ms":0.0,"render_scale":0.850000023841858,"samples":600,"texture_bytes":300466176.0,"view":"Warehouse B"}
+[benchmark-stage] 217653 ms / Warehouse B / High / applying preset / {"canvas":2.0,"draw":178.0,"mesh":45.0,"specialization":355.0,"surface":352.0}
+[render-warmup] 6 views / 6267 ms / draw pipelines=178.0
+[benchmark-stage] 225398 ms / Warehouse B / High / sampling / {"canvas":2.0,"draw":178.0,"mesh":45.0,"specialization":410.0,"surface":352.0}
+[benchmark] {"case":"High","draw_calls":637.0,"fps_from_mean":90.0550821910222,"max_frame_ms":22.47,"mean_frame_ms":11.104315,"median_frame_ms":11.403,"p95_frame_ms":14.754,"physics_ms":0.95828166666666,"pipeline_compilations":{"canvas":2.0,"draw":178.0,"mesh":45.0,"specialization":410.0,"surface":352.0},"primitives":1024189.0,"process_ms":16.8470149999999,"render_cpu_ms":1.03718833426634,"render_gpu_ms":0.0,"render_scale":1.0,"samples":600,"texture_bytes":356532224.0,"view":"Warehouse B"}
+[benchmark] wrote /Users/runner/work/last-train-out/last-train-out/tests/_output/performance/final26-presets.json
+[benchmark-stage] 232123 ms / scene released / {"canvas":2.0,"draw":178.0,"mesh":45.0,"specialization":410.0,"surface":352.0}
+[benchmark-stage] 232127 ms / material updates drained / {"canvas":2.0,"draw":178.0,"mesh":45.0,"specialization":410.0,"surface":352.0}
+[benchmark-stage] 232128 ms / quitting / {"canvas":2.0,"draw":178.0,"mesh":45.0,"specialization":410.0,"surface":352.0}

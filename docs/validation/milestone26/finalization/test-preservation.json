@@ -1,0 +1,46 @@
+{
+  "passed": true,
+  "original_passing_tests": 187,
+  "final_passing_tests": 196,
+  "removed_or_renamed_tests": [],
+  "added_tests": [
+    {
+      "suite": "test_photoreal_finalization.gd",
+      "test": "test_cargo_wrists_reach_each_real_object_in_both_perspectives"
+    },
+    {
+      "suite": "test_photoreal_finalization.gd",
+      "test": "test_first_person_extraction_keeps_complete_hand_and_forearm_skin"
+    },
+    {
+      "suite": "test_photoreal_finalization.gd",
+      "test": "test_gantry_and_columns_keep_existing_traversal_volumes"
+    },
+    {
+      "suite": "test_photoreal_finalization.gd",
+      "test": "test_gauges_follow_start_brake_stop_and_speed_without_mutating_train"
+    },
+    {
+      "suite": "test_photoreal_finalization.gd",
+      "test": "test_planar_pbr_preserves_metres_normals_and_shared_materials"
+    },
+    {
+      "suite": "test_photoreal_finalization.gd",
+      "test": "test_render_preparation_restores_camera_without_advancing_gameplay"
+    },
+    {
+      "suite": "test_photoreal_finalization.gd",
+      "test": "test_running_gear_preserves_rod_length_and_quartering"
+    },
+    {
+      "suite": "test_photoreal_finalization.gd",
+      "test": "test_stance_contacts_hold_to_their_support_during_walk"
+    },
+    {
+      "suite": "test_photoreal_finalization.gd",
+      "test": "test_stationary_feet_follow_the_moving_car"
+    }
+  ],
+  "final_native_source": "c86d6f31ffaef820e72994cc031a317634bd8c57",
+  "final_native_results": "native-ci34/results.json"
+}

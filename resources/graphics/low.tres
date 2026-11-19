@@ -13,3 +13,6 @@ shadow_atlas_size = 512
 shadow_distance = 25.0
 particle_fraction = 0.5
 light_fade_distance = 28.0
+normal_maps = false
+roughness_maps = false
+mesh_lod_threshold = 4.0

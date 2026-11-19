@@ -1,0 +1,18 @@
+{
+  "zip_sha256": "b5b00a441bbf8b59dc4acef826a68eda83773aac21382acc8cc2669bec182e15",
+  "zip_bytes": 291281129,
+  "zip_integrity_checks": 8,
+  "extracted_bundle_integrity_checks": 22,
+  "architectures": [
+    "x86_64",
+    "arm64"
+  ],
+  "pck_files": 825,
+  "baked_shader_cache_files": 142,
+  "required_game_files": 334,
+  "build_number": 34,
+  "build_commit": "aaedb630cb854be1e0ebdf124ee3ca98361be064",
+  "local_platform": "Linux",
+  "local_codesign_verification": "unavailable; native CI validates ad-hoc signature",
+  "notarized": false
+}

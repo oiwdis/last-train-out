@@ -11,32 +11,48 @@ The historical milestone notes below describe the baseline. Milestone 3 validati
 # Last Train Out
 
 A survival adventure about the operator of the last working train in a city being swallowed by fog.
-**Milestone 2.5** adds full 3D exploration, switchable first- and third-person views,
-walkable train interiors, physical cab controls, and a wider Harlow Junction.
-Built in **Godot 4.5.1 and GDScript**, with original models and commercially usable CC0 materials.
+**Milestone 2.6** replaces the blockout worker with a licensed, skinned human and animations,
+adds an authored steam locomotive and industrial props, and improves the train interiors.
+The environment continuation adds modeled factory facades, recessed windows, pitched roofs,
+weathered benches, detailed freight vans/containers and replacement supply props.
+The finalization adds improved skin/eyes/hair, complete first-person wrists, foot and
+cargo contacts, moving locomotive rods, live gauges and damaged warehouse finishing.
+Full 3D movement, perspective switching, scavenging and moving-train gameplay remain.
+Built in **Godot 4.5.1 and GDScript**, with original project art and commercially usable CC0 models, animations and PBR materials.
 
 Search the station, fill a six-slot backpack, carry bulky supplies back to the train,
 and secure them in its hold. Enter the cab, choose a departure mode, and start the train.
 Its existing acceleration, moving-platform physics, climbing and inventory rules remain.
 
-![Harlow Junction in first person](docs/screenshots/milestone25/01_first_person_platform.png)
+![The rigged survivor at Harlow Junction](docs/screenshots/milestone26/finalization/after/02_character_front.png)
 
 | | |
 |---|---|
 | Engine | Godot **4.5.1** (the version used for this milestone's tests and exports) |
 | Language | GDScript |
-| Renderer | Forward+ on desktop (Compatibility fallback configured for web) |
+| Renderer | Forward+ on desktop; Vulkan/MoltenVK on macOS (Compatibility fallback configured for web) |
 | Physics | Jolt Physics, 60 ticks/s, physics interpolation on |
 | macOS app | Built automatically by GitHub Actions for Apple Silicon and Intel - [download and play](#play-on-macos-no-godot-needed) |
-| Status | See [docs/TEST_REPORT.md](docs/TEST_REPORT.md) for what is verified and what is not |
+| Status | [Finalization review, validation and limitations](docs/FINALIZATION_REVIEW.md) |
 
-[Watch the Milestone 2.5 tour](docs/recording/milestone25_tour.mp4): perspective switching,
-walking inside a moving car, scavenging and carrying. The recording uses scripted gameplay
+[Watch the finalization tour](docs/recording/milestone26_finalization_tour.mp4): movement,
+perspective switching, moving-car traversal, scavenging, carrying and gantry climbing.
+The recording uses scripted gameplay
 inputs and explicit location cuts; it is not a frame-rate measurement.
 [Art and asset credits](docs/ASSET_CREDITS.md).
+[Environment continuation and matched screenshots](docs/ENVIRONMENT_PASS.md).
+[Watch the environment tour](docs/recording/environment_tour.mp4) and
+[review its measured rendering comparison](docs/PERFORMANCE_ENVIRONMENT.md).
 Graphics default to **Medium**. On a 2020 M1 Mac in full-screen, try **Low** using
 **F2** (often **Fn+F2** on Mac) or **Tab → Graphics**. Low and Medium cap 3D rendering
-resolution while keeping the interface sharp. [Measurements and limits](docs/PERFORMANCE.md).
+resolution while keeping the interface sharp. Startup and preset changes can show
+“Preparing scene…” while destination-GPU pipelines are prepared; gameplay pauses
+during this loading step. [Matched performance comparison and limitations](docs/PERFORMANCE_MILESTONE26.md).
+[Three-way final comparison gallery](docs/FINALIZATION_GALLERY.md),
+[final performance comparison](docs/PERFORMANCE_FINALIZATION.md) and
+[physical M1 fullscreen benchmark procedure](docs/M1_BENCHMARK.md).
+Close-up character rendering and some distant geometry remain below a photorealistic
+reference; physical 2020 M1 fullscreen performance remains unverified.
 
 ---
 
@@ -85,8 +101,10 @@ not mean the download is broken. Use either of these, once per downloaded build:
   click **Open Anyway**, and confirm with your password or Touch ID. On macOS 14 and earlier you
   can instead Control-click the app, choose **Open**, then **Open** again.
 
-If macOS says the app *"is damaged and can't be opened"*, it is the same quarantine block; the
-Terminal command above clears it. Signed builds (below) open without any of this.
+The message *"is damaged and can't be opened"* can also result from quarantine on an
+ad-hoc signed build. Check the download's SHA-256 against its run page before using
+the command above; a mismatched download should be downloaded again. Signed builds
+(below) avoid this development-build approval step.
 
 ### 4. Replacing an older build
 
@@ -121,7 +139,7 @@ Each build is only uploaded after the workflow has:
 
 Two more jobs then download the ZIP the way you would, unzip it and launch it again - one on an
 Apple Silicon Mac, one on an Intel Mac. On Apple Silicon the app opens its window and renders
-with Metal. GitHub's Intel Macs have no usable GPU, so there the Intel half of the app is only
+with Vulkan through bundled MoltenVK. GitHub's Intel Macs have no usable GPU, so there the Intel half of the app is only
 run without a window: the game logic is checked on Intel, the picture is not.
 
 This shows that the app starts and the game runs on GitHub's Macs. It does not replace a person
@@ -355,7 +373,7 @@ in [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
 
 ## Tests
 
-The project has **168 automated tests** using a small Godot-native runner (no add-ons). Tests drive the
+The project has **187 automated tests** using a small Godot-native runner (no add-ons). Tests drive the
 real player through a scripted-input hook and run the real physics.
 
 ```bash
@@ -403,25 +421,24 @@ verified); the second writes `build/macos/Last Train Out.app`.
 
 ## Screenshots and recording
 
-[Milestone 2.5 screenshot gallery](docs/screenshots/milestone25/) and
-[gameplay recording](docs/recording/milestone25_tour.mp4), captured from the running game.
+[Milestone 2.6 comparison gallery](docs/screenshots/milestone26/README.md) and
+[gameplay recording](docs/recording/milestone26_tour.mp4), captured from the running game.
 Older milestone evidence remains in `docs/`.
 
 | First person | Third person |
 |---|---|
-| ![Cab controls](docs/screenshots/milestone25/04_cab_controls.png) | ![Train exterior](docs/screenshots/milestone25/02_third_person_train.png) |
-| ![Crew interior](docs/screenshots/milestone25/03_crew_interior.png) | ![Freight yard](docs/screenshots/milestone25/07_freight_yard.png) |
+| ![Cab controls](docs/screenshots/milestone26/after/09_cab.png) | ![Train exterior](docs/screenshots/milestone26/after/07_locomotive.png) |
+| ![Crew interior](docs/screenshots/milestone26/after/10_crew.png) | ![Rebuilt freight yard](docs/screenshots/milestone26/environment/after/06_freight_yard.png) |
 
 ---
 
 ## Scope
 
-Milestone 2.5 adds immersive cameras, train interiors and controls, expanded environments,
-PBR materials, an articulated worker and original ambient sound. The art is an original
-procedural interpretation; it is not a claim of AAA photorealism.
-Milestone 3 adds advancing fog, exposure damage and boiler fuel consumption on this baseline.
-Healing, crafting, combat, passenger AI, train upgrades, route selection, additional stations
-and complete save/load are not implemented.
-Graphics and camera preferences persist across launches; inventory and train progress do not.
+Milestone 3.5 integrates the authored survivor, licensed locomotive, scanned materials and
+Harlow architecture from M2.6 with the three-station Harlow Escape survival journey.
+Advancing fog, exposure, shelter, fuel, scavenging, cargo and manual save/resume share one build.
+Full photorealism remains incomplete, especially at the modular Ashford and Blackwater sites.
+There is no combat, passenger AI, train upgrading, route selection or additional mission.
+Graphics and camera preferences persist; the journey ledger saves world and survival progress.
 
 [Scavenging rules and reset semantics](docs/SCAVENGING.md).

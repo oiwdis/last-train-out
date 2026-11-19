@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "gallery_source": "8fbaa34ef6a85cfe306f1be43b728a005a83159b",
+  "runtime_source": "c86d6f31ffaef820e72994cc031a317634bd8c57",
+  "source_image_and_model_bytes_unchanged": true,
+  "environment_geometry_and_limb_contact_scripts_unchanged": true,
+  "changed_import_metadata_count": 137,
+  "reviewed_later_changes": [
+    "Worker skin starts with scattering disabled, matching every captured preset; avoids transient compilation before preset application.",
+    "Capture and recording tools await the new rendering preparation; camera coordinates, poses and gameplay input sequence are unchanged.",
+    "macOS now uses Forward+ Vulkan through MoltenVK; matched stills already use Forward+ Vulkan on software rendering. The native final recording is separately reviewed."
+  ],
+  "scope": "Visual source continuity, not a claim that all runtime code or capture frame counts are identical. Native final recording is validated separately."
+}

@@ -1,0 +1,15 @@
+{
+  "run": 43787562000,
+  "source_commit": "a4450fd2cecca0f37d7753b1b006d1a83077624a",
+  "passed": false,
+  "full_source_comparison_passed": true,
+  "tests_passed": 196,
+  "universal_export_integrity_passed": true,
+  "arm64_headless_checks_passed": 31,
+  "arm64_window_passed": false,
+  "fatal": "timed out after 120 seconds",
+  "main_scene_load_elapsed_ms": 47647,
+  "initial_warmup_ms": 67824,
+  "initial_player_check_elapsed_ms": 134424,
+  "note": "No validated ZIP produced. Windowed test reached carrying but timed out before preset/render checks. This predates the shipping worker-ratio candidate."
+}

@@ -74,6 +74,7 @@ func _part(title: String, at: Vector3, size: Vector3, material_name: String = "t
 	part.name = title
 	part.position = at
 	part.size = size
+	part.show_mesh = title not in ["Sill", "Lintel", "WindowPost", "WindowGlass", "DoorJamb", "DoorLintel", "CabBulkhead", "ControlDesk", "Bench", "SeatBack", "SeatLeg"]
 	part.material = load("res://resources/materials/%s.tres" % material_name)
 	car.add_child(part)
 	return part
@@ -98,6 +99,7 @@ func _build_controls() -> void:
 		details.cylinder(Vector3(-1.6, 1.78, z), 0.08, 0.08, DetailBuilder.STEEL, Vector3(0, 0, PI / 2))
 	details.cylinder(Vector3(-1.62, 1.5, 0), 0.28, 0.06, DetailBuilder.INK, Vector3(0, 0, PI / 2))
 	details.finish()
+	details.root.hide() # Replaced by the fitted, detailed cab mesh.
 	for index in 3:
 		var control := TrainConsole.new()
 		control.name = ["Regulator", "Brake", "DepartureSelector"][index]
@@ -109,8 +111,8 @@ func _build_controls() -> void:
 	_speed = Label3D.new()
 	_speed.position = Vector3(-1.62, 2.7, 0)
 	_speed.rotation.y = -PI / 2
-	_speed.pixel_size = 0.0018
-	_speed.font_size = 40
+	_speed.pixel_size = 0.00085
+	_speed.font_size = 36
 	_speed.modulate = Color("efcf8f")
 	car.add_child(_speed)
 	_part("CoalBunker", Vector3(-3.5, 1.3, -0.9), Vector3(0.8, 0.6, 0.6), "metal_dark")

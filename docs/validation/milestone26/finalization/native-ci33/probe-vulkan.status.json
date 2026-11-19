@@ -1,0 +1,10 @@
+{
+  "exit_code": 0,
+  "external_timeout": false,
+  "driver": "vulkan",
+  "elapsed_seconds": 79.09679162500004,
+  "scope": "Diagnostic only; the failed default-driver gate stays failed.",
+  "selftest_passed": true,
+  "fatal": "",
+  "actual_driver": "vulkan"
+}

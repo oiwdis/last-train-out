@@ -73,18 +73,18 @@ func _process(delta: float) -> void:
 
 
 func _build_visual() -> void:
-	var d := DetailBuilder.new(self, "SearchableProp")
 	var height := 1.15 if style == 1 or style == 4 else 0.55
-	var tint := Color("526a70") if style == 1 or style == 4 else Color("786450")
-	d.box(Vector3(0, height / 2, 0), Vector3(0.72, height, 0.45), tint)
-	d.box(Vector3(0, height + 0.015, 0), Vector3(0.76, 0.06, 0.48), DetailBuilder.INK)
-	for x in [-0.3, 0.3]:
-		d.box(Vector3(x, height / 2, 0.24), Vector3(0.045, height, 0.025), DetailBuilder.INK)
-	d.box(Vector3(0.2, height * 0.6, 0.25), Vector3(0.12, 0.045, 0.04), DetailBuilder.PALE)
-	if style == 4:
-		d.box(Vector3(0, 0.7, 0.25), Vector3(0.1, 0.3, 0.02), Color("9ab7a6"))
-		d.box(Vector3(0, 0.7, 0.26), Vector3(0.3, 0.1, 0.02), Color("9ab7a6"))
-	d.finish()
+	match style:
+		0:
+			AssetDressing.place(self,"crate",Vector3.ZERO,Vector3(.72/.82527,.55/.34962,.45/.40895)).name = "SearchableProp"
+		1:
+			EnvironmentArt.place(self,preload("res://assets/environment/supply_locker.glb"),Vector3.ZERO,"SearchableProp")
+		2:
+			EnvironmentArt.place(self,preload("res://assets/environment/supply_toolbox.glb"),Vector3.ZERO,"SearchableProp")
+		3:
+			AssetDressing.place(self,"suitcase",Vector3.ZERO,Vector3.ONE*.85).name = "SearchableProp"
+		4:
+			EnvironmentArt.place(self,preload("res://assets/environment/medical_cabinet.glb"),Vector3.ZERO,"SearchableProp")
 	_indicator = MeshInstance3D.new()
 	var plate := BoxMesh.new()
 	plate.size = Vector3(0.5, 0.065, 0.025)

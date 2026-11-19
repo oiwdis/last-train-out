@@ -1,0 +1,16 @@
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+Vulkan 1.4.305 - Forward+ - Using Device #0: Unknown - llvmpipe (LLVM 19.1.7, 256 bits)
+
+Movie Maker mode enabled, recording movie at 24 FPS...
+[tour26] PASS searched a_toolbox using E
+[tour26] PASS V switches to first person beside the rebuilt van
+[tour26] PASS E grabs the original container ladder
+[tour26] PASS container roof remains traversable at 2.7 m
+[tour26] complete: environment continuation; search, perspective switching and container climb
+--------------------------------------------------------------------------------
+Done recording movie at path: /tmp/lto27-environment.avi
+439 frames at 24 FPS (movie length: 00:00:18:07), recorded in 00:02:57 (10% of real-time speed).
+CPU render time: 1.83 seconds (average: 4.17 ms/frame)
+GPU render time: 146.31 seconds (average: 333.28 ms/frame)
+Encoding time: 2.44 seconds (average: 5.55 ms/frame)
+--------------------------------------------------------------------------------

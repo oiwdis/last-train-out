@@ -1,0 +1,38 @@
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Started Project initialization (5 steps)[39m[0m
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Scanning file structure...[39m[0m
+[  16% ] [90m[1mfirst_scan_filesystem[22m | Loading global class names...[39m[0m
+[  33% ] [90m[1mfirst_scan_filesystem[22m | Verifying GDExtensions...[39m[0m
+[  50% ] [90m[1mfirst_scan_filesystem[22m | Creating autoload scripts...[39m[0m
+[  66% ] [90m[1mfirst_scan_filesystem[22m | Initializing plugins...[39m[0m
+[  83% ] [90m[1mfirst_scan_filesystem[22m | Starting file scan...[39m[0m
+[92m[ DONE ][39m [1mfirst_scan_filesystem[22m
+[0m
+[   0% ] [90m[1mupdate_scripts_classes[22m | Started Registering global classes... (6 steps)[39m[0m
+[   0% ] [90m[1mupdate_scripts_classes[22m | ExplorationDistrict[39m[0m
+[  14% ] [90m[1mupdate_scripts_classes[22m | DetailBuilder[39m[0m
+[  28% ] [90m[1mupdate_scripts_classes[22m | EnvironmentArt[39m[0m
+[  42% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  57% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  71% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[92m[ DONE ][39m [1mupdate_scripts_classes[22m
+[0m
+[   0% ] [90m[1m_update_scan_actions[22m | Started Scanning actions... (11 steps)[39m[0m
+[   0% ] [90m[1m_update_scan_actions[22m | factory_kit_modular_factory_facade_garage_nor_gl_2k.jpg[39m[0m
+[   8% ] [90m[1m_update_scan_actions[22m | factory_kit_modular_factory_facade_trim_01_arm_2k.jpg[39m[0m
+[  16% ] [90m[1m_update_scan_actions[22m | factory_kit_modular_factory_facade_trim_01_diff_2k.jpg[39m[0m
+[  25% ] [90m[1m_update_scan_actions[22m | factory_kit_modular_factory_facade_trim_01_nor_gl_2k.jpg[39m[0m
+[  33% ] [90m[1m_update_scan_actions[22m | factory_kit_modular_factory_facade_windows_arm_2k.jpg[39m[0m
+[  41% ] [90m[1m_update_scan_actions[22m | factory_kit_modular_factory_facade_windows_diff_2k.png[39m[0m
+[  50% ] [90m[1m_update_scan_actions[22m | factory_kit_modular_factory_facade_windows_diff_2k_6.jpg[39m[0m
+[  58% ] [90m[1m_update_scan_actions[22m | factory_kit_modular_factory_facade_windows_nor_gl_2k.jpg[39m[0m
+[  66% ] [90m[1m_update_scan_actions[22m | painted_wooden_bench_painted_wooden_bench_arm_1k.jpg[39m[0m
+[  75% ] [90m[1m_update_scan_actions[22m | painted_wooden_bench_painted_wooden_bench_diff_1k.jpg[39m[0m
+[  83% ] [90m[1m_update_scan_actions[22m | painted_wooden_bench_painted_wooden_bench_nor_gl_1k.jpg[39m[0m
+[92m[ DONE ][39m [1m_update_scan_actions[22m
+[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Started Loading editor (5 steps)[39m[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Loading editor layout...[39m[0m
+[92m[ DONE ][39m [1mloading_editor_layout[22m
+[0m

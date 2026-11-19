@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "source_commit": "dbfbdac40564af869e64cad0bccf49c7afa2146e",
+  "ci_checkout": "a3a98c45b31a269022bd03324214b29e5d58bcfc",
+  "matching_tree": "7d2bd366ce042a7b8b3be0d9b0139706c80840d0",
+  "completed_benchmark_processes": 8,
+  "sample_count_per_case": 600,
+  "warmup_frames": 120,
+  "all_entry_pan_pipeline_counters_unchanged": true,
+  "recording_decode_passed": true,
+  "recording_gameplay_assertions": 11,
+  "recording_sha256": "dac66b174dace470ea2c43d3ade454df4f8f59997c3833c2d252109ad895feb5",
+  "scope": "Source comparison and recording only; native package gate reported separately."
+}
