@@ -35,6 +35,10 @@ on:
         type: choice
         options: [all, startup, matrix, cleanup]
         default: all
+      import_run:
+        description: Optional successful PR test run containing validated-imports (avoids a cold texture import)
+        type: string
+        default: ''
       sign_and_notarize:
         description: Sign with Developer ID and notarize (needs the signing secrets)
         type: boolean
@@ -42,6 +46,7 @@ on:
 
 permissions:
   contents: read
+  actions: read
 
 concurrency:
   group: macos-app-${{ github.ref }}-${{ github.event_name }}-${{ inputs.sign_and_notarize && 'signed' || 'dev' }}
@@ -74,10 +79,18 @@ jobs:
           path: .godot/imported
           key: godot-imports-macos-arm64-4.5.1-v1-${{ hashFiles('project.godot', 'assets/**', 'resources/**') }}
           restore-keys: godot-imports-macos-arm64-4.5.1-v1-
+      - name: Reuse validated imports from the PR
+        if: ${{ inputs.import_run != '' }}
+        uses: actions/download-artifact@v8
+        with:
+          name: validated-imports
+          path: .godot/imported
+          run-id: ${{ inputs.import_run }}
+          github-token: ${{ github.token }}
       - name: Validate imported diagnostic scripts
         run: |
           mkdir -p tests/_output/investigation
-          find .godot/imported -name '*.scn' -delete
+          if [ -d .godot/imported ]; then find .godot/imported -name '*.scn' -delete; fi
           "$GODOT" --headless --path . --import > tests/_output/investigation/import.log 2>&1
           if grep -E '^(ERROR|SCRIPT ERROR)|Parse Error' tests/_output/investigation/import.log; then exit 1; fi
       - name: Collect startup traces
@@ -168,6 +181,27 @@ jobs:
         with:
           path: .godot/imported
           key: godot-imports-macos-arm64-4.5.1-v1-${{ hashFiles('project.godot', 'assets/**', 'resources/**') }}
+
+      # Manual workflows cannot read caches scoped to refs/pull/N/merge. A
+      # short-lived artifact permits the same validated inputs in investigations.
+      - name: Share validated imports with exploratory workflows
+        uses: actions/upload-artifact@v7
+        with:
+          name: validated-imports
+          path: .godot/imported/
+          include-hidden-files: true
+          retention-days: 7
+
+      - name: Trace repeated native startup
+        run: python3 tools/macos/profile_integration.py "$GODOT" tests/_output/startup startup
+
+      - name: Retain startup evidence before export
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: performance-startup
+          path: tests/_output/startup/
+          retention-days: 30
 
       - name: Validate journey, fuel, fog and cold resume
         run: |
