@@ -94,7 +94,7 @@ def prepare(godot, revision, name, scratch, out):
     shutil.copytree(ROOT / '.godot' / 'imported', imports, copy_function=shutil.copy2)
     for scene in imports.glob('*.scn'):
         scene.unlink()
-    for helper in ['integration_benchmark.gd', 'frame_timeline.gd', 'startup_probe.gd', 'performance_trace.gd']:
+    for helper in ['integration_benchmark.gd', 'frame_timeline.gd', 'startup_probe.gd', 'performance_trace.gd', 'scene_retirement.gd']:
         shutil.copy2(ROOT / 'scripts' / 'diagnostics' / helper, project / 'scripts' / 'diagnostics' / helper)
     user_name = 'LTO-351-' + scratch.name + '-' + name
     (project / 'override.cfg').write_text('[application]\nconfig/use_custom_user_dir=true\n'

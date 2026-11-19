@@ -108,9 +108,7 @@ func run() -> void:
 		"window_mode":DisplayServer.window_get_mode(),"loading":loading,"fixture_transitions":transitions,"preset_preparation":prepared,"results":rows,
 		"static_memory_peak_bytes":OS.get_static_memory_peak_usage(),"total_memory_note":"process RSS sampled externally; static memory is not total RSS"}
 	FileAccess.open(destination,FileAccess.WRITE).store_string(JSON.stringify(report,"  "))
-	game.queue_free()
-	await process_frame
-	await process_frame
+	await DiagnosticSceneRetirement.release(game)
 	quit()
 
 func place(location: String) -> void:

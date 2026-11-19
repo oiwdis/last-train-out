@@ -38,8 +38,6 @@ func run() -> void:
 		"user_data_directory":OS.get_user_data_dir(),
 		"phases":PerformanceTrace.events}
 	FileAccess.open(destination,FileAccess.WRITE).store_string(JSON.stringify(report,"  "))
-	game.queue_free()
-	await process_frame
-	await process_frame
+	await DiagnosticSceneRetirement.release(game)
 	packed = null
 	quit()

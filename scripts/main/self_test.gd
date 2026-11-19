@@ -88,6 +88,9 @@ func _run() -> void:
 	await _check_game()
 	if not _is_headless():
 		await _check_rendering()
+	for child in get_children():
+		if child is Game:
+			await DiagnosticSceneRetirement.release(child)
 	var errors := _errors.get_messages()
 	_check("no_engine_errors", errors.is_empty(), "; ".join(errors.slice(0, 5)))
 	_finish("")
@@ -138,8 +141,7 @@ func _check_game() -> void:
 		_check("exported_station_art", game.journey.stations[0].has_node("AuthoredStationDetails") and game.journey.stations[1].has_node("AuthoredStationDetails"))
 		_check("exported_fog_shader", game.fog_system.presentation.layers[0].material_override is ShaderMaterial)
 		_check("exported_camera_save", JourneySave.snapshot(game.journey).has("camera"))
-		game.queue_free()
-		await _physics_frames(3)
+		await DiagnosticSceneRetirement.release(game)
 		# Retain every legacy mechanics assertion against its original sandbox.
 		game = (load("res://scenes/main/main.tscn") as PackedScene).instantiate() as Game
 		add_child(game)

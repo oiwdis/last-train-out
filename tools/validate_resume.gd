@@ -72,6 +72,7 @@ func run() -> void:
 	for item in checks: ok = ok and bool(item.passed)
 	if phase == "read":
 		FileAccess.open(REPORT,FileAccess.WRITE).store_string(JSON.stringify({"phase":phase,"passed":ok,"checks":checks},"  "))
+	await DiagnosticSceneRetirement.release(game)
 	quit(0 if ok else 1)
 
 func frames(count: int) -> void:

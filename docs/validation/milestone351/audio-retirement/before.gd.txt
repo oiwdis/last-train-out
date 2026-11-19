@@ -1,0 +1,24 @@
+extends SceneTree
+func _initialize() -> void:
+ run.call_deferred()
+func run() -> void:
+ var scene := Node.new()
+ root.add_child(scene)
+ var playback_refs: Array[WeakRef] = []
+ for path in ['rumble','wind','breath']:
+  var voice := AudioStreamPlayer.new()
+  var stream := load('res://assets/audio/fog/'+path+'.wav').duplicate() as AudioStreamWAV
+  stream.loop_mode = AudioStreamWAV.LOOP_FORWARD
+  stream.loop_end = int(stream.get_length()*stream.mix_rate)
+  voice.stream = stream
+  scene.add_child(voice)
+  voice.play()
+  playback_refs.append(weakref(voice.get_stream_playback()))
+ for node in scene.get_children():
+  node.stop()
+  node.stream = null
+ scene.queue_free()
+ await process_frame
+ await process_frame
+ print('[audio-before] still alive after two process frames: ',playback_refs.filter(func(r):return r.get_ref()!=null).size())
+ quit()

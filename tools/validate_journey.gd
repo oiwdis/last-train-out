@@ -435,4 +435,5 @@ func finish() -> void:
 		"results":game.journey.mission.results(game.fog_system.simulation.elapsed,game.train.distance)}
 	var filename := "continuous-journey.json" if scenario == "journey" else scenario+"-gameplay.json"
 	FileAccess.open(output.path_join(filename),FileAccess.WRITE).store_string(JSON.stringify(report,"  "))
+	await DiagnosticSceneRetirement.release(game)
 	get_tree().quit(1 if failed else 0)

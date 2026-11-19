@@ -117,8 +117,7 @@ func _run() -> void:
 	print("[benchmark] wrote ", _out)
 	# Let scene teardown restore shared material state while rendering is alive,
 	# consistently with the ablation diagnostic, and record shutdown progress.
-	_game.queue_free()
-	await process_frame
+	await DiagnosticSceneRetirement.release(_game)
 	_stage("scene released")
 	await process_frame
 	_stage("material updates drained")
