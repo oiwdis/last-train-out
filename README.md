@@ -1,8 +1,8 @@
-# Last Train Out — Milestone 3.5 integration
+# Last Train Out — Milestone 3.5.2 performance acceptance
 
-This draft combines PR #4’s detailed survivor, locomotive and Harlow art with PR #5’s continuous three-station survival journey. Press **J** for Save / Continue / New / Restart and **V** to switch camera. See [draft integration PR #6](https://github.com/oiwdis/last-train-out/pull/6), [integration provenance and merge strategy](docs/MILESTONE3_INTEGRATION.md), [current integration review](docs/MILESTONE35_REVIEW.md) and the [physical M1 fullscreen procedure](docs/M1_MILESTONE35.md).
+This draft combines PR #4’s detailed survivor, locomotive and Harlow art with PR #5’s continuous three-station survival journey. Press **J** for Save / Continue / New / Restart and **V** to switch camera. See [draft integration PR #6](https://github.com/oiwdis/last-train-out/pull/6), [integration provenance and merge strategy](docs/MILESTONE3_INTEGRATION.md), [current release review](docs/MILESTONE352_REVIEW.md) and the [physical M1 fullscreen procedure](docs/M1_MILESTONE352.md).
 
-[Full integrated journey recording](docs/recording/milestone35-full-journey.mp4) · [integrated screenshot gallery](docs/MILESTONE35_GALLERY.md) · [measured performance and remaining stalls](docs/PERFORMANCE_MILESTONE35.md). Use the integration review's specific build link for this milestone. The added stations retain simplified geometry, and physical 2020 M1 fullscreen performance remains unverified.
+[New full journey recording](docs/recording/milestone352-full-journey.mp4) · [integrated screenshot gallery](docs/MILESTONE35_GALLERY.md) · [measured performance and release blockers](docs/PERFORMANCE_MILESTONE352.md). The development ZIP and checksum are linked in the performance report. **PR #6 remains in draft: fresh ARM rendering reproduced Vulkan device loss, pacing targets remain unmet, and physical 2020 M1 acceptance is pending.** The added stations retain their existing simplified geometry.
 
 The source milestone reports below retain their original evidence and limitations; they are not measurements of this combined build.
 

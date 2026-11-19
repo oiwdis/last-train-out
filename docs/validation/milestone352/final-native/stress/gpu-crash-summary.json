@@ -1,0 +1,136 @@
+[
+  {
+    "file": "Last Train Out-2026-11-19-213948.ips",
+    "exception": {
+      "codes": "0x0000000000000001, 0x00000001047caa9c",
+      "rawCodes": [
+        1,
+        4370246300
+      ],
+      "type": "EXC_BREAKPOINT",
+      "signal": "SIGTRAP"
+    },
+    "termination": {
+      "flags": 0,
+      "code": 5,
+      "namespace": "SIGNAL",
+      "indicator": "Trace/BPT trap: 5",
+      "byProc": "exc handler",
+      "byPid": 7507
+    },
+    "faulting_thread": 0,
+    "stack": [
+      {
+        "imageOffset": 58927772,
+        "imageIndex": 0
+      },
+      {
+        "imageOffset": 23181276,
+        "symbol": "RenderingDeviceDriverVulkan::command_queue_execute_and_present(RenderingDeviceDriver::CommandQueueID, VectorView<RenderingDeviceDriver::SemaphoreID>, VectorView<RenderingDeviceDriver::CommandBufferID>, VectorView<RenderingDeviceDriver::SemaphoreID>, RenderingDeviceDriver::FenceID, VectorView<RenderingDeviceDriver::SwapChainID>)",
+        "symbolLocation": 1460,
+        "imageIndex": 0
+      },
+      {
+        "imageOffset": 44266008,
+        "symbol": "RenderingDevice::execute_chained_cmds(bool, RenderingDeviceDriver::FenceID, RenderingDeviceDriver::SemaphoreID)",
+        "symbolLocation": 796,
+        "imageIndex": 0
+      },
+      {
+        "imageOffset": 44258908,
+        "symbol": "RenderingDevice::_execute_frame(bool)",
+        "symbolLocation": 212,
+        "imageIndex": 0
+      },
+      {
+        "imageOffset": 44257824,
+        "symbol": "RenderingDevice::swap_buffers(bool)",
+        "symbolLocation": 64,
+        "imageIndex": 0
+      },
+      {
+        "imageOffset": 44858064,
+        "symbol": "RenderingServerDefault::_draw(bool, double)",
+        "symbolLocation": 464,
+        "imageIndex": 0
+      },
+      {
+        "imageOffset": 8909264,
+        "symbol": "Main::iteration()",
+        "symbolLocation": 1252,
+        "imageIndex": 0
+      },
+      {
+        "imageOffset": 8368044,
+        "imageIndex": 0
+      }
+    ]
+  },
+  {
+    "file": "Last Train Out-2026-11-19-213819.ips",
+    "exception": {
+      "codes": "0x0000000000000001, 0x00000001039d2a9c",
+      "rawCodes": [
+        1,
+        4355599004
+      ],
+      "type": "EXC_BREAKPOINT",
+      "signal": "SIGTRAP"
+    },
+    "termination": {
+      "flags": 0,
+      "code": 5,
+      "namespace": "SIGNAL",
+      "indicator": "Trace/BPT trap: 5",
+      "byProc": "exc handler",
+      "byPid": 4929
+    },
+    "faulting_thread": 0,
+    "stack": [
+      {
+        "imageOffset": 58927772,
+        "imageIndex": 0
+      },
+      {
+        "imageOffset": 23181276,
+        "symbol": "RenderingDeviceDriverVulkan::command_queue_execute_and_present(RenderingDeviceDriver::CommandQueueID, VectorView<RenderingDeviceDriver::SemaphoreID>, VectorView<RenderingDeviceDriver::CommandBufferID>, VectorView<RenderingDeviceDriver::SemaphoreID>, RenderingDeviceDriver::FenceID, VectorView<RenderingDeviceDriver::SwapChainID>)",
+        "symbolLocation": 1460,
+        "imageIndex": 0
+      },
+      {
+        "imageOffset": 44266008,
+        "symbol": "RenderingDevice::execute_chained_cmds(bool, RenderingDeviceDriver::FenceID, RenderingDeviceDriver::SemaphoreID)",
+        "symbolLocation": 796,
+        "imageIndex": 0
+      },
+      {
+        "imageOffset": 44258908,
+        "symbol": "RenderingDevice::_execute_frame(bool)",
+        "symbolLocation": 212,
+        "imageIndex": 0
+      },
+      {
+        "imageOffset": 44257824,
+        "symbol": "RenderingDevice::swap_buffers(bool)",
+        "symbolLocation": 64,
+        "imageIndex": 0
+      },
+      {
+        "imageOffset": 44858064,
+        "symbol": "RenderingServerDefault::_draw(bool, double)",
+        "symbolLocation": 464,
+        "imageIndex": 0
+      },
+      {
+        "imageOffset": 8909264,
+        "symbol": "Main::iteration()",
+        "symbolLocation": 1252,
+        "imageIndex": 0
+      },
+      {
+        "imageOffset": 8368044,
+        "imageIndex": 0
+      }
+    ]
+  }
+]

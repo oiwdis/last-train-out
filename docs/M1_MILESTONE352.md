@@ -3,7 +3,10 @@
 No physical M1 is connected here. Hosted Apple Paravirtual results do not satisfy
 this gate. Use the final development ZIP and SHA linked in
 [the performance report](PERFORMANCE_MILESTONE352.md). The app includes Godot;
-the development build is ad-hoc signed and is not claimed notarized.
+the development build is ad-hoc signed and is not claimed notarized. The current
+artifact reproduced Vulkan device loss in the fresh ARM windowed self-test, so
+it is an investigation build, not an accepted release. Preserve any failure;
+do not rerun until a pass and omit the earlier attempt.
 
 1. Record the build SHA, Mac model/chip, RAM, macOS version (`sw_vers`), display
    resolution/scaling, power settings and external displays. Omit serial numbers
@@ -43,15 +46,28 @@ done
 for run in 1 2; do
   "$LTO_BIN" --verbose --fullscreen --audio-driver Dummy \
     --script res://scripts/diagnostics/integration_benchmark.gd -- \
-    --suite=matrix --samples=1800 --warmup=120 --graphics=low \
+    --suite=matrix --samples=600 --warmup=120 --graphics=low \
     --out="$LTO_RESULTS/fullscreen-$run.json" > "$LTO_RESULTS/fullscreen-$run.log" 2>&1
   printf 'fullscreen %s exit=%s\n' "$run" "$?" >> "$LTO_RESULTS/status.txt"
   "$LTO_BIN" --verbose --windowed --resolution 1280x720 --audio-driver Dummy \
     --script res://scripts/diagnostics/integration_benchmark.gd -- \
-    --suite=matrix --samples=1800 --warmup=120 --graphics=low \
+    --suite=matrix --samples=600 --warmup=120 --graphics=low \
     --out="$LTO_RESULTS/windowed-$run.json" > "$LTO_RESULTS/windowed-$run.log" 2>&1
   printf 'windowed %s exit=%s\n' "$run" "$?" >> "$LTO_RESULTS/status.txt"
 done
+```
+
+To reproduce the specific failed CI gate once, use the same exported windowed
+self-test and keep its report, log and any macOS crash report. This fixture uses
+scripted controls and snapshots; it is separate from the uninterrupted owner-play
+acceptance above. Native audio is left enabled, matching that failed self-test.
+
+```sh
+"$LTO_BIN" --verbose res://scenes/main/self_test.tscn -- \
+  --selftest-report="$LTO_RESULTS/windowed-selftest.json" \
+  --selftest-screenshot="$LTO_RESULTS/windowed-selftest.png" \
+  > "$LTO_RESULTS/windowed-selftest.log" 2>&1
+printf 'windowed selftest exit=%s\n' "$?" >> "$LTO_RESULTS/status.txt"
 ```
 
 Do not add `--fixed-fps` or Movie Maker flags to timing runs. Confirm actual

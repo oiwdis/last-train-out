@@ -1,0 +1,508 @@
+WorkerThreadPool: 5 threads, 4 max low-priority.
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+TextServer: Added interface "Dummy"
+TextServer: Added interface "ICU / HarfBuzz / Graphite (Built-in)"
+Unrecognized output string "misc2" in mapping:
+030000000d0f0000ab01000011010000,Horipad Steam,a:b0,b:b1,back:b10,dpdown:h0.4,dpleft:h0.8,dpright:h0.2,dpup:h0.1,guide:b12,leftshoulder:b6,leftstick:b13,lefttrigger:a5,leftx:a0,lefty:a1,misc2:b2,paddle1:b19,paddle2:b18,paddle3:b15,paddle4:b5,rightshoulder:b7,rightstick:b14,righttrigger:a4,rightx:a2,righty:a3,start:b11,x:b3,y:b4,platform:Linux,
+Unrecognized output string "misc2" in mapping:
+050000000d0f00009601000091000000,Horipad Steam,a:b0,b:b1,back:b10,dpdown:h0.4,dpleft:h0.8,dpright:h0.2,dpup:h0.1,guide:b12,leftshoulder:b6,leftstick:b13,lefttrigger:a5,leftx:a0,lefty:a1,misc2:b2,paddle1:b19,paddle2:b18,paddle3:b15,paddle4:b5,rightshoulder:b7,rightstick:b14,righttrigger:a4,rightx:a2,righty:a3,start:b11,x:b3,y:b4,platform:Linux,
+Unrecognized output string "misc2" in mapping:
+030000007e0500006920000011010000,Nintendo Switch 2 Pro Controller,a:b0,b:b1,back:b14,dpdown:b8,dpleft:b10,dpright:b9,dpup:b11,guide:b16,leftshoulder:b12,leftstick:b15,lefttrigger:b13,leftx:a0,lefty:a1~,misc1:b17,misc2:b20,paddle1:b18,paddle2:b19,rightshoulder:b4,rightstick:b7,righttrigger:b5,rightx:a2,righty:a3~,start:b6,x:b2,y:b3,platform:Linux,
+SDL: Init OK!
+Xshape 1.1 detected.
+Xinerama 1.1 detected.
+Xrandr 1.6 detected.
+Xrender 0.11 detected.
+Xinput 2.2 detected.
+XInput: Refreshing devices.
+XInput: No touch devices found.
+Detecting GPUs, set DRI_PRIME in the environment to override GPU detection logic.
+Only one GPU found, using default.
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+XcursorGetTheme could not get cursor theme
+Failed loading custom cursor: crossed_circle
+DBus 1.16.2 detected.
+Using "default" pen tablet driver...
+Shader 'CanvasSdfShaderGLES3' SHA256: e1fc4015d45db07fce0346b99c312728ab006030520ec796da1461e1428345c5
+Shader 'SkeletonShaderGLES3' SHA256: e42116215ed2a92dea7085176e3b3f1089edcb71a3405ab67073ce8e77114587
+Shader 'ParticlesShaderGLES3' SHA256: ffb4401639aafac71f9f113685cb6db157587dac2f1a352495327188f37419b2
+Shader 'ParticlesCopyShaderGLES3' SHA256: 9899e9a2ef961a3d8b457619edf04eca325601701531cee383193a6c83ec1a13
+Shader 'CopyShaderGLES3' SHA256: e360dbabe48fbad4409fd02e3794a652b8c7d7778b2d408785702371b1c962c6
+Shader 'CubemapFilterShaderGLES3' SHA256: 017276394727d66a84d83b8b9d67287226d828c938b0adde3d2f699f78cf1582
+Shader 'GlowShaderGLES3' SHA256: 427cfd9bd0cc4045ecaa4bc4f23055a2a40660411d8e1663897a7c2cd3c80665
+Shader 'PostShaderGLES3' SHA256: 0261dc65bbd27a029b2da5e7f7b8b8f8e1b18d769a1049417d13ba3b3fa5cc3d
+Shader 'FeedShaderGLES3' SHA256: 9c5f15371d9ed62661ff3bb3ecc28f82cb15be9a4be89518b1f6fd8d372fbe4b
+Shader 'CanvasShaderGLES3' SHA256: 16f1396f2f5ac39d277138cd33a6d284e2d97309f2a547816c220d0ef0318826
+Shader 'CanvasOcclusionShaderGLES3' SHA256: 6baa8caaecef40c331cf27f156879d8ca7d8bf94ec84f8168903490f61264d2d
+Shader 'SceneShaderGLES3' SHA256: 7394e9447823a0ec7c66c637ecadd588438c8a21166083e090baf46f58ef4976
+Shader 'SkyShaderGLES3' SHA256: dd03f40774447dd974bac0f4298cabe361d3eca0ce055c4641fa2920d99b3356
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+TextServer: Primary interface set to: "ICU / HarfBuzz / Graphite (Built-in)".
+CORE API HASH: 937899573
+EDITOR API HASH: 1777164193
+SceneTreeFTI: traversal method DEFAULT
+Loaded system CA certificates
+Loading resource: res://scenes/missions/harlow_escape.tscn
+Loading resource: res://scenes/main/main.tscn
+Loading resource: res://scripts/main/game.gd
+Loading resource: res://resources/fog/standard.tres
+Loading resource: res://scripts/fog/fog_config.gd
+Loading resource: res://resources/journey/escape_fog.tres
+Loading resource: res://resources/materials/platform_concrete.tres
+Loading resource: res://assets/pbr/concrete_floor_worn_001_albedo.jpg
+Loading resource: res://.godot/imported/concrete_floor_worn_001_albedo.jpg-3f77a254960a3cb272a82f8934c9d09b.bptc.ctex
+Loading resource: res://assets/pbr/concrete_floor_worn_001_normal.jpg
+Loading resource: res://.godot/imported/concrete_floor_worn_001_normal.jpg-cb84dc9415e5f570bb309a539606a9f2.bptc.ctex
+Loading resource: res://assets/pbr/concrete_floor_worn_001_roughness.jpg
+Loading resource: res://.godot/imported/concrete_floor_worn_001_roughness.jpg-ea220afa850f9a98e1d77917eba0026f.bptc.ctex
+Loading resource: res://resources/materials/ground_asphalt.tres
+Loading resource: res://assets/pbr/asphalt_02_albedo.jpg
+Loading resource: res://.godot/imported/asphalt_02_albedo.jpg-f6d3596155d4884cf4340198fd0459d4.bptc.ctex
+Loading resource: res://assets/pbr/asphalt_02_normal.jpg
+Loading resource: res://.godot/imported/asphalt_02_normal.jpg-670e1d2471d602e2cbd85652912ba73d.bptc.ctex
+Loading resource: res://assets/pbr/asphalt_02_roughness.jpg
+Loading resource: res://.godot/imported/asphalt_02_roughness.jpg-08aef1060e6a3b8e048751dd60442fc9.bptc.ctex
+Loading resource: res://resources/materials/ballast.tres
+Loading resource: res://assets/pbr/gravel_stones_albedo.jpg
+Loading resource: res://.godot/imported/gravel_stones_albedo.jpg-851ca137bc08161a3bb81e5e2fab0a89.bptc.ctex
+Loading resource: res://assets/pbr/gravel_stones_normal.jpg
+Loading resource: res://.godot/imported/gravel_stones_normal.jpg-3146b4b1dae931f563abebefb199fa04.bptc.ctex
+Loading resource: res://assets/pbr/gravel_stones_roughness.jpg
+Loading resource: res://.godot/imported/gravel_stones_roughness.jpg-42e92b79088e4313c177b6c8465fc954.bptc.ctex
+Loading resource: res://resources/materials/train_body.tres
+Loading resource: res://assets/pbr/green_metal_rust_albedo.jpg
+Loading resource: res://.godot/imported/green_metal_rust_albedo.jpg-f7fa696810f2b2f5cdcf32ac1f910655.bptc.ctex
+Loading resource: res://assets/pbr/green_metal_rust_normal.jpg
+Loading resource: res://.godot/imported/green_metal_rust_normal.jpg-b400b461e9e772e9dd46795811b3164b.bptc.ctex
+Loading resource: res://assets/pbr/green_metal_rust_roughness.jpg
+Loading resource: res://.godot/imported/green_metal_rust_roughness.jpg-3a7ecec798ed8c1a7ae75a9f071e4105.bptc.ctex
+Loading resource: res://assets/environment/supply_locker.glb
+Loading resource: res://.godot/imported/supply_locker.glb-b68fff4219e057f3ab93fd838d7fd555.scn
+Loading resource: res://assets/environment/supply_toolbox.glb
+Loading resource: res://.godot/imported/supply_toolbox.glb-3cf2c8f288e4aaf0fa25724a1fda0db4.scn
+Loading resource: res://assets/environment/medical_cabinet.glb
+Loading resource: res://.godot/imported/medical_cabinet.glb-4a53fd910df944b0a36d96b973ff9bab.scn
+Loading resource: res://assets/models/beveled_box.glb
+Loading resource: res://.godot/imported/beveled_box.glb-32d35ef390ef2c8d388795260e360acd.scn
+Loading resource: res://assets/props/wooden_crate_01.glb
+Loading resource: res://.godot/imported/wooden_crate_01.glb-8c7be117d67679c9f8c80d9064935aae.scn
+Loading resource: res://assets/props/wooden_crate_01_wooden_crate_01_diff_1k.jpg
+Loading resource: res://.godot/imported/wooden_crate_01_wooden_crate_01_diff_1k.jpg-6bda0aa10f1569fbbab2a37a603f1d34.bptc.ctex
+Loading resource: res://assets/props/wooden_crate_01_wooden_crate_01_arm_1k.jpg
+Loading resource: res://.godot/imported/wooden_crate_01_wooden_crate_01_arm_1k.jpg-de7db153f24a1849d0223dd6d65eb930.bptc.ctex
+Loading resource: res://assets/props/wooden_crate_01_wooden_crate_01_nor_gl_1k.jpg
+Loading resource: res://.godot/imported/wooden_crate_01_wooden_crate_01_nor_gl_1k.jpg-ea644931ddaa013e8be91ccba7d1f202.bptc.ctex
+Loading resource: res://assets/props/wooden_military_crate.glb
+Loading resource: res://.godot/imported/wooden_military_crate.glb-f19f6db0a7b6c97e256ce27aa7242a1d.scn
+Loading resource: res://assets/props/wooden_military_crate_wooden_military_crate_diff_1k.jpg
+Loading resource: res://.godot/imported/wooden_military_crate_wooden_military_crate_diff_1k.jpg-d66c71456a5409af0248c86650f8b01c.bptc.ctex
+Loading resource: res://assets/props/wooden_military_crate_wooden_military_crate_arm_1k.jpg
+Loading resource: res://.godot/imported/wooden_military_crate_wooden_military_crate_arm_1k.jpg-5485b42ad6e285d4b01b1fc133a1165c.bptc.ctex
+Loading resource: res://assets/props/wooden_military_crate_wooden_military_crate_nor_gl_1k.jpg
+Loading resource: res://.godot/imported/wooden_military_crate_wooden_military_crate_nor_gl_1k.jpg-8c1ba0535dcef4fe09ed294bad436a8b.bptc.ctex
+Loading resource: res://assets/props/worn_metal_rack.glb
+Loading resource: res://.godot/imported/worn_metal_rack.glb-8a9629f4c3c31a2c09b9ab6db4ea6bfe.scn
+Loading resource: res://assets/props/worn_metal_rack_worn_metal_rack_diff_1k.jpg
+Loading resource: res://.godot/imported/worn_metal_rack_worn_metal_rack_diff_1k.jpg-fb6b987774029e8c2e14dfb4ec3d07e7.bptc.ctex
+Loading resource: res://assets/props/worn_metal_rack_worn_metal_rack_arm_1k.jpg
+Loading resource: res://.godot/imported/worn_metal_rack_worn_metal_rack_arm_1k.jpg-455e9fad23c6856945a7d5cd91e82ba1.bptc.ctex
+Loading resource: res://assets/props/worn_metal_rack_worn_metal_rack_nor_gl_1k.jpg
+Loading resource: res://.godot/imported/worn_metal_rack_worn_metal_rack_nor_gl_1k.jpg-5fa65802117abb1b9cfe28655182796a.bptc.ctex
+Loading resource: res://assets/props/steel_frame_shelves_02.glb
+Loading resource: res://.godot/imported/steel_frame_shelves_02.glb-a0162c248bd3a4980f6a6d3f823cd6ee.scn
+Loading resource: res://assets/props/steel_frame_shelves_02_steel_frame_shelves_02_diff_1k.jpg
+Loading resource: res://.godot/imported/steel_frame_shelves_02_steel_frame_shelves_02_diff_1k.jpg-a7bfb8a5bb9a8489a209680b59309670.bptc.ctex
+Loading resource: res://assets/props/steel_frame_shelves_02_steel_frame_shelves_02_arm_1k.jpg
+Loading resource: res://.godot/imported/steel_frame_shelves_02_steel_frame_shelves_02_arm_1k.jpg-dbfcf9779d6e97ccf23f793a17dc4248.bptc.ctex
+Loading resource: res://assets/props/steel_frame_shelves_02_steel_frame_shelves_02_nor_gl_1k.jpg
+Loading resource: res://.godot/imported/steel_frame_shelves_02_steel_frame_shelves_02_nor_gl_1k.jpg-d340392f314e63b21d875f090f4cc39b.bptc.ctex
+Loading resource: res://assets/props/Barrel_02.glb
+Loading resource: res://.godot/imported/Barrel_02.glb-fab46f08e09adfacf8662a64b474f26f.scn
+Loading resource: res://assets/props/Barrel_02_Barrel_02_diff_1k.jpg
+Loading resource: res://.godot/imported/Barrel_02_Barrel_02_diff_1k.jpg-86e26564195316561e1fad0564c0b9d6.bptc.ctex
+Loading resource: res://assets/props/Barrel_02_Barrel_02_arm_1k.jpg
+Loading resource: res://.godot/imported/Barrel_02_Barrel_02_arm_1k.jpg-a7e4bb160ac45a220e810bac0edb07b1.bptc.ctex
+Loading resource: res://assets/props/Barrel_02_Barrel_02_nor_gl_1k.jpg
+Loading resource: res://.godot/imported/Barrel_02_Barrel_02_nor_gl_1k.jpg-dd8dcd1d131052ec9edc8ec5a25bc8e8.bptc.ctex
+Loading resource: res://assets/props/vintage_suitcase.glb
+Loading resource: res://.godot/imported/vintage_suitcase.glb-0786858f74589bb18f60531ee70a703e.scn
+Loading resource: res://assets/props/vintage_suitcase_vintage_suitcase_01_diff_1k.jpg
+Loading resource: res://.godot/imported/vintage_suitcase_vintage_suitcase_01_diff_1k.jpg-602f48069b4dc14aabb8219d6350404e.bptc.ctex
+Loading resource: res://assets/props/vintage_suitcase_vintage_suitcase_01_arm_1k.jpg
+Loading resource: res://.godot/imported/vintage_suitcase_vintage_suitcase_01_arm_1k.jpg-c1b59dc48d48d74e213579532378106b.bptc.ctex
+Loading resource: res://assets/props/vintage_suitcase_vintage_suitcase_01_nor_gl_1k.jpg
+Loading resource: res://.godot/imported/vintage_suitcase_vintage_suitcase_01_nor_gl_1k.jpg-fe80858bc622e1e76c83f906884b34f8.bptc.ctex
+Loading resource: res://assets/props/drill_press_01.glb
+Loading resource: res://.godot/imported/drill_press_01.glb-712c4ed955e7d0f20ada7d9adeae6fc2.scn
+Loading resource: res://assets/props/drill_press_01_drill_press_01_diff_1k.jpg
+Loading resource: res://.godot/imported/drill_press_01_drill_press_01_diff_1k.jpg-97a37abd081cb39ebb8892d12970a2fd.bptc.ctex
+Loading resource: res://assets/props/drill_press_01_drill_press_01_arm_1k.jpg
+Loading resource: res://.godot/imported/drill_press_01_drill_press_01_arm_1k.jpg-82765b5cb247cfd5ba3ca6bb33cd2696.bptc.ctex
+Loading resource: res://assets/props/drill_press_01_drill_press_01_nor_gl_1k.jpg
+Loading resource: res://.godot/imported/drill_press_01_drill_press_01_nor_gl_1k.jpg-4011620a664561b4e831150ae613df31.bptc.ctex
+Loading resource: res://assets/props/industrial_storage_cart.glb
+Loading resource: res://.godot/imported/industrial_storage_cart.glb-5d334953e88a6cc85d495b2fff01e6ca.scn
+Loading resource: res://assets/props/industrial_storage_cart_industrial_storage_cart_diff_1k.jpg
+Loading resource: res://.godot/imported/industrial_storage_cart_industrial_storage_cart_diff_1k.jpg-578f264126999235e48a7be8203fe27d.bptc.ctex
+Loading resource: res://assets/props/industrial_storage_cart_industrial_storage_cart_arm_1k.jpg
+Loading resource: res://.godot/imported/industrial_storage_cart_industrial_storage_cart_arm_1k.jpg-650ee150954878dc5fedc37724ae43f6.bptc.ctex
+Loading resource: res://assets/props/industrial_storage_cart_industrial_storage_cart_nor_gl_1k.jpg
+Loading resource: res://.godot/imported/industrial_storage_cart_industrial_storage_cart_nor_gl_1k.jpg-65b2ef46f86b276b68f8693c53ecd0cc.bptc.ctex
+Loading resource: res://assets/props/hand_truck.glb
+Loading resource: res://.godot/imported/hand_truck.glb-b1f3f800d0c6f51432cc06b0fa6423f5.scn
+Loading resource: res://assets/props/hand_truck_hand_truck_diff_1k.jpg
+Loading resource: res://.godot/imported/hand_truck_hand_truck_diff_1k.jpg-dffa4e766266b03c92734438cd0c93e1.bptc.ctex
+Loading resource: res://assets/props/hand_truck_hand_truck_arm_1k.jpg
+Loading resource: res://.godot/imported/hand_truck_hand_truck_arm_1k.jpg-039a502686f09b828b95ee1dadc071f1.bptc.ctex
+Loading resource: res://assets/props/hand_truck_hand_truck_nor_gl_1k.jpg
+Loading resource: res://.godot/imported/hand_truck_hand_truck_nor_gl_1k.jpg-d08e4e3d31363499512bc63cd15effd7.bptc.ctex
+Loading resource: res://assets/props/industrial_caged_sconce.glb
+Loading resource: res://.godot/imported/industrial_caged_sconce.glb-1dc4363a69075155e45e051dafd3c998.scn
+Loading resource: res://assets/props/industrial_caged_sconce_industrial_caged_sconce_diff_1k.jpg
+Loading resource: res://.godot/imported/industrial_caged_sconce_industrial_caged_sconce_diff_1k.jpg-9f4e1a534c350ebd178d315fb42d7721.bptc.ctex
+Loading resource: res://assets/props/industrial_caged_sconce_industrial_caged_sconce_arm_1k.jpg
+Loading resource: res://.godot/imported/industrial_caged_sconce_industrial_caged_sconce_arm_1k.jpg-0c7b4056e294fe962751b64d962e8375.bptc.ctex
+Loading resource: res://assets/props/industrial_caged_sconce_industrial_caged_sconce_emissive_1k.jpg
+Loading resource: res://.godot/imported/industrial_caged_sconce_industrial_caged_sconce_emissive_1k.jpg-28751585e504f241cfa3f527dfdadfc2.bptc.ctex
+Loading resource: res://assets/props/industrial_caged_sconce_industrial_caged_sconce_nor_gl_1k.jpg
+Loading resource: res://.godot/imported/industrial_caged_sconce_industrial_caged_sconce_nor_gl_1k.jpg-c1cae6cfbf6236d946a2a714a366234f.bptc.ctex
+Loading resource: res://assets/props/caged_hanging_light.glb
+Loading resource: res://.godot/imported/caged_hanging_light.glb-3788c40e4209308a6cf06b138b2a200d.scn
+Loading resource: res://assets/props/caged_hanging_light_caged_hanging_light_diff_1k.jpg
+Loading resource: res://.godot/imported/caged_hanging_light_caged_hanging_light_diff_1k.jpg-7e35d4eb02e81edb6d2b5d10880fcc16.bptc.ctex
+Loading resource: res://assets/props/caged_hanging_light_caged_hanging_light_arm_1k.jpg
+Loading resource: res://.godot/imported/caged_hanging_light_caged_hanging_light_arm_1k.jpg-360ed07c8c0b765f7cb2f666f7064a82.bptc.ctex
+Loading resource: res://assets/props/caged_hanging_light_caged_hanging_light_emissive_1k.jpg
+Loading resource: res://.godot/imported/caged_hanging_light_caged_hanging_light_emissive_1k.jpg-f408c55392765d2933381e3af01ff72e.bptc.ctex
+Loading resource: res://assets/props/caged_hanging_light_caged_hanging_light_nor_gl_1k.jpg
+Loading resource: res://.godot/imported/caged_hanging_light_caged_hanging_light_nor_gl_1k.jpg-2c180d8a98476040b490f6a5d7019815.bptc.ctex
+Loading resource: res://assets/props/small_oil_can_01.glb
+Loading resource: res://.godot/imported/small_oil_can_01.glb-5d8adb67ffa8eed79c5b1938da4feab9.scn
+Loading resource: res://assets/props/small_oil_can_01_small_oil_can_01_diff_1k.jpg
+Loading resource: res://.godot/imported/small_oil_can_01_small_oil_can_01_diff_1k.jpg-c0f9f650b7ad355c6f20d4c503645272.bptc.ctex
+Loading resource: res://assets/props/small_oil_can_01_small_oil_can_01_arm_1k.jpg
+Loading resource: res://.godot/imported/small_oil_can_01_small_oil_can_01_arm_1k.jpg-9950dac339d6a645b3eac8a54e8f9902.bptc.ctex
+Loading resource: res://assets/props/small_oil_can_01_small_oil_can_01_nor_gl_1k.jpg
+Loading resource: res://.godot/imported/small_oil_can_01_small_oil_can_01_nor_gl_1k.jpg-fcf77313e15d731890d617b65f41c740.bptc.ctex
+Loading resource: res://assets/props/brass_blowtorch.glb
+Loading resource: res://.godot/imported/brass_blowtorch.glb-581b53dbd9c1744a5b964196f3f91e99.scn
+Loading resource: res://assets/props/brass_blowtorch_brass_blowtorch_diff_1k.jpg
+Loading resource: res://.godot/imported/brass_blowtorch_brass_blowtorch_diff_1k.jpg-a813a9ff8cc5cbf8de1cc4a3c29055f6.bptc.ctex
+Loading resource: res://assets/props/brass_blowtorch_brass_blowtorch_arm_1k.jpg
+Loading resource: res://.godot/imported/brass_blowtorch_brass_blowtorch_arm_1k.jpg-239bfed5de6e6691153934d914b890d0.bptc.ctex
+Loading resource: res://assets/props/brass_blowtorch_brass_blowtorch_nor_gl_1k.jpg
+Loading resource: res://.godot/imported/brass_blowtorch_brass_blowtorch_nor_gl_1k.jpg-3628ee7399949306cc36389297210a9f.bptc.ctex
+Loading resource: res://assets/props/vintage_flashlight.glb
+Loading resource: res://.godot/imported/vintage_flashlight.glb-7c234f0662c906660a6e27c345a22a65.scn
+Loading resource: res://assets/props/vintage_flashlight_vintage_flashlight_diff_1k.jpg
+Loading resource: res://.godot/imported/vintage_flashlight_vintage_flashlight_diff_1k.jpg-57ced1cf9ee02e284745497d92b3c0ca.bptc.ctex
+Loading resource: res://assets/props/vintage_flashlight_vintage_flashlight_arm_1k.jpg
+Loading resource: res://.godot/imported/vintage_flashlight_vintage_flashlight_arm_1k.jpg-ccf245184d60caa93265ac1b9bdec02c.bptc.ctex
+Loading resource: res://assets/props/vintage_flashlight_vintage_flashlight_nor_gl_1k.jpg
+Loading resource: res://.godot/imported/vintage_flashlight_vintage_flashlight_nor_gl_1k.jpg-59d57e619cbb18c17b2eccbe3d1e8330.bptc.ctex
+Loading resource: res://assets/props/vintage_flashlight_vintage_flashlight_diff_1k_3.png
+Loading resource: res://.godot/imported/vintage_flashlight_vintage_flashlight_diff_1k_3.png-a9bffd8c935e69a01b19e2dadb0ff9e8.bptc.ctex
+Loading resource: res://assets/environment/factory_kit.glb
+Loading resource: res://.godot/imported/factory_kit.glb-94d8a63c716f7385beeba80db880f42c.scn
+Loading resource: res://assets/environment/factory_kit_modular_factory_facade_brick_diff_2k.jpg
+Loading resource: res://.godot/imported/factory_kit_modular_factory_facade_brick_diff_2k.jpg-67b401927a672cc86548322700763083.bptc.ctex
+Loading resource: res://assets/environment/factory_kit_modular_factory_facade_brick_arm_2k.jpg
+Loading resource: res://.godot/imported/factory_kit_modular_factory_facade_brick_arm_2k.jpg-f915a7564c1580e0adbf87fe77c0d856.bptc.ctex
+Loading resource: res://assets/environment/factory_kit_modular_factory_facade_brick_nor_gl_2k.jpg
+Loading resource: res://.godot/imported/factory_kit_modular_factory_facade_brick_nor_gl_2k.jpg-0337208eabc4dad194cdfd0edd6834c5.bptc.ctex
+Loading resource: res://assets/environment/factory_kit_modular_factory_facade_doors_diff_2k.jpg
+Loading resource: res://.godot/imported/factory_kit_modular_factory_facade_doors_diff_2k.jpg-5848fe4a7cd5cc2943757afe1c1d024d.bptc.ctex
+Loading resource: res://assets/environment/factory_kit_modular_factory_facade_doors_arm_2k.jpg
+Loading resource: res://.godot/imported/factory_kit_modular_factory_facade_doors_arm_2k.jpg-64dd5aed4d48d8d8d8e94ea4756da756.bptc.ctex
+Loading resource: res://assets/environment/freight_container.glb
+Loading resource: res://.godot/imported/freight_container.glb-84c516cb770f3438b98929c870a8439d.scn
+Loading resource: res://assets/environment/parked_box_van.glb
+Loading resource: res://.godot/imported/parked_box_van.glb-d60fefaa615383219030382f7edc717a.scn
+Loading resource: res://assets/environment/waiting_hall_roof.glb
+Loading resource: res://.godot/imported/waiting_hall_roof.glb-70c1c670afac67b8421d9334149facc8.scn
+Loading resource: res://assets/environment/station_house_roof.glb
+Loading resource: res://.godot/imported/station_house_roof.glb-501237dcf0ff23ba5687664d897d6fb7.scn
+Loading resource: res://assets/environment/painted_wooden_bench.glb
+Loading resource: res://.godot/imported/painted_wooden_bench.glb-6b4b816c3db8183fd3a660a0ca11529f.scn
+Loading resource: res://assets/environment/weed_plant_02.glb
+Loading resource: res://.godot/imported/weed_plant_02.glb-9f7b82fef0546222bf95398ea6f1ceea.scn
+Loading resource: res://assets/environment/weed_plant_02_weed_plant_02_diff_1k.png
+Loading resource: res://.godot/imported/weed_plant_02_weed_plant_02_diff_1k.png-aa27d01831d014f81ff4f58a08a69818.bptc.ctex
+Loading resource: res://assets/environment/weed_plant_02_weed_plant_02_arm_1k.jpg
+Loading resource: res://.godot/imported/weed_plant_02_weed_plant_02_arm_1k.jpg-c0a49169f9bb391ad07572a6ba211ead.bptc.ctex
+Loading resource: res://assets/environment/weed_plant_02_weed_plant_02_nor_gl_1k.jpg
+Loading resource: res://.godot/imported/weed_plant_02_weed_plant_02_nor_gl_1k.jpg-bdd560bfa4617f88fa2bec0cf612cde6.bptc.ctex
+Loading resource: res://assets/environment/broken_pallet.glb
+Loading resource: res://.godot/imported/broken_pallet.glb-7e4f6eee72e333ab4ac6e5be9237936c.scn
+Loading resource: res://resources/materials/wall_brick.tres
+Loading resource: res://assets/pbr/brick_wall_001_albedo.jpg
+Loading resource: res://.godot/imported/brick_wall_001_albedo.jpg-9cfd87d007bdb8fc91ae3319fcdf30a4.bptc.ctex
+Loading resource: res://assets/pbr/brick_wall_001_normal.jpg
+Loading resource: res://.godot/imported/brick_wall_001_normal.jpg-3f561ee76bbda3b3d70fab92dc942985.bptc.ctex
+Loading resource: res://assets/pbr/brick_wall_001_roughness.jpg
+Loading resource: res://.godot/imported/brick_wall_001_roughness.jpg-b21df40a19dd5f7a1e2ff665c08075e6.bptc.ctex
+Loading resource: res://resources/materials/environment_painted_steel.tres
+Loading resource: res://assets/pbr/rusty_painted_metal_albedo.jpg
+Loading resource: res://.godot/imported/rusty_painted_metal_albedo.jpg-f58225a3dfdace63f9baf7eae2f1ba8b.bptc.ctex
+Loading resource: res://assets/pbr/rusty_painted_metal_normal.jpg
+Loading resource: res://.godot/imported/rusty_painted_metal_normal.jpg-0ad643988f1f036664bccb15ae98ddfc.bptc.ctex
+Loading resource: res://assets/pbr/rusty_painted_metal_roughness.jpg
+Loading resource: res://.godot/imported/rusty_painted_metal_roughness.jpg-771aabd5fb83b3eb3e5cdd14bbbe5b41.bptc.ctex
+Loading resource: res://resources/materials/roof_metal.tres
+Loading resource: res://assets/pbr/rusty_corrugated_iron_albedo.jpg
+Loading resource: res://.godot/imported/rusty_corrugated_iron_albedo.jpg-3e265e18a821f6dd61a02dcbee91977b.bptc.ctex
+Loading resource: res://assets/pbr/rusty_corrugated_iron_normal.jpg
+Loading resource: res://.godot/imported/rusty_corrugated_iron_normal.jpg-53b84cbd2053ddc22df38c78f823ab0f.bptc.ctex
+Loading resource: res://assets/pbr/rusty_corrugated_iron_roughness.jpg
+Loading resource: res://.godot/imported/rusty_corrugated_iron_roughness.jpg-d1b38c2fc1790c0053ad6fec1f38819f.bptc.ctex
+Loading resource: res://resources/materials/interact_yellow.tres
+Loading resource: res://assets/train/carriage_door.glb
+Loading resource: res://.godot/imported/carriage_door.glb-604c470890ead2733a28a2a79070150d.scn
+Loading resource: res://assets/train/carriage_door_green_metal_rust_albedo.jpg
+Loading resource: res://.godot/imported/carriage_door_green_metal_rust_albedo.jpg-58a029c3634b6c5d4fa06a8c9aef3f46.bptc.ctex
+Loading resource: res://assets/train/carriage_door_green_metal_rust_roughness.png
+Loading resource: res://.godot/imported/carriage_door_green_metal_rust_roughness.png-8ed1d10ef20e0a12ba050e340151ca80.bptc.ctex
+Loading resource: res://assets/train/carriage_door_green_metal_rust_normal.jpg
+Loading resource: res://.godot/imported/carriage_door_green_metal_rust_normal.jpg-eef1099293773ef958b5c59f4590c6ca.bptc.ctex
+Loading resource: res://assets/train/carriage_door_wood_planks_grey_albedo.jpg
+Loading resource: res://.godot/imported/carriage_door_wood_planks_grey_albedo.jpg-0300595cfb6533588679bb94faf758a4.bptc.ctex
+Loading resource: res://assets/train/carriage_door_wood_planks_grey_roughness.png
+Loading resource: res://.godot/imported/carriage_door_wood_planks_grey_roughness.png-9c4d7fbf7ed420a5b3c24ff850c8a532.bptc.ctex
+Loading resource: res://assets/train/carriage_door_wood_planks_grey_normal.jpg
+Loading resource: res://.godot/imported/carriage_door_wood_planks_grey_normal.jpg-c90fcf878c77e521e10060737b5b162c.bptc.ctex
+Loading resource: res://assets/audio/latch.wav
+Loading resource: res://.godot/imported/latch.wav-fc307c6c961de2689745bc2c552a728f.sample
+Loading resource: res://resources/materials/metal_dark.tres
+Loading resource: res://resources/materials/wall_industrial.tres
+Loading resource: res://resources/materials/floor_interior.tres
+Loading resource: res://resources/materials/floor_wood.tres
+Loading resource: res://assets/pbr/wood_planks_grey_albedo.jpg
+Loading resource: res://.godot/imported/wood_planks_grey_albedo.jpg-b424932ff21224c7566a833fed2d6f38.bptc.ctex
+Loading resource: res://assets/pbr/wood_planks_grey_normal.jpg
+Loading resource: res://.godot/imported/wood_planks_grey_normal.jpg-77900876fa0c12a34f2027579a3b5001.bptc.ctex
+Loading resource: res://assets/pbr/wood_planks_grey_roughness.jpg
+Loading resource: res://.godot/imported/wood_planks_grey_roughness.jpg-32206f20a6a3635bc1dfc5e93811f55d.bptc.ctex
+Loading resource: res://resources/materials/train_glass.tres
+Loading resource: res://assets/train/control_lever.glb
+Loading resource: res://.godot/imported/control_lever.glb-87b88210eba2716216304059ebadfab1.scn
+Loading resource: res://assets/train/control_lever_wood_planks_grey_albedo.jpg
+Loading resource: res://.godot/imported/control_lever_wood_planks_grey_albedo.jpg-f6f787eff396deddfbcb7cd141e394e5.bptc.ctex
+Loading resource: res://assets/train/control_lever_wood_planks_grey_roughness.png
+Loading resource: res://.godot/imported/control_lever_wood_planks_grey_roughness.png-45eae4e8e7eca1f42c31d7ac33fd3d42.bptc.ctex
+Loading resource: res://assets/train/control_lever_wood_planks_grey_normal.jpg
+Loading resource: res://.godot/imported/control_lever_wood_planks_grey_normal.jpg-1b9faab0fcd504496f5fd8d0d3f4fa10.bptc.ctex
+Loading resource: res://resources/materials/rail_steel.tres
+Loading resource: res://assets/characters/railway_survivor.glb
+Loading resource: res://.godot/imported/railway_survivor.glb-e4aaa97afa3a17afe374ea14645abd3f.scn
+Loading resource: res://assets/characters/railway_survivor_eyebrow001.png
+Loading resource: res://.godot/imported/railway_survivor_eyebrow001.png-54f62f28241300c657e71efd36120fe7.bptc.ctex
+Loading resource: res://assets/characters/railway_survivor_eyelashes01.png
+Loading resource: res://.godot/imported/railway_survivor_eyelashes01.png-17498c1cb98219525bdab0231a1c69eb.bptc.ctex
+Loading resource: res://assets/characters/railway_survivor_brown_eye.png
+Loading resource: res://.godot/imported/railway_survivor_brown_eye.png-34e10ea39e03e94d6bd06e88de2e1d28.bptc.ctex
+Loading resource: res://assets/characters/railway_survivor_male_casualsuit05_diffuse.png
+Loading resource: res://.godot/imported/railway_survivor_male_casualsuit05_diffuse.png-3ee3d2c7a4d24fa8144007387c8badd3.bptc.ctex
+Loading resource: res://assets/characters/railway_survivor_male_casualsuit05_normal.png
+Loading resource: res://.godot/imported/railway_survivor_male_casualsuit05_normal.png-31c9accb15e517415e3f8f40ef7f7753.bptc.ctex
+Loading resource: res://assets/characters/railway_survivor_middleage_lightskinned_male_diffuse.png
+Loading resource: res://.godot/imported/railway_survivor_middleage_lightskinned_male_diffuse.png-b76f8538b55d9c630c4422ec81ea0f80.bptc.ctex
+Loading resource: res://assets/characters/railway_survivor_skin_male_african_middleage_NRM.png
+Loading resource: res://.godot/imported/railway_survivor_skin_male_african_middleage_NRM.png-8a56666743742c4837537ad4e91386d9.bptc.ctex
+Loading resource: res://assets/characters/railway_survivor_BootsAnkleM.png
+Loading resource: res://.godot/imported/railway_survivor_BootsAnkleM.png-44f8af70b3be8903e8c8cdc394e1ef54.bptc.ctex
+Loading resource: res://assets/characters/railway_survivor_BootsAnkle-norm.png
+Loading resource: res://.godot/imported/railway_survivor_BootsAnkle-norm.png-e2c04f999b1b0656606679c4468fc2bc.bptc.ctex
+Loading resource: res://assets/characters/railway_survivor_short04_diffuse.png
+Loading resource: res://.godot/imported/railway_survivor_short04_diffuse.png-9f65b855935ff4a0904bd33791686741.bptc.ctex
+Loading resource: res://assets/models/coal_sack.glb
+Loading resource: res://.godot/imported/coal_sack.glb-7b0f3794e81000548c3cbd585cde6aca.scn
+Loading resource: res://resources/materials/coal_canvas.tres
+Loading resource: res://assets/pbr/denim_fabric_albedo.jpg
+Loading resource: res://.godot/imported/denim_fabric_albedo.jpg-1d7139cd50dc485d326742e6b119d2cb.bptc.ctex
+Loading resource: res://assets/pbr/denim_fabric_normal.jpg
+Loading resource: res://.godot/imported/denim_fabric_normal.jpg-372825ca20cb8e7aeb9e30b8513ad919.bptc.ctex
+Loading resource: res://assets/pbr/denim_fabric_roughness.jpg
+Loading resource: res://.godot/imported/denim_fabric_roughness.jpg-c8baed7be97d71b2658c7e1d8e56f653.bptc.ctex
+Loading resource: res://scripts/fog/fog_front.gdshader
+Loading resource: res://assets/audio/fog/metal.wav
+Loading resource: res://.godot/imported/metal.wav-7e9236e187d47f611fd5f132ede9a674.sample
+Loading resource: res://resources/graphics/low.tres
+Loading resource: res://scripts/settings/graphics_preset.gd
+Loading resource: res://resources/graphics/medium.tres
+Loading resource: res://resources/graphics/high.tres
+Loading resource: res://assets/sky/kloofendal_overcast_puresky_1k.hdr
+Loading resource: res://.godot/imported/kloofendal_overcast_puresky_1k.hdr-fafe61f0c30cd0e8442d153a6222f638.bptc.ctex
+Loading resource: res://assets/audio/wind.wav
+Loading resource: res://.godot/imported/wind.wav-26bd3f95e99896071b625821c2f0df7a.sample
+Loading resource: res://assets/audio/engine.wav
+Loading resource: res://.godot/imported/engine.wav-13a2907be8290064892a1d44408db00f.sample
+Loading resource: res://assets/audio/step.wav
+Loading resource: res://.godot/imported/step.wav-7c1afa4d3561f9fd67ecf320728c68cf.sample
+Loading resource: res://resources/camera/train_departure.tres
+Loading resource: res://scenes/station/harlow_junction.tscn
+Loading resource: res://scripts/presentation/station_art.gd
+Loading resource: res://resources/materials/sleeper_wood.tres
+Loading resource: res://resources/materials/platform_edge.tres
+Loading resource: res://resources/materials/crate_dark.tres
+Loading resource: res://resources/materials/crate_wood.tres
+Loading resource: res://scenes/props/station_lamp.tscn
+Loading resource: res://scripts/environment/prop_light.gd
+Loading resource: res://resources/materials/lamp_cool.tres
+Loading resource: res://resources/materials/metal_rust.tres
+Loading resource: res://scenes/buildings/warehouse_a.tscn
+Loading resource: res://resources/materials/glass_dark.tres
+Loading resource: res://resources/materials/shelf_metal.tres
+Loading resource: res://scenes/props/hanging_lamp.tscn
+Loading resource: res://resources/materials/lamp_warm.tres
+Loading resource: res://resources/materials/window_warm.tres
+Loading resource: res://scripts/environment/cutaway_trigger.gd
+Loading resource: res://resources/camera/indoor.tres
+Loading resource: res://scenes/buildings/warehouse_b.tscn
+Loading resource: res://resources/materials/wall_interior.tres
+Loading resource: res://resources/materials/window_dim.tres
+Loading resource: res://scenes/props/freight_car.tscn
+Loading resource: res://resources/materials/freight_body.tres
+Loading resource: res://resources/materials/silhouette.tres
+Loading resource: res://scenes/train/train.tscn
+Loading resource: res://resources/train/departure_emergency.tres
+Loading resource: res://resources/train/departure_normal.tres
+Loading resource: res://resources/train/departure_slow.tres
+Loading resource: res://scenes/train/flat_car.tscn
+Loading resource: res://scripts/presentation/train_art.gd
+Loading resource: res://assets/models/rail_wheel.glb
+Loading resource: res://.godot/imported/rail_wheel.glb-46ffb59367c77c4fedc4a798a46e47ce.scn
+Loading resource: res://assets/train/steam_locomotive.glb
+Loading resource: res://.godot/imported/steam_locomotive.glb-a9c06e9e3b187b9a33fee7013a9ce14d.scn
+Loading resource: res://assets/train/steam_locomotive_rusty_painted_metal_albedo.jpg
+Loading resource: res://.godot/imported/steam_locomotive_rusty_painted_metal_albedo.jpg-18bb33c3e46f8ff88caa7a74427c5d21.bptc.ctex
+Loading resource: res://assets/train/steam_locomotive_rusty_painted_metal_roughness.png
+Loading resource: res://.godot/imported/steam_locomotive_rusty_painted_metal_roughness.png-f1f1cde3454dee3ff128651975af1d54.bptc.ctex
+Loading resource: res://assets/train/steam_locomotive_rusty_painted_metal_normal.jpg
+Loading resource: res://.godot/imported/steam_locomotive_rusty_painted_metal_normal.jpg-93586e24d7575eaeb7269014b4083560.bptc.ctex
+Loading resource: res://assets/train/steam_locomotive_rusty_painted_metal_albedo_3.jpg
+Loading resource: res://.godot/imported/steam_locomotive_rusty_painted_metal_albedo_3.jpg-83210c5f9cb55bae8a230ce064466b28.bptc.ctex
+Loading resource: res://assets/train/steam_locomotive_rusty_painted_metal_albedo_4.jpg
+Loading resource: res://.godot/imported/steam_locomotive_rusty_painted_metal_albedo_4.jpg-63c8488325fe071b9d2ae239aace19a2.bptc.ctex
+Loading resource: res://assets/train/steam_locomotive_rusty_painted_metal_albedo_5.jpg
+Loading resource: res://.godot/imported/steam_locomotive_rusty_painted_metal_albedo_5.jpg-a6a5a8c79d1a5e683bd9a8e90f02bb7b.bptc.ctex
+Loading resource: res://assets/train/steam_locomotive_rusty_painted_metal_albedo_6.jpg
+Loading resource: res://.godot/imported/steam_locomotive_rusty_painted_metal_albedo_6.jpg-ec8989444d9275a69e364d112054228d.bptc.ctex
+Loading resource: res://assets/train/steam_locomotive_rusty_painted_metal_albedo_7.jpg
+Loading resource: res://.godot/imported/steam_locomotive_rusty_painted_metal_albedo_7.jpg-21e6249f9e15ee43890fa2e2acfcca8a.bptc.ctex
+Loading resource: res://assets/train/steam_locomotive_rusty_painted_metal_albedo_8.jpg
+Loading resource: res://.godot/imported/steam_locomotive_rusty_painted_metal_albedo_8.jpg-7bedfbff6ed5fccd784f341da11d47d6.bptc.ctex
+Loading resource: res://assets/train/steam_locomotive_rusty_painted_metal_albedo_9.jpg
+Loading resource: res://.godot/imported/steam_locomotive_rusty_painted_metal_albedo_9.jpg-0ebf1d0c408448bb151abf3987a3c2d8.bptc.ctex
+Loading resource: res://assets/train/steam_locomotive_rusty_painted_metal_albedo_10.jpg
+Loading resource: res://.godot/imported/steam_locomotive_rusty_painted_metal_albedo_10.jpg-9e67f33475127c32c8fe7937ae0ca048.bptc.ctex
+Loading resource: res://assets/train/crew_car_finish.glb
+Loading resource: res://.godot/imported/crew_car_finish.glb-29b7d7dd6ce10cebc0702df51d3aa824.scn
+Loading resource: res://assets/train/crew_car_finish_green_metal_rust_albedo.jpg
+Loading resource: res://.godot/imported/crew_car_finish_green_metal_rust_albedo.jpg-6048e42c92d90ab15814c8365f3399cd.bptc.ctex
+Loading resource: res://assets/train/crew_car_finish_green_metal_rust_roughness.png
+Loading resource: res://.godot/imported/crew_car_finish_green_metal_rust_roughness.png-95a57d2900da7d41634990e44c18e8b1.bptc.ctex
+Loading resource: res://assets/train/crew_car_finish_green_metal_rust_normal.jpg
+Loading resource: res://.godot/imported/crew_car_finish_green_metal_rust_normal.jpg-acb6e98de816418659fc3c3c17dfd4a7.bptc.ctex
+Loading resource: res://assets/train/crew_car_finish_wood_planks_grey_albedo.jpg
+Loading resource: res://.godot/imported/crew_car_finish_wood_planks_grey_albedo.jpg-f6704aa623790f71f328e69aa711df2f.bptc.ctex
+Loading resource: res://assets/train/crew_car_finish_wood_planks_grey_roughness.png
+Loading resource: res://.godot/imported/crew_car_finish_wood_planks_grey_roughness.png-4207a7ce51fc8edfec8d4fa22f0127d5.bptc.ctex
+Loading resource: res://assets/train/crew_car_finish_wood_planks_grey_normal.jpg
+Loading resource: res://.godot/imported/crew_car_finish_wood_planks_grey_normal.jpg-e86bfea6a5957abe0563673e775a2325.bptc.ctex
+Loading resource: res://assets/train/locomotive_cab_finish.glb
+Loading resource: res://.godot/imported/locomotive_cab_finish.glb-7f045b09a31d0c75bade7a9c05256599.scn
+Loading resource: res://assets/train/locomotive_cab_finish_green_metal_rust_albedo.jpg
+Loading resource: res://.godot/imported/locomotive_cab_finish_green_metal_rust_albedo.jpg-e9d8b2bd7eca64bc8d270725b84c2784.bptc.ctex
+Loading resource: res://assets/train/locomotive_cab_finish_green_metal_rust_roughness.png
+Loading resource: res://.godot/imported/locomotive_cab_finish_green_metal_rust_roughness.png-a66baf1f4fa7be6ca24cbb56fc84d5b3.bptc.ctex
+Loading resource: res://assets/train/locomotive_cab_finish_green_metal_rust_normal.jpg
+Loading resource: res://.godot/imported/locomotive_cab_finish_green_metal_rust_normal.jpg-88f36a78bd669980995676a7af03b3a4.bptc.ctex
+Loading resource: res://assets/train/locomotive_cab_finish_wood_planks_grey_albedo.jpg
+Loading resource: res://.godot/imported/locomotive_cab_finish_wood_planks_grey_albedo.jpg-a5b8b1d4d009452b4029bfb8e002626f.bptc.ctex
+Loading resource: res://assets/train/locomotive_cab_finish_wood_planks_grey_roughness.png
+Loading resource: res://.godot/imported/locomotive_cab_finish_wood_planks_grey_roughness.png-91eadb1c3da9e93cb55fbf843b266861.bptc.ctex
+Loading resource: res://assets/train/locomotive_cab_finish_wood_planks_grey_normal.jpg
+Loading resource: res://.godot/imported/locomotive_cab_finish_wood_planks_grey_normal.jpg-a4a98618124e5689f710cdd17099eb5a.bptc.ctex
+Loading resource: res://resources/materials/train_trim.tres
+Loading resource: res://resources/materials/train_deck.tres
+Loading resource: res://resources/materials/train_stripe.tres
+Loading resource: res://scenes/train/crew_car.tscn
+Loading resource: res://scenes/train/locomotive.tscn
+Loading resource: res://scenes/player/player.tscn
+Loading resource: res://resources/player/default_movement.tres
+Loading resource: res://resources/materials/player_coat.tres
+Loading resource: res://resources/materials/player_trousers.tres
+Loading resource: res://resources/materials/player_skin.tres
+Loading resource: res://resources/materials/player_accent.tres
+Loading resource: res://resources/camera/outdoor.tres
+Loading resource: res://scenes/ui/hud.tscn
+Loading resource: res://scenes/ui/debug/debug_menu.tscn
+Loading resource: res://resources/journey/harlow_escape.tres
+Loading resource: res://scenes/station/ashford_depot.tscn
+Loading resource: res://scenes/station/blackwater_crossing.tscn
+Loading resource: res://resources/fog/harlow_route.tres
+[phase] {"duration_ms":300.169,"nodes":1404.0,"phase":"station_art","pipeline_draw":0.0,"pipeline_mesh":0.0,"pipeline_specialization":0.0,"resources":585.0,"static_bytes":100768501,"texture_bytes":417102005.0,"ticks_ms":12955.94}
+[phase] {"duration_ms":9.086,"nodes":1666.0,"phase":"train_art","pipeline_draw":0.0,"pipeline_mesh":0.0,"pipeline_specialization":0.0,"resources":585.0,"static_bytes":103355181,"texture_bytes":417102005.0,"ticks_ms":13021.284}
+[phase] {"duration_ms":10.561,"nodes":1712.0,"phase":"train_art","pipeline_draw":0.0,"pipeline_mesh":0.0,"pipeline_specialization":0.0,"resources":585.0,"static_bytes":103770621,"texture_bytes":417102005.0,"ticks_ms":13034.247}
+[phase] {"duration_ms":11.705,"nodes":1771.0,"phase":"train_art","pipeline_draw":0.0,"pipeline_mesh":0.0,"pipeline_specialization":0.0,"resources":585.0,"static_bytes":104363837,"texture_bytes":417102089.0,"ticks_ms":13047.058}
+[phase] {"duration_ms":0.755,"nodes":1791.0,"phase":"worker_bind","pipeline_draw":0.0,"pipeline_mesh":0.0,"pipeline_specialization":0.0,"resources":585.0,"static_bytes":104749185,"texture_bytes":417106185.0,"ticks_ms":13048.237}
+[phase] {"duration_ms":0.0,"nodes":1835.0,"phase":"game_ready_begin","pipeline_draw":0.0,"pipeline_mesh":0.0,"pipeline_specialization":0.0,"resources":585.0,"static_bytes":106407381,"texture_bytes":417106185.0,"ticks_ms":13060.419}
+Loading resource: res://resources/items/coal_sack.tres
+Loading resource: res://assets/icons/items/coal_sack.svg
+Loading resource: res://.godot/imported/coal_sack.svg-97c7acbb1820bf18ad463889dcbea987.ctex
+Loading resource: res://scenes/items/item_visual.tscn
+Loading resource: res://resources/items/tools.tres
+Loading resource: res://assets/icons/items/tools.svg
+Loading resource: res://.godot/imported/tools.svg-1cc4af35da2a3c215037c321d06493bf.ctex
+Loading resource: res://resources/items/machine_component.tres
+Loading resource: res://assets/icons/items/machine_component.svg
+Loading resource: res://.godot/imported/machine_component.svg-8a7a1a788b58721837cbff8b1b95f783.ctex
+Loading resource: res://resources/items/medicine.tres
+Loading resource: res://assets/icons/items/medicine.svg
+Loading resource: res://.godot/imported/medicine.svg-deab8f1b62a3c4d479d2109ee0f33c79.ctex
+Loading resource: res://resources/items/canned_food.tres
+Loading resource: res://assets/icons/items/canned_food.svg
+Loading resource: res://.godot/imported/canned_food.svg-4d6e4b21810f0bada7056f3d76c2a341.ctex
+Loading resource: res://resources/items/scrap_metal.tres
+Loading resource: res://assets/icons/items/scrap_metal.svg
+Loading resource: res://.godot/imported/scrap_metal.svg-989d8405fa9bbfff0d9d8e84e3a490ed.ctex
+Loading resource: res://resources/items/bandages.tres
+Loading resource: res://assets/icons/items/bandages.svg
+Loading resource: res://.godot/imported/bandages.svg-8e4aa1dbc2903e9492f5097f709f400e.ctex
+[phase] {"duration_ms":197.854,"nodes":3322.0,"phase":"journey_setup","pipeline_draw":0.0,"pipeline_mesh":0.0,"pipeline_specialization":0.0,"resources":595.0,"static_bytes":118586209,"texture_bytes":417259093.0,"ticks_ms":13258.27}
+[phase] {"duration_ms":4.429,"nodes":3359.0,"phase":"harlow_props","pipeline_draw":0.0,"pipeline_mesh":0.0,"pipeline_specialization":0.0,"resources":595.0,"static_bytes":118838461,"texture_bytes":417259093.0,"ticks_ms":13262.744}
+[phase] {"duration_ms":51.556,"nodes":3487.0,"phase":"harlow_architecture","pipeline_draw":0.0,"pipeline_mesh":0.0,"pipeline_specialization":0.0,"resources":584.0,"static_bytes":120335829,"texture_bytes":417259093.0,"ticks_ms":13314.349}
+[phase] {"duration_ms":3.799,"nodes":3508.0,"phase":"worker_bind","pipeline_draw":0.0,"pipeline_mesh":0.0,"pipeline_specialization":0.0,"resources":584.0,"static_bytes":120458465,"texture_bytes":417263189.0,"ticks_ms":13318.24}
+Loading resource: res://scenes/station/scavenging_sites.tscn
+Loading resource: res://resources/loot/coal_reserve.tres
+Loading resource: res://resources/loot/freight.tres
+Loading resource: res://resources/items/fuel_drum.tres
+Loading resource: res://assets/icons/items/fuel_drum.svg
+Loading resource: res://.godot/imported/fuel_drum.svg-c1a5b0f5dc74f196a2524808841d55af.ctex
+Loading resource: res://resources/loot/fuel_reserve.tres
+Loading resource: res://resources/loot/medical.tres
+Loading resource: res://resources/loot/platform.tres
+Loading resource: res://resources/items/lantern_oil.tres
+Loading resource: res://assets/icons/items/lantern_oil.svg
+Loading resource: res://.godot/imported/lantern_oil.svg-f16be63b1c86e1e7594eb3ee6934d2cd.ctex
+Loading resource: res://resources/loot/precision.tres
+Loading resource: res://resources/loot/warehouse_a.tres
+Loading resource: res://resources/loot/warehouse_b.tres
+[phase] {"duration_ms":77.866,"nodes":3817.0,"phase":"game_wiring","pipeline_draw":0.0,"pipeline_mesh":0.0,"pipeline_specialization":0.0,"resources":615.0,"static_bytes":124856013,"texture_bytes":417309173.0,"ticks_ms":13392.266}
+[phase] {"duration_ms":7.942,"nodes":3996.0,"phase":"graphics_collect","pipeline_draw":0.0,"pipeline_mesh":0.0,"pipeline_specialization":0.0,"resources":615.0,"static_bytes":128233105,"texture_bytes":419813949.0,"ticks_ms":13449.725}
+[phase] {"duration_ms":0.84,"nodes":3996.0,"phase":"preset_apply_2","pipeline_draw":0.0,"pipeline_mesh":0.0,"pipeline_specialization":0.0,"resources":615.0,"static_bytes":128234253,"texture_bytes":419813949.0,"ticks_ms":13450.652}
+Loading resource: res://assets/audio/fog/rumble.wav
+Loading resource: res://.godot/imported/rumble.wav-132216cc68021fd18308db261aa6b9d8.sample
+Loading resource: res://assets/audio/fog/wind.wav
+Loading resource: res://.godot/imported/wind.wav-e6dbabd37679e079974d2bed445497eb.sample
+Loading resource: res://assets/audio/fog/breath.wav
+Loading resource: res://.godot/imported/breath.wav-1d862fa562288a1ff066a53d5827fc4c.sample
+[phase] {"duration_ms":0.0,"nodes":4096.0,"phase":"warmup_begin","pipeline_draw":0.0,"pipeline_mesh":0.0,"pipeline_specialization":0.0,"resources":615.0,"static_bytes":130221801,"texture_bytes":419813949.0,"ticks_ms":13470.092}
+[phase] {"duration_ms":6521.991,"nodes":3909.0,"phase":"warmup_fog_material","pipeline_draw":0.0,"pipeline_mesh":0.0,"pipeline_specialization":0.0,"resources":615.0,"static_bytes":132617021,"texture_bytes":421884415.0,"ticks_ms":19995.051}
+XR: Clearing primary interface
+XR: Removed interface "Native mobile"
+XR: Removed interface "OpenXR"
+Orphan StringName: servers (static: 1, total: 2)
+StringName: 1 unclaimed string names at exit.

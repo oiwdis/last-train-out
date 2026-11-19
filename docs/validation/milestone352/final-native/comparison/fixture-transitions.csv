@@ -1,0 +1,145 @@
+run,location,milliseconds,preset
+optimized-matrix-2,Harlow platform,218.134,0
+optimized-matrix-2,Warehouse A,190.838,0
+optimized-matrix-2,Warehouse B,203.878,0
+optimized-matrix-2,Locomotive cab,200.0,0
+optimized-matrix-2,Passenger car,201.834,0
+optimized-matrix-2,Curved railway,192.824,0
+optimized-matrix-2,Ashford Depot,198.263,0
+optimized-matrix-2,Ashford workshop,196.194,0
+optimized-matrix-2,Blackwater Crossing,202.008,0
+optimized-matrix-2,Near advancing fog,199.199,0
+optimized-matrix-2,Inside dangerous fog,202.728,0
+optimized-matrix-2,Mission completion,55.68,0
+optimized-matrix-2,Harlow platform,215.972,1
+optimized-matrix-2,Warehouse A,200.145,1
+optimized-matrix-2,Warehouse B,203.906,1
+optimized-matrix-2,Locomotive cab,205.846,1
+optimized-matrix-2,Passenger car,180.982,1
+optimized-matrix-2,Curved railway,206.293,1
+optimized-matrix-2,Ashford Depot,187.502,1
+optimized-matrix-2,Ashford workshop,177.998,1
+optimized-matrix-2,Blackwater Crossing,184.282,1
+optimized-matrix-2,Near advancing fog,194.886,1
+optimized-matrix-2,Inside dangerous fog,189.845,1
+optimized-matrix-2,Mission completion,45.763,1
+optimized-matrix-2,Harlow platform,206.339,2
+optimized-matrix-2,Warehouse A,186.093,2
+optimized-matrix-2,Warehouse B,184.334,2
+optimized-matrix-2,Locomotive cab,231.067,2
+optimized-matrix-2,Passenger car,210.827,2
+optimized-matrix-2,Curved railway,186.316,2
+optimized-matrix-2,Ashford Depot,193.744,2
+optimized-matrix-2,Ashford workshop,221.262,2
+optimized-matrix-2,Blackwater Crossing,182.56,2
+optimized-matrix-2,Near advancing fog,190.915,2
+optimized-matrix-2,Inside dangerous fog,194.783,2
+optimized-matrix-2,Mission completion,35.656,2
+optimized-matrix-1,Harlow platform,221.566,0
+optimized-matrix-1,Warehouse A,181.48,0
+optimized-matrix-1,Warehouse B,179.504,0
+optimized-matrix-1,Locomotive cab,182.706,0
+optimized-matrix-1,Passenger car,194.485,0
+optimized-matrix-1,Curved railway,159.59,0
+optimized-matrix-1,Ashford Depot,186.133,0
+optimized-matrix-1,Ashford workshop,191.095,0
+optimized-matrix-1,Blackwater Crossing,192.142,0
+optimized-matrix-1,Near advancing fog,188.818,0
+optimized-matrix-1,Inside dangerous fog,195.651,0
+optimized-matrix-1,Mission completion,39.571,0
+optimized-matrix-1,Harlow platform,223.145,1
+optimized-matrix-1,Warehouse A,183.052,1
+optimized-matrix-1,Warehouse B,184.622,1
+optimized-matrix-1,Locomotive cab,198.143,1
+optimized-matrix-1,Passenger car,207.819,1
+optimized-matrix-1,Curved railway,166.209,1
+optimized-matrix-1,Ashford Depot,180.052,1
+optimized-matrix-1,Ashford workshop,200.854,1
+optimized-matrix-1,Blackwater Crossing,183.299,1
+optimized-matrix-1,Near advancing fog,182.894,1
+optimized-matrix-1,Inside dangerous fog,216.514,1
+optimized-matrix-1,Mission completion,30.975,1
+optimized-matrix-1,Harlow platform,219.596,2
+optimized-matrix-1,Warehouse A,181.188,2
+optimized-matrix-1,Warehouse B,172.561,2
+optimized-matrix-1,Locomotive cab,198.121,2
+optimized-matrix-1,Passenger car,181.029,2
+optimized-matrix-1,Curved railway,163.05,2
+optimized-matrix-1,Ashford Depot,173.324,2
+optimized-matrix-1,Ashford workshop,187.081,2
+optimized-matrix-1,Blackwater Crossing,186.234,2
+optimized-matrix-1,Near advancing fog,165.376,2
+optimized-matrix-1,Inside dangerous fog,189.243,2
+optimized-matrix-1,Mission completion,18.311,2
+baseline-matrix-2,Harlow platform,204.683,0
+baseline-matrix-2,Warehouse A,197.348,0
+baseline-matrix-2,Warehouse B,194.711,0
+baseline-matrix-2,Locomotive cab,200.806,0
+baseline-matrix-2,Passenger car,193.064,0
+baseline-matrix-2,Curved railway,194.967,0
+baseline-matrix-2,Ashford Depot,207.217,0
+baseline-matrix-2,Ashford workshop,206.971,0
+baseline-matrix-2,Blackwater Crossing,190.555,0
+baseline-matrix-2,Near advancing fog,202.741,0
+baseline-matrix-2,Inside dangerous fog,190.199,0
+baseline-matrix-2,Mission completion,44.558,0
+baseline-matrix-2,Harlow platform,1582.992,1
+baseline-matrix-2,Warehouse A,205.652,1
+baseline-matrix-2,Warehouse B,212.414,1
+baseline-matrix-2,Locomotive cab,200.3,1
+baseline-matrix-2,Passenger car,197.5,1
+baseline-matrix-2,Curved railway,194.72,1
+baseline-matrix-2,Ashford Depot,193.986,1
+baseline-matrix-2,Ashford workshop,194.651,1
+baseline-matrix-2,Blackwater Crossing,194.163,1
+baseline-matrix-2,Near advancing fog,198.982,1
+baseline-matrix-2,Inside dangerous fog,189.013,1
+baseline-matrix-2,Mission completion,40.131,1
+baseline-matrix-2,Harlow platform,1861.192,2
+baseline-matrix-2,Warehouse A,194.617,2
+baseline-matrix-2,Warehouse B,190.481,2
+baseline-matrix-2,Locomotive cab,182.42,2
+baseline-matrix-2,Passenger car,198.511,2
+baseline-matrix-2,Curved railway,183.172,2
+baseline-matrix-2,Ashford Depot,191.125,2
+baseline-matrix-2,Ashford workshop,204.192,2
+baseline-matrix-2,Blackwater Crossing,189.835,2
+baseline-matrix-2,Near advancing fog,203.866,2
+baseline-matrix-2,Inside dangerous fog,189.581,2
+baseline-matrix-2,Mission completion,52.204,2
+baseline-matrix-1,Harlow platform,216.849,0
+baseline-matrix-1,Warehouse A,201.579,0
+baseline-matrix-1,Warehouse B,192.808,0
+baseline-matrix-1,Locomotive cab,195.408,0
+baseline-matrix-1,Passenger car,184.161,0
+baseline-matrix-1,Curved railway,190.268,0
+baseline-matrix-1,Ashford Depot,196.868,0
+baseline-matrix-1,Ashford workshop,205.778,0
+baseline-matrix-1,Blackwater Crossing,202.724,0
+baseline-matrix-1,Near advancing fog,204.367,0
+baseline-matrix-1,Inside dangerous fog,196.498,0
+baseline-matrix-1,Mission completion,48.066,0
+baseline-matrix-1,Harlow platform,1401.87,1
+baseline-matrix-1,Warehouse A,201.035,1
+baseline-matrix-1,Warehouse B,191.002,1
+baseline-matrix-1,Locomotive cab,199.123,1
+baseline-matrix-1,Passenger car,183.045,1
+baseline-matrix-1,Curved railway,186.753,1
+baseline-matrix-1,Ashford Depot,200.123,1
+baseline-matrix-1,Ashford workshop,204.128,1
+baseline-matrix-1,Blackwater Crossing,199.966,1
+baseline-matrix-1,Near advancing fog,185.189,1
+baseline-matrix-1,Inside dangerous fog,186.566,1
+baseline-matrix-1,Mission completion,34.679,1
+baseline-matrix-1,Harlow platform,1563.627,2
+baseline-matrix-1,Warehouse A,201.141,2
+baseline-matrix-1,Warehouse B,177.228,2
+baseline-matrix-1,Locomotive cab,182.776,2
+baseline-matrix-1,Passenger car,189.24,2
+baseline-matrix-1,Curved railway,179.267,2
+baseline-matrix-1,Ashford Depot,187.562,2
+baseline-matrix-1,Ashford workshop,184.921,2
+baseline-matrix-1,Blackwater Crossing,199.368,2
+baseline-matrix-1,Near advancing fog,184.586,2
+baseline-matrix-1,Inside dangerous fog,193.948,2
+baseline-matrix-1,Mission completion,45.299,2

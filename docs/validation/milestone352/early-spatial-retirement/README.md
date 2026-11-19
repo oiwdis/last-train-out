@@ -32,3 +32,12 @@ The new spatial regression reproduces the timeout before the change (3 passed,
 failed before its change (2 passed, 1 failed, with leaked WAV/playback owners)
 and passed afterward. Complete raw logs/reports are retained. Final windowed,
 full-suite and native release validation follow these focused checks.
+
+Final local validation: 304/304 Linux tests in 138.9 seconds, all 300 original identities preserved; the windowed early-exit fixture now has no retirement timeout or ObjectDB warning. A separate normal-main-scene `--quit-after 2 --graphics=high` process exited during preparation without ObjectDB/resource-in-use warnings. These rendered checks use Linux llvmpipe/OpenGL at 320×180, so their timing is not macOS performance evidence. The logs retain the environment V-sync warning and verbose engine `servers` StringName.
+
+Final native evidence now includes 304/304 tests, six rendered lifecycle cases,
+the full journey recording and 29 successful exported stress processes without
+the reproduced ObjectDB/resource-in-use warnings. Three separate final-candidate
+Vulkan device losses (two cold High launches and one fresh ARM preset test) block
+release acceptance; crashed processes are not cleanup passes. See the
+[complete final report](../../../PERFORMANCE_MILESTONE352.md).

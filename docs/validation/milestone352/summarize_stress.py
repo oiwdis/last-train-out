@@ -10,13 +10,18 @@ series = json.loads((source / 'stress.json').read_text())
 rows = []
 for run in series['runs']:
     report = source / (run['name'] + '.json')
-    data = json.loads(report.read_text()) if report.exists() else {}
+    report_error = run.get('report_error', '')
+    try:
+        data = json.loads(report.read_text()) if report.exists() else {}
+    except (ValueError, OSError) as error:
+        data = {}
+        report_error = str(error)
     events = {e['phase']: e['ticks_ms'] for e in data.get('events', [])}
     ready = events.get('mission_ready')
     row = {'attempt': run['name'], 'exit': run['returncode'],
            'complete': run.get('complete', False), 'device_loss': run.get('device_loss', False),
            'diagnostics': len(run.get('diagnostics', [])), 'timed_out': run.get('timed_out', False),
-           'skipped': run.get('skipped', ''), 'ready_ms': ready,
+           'skipped': run.get('skipped', ''), 'report_error': report_error, 'ready_ms': ready,
            'process_seconds': run.get('wall_seconds'),
            'peak_rss_mib': run.get('peak_rss_bytes', 0) / 1048576,
            'checks': len(data.get('checks', [])), 'failed_checks': data.get('failed'),
@@ -30,7 +35,7 @@ for run in series['runs']:
         row[key] = events[end] - events[begin] if begin in events and end in events else None
     rows.append(row)
 with (destination / 'every-attempt.csv').open('w') as stream:
-    writer = csv.DictWriter(stream, fieldnames=list(rows[0]))
+    writer = csv.DictWriter(stream, fieldnames=list(rows[0]),lineterminator="\n")
     writer.writeheader()
     writer.writerows(rows)
 lines = ['# Exported Vulkan stress: every attempt', '',

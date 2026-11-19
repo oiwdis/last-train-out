@@ -26,7 +26,7 @@ for key,rows in groups.items():
  aggregated[key]=d
 for filename,rows in [('all-attempts.csv',individual),('pooled-distributions.csv',list(aggregated.values())),('worst-frames.csv',worst_frames)]:
  with (out/filename).open('w') as f:
-  writer=csv.DictWriter(f,fieldnames=list(rows[0]) if rows else []);writer.writeheader();writer.writerows(rows)
+  writer=csv.DictWriter(f,fieldnames=list(rows[0]) if rows else [],lineterminator="\n");writer.writeheader();writer.writerows(rows)
 lines=['# Matched hosted comparison','',f"Baseline `{metadata['baseline']}`; candidate `{metadata['optimized']}`.",'','Godot 4.5.1, 960×540 windowed, Vulkan, V-sync/frame cap off. Two sequential matrices per revision, alternating order. 60 entry frames and 600 steady frames per view per run, with 120 settling frames. Separate fresh application caches, warm filesystem, shared OS/driver cache state uncontrolled. No profiler, screenshots or Movie Maker. All samples, including failures and outliers, are retained. Pooled percentiles are recomputed from raw frames, never averaged from per-run percentiles. GPU timing zero means unavailable.','']
 for preset in presets:
  lines.extend([f'## {preset} — steady rendering','','Values are baseline → candidate milliseconds. Counts pool both attempts.','','| Location | Mean | Median | p95 | p99 | Worst | >33.3 / >50 / >100 ms |','|---|---:|---:|---:|---:|---:|---|'])
@@ -41,13 +41,13 @@ for preset in presets:
   a=aggregated.get(('baseline',preset,loc,'entry'));b=aggregated.get(('optimized',preset,loc,'entry'))
   if a and b:lines.append(f"| {loc} | {a['worst_ms']:.2f} → {b['worst_ms']:.2f} | {a['over_100']} → {b['over_100']} |")
  lines.append('')
-lines.extend(['## Every startup attempt','','Times are seconds since engine process initialization. The first boundary combines OS/engine/driver startup and built-in shader preparation; the load boundary includes script/resources/decompression; activation includes `_ready`, geometry, physics registration and gameplay wiring. These aggregates cannot isolate every internal engine stage. Readiness follows destination-GPU preparation and physics synchronization.','','| Revision / attempt | Engine to script | Load | Instantiate | Activate | Render preparation + readiness | Total ready |','|---|---:|---:|---:|---:|---:|---:|'])
+lines.extend(['## Every startup attempt','','Times are seconds since engine process initialization. The first boundary combines OS/engine/driver startup and built-in shader preparation; the load boundary includes script/resources/decompression; activation includes `_ready`, geometry, physics registration and gameplay wiring. These aggregates cannot isolate every internal engine stage. Readiness follows destination-GPU preparation and physics synchronization.','','| Revision / attempt | Engine to script | Script to load | Load | Instantiate | Activate | Render preparation + readiness | Total ready |','|---|---:|---:|---:|---:|---:|---:|---:|'])
 for rec in metadata['runs']:
  if '-startup-' not in rec['name']:continue
  path=source/(rec['name']+'.json')
- if not path.exists():lines.append(f"| {rec['name']} | INCOMPLETE | | | | | |");continue
+ if not path.exists():lines.append(f"| {rec['name']} | INCOMPLETE | | | | | | |");continue
  d=json.loads(path.read_text());e={v['phase']:v['ticks_ms']/1000 for v in d['events']}
- vals=[e['script_initialized'],e['load_end']-e['load_begin'],e['instantiate_end']-e['load_end'],e['add_child_end']-e['instantiate_end'],e['mission_ready']-e['add_child_end'],e['mission_ready']]
+ vals=[e['script_initialized'],e['load_begin']-e['script_initialized'],e['load_end']-e['load_begin'],e['instantiate_end']-e['load_end'],e['add_child_end']-e['instantiate_end'],e['mission_ready']-e['add_child_end'],e['mission_ready']]
  lines.append('| '+rec['name']+' | '+' | '.join(f'{v:.3f}' for v in vals)+' |')
 lines.extend(['','## Process memory and failures','','RSS is sampled every 0.5 seconds; it is not total GPU memory and can miss short peaks. Texture/static-memory monitors and per-location CPU timings are in the CSV. Retained frame/timeline arrays contribute to static-memory growth; identical instrumentation is used for both revisions.','','| Process | Seconds to exit | Peak RSS MiB | Exit | Diagnostics |','|---|---:|---:|---:|---:|'])
 for r in metadata['runs']:
