@@ -28,6 +28,10 @@ func bind(authority: FogSystem, id: String) -> void:
 		material.set_shader_parameter("phase", float(i) * 1.73)
 		mesh.material_override = material
 		add_child(mesh)
+		if i == 0:
+			# The actual front starts beyond camera range. Prepare its shader with a
+			# temporary render proxy, never by moving the dangerous front or player.
+			mesh.add_to_group("render_warmup_material")
 		layers.append(mesh)
 	system.game.graphics.changed.connect(_quality)
 	_quality(system.game.graphics.current_index)

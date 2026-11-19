@@ -22,10 +22,13 @@ func configure(owner_rig: WorkerAnimator) -> void:
 			_chains[side + kind] = indices
 
 func _process_modification() -> void:
-	if worker == null or worker.player == null or not worker.is_visible_in_tree():
+	# SceneTree.reload_current_scene detaches the old hierarchy before freeing it.
+	# Skeletons can request a final modifier update during that teardown; no
+	# world-space contacts may be read once either rig or player has left the tree.
+	if not is_inside_tree() or not is_instance_valid(worker) or not is_instance_valid(worker.player) or not worker.player.is_inside_tree() or not worker.is_visible_in_tree():
 		return
 	var skeleton := get_skeleton()
-	if skeleton == null:
+	if skeleton == null or not skeleton.is_inside_tree():
 		return
 	var delta := minf(get_process_delta_time(), .05)
 	if not worker.first_person:

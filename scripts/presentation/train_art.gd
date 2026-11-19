@@ -97,12 +97,14 @@ func _soft_steam() -> void:
 	_steam.mesh = quad
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if _steam == null:
 		return
 	var train := get_parent().get_parent() as Train
 	if train != null:
-		_wheel_phase += train.speed * delta
+		# Route distance is the simulation authority, including curves and restored
+		# saves. Integrating render deltas drifted and restarted the rods on loading.
+		_wheel_phase = train.distance
 		for wheel in _drive_wheels:
 			var radius := maxf(wheel.mesh.get_aabb().size.y * 0.5, 0.2)
 			wheel.rotation.z = -_wheel_phase / radius

@@ -70,12 +70,14 @@ static func snapshot(journey: JourneyController) -> Dictionary:
 			"car":str(support.name) if is_instance_valid(support) else "",
 			"local":pack(support.to_local(item.global_position)) if is_instance_valid(support) else [0,0,0]})
 	var actor := g.player
+	var view := g.camera_rig.exploration
 	var car := actor.get_ride_body() as TrainCar
 	var door_states := {}
 	var all_doors := doors(g)
 	for id in all_doors:
 		door_states[id] = all_doors[id].is_open
 	return {"version":VERSION,"mission_id":journey.definition.id,"route":journey.route.signature(),
+		"camera":{"perspective":int(view.perspective),"yaw":view.yaw,"pitch":view.pitch},
 		"difficulty":g.fog_system.config.difficulty,"seed":str(g.fog_system.simulation.seed_value),
 		"segment":journey.route.locate(train.distance).segment,"next_stop":journey.next_stop,
 		"train":{"distance":train.distance,"speed":train.speed,"state":int(train.state),"mode":train.get_mode_index(),
@@ -89,6 +91,11 @@ static func snapshot(journey: JourneyController) -> Dictionary:
 static func valid(j: JourneyController, d: Dictionary) -> bool:
 	if d.get("version") != VERSION or d.get("mission_id") != j.definition.id or d.get("route") != j.route.signature():
 		return false
+	# Additive v1 field: existing M3 saves retain the player's camera preference.
+	if d.has("camera"):
+		var camera: Variant = d.camera
+		if not camera is Dictionary or not integer(camera.get("perspective"),0,1) or not number(camera.get("yaw"),-PI,PI) or not number(camera.get("pitch"),deg_to_rad(-75),deg_to_rad(75)):
+			return false
 	if not number(d.get("difficulty"),0.6,1.4) or not d.get("seed") is String or not d.seed.is_valid_int() or not integer(d.get("next_stop"),1,3):
 		return false
 	for key in ["train","player","containers","mission","fog"]:
@@ -267,6 +274,8 @@ static func apply(j: JourneyController, d: Dictionary) -> bool:
 	g.scavenging._item_serial = int(d.item_serial)
 	g.scavenging.loot_seed = int(d.seed)
 	g.player.velocity = unpack(d.player.velocity)
+	if d.has("camera"):
+		g.camera_rig.exploration.restore_view(int(d.camera.perspective),d.camera.yaw,d.camera.pitch)
 	train.set_physics_process(true)
 	train.state_changed.emit(train.state)
 	if train.is_moving():

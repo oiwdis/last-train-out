@@ -47,6 +47,20 @@ static func prepare(scene: Node3D) -> void:
 	camera.physics_interpolation_mode = Node.PHYSICS_INTERPOLATION_MODE_OFF
 	scene.add_child(camera)
 	camera.make_current()
+	for source in tree.get_nodes_in_group("render_warmup_material"):
+		if source is MeshInstance3D and scene.is_ancestor_of(source):
+			var proxy := MeshInstance3D.new()
+			var quad := QuadMesh.new()
+			quad.size = Vector2(4,4)
+			quad.material = source.get_active_material(0)
+			proxy.mesh = quad
+			proxy.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+			camera.add_child(proxy)
+			proxy.position = Vector3(0,0,-4)
+			await _frame(tree)
+			if not state.active:
+				return
+			proxy.free()
 	for view in views:
 		camera.global_transform = view.global_transform
 		for frame in 2:

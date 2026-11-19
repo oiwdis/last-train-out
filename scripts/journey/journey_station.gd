@@ -73,6 +73,10 @@ func _ready() -> void:
 		d.signboard(note.position + Vector3(0,1.3,0),"EVACUATION LOG",2.8,0.55)
 		d.signboard(Vector3(170,2,55),"EASTBOUND ONLY · KEEP STEAM UP",7,0.65)
 	d.finish()
+	var art := JourneyStationArt.new()
+	art.name = "AuthoredStationDetails"
+	add_child(art)
+	art.build_route_station(self)
 
 func add_cache(suffix: String, at: Vector3, caption: String, item_id: String, amount: int) -> void:
 	var cache := SearchContainer.new()

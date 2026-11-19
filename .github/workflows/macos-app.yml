@@ -43,13 +43,13 @@ env:
   DEV_ZIP: LastTrainOut-macos-universal.zip
   SIGNED_ZIP: LastTrainOut-macos-universal-signed.zip
   # The build fails if fewer tests than this pass, so tests cannot silently go missing.
-  MIN_TESTS: "274"
+  MIN_TESTS: "288"
 
 jobs:
   build:
     name: Test, export and package
     runs-on: macos-latest # GitHub's macos-latest runners are Apple Silicon (arm64)
-    timeout-minutes: 60
+    timeout-minutes: 90
     env:
       APP: build/macos/Last Train Out.app
     steps:
@@ -95,6 +95,7 @@ jobs:
         run: |
           python3 tools/assets/check_assets.py
           tools/run_tests.sh "$GODOT"
+          python3 tools/check_integration_tests.py tests/_output/results.json
           {
             echo "### Automated tests (Godot $("$GODOT" --version), macOS $(sw_vers -productVersion), $(uname -m))"
             echo
@@ -105,12 +106,12 @@ jobs:
 
       - name: Validate journey, fuel, fog and cold resume
         run: |
-          "$GODOT" --headless --path . --fixed-fps 60 tools/validate_journey.tscn > tests/_output/journey.log 2>&1
-          cp docs/validation/milestone3-finalization/continuous-journey.json tests/_output/continuous-journey.json
+          "$GODOT" --headless --path . --fixed-fps 60 tools/validate_journey.tscn -- --integration-tour --late-escape > tests/_output/journey.log 2>&1
+          cp docs/validation/milestone35/gameplay/continuous-journey.json tests/_output/continuous-journey.json
           if grep -E '^(ERROR|SCRIPT ERROR)|\[journey\] FAIL' tests/_output/journey.log; then exit 1; fi
           for scenario in fuel-shortage stranded; do
             "$GODOT" --headless --path . --fixed-fps 60 tools/validate_journey.tscn -- "--$scenario" > "tests/_output/$scenario.log" 2>&1
-            cp "docs/validation/milestone3-finalization/$scenario-gameplay.json" tests/_output/
+            cp "docs/validation/milestone35/gameplay/$scenario-gameplay.json" tests/_output/
             if grep -E '^(ERROR|SCRIPT ERROR)|\[journey\] FAIL' "tests/_output/$scenario.log"; then exit 1; fi
           done
           for phase in write read; do
@@ -198,29 +199,26 @@ jobs:
         # playable build; failures/logs remain visible and are reported separately.
         continue-on-error: true
         run: |
-          mkdir -p "$RUNNER_TEMP/render-baseline/.godot" "$RUNNER_TEMP/render-previous/.godot" tests/_output/performance
-          git fetch --no-tags --depth=1 origin 8cde10cf78c1ea0cf7f7bafb5fc146d2e12514c2
-          git archive FETCH_HEAD | tar -x -C "$RUNNER_TEMP/render-baseline"
-          cp -R .godot/imported "$RUNNER_TEMP/render-baseline/.godot/"
-          git fetch --no-tags --depth=1 origin dfbfdf8ccf3e466788cc085ae5563a14e6382670
-          git archive FETCH_HEAD | tar -x -C "$RUNNER_TEMP/render-previous"
-          cp -R .godot/imported "$RUNNER_TEMP/render-previous/.godot/"
-          find "$RUNNER_TEMP/render-baseline/.godot/imported" "$RUNNER_TEMP/render-previous/.godot/imported" -name '*.scn' -delete
-          # The historical tree contains failed import records. Repair only the
-          # metadata for byte-identical image sources, never baseline artwork.
-          python3 tools/macos/repair_baseline_imports.py "$RUNNER_TEMP/render-previous"
-          "$GODOT" --headless --path "$RUNNER_TEMP/render-previous" --import > tests/_output/performance/previous-import.log 2>&1
-          "$GODOT" --headless --path "$RUNNER_TEMP/render-baseline" --import > tests/_output/performance/baseline-import.log 2>&1
-          python3 tools/macos/benchmark_compare.py "$GODOT" "$RUNNER_TEMP/render-baseline" "$RUNNER_TEMP/render-previous" tests/_output/performance
+          mkdir -p "$RUNNER_TEMP/source-art/.godot" "$RUNNER_TEMP/source-survival/.godot" tests/_output/performance
+          git fetch --no-tags --depth=1 origin a8f58ec57c218c3944d038a9d1640e78597042be
+          git archive FETCH_HEAD | tar -x -C "$RUNNER_TEMP/source-art"
+          cp -R .godot/imported "$RUNNER_TEMP/source-art/.godot/"
+          git fetch --no-tags --depth=1 origin 9c4f0de49e104ca95ccb57c88cf535ab96202dac
+          git archive FETCH_HEAD | tar -x -C "$RUNNER_TEMP/source-survival"
+          cp -R .godot/imported "$RUNNER_TEMP/source-survival/.godot/"
+          find "$RUNNER_TEMP/source-art/.godot/imported" "$RUNNER_TEMP/source-survival/.godot/imported" -name '*.scn' -delete
+          "$GODOT" --headless --path "$RUNNER_TEMP/source-art" --import > tests/_output/performance/art-import.log 2>&1
+          "$GODOT" --headless --path "$RUNNER_TEMP/source-survival" --import > tests/_output/performance/survival-import.log 2>&1
+          python3 tools/macos/benchmark_integration.py "$GODOT" "$RUNNER_TEMP/source-art" "$RUNNER_TEMP/source-survival" tests/_output/performance
 
-      - name: Record the finalization gameplay tour
+      - name: Record the uninterrupted integrated journey
         if: steps.diagnostics.outputs.render == 'true'
-        # Runs after all timed benchmarks, so Movie Maker cannot contaminate them.
+        # Fixed-rate recording runs AFTER all real-time measurements.
         continue-on-error: true
-        timeout-minutes: 10
+        timeout-minutes: 30
         run: |
           command -v ffmpeg || brew install ffmpeg
-          python3 tools/macos/record_finalization.py "$GODOT" tests/_output/visual
+          python3 tools/macos/record_integration.py "$GODOT" tests/_output/visual
 
       - name: Upload the test logs
         if: always()
@@ -367,7 +365,7 @@ jobs:
     if: ${{ github.event_name == 'workflow_dispatch' && inputs.sign_and_notarize }}
     needs: [build, check]
     runs-on: macos-latest
-    timeout-minutes: 60
+    timeout-minutes: 90
     env:
       APP: signed/Last Train Out.app
     steps:

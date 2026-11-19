@@ -9,9 +9,10 @@ app, destination = map(Path, sys.argv[1:])
 destination.mkdir(parents=True, exist_ok=True)
 with (app/'Contents/Info.plist').open('rb') as f:
     executable = plistlib.load(f)['CFBundleExecutable']
-for suite, count in [('presets', 6), ('route', 3)]:
+for suite, count in [('presets', 6), ('route', 3), ('matrix', 72)]:
     report = destination/('packaged-benchmark-'+suite+'.json')
-    command = [str((app/'Contents/MacOS'/executable).resolve()), '--audio-driver', 'Dummy', '--resolution', '960x540', '--script', 'res://scripts/diagnostics/render_benchmark.gd', '--', '--suite='+suite, '--warmup=8', '--samples=24', '--out='+str(report.resolve())]
+    script = 'integration_benchmark.gd' if suite == 'matrix' else 'render_benchmark.gd'
+    command = [str((app/'Contents/MacOS'/executable).resolve()), '--audio-driver', 'Dummy', '--resolution', '960x540', '--script', 'res://scripts/diagnostics/'+script, '--', '--suite='+suite, '--warmup=8', '--samples=24', '--out='+str(report.resolve())]
     with (destination/('packaged-benchmark-'+suite+'.log')).open('w') as log:
         subprocess.run(command, stdout=log, stderr=subprocess.STDOUT, check=True, timeout=180)
     data = json.loads(report.read_text())

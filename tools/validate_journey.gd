@@ -11,7 +11,10 @@ var teleports := 0
 var late_escape := false
 var scenario := "journey"
 var observations: Array = []
-var output := "res://docs/validation/milestone3-finalization"
+var output := "res://docs/validation/milestone35/gameplay"
+var integration_tour := false
+var quality := 0
+var load_restores := 0
 
 func _ready() -> void:
 	var revision: Array = []
@@ -21,21 +24,58 @@ func _ready() -> void:
 		if arg == "--late-escape": late_escape = true
 		if arg == "--fuel-shortage": scenario = "fuel-shortage"
 		if arg == "--stranded": scenario = "stranded"
+		if arg == "--save-ui-only": scenario = "save-ui"
+		if arg == "--integration-tour": integration_tour = true
+		if arg.begins_with("--out="): output = arg.trim_prefix("--out=")
+		if arg.begins_with("--quality="): quality = clampi(int(arg.trim_prefix("--quality=")),0,2)
+	DirAccess.make_dir_recursive_absolute(output)
 	_run.call_deferred()
 
 func _run() -> void:
 	game = preload("res://scenes/missions/harlow_escape.tscn").instantiate()
-	add_child(game)
+	# The driver survives reloads as a separate root node. Continue Game reloads
+	# the actual shipped scene, exactly as in the exported app.
+	get_tree().root.add_child(game)
+	get_tree().current_scene = game
+	await game.graphics.wait_for_render_ready()
 	await seconds(0.3)
 	bot = RouteBot.new(game.player)
 	view = game.camera_rig.exploration
 	game.player.teleported.connect(func(_at: Vector3,_facing: Vector3) -> void: teleports += 1)
-	game.graphics.set_preset(0)
+	game.graphics.set_preset(quality)
+	await game.graphics.wait_for_render_ready()
 	view.request_perspective(0)
+	if scenario == "save-ui":
+		await save_and_continue()
+		finish()
+		return
 	await shot("01_harlow_departure")
+	if integration_tour:
+		await walk(Vector3(13,1,1.2))
+		await search("platform_luggage")
+		await walk(Vector3(13,1,.4))
+		await walk(Vector3(27.2,1,.4))
+		await walk(Vector3(27.2,1,1.1))
+		await search("platform_locker")
+		await walk(Vector3(27.2,1,.4))
+		await walk(Vector3(30,1,.4))
+		key(KEY_V)
+		await seconds(.5)
+		view.aim_at(Vector3(20,2,.4))
+		await seconds(2)
+		await shot("00_harlow_character")
+		check(view.perspective == 1,"V selects detailed third-person survivor")
+		view.aim_at(Vector3(44,2,3))
+		await seconds(2)
+		await shot("00_harlow_architecture")
+		await walk(Vector3(13,1,.4))
 	await walk(Vector3(5,1,1.2))
 	await search("harlow_departure_coal")
 	await pickup_cargo()
+	if integration_tour:
+		key(KEY_V)
+		await seconds(.8)
+		await shot("01_harlow_carry")
 	await walk(Vector3(5,1,0))
 	await walk(Vector3(5,1,-0.8))
 	await deposit()
@@ -72,8 +112,6 @@ func _run() -> void:
 	await walk(station.to_global(Vector3(-10,1,2)))
 	await deposit()
 	await board()
-	await stoke()
-	await stoke()
 	if late_escape:
 		# Optional mechanical salvage: a long heavy return with a naturally approaching front.
 		await disembark()
@@ -81,6 +119,9 @@ func _run() -> void:
 		await walk(station.to_global(Vector3(-12,0,15)))
 		await walk(station.to_global(Vector3(-12,0,35)))
 		await walk(station.to_global(Vector3(122,0,46)))
+		await walk(station.to_global(Vector3(122,0,42)))
+		await walk(station.to_global(Vector3(122,0,39.3)))
+		await search("ashford_workshop")
 		await walk(station.to_global(Vector3(122,0,42)))
 		await walk(station.to_global(Vector3(126.7,0,39)))
 		await search("ashford_components")
@@ -102,6 +143,8 @@ func _run() -> void:
 		await walk(station.to_global(Vector3(-10,1,2)))
 		await board()
 		await shot("04_ashford_late_escape")
+	await stoke()
+	await stoke()
 	await depart()
 	await travel("blackwater")
 	await shot("05_blackwater_arrival")
@@ -131,6 +174,8 @@ func _run() -> void:
 	await walk(station.to_global(Vector3(-10,1,2)))
 	await deposit()
 	await board()
+	if integration_tour:
+		await save_and_continue()
 	await depart()
 	await travel("escape")
 	check(game.journey.mission.status == "escaped","mission completed through normal objectives")
@@ -163,6 +208,51 @@ func natural_fuel_shortage() -> void:
 	await travel("ashford")
 	observe("arrived after refueling")
 	check(teleports == 0,"zero teleports during fuel-shortage recovery")
+
+func save_and_continue() -> void:
+	view.request_perspective(0)
+	await seconds(.5)
+	key(KEY_J)
+	for frame in 3: await get_tree().process_frame
+	check(game.journey.ui.panel.visible and get_tree().paused,"J opens actual save ledger")
+	click_button("Save Game")
+	for frame in 3: await get_tree().process_frame
+	var saved := JourneySave.read_file()
+	check(JourneySave.valid(game.journey,saved),"Save Game button writes the played world")
+	if failed: return
+	FileAccess.open(output.path_join("played-blackwater-save.json"),FileAccess.WRITE).store_string(JSON.stringify(saved,"  "))
+	await shot("06_blackwater_saved")
+	click_button("Continue Game")
+	await get_tree().scene_changed
+	game = get_tree().current_scene as Game
+	game.player.teleported.connect(func(_at: Vector3,_facing: Vector3) -> void: load_restores += 1,CONNECT_ONE_SHOT)
+	await game.graphics.wait_for_render_ready()
+	await seconds(.4)
+	view = game.camera_rig.exploration
+	bot = RouteBot.new(game.player)
+	game.player.teleported.connect(func(_at: Vector3,_facing: Vector3) -> void: teleports += 1)
+	check(absf(game.train.distance-float(saved.train.distance)) < .2,"Continue restores actual "+game.journey.current_station().capitalize()+" stop")
+	check(view.perspective == int(saved.camera.perspective),"saved camera perspective recovered")
+	check(game.player.is_on_train() if saved.player.car != "" else game.player.is_grounded(),"saved player support recovered")
+	check(JSON.stringify(JourneySave.inventory(game.inventory_system.storage)) == JSON.stringify(saved.storage),"collected supplies survive Continue")
+	check(game.journey.mission.note_read == saved.mission.note,"evacuation note progress restored")
+	check(game.scavenging.world_items.size() == saved.cargo.size(),"Continue preserves cargo count without duplication")
+	await shot("06_blackwater_resumed")
+
+func click_button(caption: String) -> void:
+	for button: Button in game.journey.ui.panel.find_children("*","Button",true,false):
+		if button.text == caption:
+			var event := InputEventMouseButton.new()
+			event.button_index = MOUSE_BUTTON_LEFT
+			event.position = button.get_global_rect().get_center()
+			event.global_position = event.position
+			event.pressed = true
+			get_viewport().push_input(event,true)
+			event = event.duplicate()
+			event.pressed = false
+			get_viewport().push_input(event,true)
+			return
+	check(false,"missing ledger button "+caption)
 
 func natural_stranding() -> void:
 	# Remain in the stationary cab. Do not move the front or alter exposure.
@@ -329,7 +419,7 @@ func check(ok: bool, caption: String) -> void:
 func finish() -> void:
 	if finished: return
 	finished = true
-	var report := {"source_commit":source_commit,"checks":checks,"failed":failed,"teleports":teleports,"late_escape":late_escape,"scenario":scenario,"observations":observations,
+	var report := {"source_commit":source_commit,"checks":checks,"failed":failed,"teleports":teleports,"save_restore_repositions":load_restores,"integration_tour":integration_tour,"graphics_preset":quality,"late_escape":late_escape,"scenario":scenario,"observations":observations,
 		"results":game.journey.mission.results(game.fog_system.simulation.elapsed,game.train.distance)}
 	var filename := "continuous-journey.json" if scenario == "journey" else scenario+"-gameplay.json"
 	FileAccess.open(output.path_join(filename),FileAccess.WRITE).store_string(JSON.stringify(report,"  "))

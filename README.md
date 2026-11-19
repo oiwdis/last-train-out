@@ -1,3 +1,9 @@
+# Last Train Out — Milestone 3.5 integration
+
+This draft combines PR #4’s detailed survivor, locomotive and Harlow art with PR #5’s continuous three-station survival journey. Press **J** for Save / Continue / New / Restart and **V** to switch camera. See [integration provenance and merge strategy](docs/MILESTONE3_INTEGRATION.md) and [current integration review](docs/MILESTONE35_REVIEW.md).
+
+The source milestone reports below retain their original evidence and limitations; they are not measurements of this combined build.
+
 > Milestone 3 now opens **The Harlow Escape**, a continuous three-station survival mission. Press **J** for route progress, Save / Continue / New / Restart. See [journey, controls and save format](docs/MILESTONE3_JOURNEY.md) and [PR #4 integration notes](docs/MILESTONE3_INTEGRATION.md).
 
 > [Finalization tests, scenarios and screenshots](docs/MILESTONE3_FINALIZATION_VALIDATION.md) · [Continuous gameplay video](docs/validation/milestone3-finalization/harlow-escape-continuous.mp4) · [Performance comparison](docs/PERFORMANCE_MILESTONE3_FINALIZATION.md). Current macOS download and build checks are linked on [draft PR #5](https://github.com/oiwdis/last-train-out/pull/5).

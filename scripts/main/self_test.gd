@@ -127,11 +127,19 @@ func _check_game() -> void:
 		_check("exported_journey_ready", game.journey.ready_to_play)
 		_check("exported_three_station_route", game.journey.stations.size() == 2 and game.train.track_length > 4200)
 		_check("exported_save_schema", JourneySave.valid(game.journey, JourneySave.snapshot(game.journey)))
+		var worker := game.player.visual.get_node_or_null("RailWorker") as WorkerAnimator
+		_check("exported_survival_character_skin", worker != null and worker.skeleton.get_bone_count() > 40)
+		_check("exported_first_person_skin", game.camera_rig.exploration._first_person_hands.has_node("FirstPersonWorker"))
+		_check("exported_detailed_locomotive", game.train.get_node("Locomotive").find_child("AuthoredLocomotive",true,false) != null)
+		_check("exported_station_art", game.journey.stations[0].has_node("AuthoredStationDetails") and game.journey.stations[1].has_node("AuthoredStationDetails"))
+		_check("exported_fog_shader", game.fog_system.presentation.layers[0].material_override is ShaderMaterial)
+		_check("exported_camera_save", JourneySave.snapshot(game.journey).has("camera"))
 		game.queue_free()
 		await _physics_frames(3)
 		# Retain every legacy mechanics assertion against its original sandbox.
 		game = (load("res://scenes/main/main.tscn") as PackedScene).instantiate() as Game
 		add_child(game)
+		await game.graphics.wait_for_render_ready()
 		await _physics_frames(45)
 
 	var player := game.player

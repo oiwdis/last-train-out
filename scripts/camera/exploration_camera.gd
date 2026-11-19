@@ -114,6 +114,17 @@ func apply_settings(persist: bool = true) -> void:
 	settings_changed.emit()
 
 
+func restore_view(mode: int, heading: float, tilt: float) -> void:
+	# A loaded world must not inherit a queued traversal switch or an old boom.
+	_queued_perspective = -1
+	request_perspective(mode)
+	yaw = wrapf(heading, -PI, PI)
+	pitch = clampf(tilt, deg_to_rad(-75), deg_to_rad(75))
+	player.input.camera_yaw = yaw
+	_boom = settings.third_person_distance if perspective == Perspective.THIRD_PERSON else 0.0
+	snap_to_target()
+
+
 func set_menu_open(source: StringName, open: bool) -> void:
 	if open:
 		_menu_sources[source] = true

@@ -6,7 +6,7 @@ func _initialize() -> void:
 	_run.call_deferred()
 
 func _run() -> void:
-	var game := load("res://scenes/main/main.tscn").instantiate() as Game
+	var game := load(ProjectSettings.get_setting("application/run/main_scene")).instantiate() as Game
 	root.add_child(game)
 	await process_frame
 	await process_frame
@@ -27,6 +27,27 @@ func _run() -> void:
 			instance.name = "Preset%dMaterial%d" % [preset,count]
 			var mesh := QuadMesh.new()
 			mesh.material = _feature_material(material, placeholder)
+			mesh.material.resource_scene_unique_id = "Material%d" % count
+			mesh.resource_scene_unique_id = "Mesh%d" % count
+			instance.mesh = mesh
+			library.add_child(instance)
+			instance.owner = library
+			count += 1
+	# The route's fog sheets use a custom shader, outside GraphicsSettings' PBR
+	# inventory. Uniform values share one shader variant; include each shader once.
+	var shaders := {}
+	for source: MeshInstance3D in game.find_children("*","MeshInstance3D",true,false):
+		if source.mesh == null:
+			continue
+		for surface in source.mesh.get_surface_count():
+			var material := source.get_active_material(surface) as ShaderMaterial
+			if material == null or shaders.has(material.shader):
+				continue
+			shaders[material.shader] = true
+			var instance := MeshInstance3D.new()
+			instance.name = "CustomShader%d" % count
+			var mesh := QuadMesh.new()
+			mesh.material = material.duplicate()
 			mesh.material.resource_scene_unique_id = "Material%d" % count
 			mesh.resource_scene_unique_id = "Mesh%d" % count
 			instance.mesh = mesh
