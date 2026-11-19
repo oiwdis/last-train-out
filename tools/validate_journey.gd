@@ -9,6 +9,8 @@ var finished := false
 var source_commit := ""
 var teleports := 0
 var late_escape := false
+var scenario := "journey"
+var observations: Array = []
 var output := "res://docs/validation/milestone3-finalization"
 
 func _ready() -> void:
@@ -17,6 +19,8 @@ func _ready() -> void:
 		source_commit = str(revision[0]).strip_edges()
 	for arg in OS.get_cmdline_user_args():
 		if arg == "--late-escape": late_escape = true
+		if arg == "--fuel-shortage": scenario = "fuel-shortage"
+		if arg == "--stranded": scenario = "stranded"
 	_run.call_deferred()
 
 func _run() -> void:
@@ -36,6 +40,14 @@ func _run() -> void:
 	await walk(Vector3(5,1,-0.8))
 	await deposit()
 	await board()
+	if scenario == "fuel-shortage":
+		await natural_fuel_shortage()
+		finish()
+		return
+	if scenario == "stranded":
+		await natural_stranding()
+		finish()
+		return
 	await stoke()
 	await depart()
 	await travel("ashford")
@@ -124,7 +136,58 @@ func _run() -> void:
 	check(game.journey.mission.status == "escaped","mission completed through normal objectives")
 	check(teleports == 0,"zero player teleports across entire journey")
 	await shot("07_results")
+	if DisplayServer.get_name() != "headless":
+		await get_tree().create_timer(4.0,true).timeout
 	finish()
+
+func natural_fuel_shortage() -> void:
+	# Keep the collected Harlow sack in storage until the initial boiler burns dry.
+	await depart()
+	var elapsed := 0
+	while game.train.is_moving() and elapsed < 300 and not failed:
+		await seconds(1)
+		elapsed += 1
+		if elapsed % 30 == 0: observe("initial fuel burning")
+	check(game.fog_system.fuel.amount <= 0.001,"starting fuel exhausted through real train operation")
+	check(game.train.state == Train.State.STOPPED,"empty boiler stops the moving train")
+	check(game.train.distance > 1000 and game.train.distance < game.journey.route.stations.ashford,"stranded between Harlow and Ashford")
+	check(game.player.is_on_train(),"rider remains aboard after fuel stop")
+	await walk(game.train.get_node("Locomotive").to_global(Vector3(-2.7,1,0)))
+	await interact(game.train.get_node("Locomotive").interior.controls[0],Vector3.ZERO)
+	check(game.train.state == Train.State.STOPPED,"physical regulator cannot depart on an empty boiler")
+	check(game.inventory_system.storage.count(&"coal_sack") == 1,"collected coal survives travel in storage")
+	observe("out of fuel")
+	await stoke()
+	check(game.inventory_system.storage.count(&"coal_sack") == 0,"refueling consumes the one collected sack")
+	await depart()
+	await travel("ashford")
+	observe("arrived after refueling")
+	check(teleports == 0,"zero teleports during fuel-shortage recovery")
+
+func natural_stranding() -> void:
+	# Remain in the stationary cab. Do not move the front or alter exposure.
+	var elapsed := 0
+	var saw_damage := false
+	var initial_front := game.fog_system.simulation.front
+	while not game.fog_system.players.local.exposure.dead and elapsed < 1200 and not failed:
+		await seconds(1)
+		elapsed += 1
+		if game.fog_system.players.local.exposure.health < 100: saw_damage = true
+		if elapsed % 60 == 0: observe("waiting in stationary cab")
+	observe("stranded outcome")
+	check(game.train.distance < 0.1,"train stayed at Harlow throughout the wait")
+	check(game.fog_system.simulation.front > initial_front + 1000,"fog advanced naturally from its initial position")
+	check(saw_damage,"stationary cab occupant takes real exposure damage")
+	check(game.fog_system.players.local.exposure.dead,"cab shelter only delays lethal fog")
+	check(game.journey.mission.status == "failed","natural fog death produces mission failure")
+	check(teleports == 0,"zero teleports during natural fog catch")
+
+func observe(label: String) -> void:
+	var sample := {"label":label,"time":game.fog_system.simulation.elapsed,"distance":game.train.distance,
+		"fuel":game.fog_system.fuel.amount,"front":game.fog_system.simulation.front,
+		"health":game.fog_system.players.local.exposure.health,"exposure":game.fog_system.players.local.exposure.exposure}
+	observations.append(sample)
+	print("[journey-observation] ",JSON.stringify(sample))
 
 func walk(at: Vector3) -> void:
 	if failed: return
@@ -226,7 +289,10 @@ func travel(id: String) -> void:
 
 func interact(target: Node3D, offset: Vector3) -> void:
 	if failed: return
-	view.request_perspective(0)
+	if view.perspective != ExplorationCamera.Perspective.FIRST_PERSON:
+		view.request_perspective(0)
+		# Let the shoulder boom retract before solving the reticle direction.
+		await seconds(0.75)
 	view.aim_at(target.global_position+offset)
 	await seconds(0.25)
 	var selected := game.player.interactor.find_interactable()
@@ -263,7 +329,8 @@ func check(ok: bool, caption: String) -> void:
 func finish() -> void:
 	if finished: return
 	finished = true
-	var report := {"source_commit":source_commit,"checks":checks,"failed":failed,"teleports":teleports,"late_escape":late_escape,
+	var report := {"source_commit":source_commit,"checks":checks,"failed":failed,"teleports":teleports,"late_escape":late_escape,"scenario":scenario,"observations":observations,
 		"results":game.journey.mission.results(game.fog_system.simulation.elapsed,game.train.distance)}
-	FileAccess.open(output.path_join("continuous-journey.json"),FileAccess.WRITE).store_string(JSON.stringify(report,"  "))
+	var filename := "continuous-journey.json" if scenario == "journey" else scenario+"-gameplay.json"
+	FileAccess.open(output.path_join(filename),FileAccess.WRITE).store_string(JSON.stringify(report,"  "))
 	get_tree().quit(1 if failed else 0)

@@ -6,7 +6,8 @@ signal fog_state_changed(state: FogState)
 signal surge_triggered(intensity: float)
 enum FogState { DISTANT, APPROACHING, CRITICAL, ENGULFED }
 @export var config: FogConfig = preload("res://resources/fog/standard.tres")
-@export var route: FogRoute = preload("res://resources/fog/harlow_route.tres")
+# Resolve after script classes finish loading; Game/Train also reference FogRoute.
+@export var route: FogRoute = load("res://resources/fog/harlow_route.tres")
 @export var scenario_seed := 3001
 var simulation: FogSimulation
 var state := FogState.DISTANT

@@ -176,6 +176,15 @@ func test_presets_do_not_change_route_or_survival_state() -> void:
 		game.graphics.set_preset(preset)
 		check_eq(journey.route.signature(),signature,"preset preserves geometry authority")
 		check_eq(game.fog_system.fuel.amount,fuel,"preset preserves fuel")
+	journey.ui.toggle(true)
+	await get_tree().process_frame
+	await get_tree().process_frame
+	var screen := get_viewport().get_visible_rect()
+	check(screen.encloses(journey.ui.panel.get_global_rect()),"save/results panel fits the viewport")
+	check(screen.encloses(journey.ui.return_button.get_global_rect()),"mission actions stay on screen")
+	check_near(journey.ui.panel.get_global_rect().get_center().x,screen.get_center().x,1,"ledger centered horizontally")
+	check_near(journey.ui.panel.get_global_rect().get_center().y,screen.get_center().y,1,"ledger centered vertically")
+	journey.ui.toggle(false)
 
 func test_reloading_scene_creates_clean_mission_without_duplicate_cache_ownership() -> void:
 	journey.mission.note_read = true

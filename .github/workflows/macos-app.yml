@@ -84,11 +84,21 @@ jobs:
             echo '```'
           } >> "$GITHUB_STEP_SUMMARY"
 
-      - name: Validate continuous three-station gameplay
+      - name: Validate journey, fuel, fog and cold resume
         run: |
           "$GODOT" --headless --path . --fixed-fps 60 tools/validate_journey.tscn > tests/_output/journey.log 2>&1
           cp docs/validation/milestone3-finalization/continuous-journey.json tests/_output/continuous-journey.json
           if grep -E '^(ERROR|SCRIPT ERROR)|\[journey\] FAIL' tests/_output/journey.log; then exit 1; fi
+          for scenario in fuel-shortage stranded; do
+            "$GODOT" --headless --path . --fixed-fps 60 tools/validate_journey.tscn -- "--$scenario" > "tests/_output/$scenario.log" 2>&1
+            cp "docs/validation/milestone3-finalization/$scenario-gameplay.json" tests/_output/
+            if grep -E '^(ERROR|SCRIPT ERROR)|\[journey\] FAIL' "tests/_output/$scenario.log"; then exit 1; fi
+          done
+          for phase in write read; do
+            "$GODOT" --headless --path . --fixed-fps 60 --script res://tools/validate_resume.gd -- "--phase=$phase" > "tests/_output/resume-$phase.log" 2>&1
+            if grep -E '^(ERROR|SCRIPT ERROR)|\[resume\] FAIL' "tests/_output/resume-$phase.log"; then exit 1; fi
+          done
+          cp docs/validation/milestone3-finalization/process-resume.json tests/_output/
 
       - name: Upload the test logs
         if: always()

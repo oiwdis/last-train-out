@@ -31,12 +31,14 @@ func bind(owner_journey: JourneyController) -> void:
 	summary.custom_minimum_size.x = 525
 	summary.add_theme_font_size_override("font_size",14)
 	strip.add_child(summary)
+	var center := CenterContainer.new()
+	root.add_child(center)
+	center.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	center.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	panel = PanelContainer.new()
-	panel.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
-	panel.position = Vector2(260,125)
-	panel.size = Vector2(760,530)
+	panel.custom_minimum_size = Vector2(760,530)
 	panel.add_theme_stylebox_override("panel",RailTheme.panel())
-	root.add_child(panel)
+	center.add_child(panel)
 	var rows := VBoxContainer.new()
 	panel.add_child(rows)
 	ledger = Label.new()
