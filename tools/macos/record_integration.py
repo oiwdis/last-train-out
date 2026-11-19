@@ -28,7 +28,10 @@ with tempfile.TemporaryDirectory(prefix='lto-integration-movie-') as temporary:
     assert not report['failed'] and report['teleports'] == 0
     assert report['results']['status'] == 'escaped'
     assert any(row['check'] == 'Continue restores actual Blackwater stop' and row['passed'] for row in report['checks'])
-    assert 'ERROR:' not in (out / 'full-journey.log').read_text()
+    diagnostics = [line for line in (out / 'full-journey.log').read_text().splitlines()
+                   if line.startswith(('ERROR:', 'SCRIPT ERROR:', 'WARNING:',
+                                       'Leaked instance:', 'Resource still in use:'))]
+    assert not diagnostics, 'Recording emitted errors/warnings: ' + '\n'.join(diagnostics)
     subprocess.run(['ffmpeg', '-hide_banner', '-loglevel', 'error', '-y', '-i', str(raw),
                     '-c:v', 'libx264', '-crf', '29', '-preset', 'medium', '-pix_fmt', 'yuv420p',
                     '-c:a', 'aac', '-b:a', '64k', '-movflags', '+faststart', str(movie)],

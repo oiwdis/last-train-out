@@ -63,6 +63,9 @@ def measure(godot, project, out, name, script, args, timeout):
               'timed_out': timed_out, 'wall_seconds': time.monotonic() - started,
               'report_exists': report.exists(), 'peak_rss_bytes': max((r['bytes'] for r in rss), default=0),
               'shader_cache_before': before, 'shader_cache_after': cache_inventory(project),
+              'pipeline_cache_events': [line for line in lines if 'PSO cache' in line],
+              'shader_cache_misses': sum('Shader cache miss' in line for line in lines),
+              'shader_cache_hits': sum('Shader cache hit' in line for line in lines),
               'engine_diagnostics': diagnostics, 'rss': rss}
     if report.exists():
         data = json.loads(report.read_text())
