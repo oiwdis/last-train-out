@@ -165,9 +165,15 @@ func _process(delta: float) -> void:
 	_message_panel.modulate.a = move_toward(_message_panel.modulate.a, minf(_message_time / 0.4, 1), delta * 5)
 	if not is_instance_valid(_player):
 		return
-	_stamina_bar.value = lerpf(_stamina_bar.value, _stamina_target, 1.0 - exp(-14 * delta))
+	# Stop imperceptible subpixel updates once the visual has reached its target.
+	var stamina_shown := lerpf(_stamina_bar.value, _stamina_target, 1.0 - exp(-14 * delta))
+	_stamina_bar.value = _stamina_target if absf(stamina_shown-_stamina_target) < .01 else stamina_shown
 	var exhausted := _player.stamina.is_exhausted
-	_fill.bg_color = RailTheme.ALERT if exhausted else RailTheme.AMBER
+	var fill_color := RailTheme.ALERT if exhausted else RailTheme.AMBER
+	# StyleBoxFlat emits changed even for the same color. Reassigning this every
+	# frame rebuilds/upload polygons and waits for a transfer fence on Vulkan.
+	if _fill.bg_color != fill_color:
+		_fill.bg_color = fill_color
 	_stamina_label.text = "EXHAUSTED / RECOVER" if exhausted else "STAMINA"
 	_stamina_label.modulate = RailTheme.ALERT if exhausted else Color.WHITE
 	_prompt_panel.modulate.a = move_toward(_prompt_panel.modulate.a, 0.0 if _prompt.text.is_empty() else 1.0, delta * 7)

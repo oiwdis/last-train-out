@@ -57,7 +57,7 @@ env:
   DEV_ZIP: LastTrainOut-macos-universal.zip
   SIGNED_ZIP: LastTrainOut-macos-universal-signed.zip
   # The build fails if fewer tests than this pass, so tests cannot silently go missing.
-  MIN_TESTS: "298"
+  MIN_TESTS: "299"
 
 jobs:
   investigate:
@@ -306,17 +306,7 @@ jobs:
         # playable build; failures/logs remain visible and are reported separately.
         continue-on-error: true
         run: |
-          mkdir -p "$RUNNER_TEMP/source-art/.godot" "$RUNNER_TEMP/source-survival/.godot" tests/_output/performance
-          git fetch --no-tags --depth=1 origin a8f58ec57c218c3944d038a9d1640e78597042be
-          git archive FETCH_HEAD | tar -x -C "$RUNNER_TEMP/source-art"
-          cp -R .godot/imported "$RUNNER_TEMP/source-art/.godot/"
-          git fetch --no-tags --depth=1 origin 9c4f0de49e104ca95ccb57c88cf535ab96202dac
-          git archive FETCH_HEAD | tar -x -C "$RUNNER_TEMP/source-survival"
-          cp -R .godot/imported "$RUNNER_TEMP/source-survival/.godot/"
-          find "$RUNNER_TEMP/source-art/.godot/imported" "$RUNNER_TEMP/source-survival/.godot/imported" -name '*.scn' -delete
-          "$GODOT" --headless --path "$RUNNER_TEMP/source-art" --import > tests/_output/performance/art-import.log 2>&1
-          "$GODOT" --headless --path "$RUNNER_TEMP/source-survival" --import > tests/_output/performance/survival-import.log 2>&1
-          python3 tools/macos/benchmark_integration.py "$GODOT" "$RUNNER_TEMP/source-art" "$RUNNER_TEMP/source-survival" tests/_output/performance
+          python3 tools/macos/benchmark_release.py "$GODOT" tests/_output/performance
 
       - name: Record the uninterrupted integrated journey
         id: recording

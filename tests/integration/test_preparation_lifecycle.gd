@@ -51,6 +51,25 @@ func test_rapid_preset_requests_finish_on_last_quality_without_orphan_preparatio
 	check_eq(game.get_child_count(),children,"temporary render camera and overlay removed")
 	check(game.journey.ready_to_play,"mission remains ready")
 
+func test_idle_hud_reuses_style_but_exhaustion_still_changes_color() -> void:
+	var changes := {"count":0}
+	game.hud._fill.changed.connect(func() -> void: changes.count += 1)
+	game.player.stamina.is_exhausted = false
+	game.hud._process(.1)
+	changes.count = 0
+	for frame in 120: game.hud._process(1.0/60)
+	check_eq(changes.count,0,"unchanged stamina does not invalidate GPU polygons every frame")
+	game.player.stamina.is_exhausted = true
+	game.hud._process(.1)
+	check_eq(game.hud._fill.bg_color,RailTheme.ALERT,"exhaustion is visible immediately")
+	check_eq(changes.count,1,"one visual transition")
+	for frame in 120: game.hud._process(1.0/60)
+	check_eq(changes.count,1,"steady exhausted state also reuses its style")
+	game.player.stamina.is_exhausted = false
+	game.hud._process(.1)
+	check_eq(game.hud._fill.bg_color,RailTheme.AMBER,"recovery restores normal color")
+	check_eq(changes.count,2,"one recovery transition")
+
 func test_continue_during_preset_preparation_restores_rider_and_cargo_together() -> void:
 	game.journey.next_stop = 3
 	game.train.distance = game.journey.route.stations.blackwater
