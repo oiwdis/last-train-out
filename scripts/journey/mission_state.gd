@@ -23,7 +23,7 @@ func record_supply(cache_id: String, item_id: String, amount: int) -> void:
 func objective_index() -> int:
 	if not refuels.has("harlow") or not _supplies_at("harlow"):
 		return 0
-	if not visited.has("ashford") or not refuels.has("ashford"):
+	if not visited.has("ashford") or not refuels.has("ashford") or int(collected.get("ashford/coal_sack",0)) < 1:
 		return 1
 	if not visited.has("blackwater") or not note_read or int(collected.get("blackwater/canned_food",0)) < 1 or int(collected.get("blackwater/medicine",0)) < 1:
 		return 2

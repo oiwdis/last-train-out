@@ -43,7 +43,7 @@ env:
   DEV_ZIP: LastTrainOut-macos-universal.zip
   SIGNED_ZIP: LastTrainOut-macos-universal-signed.zip
   # The build fails if fewer tests than this pass, so tests cannot silently go missing.
-  MIN_TESTS: "242"
+  MIN_TESTS: "244"
 
 jobs:
   build:

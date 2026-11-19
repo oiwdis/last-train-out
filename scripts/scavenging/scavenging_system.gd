@@ -126,7 +126,7 @@ func collect_container(cache: SearchContainer) -> void:
 				if world != null:
 					cache.contents.remove_at(i, 1)
 					cargo += 1
-					collected.emit(cache.cache_id, str(definition.id), 1)
+					world.origin_cache = str(cache.cache_id)
 		else:
 			var accepted := cache.contents.transfer_to(inventories.backpack, i)
 			gathered += accepted
@@ -168,6 +168,9 @@ func pick_up(who: Player, world: WorldItem) -> bool:
 		else:
 			cancel_search(false)
 			_hold(world)
+		if world.origin_cache != "" and not world.collection_recorded:
+			world.collection_recorded = true
+			collected.emit(world.origin_cache,str(world.item.id),world.amount)
 			notice.emit("Carrying %s · 2.5 m/s · G to drop" % world.item.display_name)
 		return true
 	_transaction = true

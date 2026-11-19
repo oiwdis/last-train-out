@@ -90,6 +90,7 @@ func completed() -> MissionState:
 	var mission := MissionState.new()
 	mission.visited = ["harlow","ashford","blackwater"]
 	mission.record_supply("harlow_coal","coal_sack",1)
+	mission.record_supply("ashford_coal","coal_sack",1)
 	mission.record_supply("blackwater_food","canned_food",2)
 	mission.record_supply("blackwater_medicine","medicine",1)
 	mission.refuels = {"harlow":1,"ashford":2}

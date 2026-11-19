@@ -4,6 +4,8 @@ extends CharacterBody3D
 ## Godot's normal moving-platform support carries released cargo on train decks.
 
 var persistent_id := ""
+var origin_cache := ""
+var collection_recorded := false
 var item: ItemDefinition
 var amount := 1
 var held := false

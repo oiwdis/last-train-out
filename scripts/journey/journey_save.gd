@@ -65,7 +65,7 @@ static func snapshot(journey: JourneyController) -> Dictionary:
 		if not is_instance_valid(item) or (not item.available and not item.held) or item.is_queued_for_deletion():
 			continue
 		var support := item.resting_body
-		cargo.append({"id":item.persistent_id,"item":str(item.item.id),"amount":item.amount,"held":item.held,
+		cargo.append({"id":item.persistent_id,"origin":item.origin_cache,"recorded":item.collection_recorded,"item":str(item.item.id),"amount":item.amount,"held":item.held,
 			"position":pack(item.global_position),"velocity":pack(item.velocity),
 			"car":str(support.name) if is_instance_valid(support) else "",
 			"local":pack(support.to_local(item.global_position)) if is_instance_valid(support) else [0,0,0]})
@@ -100,6 +100,8 @@ static func valid(j: JourneyController, d: Dictionary) -> bool:
 			return false
 	if t.max_speed < 0.5 or t.effective_speed < 0.5 or t.profile > 1 or not integer(t.get("state"),0,3) or not integer(t.get("mode"),0,j.game.train.departure_modes.size()-1):
 		return false
+	if t.distance > float(j.route.stations[j.stops[int(d.next_stop)]])+4:
+		return false
 	if d.get("segment") != j.route.locate(t.distance).segment:
 		return false
 	var p: Dictionary = d.player
@@ -127,6 +129,8 @@ static func valid(j: JourneyController, d: Dictionary) -> bool:
 		if not item is Dictionary or not item.get("item") is String or not item.get("id") is String or item.id == "" or ids.has(item.id):
 			return false
 		if not item.id.begins_with("supply_") or not item.id.trim_prefix("supply_").is_valid_int() or int(item.id.trim_prefix("supply_")) > d.item_serial:
+			return false
+		if not item.get("origin") is String or (item.origin != "" and not d.containers.has(item.origin)) or not item.get("recorded") is bool:
 			return false
 		ids[item.id] = true
 		var definition := ItemCatalog.find(item.item)
@@ -252,6 +256,8 @@ static func apply(j: JourneyController, d: Dictionary) -> bool:
 			where = (train.get_node(item.car) as TrainCar).to_global(unpack(item.local))
 		var world := g.scavenging.spawn_world(ItemCatalog.find(item.item),int(item.amount),where)
 		world.persistent_id = item.id
+		world.origin_cache = item.origin
+		world.collection_recorded = item.recorded
 		world.reset_on_train(where)
 		world.velocity = unpack(item.velocity)
 		if item.held:

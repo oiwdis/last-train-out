@@ -13,7 +13,7 @@ func _ready() -> void:
 	var site := StaticBody3D.new()
 	add_child(site)
 	var concrete := preload("res://resources/materials/platform_concrete.tres")
-	_box(site,Vector3(50,-0.45,18),Vector3(420,0.8,170),concrete)
+	_box(site,Vector3(50,-0.45,18),Vector3(420,0.8,170),preload("res://resources/materials/ground_asphalt.tres") if industrial else preload("res://resources/materials/ballast.tres"))
 	_box(site,Vector3(-12,0.5,4),Vector3(70,1,5),concrete)
 	# Continuous shallow ramp from yard to platform; rail-side ladders remain usable.
 	var ramp := _box(site,Vector3(-12,0.37,10),Vector3(8,0.25,8),concrete)
@@ -30,6 +30,7 @@ func _ready() -> void:
 		var building := StationBuilding.new()
 		building.position = spec[0]
 		building.dimensions = spec[1]
+		building.industrial = industrial
 		building.title = spec[2]
 		building.name = "Building_%d" % buildings.size()
 		add_child(building)

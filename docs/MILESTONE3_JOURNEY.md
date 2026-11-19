@@ -61,6 +61,6 @@ tools/run_tests.sh /path/to/Godot_v4.5.1
 
 The continuous journey validator uses movement, aiming, E interactions and the real supply-ledger R action. It does not inject fuel, edit mission progress, reposition the train/player, or reset fog. `--late-escape` waits for the actual front at Ashford. The separate process-resume fixture deliberately sets up a mid-route save and labels that setup; it is not the recorded journey.
 
-The macOS pipeline retains Godot 4.5.1, universal export, Apple Silicon windowed/headless, Intel headless, fresh-download checks, bundle integrity and optional signing/notarization. The test floor increases from 214 to 242. All original tests remain; two assertions naming the startup scene now expect the inherited mission scene. The original exported mechanics checks still run against their original sandbox, after the actual shipped mission has been loaded and validated.
+The macOS pipeline retains Godot 4.5.1, universal export, Apple Silicon windowed/headless, Intel headless, fresh-download checks, bundle integrity and optional signing/notarization. The test floor increases from 214 to 244. All original tests remain; two assertions naming the startup scene now expect the inherited mission scene. The original exported mechanics checks still run against their original sandbox, after the actual shipped mission has been loaded and validated.
 
 See the finalization validation/performance report and PR #4 integration notes for evidence and remaining limits.

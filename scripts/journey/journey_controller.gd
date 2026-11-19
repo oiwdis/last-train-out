@@ -97,6 +97,8 @@ func bind() -> void:
 		var saved := pending_load
 		pending_load = {}
 		await JourneySave.apply(self,saved)
+		if mission.status != "active":
+			ui.show_results()
 	set_physics_process(true)
 
 func _physics_process(delta: float) -> void:

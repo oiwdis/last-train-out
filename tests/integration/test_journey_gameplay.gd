@@ -214,6 +214,27 @@ func test_save_restores_door_ids_and_future_item_ownership() -> void:
 	var new_item := game.scavenging.spawn_world(ItemCatalog.find(&"coal_sack"),1,Vector3(13,1.05,2))
 	check(old_id != new_item.persistent_id,"new drops cannot reuse restored IDs")
 
+func test_heavy_collection_counts_pickup_once_and_not_revealed_abandoned_sacks() -> void:
+	var cache: SearchContainer = game.scavenging.containers.back()
+	game.player.teleport_to(cache.global_position+Vector3(0,0,-1.2))
+	await seconds(0.4)
+	cache.complete()
+	game.scavenging.collect_container(cache)
+	check_eq(journey.mission.collected.get("harlow/coal_sack",0),0,"revealing cargo is not collecting it")
+	var coal: WorldItem = game.scavenging.world_items.back()
+	check(game.scavenging.pick_up(game.player,coal),"pick up revealed coal")
+	check_eq(journey.mission.collected.get("harlow/coal_sack",0),1,"pickup recorded once")
+	game.scavenging.drop_heavy()
+	await seconds(0.3)
+	check(game.scavenging.pick_up(game.player,coal),"recover dropped coal")
+	check_eq(journey.mission.collected.get("harlow/coal_sack",0),1,"recovery cannot inflate mission statistics")
+
+func test_falling_out_of_route_fails_without_teleporting_to_harlow() -> void:
+	game.player.teleport_to(Vector3(1000,-30,0))
+	await physics_frames(3)
+	check_eq(journey.mission.status,"failed","fall ends run")
+	check_greater(game.player.global_position.x,900,"no normal-gameplay teleport to Harlow")
+
 func place_on_route(progress: float) -> void:
 	# Explicit test fixture only. Gameplay validation uses no repositioning.
 	game.train.distance = progress

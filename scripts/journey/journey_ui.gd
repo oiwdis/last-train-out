@@ -8,6 +8,7 @@ var message: Label
 var panel: PanelContainer
 var seed_input: SpinBox
 var difficulty: OptionButton
+var return_button: Button
 var _elapsed := 0.0
 
 func bind(owner_journey: JourneyController) -> void:
@@ -62,7 +63,7 @@ func bind(owner_journey: JourneyController) -> void:
 	button(actions,"Continue Game",func() -> void: message.text = journey.continue_game())
 	button(actions,"New Game",func() -> void: journey.new_game(int(seed_input.value),[0.75,1.0,1.25][difficulty.selected]))
 	button(actions,"Restart Mission",func() -> void: journey.new_game(journey.game.fog_system.simulation.seed_value,journey.game.fog_system.config.difficulty))
-	button(rows,"Return to journey  ·  J",func() -> void: toggle(false))
+	return_button = button(rows,"Return to journey  ·  J",func() -> void: toggle(false))
 	message = Label.new()
 	message.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	message.custom_minimum_size.x = 690
@@ -70,11 +71,12 @@ func bind(owner_journey: JourneyController) -> void:
 	panel.hide()
 	_refresh()
 
-func button(parent: Node, title: String, action: Callable) -> void:
+func button(parent: Node, title: String, action: Callable) -> Button:
 	var control := Button.new()
 	control.text = title
 	control.pressed.connect(action)
 	parent.add_child(control)
+	return control
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo and event.physical_keycode == KEY_J:
@@ -82,6 +84,8 @@ func _input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 
 func toggle(open: bool) -> void:
+	if not open and journey.mission.status != "active":
+		return
 	panel.visible = open
 	journey.game.camera_rig.exploration.set_menu_open(&"journey",open)
 	get_tree().paused = open
@@ -112,3 +116,5 @@ func _refresh() -> void:
 		total += int(amount)
 	lines += "\nTime %02d:%02d · Distance %.2f km · Supplies collected %d\nPeak exposure %.0f%% · Exposure time %.0fs\n\n%s" % [int(fog.simulation.elapsed)/60,int(fog.simulation.elapsed)%60,train.distance/1000,total,mission.peak_exposure,mission.exposure_seconds,mission.objective()]
 	ledger.text = lines
+	return_button.disabled = mission.status != "active"
+	return_button.text = "Return to journey  ·  J" if mission.status == "active" else "Journey ended · choose New Game or Restart Mission"

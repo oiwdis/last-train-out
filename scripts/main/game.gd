@@ -110,7 +110,14 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	if player != null and player.global_position.y < kill_plane_y:
-		reset_player()
+		if journey != null and journey.ready_to_play:
+			var dose: FogExposure = fog_system.players.local.exposure
+			if not dose.dead:
+				dose.health = 0
+				dose.dead = true
+				dose.died.emit()
+		else:
+			reset_player()
 
 
 # --- Train ---------------------------------------------------------------------
