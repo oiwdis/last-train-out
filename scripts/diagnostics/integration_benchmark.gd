@@ -13,6 +13,10 @@ var rows: Array = []
 var loading: Dictionary = {}
 var output_dir := ""
 var prepared: Array = []
+var transitions: Array = []
+var trace_stage := ""
+var timeline: Node
+const TIMELINE = preload("res://scripts/diagnostics/frame_timeline.gd")
 const LOCATIONS := ["Harlow platform", "Warehouse A", "Warehouse B", "Locomotive cab", "Passenger car", "Curved railway", "Ashford Depot", "Ashford workshop", "Blackwater Crossing", "Near advancing fog", "Inside dangerous fog", "Mission completion"]
 
 func _initialize() -> void:
@@ -21,12 +25,15 @@ func _initialize() -> void:
 		if arg.begins_with("--out="): destination = arg.trim_prefix("--out=")
 		if arg.begins_with("--samples="): samples = maxi(12,int(arg.trim_prefix("--samples=")))
 		if arg.begins_with("--warmup="): warmup = maxi(8,int(arg.trim_prefix("--warmup=")))
+		if arg.begins_with("--trace-stage="): trace_stage = arg.trim_prefix("--trace-stage=")
 		if arg.begins_with("--shots="): output_dir = arg.trim_prefix("--shots=")
 	run.call_deferred()
 
 func run() -> void:
 	Engine.max_fps = 0
 	DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
+	timeline = TIMELINE.new()
+	root.add_child(timeline)
 	var started := Time.get_ticks_msec()
 	var mission := "res://scenes/missions/harlow_escape.tscn"
 	game = load(mission if ResourceLoader.exists(mission) else "res://scenes/main/main.tscn").instantiate()
@@ -63,7 +70,9 @@ func run() -> void:
 		await ready_render()
 		prepared.append({"preset":preset,"milliseconds":Time.get_ticks_msec()-before,"pipelines":pipelines()})
 		for location: String in locations:
+			var transition_start := Time.get_ticks_usec()
 			await place(location)
+			transitions.append({"location":location,"preset":preset,"milliseconds":(Time.get_ticks_usec()-transition_start)/1000.0})
 			# Capture initial entry frames separately, before settling at this view.
 			await measure(location,preset,"entry",mini(samples,60))
 			await frames(warmup)
@@ -94,7 +103,7 @@ func run() -> void:
 	var report := {"suite":suite,"fixture_only":true,"fixed_fps":false,"vsync":"disabled","resolution":str(root.size),"samples":samples,"warmup":warmup,
 		"godot":Engine.get_version_info().string,"processor":OS.get_processor_name(),"processor_count":OS.get_processor_count(),"os":OS.get_name(),
 		"adapter":RenderingServer.get_video_adapter_name(),"renderer":RenderingServer.get_current_rendering_method(),"driver":RenderingServer.get_current_rendering_driver_name(),
-		"window_mode":DisplayServer.window_get_mode(),"loading":loading,"preset_preparation":prepared,"results":rows,
+		"window_mode":DisplayServer.window_get_mode(),"loading":loading,"fixture_transitions":transitions,"preset_preparation":prepared,"results":rows,
 		"static_memory_peak_bytes":OS.get_static_memory_peak_usage(),"total_memory_note":"process RSS sampled externally; static memory is not total RSS"}
 	FileAccess.open(destination,FileAccess.WRITE).store_string(JSON.stringify(report,"  "))
 	game.queue_free()
@@ -183,8 +192,12 @@ func place(location: String) -> void:
 		game.player.set_physics_process(true)
 
 func measure(location: String, preset: int, stage: String, count: int) -> void:
+	if not trace_stage.is_empty():
+		FileAccess.open(trace_stage,FileAccess.WRITE).store_string(JSON.stringify({"phase":["Low","Medium","High"][preset]+"/"+location+"/"+stage,"ticks_ms":Time.get_ticks_msec()}))
 	var values: Array[float] = []
-	var sums := {"draw_calls":0.0,"process_ms":0.0,"physics_ms":0.0,"render_cpu_ms":0.0,"render_gpu_ms":0.0,"texture_bytes":0.0,"static_memory_bytes":0.0}
+	var frame_timeline: Array = []
+	var pipeline_samples: Array = []
+	var sums := {"draw_calls":0.0,"primitives":0.0,"process_ms":0.0,"physics_ms":0.0,"render_cpu_ms":0.0,"render_gpu_ms":0.0,"texture_bytes":0.0,"static_memory_bytes":0.0}
 	var before := pipelines()
 	var last := Time.get_ticks_usec()
 	for i in count:
@@ -197,6 +210,9 @@ func measure(location: String, preset: int, stage: String, count: int) -> void:
 		var now := Time.get_ticks_usec()
 		values.append((now-last)/1000.0)
 		last = now
+		frame_timeline.append(timeline.latest.duplicate())
+		pipeline_samples.append(pipelines())
+		sums.primitives += Performance.get_monitor(Performance.RENDER_TOTAL_PRIMITIVES_IN_FRAME)
 		sums.draw_calls += Performance.get_monitor(Performance.RENDER_TOTAL_DRAW_CALLS_IN_FRAME)
 		sums.process_ms += Performance.get_monitor(Performance.TIME_PROCESS)*1000
 		sums.physics_ms += Performance.get_monitor(Performance.TIME_PHYSICS_PROCESS)*1000
@@ -212,7 +228,8 @@ func measure(location: String, preset: int, stage: String, count: int) -> void:
 	for key in delta: delta[key] -= before[key]
 	var row := {"location":location,"preset":["Low","Medium","High"][preset],"stage":stage,"samples":count,"mean_ms":mean,"fps_from_mean":1000.0/mean,
 		"p50_ms":percentile(sorted,0.5),"p95_ms":percentile(sorted,0.95),"p99_ms":percentile(sorted,0.99),"worst_ms":sorted[-1],"frames_ms":values,
-		"pipeline_delta":delta,"render_scale":root.scaling_3d_scale}
+		"pipeline_delta":delta,"render_scale":root.scaling_3d_scale,"timeline":frame_timeline,"pipeline_samples":pipeline_samples,
+		"frames_over_33_3_ms":values.filter(func(v):return v>33.3).size(),"frames_over_50_ms":values.filter(func(v):return v>50.0).size(),"frames_over_100_ms":values.filter(func(v):return v>100.0).size()}
 	for key in sums: row[key] = sums[key]/count
 	rows.append(row)
 	print("[integration-benchmark] ",location," / ",row.preset," / ",stage," mean=",mean," p99=",row.p99_ms," pipelines=",delta)

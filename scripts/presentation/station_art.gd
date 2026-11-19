@@ -7,6 +7,7 @@ const D = preload("res://scripts/presentation/detail_builder.gd")
 
 
 func _ready() -> void:
+	var profile_start := Time.get_ticks_usec()
 	var station := get_parent()
 	_platform(station)
 	_building(station.get_node("WarehouseA"), false)
@@ -14,6 +15,7 @@ func _ready() -> void:
 	_background(station.get_node("Background"))
 	_freight(station)
 	_dress_crates(station)
+	PerformanceTrace.mark("station_art",profile_start)
 
 
 func _platform(station: Node3D) -> void:

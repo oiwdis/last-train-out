@@ -41,20 +41,28 @@ func _exit_tree() -> void:
 
 
 func _ready() -> void:
+	var phase_start := Time.get_ticks_usec()
+	PerformanceTrace.mark("game_ready_begin")
 	if journey_definition != null:
 		journey = JourneyController.new()
 		journey.name = "Journey"
 		add_child(journey)
 		journey.setup(self,journey_definition)
+	PerformanceTrace.mark("journey_setup",phase_start)
+	phase_start = Time.get_ticks_usec()
 	if station != null:
 		var dressing := AssetDressing.new()
 		dressing.name = "AuthoredAssets"
 		station.add_child(dressing)
 		dressing.build(station)
+		PerformanceTrace.mark("harlow_props",phase_start)
+		phase_start = Time.get_ticks_usec()
 		var architecture := EnvironmentArt.new()
 		architecture.name = "EnvironmentArt"
 		station.add_child(architecture)
 		architecture.build(station)
+	PerformanceTrace.mark("harlow_architecture",phase_start)
+	phase_start = Time.get_ticks_usec()
 	var effects := PresentationEffects.new()
 	effects.name = "PresentationEffects"
 	add_child(effects)
@@ -115,6 +123,7 @@ func _ready() -> void:
 		fog_system.bind.call_deferred(self)
 	if journey != null:
 		journey.bind.call_deferred()
+	PerformanceTrace.mark("game_wiring",phase_start)
 
 
 func _physics_process(_delta: float) -> void:

@@ -8,6 +8,9 @@ import sys
 root = Path(__file__).resolve().parents[1]
 manifest = json.loads((root / 'docs/validation/milestone35/baselines/source-test-manifest.json').read_text())
 required = {tuple(item) for item in manifest['distinct_tests']}
+previous_integration = root / 'docs/validation/milestone351/baseline/test-manifest.json'
+if previous_integration.exists():
+    required.update(tuple(item) for item in json.loads(previous_integration.read_text())['distinct_tests'])
 discovered = {(str(path.relative_to(root)), name)
               for path in (root / 'tests').glob('*/test_*.gd')
               for name in re.findall(r'^func (test_\w+)\(', path.read_text(), re.M)}

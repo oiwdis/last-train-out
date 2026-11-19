@@ -16,6 +16,7 @@ static func prepare(scene: Node3D) -> void:
 			views.append(node)
 	if views.is_empty():
 		return
+	PerformanceTrace.mark("warmup_begin")
 	var started := Time.get_ticks_msec()
 	var tree := scene.get_tree()
 	var was_paused := tree.paused
@@ -66,11 +67,13 @@ static func prepare(scene: Node3D) -> void:
 				return
 			proxy.free()
 	for view in views:
+		var view_start := Time.get_ticks_usec()
 		camera.global_transform = view.global_transform
 		for frame in 2:
 			await _frame(tree)
 			if not state.active:
 				return
+		PerformanceTrace.mark("warmup_view_"+String(view.name),view_start)
 	original.make_current()
 	camera.free()
 	# Consume the last preparation frame's delta while the game is still paused.
@@ -85,6 +88,7 @@ static func prepare(scene: Node3D) -> void:
 	scene.tree_exiting.disconnect(restore_on_exit)
 	tree.paused = was_paused
 	state.active = false
+	PerformanceTrace.mark("warmup_end")
 	print("[render-warmup] ", views.size(), " views / ", Time.get_ticks_msec()-started,
 		" ms / draw pipelines=", Performance.get_monitor(Performance.PIPELINE_COMPILATIONS_DRAW))
 

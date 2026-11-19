@@ -20,6 +20,7 @@ var pose_correction: WorkerPose
 var _playback_rate := 1.0
 
 func bind(who: Player, arms_only := false) -> void:
+	var profile_start := Time.get_ticks_usec()
 	player = who
 	first_person = arms_only
 	model = MODEL.instantiate()
@@ -84,6 +85,8 @@ func bind(who: Player, arms_only := false) -> void:
 	pose_correction.name = "ContactAndGripCorrection"
 	skeleton.add_child(pose_correction)
 	pose_correction.configure(self)
+	PerformanceTrace.mark("worker_bind",profile_start)
+
 
 func _add_equipment() -> void:
 	var socket := BoneAttachment3D.new()

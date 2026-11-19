@@ -46,7 +46,9 @@ func bind(scene_root: Node3D, atmosphere: Atmosphere = null) -> void:
 
 
 func _finish_bind() -> void:
+	var profile_start := Time.get_ticks_usec()
 	_collect(_scene_root)
+	PerformanceTrace.mark("graphics_collect",profile_start)
 	_ready_to_apply = true
 	set_preset(current_index)
 
@@ -80,6 +82,7 @@ func set_preset(index: int, persist: bool = false) -> void:
 	current_index = clampi(index, 0, PRESETS.size() - 1)
 	if not _ready_to_apply:
 		return
+	var profile_start := Time.get_ticks_usec()
 	var preset := PRESETS[current_index]
 	for material: StandardMaterial3D in _materials:
 		# Low retains textured colour but avoids the triplanar normal/roughness fetches.
@@ -125,6 +128,7 @@ func set_preset(index: int, persist: bool = false) -> void:
 	# Signal listeners may await readiness immediately. Publish the pending state
 	# before notifying them, so they cannot observe a false ready interval.
 	changed.emit(current_index)
+	PerformanceTrace.mark("preset_apply_"+str(current_index),profile_start)
 
 
 func _prepare_rendering() -> void:

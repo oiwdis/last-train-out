@@ -10,6 +10,7 @@ var mechanics: TrainMechanics
 
 
 func _ready() -> void:
+	var profile_start := Time.get_ticks_usec()
 	var car := get_parent()
 	# Original mechanical meshes share materials and stay on the existing body.
 	for child in car.get_children():
@@ -84,6 +85,8 @@ func _ready() -> void:
 			AssetDressing.place(self, "suitcase", Vector3(1.8, 1.5, 0.95), Vector3.ONE * 0.7)
 		else:
 			AssetDressing.place(self, "oil_can", Vector3(-3.6, 1.6, -0.9), Vector3.ONE)
+	PerformanceTrace.mark("train_art",profile_start)
+
 
 func _fit_axles() -> void:
 	var seen := {}

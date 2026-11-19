@@ -28,6 +28,7 @@ for name, project, suites in [('integration', root, ['matrix', 'ablations']),
     if project != root:
         diagnostic.parent.mkdir(exist_ok=True)
         shutil.copy2(root / 'scripts/diagnostics/integration_benchmark.gd', diagnostic)
+        shutil.copy2(root / 'scripts/diagnostics/frame_timeline.gd', diagnostic.parent / 'frame_timeline.gd')
     for suite in suites:
         stem = name + '-' + suite
         command = [godot, '--path', str(project), '--audio-driver', 'Dummy',

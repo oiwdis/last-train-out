@@ -26,6 +26,15 @@ on:
       - feature/milestone-2-5-full-3d
   workflow_dispatch:
     inputs:
+      investigate:
+        description: Run exploratory profiling only (no release artifact or acceptance claim)
+        type: boolean
+        default: false
+      profile_suite:
+        description: Exploratory profiling suite
+        type: choice
+        options: [all, startup, matrix, cleanup]
+        default: all
       sign_and_notarize:
         description: Sign with Developer ID and notarize (needs the signing secrets)
         type: boolean
@@ -46,7 +55,44 @@ env:
   MIN_TESTS: "292"
 
 jobs:
+  investigate:
+    name: Performance investigation (no release)
+    if: ${{ github.event_name == 'workflow_dispatch' && inputs.investigate }}
+    runs-on: macos-latest
+    timeout-minutes: 45
+    env:
+      SOURCE_SHA: ${{ github.sha }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/cache@v6
+        with:
+          path: ~/godot-ci
+          key: godot-4.5.1-stable-macos-universal-template-v1
+      - run: tools/macos/install_godot.sh
+      - uses: actions/cache/restore@v6
+        with:
+          path: .godot/imported
+          key: godot-imports-macos-arm64-4.5.1-v1-${{ hashFiles('project.godot', 'assets/**', 'resources/**') }}
+          restore-keys: godot-imports-macos-arm64-4.5.1-v1-
+      - name: Validate imported diagnostic scripts
+        run: |
+          mkdir -p tests/_output/investigation
+          find .godot/imported -name '*.scn' -delete
+          "$GODOT" --headless --path . --import > tests/_output/investigation/import.log 2>&1
+          if grep -E '^(ERROR|SCRIPT ERROR)|Parse Error' tests/_output/investigation/import.log; then exit 1; fi
+      - name: Collect raw baseline and profiling evidence
+        env:
+          PROFILE_SUITE: ${{ inputs.profile_suite }}
+        run: python3 tools/macos/profile_integration.py "$GODOT" tests/_output/investigation "$PROFILE_SUITE"
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: performance-investigation
+          path: tests/_output/investigation/
+          retention-days: 30
+
   build:
+    if: ${{ !inputs.investigate }}
     name: Test, export and package
     runs-on: macos-latest # GitHub's macos-latest runners are Apple Silicon (arm64)
     timeout-minutes: 90
