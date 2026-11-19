@@ -1,0 +1,39 @@
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+Vulkan 1.2.283 - Forward+ - Using Device #0: Apple - Apple Paravirtual device
+
+[render-warmup] 6 views / 13664 ms / draw pipelines=51.0
+[render-warmup] 6 views / 185 ms / draw pipelines=52.0
+[integration-benchmark] Harlow platform / Low / entry mean=12.4410666666667 p99=30.294 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Harlow platform / Low / steady mean=9.72465666666666 p99=20.168 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Warehouse A / Low / entry mean=10.4987166666667 p99=52.663 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Warehouse A / Low / steady mean=10.1569166666667 p99=19.288 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Warehouse B / Low / entry mean=7.9912 p99=8.964 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Warehouse B / Low / steady mean=8.06489166666667 p99=12.027 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Locomotive cab / Low / entry mean=9.5283 p99=26.172 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Locomotive cab / Low / steady mean=9.7129 p99=13.709 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Passenger car / Low / entry mean=9.6491 p99=16.355 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Passenger car / Low / steady mean=10.128895 p99=15.034 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[render-warmup] 6 views / 5194 ms / draw pipelines=76.0
+[integration-benchmark] Harlow platform / Medium / entry mean=38.1805166666667 p99=863.609 pipelines={ "draw": 8.0, "surface": 0.0, "specialization": 15.0 }
+[integration-benchmark] Harlow platform / Medium / steady mean=12.5658766666667 p99=31.483 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Warehouse A / Medium / entry mean=14.7576 p99=85.069 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Warehouse A / Medium / steady mean=10.1981016666667 p99=12.053 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Warehouse B / Medium / entry mean=10.7115333333333 p99=13.162 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Warehouse B / Medium / steady mean=11.61094 p99=20.459 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Locomotive cab / Medium / entry mean=13.4133833333333 p99=44.977 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Locomotive cab / Medium / steady mean=13.8332566666667 p99=26.596 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Passenger car / Medium / entry mean=15.3442333333333 p99=28.645 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Passenger car / Medium / steady mean=18.2740183333333 p99=38.53 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[render-warmup] 6 views / 8308 ms / draw pipelines=84.0
+[integration-benchmark] Harlow platform / High / entry mean=55.04615 p99=1403.803 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 14.0 }
+[integration-benchmark] Harlow platform / High / steady mean=13.3823216666667 p99=26.331 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Warehouse A / High / entry mean=20.6427833333333 p99=130.475 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 7.0 }
+[integration-benchmark] Warehouse A / High / steady mean=15.4304533333333 p99=23.547 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Warehouse B / High / entry mean=14.1234666666667 p99=25.105 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Warehouse B / High / steady mean=14.502205 p99=23.235 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Locomotive cab / High / entry mean=15.5948 p99=45.004 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Locomotive cab / High / steady mean=14.6490483333333 p99=16.612 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Passenger car / High / entry mean=15.3852333333333 p99=28.429 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Passenger car / High / steady mean=16.5759366666667 p99=21.085 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+     at: cleanup (core/object/object.cpp:2514)

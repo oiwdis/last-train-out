@@ -2,6 +2,8 @@
 
 This draft combines PR #4’s detailed survivor, locomotive and Harlow art with PR #5’s continuous three-station survival journey. Press **J** for Save / Continue / New / Restart and **V** to switch camera. See [draft integration PR #6](https://github.com/oiwdis/last-train-out/pull/6), [integration provenance and merge strategy](docs/MILESTONE3_INTEGRATION.md), [current integration review](docs/MILESTONE35_REVIEW.md) and the [physical M1 fullscreen procedure](docs/M1_MILESTONE35.md).
 
+[Full integrated journey recording](docs/recording/milestone35-full-journey.mp4) · [integrated screenshot gallery](docs/MILESTONE35_GALLERY.md) · [measured performance and remaining stalls](docs/PERFORMANCE_MILESTONE35.md). Use the integration review's specific build link for this milestone. The added stations retain simplified geometry, and physical 2020 M1 fullscreen performance remains unverified.
+
 The source milestone reports below retain their original evidence and limitations; they are not measurements of this combined build.
 
 > Milestone 3 now opens **The Harlow Escape**, a continuous three-station survival mission. Press **J** for route progress, Save / Continue / New / Restart. See [journey, controls and save format](docs/MILESTONE3_JOURNEY.md) and [PR #4 integration notes](docs/MILESTONE3_INTEGRATION.md).

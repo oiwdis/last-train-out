@@ -5,7 +5,7 @@
       "passed": true
     },
     {
-      "check": "reticle selects platform_luggage (got platform_luggage:<Area3D#237129179361>)",
+      "check": "reticle selects platform_luggage (got platform_luggage:<Area3D#237011738850>)",
       "passed": true
     },
     {
@@ -25,7 +25,7 @@
       "passed": true
     },
     {
-      "check": "reticle selects platform_locker (got platform_locker:<Area3D#237162733797>)",
+      "check": "reticle selects platform_locker (got platform_locker:<Area3D#237045293286>)",
       "passed": true
     },
     {
@@ -53,7 +53,7 @@
       "passed": true
     },
     {
-      "check": "reticle selects @Area3D@2536 (got @Area3D@2536:<Area3D#266287980316>)",
+      "check": "reticle selects @Area3D@2536 (got @Area3D@2536:<Area3D#266170539805>)",
       "passed": true
     },
     {
@@ -61,7 +61,7 @@
       "passed": true
     },
     {
-      "check": "reticle selects @Area3D@2592 (got @Area3D@2592:<Area3D#368108899683>)",
+      "check": "reticle selects @Area3D@2592 (got @Area3D@2592:<Area3D#367991459172>)",
       "passed": true
     },
     {
@@ -77,7 +77,7 @@
       "passed": true
     },
     {
-      "check": "reticle selects TrainStorage (got TrainStorage:<Area3D#239746425119>)",
+      "check": "reticle selects TrainStorage (got TrainStorage:<Area3D#239628984608>)",
       "passed": true
     },
     {
@@ -121,7 +121,7 @@
       "passed": true
     },
     {
-      "check": "reticle selects StokeBoiler (got StokeBoiler:<Area3D#264526374317>)",
+      "check": "reticle selects StokeBoiler (got StokeBoiler:<Area3D#264408933806>)",
       "passed": true
     },
     {
@@ -129,7 +129,7 @@
       "passed": true
     },
     {
-      "check": "reticle selects Regulator (got Regulator:<Area3D#263419077998>)",
+      "check": "reticle selects Regulator (got Regulator:<Area3D#263301637487>)",
       "passed": true
     },
     {
@@ -165,7 +165,7 @@
       "passed": true
     },
     {
-      "check": "reticle selects coal_a (got coal_a:<Area3D#211443260774>)",
+      "check": "reticle selects coal_a (got coal_a:<Area3D#211325820263>)",
       "passed": true
     },
     {
@@ -173,7 +173,7 @@
       "passed": true
     },
     {
-      "check": "reticle selects @Area3D@2615 (got @Area3D@2615:<Area3D#1747682594289>)",
+      "check": "reticle selects @Area3D@2615 (got @Area3D@2615:<Area3D#1747565153778>)",
       "passed": true
     },
     {
@@ -185,7 +185,7 @@
       "passed": true
     },
     {
-      "check": "reticle selects TrainStorage (got TrainStorage:<Area3D#239746425119>)",
+      "check": "reticle selects TrainStorage (got TrainStorage:<Area3D#239628984608>)",
       "passed": true
     },
     {
@@ -213,7 +213,7 @@
       "passed": true
     },
     {
-      "check": "reticle selects coal_b (got coal_b:<Area3D#212147903863>)",
+      "check": "reticle selects coal_b (got coal_b:<Area3D#212030463352>)",
       "passed": true
     },
     {
@@ -221,7 +221,7 @@
       "passed": true
     },
     {
-      "check": "reticle selects @Area3D@2629 (got @Area3D@2629:<Area3D#1816519511763>)",
+      "check": "reticle selects @Area3D@2629 (got @Area3D@2629:<Area3D#1816402071252>)",
       "passed": true
     },
     {
@@ -245,7 +245,7 @@
       "passed": true
     },
     {
-      "check": "reticle selects TrainStorage (got TrainStorage:<Area3D#239746425119>)",
+      "check": "reticle selects TrainStorage (got TrainStorage:<Area3D#239628984608>)",
       "passed": true
     },
     {
@@ -333,7 +333,7 @@
       "passed": true
     },
     {
-      "check": "reticle selects workshop (got workshop:<Area3D#212366007683>)",
+      "check": "reticle selects workshop (got workshop:<Area3D#212248567172>)",
       "passed": true
     },
     {
@@ -349,7 +349,7 @@
       "passed": true
     },
     {
-      "check": "reticle selects components (got components:<Area3D#212919655825>)",
+      "check": "reticle selects components (got components:<Area3D#212802215314>)",
       "passed": true
     },
     {
@@ -357,7 +357,7 @@
       "passed": true
     },
     {
-      "check": "reticle selects @Area3D@2651 (got @Area3D@2651:<Area3D#2089434484579>)",
+      "check": "reticle selects @Area3D@2651 (got @Area3D@2651:<Area3D#2089317044068>)",
       "passed": true
     },
     {
@@ -429,7 +429,7 @@
       "passed": true
     },
     {
-      "check": "reticle selects StokeBoiler (got StokeBoiler:<Area3D#264526374317>)",
+      "check": "reticle selects StokeBoiler (got StokeBoiler:<Area3D#264408933806>)",
       "passed": true
     },
     {
@@ -437,7 +437,7 @@
       "passed": true
     },
     {
-      "check": "reticle selects StokeBoiler (got StokeBoiler:<Area3D#264526374317>)",
+      "check": "reticle selects StokeBoiler (got StokeBoiler:<Area3D#264408933806>)",
       "passed": true
     },
     {
@@ -445,7 +445,7 @@
       "passed": true
     },
     {
-      "check": "reticle selects Regulator (got Regulator:<Area3D#263419077998>)",
+      "check": "reticle selects Regulator (got Regulator:<Area3D#263301637487>)",
       "passed": true
     },
     {
@@ -493,7 +493,7 @@
       "passed": true
     },
     {
-      "check": "reticle selects food (got food:<Area3D#221811580651>)",
+      "check": "reticle selects food (got food:<Area3D#221694140140>)",
       "passed": true
     },
     {
@@ -513,7 +513,7 @@
       "passed": true
     },
     {
-      "check": "reticle selects medicine (got medicine:<Area3D#222029684471>)",
+      "check": "reticle selects medicine (got medicine:<Area3D#221912243960>)",
       "passed": true
     },
     {
@@ -537,7 +537,7 @@
       "passed": true
     },
     {
-      "check": "reticle selects EvacuationNote (got EvacuationNote:<Area3D#223237644074>)",
+      "check": "reticle selects EvacuationNote (got EvacuationNote:<Area3D#223120203563>)",
       "passed": true
     },
     {
@@ -569,7 +569,7 @@
       "passed": true
     },
     {
-      "check": "reticle selects TrainStorage (got TrainStorage:<Area3D#239746425119>)",
+      "check": "reticle selects TrainStorage (got TrainStorage:<Area3D#239628984608>)",
       "passed": true
     },
     {
@@ -625,6 +625,10 @@
       "passed": true
     },
     {
+      "check": "saved player world position recovered",
+      "passed": true
+    },
+    {
       "check": "saved camera perspective recovered",
       "passed": true
     },
@@ -645,7 +649,7 @@
       "passed": true
     },
     {
-      "check": "reticle selects Regulator (got Regulator:<Area3D#5411591687351>)",
+      "check": "reticle selects Regulator (got Regulator:<Area3D#5411491024058>)",
       "passed": true
     },
     {
@@ -696,6 +700,6 @@
   },
   "save_restore_repositions": 1,
   "scenario": "journey",
-  "source_commit": "c2857bbbbb2745dbbb9107bcc2b89630ff7459af",
+  "source_commit": "140ce820c087d8a28734b7bab3ed14135d7cc527",
   "teleports": 0
 }

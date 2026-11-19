@@ -1,0 +1,11 @@
+{
+  "exit_code": 2,
+  "external_timeout": false,
+  "driver": "metal",
+  "elapsed_seconds": 165.001111166,
+  "scope": "Diagnostic only; the failed default-driver gate stays failed.",
+  "selftest_passed": false,
+  "fatal": "timed out after 120 seconds",
+  "actual_driver": "metal",
+  "requested_driver_used": true
+}

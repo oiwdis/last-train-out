@@ -1,0 +1,13 @@
+{
+  "platform": "macOS-26.7.2-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "cpu_count": 3,
+  "samples": 600,
+  "warmup": 120,
+  "scope": "hosted Mac, 960x540 windowed; NOT physical 2020 M1 fullscreen",
+  "source_heads": {
+    "art": "a8f58ec57c218c3944d038a9d1640e78597042be",
+    "survival": "9c4f0de49e104ca95ccb57c88cf535ab96202dac"
+  },
+  "integration_commit": "4fbb22a03cdbfbe23ad2c0a9654ff98ef32b151f"
+}

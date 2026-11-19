@@ -235,7 +235,7 @@ Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
   PASS  test_gauges_follow_start_brake_stop_and_speed_without_mutating_train
   PASS  test_planar_pbr_preserves_metres_normals_and_shared_materials
   PASS  test_gantry_and_columns_keep_existing_traversal_volumes
-[render-warmup] 6 views / 4 ms / draw pipelines=0.0
+[render-warmup] 6 views / 5 ms / draw pipelines=0.0
   PASS  test_render_preparation_restores_camera_without_advancing_gameplay
 
 [SUITE] test_photoreal_survival.gd
@@ -247,16 +247,18 @@ Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
   PASS  test_route_phase_and_gauges_survive_fuel_exhaustion_and_restart
   PASS  test_saved_camera_cargo_and_art_restore_at_all_three_stations
   PASS  test_moving_save_restores_mechanism_camera_and_loose_supports
+[render-warmup] 10 views / 17 ms / draw pipelines=0.0
+  PASS  test_load_waits_for_render_pause_before_resolving_car_local_support
   PASS  test_camera_validation_is_atomic_and_original_m3_saves_still_load
-[render-warmup] 10 views / 4 ms / draw pipelines=0.0
-[render-warmup] 10 views / 1 ms / draw pipelines=0.0
+[render-warmup] 10 views / 7 ms / draw pipelines=0.0
+[render-warmup] 10 views / 0 ms / draw pipelines=0.0
   PASS  test_render_preparation_covers_new_sites_and_fog_without_advancing_survival
   PASS  test_station_dressing_uses_shared_pbr_without_new_collision_owners
   PASS  test_four_danger_states_and_presets_keep_identical_simulation
   PASS  test_fog_death_and_fresh_scene_recover_authored_character
   PASS  test_results_pause_keeps_model_and_world_state_intact
   PASS  test_scene_detachment_does_not_read_retired_skeleton_transforms
-[render-warmup] 10 views / 5 ms / draw pipelines=0.0
+[render-warmup] 10 views / 6 ms / draw pipelines=0.0
   PASS  test_ledger_hotkey_cannot_override_the_render_preparation_pause
   PASS  test_hud_names_added_stations_and_their_train_stops
 
@@ -387,4 +389,4 @@ Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
   PASS  test_walking_onto_moving_deck_carries_the_player
   PASS  test_obstacle_in_the_way_knocks_a_climber_off_instead_of_dragging_through
 
-=== 291 passed, 0 failed, 291 total (141.2 s wall clock) ===
+=== 292 passed, 0 failed, 292 total (144.6 s wall clock) ===

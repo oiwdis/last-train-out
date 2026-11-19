@@ -1,0 +1,748 @@
+{
+  "backpack": [
+    {
+
+    },
+    {
+
+    },
+    {
+
+    },
+    {
+
+    },
+    {
+
+    },
+    {
+
+    }
+  ],
+  "camera": {
+    "perspective": 0.0,
+    "pitch": -0.0277292445184113,
+    "yaw": -1.57045440940212
+  },
+  "cargo": [
+    {
+      "amount": 1.0,
+      "car": "",
+      "held": false,
+      "id": "supply_4",
+      "item": "coal_sack",
+      "local": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "origin": "ashford_coal_b",
+      "position": [
+        1837.55236816406,
+        6.00008010864258,
+        205.603591918945
+      ],
+      "recorded": false,
+      "velocity": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "amount": 1.0,
+      "car": "",
+      "held": false,
+      "id": "supply_5",
+      "item": "machine_component",
+      "local": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "origin": "ashford_components",
+      "position": [
+        1879.25231933594,
+        5.98091411590576,
+        215.885055541992
+      ],
+      "recorded": true,
+      "velocity": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "containers": {
+    "a_coal": {
+      "searched": false,
+      "slots": [
+        {
+          "amount": 1.0,
+          "item": "coal_sack"
+        },
+        {
+
+        }
+      ]
+    },
+    "a_stores": {
+      "searched": false,
+      "slots": [
+        {
+          "amount": 1.0,
+          "item": "coal_sack"
+        },
+        {
+          "amount": 1.0,
+          "item": "tools"
+        },
+        {
+          "amount": 2.0,
+          "item": "lantern_oil"
+        },
+        {
+
+        }
+      ]
+    },
+    "a_toolbox": {
+      "searched": false,
+      "slots": [
+        {
+          "amount": 6.0,
+          "item": "scrap_metal"
+        },
+        {
+          "amount": 2.0,
+          "item": "lantern_oil"
+        },
+        {
+
+        },
+        {
+
+        }
+      ]
+    },
+    "a_upper": {
+      "searched": false,
+      "slots": [
+        {
+          "amount": 5.0,
+          "item": "scrap_metal"
+        },
+        {
+          "amount": 1.0,
+          "item": "lantern_oil"
+        },
+        {
+
+        },
+        {
+
+        }
+      ]
+    },
+    "ashford_coal_a": {
+      "searched": true,
+      "slots": [
+        {
+
+        },
+        {
+
+        }
+      ]
+    },
+    "ashford_coal_b": {
+      "searched": true,
+      "slots": [
+        {
+
+        },
+        {
+
+        },
+        {
+
+        }
+      ]
+    },
+    "ashford_components": {
+      "searched": true,
+      "slots": [
+        {
+
+        },
+        {
+
+        }
+      ]
+    },
+    "ashford_medical": {
+      "searched": false,
+      "slots": [
+        {
+          "amount": 2.0,
+          "item": "medicine"
+        },
+        {
+
+        }
+      ]
+    },
+    "ashford_rations": {
+      "searched": false,
+      "slots": [
+        {
+          "amount": 3.0,
+          "item": "canned_food"
+        },
+        {
+
+        }
+      ]
+    },
+    "ashford_scrap": {
+      "searched": false,
+      "slots": [
+        {
+          "amount": 4.0,
+          "item": "scrap_metal"
+        },
+        {
+
+        }
+      ]
+    },
+    "ashford_workshop": {
+      "searched": true,
+      "slots": [
+        {
+
+        },
+        {
+
+        }
+      ]
+    },
+    "b_cabinet": {
+      "searched": false,
+      "slots": [
+        {
+          "amount": 5.0,
+          "item": "bandages"
+        },
+        {
+
+        },
+        {
+
+        }
+      ]
+    },
+    "b_precision": {
+      "searched": false,
+      "slots": [
+        {
+          "amount": 1.0,
+          "item": "machine_component"
+        },
+        {
+
+        }
+      ]
+    },
+    "b_room": {
+      "searched": false,
+      "slots": [
+        {
+          "amount": 1.0,
+          "item": "machine_component"
+        },
+        {
+          "amount": 1.0,
+          "item": "lantern_oil"
+        },
+        {
+          "amount": 1.0,
+          "item": "medicine"
+        },
+        {
+          "amount": 2.0,
+          "item": "bandages"
+        },
+        {
+
+        }
+      ]
+    },
+    "b_tools": {
+      "searched": false,
+      "slots": [
+        {
+          "amount": 3.0,
+          "item": "medicine"
+        },
+        {
+          "amount": 2.0,
+          "item": "bandages"
+        },
+        {
+          "amount": 1.0,
+          "item": "lantern_oil"
+        },
+        {
+
+        },
+        {
+
+        }
+      ]
+    },
+    "blackwater_bandages": {
+      "searched": false,
+      "slots": [
+        {
+          "amount": 3.0,
+          "item": "bandages"
+        },
+        {
+
+        }
+      ]
+    },
+    "blackwater_food": {
+      "searched": true,
+      "slots": [
+        {
+
+        },
+        {
+
+        }
+      ]
+    },
+    "blackwater_fuel": {
+      "searched": false,
+      "slots": [
+        {
+          "amount": 1.0,
+          "item": "coal_sack"
+        },
+        {
+
+        }
+      ]
+    },
+    "blackwater_medicine": {
+      "searched": true,
+      "slots": [
+        {
+
+        },
+        {
+
+        }
+      ]
+    },
+    "blackwater_tools": {
+      "searched": false,
+      "slots": [
+        {
+          "amount": 2.0,
+          "item": "tools"
+        },
+        {
+
+        }
+      ]
+    },
+    "freight_end": {
+      "searched": false,
+      "slots": [
+        {
+          "amount": 5.0,
+          "item": "scrap_metal"
+        },
+        {
+          "amount": 2.0,
+          "item": "tools"
+        },
+        {
+          "amount": 1.0,
+          "item": "machine_component"
+        },
+        {
+
+        }
+      ]
+    },
+    "freight_fuel": {
+      "searched": false,
+      "slots": [
+        {
+          "amount": 1.0,
+          "item": "fuel_drum"
+        },
+        {
+
+        }
+      ]
+    },
+    "freight_roof": {
+      "searched": false,
+      "slots": [
+        {
+          "amount": 8.0,
+          "item": "scrap_metal"
+        },
+        {
+          "amount": 1.0,
+          "item": "fuel_drum"
+        },
+        {
+          "amount": 1.0,
+          "item": "scrap_metal"
+        },
+        {
+
+        }
+      ]
+    },
+    "harlow_departure_coal": {
+      "searched": true,
+      "slots": [
+        {
+
+        },
+        {
+
+        }
+      ]
+    },
+    "platform_locker": {
+      "searched": true,
+      "slots": [
+        {
+
+        },
+        {
+
+        },
+        {
+
+        }
+      ]
+    },
+    "platform_luggage": {
+      "searched": true,
+      "slots": [
+        {
+
+        },
+        {
+
+        },
+        {
+
+        }
+      ]
+    }
+  },
+  "difficulty": 1.0,
+  "doors": {
+    "harlow/door/100.000,0.030,1.700": true,
+    "harlow/door/15.000,0.030,8.000": true,
+    "harlow/door/35.000,0.030,1.100": true,
+    "harlow/door/60.000,0.030,1.100": true,
+    "harlow/door/70.000,0.030,1.100": true,
+    "train/CrewCar/EndDoorFront": true,
+    "train/CrewCar/EndDoorRear": true,
+    "train/Locomotive/EndDoorRear": true
+  },
+  "fog": {
+    "fuel": 46.416000000015,
+    "players": {
+      "local": {
+        "exposure": 0.0,
+        "health": 100.0
+      }
+    },
+    "remainder": 0.0333333333333333,
+    "simulation": {
+      "config": {
+        "approach_distance": 400.0,
+        "audio_intensity": 0.7,
+        "base_speed": 2.3,
+        "calm_multiplier": 0.55,
+        "critical_distance": 130.0,
+        "damage_per_second": 5.0,
+        "damage_threshold": 15.0,
+        "depth_scale": 35.0,
+        "difficulty": 1.0,
+        "escalation_per_minute": 0.08,
+        "event_duration": 16.0,
+        "event_interval_max": 85.0,
+        "event_interval_min": 50.0,
+        "event_warning_seconds": 10.0,
+        "events_enabled": true,
+        "exposure_per_second": 3.0,
+        "fuel_capacity": 120.0,
+        "fuel_per_sack": 45.0,
+        "fuel_per_second": 0.32,
+        "initial_distance": 1050.0,
+        "initial_fuel": 55.0,
+        "maximum_depth_multiplier": 3.0,
+        "maximum_speed": 4.3,
+        "minimum_movement_multiplier": 0.82,
+        "minimum_regen_multiplier": 0.35,
+        "movement_penalty_threshold": 70.0,
+        "protection_building": 0.25,
+        "protection_cab": 0.72,
+        "protection_open": 0.12,
+        "protection_passenger": 0.48,
+        "recovery_per_second": 5.0,
+        "station_slow_radius": 110.0,
+        "station_speed_factor": 0.85,
+        "surge_multiplier": 1.45,
+        "visibility_density": 0.095,
+        "visibility_falloff_distance": 65.0
+      },
+      "elapsed": 1287.09999999992,
+      "event": "calm",
+      "front": 2984.92250933343,
+      "next": 1271.85209960937,
+      "pending": "",
+      "remainder": 0.0,
+      "remaining": 10.8,
+      "rng": "-6860928358780960791",
+      "route": "72547a27f81c2a8edf6bd3203438fb0497d26bf7a8225903a6f9281d07fc2f43",
+      "seed": "3001",
+      "station": "blackwater",
+      "version": 1.0,
+      "warning": 0.00000000000001879
+    },
+    "version": 1.0
+  },
+  "item_serial": 5.0,
+  "mission": {
+    "collected": {
+      "ashford/coal_sack": 2.0,
+      "ashford/machine_component": 1.0,
+      "ashford/tools": 2.0,
+      "blackwater/canned_food": 3.0,
+      "blackwater/medicine": 2.0,
+      "harlow/bandages": 1.0,
+      "harlow/canned_food": 4.0,
+      "harlow/coal_sack": 1.0
+    },
+    "exposure_seconds": 0.0,
+    "note": true,
+    "peak": 0.0,
+    "refuels": {
+      "ashford": 2.0,
+      "harlow": 1.0
+    },
+    "status": "active",
+    "visited": [
+      "harlow",
+      "ashford",
+      "blackwater"
+    ]
+  },
+  "mission_id": "harlow_escape_v1",
+  "next_stop": 3.0,
+  "player": {
+    "car": "Locomotive",
+    "cooldown": 0.0499999999999989,
+    "exhausted": false,
+    "facing": [
+      0.999999940395355,
+      0.0,
+      -0.00034196773776784
+    ],
+    "local": [
+      -2.839599609375,
+      1.00116980075836,
+      0.00009918212890625
+    ],
+    "position": [
+      3421.17333984375,
+      3.00102972984314,
+      -80.0011520385742
+    ],
+    "stamina": 1.8833333333335,
+    "velocity": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "route": "72547a27f81c2a8edf6bd3203438fb0497d26bf7a8225903a6f9281d07fc2f43",
+  "seed": "3001",
+  "segment": "blackwater_escape",
+  "storage": [
+    {
+      "amount": 2.0,
+      "item": "bandages"
+    },
+    {
+      "amount": 4.0,
+      "item": "canned_food"
+    },
+    {
+      "amount": 4.0,
+      "item": "canned_food"
+    },
+    {
+      "amount": 2.0,
+      "item": "tools"
+    },
+    {
+      "amount": 2.0,
+      "item": "medicine"
+    },
+    {
+
+    },
+    {
+
+    },
+    {
+
+    },
+    {
+
+    },
+    {
+
+    },
+    {
+
+    },
+    {
+
+    },
+    {
+
+    },
+    {
+
+    },
+    {
+
+    },
+    {
+
+    },
+    {
+
+    },
+    {
+
+    },
+    {
+
+    },
+    {
+
+    },
+    {
+
+    },
+    {
+
+    },
+    {
+
+    },
+    {
+
+    },
+    {
+
+    },
+    {
+
+    },
+    {
+
+    },
+    {
+
+    },
+    {
+
+    },
+    {
+
+    },
+    {
+
+    },
+    {
+
+    },
+    {
+
+    },
+    {
+
+    },
+    {
+
+    },
+    {
+
+    },
+    {
+
+    },
+    {
+
+    },
+    {
+
+    },
+    {
+
+    },
+    {
+
+    },
+    {
+
+    },
+    {
+
+    },
+    {
+
+    },
+    {
+
+    },
+    {
+
+    },
+    {
+
+    },
+    {
+
+    }
+  ],
+  "train": {
+    "distance": 3462.00000190681,
+    "effective_speed": 8.0,
+    "max_speed": 8.0,
+    "mode": 1.0,
+    "profile": 0.0,
+    "speed": 0.0,
+    "state": 0.0
+  },
+  "version": 1.0
+}

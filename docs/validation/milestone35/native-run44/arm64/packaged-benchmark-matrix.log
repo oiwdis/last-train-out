@@ -1,0 +1,83 @@
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+Vulkan 1.2.283 - Forward+ - Using Device #0: Apple - Apple Paravirtual device
+
+[render-warmup] 10 views / 10463 ms / draw pipelines=53.0
+[render-warmup] 10 views / 5606 ms / draw pipelines=86.0
+[integration-benchmark] Harlow platform / Low / entry mean=5.85204166666667 p99=6.765 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Harlow platform / Low / steady mean=6.46745833333333 p99=6.942 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Warehouse A / Low / entry mean=6.72858333333333 p99=7.5 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Warehouse A / Low / steady mean=7.15908333333333 p99=7.789 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Warehouse B / Low / entry mean=6.15095833333333 p99=6.533 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Warehouse B / Low / steady mean=6.31583333333333 p99=7.189 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Locomotive cab / Low / entry mean=7.49929166666667 p99=8.745 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Locomotive cab / Low / steady mean=7.54145833333333 p99=7.792 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Passenger car / Low / entry mean=7.81525 p99=8.24 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Passenger car / Low / steady mean=7.95416666666666 p99=8.212 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Curved railway / Low / entry mean=4.79804166666667 p99=5.648 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Curved railway / Low / steady mean=5.00841666666667 p99=6.163 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Ashford Depot / Low / entry mean=3.63216666666667 p99=4.807 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Ashford Depot / Low / steady mean=3.642875 p99=4.296 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Ashford workshop / Low / entry mean=4.23979166666667 p99=5.539 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Ashford workshop / Low / steady mean=4.27666666666667 p99=5.516 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Blackwater Crossing / Low / entry mean=4.28691666666667 p99=5.379 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Blackwater Crossing / Low / steady mean=4.21041666666667 p99=5.542 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Near advancing fog / Low / entry mean=4.73208333333333 p99=7.566 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Near advancing fog / Low / steady mean=5.31645833333333 p99=7.03 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Inside dangerous fog / Low / entry mean=5.04154166666667 p99=6.015 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Inside dangerous fog / Low / steady mean=5.24095833333333 p99=6.86 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Mission completion / Low / entry mean=4.50829166666667 p99=9.217 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Mission completion / Low / steady mean=4.63820833333333 p99=6.504 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[render-warmup] 10 views / 2096 ms / draw pipelines=118.0
+[integration-benchmark] Harlow platform / Medium / entry mean=6.73575 p99=8.881 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Harlow platform / Medium / steady mean=6.72883333333333 p99=7.154 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Warehouse A / Medium / entry mean=7.41379166666667 p99=9.29 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Warehouse A / Medium / steady mean=8.44320833333333 p99=9.339 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Warehouse B / Medium / entry mean=7.500375 p99=8.649 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Warehouse B / Medium / steady mean=6.69429166666667 p99=7.272 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Locomotive cab / Medium / entry mean=8.34691666666667 p99=9.285 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Locomotive cab / Medium / steady mean=8.44208333333333 p99=8.903 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Passenger car / Medium / entry mean=8.553375 p99=9.563 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Passenger car / Medium / steady mean=8.49279166666667 p99=9.382 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Curved railway / Medium / entry mean=5.7715 p99=7.067 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Curved railway / Medium / steady mean=5.78620833333333 p99=6.531 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Ashford Depot / Medium / entry mean=4.64308333333333 p99=5.631 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Ashford Depot / Medium / steady mean=4.84275 p99=5.689 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Ashford workshop / Medium / entry mean=5.61445833333333 p99=6.862 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Ashford workshop / Medium / steady mean=5.45566666666667 p99=6.737 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Blackwater Crossing / Medium / entry mean=5.25633333333333 p99=6.497 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Blackwater Crossing / Medium / steady mean=5.1365 p99=5.872 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Near advancing fog / Medium / entry mean=5.86520833333333 p99=9.892 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Near advancing fog / Medium / steady mean=5.85604166666667 p99=6.573 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Inside dangerous fog / Medium / entry mean=6.95829166666667 p99=7.987 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Inside dangerous fog / Medium / steady mean=5.933 p99=6.899 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Mission completion / Medium / entry mean=4.86570833333333 p99=6.689 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Mission completion / Medium / steady mean=5.06975 p99=6.012 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[render-warmup] 10 views / 5950 ms / draw pipelines=118.0
+[integration-benchmark] Harlow platform / High / entry mean=83.7269166666667 p99=1825.817 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Harlow platform / High / steady mean=6.83125 p99=7.609 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Warehouse A / High / entry mean=14.0013333333333 p99=77.515 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 7.0 }
+[integration-benchmark] Warehouse A / High / steady mean=9.91058333333333 p99=10.963 pipelines={ "draw": 0.WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+     at: cleanup (core/object/object.cpp:2514)
+ERROR: 1 resources still in use at exit (run with --verbose for details).
+   at: clear (core/io/resource.cpp:795)
+0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Warehouse B / High / entry mean=9.98729166666666 p99=11.124 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Warehouse B / High / steady mean=9.86845833333333 p99=10.798 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Locomotive cab / High / entry mean=9.33333333333333 p99=11.223 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Locomotive cab / High / steady mean=9.40016666666667 p99=10.436 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Passenger car / High / entry mean=9.69908333333333 p99=12.264 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Passenger car / High / steady mean=10.549625 p99=11.272 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Curved railway / High / entry mean=8.22670833333333 p99=10.193 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Curved railway / High / steady mean=7.563 p99=8.517 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Ashford Depot / High / entry mean=5.303875 p99=7.421 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Ashford Depot / High / steady mean=5.599375 p99=6.436 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Ashford workshop / High / entry mean=4.915375 p99=5.573 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Ashford workshop / High / steady mean=5.03933333333333 p99=5.595 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Blackwater Crossing / High / entry mean=5.53470833333333 p99=6.822 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Blackwater Crossing / High / steady mean=5.11025 p99=6.386 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Near advancing fog / High / entry mean=6.652375 p99=8.288 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Near advancing fog / High / steady mean=6.96045833333334 p99=7.57 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Inside dangerous fog / High / entry mean=8.01145833333333 p99=8.693 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Inside dangerous fog / High / steady mean=8.57641666666667 p99=10.105 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Mission completion / High / entry mean=5.54379166666667 p99=6.714 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Mission completion / High / steady mean=6.34108333333333 p99=7.524 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }

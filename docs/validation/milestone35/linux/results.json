@@ -1,7 +1,7 @@
 {
   "failed": 0,
   "godot": "4.5.1-stable (official)",
-  "passed": 291,
+  "passed": 292,
   "physics_engine": "Jolt Physics",
   "results": [
     {
@@ -1366,6 +1366,13 @@
       "passed": true,
       "suite": "test_photoreal_survival.gd",
       "test": "test_moving_save_restores_mechanism_camera_and_loose_supports"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_photoreal_survival.gd",
+      "test": "test_load_waits_for_render_pause_before_resolving_car_local_support"
     },
     {
       "failures": [],

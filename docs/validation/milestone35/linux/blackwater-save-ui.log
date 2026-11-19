@@ -1,0 +1,17 @@
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+[render-warmup] 10 views / 16444 ms / draw pipelines=0.0
+[render-warmup] 10 views / 7982 ms / draw pipelines=0.0
+[journey] PASS J opens actual save ledger
+[journey] PASS Save Game button writes the played world
+[render-warmup] 10 views / 18999 ms / draw pipelines=0.0
+[journey] PASS Continue restores actual Blackwater stop
+[journey] PASS saved player world position recovered
+[journey] PASS saved camera perspective recovered
+[journey] PASS saved player support recovered
+[journey] PASS collected supplies survive Continue
+[journey] PASS evacuation note progress restored
+[journey] PASS Continue preserves cargo count without duplication

@@ -1,0 +1,73 @@
+{
+  "checks": [
+    {
+      "check": "J opens actual save ledger",
+      "passed": true
+    },
+    {
+      "check": "Save Game button writes the played world",
+      "passed": true
+    },
+    {
+      "check": "Continue restores actual Blackwater stop",
+      "passed": true
+    },
+    {
+      "check": "saved player world position recovered",
+      "passed": true
+    },
+    {
+      "check": "saved camera perspective recovered",
+      "passed": true
+    },
+    {
+      "check": "saved player support recovered",
+      "passed": true
+    },
+    {
+      "check": "collected supplies survive Continue",
+      "passed": true
+    },
+    {
+      "check": "evacuation note progress restored",
+      "passed": true
+    },
+    {
+      "check": "Continue preserves cargo count without duplication",
+      "passed": true
+    }
+  ],
+  "failed": false,
+  "graphics_preset": 0,
+  "integration_tour": false,
+  "late_escape": false,
+  "observations": [],
+  "results": {
+    "distance": 3462.00000190681,
+    "exposure_seconds": 0.0,
+    "mission": "harlow_escape_v1",
+    "peak_exposure": 0.0,
+    "stations_visited": [
+      "harlow",
+      "ashford",
+      "blackwater"
+    ],
+    "status": "active",
+    "supplies_collected": {
+      "ashford/coal_sack": 2,
+      "ashford/machine_component": 1,
+      "ashford/tools": 2,
+      "blackwater/canned_food": 3,
+      "blackwater/medicine": 2,
+      "harlow/bandages": 1,
+      "harlow/canned_food": 4,
+      "harlow/coal_sack": 1
+    },
+    "time_survived": 1288.59999999992,
+    "version": 1
+  },
+  "save_restore_repositions": 1,
+  "scenario": "save-ui",
+  "source_commit": "4fbb22a03cdbfbe23ad2c0a9654ff98ef32b151f",
+  "teleports": 0
+}

@@ -2,7 +2,7 @@
 
 No physical 2020 M1 result is available from this task. Hosted Apple Silicon has a different GPU, display and thermal environment. The Low 30+ FPS target remains a hardware acceptance goal.
 
-Use the integration universal app linked from [the review](MILESTONE35_REVIEW.md). Unzip once and open it normally first. It includes its own Godot 4.5.1 runtime. The development build is ad-hoc signed, not notarized; follow the existing [macOS launch instructions](../README.md#play-on-macos).
+Use the integration universal app linked from [the review](MILESTONE35_REVIEW.md). Unzip once and open it normally first. It includes its own Godot 4.5.1 runtime. The development build is ad-hoc signed, not notarized; follow the existing [macOS launch instructions](../README.md#play-on-macos-no-godot-needed).
 
 Record Mac model, memory, chip, macOS version, display resolution/scaling, external displays, power source and Low Power Mode. For comparable runs, use AC power with Low Power Mode off, close other demanding apps, and allow temperature to settle. The user’s target is **fullscreen on a 2020 M1**; do not substitute a small window for that acceptance run.
 
@@ -22,10 +22,14 @@ for run in 1 2 3; do
     --suite=matrix --samples=600 --warmup=120 --graphics=low \
     --out="$LTO_RESULTS/fullscreen-$run.json" \
     > "$LTO_RESULTS/fullscreen-$run.log" 2> "$LTO_RESULTS/fullscreen-$run-memory.log"
+  LTO_STATUS=$?
+  printf 'run %s exit %s\n' "$run" "$LTO_STATUS" >> "$LTO_RESULTS/exit-status.txt"
 done
 ```
 
 Do **not** add `--fixed-fps`, `--write-movie` or a frame cap: those invalidate real-time measurements. The benchmark disables V-sync, reports the actual window mode and size, and visits all twelve required locations in Low/Medium/High. These are deliberate rendering fixtures, separate from the continuous gameplay recording. The curved-track case includes moving train simulation.
+
+Retain failed attempts too. A nonzero exit, missing report, or Vulkan device-loss message is a failed run, not a usable performance sample. One hosted fresh-download diagnostic lost its device during High preparation; the physical device may behave differently, so record its actual outcome rather than substituting hosted results.
 
 Each case records initial entry frames separately from steady frames. Keep both. The JSON includes mean FPS, p50/p95/p99/worst frame times, raw intervals, draw calls, CPU process/physics and viewport render times, GPU render time when supplied by the driver, texture memory and static memory. Zero GPU timing means unavailable, not zero cost. The `time -l` log supplies peak process resident memory; Godot static memory alone is not total app memory. Startup and each preset’s preparation time/pipeline counts are separate from steady measurements.
 

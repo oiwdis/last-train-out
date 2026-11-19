@@ -1,0 +1,34 @@
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+
+
+=== Last Train Out - automated tests (Godot 4.5.1-stable (official), physics: Jolt Physics) ===
+
+[SUITE] test_photoreal_survival.gd
+  PASS  test_shipped_survival_scene_loads_both_real_rigs_and_locomotive
+  PASS  test_exposure_damage_slows_actual_gait_without_invalid_bones
+  PASS  test_realistic_carry_grips_remain_valid_under_fog_in_both_views
+  PASS  test_authored_locomotive_and_rods_follow_curves_and_grade
+  PASS  test_visible_wheelsets_contact_common_rails_across_the_route
+  PASS  test_route_phase_and_gauges_survive_fuel_exhaustion_and_restart
+  PASS  test_saved_camera_cargo_and_art_restore_at_all_three_stations
+  PASS  test_moving_save_restores_mechanism_camera_and_loose_supports
+[render-warmup] 10 views / 33 ms / draw pipelines=0.0
+  FAIL  test_load_waits_for_render_pause_before_resolving_car_local_support
+          ! rider restored at saved station, not scene spawn (expected blackwater, got harlow)
+          ! restored rider has actual train support
+          ! saved world position recovered (expected < 0.2000, got 3400.8618)
+          ! loose cargo uses synchronized saved car transform (expected < 0.2000, got 3400.8618)
+  PASS  test_camera_validation_is_atomic_and_original_m3_saves_still_load
+[render-warmup] 10 views / 7 ms / draw pipelines=0.0
+[render-warmup] 10 views / 1 ms / draw pipelines=0.0
+  PASS  test_render_preparation_covers_new_sites_and_fog_without_advancing_survival
+  PASS  test_station_dressing_uses_shared_pbr_without_new_collision_owners
+  PASS  test_four_danger_states_and_presets_keep_identical_simulation
+  PASS  test_fog_death_and_fresh_scene_recover_authored_character
+  PASS  test_results_pause_keeps_model_and_world_state_intact
+  PASS  test_scene_detachment_does_not_read_retired_skeleton_transforms
+[render-warmup] 10 views / 6 ms / draw pipelines=0.0
+  PASS  test_ledger_hotkey_cannot_override_the_render_preparation_pause
+  PASS  test_hud_names_added_stations_and_their_train_stops
+
+=== 17 passed, 1 failed, 18 total (20.4 s wall clock) ===
