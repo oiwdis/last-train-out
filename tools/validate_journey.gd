@@ -15,6 +15,7 @@ var output := "res://docs/validation/milestone35/gameplay"
 var integration_tour := false
 var quality := 0
 var load_restores := 0
+var save_fixture := ""
 
 func _ready() -> void:
 	var revision: Array = []
@@ -25,6 +26,7 @@ func _ready() -> void:
 		if arg == "--fuel-shortage": scenario = "fuel-shortage"
 		if arg == "--stranded": scenario = "stranded"
 		if arg == "--save-ui-only": scenario = "save-ui"
+		if arg.begins_with("--save-ui-from="): save_fixture = arg.trim_prefix("--save-ui-from=")
 		if arg == "--integration-tour": integration_tour = true
 		if arg.begins_with("--out="): output = arg.trim_prefix("--out=")
 		if arg.begins_with("--quality="): quality = clampi(int(arg.trim_prefix("--quality=")),0,2)
@@ -32,12 +34,17 @@ func _ready() -> void:
 	_run.call_deferred()
 
 func _run() -> void:
+	if not save_fixture.is_empty():
+		# Focused reload regression only; never enabled for the continuous tour.
+		assert(scenario == "save-ui")
+		JourneyController.pending_load = JourneySave.read_file(save_fixture)
 	game = preload("res://scenes/missions/harlow_escape.tscn").instantiate()
 	# The driver survives reloads as a separate root node. Continue Game reloads
 	# the actual shipped scene, exactly as in the exported app.
 	get_tree().root.add_child(game)
 	get_tree().current_scene = game
 	await game.graphics.wait_for_render_ready()
+	while not game.journey.ready_to_play: await get_tree().process_frame
 	await seconds(0.3)
 	bot = RouteBot.new(game.player)
 	view = game.camera_rig.exploration
@@ -215,10 +222,12 @@ func save_and_continue() -> void:
 	key(KEY_J)
 	for frame in 3: await get_tree().process_frame
 	check(game.journey.ui.panel.visible and get_tree().paused,"J opens actual save ledger")
+	var expected: Dictionary = JSON.parse_string(JSON.stringify(JourneySave.snapshot(game.journey)))
+	var expected_station := game.journey.current_station()
 	click_button("Save Game")
 	for frame in 3: await get_tree().process_frame
 	var saved := JourneySave.read_file()
-	check(JourneySave.valid(game.journey,saved),"Save Game button writes the played world")
+	check(JourneySave.valid(game.journey,saved) and saved == expected,"Save Game button writes the played world")
 	if failed: return
 	FileAccess.open(output.path_join("played-blackwater-save.json"),FileAccess.WRITE).store_string(JSON.stringify(saved,"  "))
 	await shot("06_blackwater_saved")
@@ -227,11 +236,13 @@ func save_and_continue() -> void:
 	game = get_tree().current_scene as Game
 	game.player.teleported.connect(func(_at: Vector3,_facing: Vector3) -> void: load_restores += 1,CONNECT_ONE_SHOT)
 	await game.graphics.wait_for_render_ready()
+	while not game.journey.ready_to_play: await get_tree().process_frame
 	await seconds(.4)
 	view = game.camera_rig.exploration
 	bot = RouteBot.new(game.player)
 	game.player.teleported.connect(func(_at: Vector3,_facing: Vector3) -> void: teleports += 1)
-	check(absf(game.train.distance-float(saved.train.distance)) < .2,"Continue restores actual "+game.journey.current_station().capitalize()+" stop")
+	check(absf(game.train.distance-float(saved.train.distance)) < .2 and game.journey.current_station() == expected_station,"Continue restores actual "+expected_station.capitalize()+" stop")
+	check(game.player.global_position.distance_to(JourneySave.unpack(saved.player.position)) < .2,"saved player world position recovered")
 	check(view.perspective == int(saved.camera.perspective),"saved camera perspective recovered")
 	check(game.player.is_on_train() if saved.player.car != "" else game.player.is_grounded(),"saved player support recovered")
 	var restored_storage: Array = JSON.parse_string(JSON.stringify(JourneySave.inventory(game.inventory_system.storage)))

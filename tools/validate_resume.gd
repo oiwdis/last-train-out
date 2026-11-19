@@ -21,6 +21,8 @@ func run() -> void:
 	game = load("res://scenes/missions/harlow_escape.tscn").instantiate()
 	root.add_child(game)
 	game.player.input.scripted = true
+	await game.graphics.wait_for_render_ready()
+	while not game.journey.ready_to_play: await process_frame
 	await frames(20)
 	if phase == "write":
 		# Deliberate fixture setup, not footage or a claimed playthrough.

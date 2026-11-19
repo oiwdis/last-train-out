@@ -91,14 +91,15 @@ func bind() -> void:
 	ui = JourneyUI.new()
 	add_child(ui)
 	ui.bind(self)
-	ready_to_play = true
 	load_milliseconds = Time.get_ticks_msec() - _started
 	if not pending_load.is_empty():
 		var saved := pending_load
 		pending_load = {}
 		await JourneySave.apply(self,saved)
+		ready_to_play = true
 		if mission.status != "active":
 			ui.show_results()
+	ready_to_play = true
 	set_physics_process(true)
 
 func _physics_process(delta: float) -> void:

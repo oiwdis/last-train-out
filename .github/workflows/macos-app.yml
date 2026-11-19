@@ -43,7 +43,7 @@ env:
   DEV_ZIP: LastTrainOut-macos-universal.zip
   SIGNED_ZIP: LastTrainOut-macos-universal-signed.zip
   # The build fails if fewer tests than this pass, so tests cannot silently go missing.
-  MIN_TESTS: "291"
+  MIN_TESTS: "292"
 
 jobs:
   build:
@@ -195,6 +195,7 @@ jobs:
           fi
 
       - name: Measure windowed rendering on hosted Apple Silicon
+        id: performance
         if: steps.diagnostics.outputs.render == 'true'
         # Additional hardware evidence. A measurement timeout must not discard a
         # playable build; failures/logs remain visible and are reported separately.
@@ -213,6 +214,7 @@ jobs:
           python3 tools/macos/benchmark_integration.py "$GODOT" "$RUNNER_TEMP/source-art" "$RUNNER_TEMP/source-survival" tests/_output/performance
 
       - name: Record the uninterrupted integrated journey
+        id: recording
         if: steps.diagnostics.outputs.render == 'true'
         # Fixed-rate recording runs AFTER all real-time measurements.
         continue-on-error: true
@@ -281,6 +283,19 @@ jobs:
           path: ${{ runner.temp }}/selftest/
           if-no-files-found: warn
           retention-days: 14
+
+      - name: Require completed integration evidence
+        if: always() && steps.diagnostics.outputs.render == 'true'
+        env:
+          PERFORMANCE_OUTCOME: ${{ steps.performance.outcome }}
+          RECORDING_OUTCOME: ${{ steps.recording.outcome }}
+        run: |
+          # Package/log uploads happen first, but failed evidence must leave a
+          # failed check rather than a misleading green finalization build.
+          test "$PERFORMANCE_OUTCOME" = success
+          test "$RECORDING_OUTCOME" = success
+          test -s tests/_output/performance/integration-matrix.json
+          test -s tests/_output/visual/media.json
 
   # Downloads the artifact the way a player would, unzips it and launches it - on an Apple
   # Silicon Mac and on an Intel Mac, so both halves of the universal app are really run.

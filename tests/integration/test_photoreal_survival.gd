@@ -151,6 +151,26 @@ func test_moving_save_restores_mechanism_camera_and_loose_supports() -> void:
 	check(game.player.is_on_train(),"saved passenger stable on curve")
 	check_less(crew.to_local(game.scavenging.world_items[0].global_position).length(),4,"saved loose cargo stays in moving car")
 
+func test_load_waits_for_render_pause_before_resolving_car_local_support() -> void:
+	game.journey.next_stop = 3
+	await route_fixture(game.journey.route.stations.blackwater)
+	var cargo := game.scavenging.spawn_world(ItemCatalog.find(&"coal_sack"),1,game.player.global_position+Vector3(.8,0,0))
+	await seconds(.3)
+	var saved := snapshot()
+	check(saved.player.car != "" and saved.cargo[0].car != "","save contains rider and loose cargo on real car")
+	await route_fixture(0)
+	# Physics-frame signals still fire while render preparation pauses physics.
+	# Starting a load here reproduces Continue on a slow rendered frame.
+	game.graphics._prepare_rendering()
+	check(get_tree().paused,"render preparation holds the world")
+	check(await JourneySave.apply(game.journey,saved),"save accepted during preparation")
+	await game.graphics.wait_for_render_ready()
+	await seconds(.5)
+	check_eq(game.journey.current_station(),"blackwater","rider restored at saved station, not scene spawn")
+	check(game.player.is_on_train(),"restored rider has actual train support")
+	check_less(game.player.global_position.distance_to(JourneySave.unpack(saved.player.position)),.2,"saved world position recovered")
+	check_less(game.scavenging.world_items[0].global_position.distance_to(JourneySave.unpack(saved.cargo[0].position)),.2,"loose cargo uses synchronized saved car transform")
+
 func test_camera_validation_is_atomic_and_original_m3_saves_still_load() -> void:
 	var saved := snapshot()
 	for camera in ["wrong",{}, {"perspective":2,"yaw":0,"pitch":0},{"perspective":0,"yaw":INF,"pitch":0},{"perspective":1,"yaw":0,"pitch":2}]:

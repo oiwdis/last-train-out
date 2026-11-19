@@ -211,6 +211,10 @@ static func apply(j: JourneyController, d: Dictionary) -> bool:
 		return false
 	var g := j.game
 	var train := g.train
+	# Render preparation pauses the physics server. physics_frame still emits,
+	# but AnimatableBody3D cannot synchronize its new transform until unpaused.
+	# Resolve car-local riders/cargo only after preparation releases that pause.
+	await g.graphics.wait_for_render_ready()
 	j.set_physics_process(false)
 	g.fog_system.set_physics_process(false)
 	train.set_physics_process(false)
