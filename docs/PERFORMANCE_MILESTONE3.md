@@ -1,5 +1,7 @@
 # Milestone 3 performance measurements
 
+Historical M2.5-to-fog comparison. See [the finalization comparison](PERFORMANCE_MILESTONE3_FINALIZATION.md) for the three-station route against `ebfa2689`.
+
 Measured on **Linux, Intel Xeon Platinum 8573C, Mesa 25.0.7 llvmpipe (LLVM 19.1.7, 256 bits), Godot 4.5.1 Compatibility/OpenGL**. This is a software GPU in a shared cloud machine, not an Apple Silicon Mac. These numbers do not establish physical M1 playability or 60 FPS.
 
 M2.5: `8cde10c`, detached checkout. M3: fog implementation from `6b47802` with HUD/rehearsal refinements; the rendered formulas/defaults are unchanged in the final revision. The existing `benchmark_milestone25.gd` supplies the baseline; `benchmark_fog.gd` retains its identical platform/warehouse positions, targets, FOV and preset procedure. Only fog authority is frozen for stable observation: 210 m behind the player (distant), then 8 m behind (near front). Both runs use the same environment, audio Dummy, 8 warmup frames and 24 directly timed rendered frame intervals per case, VSync requested off, no fixed FPS. Presets retain authored shadows, lighting and resolution scales. Actual viewport was **1180 × 812 in all three reports**: the cloud window manager resized the requested 960 × 540 window. Actual dimensions, rather than requested flags, govern comparison.

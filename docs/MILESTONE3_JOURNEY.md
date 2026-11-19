@@ -55,12 +55,14 @@ Save is available while grounded, including on a moving train and while holding 
 ```sh
 tools/run_tests.sh /path/to/Godot_v4.5.1
 /path/to/godot --headless --path . --fixed-fps 60 tools/validate_journey.tscn
+/path/to/godot --headless --path . --fixed-fps 60 tools/validate_journey.tscn -- --fuel-shortage
+/path/to/godot --headless --path . --fixed-fps 60 tools/validate_journey.tscn -- --stranded
 /path/to/godot --headless --path . --fixed-fps 60 --script res://tools/validate_resume.gd -- --phase=write
 /path/to/godot --headless --path . --fixed-fps 60 --script res://tools/validate_resume.gd -- --phase=read
 ```
 
 The continuous journey validator uses movement, aiming, E interactions and the real supply-ledger R action. It does not inject fuel, edit mission progress, reposition the train/player, or reset fog. `--late-escape` waits for the actual front in Ashford’s distant workshop, carries a machine component out under approaching fog, drops it using G, and runs back to the train. The separate process-resume fixture deliberately sets up a mid-route save and labels that setup; it is not the recorded journey.
 
-The macOS pipeline retains Godot 4.5.1, universal export, Apple Silicon windowed/headless, Intel headless, fresh-download checks, bundle integrity and optional signing/notarization. The test floor increases from 214 to 246. All original tests remain; two assertions naming the startup scene now expect the inherited mission scene. The original exported mechanics checks still run against their original sandbox, after the actual shipped mission has been loaded and validated.
+The macOS pipeline retains Godot 4.5.1, universal export, Apple Silicon windowed/headless, Intel headless, fresh-download checks, bundle integrity and optional signing/notarization. It also runs the complete journey, natural fuel exhaustion/recovery, natural stationary-train fog catch and two-process resume checks. The test floor increases from 214 to 246. All original tests remain; two assertions naming the startup scene now expect the inherited mission scene. The original exported mechanics checks still run against their original sandbox, after the actual shipped mission has been loaded and validated.
 
 See the finalization validation/performance report and PR #4 integration notes for evidence and remaining limits.

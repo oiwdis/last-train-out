@@ -1,5 +1,7 @@
 # Fog balancing, first playable pass
 
+These values remain the original Harlow sandbox preset. The shipped three-station mission uses `resources/journey/escape_fog.tres` and a seed/difficulty menu; see [current journey pacing](MILESTONE3_JOURNEY.md#pacing).
+
 All values live in `resources/fog/standard.tres` / `scripts/fog/fog_config.gd`; each run duplicates its resource. Presets do not change them. `scenario_seed` is exported on FogSystem. Difficulty is a tuning multiplier, not a new options menu.
 
 | Setting | Standard | Reason |

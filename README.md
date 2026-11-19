@@ -1,5 +1,7 @@
 > Milestone 3 now opens **The Harlow Escape**, a continuous three-station survival mission. Press **J** for route progress, Save / Continue / New / Restart. See [journey, controls and save format](docs/MILESTONE3_JOURNEY.md) and [PR #4 integration notes](docs/MILESTONE3_INTEGRATION.md).
 
+> [Finalization tests, scenarios and screenshots](docs/MILESTONE3_FINALIZATION_VALIDATION.md) · [Continuous gameplay video](docs/validation/milestone3-finalization/harlow-escape-continuous.mp4) · [Performance comparison](docs/PERFORMANCE_MILESTONE3_FINALIZATION.md). Current macOS download and build checks are linked on [draft PR #5](https://github.com/oiwdis/last-train-out/pull/5).
+
 # Milestone 3: advancing fog
 
 This branch adds survival pressure to the stable M2.5 gameplay baseline. See [Milestone 3](docs/MILESTONE_3.md), [fog architecture](docs/FOG_ARCHITECTURE.md) and [balancing](docs/FOG_BALANCING.md). F3 shows fog diagnostics; R restarts after fog death. E at the locomotive bunker burns one coal sack from train storage. Closed doors reduce exposure, but no interior is immune.

@@ -1,0 +1,70 @@
+{
+  "source_commit": "f506d45fa3016e3a64ed418e80408278b244f659",
+  "capture": "One uninterrupted Godot 4.5.1 Movie Maker run; actual scripted PlayerInput, aimed E, R storage and G drop; no scene cuts, teleportation or survival-state injection.",
+  "scene": "tools/validate_journey.tscn -- --late-escape",
+  "resolution": [
+    1280,
+    720
+  ],
+  "capture_fps": 8,
+  "physics_ticks_per_second": 60,
+  "preset": "Low",
+  "renderer": "Compatibility/OpenGL, Linux llvmpipe",
+  "speed": "Normal simulation time; includes the actual Ashford wait and a four-second paused results hold. Capture FPS is not a performance measurement.",
+  "source_avi_sha256": "f4d140377cfea7715b3bfaaf1d9301643999794178fc26cf97716c526f0e737d",
+  "file": "harlow-escape-continuous.mp4",
+  "sha256": "5f533fb026282bb36bfe4df6229df5a255c81efd8811a5df401f00c1301b29e1",
+  "media": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "index": 0,
+        "codec_name": "h264",
+        "width": 1280,
+        "height": 720,
+        "r_frame_rate": "8/1",
+        "duration": "1395.250000",
+        "nb_frames": "11162"
+      },
+      {
+        "index": 1,
+        "codec_name": "aac",
+        "sample_rate": "48000",
+        "channels": 2,
+        "r_frame_rate": "0/0",
+        "duration": "1395.250000",
+        "nb_frames": "65404"
+      }
+    ],
+    "format": {
+      "duration": "1395.250000",
+      "size": "31285625"
+    }
+  },
+  "checks_passed": 142,
+  "teleports": 0,
+  "mission_results": {
+    "distance": 4260.00608047029,
+    "exposure_seconds": 0.0,
+    "mission": "harlow_escape_v1",
+    "peak_exposure": 0.0,
+    "stations_visited": [
+      "harlow",
+      "ashford",
+      "blackwater"
+    ],
+    "status": "escaped",
+    "supplies_collected": {
+      "ashford/coal_sack": 2,
+      "ashford/machine_component": 1,
+      "blackwater/canned_food": 3,
+      "blackwater/medicine": 2,
+      "harlow/coal_sack": 1
+    },
+    "time_survived": 1390.79999999983,
+    "version": 1
+  },
+  "full_decode_passed": true,
+  "capture_shutdown_warning": "ObjectDB instances leaked at exit after the completed AVI; retained in continuous-journey.log. No gameplay assertion failed."
+}

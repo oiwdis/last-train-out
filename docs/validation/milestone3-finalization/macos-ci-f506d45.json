@@ -1,0 +1,407 @@
+{
+  "source_commit": "f506d45fa3016e3a64ed418e80408278b244f659",
+  "ci_checkout_commit": "3e6b9d28a772c5962cc36d7575c9dfd35a8d56a9",
+  "run_url": "https://github.com/oiwdis/last-train-out/actions/runs/44435354478",
+  "jobs": [
+    {
+      "id": 135262716887,
+      "name": "Test, export and package",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 44435354478,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Run actions/checkout@v7",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Confirm an Apple Silicon runner",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Restore Godot 4.5.1 from the cache",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Install Godot 4.5.1 and its macOS export template",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Run the automated tests",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Validate journey, fuel, fog and cold resume",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Upload the test logs",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Export Last Train Out.app",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9
+        },
+        {
+          "name": "Check the bundle",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10
+        },
+        {
+          "name": "Launch the exported app without a window",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11
+        },
+        {
+          "name": "Launch the exported app with its window",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12
+        },
+        {
+          "name": "Zip the app",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13
+        },
+        {
+          "name": "Check the ZIP holds the complete app",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14
+        },
+        {
+          "name": "Upload the app",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15
+        },
+        {
+          "name": "Summarise the build",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16
+        },
+        {
+          "name": "Upload the self-test reports",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17
+        },
+        {
+          "name": "Post Restore Godot 4.5.1 from the cache",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 33
+        },
+        {
+          "name": "Post Run actions/checkout@v7",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 34
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 35
+        }
+      ]
+    },
+    {
+      "id": 135264360238,
+      "name": "Download and launch (Apple Silicon)",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 44435354478,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Run actions/checkout@v7",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Confirm the runner's architecture",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Download the ZIP",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Unzip it",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Check the unzipped bundle",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Show Gatekeeper's verdict on the development build",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Launch the unzipped app without a window",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Launch the unzipped app with its window",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9
+        },
+        {
+          "name": "Upload the self-test reports",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10
+        },
+        {
+          "name": "Post Run actions/checkout@v7",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 21
+        }
+      ]
+    },
+    {
+      "id": 135264360247,
+      "name": "Download and launch (Intel)",
+      "status": "completed",
+      "conclusion": "success",
+      "run_id": 44435354478,
+      "logs_url": null,
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Run actions/checkout@v7",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Confirm the runner's architecture",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Download the ZIP",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Unzip it",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Check the unzipped bundle",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Show Gatekeeper's verdict on the development build",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Launch the unzipped app without a window",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8
+        },
+        {
+          "name": "Launch the unzipped app with its window",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 9
+        },
+        {
+          "name": "Upload the self-test reports",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10
+        },
+        {
+          "name": "Post Run actions/checkout@v7",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 21
+        }
+      ]
+    },
+    {
+      "id": 135265553058,
+      "name": "Sign with Developer ID, notarize and staple",
+      "status": "completed",
+      "conclusion": "skipped",
+      "run_id": 44435354478,
+      "logs_url": null,
+      "steps": null
+    }
+  ],
+  "artifacts": [
+    {
+      "id": 14489485609,
+      "name": "LastTrainOut-macos-universal.zip",
+      "size_in_bytes": 83735088,
+      "url": "https://api.github.com/repos/oiwdis/last-train-out/actions/artifacts/14489485609",
+      "archive_download_url": "https://api.github.com/repos/oiwdis/last-train-out/actions/artifacts/14489485609/zip",
+      "expired": false,
+      "created_at": "2026-11-19T01:17:56Z",
+      "expires_at": "2026-12-19T01:17:55Z",
+      "updated_at": "2026-11-19T01:17:56Z",
+      "digest": "sha256:c71a8a92c07f976d5d71088cdb94a239d30db0efda13c3f8c385d3839f5d83a4",
+      "workflow_run": {
+        "id": 44435354478,
+        "repository_id": 1457221861,
+        "head_repository_id": 1457221861,
+        "head_branch": "feature/milestone-3-advancing-fog",
+        "head_sha": "f506d45fa3016e3a64ed418e80408278b244f659"
+      }
+    },
+    {
+      "id": 14488997237,
+      "name": "selftest-build",
+      "size_in_bytes": 525696,
+      "url": "https://api.github.com/repos/oiwdis/last-train-out/actions/artifacts/14488997237",
+      "archive_download_url": "https://api.github.com/repos/oiwdis/last-train-out/actions/artifacts/14488997237/zip",
+      "expired": false,
+      "created_at": "2026-11-19T01:17:57Z",
+      "expires_at": "2026-12-03T01:17:56Z",
+      "updated_at": "2026-11-19T01:17:57Z",
+      "digest": "sha256:353ffd6394c6ac040cb138bdbe7dd869cbba013aded5f05a891cc3a2404039f9",
+      "workflow_run": {
+        "id": 44435354478,
+        "repository_id": 1457221861,
+        "head_repository_id": 1457221861,
+        "head_branch": "feature/milestone-3-advancing-fog",
+        "head_sha": "f506d45fa3016e3a64ed418e80408278b244f659"
+      }
+    },
+    {
+      "id": 14488926226,
+      "name": "test-logs",
+      "size_in_bytes": 23353,
+      "url": "https://api.github.com/repos/oiwdis/last-train-out/actions/artifacts/14488926226",
+      "archive_download_url": "https://api.github.com/repos/oiwdis/last-train-out/actions/artifacts/14488926226/zip",
+      "expired": false,
+      "created_at": "2026-11-19T01:16:05Z",
+      "expires_at": "2026-12-03T01:16:05Z",
+      "updated_at": "2026-11-19T01:16:05Z",
+      "digest": "sha256:b169c347ba4bf33e46db0396a932b4cf130677a6a43f63a3afac50cb16e852fe",
+      "workflow_run": {
+        "id": 44435354478,
+        "repository_id": 1457221861,
+        "head_repository_id": 1457221861,
+        "head_branch": "feature/milestone-3-advancing-fog",
+        "head_sha": "f506d45fa3016e3a64ed418e80408278b244f659"
+      }
+    },
+    {
+      "id": 14488772289,
+      "name": "selftest-arm64",
+      "size_in_bytes": 523645,
+      "url": "https://api.github.com/repos/oiwdis/last-train-out/actions/artifacts/14488772289",
+      "archive_download_url": "https://api.github.com/repos/oiwdis/last-train-out/actions/artifacts/14488772289/zip",
+      "expired": false,
+      "created_at": "2026-11-19T01:20:40Z",
+      "expires_at": "2026-12-03T01:20:37Z",
+      "updated_at": "2026-11-19T01:20:40Z",
+      "digest": "sha256:850b6ea8beb6413678cb2cb3e584b967395101d516d85960b41b46cdf604ab04",
+      "workflow_run": {
+        "id": 44435354478,
+        "repository_id": 1457221861,
+        "head_repository_id": 1457221861,
+        "head_branch": "feature/milestone-3-advancing-fog",
+        "head_sha": "f506d45fa3016e3a64ed418e80408278b244f659"
+      }
+    },
+    {
+      "id": 14488522551,
+      "name": "selftest-x86_64",
+      "size_in_bytes": 1946,
+      "url": "https://api.github.com/repos/oiwdis/last-train-out/actions/artifacts/14488522551",
+      "archive_download_url": "https://api.github.com/repos/oiwdis/last-train-out/actions/artifacts/14488522551/zip",
+      "expired": false,
+      "created_at": "2026-11-19T01:18:59Z",
+      "expires_at": "2026-12-03T01:18:57Z",
+      "updated_at": "2026-11-19T01:18:59Z",
+      "digest": "sha256:7838b95f5079236adbc772d53ca132347f53d1bf288bc77473742bc7b82b6301",
+      "workflow_run": {
+        "id": 44435354478,
+        "repository_id": 1457221861,
+        "head_repository_id": 1457221861,
+        "head_branch": "feature/milestone-3-advancing-fog",
+        "head_sha": "f506d45fa3016e3a64ed418e80408278b244f659"
+      }
+    }
+  ]
+}

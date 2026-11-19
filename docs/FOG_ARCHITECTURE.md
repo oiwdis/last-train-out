@@ -1,5 +1,7 @@
 # Advancing fog architecture
 
+Historical architecture for the original fog pass. The simulation remains in use; [journey architecture](MILESTONE3_JOURNEY.md) extends it with actual curved train travel, three stations, mission ownership and complete saved-world restoration. [Current integration notes](MILESTONE3_INTEGRATION.md) supersede the one-station constraints below.
+
 Milestone 3 starts at M2.5 commit `8cde10cf78c1ea0cf7f7bafb5fc146d2e12514c2` (PR #3). It contains no M2.6 commits. The target branch is `feature/milestone-2-5-full-3d`; no merge is requested.
 
 ## Authority and route coordinates

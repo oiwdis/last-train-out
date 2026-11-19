@@ -1,5 +1,7 @@
 # Milestone 3 validation map
 
+Historical report for the original one-station fog implementation. The expanded journey, full save UI and current evidence are in [Milestone 3 finalization validation](MILESTONE3_FINALIZATION_VALIDATION.md).
+
 Engine: official Godot 4.5.1. Completed Linux baseline: **168/168**. Final source suite: **214/214**, including 46 new fog cases, import and a 600-frame main-scene smoke. The last local full run took 88.1 seconds. Two obsolete placeholder assertions now test actual fog state and warning behavior. Logs and JSON summaries are in [validation/milestone3](validation/milestone3).
 
 | Requested coverage | Executed coverage / limit |

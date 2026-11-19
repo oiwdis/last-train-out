@@ -1,5 +1,7 @@
 # Milestone 3 — The Advancing Fog
 
+This records the original one-station implementation. [The Harlow Escape finalization](MILESTONE3_JOURNEY.md) adds the playable three-station route and full save UI; [current validation](MILESTONE3_FINALIZATION_VALIDATION.md) supersedes the scope limits below.
+
 Branch: `feature/milestone-3-advancing-fog`. Base: completed M2.5 `8cde10cf78c1ea0cf7f7bafb5fc146d2e12514c2`. No M2.6 work was merged, rebased, cherry-picked or modified.
 
 Implemented: route-driven advancing danger; four proximity states; seeded, warned environmental events; individual exposure/health/recovery; door-aware shelter; minimal fuel pressure and stored-coal refueling; survival HUD/F3 diagnostics; original layered audio; distance-limited fog sheets and haze; clues; serializable survival authority; existing train/scavenging/FP/TP compatibility.
