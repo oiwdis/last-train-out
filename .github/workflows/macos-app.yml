@@ -52,6 +52,7 @@ jobs:
     timeout-minutes: 90
     env:
       APP: build/macos/Last Train Out.app
+      SOURCE_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
     steps:
       - uses: actions/checkout@v7
 
@@ -104,6 +105,13 @@ jobs:
             echo '```'
           } >> "$GITHUB_STEP_SUMMARY"
 
+      - name: Save validated asset imports before rendering checks
+        if: steps.imports.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v6
+        with:
+          path: .godot/imported
+          key: godot-imports-macos-arm64-4.5.1-v1-${{ hashFiles('project.godot', 'assets/**', 'resources/**') }}
+
       - name: Validate journey, fuel, fog and cold resume
         run: |
           "$GODOT" --headless --path . --fixed-fps 60 tools/validate_journey.tscn -- --integration-tour --late-escape > tests/_output/journey.log 2>&1
@@ -118,14 +126,7 @@ jobs:
             "$GODOT" --headless --path . --fixed-fps 60 --script res://tools/validate_resume.gd -- "--phase=$phase" > "tests/_output/resume-$phase.log" 2>&1
             if grep -E '^(ERROR|SCRIPT ERROR)|\[resume\] FAIL' "tests/_output/resume-$phase.log"; then exit 1; fi
           done
-          cp docs/validation/milestone3-finalization/process-resume.json tests/_output/
-
-      - name: Save validated asset imports before rendering checks
-        if: steps.imports.outputs.cache-hit != 'true'
-        uses: actions/cache/save@v6
-        with:
-          path: .godot/imported
-          key: godot-imports-macos-arm64-4.5.1-v1-${{ hashFiles('project.godot', 'assets/**', 'resources/**') }}
+          cp docs/validation/milestone35/gameplay/process-resume.json tests/_output/
 
       - name: Restore baked Vulkan shaders
         id: shaders

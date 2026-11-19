@@ -1,7 +1,7 @@
 extends SceneTree
 ## Two actual processes: a moving-world save fixture, followed by a cold load.
-const SAVE := "/tmp/lto-m3-process-save.json"
-const REPORT := "res://docs/validation/milestone3-finalization/process-resume.json"
+const SAVE := "/tmp/lto-m35-process-save.json"
+const REPORT := "res://docs/validation/milestone35/gameplay/process-resume.json"
 var phase := "write"
 var checks: Array = []
 var game: Game
@@ -12,6 +12,7 @@ func _initialize() -> void:
 	run.call_deferred()
 
 func run() -> void:
+	DirAccess.make_dir_recursive_absolute(REPORT.get_base_dir())
 	var saved := JourneySave.read_file(SAVE) if phase == "read" else {}
 	if phase == "read":
 		JourneyController.pending_load = saved
@@ -42,6 +43,7 @@ func run() -> void:
 		game.fog_system.simulation.advance(650)
 		game.train.start()
 		await frames(420)
+		game.camera_rig.exploration.restore_view(0,-1.13,.25)
 		check(JourneySave.write_file(game.journey,SAVE).begins_with("Game saved"),"moving save written to disk")
 	else:
 		check(not saved.is_empty(),"previous process file exists")
@@ -56,6 +58,11 @@ func run() -> void:
 		check(game.journey.stations[1].caches[0].contents.used_slots() == 0,"searched station remains depleted")
 		check(game.journey.mission.note_read,"mission note preserved")
 		check(game.fog_system.players.local.exposure.health == 73,"health preserved")
+		check(game.camera_rig.exploration.perspective == 0 and absf(game.camera_rig.exploration.yaw+1.13)<.001,"camera mode and heading survive cold load")
+		check(game.player.visual.has_node("RailWorker"),"authored survivor restored")
+		var art := game.train.get_node("Locomotive").find_children("*","TrainArt",true,false)[0] as TrainArt
+		check(absf(art._wheel_phase-game.train.distance)<.2,"rod phase synchronizes after cold load")
+		check(absf(art.mechanics.gauge_values.x-game.train.speed/40.0)<.01,"live gauge synchronizes after cold load")
 		var start := game.train.distance
 		await frames(180)
 		check(game.train.distance > start+20 and game.player.is_on_train(),"journey continues after cold load")
