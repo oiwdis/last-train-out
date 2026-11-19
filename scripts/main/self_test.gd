@@ -18,8 +18,12 @@ const MAIN_SCENE_SETTING := "application/run/main_scene"
 const REPORT_ARGUMENT := "--selftest-report="
 const SCREENSHOT_ARGUMENT := "--selftest-screenshot="
 const REPORT_ENVIRONMENT := "LASTTRAINOUT_SELFTEST"
-## The whole run is abandoned after this many real seconds.
-const WATCHDOG_SECONDS := 120.0
+## The combined suite loads the shipped mission plus the legacy mechanics
+## fixture and prepares every preset. Hosted run 45 was still passing checks
+## when its old 120-second timer expired during preparation. Retain every
+## assertion with a larger bounded budget; the launcher also kills at 300s wall
+## time. This budget is not a startup-performance acceptance threshold.
+const WATCHDOG_SECONDS := 240.0
 const THUMBNAIL_SIZE := Vector2i(480, 270)
 
 
