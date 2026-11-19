@@ -10,7 +10,7 @@ The build job passed every required stage: asset checks, import validation/main-
 - `process-resume.json`: 17 passing cold second-process save/load checks.
 - `build/`: exported ARM headless 46/46 and windowed 49/49, plus export/material inventory logs.
 - `arm64/`: first fresh-download attempt, headless 46/46 and windowed 49/49. The subsequent packaged legacy benchmark **failed** with Vulkan device loss during High preparation; `packaged-benchmark-presets.log` retains the complete failure. This attempt's job is not claimed as passing.
-- `arm64-retry/`: attempt 2 downloads the **same ZIP hash** on a fresh hosted runner. Headless 46/46, windowed 49/49 and all 81 packaged diagnostic cases pass (6 preset, 3 route and 72 entry/steady matrix rows). The complete workflow is green on attempt 2. A successful retry does not establish the cause or a fix for the first device loss; both attempts remain visible.
+- `arm64-retry/`: attempt 2 downloads the **same ZIP hash** on a fresh hosted runner. Headless 46/46, windowed 49/49 and all 81 packaged diagnostic cases pass (6 preset, 3 route and 72 entry/steady matrix rows). The complete workflow is green on attempt 2. The matrix nevertheless logs `ObjectDB instances leaked` / `1 resources still in use at exit` during shutdown; its 72 result rows and zero process exit do not establish clean resource teardown. This remaining diagnostic cleanup issue is retained in the log. A successful retry does not establish the cause or a fix for the first device loss; both attempts remain visible.
 - `intel/`: fresh-download x86_64 headless 46/46. The hosted Intel runner has no usable display GPU, so it does not validate Intel rendering.
 
 ## Application download

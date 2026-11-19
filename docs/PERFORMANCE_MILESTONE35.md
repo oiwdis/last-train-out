@@ -20,7 +20,7 @@ Ablations repeat the same Harlow/fog views with idle worker animation disabled, 
 
 The physical target is a 2020 M1 Mac in fullscreen, with a Low goal of 30+ FPS. Hosted Apple Silicon and software-rendered Linux do not establish this target. Follow the [repeatable physical-M1 procedure](M1_MILESTONE35.md), retain p99 and worst entry frames alongside averages, and record actual display size, internal render scale, power and thermal conditions.
 
-The separate fresh-download diagnostic in run 46 attempt 1 hit a Vulkan/MoltenVK GPU timeout and device loss during High preparation. The windowed gameplay self-test had passed. Retrying the identical ZIP on a fresh runner passed all gameplay checks and 81 diagnostic cases; [both attempts are retained](validation/milestone35/native-final/README.md). This does not prove the device-loss cause or a fix. Those short 24-frame availability checks are separate from the full cohort below.
+The separate fresh-download diagnostic in run 46 attempt 1 hit a Vulkan/MoltenVK GPU timeout and device loss during High preparation. The windowed gameplay self-test had passed. Retrying the identical ZIP on a fresh runner passed all gameplay checks and 81 diagnostic cases; [both attempts are retained](validation/milestone35/native-final/README.md). The retry matrix also logs one resource still in use at shutdown despite a zero process exit and complete rows; it is not a clean-teardown result. This does not prove the device-loss cause or a fix. Those short 24-frame availability checks are separate from the full cohort below.
 
 
 ## Final runtime cohort: run 46

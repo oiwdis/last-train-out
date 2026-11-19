@@ -363,5 +363,18 @@
     "2026-11-19T05:25:26.6506740Z   SOURCE_SHA: 45c3b338a694f587b5290af0e8ce19208d0a702e",
     "2026-11-19T05:25:28.0742180Z   MIN_TESTS: 292",
     "2026-11-19T05:25:28.0742820Z   SOURCE_SHA: 45c3b338a694f587b5290af0e8ce19208d0a702e"
-  ]
+  ],
+  "fresh_arm64_retry": {
+    "run_attempt": 2,
+    "job_id": 135364005475,
+    "artifact_id": 14501723422,
+    "artifact_bytes": 643716,
+    "workflow_outcome": "success",
+    "same_app_sha256": "69b0ca231a9508b039015901218514d4cc305b07aa769d3e1149f1d7c65d47d3",
+    "headless_checks": 46,
+    "windowed_checks": 49,
+    "packaged_diagnostic_cases": 81,
+    "diagnostic_exit_warning": "ObjectDB instances leaked; 1 resource still in use at exit in packaged matrix log",
+    "first_attempt_failure_retained": "arm64/packaged-benchmark-presets.log"
+  }
 }
