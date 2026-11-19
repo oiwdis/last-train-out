@@ -14,6 +14,7 @@ var loading: Dictionary = {}
 var output_dir := ""
 var prepared: Array = []
 var transitions: Array = []
+var partial_report: FileAccess
 var trace_stage := ""
 var timeline: Node
 const TIMELINE = preload("res://scripts/diagnostics/frame_timeline.gd")
@@ -30,6 +31,7 @@ func _initialize() -> void:
 	run.call_deferred()
 
 func run() -> void:
+	partial_report = FileAccess.open(destination+".jsonl",FileAccess.WRITE)
 	Engine.max_fps = 0
 	DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
 	timeline = TIMELINE.new()
@@ -232,6 +234,9 @@ func measure(location: String, preset: int, stage: String, count: int) -> void:
 		"frames_over_33_3_ms":values.filter(func(v):return v>33.3).size(),"frames_over_50_ms":values.filter(func(v):return v>50.0).size(),"frames_over_100_ms":values.filter(func(v):return v>100.0).size()}
 	for key in sums: row[key] = sums[key]/count
 	rows.append(row)
+	if partial_report != null:
+		partial_report.store_line(JSON.stringify(row))
+		partial_report.flush()
 	print("[integration-benchmark] ",location," / ",row.preset," / ",stage," mean=",mean," p99=",row.p99_ms," pipelines=",delta)
 
 func percentile(values: Array, fraction: float) -> float:

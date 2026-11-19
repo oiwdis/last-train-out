@@ -80,9 +80,20 @@ jobs:
           find .godot/imported -name '*.scn' -delete
           "$GODOT" --headless --path . --import > tests/_output/investigation/import.log 2>&1
           if grep -E '^(ERROR|SCRIPT ERROR)|Parse Error' tests/_output/investigation/import.log; then exit 1; fi
-      - name: Collect raw baseline and profiling evidence
+      - name: Collect startup traces
+        if: ${{ inputs.profile_suite == 'all' || inputs.profile_suite == 'startup' }}
+        run: python3 tools/macos/profile_integration.py "$GODOT" tests/_output/investigation startup
+      - name: Retain startup evidence before longer measurements
+        if: always() && (inputs.profile_suite == 'all' || inputs.profile_suite == 'startup')
+        uses: actions/upload-artifact@v7
+        with:
+          name: performance-startup
+          path: tests/_output/investigation/
+          retention-days: 30
+      - name: Collect raw baseline and stack profiling evidence
+        if: ${{ inputs.profile_suite != 'startup' }}
         env:
-          PROFILE_SUITE: ${{ inputs.profile_suite }}
+          PROFILE_SUITE: ${{ inputs.profile_suite == 'all' && 'matrix' || inputs.profile_suite }}
         run: python3 tools/macos/profile_integration.py "$GODOT" tests/_output/investigation "$PROFILE_SUITE"
       - uses: actions/upload-artifact@v7
         if: always()

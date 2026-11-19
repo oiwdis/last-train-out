@@ -87,7 +87,7 @@ def run(name, script, arguments, timeout=900, capture_stacks=False):
               'engine_diagnostics': [line for line in text.splitlines() if line.startswith(('ERROR:', 'SCRIPT ERROR:', 'WARNING:', 'Leaked instance:', 'Resource still in use:'))]}
     (out / (name + '-process.json')).write_text(json.dumps({'status': status, 'rss': rss, 'stdout_arrival_timeline': arrivals}, indent=2))
     metadata['runs'].append(status)
-    (out / 'investigation.json').write_text(json.dumps(metadata, indent=2))
+    (out / ('investigation-' + suite + '.json')).write_text(json.dumps(metadata, indent=2))
     print(name, 'exit', process.returncode, 'report', report.exists(), flush=True)
 
 
