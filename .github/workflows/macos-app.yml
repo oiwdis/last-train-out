@@ -152,6 +152,15 @@ jobs:
           key: godot-imports-macos-arm64-4.5.1-v1-${{ hashFiles('project.godot', 'assets/**', 'resources/**') }}
           restore-keys: godot-imports-macos-arm64-4.5.1-v1-
 
+      - name: Reuse validated imports for a manual release
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.import_run != '' }}
+        uses: actions/download-artifact@v8
+        with:
+          name: validated-imports
+          path: .godot/imported
+          run-id: ${{ inputs.import_run }}
+          github-token: ${{ github.token }}
+
       - name: Discard cached scenes with obsolete texture UIDs
         # Keep expensive compressed textures, but rebuild scene dependencies
         # from source when a restored cache predates an asset replacement.
