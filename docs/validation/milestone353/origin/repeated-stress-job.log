@@ -1,0 +1,416 @@
+﻿2026-11-19T22:21:24.6367970Z Current runner version: '2.338.2'
+2026-11-19T22:21:24.6395220Z ##[group]Runner Image Provisioner
+2026-11-19T22:21:24.6396360Z Hosted Compute Agent
+2026-11-19T22:21:24.6411080Z Version: 20261103.629
+2026-11-19T22:21:24.6413100Z Commit: 15dbd9ccb5dbf34fae002b6ed1a2670f52df37bc
+2026-11-19T22:21:24.6414550Z Build Date: 2026-11-03T17:26:59Z
+2026-11-19T22:21:24.6416060Z Worker ID: {2adfe3b7-3f09-4903-a1b3-1f2c93494879}
+2026-11-19T22:21:24.6418500Z Region: westus
+2026-11-19T22:21:24.6419450Z Cloud: MacCloud
+2026-11-19T22:21:24.6423250Z ##[endgroup]
+2026-11-19T22:21:24.6426130Z ##[group]Operating System
+2026-11-19T22:21:24.6426830Z macOS
+2026-11-19T22:21:24.6427770Z 26.7.2
+2026-11-19T22:21:24.6428200Z 25G332
+2026-11-19T22:21:24.6428570Z ##[endgroup]
+2026-11-19T22:21:24.6428990Z ##[group]Runner Image
+2026-11-19T22:21:24.6432200Z Image: macos-26-arm64
+2026-11-19T22:21:24.6433530Z Version: 20261112.0504.1
+2026-11-19T22:21:24.6436260Z Included Software: https://github.com/actions/runner-images/blob/macos-26-arm64/20261112.0504/images/macos/macos-26-arm64-Readme.md
+2026-11-19T22:21:24.6438370Z Image Release: https://github.com/actions/runner-images/releases/tag/macos-26-arm64%2F20261112.0504
+2026-11-19T22:21:24.6440130Z ##[endgroup]
+2026-11-19T22:21:24.6441260Z ##[group]GITHUB_TOKEN Permissions
+2026-11-19T22:21:24.6445720Z Actions: read
+2026-11-19T22:21:24.6446270Z Contents: read
+2026-11-19T22:21:24.6446740Z Metadata: read
+2026-11-19T22:21:24.6448590Z ##[endgroup]
+2026-11-19T22:21:24.6451380Z Secret source: Actions
+2026-11-19T22:21:24.6452580Z Cache mode: write
+2026-11-19T22:21:24.6453080Z Prepare workflow directory
+2026-11-19T22:21:24.7136150Z Prepare all required actions
+2026-11-19T22:21:24.7238910Z Getting action download info
+2026-11-19T22:21:25.1804870Z Download action repository 'actions/checkout@v7' (SHA:3d3c42e5aac5ba805825da76410c181273ba90b1)
+2026-11-19T22:21:25.5382110Z Download action repository 'actions/download-artifact@v8' (SHA:9000827ccba6bdab643e8b6fd33ac0654aef8333)
+2026-11-19T22:21:25.9967890Z Download action repository 'actions/upload-artifact@v7' (SHA:cf430e030ddbb5b0abf93d22962f4752f3646cd9)
+2026-11-19T22:21:26.2076210Z Complete job name: Exported Vulkan launch and lifetime stress
+2026-11-19T22:21:26.2855780Z ##[group]Run actions/checkout@v7
+2026-11-19T22:21:26.2856540Z with:
+2026-11-19T22:21:26.2856970Z   repository: oiwdis/last-train-out
+2026-11-19T22:21:26.2861380Z   token: ***
+2026-11-19T22:21:26.2862840Z   ssh-strict: true
+2026-11-19T22:21:26.2863800Z   ssh-user: git
+2026-11-19T22:21:26.2864740Z   persist-credentials: true
+2026-11-19T22:21:26.2865740Z   clean: true
+2026-11-19T22:21:26.2866660Z   sparse-checkout-cone-mode: true
+2026-11-19T22:21:26.2867730Z   fetch-depth: 1
+2026-11-19T22:21:26.2868640Z   fetch-tags: false
+2026-11-19T22:21:26.2869590Z   show-progress: true
+2026-11-19T22:21:26.2870510Z   lfs: false
+2026-11-19T22:21:26.2871350Z   submodules: false
+2026-11-19T22:21:26.2872270Z   set-safe-directory: true
+2026-11-19T22:21:26.2873330Z   allow-unsafe-pr-checkout: false
+2026-11-19T22:21:26.2876830Z env:
+2026-11-19T22:21:26.2877770Z   APP_NAME: Last Train Out
+2026-11-19T22:21:26.2878850Z   DEV_ZIP: LastTrainOut-macos-universal.zip
+2026-11-19T22:21:26.2880320Z   SIGNED_ZIP: LastTrainOut-macos-universal-signed.zip
+2026-11-19T22:21:26.2882020Z   MIN_TESTS: 304
+2026-11-19T22:21:26.2883050Z   SOURCE_SHA: 7f162d9437eccc4e1bd16a0f1a861dd1f1ff5172
+2026-11-19T22:21:26.2884270Z ##[endgroup]
+2026-11-19T22:21:26.9691690Z Syncing repository: oiwdis/last-train-out
+2026-11-19T22:21:26.9693820Z ##[group]Getting Git version info
+2026-11-19T22:21:26.9694630Z Working directory is '/Users/runner/work/last-train-out/last-train-out'
+2026-11-19T22:21:26.9695930Z [command]/opt/homebrew/bin/git version
+2026-11-19T22:21:27.0026980Z git version 2.56.1
+2026-11-19T22:21:27.0043470Z ##[endgroup]
+2026-11-19T22:21:27.0051960Z Copying '/Users/runner/.gitconfig' to '/Users/runner/work/_temp/0c0a909c-4be7-4b5e-b62e-e27b0e8d2996/.gitconfig'
+2026-11-19T22:21:27.0062770Z Temporarily overriding HOME='/Users/runner/work/_temp/0c0a909c-4be7-4b5e-b62e-e27b0e8d2996' before making global git config changes
+2026-11-19T22:21:27.0064950Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-19T22:21:27.0066820Z [command]/opt/homebrew/bin/git config --global --add safe.directory /Users/runner/work/last-train-out/last-train-out
+2026-11-19T22:21:27.0223840Z Deleting the contents of '/Users/runner/work/last-train-out/last-train-out'
+2026-11-19T22:21:27.0226870Z ##[group]Determining repository object format
+2026-11-19T22:21:27.0228970Z ##[endgroup]
+2026-11-19T22:21:27.0230990Z ##[group]Initializing the repository
+2026-11-19T22:21:27.0233100Z [command]/opt/homebrew/bin/git init /Users/runner/work/last-train-out/last-train-out
+2026-11-19T22:21:27.0641240Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-11-19T22:21:27.0646700Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-11-19T22:21:27.0649920Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-11-19T22:21:27.0650790Z hint: call:
+2026-11-19T22:21:27.0651160Z hint:
+2026-11-19T22:21:27.0651640Z hint: 	git config --global init.defaultBranch <name>
+2026-11-19T22:21:27.0652280Z hint:
+2026-11-19T22:21:27.0652790Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-11-19T22:21:27.0653700Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-11-19T22:21:27.0655780Z hint:
+2026-11-19T22:21:27.0656190Z hint: 	git branch -m <name>
+2026-11-19T22:21:27.0656590Z hint:
+2026-11-19T22:21:27.0657210Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-11-19T22:21:27.0665900Z Initialized empty Git repository in /Users/runner/work/last-train-out/last-train-out/.git/
+2026-11-19T22:21:27.0682200Z [command]/opt/homebrew/bin/git remote add origin https://github.com/oiwdis/last-train-out
+2026-11-19T22:21:27.0799230Z ##[endgroup]
+2026-11-19T22:21:27.0801510Z ##[group]Disabling automatic garbage collection
+2026-11-19T22:21:27.0803690Z [command]/opt/homebrew/bin/git config --local gc.auto 0
+2026-11-19T22:21:27.0895710Z ##[endgroup]
+2026-11-19T22:21:27.0896500Z ##[group]Setting up auth
+2026-11-19T22:21:27.0897990Z Removing SSH command configuration
+2026-11-19T22:21:27.0913390Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-19T22:21:27.1011540Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-19T22:21:27.2798520Z Removing HTTP extra header
+2026-11-19T22:21:27.2799520Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-19T22:21:27.2925230Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-19T22:21:27.4229340Z Removing includeIf entries pointing to credentials config files
+2026-11-19T22:21:27.4230600Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-19T22:21:27.4619520Z [command]/opt/homebrew/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-19T22:21:27.6534990Z [command]/opt/homebrew/bin/git config --file /Users/runner/work/_temp/git-credentials-4704f1e6-1e55-444e-9984-d1e76a02abbf.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-11-19T22:21:27.6626390Z [command]/opt/homebrew/bin/git config --local includeIf.gitdir:/Users/runner/work/last-train-out/last-train-out/.git.path /Users/runner/work/_temp/git-credentials-4704f1e6-1e55-444e-9984-d1e76a02abbf.config
+2026-11-19T22:21:27.6753720Z [command]/opt/homebrew/bin/git config --local includeIf.gitdir:/Users/runner/work/last-train-out/last-train-out/.git/worktrees/*.path /Users/runner/work/_temp/git-credentials-4704f1e6-1e55-444e-9984-d1e76a02abbf.config
+2026-11-19T22:21:27.6778540Z [command]/opt/homebrew/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-4704f1e6-1e55-444e-9984-d1e76a02abbf.config
+2026-11-19T22:21:27.6859910Z [command]/opt/homebrew/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-4704f1e6-1e55-444e-9984-d1e76a02abbf.config
+2026-11-19T22:21:27.6940390Z ##[endgroup]
+2026-11-19T22:21:27.6949230Z ##[group]Fetching the repository
+2026-11-19T22:21:27.6954680Z [command]/opt/homebrew/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +0f5f9d824ac0c8b04e2acd240b0e9de761567f56:refs/remotes/pull/6/merge
+2026-11-19T22:21:55.5074020Z From https://github.com/oiwdis/last-train-out
+2026-11-19T22:21:55.5077440Z  * [new ref]         0f5f9d824ac0c8b04e2acd240b0e9de761567f56 -> pull/6/merge
+2026-11-19T22:21:55.5121690Z ##[endgroup]
+2026-11-19T22:21:55.5124240Z ##[group]Determining the checkout info
+2026-11-19T22:21:55.5126620Z ##[endgroup]
+2026-11-19T22:21:55.5163530Z [command]/opt/homebrew/bin/git sparse-checkout disable
+2026-11-19T22:21:55.5514080Z [command]/opt/homebrew/bin/git config --local --unset-all extensions.worktreeConfig
+2026-11-19T22:21:55.5597570Z ##[group]Checking out the ref
+2026-11-19T22:21:55.5599870Z [command]/opt/homebrew/bin/git checkout --progress --force refs/remotes/pull/6/merge
+2026-11-19T22:21:57.0028410Z Updating files:   3% (58/1805)
+2026-11-19T22:21:57.1687630Z Updating files:   4% (73/1805)
+2026-11-19T22:21:57.2173670Z Updating files:   5% (91/1805)
+2026-11-19T22:21:57.2282990Z Updating files:   6% (109/1805)
+2026-11-19T22:21:57.2714710Z Updating files:   7% (127/1805)
+2026-11-19T22:21:57.3396960Z Updating files:   8% (145/1805)
+2026-11-19T22:21:57.3972770Z Updating files:   9% (163/1805)
+2026-11-19T22:21:57.4238170Z Updating files:  10% (181/1805)
+2026-11-19T22:21:57.4955490Z Updating files:  11% (199/1805)
+2026-11-19T22:21:57.5875910Z Updating files:  12% (217/1805)
+2026-11-19T22:21:57.6580950Z Updating files:  13% (235/1805)
+2026-11-19T22:21:57.6810040Z Updating files:  14% (253/1805)
+2026-11-19T22:21:57.7745510Z Updating files:  15% (271/1805)
+2026-11-19T22:21:57.8576190Z Updating files:  16% (289/1805)
+2026-11-19T22:21:57.9074370Z Updating files:  17% (307/1805)
+2026-11-19T22:21:57.9624010Z Updating files:  18% (325/1805)
+2026-11-19T22:21:57.9881490Z Updating files:  19% (343/1805)
+2026-11-19T22:21:58.0805810Z Updating files:  20% (361/1805)
+2026-11-19T22:21:58.1088350Z Updating files:  21% (380/1805)
+2026-11-19T22:21:58.1117480Z Updating files:  22% (398/1805)
+2026-11-19T22:21:58.1118370Z Updating files:  23% (416/1805)
+2026-11-19T22:21:58.7725820Z Updating files:  24% (434/1805)
+2026-11-19T22:21:59.7137180Z Updating files:  25% (452/1805)
+2026-11-19T22:21:59.7385600Z Updating files:  25% (458/1805)
+2026-11-19T22:21:59.7854580Z Updating files:  26% (470/1805)
+2026-11-19T22:21:59.8514950Z Updating files:  27% (488/1805)
+2026-11-19T22:21:59.9760930Z Updating files:  28% (506/1805)
+2026-11-19T22:22:00.0607420Z Updating files:  29% (524/1805)
+2026-11-19T22:22:00.1332850Z Updating files:  30% (542/1805)
+2026-11-19T22:22:00.1831100Z Updating files:  31% (560/1805)
+2026-11-19T22:22:00.2445100Z Updating files:  32% (578/1805)
+2026-11-19T22:22:00.2871520Z Updating files:  33% (596/1805)
+2026-11-19T22:22:00.3376580Z Updating files:  34% (614/1805)
+2026-11-19T22:22:00.3402180Z Updating files:  35% (632/1805)
+2026-11-19T22:22:00.3422520Z Updating files:  36% (650/1805)
+2026-11-19T22:22:00.3454500Z Updating files:  37% (668/1805)
+2026-11-19T22:22:00.3510180Z Updating files:  38% (686/1805)
+2026-11-19T22:22:00.3564850Z Updating files:  39% (704/1805)
+2026-11-19T22:22:00.3588380Z Updating files:  40% (722/1805)
+2026-11-19T22:22:00.3663030Z Updating files:  41% (741/1805)
+2026-11-19T22:22:00.3684840Z Updating files:  42% (759/1805)
+2026-11-19T22:22:00.3730610Z Updating files:  43% (777/1805)
+2026-11-19T22:22:00.3751060Z Updating files:  44% (795/1805)
+2026-11-19T22:22:00.3788520Z Updating files:  45% (813/1805)
+2026-11-19T22:22:00.3806220Z Updating files:  46% (831/1805)
+2026-11-19T22:22:00.3925990Z Updating files:  47% (849/1805)
+2026-11-19T22:22:00.6437320Z Updating files:  48% (867/1805)
+2026-11-19T22:22:00.6451120Z Updating files:  48% (884/1805)
+2026-11-19T22:22:00.6532090Z Updating files:  49% (885/1805)
+2026-11-19T22:22:00.6566990Z Updating files:  50% (903/1805)
+2026-11-19T22:22:00.6598140Z Updating files:  51% (921/1805)
+2026-11-19T22:22:00.6661680Z Updating files:  52% (939/1805)
+2026-11-19T22:22:00.6825770Z Updating files:  53% (957/1805)
+2026-11-19T22:22:00.6952160Z Updating files:  54% (975/1805)
+2026-11-19T22:22:00.7283990Z Updating files:  55% (993/1805)
+2026-11-19T22:22:00.7667590Z Updating files:  56% (1011/1805)
+2026-11-19T22:22:00.7870130Z Updating files:  57% (1029/1805)
+2026-11-19T22:22:00.8505210Z Updating files:  58% (1047/1805)
+2026-11-19T22:22:00.8554010Z Updating files:  59% (1065/1805)
+2026-11-19T22:22:00.8607800Z Updating files:  60% (1083/1805)
+2026-11-19T22:22:00.8639600Z Updating files:  61% (1102/1805)
+2026-11-19T22:22:00.8713020Z Updating files:  62% (1120/1805)
+2026-11-19T22:22:00.9218680Z Updating files:  63% (1138/1805)
+2026-11-19T22:22:00.9298200Z Updating files:  64% (1156/1805)
+2026-11-19T22:22:00.9807730Z Updating files:  65% (1174/1805)
+2026-11-19T22:22:00.9864980Z Updating files:  66% (1192/1805)
+2026-11-19T22:22:00.9955630Z Updating files:  67% (1210/1805)
+2026-11-19T22:22:00.9975390Z Updating files:  68% (1228/1805)
+2026-11-19T22:22:01.0016090Z Updating files:  69% (1246/1805)
+2026-11-19T22:22:01.0182860Z Updating files:  70% (1264/1805)
+2026-11-19T22:22:01.0226540Z Updating files:  71% (1282/1805)
+2026-11-19T22:22:01.0354000Z Updating files:  72% (1300/1805)
+2026-11-19T22:22:01.1722270Z Updating files:  73% (1318/1805)
+2026-11-19T22:22:01.1955140Z Updating files:  74% (1336/1805)
+2026-11-19T22:22:01.2016700Z Updating files:  75% (1354/1805)
+2026-11-19T22:22:01.2167390Z Updating files:  76% (1372/1805)
+2026-11-19T22:22:01.2211650Z Updating files:  77% (1390/1805)
+2026-11-19T22:22:01.2261710Z Updating files:  78% (1408/1805)
+2026-11-19T22:22:01.2526120Z Updating files:  79% (1426/1805)
+2026-11-19T22:22:01.2555930Z Updating files:  80% (1444/1805)
+2026-11-19T22:22:01.2573690Z Updating files:  81% (1463/1805)
+2026-11-19T22:22:01.2603290Z Updating files:  82% (1481/1805)
+2026-11-19T22:22:01.2647290Z Updating files:  83% (1499/1805)
+2026-11-19T22:22:01.2699010Z Updating files:  84% (1517/1805)
+2026-11-19T22:22:01.2738210Z Updating files:  85% (1535/1805)
+2026-11-19T22:22:01.2760480Z Updating files:  86% (1553/1805)
+2026-11-19T22:22:01.2829410Z Updating files:  87% (1571/1805)
+2026-11-19T22:22:01.2842570Z Updating files:  88% (1589/1805)
+2026-11-19T22:22:01.2872810Z Updating files:  89% (1607/1805)
+2026-11-19T22:22:01.2893630Z Updating files:  90% (1625/1805)
+2026-11-19T22:22:01.2933290Z Updating files:  91% (1643/1805)
+2026-11-19T22:22:01.2971270Z Updating files:  92% (1661/1805)
+2026-11-19T22:22:01.2998170Z Updating files:  93% (1679/1805)
+2026-11-19T22:22:01.3018290Z Updating files:  94% (1697/1805)
+2026-11-19T22:22:01.3045690Z Updating files:  95% (1715/1805)
+2026-11-19T22:22:01.3066410Z Updating files:  96% (1733/1805)
+2026-11-19T22:22:01.3108040Z Updating files:  97% (1751/1805)
+2026-11-19T22:22:01.3136350Z Updating files:  98% (1769/1805)
+2026-11-19T22:22:01.3230120Z Updating files:  99% (1787/1805)
+2026-11-19T22:22:01.3231190Z Updating files: 100% (1805/1805)
+2026-11-19T22:22:01.3232300Z Updating files: 100% (1805/1805), done.
+2026-11-19T22:22:01.3286680Z HEAD is now at 0f5f9d8 Merge 7f162d9437eccc4e1bd16a0f1a861dd1f1ff5172 into e523c8a9017259040e36034ac0cf25d73b53d6a3
+2026-11-19T22:22:01.3453080Z ##[endgroup]
+2026-11-19T22:22:01.4021130Z [command]/opt/homebrew/bin/git log -1 --format=%H
+2026-11-19T22:22:01.4183120Z 0f5f9d824ac0c8b04e2acd240b0e9de761567f56
+2026-11-19T22:22:01.5057420Z ##[group]Run actions/download-artifact@v8
+2026-11-19T22:22:01.5058390Z with:
+2026-11-19T22:22:01.5059630Z   name: LastTrainOut-macos-universal.zip
+2026-11-19T22:22:01.5060370Z   path: download
+2026-11-19T22:22:01.5060920Z   skip-decompress: true
+2026-11-19T22:22:01.5061750Z   merge-multiple: false
+2026-11-19T22:22:01.5062320Z   repository: oiwdis/last-train-out
+2026-11-19T22:22:01.5063050Z   run-id: 44625378022
+2026-11-19T22:22:01.5063720Z   digest-mismatch: error
+2026-11-19T22:22:01.5064270Z env:
+2026-11-19T22:22:01.5064830Z   APP_NAME: Last Train Out
+2026-11-19T22:22:01.5065490Z   DEV_ZIP: LastTrainOut-macos-universal.zip
+2026-11-19T22:22:01.5066380Z   SIGNED_ZIP: LastTrainOut-macos-universal-signed.zip
+2026-11-19T22:22:01.5067090Z   MIN_TESTS: 304
+2026-11-19T22:22:01.5067820Z   SOURCE_SHA: 7f162d9437eccc4e1bd16a0f1a861dd1f1ff5172
+2026-11-19T22:22:01.5068530Z ##[endgroup]
+2026-11-19T22:22:01.8876930Z Downloading single artifact
+2026-11-19T22:22:02.2258640Z Preparing to download the following artifacts:
+2026-11-19T22:22:02.2259460Z - LastTrainOut-macos-universal.zip (ID: 14579479455, Size: 292540490, Expected Digest: sha256:6a71eb3390103ac1f2d18816f881f40ca7f85c2e07f0a95e4e5f2ac57cf89e2a)
+2026-11-19T22:22:02.7850430Z Redirecting to blob download url: https://productionresultssa10.blob.core.windows.net/actions-results/6637e373-15a6-8746-9c57-96902694a035/workflow-job-run-2306bce4-cdd7-55b7-b073-f13a9e39ed81/artifacts/ba379d088b63c76be763da59aee640ac91df38a03079e33c161c684ee0f8a857.zip
+2026-11-19T22:22:02.7853980Z Starting download of artifact to: /Users/runner/work/last-train-out/last-train-out/download
+2026-11-19T22:22:03.1475010Z Downloading raw file (non-zip) to: /Users/runner/work/last-train-out/last-train-out/download/LastTrainOut-macos-universal.zip
+2026-11-19T22:22:24.0956690Z SHA256 digest of downloaded artifact is 6a71eb3390103ac1f2d18816f881f40ca7f85c2e07f0a95e4e5f2ac57cf89e2a
+2026-11-19T22:22:24.0966530Z Artifact download completed successfully.
+2026-11-19T22:22:24.0967870Z Total of 1 artifact(s) downloaded
+2026-11-19T22:22:24.0984860Z Download artifact has finished successfully
+2026-11-19T22:22:24.1526260Z ##[group]Run ZIP_PATH="$(find download -type f -name '*.zip' | head -n 1)"
+2026-11-19T22:22:24.1527120Z [36;1mZIP_PATH="$(find download -type f -name '*.zip' | head -n 1)"[0m
+2026-11-19T22:22:24.1527620Z [36;1mtest -n "$ZIP_PATH"[0m
+2026-11-19T22:22:24.1528150Z [36;1mpython3 tools/macos/verify_app.py --zip "$ZIP_PATH" --title "Stress ZIP"[0m
+2026-11-19T22:22:24.1528860Z [36;1mditto -x -k "$ZIP_PATH" extracted[0m
+2026-11-19T22:22:24.1529600Z [36;1mpython3 tools/macos/verify_app.py "extracted/$APP_NAME.app" --expect-signature adhoc --title "Stress bundle"[0m
+2026-11-19T22:22:24.1948990Z shell: /bin/bash -e {0}
+2026-11-19T22:22:24.1949380Z env:
+2026-11-19T22:22:24.1949740Z   APP_NAME: Last Train Out
+2026-11-19T22:22:24.1950040Z   DEV_ZIP: LastTrainOut-macos-universal.zip
+2026-11-19T22:22:24.1950460Z   SIGNED_ZIP: LastTrainOut-macos-universal-signed.zip
+2026-11-19T22:22:24.1950770Z   MIN_TESTS: 304
+2026-11-19T22:22:24.1951260Z   SOURCE_SHA: 7f162d9437eccc4e1bd16a0f1a861dd1f1ff5172
+2026-11-19T22:22:24.1951620Z ##[endgroup]
+2026-11-19T22:22:26.1470040Z 
+2026-11-19T22:22:26.1471540Z == ZIP: download/LastTrainOut-macos-universal.zip
+2026-11-19T22:22:26.1474310Z ok    the ZIP exists
+2026-11-19T22:22:26.1474640Z ok    the ZIP is intact  (292.5 MB)
+2026-11-19T22:22:26.1475040Z info  ZIP sha256  (6a71eb3390103ac1f2d18816f881f40ca7f85c2e07f0a95e4e5f2ac57cf89e2a)
+2026-11-19T22:22:26.1475610Z ok    the ZIP holds exactly one .app at its top level  (Last Train Out.app)
+2026-11-19T22:22:26.1476230Z ok    the ZIP contains Info.plist
+2026-11-19T22:22:26.1476740Z ok    the ZIP contains the executable  (Contents/MacOS/Last Train Out)
+2026-11-19T22:22:26.1477290Z ok    the executable keeps its executable permission in the ZIP  (0o755)
+2026-11-19T22:22:26.1477710Z ok    the ZIP contains the game data pack
+2026-11-19T22:22:26.1478070Z ok    the ZIP contains the code signature
+2026-11-19T22:22:26.1478290Z 
+2026-11-19T22:22:26.1478440Z 8 of 8 checks passed
+2026-11-19T22:22:31.5283050Z 
+2026-11-19T22:22:31.5284000Z == Bundle: extracted/Last Train Out.app
+2026-11-19T22:22:31.5286110Z ok    the .app bundle exists
+2026-11-19T22:22:31.5286630Z ok    Info.plist exists
+2026-11-19T22:22:31.5287400Z ok    Info.plist is a valid property list
+2026-11-19T22:22:31.5288160Z ok    plutil accepts Info.plist  (extracted/Last Train Out.app/Contents/Info.plist: OK)
+2026-11-19T22:22:31.5288910Z ok    Info.plist names the executable  (Last Train Out)
+2026-11-19T22:22:31.5289500Z ok    bundle identifier  (com.lasttrainout.game)
+2026-11-19T22:22:31.5290050Z ok    bundle is an application
+2026-11-19T22:22:31.5290470Z ok    version matches the project  (0.3.5)
+2026-11-19T22:22:31.5292270Z ok    build number is set  (71)
+2026-11-19T22:22:31.5295150Z ok    minimum macOS is declared for both architectures  (arm64 11.00, x86_64 10.13)
+2026-11-19T22:22:31.5296620Z ok    Retina rendering is enabled
+2026-11-19T22:22:31.5298090Z info  build  (number 71, commit 0f5f9d824ac0c8b04e2acd240b0e9de761567f56, kind development)
+2026-11-19T22:22:31.5298910Z ok    the executable exists inside the bundle  (Contents/MacOS/Last Train Out)
+2026-11-19T22:22:31.5299770Z ok    the executable is marked executable
+2026-11-19T22:22:31.5300430Z ok    the executable is universal: Apple Silicon (arm64) and Intel (x86_64)  (x86_64, arm64)
+2026-11-19T22:22:31.5301140Z info  executable size  (189 MB (the Godot runtime; no Godot install is needed to play))
+2026-11-19T22:22:31.5301820Z ok    lipo confirms both architectures  (x86_64 arm64)
+2026-11-19T22:22:31.5302290Z ok    the app icon exists
+2026-11-19T22:22:31.5302710Z ok    the game data pack exists  (Last Train Out.pck)
+2026-11-19T22:22:31.5303170Z ok    the game data pack can be read  (902 files, 327017 kB)
+2026-11-19T22:22:31.5303540Z ok    project settings are in the pack
+2026-11-19T22:22:31.5304000Z ok    baked shader code is included  (144 cache files)
+2026-11-19T22:22:31.5304480Z ok    the main scene is in the pack  (scenes/missions/harlow_escape.tscn)
+2026-11-19T22:22:31.5307590Z ok    every scene, script and resource of the game is in the pack  (371 project files)
+2026-11-19T22:22:31.5308940Z ok    tests, tools and docs are left out of the game
+2026-11-19T22:22:31.5309830Z ok    the bundle carries a code signature
+2026-11-19T22:22:31.5310330Z ok    codesign verifies the signature  (extracted/Last Train Out.app: satisfies its Designated Requirement)
+2026-11-19T22:22:31.5310880Z info  signature  (ad-hoc)
+2026-11-19T22:22:31.5311220Z ok    signature is ad-hoc (development build)
+2026-11-19T22:22:31.5311510Z 
+2026-11-19T22:22:31.5311660Z 26 of 26 checks passed
+2026-11-19T22:22:31.5422750Z ##[group]Run python3 tools/macos/stress_release.py "extracted/$APP_NAME.app" tests/_output/release-stress
+2026-11-19T22:22:31.5423540Z [36;1mpython3 tools/macos/stress_release.py "extracted/$APP_NAME.app" tests/_output/release-stress[0m
+2026-11-19T22:22:31.5469540Z shell: /bin/bash -e {0}
+2026-11-19T22:22:31.5470530Z env:
+2026-11-19T22:22:31.5470840Z   APP_NAME: Last Train Out
+2026-11-19T22:22:31.5471210Z   DEV_ZIP: LastTrainOut-macos-universal.zip
+2026-11-19T22:22:31.5471580Z   SIGNED_ZIP: LastTrainOut-macos-universal-signed.zip
+2026-11-19T22:22:31.5471830Z   MIN_TESTS: 304
+2026-11-19T22:22:31.5472120Z   SOURCE_SHA: 7f162d9437eccc4e1bd16a0f1a861dd1f1ff5172
+2026-11-19T22:22:31.5472540Z ##[endgroup]
+2026-11-19T22:22:35.8095630Z isolation-preflight exit 0 complete True
+2026-11-19T22:24:10.0784070Z cold-1 exit 0 complete True
+2026-11-19T22:24:53.4106810Z cold-2 exit 0 complete True
+2026-11-19T22:25:24.4219200Z cold-3 exit -5 complete False
+2026-11-19T22:26:01.5305270Z cold-4 exit 0 complete True
+2026-11-19T22:26:30.6960600Z cold-5 exit 0 complete True
+2026-11-19T22:26:54.9799990Z cold-6 exit -5 complete False
+2026-11-19T22:27:30.1895360Z cold-7 exit 0 complete True
+2026-11-19T22:27:56.4622530Z cold-8 exit 0 complete True
+2026-11-19T22:28:19.3246010Z cold-9 exit 0 complete True
+2026-11-19T22:28:42.2501300Z cold-10 exit 0 complete True
+2026-11-19T22:29:56.3407960Z warm-seed-matrix exit 0 complete True
+2026-11-19T22:30:19.3048550Z warm-1 exit 0 complete True
+2026-11-19T22:30:44.6857350Z warm-2 exit 0 complete True
+2026-11-19T22:31:08.1614400Z warm-3 exit 0 complete True
+2026-11-19T22:31:30.1641290Z warm-4 exit 0 complete True
+2026-11-19T22:31:52.0428320Z warm-5 exit 0 complete True
+2026-11-19T22:32:17.9378480Z warm-6 exit 0 complete True
+2026-11-19T22:32:44.6447900Z warm-7 exit 0 complete True
+2026-11-19T22:33:06.7701490Z warm-8 exit 0 complete True
+2026-11-19T22:33:28.3095680Z warm-9 exit 0 complete True
+2026-11-19T22:33:49.5855270Z warm-10 exit 0 complete True
+2026-11-19T22:35:43.5843390Z cycles-1 exit 0 complete True
+2026-11-19T22:35:56.2195430Z exit-preparing-1 exit 0 complete True
+2026-11-19T22:37:05.3613820Z station-entries-1 exit 0 complete True
+2026-11-19T22:38:45.8522100Z cycles-2 exit 0 complete True
+2026-11-19T22:38:55.8724230Z exit-preparing-2 exit 0 complete True
+2026-11-19T22:39:56.7735990Z station-entries-2 exit 0 complete True
+2026-11-19T22:41:32.1632960Z cycles-3 exit 0 complete True
+2026-11-19T22:41:42.3160420Z exit-preparing-3 exit 0 complete True
+2026-11-19T22:42:45.6201150Z station-entries-3 exit 0 complete True
+2026-11-19T22:42:45.6589150Z ##[error]Process completed with exit code 1.
+2026-11-19T22:42:45.7112840Z ##[group]Run actions/upload-artifact@v7
+2026-11-19T22:42:45.7113210Z with:
+2026-11-19T22:42:45.7113410Z   name: release-stress
+2026-11-19T22:42:45.7113690Z   path: tests/_output/release-stress/
+2026-11-19T22:42:45.7113940Z   retention-days: 30
+2026-11-19T22:42:45.7114200Z   if-no-files-found: warn
+2026-11-19T22:42:45.7114450Z   compression-level: 6
+2026-11-19T22:42:45.7114670Z   overwrite: false
+2026-11-19T22:42:45.7114880Z   include-hidden-files: false
+2026-11-19T22:42:45.7115150Z   archive: true
+2026-11-19T22:42:45.7115290Z env:
+2026-11-19T22:42:45.7115510Z   APP_NAME: Last Train Out
+2026-11-19T22:42:45.7115760Z   DEV_ZIP: LastTrainOut-macos-universal.zip
+2026-11-19T22:42:45.7116130Z   SIGNED_ZIP: LastTrainOut-macos-universal-signed.zip
+2026-11-19T22:42:45.7116460Z   MIN_TESTS: 304
+2026-11-19T22:42:45.7116690Z   SOURCE_SHA: 7f162d9437eccc4e1bd16a0f1a861dd1f1ff5172
+2026-11-19T22:42:45.7117130Z ##[endgroup]
+2026-11-19T22:42:46.5258240Z With the provided path, there will be 68 files uploaded
+2026-11-19T22:42:46.5260640Z Artifact name is valid!
+2026-11-19T22:42:46.5261070Z Root directory input is valid!
+2026-11-19T22:42:46.9193530Z Uploading artifact: release-stress.zip
+2026-11-19T22:42:46.9214860Z Beginning upload of artifact content to blob storage
+2026-11-19T22:42:47.8379420Z Uploaded bytes 1089936
+2026-11-19T22:42:47.9168180Z Finished uploading artifact content to blob storage!
+2026-11-19T22:42:47.9169770Z SHA256 digest of uploaded artifact is 481e2c1373975ac33c61aca9438d414cf6cfa14d1d8a9cd2f3d2a93328321a37
+2026-11-19T22:42:47.9170930Z Finalizing artifact upload
+2026-11-19T22:42:48.4327040Z Artifact release-stress successfully finalized. Artifact ID 14580858037
+2026-11-19T22:42:48.4328730Z Artifact release-stress has been successfully uploaded! Final size is 1089936 bytes. Artifact ID is 14580858037
+2026-11-19T22:42:48.4339670Z Artifact download URL: https://github.com/oiwdis/last-train-out/actions/runs/44625378022/artifacts/14580858037
+2026-11-19T22:42:48.4624990Z Post job cleanup.
+2026-11-19T22:42:48.6010320Z [command]/opt/homebrew/bin/git version
+2026-11-19T22:42:48.6268270Z git version 2.56.1
+2026-11-19T22:42:48.6287740Z Copying '/Users/runner/.gitconfig' to '/Users/runner/work/_temp/dee80b58-c1fb-4084-9235-64a740cc1f1a/.gitconfig'
+2026-11-19T22:42:48.6295340Z Temporarily overriding HOME='/Users/runner/work/_temp/dee80b58-c1fb-4084-9235-64a740cc1f1a' before making global git config changes
+2026-11-19T22:42:48.6296240Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-19T22:42:48.6298840Z [command]/opt/homebrew/bin/git config --global --add safe.directory /Users/runner/work/last-train-out/last-train-out
+2026-11-19T22:42:48.6434680Z Removing SSH command configuration
+2026-11-19T22:42:48.6440400Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-19T22:42:48.6522110Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-19T22:42:48.7765110Z Removing HTTP extra header
+2026-11-19T22:42:48.7770540Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-19T22:42:48.7853180Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-19T22:42:48.8905850Z Removing includeIf entries pointing to credentials config files
+2026-11-19T22:42:48.8912760Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-19T22:42:48.8988860Z includeif.gitdir:/Users/runner/work/last-train-out/last-train-out/.git.path
+2026-11-19T22:42:48.8989650Z includeif.gitdir:/Users/runner/work/last-train-out/last-train-out/.git/worktrees/*.path
+2026-11-19T22:42:48.8990160Z includeif.gitdir:/github/workspace/.git.path
+2026-11-19T22:42:48.8990550Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-11-19T22:42:48.8995200Z [command]/opt/homebrew/bin/git config --local --get-all includeif.gitdir:/Users/runner/work/last-train-out/last-train-out/.git.path
+2026-11-19T22:42:48.9065070Z /Users/runner/work/_temp/git-credentials-4704f1e6-1e55-444e-9984-d1e76a02abbf.config
+2026-11-19T22:42:48.9073420Z [command]/opt/homebrew/bin/git config --local --unset includeif.gitdir:/Users/runner/work/last-train-out/last-train-out/.git.path \/Users\/runner\/work\/_temp\/git\-credentials\-4704f1e6\-1e55\-444e\-9984\-d1e76a02abbf\.config
+2026-11-19T22:42:48.9164290Z [command]/opt/homebrew/bin/git config --local --get-all includeif.gitdir:/Users/runner/work/last-train-out/last-train-out/.git/worktrees/*.path
+2026-11-19T22:42:48.9238970Z /Users/runner/work/_temp/git-credentials-4704f1e6-1e55-444e-9984-d1e76a02abbf.config
+2026-11-19T22:42:48.9246050Z [command]/opt/homebrew/bin/git config --local --unset includeif.gitdir:/Users/runner/work/last-train-out/last-train-out/.git/worktrees/*.path \/Users\/runner\/work\/_temp\/git\-credentials\-4704f1e6\-1e55\-444e\-9984\-d1e76a02abbf\.config
+2026-11-19T22:42:48.9423350Z [command]/opt/homebrew/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+2026-11-19T22:42:48.9430120Z /github/runner_temp/git-credentials-4704f1e6-1e55-444e-9984-d1e76a02abbf.config
+2026-11-19T22:42:48.9441380Z [command]/opt/homebrew/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path \/github\/runner_temp\/git\-credentials\-4704f1e6\-1e55\-444e\-9984\-d1e76a02abbf\.config
+2026-11-19T22:42:48.9587040Z [command]/opt/homebrew/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-11-19T22:42:48.9664150Z /github/runner_temp/git-credentials-4704f1e6-1e55-444e-9984-d1e76a02abbf.config
+2026-11-19T22:42:48.9670720Z [command]/opt/homebrew/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path \/github\/runner_temp\/git\-credentials\-4704f1e6\-1e55\-444e\-9984\-d1e76a02abbf\.config
+2026-11-19T22:42:48.9748860Z [command]/opt/homebrew/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-19T22:42:49.0814420Z Removing credentials config '/Users/runner/work/_temp/git-credentials-4704f1e6-1e55-444e-9984-d1e76a02abbf.config'
+2026-11-19T22:42:49.0930170Z Cleaning up orphan processes
+
