@@ -60,6 +60,27 @@ env:
   MIN_TESTS: "305"
 
 jobs:
+  metal-template:
+    name: Build pinned 4.5.1 Metal runtime
+    if: ${{ !inputs.investigate }}
+    runs-on: macos-latest
+    timeout-minutes: 150
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/cache@v6
+        id: compiled
+        with:
+          path: ~/lto-metal-template
+          key: godot-macos-arm64-4.5.1-metal-v1-${{ hashFiles('tools/macos/engine/**') }}
+      - if: steps.compiled.outputs.cache-hit != 'true'
+        run: tools/macos/engine/build_metal_template.sh "$HOME/lto-metal-template"
+      - if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: metal-template
+          path: ~/lto-metal-template/
+          retention-days: 30
+
   linux:
     name: Linux gameplay tests
     if: ${{ !inputs.investigate }}
@@ -144,6 +165,7 @@ jobs:
           retention-days: 30
 
   build:
+    needs: metal-template
     if: ${{ !inputs.investigate }}
     name: Test, export and package
     outputs:
@@ -260,12 +282,16 @@ jobs:
           key: godot-vulkan-bake-4.5.1-v1-${{ hashFiles('project.godot', 'export_presets.cfg', 'scripts/**', 'resources/**', 'assets/**') }}
           restore-keys: godot-vulkan-bake-4.5.1-v1-
 
+      - uses: actions/download-artifact@v8
+        with:
+          name: metal-template
+          path: ${{ runner.temp }}/metal-template
       - name: Export Last Train Out.app
         env:
           BUILD_NUMBER: ${{ github.run_number }}
           BUILD_COMMIT: ${{ github.sha }}
           BUILD_KIND: development
-        run: tools/macos/export_app.sh "$GODOT" "$APP"
+        run: LTO_METAL_TEMPLATE="$RUNNER_TEMP/metal-template/LastTrainOutMetal" tools/macos/export_app.sh "$GODOT" "$APP"
 
       - name: Save baked Vulkan shaders
         if: steps.shaders.outputs.cache-hit != 'true'

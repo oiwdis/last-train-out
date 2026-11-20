@@ -1,7 +1,6 @@
 extends SceneTree
 ## First reproduce on a lone camera. Only then add a deterministic textured
 ## surface to compare every output pixel across independent Metal processes.
-const RESOLUTION = preload("res://scripts/settings/render_resolution.gd")
 var output := ""
 var variant := ""
 
@@ -15,10 +14,8 @@ func draw() -> void:
 	for frame in 5: await RenderingServer.frame_post_draw
 
 func apply_scale(value: float) -> void:
-	if variant == "control":
-		root.scaling_3d_scale = value
-	else:
-		RESOLUTION.apply(root, value)
+	root.scaling_3d_scale = value
+
 
 func run() -> void:
 	var camera := Camera3D.new()
@@ -29,6 +26,12 @@ func run() -> void:
 	apply_scale(0.65)
 	await draw()
 	print("[probe] camera only, scale 0.65 complete")
+	if variant == "explicit-invalid":
+		var device := RenderingServer.get_rendering_device()
+		var sampler := RDSamplerState.new()
+		sampler.lod_bias = -0.5
+		var rid := device.sampler_create(sampler)
+		device.free_rid(rid)
 	var image := Image.create_empty(256, 256, true, Image.FORMAT_RGB8)
 	for y in 256:
 		for x in 256:

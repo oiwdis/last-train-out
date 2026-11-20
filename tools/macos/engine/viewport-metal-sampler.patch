@@ -1,0 +1,16 @@
+--- a/servers/rendering/renderer_rd/storage_rd/render_scene_buffers_rd.cpp
++++ b/servers/rendering/renderer_rd/storage_rd/render_scene_buffers_rd.cpp
+@@ -115,6 +115,13 @@
+ 		computed_mipmap_bias -= 0.25;
+ 	}
+ 
++	// Metal has no sampler-state LOD bias. Keep the actual mip/anisotropy
++	// filters and request the neutral sampler the device already produces.
++	// Explicit RenderingDevice sampler requests retain the driver diagnostic.
++	if (RD::get_singleton()->get_device_api_name() == "Metal") {
++		computed_mipmap_bias = 0.0f;
++	}
++
+ 	RendererRD::MaterialStorage *material_storage = RendererRD::MaterialStorage::get_singleton();
+ 	material_storage->samplers_rd_free(samplers);
+ 	samplers = material_storage->samplers_rd_allocate(computed_mipmap_bias, anisotropic_filtering_level);
