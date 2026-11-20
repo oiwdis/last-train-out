@@ -11,6 +11,7 @@ on:
       - tools/macos/offline_bake/**
       - tools/macos/startup_stages/**
       - tools/macos/profile_metal_entry.py
+      - tools/macos/compare_player_startup.py
       - tools/macos/engine/worker-pool-shutdown.patch
       - tools/macos/worker_shutdown/**
       - tools/macos/renderer_lab.py
@@ -39,6 +40,7 @@ jobs:
       pool_run: ${{ steps.select.outputs.pool_run }}
       stages_run: ${{ steps.select.outputs.stages_run }}
       entry_run: ${{ steps.select.outputs.entry_run }}
+      players_run: ${{ steps.select.outputs.players_run }}
       run: ${{ steps.select.outputs.run }}
       exported: ${{ steps.select.outputs.exported }}
       followup: ${{ steps.select.outputs.followup }}
@@ -66,6 +68,11 @@ jobs:
             run=$(jq -r .workflow_run docs/validation/milestone354/build-86.json)
             id=$(tools/macos/find_reference_artifact.sh "$run")
             if [[ -n "$id" ]]; then echo "pool_run=$run" >> "$GITHUB_OUTPUT"; fi
+          fi
+          if ! git diff --quiet HEAD^ HEAD -- tools/macos/compare_player_startup.py; then
+            run=$(jq -r .workflow_run docs/validation/milestone354/build-99.json)
+            id=$(tools/macos/find_reference_artifact.sh "$run")
+            if [[ -n "$id" ]]; then echo "players_run=$run" >> "$GITHUB_OUTPUT"; fi
           fi
           if ! git diff --quiet HEAD^ HEAD -- tools/macos/profile_metal_entry.py; then
             run=$(jq -r .workflow_run docs/validation/milestone354/build-99.json)
@@ -189,6 +196,40 @@ jobs:
         with:
           name: pool-${{ matrix.observer }}
           path: ${{ runner.temp }}/pool/
+          retention-days: 30
+
+  matched-players:
+    name: Paired ordinary player starts / ${{ matrix.first }} first
+    needs: select
+    if: needs.select.outputs.players_run != ''
+    strategy:
+      fail-fast: false
+      matrix:
+        first: [metal, vulkan]
+    runs-on: macos-latest
+    timeout-minutes: 65
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/download-artifact@v8
+        with:
+          name: LastTrainOut-macos-universal.zip
+          run-id: ${{ needs.select.outputs.players_run }}
+          github-token: ${{ github.token }}
+          path: download
+          skip-decompress: true
+      - name: Compare cold and warm Low, Medium and High on this Mac
+        run: |
+          zip=download/LastTrainOut-macos-universal.zip
+          echo "$(jq -r .zip_sha256 docs/validation/milestone354/build-99.json)  $zip" | shasum -a 256 -c -
+          ditto -x -k "$zip" extracted
+          app="extracted/Last Train Out.app"
+          codesign --verify --strict --deep "$app"
+          python3 tools/macos/compare_player_startup.py "$app" "$RUNNER_TEMP/players" "${{ matrix.first }}"
+      - if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: players-${{ matrix.first }}-first
+          path: ${{ runner.temp }}/players/
           retention-days: 30
 
   warehouse-entry:
