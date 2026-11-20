@@ -151,7 +151,11 @@ jobs:
   fresh-player:
     needs: select
     if: needs.select.outputs.replay != ''
-    name: Fresh native Metal player and audio on the retained universal ZIP
+    name: Fresh Metal player shutdown / ${{ matrix.observer }}
+    strategy:
+      fail-fast: false
+      matrix:
+        observer: [signposts, uninstrumented]
     runs-on: macos-latest
     timeout-minutes: 25
     steps:
@@ -172,14 +176,17 @@ jobs:
           ditto -x -k "$zip" extracted
           codesign --verify --deep --strict "extracted/Last Train Out.app"
       - name: Run the ordinary player shortcut before any other Godot process
-        run: python3 tools/macos/measure_fresh_player.py "extracted/Last Train Out.app" "$RUNNER_TEMP/fresh-metal/player-first"
+        run: |
+          args=()
+          if [[ "${{ matrix.observer }}" == uninstrumented ]]; then args+=(--without-signposts); fi
+          python3 tools/macos/measure_fresh_player.py "extracted/Last Train Out.app" "$RUNNER_TEMP/fresh-metal/player-first" "${args[@]}"
       - name: Exercise real audio and the shipped mission
         if: ${{ !cancelled() && steps.unpack.outcome == 'success' }}
         run: tools/macos/check_native_selftest.sh "extracted/Last Train Out.app" "$RUNNER_TEMP/fresh-metal"
       - if: always()
         uses: actions/upload-artifact@v7
         with:
-          name: fresh-native-metal-replay
+          name: fresh-native-metal-${{ matrix.observer }}
           path: ${{ runner.temp }}/fresh-metal/
           retention-days: 30
 
