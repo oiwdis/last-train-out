@@ -1,0 +1,21 @@
+--- a/core/object/worker_thread_pool.cpp
++++ b/core/object/worker_thread_pool.cpp
+@@ -173,6 +173,18 @@
+ 			}
+ 		}
+ 
++		// A worker can go back to sleep during PRE_EXIT while low-priority
++		// work still waits for promotion. Once both queues drain there may
++		// be no further tasks to wake it to acknowledge the shutdown barrier.
++		if (unlikely(runlevel == RUNLEVEL_PRE_EXIT_LANGUAGES) && !task_queue.first() && !low_priority_task_queue.first()) {
++			for (ThreadData &worker : threads) {
++				if (&worker != &curr_thread && !worker.pre_exited_languages) {
++					worker.cond_var.notify_one();
++					worker.signaled = true;
++				}
++			}
++		}
++
+ 		task_mutex.unlock();
+ 	}
+ 

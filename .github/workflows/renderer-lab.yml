@@ -9,6 +9,8 @@ on:
       - tools/macos/check_native_selftest.sh
       - tools/macos/experiments/**
       - tools/macos/offline_bake/**
+      - tools/macos/engine/worker-pool-shutdown.patch
+      - tools/macos/worker_shutdown/**
       - tools/macos/renderer_lab.py
       - tools/macos/renderer_probe.gd
       - tools/macos/exported_renderer_lab.py
@@ -32,6 +34,7 @@ jobs:
       replay: ${{ steps.select.outputs.replay }}
       gi_run: ${{ steps.select.outputs.gi_run }}
       offline_run: ${{ steps.select.outputs.offline_run }}
+      pool_run: ${{ steps.select.outputs.pool_run }}
       run: ${{ steps.select.outputs.run }}
       exported: ${{ steps.select.outputs.exported }}
       followup: ${{ steps.select.outputs.followup }}
@@ -54,6 +57,11 @@ jobs:
             run=$(jq -r .workflow_run docs/validation/milestone354/build-86.json)
             id=$(tools/macos/find_reference_artifact.sh "$run")
             if [[ -n "$id" ]]; then echo "replay=$run" >> "$GITHUB_OUTPUT"; fi
+          fi
+          if ! git diff --quiet HEAD^ HEAD -- tools/macos/engine/worker-pool-shutdown.patch tools/macos/worker_shutdown; then
+            run=$(jq -r .workflow_run docs/validation/milestone354/build-86.json)
+            id=$(tools/macos/find_reference_artifact.sh "$run")
+            if [[ -n "$id" ]]; then echo "pool_run=$run" >> "$GITHUB_OUTPUT"; fi
           fi
           if ! git diff --quiet HEAD^ HEAD -- tools/macos/offline_bake; then
             run=$(jq -r .workflow_run docs/validation/milestone354/build-86.json)
@@ -84,6 +92,87 @@ jobs:
             echo 'journey=true' >> "$GITHUB_OUTPUT"
           fi
 
+  pool-template:
+    needs: select
+    if: needs.select.outputs.pool_run != ''
+    name: Build the native player with the worker shutdown correction
+    runs-on: macos-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/cache@v6
+        id: compiled
+        with:
+          path: ~/lto-metal-template
+          key: godot-macos-arm64-4.5.1-metal-v1-${{ hashFiles('tools/macos/engine/**') }}
+      - if: steps.compiled.outputs.cache-hit != 'true'
+        run: tools/macos/engine/build_metal_template.sh "$HOME/lto-metal-template"
+      - if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: pool-template
+          path: ~/lto-metal-template/
+          retention-days: 30
+
+  pool-replay:
+    needs: [select, pool-template]
+    name: Repeat the frozen native player and exercise queued shutdown / ${{ matrix.observer }}
+    runs-on: macos-latest
+    timeout-minutes: 35
+    strategy:
+      fail-fast: false
+      matrix:
+        observer: [instrumented, plain]
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/download-artifact@v8
+        with:
+          name: LastTrainOut-macos-universal.zip
+          run-id: ${{ needs.select.outputs.pool_run }}
+          github-token: ${{ github.token }}
+          path: download
+          skip-decompress: true
+      - uses: actions/download-artifact@v8
+        with:
+          name: pool-template
+          path: template
+      - id: prepare
+        name: Change only the optional executable in a verified copy of build 86
+        run: |
+          zip=$(find download -name '*.zip' -type f | head -n 1)
+          echo "$(jq -r .zip_sha256 docs/validation/milestone354/build-86.json)  $zip" | shasum -a 256 -c -
+          ditto -x -k "$zip" experiment
+          app="experiment/Last Train Out.app"
+          cp -p "$app/Contents/MacOS/LastTrainOutMetal" "$RUNNER_TEMP/stock-control"
+          install -m 755 template/LastTrainOutMetal "$app/Contents/MacOS/LastTrainOutMetal"
+          codesign --force --sign - "$app"
+          codesign --verify --deep --strict "$app"
+      - name: Repeat the cold and warm player launches on a fresh host
+        run: |
+          args=()
+          if [[ "${{ matrix.observer }}" == plain ]]; then args+=(--without-signposts); fi
+          python3 tools/macos/measure_fresh_player.py "experiment/Last Train Out.app" "$RUNNER_TEMP/pool/player" "${args[@]}"
+      - name: Check native audio and game interactions
+        if: ${{ !cancelled() && steps.prepare.outcome == 'success' }}
+        run: tools/macos/check_native_selftest.sh "experiment/Last Train Out.app" "$RUNNER_TEMP/pool"
+      - name: Compare the upstream exit barrier with the correction
+        if: ${{ !cancelled() && steps.prepare.outcome == 'success' }}
+        run: |
+          app="experiment/Last Train Out.app"
+          pack="$app/Contents/Resources/Last Train Out.pck"
+          python3 tools/macos/worker_shutdown/check.py "$RUNNER_TEMP/stock-control" "$RUNNER_TEMP/pool/control" --pack "$pack" --control
+      - name: Require clean cold shutdown with pending finite work
+        if: ${{ !cancelled() && steps.prepare.outcome == 'success' }}
+        run: |
+          app="experiment/Last Train Out.app"
+          python3 tools/macos/worker_shutdown/check.py "$app/Contents/MacOS/LastTrainOutMetal" "$RUNNER_TEMP/pool/candidate" --pack "$app/Contents/Resources/Last Train Out.pck"
+      - if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: pool-${{ matrix.observer }}
+          path: ${{ runner.temp }}/pool/
+          retention-days: 30
+
   offline-libraries:
     needs: select
     if: needs.select.outputs.offline_run != ''
@@ -112,11 +201,7 @@ jobs:
           fi
       - name: Build an offline compiler using Godot’s own Metal container writer
         run: |
-          folder="$RUNNER_TEMP/baker-source"
-          mkdir "$folder"
-          cp tools/macos/engine/build_metal_template.sh "$folder/"
-          cat tools/macos/engine/viewport-metal-sampler.patch tools/macos/offline_bake/builder.patch > "$folder/viewport-metal-sampler.patch"
-          "$folder/build_metal_template.sh" "$RUNNER_TEMP/compiler"
+          tools/macos/engine/build_metal_template.sh "$RUNNER_TEMP/compiler" tools/macos/offline_bake/builder.patch
       - name: Compile stages observed on the first native player and cover all 36 views
         run: |
           python3 tools/macos/offline_bake/measure.py bake "extracted/Last Train Out.app" "$RUNNER_TEMP/compiler/LastTrainOutMetal" \
@@ -190,11 +275,7 @@ jobs:
       - uses: actions/checkout@v7
       - name: Build the same pinned engine with the GI experiment
         run: |
-          folder="$RUNNER_TEMP/gi-source"
-          mkdir "$folder"
-          cp tools/macos/engine/build_metal_template.sh "$folder/"
-          cat tools/macos/engine/viewport-metal-sampler.patch tools/macos/experiments/on-demand-gi.patch > "$folder/viewport-metal-sampler.patch"
-          "$folder/build_metal_template.sh" "$RUNNER_TEMP/gi-template"
+          tools/macos/engine/build_metal_template.sh "$RUNNER_TEMP/gi-template" tools/macos/experiments/on-demand-gi.patch
       - if: always()
         uses: actions/upload-artifact@v7
         with:

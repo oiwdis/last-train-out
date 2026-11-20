@@ -570,6 +570,11 @@ jobs:
       - name: Verify the opt-in packaged renderer with native audio
         if: ${{ !cancelled() && matrix.driver == 'metal' && steps.checked_bundle.outcome == 'success' }}
         run: tools/macos/check_native_selftest.sh "extracted/$APP_NAME.app" "$RUNNER_TEMP/selftest"
+      - name: Check that native shutdown drains queued work and releases all workers
+        if: ${{ !cancelled() && matrix.driver == 'metal' && steps.checked_bundle.outcome == 'success' }}
+        run: |
+          python3 tools/macos/worker_shutdown/check.py "extracted/$APP_NAME.app/Contents/MacOS/LastTrainOutMetal" \
+            "$RUNNER_TEMP/selftest/worker-shutdown" --pack "extracted/$APP_NAME.app/Contents/Resources/$APP_NAME.pck"
       - name: Verify early rejection of native Metal on Intel
         if: ${{ !cancelled() && matrix.arch == 'x86_64' && steps.checked_bundle.outcome == 'success' }}
         run: |

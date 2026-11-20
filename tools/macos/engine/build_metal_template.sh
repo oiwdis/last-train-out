@@ -2,7 +2,8 @@
 # Build the optional Metal executable. The stock universal executable retains
 # Vulkan and the official Intel template. Both read the identical game pack.
 set -euo pipefail
-dest="${1:?usage: build_metal_template.sh OUTPUT_DIRECTORY}"
+dest="${1:?usage: build_metal_template.sh OUTPUT_DIRECTORY [EXPERIMENT_PATCH ...]}"
+shift
 mkdir -p "$dest"
 dest="$(cd "$dest" && pwd)"
 if [[ "$(uname -s)-$(uname -m)" != Darwin-arm64 ]]; then
@@ -10,15 +11,17 @@ if [[ "$(uname -s)-$(uname -m)" != Darwin-arm64 ]]; then
   exit 2
 fi
 revision=f62fdbde15035c5576dad93e586201f4d41ef0cb
-patch="$(cd "$(dirname "$0")" && pwd)/viewport-metal-sampler.patch"
+patch_dir="$(cd "$(dirname "$0")" && pwd)"
+patches=("$patch_dir/viewport-metal-sampler.patch" "$patch_dir/worker-pool-shutdown.patch")
+for extra in "$@"; do patches+=("$(cd "$(dirname "$extra")" && pwd)/$(basename "$extra")"); done
 work="$(mktemp -d)"
 trap 'rm -rf "$work"' EXIT
 git -C "$work" init --quiet
 git -C "$work" fetch --quiet --depth 1 https://github.com/godotengine/godot.git "$revision"
 git -C "$work" checkout --quiet --detach FETCH_HEAD
 test "$(git -C "$work" rev-parse HEAD)" = "$revision"
-git -C "$work" apply --check "$patch"
-git -C "$work" apply "$patch"
+git -C "$work" apply --check "${patches[@]}"
+git -C "$work" apply "${patches[@]}"
 cd "$work"
 python3 -m venv "$work/build-env"
 "$work/build-env/bin/pip" -q install 'scons==4.8.1'
@@ -35,7 +38,7 @@ strip -x "$dest/LastTrainOutMetal"
 codesign --force --sign - "$dest/LastTrainOutMetal"
 {
   echo "Godot $revision"
-  shasum -a 256 "$patch" "$dest/LastTrainOutMetal"
+  shasum -a 256 "${patches[@]}" "$dest/LastTrainOutMetal"
   xcodebuild -version
   "$dest/LastTrainOutMetal" --version
 } | tee "$dest/provenance.txt"
