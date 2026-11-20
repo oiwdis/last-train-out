@@ -1,5 +1,6 @@
 """Build CSVs directly from renderer_lab archives, including partial and failed runs."""
 import argparse
+from collections import defaultdict
 import csv
 import json
 import math
@@ -27,6 +28,7 @@ def main():
     args = parser.parse_args()
     args.out.mkdir(parents=True, exist_ok=True)
     runs, phases, frames = [], [], []
+    samples = defaultdict(list)
     for path in args.archives:
         with zipfile.ZipFile(path) as archive:
             def load(name):
@@ -36,6 +38,7 @@ def main():
                 data = load(r['name'] + '.json')
                 runs.append(dict(source=path.name, group=metadata['group'], name=r['name'], revision=r['revision'],
                                  variant=r['variant'], method=r['method'], driver=r['driver'], actual=r['actual'],
+                                 actual_driver=r.get('actual_driver'), backend_match=r.get('valid_backend'),
                                  cold=r['cold'], exit=r['code'], timeout=r.get('timeout',False), complete=r['complete'],
                                  device_loss=r['device_loss'], ready_ms=r['ready_ms'], wall_s=r['seconds'],
                                  peak_rss_bytes=r['peak_rss'], diagnostics=json.dumps(r['diagnostics'])))
@@ -58,6 +61,9 @@ def main():
                         if 'frames_ms' in partial: measured.append(partial)
                 for row in measured:
                     vals = row['frames_ms']
+                    # Screenshots and their readbacks are a separately instrumented run.
+                    if '-matrix' in r['name']:
+                        samples[(path.name, r['revision'], r['method'], row['preset'], row['location'], row['stage'])].extend(vals)
                     frames.append(dict(source=path.name,run=r['name'],revision=r['revision'],method=r['method'],complete=r['complete'],
                                        preset=row['preset'],location=row['location'],stage=row['stage'],samples=len(vals),
                                        mean_ms=statistics.mean(vals),fps=1000/statistics.mean(vals),
@@ -69,6 +75,15 @@ def main():
     write_rows(args.out/'attempts.csv', runs)
     write_rows(args.out/'phases.csv', phases)
     write_rows(args.out/'frames.csv', frames)
+    pooled = []
+    for key, values in samples.items():
+        row = dict(zip(('source','revision','method','preset','location','stage'), key))
+        row.update(samples=len(values), mean_ms=statistics.mean(values), fps=1000/statistics.mean(values),
+                   median_ms=pctl(values,.5), p95_ms=pctl(values,.95), p99_ms=pctl(values,.99),
+                   worst_ms=max(values), over_33_3=sum(v>33.3 for v in values),
+                   over_50=sum(v>50 for v in values), over_100=sum(v>100 for v in values))
+        pooled.append(row)
+    write_rows(args.out/'pooled.csv', pooled)
 
 
 if __name__=='__main__':

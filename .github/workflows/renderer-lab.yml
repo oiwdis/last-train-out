@@ -8,6 +8,7 @@ on:
       - tools/macos/renderer_probe.gd
       - tools/macos/exported_renderer_lab.py
       - tools/macos/exported_shadow_probe.gd
+      - tools/macos/stress_release.py
 
 permissions:
   contents: read
@@ -20,6 +21,7 @@ jobs:
     outputs:
       run: ${{ steps.select.outputs.run }}
       exported: ${{ steps.select.outputs.exported }}
+      followup: ${{ steps.select.outputs.followup }}
     steps:
       - uses: actions/checkout@v7
         with:
@@ -32,6 +34,10 @@ jobs:
           fi
           if [ "$GITHUB_EVENT_NAME" = workflow_dispatch ] || ! git diff --quiet HEAD^ HEAD -- tools/macos/exported_renderer_lab.py tools/macos/exported_shadow_probe.gd; then
             echo 'exported=true' >> "$GITHUB_OUTPUT"
+          fi
+
+          if [ "$GITHUB_EVENT_NAME" = workflow_dispatch ] || ! git diff --quiet HEAD^ HEAD -- tools/macos/stress_release.py; then
+            echo 'followup=true' >> "$GITHUB_OUTPUT"
           fi
 
   isolate:
@@ -110,4 +116,54 @@ jobs:
         with:
           name: original-export-${{ matrix.group }}
           path: ${{ runner.temp }}/exported-lab
+          retention-days: 30
+
+  followup:
+    needs: select
+    if: needs.select.outputs.followup == 'true'
+    name: Exported investigation / ${{ matrix.case }}
+    runs-on: macos-latest
+    timeout-minutes: 49
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {case: shadow-replica-a, run: '44608806260', kind: shadows}
+          - {case: shadow-replica-b, run: '44608806260', kind: shadows}
+          - {case: forward-metal-mixed, run: '44675841777', kind: forward-metal, series: mixed}
+          - {case: forward-metal-high, run: '44675841777', kind: forward-metal, series: high}
+          - {case: mobile-vulkan-mixed, run: '44675841777', kind: mobile-vulkan, series: mixed}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/download-artifact@v8
+        with:
+          name: LastTrainOut-macos-universal.zip
+          run-id: ${{ matrix.run }}
+          github-token: ${{ github.token }}
+          path: download
+          skip-decompress: true
+      - name: Verify the selected development build
+        env:
+          KIND: ${{ matrix.kind }}
+        run: |
+          zip=$(find download -name '*.zip' -type f | head -n 1)
+          sha=e779c8b73b9e46a1b46c4a95c327e421d7f3da393b3123bc8d7cdb26b884f2a7
+          if [ "$KIND" = shadows ]; then sha=e1cff244b9edf7a8af1b6371ad311a4cf0fafa79301beb3ecaec2517ae837159; fi
+          echo "$sha  $zip" | shasum -a 256 -c -
+          ditto -x -k "$zip" extracted
+      - name: Repeat covered-shadow experiment on the original export
+        if: matrix.kind == 'shadows'
+        run: python3 tools/macos/exported_renderer_lab.py 'extracted/Last Train Out.app' shadows "$RUNNER_TEMP/followup"
+      - name: Exercise the candidate with an explicit experimental backend
+        if: matrix.kind != 'shadows'
+        env:
+          SOURCE_SHA: 5534cf82c2e6e494cbf54add169e6ab4e8101b46
+        run: python3 tools/macos/stress_release.py 'extracted/Last Train Out.app' "$RUNNER_TEMP/followup" --series "${{ matrix.series }}" --experimental-backend "${{ matrix.kind }}"
+      - if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: followup-${{ matrix.case }}
+          path: ${{ runner.temp }}/followup
           retention-days: 30

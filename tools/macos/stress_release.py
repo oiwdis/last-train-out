@@ -38,6 +38,8 @@ def main():
     parser.add_argument('destination', type=Path)
     parser.add_argument('--series', choices=['mixed', 'high', 'low-medium'], default='mixed',
                         help='Run all three series on separate idle runners for the full 3.5.3 matrix.')
+    parser.add_argument('--experimental-backend', choices=['forward-metal', 'mobile-vulkan', 'compatibility-gl'],
+                        help='Explicitly select a backend for a separate experiment on this export.')
     options = parser.parse_args()
     app, out = options.app.resolve(), options.destination.resolve()
     out.mkdir(parents=True, exist_ok=True)
@@ -60,12 +62,17 @@ def main():
     token = 'LTO-353-stress-' + uuid.uuid4().hex
     started = time.monotonic()
     wall_start = time.time()
+    expected_backend = {
+        None: ('forward_plus','vulkan'), 'forward-metal': ('forward_plus','metal'),
+        'mobile-vulkan': ('mobile','vulkan'), 'compatibility-gl': ('gl_compatibility','opengl3'),
+    }[options.experimental_backend]
     metadata = {'source': os.environ.get('SOURCE_SHA', ''), 'bundle': info,
                 'host': platform.platform(), 'architecture': platform.machine(),
                 'pack_sha256': digest(pack), 'resolution': '960x540 windowed',
                 'cache_conditions': 'fresh writable app caches; baked shaders retained; OS/driver/filesystem shared',
                 'scope': 'exported runtime rendering/lifetime fixtures, not physical M1 acceptance',
-                'deadline_seconds': 2400, 'series': options.series, 'runs': []}
+                'deadline_seconds': 2400, 'series': options.series,
+                'experimental_backend': options.experimental_backend, 'runs': []}
 
     def attempt(name, user_name, script, args, timeout=180, headless=False):
         report = out / (name + '.json')
@@ -79,6 +86,8 @@ def main():
                    '--', '--out=' + str(report), *args]
         if headless:
             command.insert(1, '--headless')
+        elif options.experimental_backend:
+            command[1:1] = ['--rendering-method', expected_backend[0], '--rendering-driver', expected_backend[1]]
         row = {'name': name, 'command': command, 'user_directory': str(user_dir),
                'cache_before': inventory(user_dir / 'shader_cache'), 'rss': []}
         remaining = metadata['deadline_seconds'] - (time.monotonic() - started)
@@ -141,7 +150,7 @@ def main():
                     row['complete'] = data.get('complete', False) and data.get('failed', 1) == 0
                 row['renderer'] = data.get('renderer')
                 row['driver'] = data.get('driver')
-                if not headless and (row['renderer'], row['driver']) != ('forward_plus', 'vulkan'):
+                if not headless and (row['renderer'], row['driver']) != expected_backend:
                     row['complete'] = False
                     row['backend_mismatch'] = True
         metadata['runs'].append(row)
