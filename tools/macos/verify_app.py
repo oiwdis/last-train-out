@@ -190,6 +190,21 @@ def verify_bundle(app: Path, expect_signature: str) -> None:
               all(k.endswith(".metal.cache") and file_digest(cache_dir / k) == d for k, d in files.items()),
               "every optional Metal cache file matches the signed build inventory", f"{len(files)} shader groups")
 
+        if "bundled_library_groups" in profile:
+            count = profile["bundled_library_groups"]
+            library_dir = contents / "Resources" / "MetalLibraries"
+            if count and check((library_dir / "Profile.plist").is_file(), "the signed Metal library inventory is present"):
+                baked = plistlib.loads((library_dir / "Profile.plist").read_bytes())
+                outputs = baked.get("files", {})
+                actual = {p.relative_to(library_dir).as_posix() for p in library_dir.rglob("*.metal.cache")}
+                check(len(outputs) == count and set(outputs) == actual and set(outputs) <= set(files)
+                      and all(profile.get(k) == baked.get(k) for k in ("source","family","language","argumentBuffers"))
+                      and baked.get("min_os_version") == "26.0"
+                      and all(file_digest(library_dir / key) == digest for key, digest in outputs.items()),
+                      "every read-only Metal library group matches the signed inventory", str(count))
+            elif count == 0:
+                check(not library_dir.exists(), "this source-only device profile has no binary override")
+
     packs = sorted((contents / "Resources").glob("*.pck"))
     if check(len(packs) == 1, "the game data pack exists", packs[0].name if packs else "no .pck in Contents/Resources"):
         verify_pack(packs[0])

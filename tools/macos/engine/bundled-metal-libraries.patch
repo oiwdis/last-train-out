@@ -1,0 +1,29 @@
+--- a/servers/rendering/renderer_rd/shader_rd.cpp
++++ b/servers/rendering/renderer_rd/shader_rd.cpp
+@@ -29,6 +29,8 @@
+ /**************************************************************************/
+ 
+ #include "shader_rd.h"
++
++#include "core/os/os.h"
+ 
+ #include "core/io/dir_access.h"
+ #include "core/io/file_access.h"
+@@ -435,7 +437,16 @@
+ bool ShaderRD::_load_from_cache(Version *p_version, int p_group) {
+ 	String api_safe_name = String(RD::get_singleton()->get_device_api_name()).validate_filename().to_lower();
+ 	Ref<FileAccess> f;
+-	if (shader_cache_user_dir_valid) {
++	// The pre-device selector enables this read-only directory only for a
++	// matching Mac. Older OS versions and existing user caches stay usable.
++	if (shader_cache_user_dir_valid && api_safe_name == "metal" && OS::get_singleton()->get_environment("LTO_USE_BUNDLED_METAL_LIBRARIES") == "1") {
++		const String bundled = OS::get_singleton()->get_executable_path().get_base_dir().path_join("../Resources/MetalLibraries").simplify_path();
++		f = FileAccess::open(bundled.path_join(_get_cache_file_relative_path(p_version, p_group, api_safe_name)), FileAccess::READ);
++		if (f.is_valid()) {
++			print_verbose(vformat("Loaded bundled Metal library group %s", name));
++		}
++	}
++	if (f.is_null() && shader_cache_user_dir_valid) {
+ 		f = FileAccess::open(_get_cache_file_path(p_version, p_group, api_safe_name, true), FileAccess::READ);
+ 	}
+ 

@@ -16,6 +16,8 @@ mkdir "$out"
 
 Look for both the engine banner and `[renderer] active forward_plus/metal` or `[renderer] active forward_plus/vulkan`. Keep the shader-cache selection line. On an incompatible source-cache profile Metal compiles locally. An unavailable requested backend ends the explicit launch. The chooser never relaunches an interrupted mission. Preserve the original log and macOS crash report before starting another game.
 
+On a compatible M1 running macOS 26 or later, the Metal selector logs the number of read-only library groups. With `--verbose` the engine logs `Loaded bundled Metal library group` when it uses one. An older OS or a different shader profile can take the source path. For a paired source-only diagnostic, place `LTO_METAL_LIBRARIES=0` before the same Metal selector command and record that override alongside the results.
+
 ## Collect startup and frame distributions
 
 From this revision of the repository, run the owner benchmark and keep the output directory. It copies the shipped pack into a temporary test directory and selects private writable user data. Existing saves and shader caches are preserved. Each cold process gets an empty application cache. The warm process reuses it. The harness samples the process RSS once per second. If a benchmark stays alive for 12 seconds after writing its report, the harness takes a macOS thread sample. It marks a launch still running after five minutes, or a full matrix after 30 minutes, as a timeout and stops that benchmark process. Keep the original timeout, observer and RSS files. OS and driver caches may survive a reboot. Record whether this was the first launch after boot and the first install of this build.

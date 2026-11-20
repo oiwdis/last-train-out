@@ -11,6 +11,7 @@ import tempfile
 import uuid
 
 from benchmark_release import measure
+from metal_libraries.prepare import install_compatible_groups
 
 
 def main():
@@ -60,9 +61,11 @@ def main():
     if not files:
         raise SystemExit('Godot produced no Metal shader intermediates.')
     profile.update(files=files, source=info['LTOBuildCommit'], adapter=report['adapter'], engine=report['godot'])
+    libraries = install_compatible_groups(resources, profile)
+    profile['bundled_library_groups'] = len(libraries)
     (dest / 'Profile.plist').write_bytes(plistlib.dumps(profile))
     (out / 'metal-profile.json').write_text(json.dumps(profile, indent=2))
-    print('Included', len(files), 'stock Metal source/reflection groups from', report['adapter'])
+    print('Included', len(files), 'Metal source groups and', len(libraries), 'matched library groups for', report['adapter'])
 
 
 if __name__ == '__main__':

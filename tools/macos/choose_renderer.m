@@ -56,14 +56,34 @@ static BOOL installMissing(NSString *from, NSString *to) {
     return ok;
 }
 
+static BOOL supportsProfile(NSDictionary *actual, NSDictionary *profile) {
+    return profile[@"family"] && profile[@"language"] && profile[@"argumentBuffers"] &&
+        [actual[@"family"] integerValue] >= [profile[@"family"] integerValue] &&
+        [actual[@"language"] integerValue] >= [profile[@"language"] integerValue] &&
+        [actual[@"argumentBuffers"] integerValue] >= [profile[@"argumentBuffers"] integerValue];
+}
+
+static void selectBundledLibraries(NSString *resources, NSDictionary *actual) {
+    NSDictionary *env = NSProcessInfo.processInfo.environment;
+    if ([env[@"LTO_METAL_LIBRARIES"] isEqual:@"0"] || [env[@"LTO_METAL_SHADER_SEED"] isEqual:@"0"] ||
+        env[@"GODOT_MTL_DISABLE_ARGUMENT_BUFFERS"]) return;
+    if (@available(macOS 26.0, *)) {
+        NSString *path = [resources stringByAppendingPathComponent:@"MetalLibraries/Profile.plist"];
+        NSDictionary *profile = [NSDictionary dictionaryWithContentsOfFile:path];
+        if ([profile[@"min_os_version"] isEqual:@"26.0"] && supportsProfile(actual, profile)) {
+            setenv("LTO_USE_BUNDLED_METAL_LIBRARIES", "1", 1);
+            printf("[renderer] using read-only bundled Metal libraries: %lu groups\n", (unsigned long)[profile[@"files"] count]);
+            return;
+        }
+    }
+    puts("[renderer] no matching bundled Metal libraries; using shader source");
+}
+
 static void seedShaders(NSString *resources, NSString *user, NSDictionary *actual) {
     NSString *source = [resources stringByAppendingPathComponent:@"MetalShaders"];
     NSDictionary *profile = [NSDictionary dictionaryWithContentsOfFile:[source stringByAppendingPathComponent:@"Profile.plist"]];
-    if (!profile || !user || [NSProcessInfo.processInfo.environment[@"LTO_METAL_SHADER_SEED"] isEqual:@"0"] ||
-        NSProcessInfo.processInfo.environment[@"GODOT_MTL_DISABLE_ARGUMENT_BUFFERS"] ||
-        [actual[@"family"] integerValue] < [profile[@"family"] integerValue] ||
-        [actual[@"language"] integerValue] < [profile[@"language"] integerValue] ||
-        [actual[@"argumentBuffers"] integerValue] < [profile[@"argumentBuffers"] integerValue]) {
+    if (!supportsProfile(actual, profile) || !user || [NSProcessInfo.processInfo.environment[@"LTO_METAL_SHADER_SEED"] isEqual:@"0"] ||
+        NSProcessInfo.processInfo.environment[@"GODOT_MTL_DISABLE_ARGUMENT_BUFFERS"]) {
         puts("[renderer] Metal shader source cache unavailable for this configuration; compiling locally");
         return;
     }
@@ -116,6 +136,7 @@ static int launch(int argc, const char **argv) {
     NSString *exe = info[@"CFBundleExecutable"];
     if (!exe.length) return 2;
     NSString *resources = [contents stringByAppendingPathComponent:@"Resources"];
+    unsetenv("LTO_USE_BUNDLED_METAL_LIBRARIES");
     if ([driver isEqual:@"metal"]) {
 #if defined(__arm64__)
         NSDictionary *profile = deviceProfile();
@@ -127,6 +148,7 @@ static int launch(int argc, const char **argv) {
         // preparation view before play; retain an explicit immediate control.
         setenv("GODOT_MTL_SHADER_LOAD_STRATEGY", "lazy", 0);
         printf("[renderer] Metal library policy: %s\n", getenv("GODOT_MTL_SHADER_LOAD_STRATEGY"));
+        selectBundledLibraries(resources, profile);
         seedShaders(resources, userDirectory(rest, resources), profile);
         exe = @"LastTrainOutMetal";
 #else

@@ -1,0 +1,6 @@
+archive,stream,pid,operation,count,aggregate_worker_s,union_wall_s,longest_ms,longest_event,unpaired
+offline-source-first.zip,player/signposts.ndjson,1739,compute_pipeline_create,184,43.9527,43.9527,1126.126,shader_name=GiShaderRD:3,0
+offline-source-first.zip,player/signposts.ndjson,1739,shader_compile,319,198.8242,119.2722,2176.438,shader_name=SceneForwardClusteredShaderRD:17 stage=frag hash=86DC6D71,0
+offline-source-first.zip,player/signposts.ndjson,1739,render_pipeline_create,253,198.467,82.9554,4280.737,shader_name=SceneForwardClusteredShaderRD:17,0
+offline-binary-first.zip,player/signposts.ndjson,1482,compute_pipeline_create,184,6.7429,6.7429,196.534,shader_name=SdfgiPreprocessShaderRD:7,0
+offline-binary-first.zip,player/signposts.ndjson,1482,render_pipeline_create,253,6.1645,3.0291,419.842,shader_name=SceneForwardClusteredShaderRD:16,0

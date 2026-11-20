@@ -3,6 +3,7 @@ import argparse
 from collections import defaultdict
 from datetime import datetime
 import json
+import re
 from pathlib import Path
 import subprocess
 import sys
@@ -59,11 +60,18 @@ def main():
         by_process[r['pid']].add(r['stage'])
     required = {'main_setup','main_start','main_setup2','physics_servers','metal_default_device','metal_context',
                 'metal_device_driver','shader_cache_read','metal_texture_allocate','compressed_texture_load',
-                'texture_staging','metal_upload_commands','material_update_shader'}
+                'texture_staging','material_update_shader'}
     missing = {str(pid):sorted(required - stages) for pid, stages in by_process.items()}
+    uploads = {}
+    for name in ('first-launch', 'warm-launch'):
+        log = (out / 'player' / (name + '.log')).read_text(errors='replace')
+        counts = re.findall(r'^\[startup-stages\] uploads (\d+) total_ns (\d+) longest_ns (\d+)$', log, re.M)
+        uploads[name] = [dict(zip(('calls','total_ns','longest_ns'), map(int, row))) for row in counts]
+    valid_uploads = all(items and items[-1]['calls'] > 0 and items[-1]['total_ns'] >= items[-1]['longest_ns'] > 0
+                        for items in uploads.values())
     (out / 'stage-timings.json').write_text(json.dumps({'player_code': code, 'missing':missing, 'unpaired':unpaired,
-                                                       'spans': summary}, indent=2))
-    return int(code != 0 or len(by_process) != 2 or bool(unpaired) or any(missing.values()))
+                                                       'spans': summary, 'upload_cpu': uploads}, indent=2))
+    return int(code != 0 or len(by_process) != 2 or bool(unpaired) or any(missing.values()) or not valid_uploads)
 
 
 if __name__ == '__main__':

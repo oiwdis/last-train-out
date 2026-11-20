@@ -1,9 +1,12 @@
 --- /dev/null
 +++ b/core/os/lto_startup_interval.h
-@@ -0,0 +1,27 @@
+@@ -0,0 +1,52 @@
 +// Timing-only macOS template. Each interval runs on the caller's thread.
 +#pragma once
 +#include <os/signpost.h>
++#include <atomic>
++#include <cstdio>
++#include <time.h>
 +
 +class LTOStartupInterval {
 +	static os_log_t log() {
@@ -27,6 +30,28 @@
 +	}
 +
 +	~LTOStartupInterval() { finish(); }
++};
++
++// A launch can encode thousands of uploads on one thread in a few milliseconds.
++// Count these locally so streaming signpost pairs cannot overrun the observer.
++class LTOUploadTimer {
++	static inline std::atomic<uint64_t> calls{0}, total{0}, longest{0};
++	uint64_t begin = clock_gettime_nsec_np(CLOCK_MONOTONIC_RAW);
++
++public:
++	~LTOUploadTimer() {
++		uint64_t elapsed = clock_gettime_nsec_np(CLOCK_MONOTONIC_RAW) - begin;
++		calls.fetch_add(1, std::memory_order_relaxed);
++		total.fetch_add(elapsed, std::memory_order_relaxed);
++		uint64_t previous = longest.load(std::memory_order_relaxed);
++		while (previous < elapsed && !longest.compare_exchange_weak(previous, elapsed, std::memory_order_relaxed)) {
++		}
++	}
++
++	static void report() {
++		std::fprintf(stderr, "[startup-stages] uploads %llu total_ns %llu longest_ns %llu\n",
++				(unsigned long long)calls.load(), (unsigned long long)total.load(), (unsigned long long)longest.load());
++	}
 +};
 --- a/main/main.cpp
 +++ b/main/main.cpp
@@ -122,11 +147,19 @@
  }
  
  void RenderingDeviceDriverMetal::command_copy_buffer_to_texture(CommandBufferID p_cmd_buffer, BufferID p_src_buffer, TextureID p_dst_texture, TextureLayout p_dst_texture_layout, VectorView<BufferTextureCopyRegion> p_regions) {
-+	LTOStartupInterval lto_interval("metal_upload_commands");
++	LTOUploadTimer lto_upload;
  	_copy_texture_buffer(p_cmd_buffer, CopySource::Buffer, p_dst_texture, p_src_buffer, p_regions);
  }
  
-@@ -2921,6 +2925,7 @@
+@@ -2817,6 +2821,7 @@
+ }
+ 
+ RenderingDeviceDriverMetal::~RenderingDeviceDriverMetal() {
++	LTOUploadTimer::report();
+ 	for (MDCommandBuffer *cb : command_buffers) {
+ 		delete cb;
+ 	}
+@@ -2921,6 +2926,7 @@
  }
  
  Error RenderingDeviceDriverMetal::initialize(uint32_t p_device_index, uint32_t p_frame_count) {

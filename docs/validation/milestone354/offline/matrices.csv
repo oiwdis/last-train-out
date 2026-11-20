@@ -1,0 +1,9 @@
+archive,scenario,stage,frames,mean_ms,median_ms,p95_ms,p99_ms,worst_ms,over33_3,over50,over100,peak_rss_bytes
+offline-source-first.zip,binary-matrix,entry,2160,10.383564351851852,8.256,17.115,34.514,1010.106,23,14,8,607305728
+offline-source-first.zip,binary-matrix,steady,6480,8.757189506172839,8.0515,13.996,20.869,68.815,15,4,0,607305728
+offline-source-first.zip,source-matrix,entry,2160,9.175296296296297,8.001999999999999,15.487,29.649,192.408,17,9,3,610074624
+offline-source-first.zip,source-matrix,steady,6480,8.84892700617284,8.0535,14.999,20.939,44.35,9,0,0,610074624
+offline-binary-first.zip,source-matrix,entry,2160,11.170966666666667,7.8415,16.613,45.608,1097.194,28,20,11,610254848
+offline-binary-first.zip,source-matrix,steady,6480,8.37112824074074,7.661,13.238,20.082,50.48,11,1,0,610254848
+offline-binary-first.zip,binary-matrix,entry,2160,8.493264351851852,7.202500000000001,15.34,31.333,174.266,18,7,4,601931776
+offline-binary-first.zip,binary-matrix,steady,6480,7.450755555555555,6.996,13.175,18.033,44.231,1,0,0,601931776

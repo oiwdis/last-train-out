@@ -102,6 +102,7 @@ jobs:
           tools/run_tests.sh "$RUNNER_TEMP/Godot_v4.5.1-stable_linux.x86_64"
           python3 tools/check_integration_tests.py tests/_output/results.json
           python3 tools/macos/test_renderer_diagnostics.py
+          python3 tools/macos/metal_libraries/test_prepare.py
       - uses: actions/upload-artifact@v7
         if: always()
         with:
@@ -567,6 +568,11 @@ jobs:
       - name: Time the first ordinary Metal player launch on this fresh machine
         if: matrix.driver == 'metal'
         run: python3 tools/macos/measure_fresh_player.py "extracted/$APP_NAME.app" "$RUNNER_TEMP/selftest/player-first"
+      - name: Check read-only library selection and source fallback on the same warm cache
+        if: ${{ !cancelled() && matrix.driver == 'metal' && steps.checked_bundle.outcome == 'success' }}
+        run: |
+          python3 tools/macos/metal_libraries/check_launch.py "extracted/$APP_NAME.app" \
+            "$RUNNER_TEMP/selftest/player-first" "$RUNNER_TEMP/selftest/library-fallback"
       - name: Verify the opt-in packaged renderer with native audio
         if: ${{ !cancelled() && matrix.driver == 'metal' && steps.checked_bundle.outcome == 'success' }}
         run: tools/macos/check_native_selftest.sh "extracted/$APP_NAME.app" "$RUNNER_TEMP/selftest"

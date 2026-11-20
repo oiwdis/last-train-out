@@ -84,6 +84,27 @@ On the same fresh download the subsequent warm High player reached play at 30.34
 
 The first process recorded 319 synchronous Metal source-library compilations, 184 compute-pipeline creations and 253 render-pipeline creations. The union of each operation’s measured intervals was 91.760 s, 36.417 s and 60.974 s respectively. Their intervals overlap, including across threads. The longest source compilation was a clustered fragment shader at 1.748 s. The longest render pipeline took 2.317 s. Forty `GiShaderRD` compute variants consumed 3.969 s, and the longest took 757 ms. The sample establishes that the fresh Mac performed substantial real compilation even with all source groups installed. The measured allocations and timing do not isolate texture-upload completion, driver scheduling, GPU execution or the cause of the later shutdown hang. [Intervals](validation/milestone354/startup/signposts.csv) · [Per-shader breakdown](validation/milestone354/startup/signposts-shaders.csv)
 
+### Timing engine, device, textures and physics
+
+A timing-only template inserted Apple signposts around engine calls on the same release PCK and used the ordinary High player with native audio. Both launches reached play and exited cleanly. On the cold run every engine-stage interval paired successfully. The numbers below are elapsed CPU-side time, including waits inside each call. Rows overlap. They cover initialization and the 30-frame observation through exit. [Original signposts, both player reports and compiler provenance](validation/milestone354/raw/first-native-stages.zip)
+
+| Operation | Cold (s) | Warm (s) |
+|---|---:|---:|
+| Engine main setup, including its second initialization phase | 33.323 | 4.333 |
+| Metal context initialization | 0.010 | 0.005 |
+| Request the default Metal device inside Godot | 0.007 | 0.005 |
+| Physics server initialization | 0.006 | <0.001 |
+| Read and validate shader-cache groups | 0.043 | 0.131 |
+| Load 146 compressed textures | 2.627 | 2.203 |
+| Allocate 242 Metal textures | 0.392 | 0.032 |
+| Stage texture data on the CPU | 0.368 | 0.312 |
+| Update 1,844 material shaders | 0.436 | 0.326 |
+| Threaded scene resource loading | 18.903 | 6.085 |
+| First combined fog and world preparation draw | 20.367 | 7.699 |
+| Launch to playable | 79.448 | 26.017 |
+
+The selector queried the device before Godot did. Upload command encoding on the cold run took 0.419 s across 8,577 calls. GPU transfer completion was unavailable. The warm stream dropped four interval endpoints amid thousands of upload calls, which failed the strict trace-integrity check. Its upload duration is incomplete. The instrumentation was changed to count upload calls and accumulate CPU time inside the process. The first capture and its failure remain available. [Timing-only instrument](../tools/macos/startup_stages/phases.patch) · [Pairing and coverage checks](../tools/macos/startup_stages/measure.py)
+
 ### Why the cold process stayed open
 
 Two more fresh hosts reproduced the build 86 hang. One collected signposts and one ran without that observer. The cold players reached play at 135.262 and 106.736 s respectively. Both wrote their 30 playable frames, stayed alive for another 164 and 192 seconds and were killed at the same 300-second deadline. Both warm launches exited within 0.44 s of observation of the report. Their readiness times were 36.699 and 28.852 s. All three independent fresh ARM native-audio self-tests passed 49/49. [Instrumented repeat with both thread samples](validation/milestone354/raw/fresh-native-metal-signposts.zip) · [Uninstrumented repeat with both thread samples](validation/milestone354/raw/fresh-native-metal-uninstrumented.zip)
@@ -118,6 +139,19 @@ The first build-only offline shader experiment ran Godot's exporter-mode contain
 Apple’s compiler subsequently produced all 319 traced libraries. Reading back all 94 groups confirmed identical MSL source and stage flags. The 319 libraries occupied 9,254,048 bytes before container compression. The source and library inventory totaled 16,189,540 bytes, up from 8,265,096. The remaining 288 distinct stages retained source. [Compiler, profile and per-stage logs](validation/milestone354/offline-compiler-logs.zip) · [Verified coverage and warning counts](validation/milestone354/offline-library-coverage.json) · [Full compiled inventory](https://github.com/oiwdis/last-train-out/actions/runs/44798648439/artifacts/14660682408)
 
 Of the 319 compiler logs, 201 contained warnings. Most describe unused variables and functions in Godot’s generated shader specializations. In 56 clustered vertex stages Apple also flagged an uninitialized vector passed to a constant reference and then copied to a local variable. In every such source, the reference occurs only in the function declaration and the local variable occurs only in that assignment. One SDFGI preprocessing stage flags a threadgroup value. The group leader initializes it when the voxel count is positive, before a threadgroup barrier. The resulting address is consumed only for indices below that count. The source contains the same arithmetic on an empty group, even though no store follows. The compiler diagnostics were retained. Application runs and screenshot comparisons test the effect on this game. [Generated shader provenance and control workload](../tools/macos/offline_bake/inventory.py) · [Complete Apple compiler output](validation/milestone354/offline-compiler-logs.zip)
+
+On two independently provisioned Macs the first ordinary High player took 136.889 s with source and 43.714 s with compiled libraries. These two numbers are from different hosts. The source player again timed out during shutdown on the uncorrected build 86 engine. The compiled player exited. The corresponding ordinary warm launches took 38.926 and 42.041 s. The native signposts recorded 319 source compilations and 119.272 s of overlapping wall time with source. The compiled launch recorded zero source compilations. Both processes still created 184 compute pipelines and 253 render pipelines. Compute/render interval unions were 43.953/82.955 s for source and 6.743/3.029 s for binaries. [Source-first host including the timeout](validation/milestone354/raw/offline-source-first.zip) · [Binary-first host](validation/milestone354/raw/offline-binary-first.zip) · [Native signposts](validation/milestone354/offline/offline-final-signposts.csv)
+
+| High benchmark on the same host | Source cold / warm (s) | Binaries cold / warm (s) | Source worst entry / steady (ms) | Binaries worst entry / steady (ms) |
+|---|---:|---:|---:|---:|
+| Source-first player, binary matrix first | 32.556 / 26.304 | 30.520 / 23.816 | 192.408 / 44.350 | 1,010.106 / 68.815 |
+| Binary-first player, source matrix first | 98.439 / 26.949 | 37.304 / 26.049 | 1,097.194 / 50.480 | 174.266 / 44.231 |
+
+The first full matrix on either host still had a one-second entry. The 36 additional paired screenshots showed the same geometry and authored materials. The largest mean absolute channel difference, 3.259 levels out of 255 at Medium Blackwater, was concentrated in the timed station-arrival banner. Differences at Low also included train shadows and edges. The original images retain the HUD. The 30-second cold and 15-second warm targets remain open. [All matrix distributions](validation/milestone354/offline/matrices.csv) · [Every image difference](validation/milestone354/offline/pixels.csv) · [Six largest differences, source / binaries / amplified residual](validation/milestone354/gallery/offline-libraries.jpg)
+
+The packaged Metal option uses the 79 library groups whose tested binaries differ from their source groups. Export matches each group against the exact source SHA-256 from the current PCK inventory and the builder’s GPU family, language and argument-buffer tier. A changed shader or another build profile keeps its source. The selector enables the read-only bundle directory only on a compatible device running macOS 26 or later. The engine gives those matched files precedence over writable source caches. It never installs the compiled libraries into the player’s writable cache. Set `LTO_METAL_LIBRARIES=0` before an explicit Metal launch to reproduce the source path on the same saves and caches. The universal Vulkan executable and renderer default keep their existing behavior. [Selection and source fallback](../tools/macos/choose_renderer.m) · [Read-only cache precedence](../tools/macos/engine/bundled-metal-libraries.patch) · [Group matching and archive generation](../tools/macos/metal_libraries/prepare.py) · [Fresh-player fallback test](../tools/macos/metal_libraries/check_launch.py)
+
+To reproduce the library archive, extract the signed build 86 `MetalShaders` folder and the compiler artifact’s `MetalShaders` folder. Run `python3 tools/macos/metal_libraries/prepare.py SOURCE_DIRECTORY COMPILED_DIRECTORY OUTPUT.zip`. Regenerating the compiled inputs requires the Xcode Metal toolchain and Python with zstandard 0.25.0. Normal game exports use the checked-in tested archive, and the installed game requires only the application bundle. [Source ZIP and hashes](validation/milestone354/build-86.json) · [Compiled inputs](https://github.com/oiwdis/last-train-out/actions/runs/44798648439/artifacts/14660682408) · [Compilation and verification program](../tools/macos/offline_bake/inventory.py)
 
 ## Packaged launch and lifecycle stress
 
