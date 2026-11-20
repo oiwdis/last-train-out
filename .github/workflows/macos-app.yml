@@ -635,7 +635,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        group: [sampler, seed-first, local-first, drivers, art, journey]
+        group: [sampler, seed-first, local-first, drivers, art, journey, library-policy]
     runs-on: macos-latest
     timeout-minutes: 55
     env:
@@ -675,6 +675,7 @@ jobs:
           case "$GROUP" in
             sampler) python3 tools/macos/check_metal_sampler.py "$app" "$out" ;;
             seed-first|local-first) python3 tools/macos/measure_metal_startup.py "$app" "$out" "${GROUP%-first}" "original/$APP_NAME.app" ;;
+            library-policy) python3 tools/macos/metal_library_lab.py "$app" "$out" immediate --matrix ;;
             drivers) python3 tools/macos/measure_export_drivers.py "$app" "$out" ;;
             art) python3 tools/macos/compare_metal_art.py "$app" "$out" ;;
             journey)

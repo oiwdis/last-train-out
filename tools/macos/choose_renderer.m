@@ -123,6 +123,10 @@ static int launch(int argc, const char **argv) {
             fputs("Native Metal requires a supported Apple Silicon GPU. The game was not started.\n", stderr);
             return 2;
         }
+        // 4.5.1 supports first-use Metal libraries. The game draws every
+        // preparation view before play; retain an explicit immediate control.
+        setenv("GODOT_MTL_SHADER_LOAD_STRATEGY", "lazy", 0);
+        printf("[renderer] Metal library policy: %s\n", getenv("GODOT_MTL_SHADER_LOAD_STRATEGY"));
         seedShaders(resources, userDirectory(rest, resources), profile);
         exe = @"LastTrainOutMetal";
 #else

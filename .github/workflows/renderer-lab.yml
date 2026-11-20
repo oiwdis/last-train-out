@@ -4,6 +4,7 @@ on:
   pull_request:
     paths:
       - .github/workflows/renderer-lab.yml
+      - tools/macos/metal_library_lab.py
       - tools/macos/renderer_lab.py
       - tools/macos/renderer_probe.gd
       - tools/macos/exported_renderer_lab.py
@@ -23,6 +24,7 @@ jobs:
     name: Check investigation inputs
     runs-on: ubuntu-latest
     outputs:
+      libraries: ${{ steps.select.outputs.libraries }}
       run: ${{ steps.select.outputs.run }}
       exported: ${{ steps.select.outputs.exported }}
       followup: ${{ steps.select.outputs.followup }}
@@ -35,6 +37,9 @@ jobs:
           fetch-depth: 2
       - id: select
         run: |
+          if ! git diff --quiet HEAD^ HEAD -- tools/macos/metal_library_lab.py; then
+            echo 'libraries=true' >> "$GITHUB_OUTPUT"
+          fi
           if [ "$GITHUB_EVENT_NAME" = workflow_dispatch ] || ! git diff --quiet HEAD^ HEAD -- tools/macos/renderer_lab.py tools/macos/renderer_probe.gd; then
             echo 'run=true' >> "$GITHUB_OUTPUT"
           fi
@@ -53,6 +58,37 @@ jobs:
           if [ "$GITHUB_EVENT_NAME" = workflow_dispatch ]; then
             echo 'journey=true' >> "$GITHUB_OUTPUT"
           fi
+
+  native-libraries:
+    needs: select
+    if: needs.select.outputs.libraries == 'true'
+    name: Original 3.5.3 Metal library control / ${{ matrix.first }} first
+    runs-on: macos-latest
+    timeout-minutes: 24
+    strategy:
+      fail-fast: false
+      matrix:
+        first: [immediate, lazy]
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/download-artifact@v8
+        with:
+          name: LastTrainOut-macos-universal.zip
+          run-id: 44691491220
+          github-token: ${{ github.token }}
+          path: original-download
+          skip-decompress: true
+      - run: |
+          zip=$(find original-download -type f -name '*.zip' | head -n 1)
+          echo "af92124afee5a8d44902c94ff5ee6da7c7816650ba727a0d046833b71c38f6f3  $zip" | shasum -a 256 -c -
+          ditto -x -k "$zip" original
+          python3 tools/macos/metal_library_lab.py "original/Last Train Out.app" "$RUNNER_TEMP/libraries" "${{ matrix.first }}"
+      - if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: original-metal-libraries-${{ matrix.first }}
+          path: ${{ runner.temp }}/libraries/
+          retention-days: 30
 
   isolate:
     needs: select
