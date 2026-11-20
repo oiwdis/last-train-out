@@ -5,13 +5,11 @@ import os
 from pathlib import Path
 import plistlib
 import shutil
-import signal
-import subprocess
 import tempfile
-import time
 import uuid
 
 from benchmark_release import measure
+from metal_trace import metal_signposts
 from stress_release import digest
 
 
@@ -69,23 +67,10 @@ def main():
                 run(mode, 'matrix', 'integration_benchmark.gd')
         # Trace a separate fresh process. The first four startup timings and
         # the frame matrices run without an attached trace collector.
-        with (out / 'signposts.ndjson').open('w') as stream, (out / 'collector.log').open('w') as errors:
-            proc = subprocess.Popen(['/usr/bin/log', 'stream', '--signpost', '--level', 'debug', '--style', 'ndjson',
-                                     '--predicate', 'subsystem == "org.godotengine.godot.metal"'],
-                                    stdout=stream, stderr=errors)
-            try:
-                time.sleep(1)
-                run(opt.first, 'traced')
-            finally:
-                if proc.poll() is None:
-                    proc.send_signal(signal.SIGINT)
-                try:
-                    proc.wait(timeout=10)
-                except subprocess.TimeoutExpired:
-                    proc.kill()
-                    proc.wait()
-            summary['collector_exit'] = proc.returncode
-            (out / 'libraries.json').write_text(json.dumps(summary, indent=2))
+        with metal_signposts(out) as collector:
+            run(opt.first, 'traced')
+        summary['collector_exit'] = collector.returncode
+        (out / 'libraries.json').write_text(json.dumps(summary, indent=2))
     return int(any(not row['passed'] for row in summary['runs']))
 
 

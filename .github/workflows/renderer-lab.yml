@@ -5,6 +5,8 @@ on:
     paths:
       - .github/workflows/renderer-lab.yml
       - tools/macos/metal_library_lab.py
+      - tools/macos/measure_fresh_player.py
+      - tools/macos/check_native_selftest.sh
       - tools/macos/renderer_lab.py
       - tools/macos/renderer_probe.gd
       - tools/macos/exported_renderer_lab.py
@@ -25,6 +27,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       libraries: ${{ steps.select.outputs.libraries }}
+      replay: ${{ steps.select.outputs.replay }}
       run: ${{ steps.select.outputs.run }}
       exported: ${{ steps.select.outputs.exported }}
       followup: ${{ steps.select.outputs.followup }}
@@ -36,9 +39,17 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
           fetch-depth: 2
       - id: select
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           if ! git diff --quiet HEAD^ HEAD -- tools/macos/metal_library_lab.py; then
-            echo 'libraries=true' >> "$GITHUB_OUTPUT"
+            id=$(tools/macos/find_reference_artifact.sh 44691491220)
+            if [[ -n "$id" ]]; then echo 'libraries=true' >> "$GITHUB_OUTPUT"; fi
+          fi
+          if ! git diff --quiet HEAD^ HEAD -- tools/macos/measure_fresh_player.py tools/macos/check_native_selftest.sh; then
+            run=$(jq -r .workflow_run docs/validation/milestone354/build-86.json)
+            id=$(tools/macos/find_reference_artifact.sh "$run")
+            if [[ -n "$id" ]]; then echo "replay=$run" >> "$GITHUB_OUTPUT"; fi
           fi
           if [ "$GITHUB_EVENT_NAME" = workflow_dispatch ] || ! git diff --quiet HEAD^ HEAD -- tools/macos/renderer_lab.py tools/macos/renderer_probe.gd; then
             echo 'run=true' >> "$GITHUB_OUTPUT"
@@ -58,6 +69,41 @@ jobs:
           if [ "$GITHUB_EVENT_NAME" = workflow_dispatch ]; then
             echo 'journey=true' >> "$GITHUB_OUTPUT"
           fi
+
+  fresh-player:
+    needs: select
+    if: needs.select.outputs.replay != ''
+    name: Fresh native Metal player and audio on the retained universal ZIP
+    runs-on: macos-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/download-artifact@v8
+        with:
+          name: LastTrainOut-macos-universal.zip
+          run-id: ${{ needs.select.outputs.replay }}
+          github-token: ${{ github.token }}
+          path: download
+          skip-decompress: true
+      - id: unpack
+        name: Verify the exact build that lost Vulkan on fresh download
+        run: |
+          zip=$(find download -type f -name '*.zip' | head -n 1)
+          hash=$(jq -r .zip_sha256 docs/validation/milestone354/build-86.json)
+          echo "$hash  $zip" | shasum -a 256 -c -
+          ditto -x -k "$zip" extracted
+          codesign --verify --deep --strict "extracted/Last Train Out.app"
+      - name: Run the ordinary player shortcut before any other Godot process
+        run: python3 tools/macos/measure_fresh_player.py "extracted/Last Train Out.app" "$RUNNER_TEMP/fresh-metal/player-first"
+      - name: Exercise real audio and the shipped mission
+        if: ${{ !cancelled() && steps.unpack.outcome == 'success' }}
+        run: tools/macos/check_native_selftest.sh "extracted/Last Train Out.app" "$RUNNER_TEMP/fresh-metal"
+      - if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: fresh-native-metal-replay
+          path: ${{ runner.temp }}/fresh-metal/
+          retention-days: 30
 
   native-libraries:
     needs: select

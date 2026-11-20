@@ -63,8 +63,10 @@ for mode in fullscreen windowed; do
   done
 done
 mkdir -p "$out/crashes"
-find "$HOME/Library/Logs/DiagnosticReports" -type f \
-  \( -iname 'Last Train Out*.ips' -o -iname 'LastTrainOut*.ips' -o -iname 'choose-renderer*.ips' \) \
-  -newer "$out/hardware.txt" -exec cp -p {} "$out/crashes/" \;
+if [[ -d "$HOME/Library/Logs/DiagnosticReports" ]]; then
+  find "$HOME/Library/Logs/DiagnosticReports" -type f \
+    \( -iname 'Last Train Out*.ips' -o -iname 'LastTrainOut*.ips' -o -iname 'choose-renderer*.ips' \) \
+    -newer "$out/hardware.txt" -exec cp -p {} "$out/crashes/" \;
+fi
 echo "Results: $out"
 exit "$failed"

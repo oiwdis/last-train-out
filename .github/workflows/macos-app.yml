@@ -508,11 +508,15 @@ jobs:
           - label: Apple Silicon
             runner: macos-latest
             arch: arm64
-            window: true
+            driver: vulkan
+          - label: Apple Silicon native Metal
+            runner: macos-latest
+            arch: arm64
+            driver: metal
           - label: Intel
             runner: macos-15-intel
             arch: x86_64
-            window: false
+            driver: headless
     runs-on: ${{ matrix.runner }}
     timeout-minutes: 20
     steps:
@@ -520,6 +524,7 @@ jobs:
 
       - name: Confirm the runner's architecture
         run: |
+          touch "$RUNNER_TEMP/fresh-download-start"
           sw_vers
           test "$(uname -m)" = "${{ matrix.arch }}"
 
@@ -540,6 +545,7 @@ jobs:
           ls -la extracted
 
       - name: Check the unzipped bundle
+        id: checked_bundle
         run: python3 tools/macos/verify_app.py "extracted/$APP_NAME.app" --expect-signature adhoc --title "Unzipped bundle (${{ matrix.label }})"
 
       # For information only: a development build is not notarized, so Gatekeeper is expected
@@ -551,24 +557,21 @@ jobs:
           echo "spctl exit code: $? (not zero is expected for a build that is not notarized)"
 
       - name: Launch the unzipped app without a window
+        if: matrix.driver != 'metal'
         run: tools/macos/run_selftest.sh "extracted/$APP_NAME.app" "${{ matrix.arch }}-headless" --headless --expect-arch "${{ matrix.arch }}"
 
       - name: Launch the unzipped app with its window
-        if: ${{ matrix.window }}
+        if: matrix.driver == 'vulkan'
         run: tools/macos/run_selftest.sh "extracted/$APP_NAME.app" "${{ matrix.arch }}-window" --expect-arch "${{ matrix.arch }}"
 
+      - name: Time the first ordinary Metal player launch on this fresh machine
+        if: matrix.driver == 'metal'
+        run: python3 tools/macos/measure_fresh_player.py "extracted/$APP_NAME.app" "$RUNNER_TEMP/selftest/player-first"
       - name: Verify the opt-in packaged renderer with native audio
-        if: ${{ matrix.window }}
-        run: |
-          out="$RUNNER_TEMP/selftest"
-          app="extracted/$APP_NAME.app"
-          "$app/Contents/MacOS/choose-renderer" metal res://scenes/main/self_test.tscn -- \
-            --selftest-report="$out/native-metal.json" --selftest-screenshot="$out/native-metal.png" > "$out/native-metal.log" 2>&1
-          python3 tools/macos/check_selftest.py "$out/native-metal.json" --exit-code 0 --expect-window --expect-arch arm64 --label fresh-metal
-          python3 tools/macos/renderer_diagnostics.py "$out/native-metal.log"
-          python3 -c 'import json,sys; r=json.load(open(sys.argv[1])); assert (r["runtime_binary"],r["rendering_method"],r["rendering_driver"]) == ("LastTrainOutMetal","forward_plus","metal")' "$out/native-metal.json"
+        if: ${{ !cancelled() && matrix.driver == 'metal' && steps.checked_bundle.outcome == 'success' }}
+        run: tools/macos/check_native_selftest.sh "extracted/$APP_NAME.app" "$RUNNER_TEMP/selftest"
       - name: Verify early rejection of native Metal on Intel
-        if: ${{ !matrix.window }}
+        if: ${{ !cancelled() && matrix.arch == 'x86_64' && steps.checked_bundle.outcome == 'success' }}
         run: |
           out="$RUNNER_TEMP/selftest/intel-metal-selection.log"
           code=0
@@ -577,14 +580,24 @@ jobs:
           grep -F 'requires the arm64 slice' "$out"
 
       - name: Validate the packaged M1 diagnostic
-        if: ${{ matrix.window }}
+        if: matrix.driver == 'vulkan'
         run: python3 tools/macos/check_packaged_benchmark.py "extracted/$APP_NAME.app" "$RUNNER_TEMP/selftest"
 
+      - name: Collect crash reports from fresh launches
+        if: always()
+        run: |
+          reports="$HOME/Library/Logs/DiagnosticReports"
+          if [[ -d "$reports" && -f "$RUNNER_TEMP/fresh-download-start" ]]; then
+            mkdir -p "$RUNNER_TEMP/selftest/crash-reports"
+            find "$reports" -type f -newer "$RUNNER_TEMP/fresh-download-start" \
+              \( -iname 'Last Train Out*.ips' -o -iname 'LastTrainOut*.ips' -o -iname 'choose-renderer*.ips' \) \
+              -exec cp -p {} "$RUNNER_TEMP/selftest/crash-reports/" \;
+          fi
       - name: Upload the self-test reports
         if: always()
         uses: actions/upload-artifact@v7
         with:
-          name: selftest-${{ matrix.arch }}
+          name: selftest-${{ matrix.driver == 'metal' && 'arm64-metal' || matrix.arch }}
           path: ${{ runner.temp }}/selftest/
           if-no-files-found: warn
           retention-days: 14
@@ -653,7 +666,21 @@ jobs:
           shasum -a 256 "$zip"
           ditto -x -k "$zip" extracted
           codesign --verify --deep --strict "extracted/$APP_NAME.app"
-      - if: matrix.group == 'seed-first' || matrix.group == 'local-first'
+      - name: Locate the frozen 3.5.3 development build
+        if: matrix.group == 'seed-first' || matrix.group == 'local-first'
+        id: original
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # Artifact retention expires independently of a game revision. Continue
+          # measuring the current app if the original ZIP has aged out. A failed
+          # lookup, an available ZIP that fails to download, or a wrong hash fails CI.
+          id=$(tools/macos/find_reference_artifact.sh 44691491220)
+          echo "id=$id" >> "$GITHUB_OUTPUT"
+          if [[ -z "$id" ]]; then
+            echo 'Historical comparison unavailable. The paired measurements are retained in docs/validation/milestone354.' >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - if: steps.original.outputs.id != ''
         uses: actions/download-artifact@v8
         with:
           name: LastTrainOut-macos-universal.zip
@@ -661,7 +688,7 @@ jobs:
           github-token: ${{ github.token }}
           path: original-download
           skip-decompress: true
-      - if: matrix.group == 'seed-first' || matrix.group == 'local-first'
+      - if: steps.original.outputs.id != ''
         run: |
           zip=$(find original-download -type f -name '*.zip' | head -n 1)
           echo "af92124afee5a8d44902c94ff5ee6da7c7816650ba727a0d046833b71c38f6f3  $zip" | shasum -a 256 -c -
@@ -674,7 +701,11 @@ jobs:
           out="$RUNNER_TEMP/metal-evidence"
           case "$GROUP" in
             sampler) python3 tools/macos/check_metal_sampler.py "$app" "$out" ;;
-            seed-first|local-first) python3 tools/macos/measure_metal_startup.py "$app" "$out" "${GROUP%-first}" "original/$APP_NAME.app" ;;
+            seed-first|local-first)
+              original=()
+              if [[ -d "original/$APP_NAME.app" ]]; then original+=("original/$APP_NAME.app"); fi
+              python3 tools/macos/measure_metal_startup.py "$app" "$out" "${GROUP%-first}" "${original[@]}"
+              ;;
             library-policy) python3 tools/macos/metal_library_lab.py "$app" "$out" immediate --matrix ;;
             drivers) python3 tools/macos/measure_export_drivers.py "$app" "$out" ;;
             art) python3 tools/macos/compare_metal_art.py "$app" "$out" ;;

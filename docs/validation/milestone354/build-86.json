@@ -1,0 +1,49 @@
+{
+  "zip_sha256": "0eee559e3441be1e0965ceaaa57291185c652e6a9d69cde8975328cb26fb3ffd",
+  "bytes": 317573504,
+  "artifact": 14653133684,
+  "workflow_run": 44781367462,
+  "source_head": "f9585d498e8f4fd729ae3e42deb876616965d15e",
+  "bundle_commit": "3ff6cd29de1f11acc0bded59188d01367ec6f704",
+  "build": "86",
+  "kind": "development",
+  "crc_bad_entry": null,
+  "shader_profile": {
+    "adapter": "Apple Paravirtual device (Apple5)",
+    "argumentBuffers": 1,
+    "device": "Apple Paravirtual device",
+    "engine": "4.5.1-stable (lto_metal)",
+    "family": 1005,
+    "language": 262144,
+    "source": "3ff6cd29de1f11acc0bded59188d01367ec6f704"
+  },
+  "shader_groups": 94,
+  "cache_bytes": 8265096,
+  "cache_hashes_accepted": true,
+  "runtimes": {
+    "Last Train Out": {
+      "arch": [
+        "x86_64",
+        "arm64"
+      ],
+      "bytes": 187369968,
+      "sha256": "9392e7bc2e2357bba77bc5db1445864064b0702449000fa101d19f1823ba2baa"
+    },
+    "LastTrainOutMetal": {
+      "arch": [
+        "arm64"
+      ],
+      "bytes": 64040928,
+      "sha256": "576f5dd64d529b212a7bb635eef38a17414a3bac51d191372d267f72a90c3761"
+    },
+    "choose-renderer": {
+      "arch": [
+        "x86_64",
+        "arm64"
+      ],
+      "bytes": 138992,
+      "sha256": "31cec058947bc62394f3c1b1eba1ff87258761618e0f4d909ff06688bb41a545"
+    }
+  },
+  "pack_sha256": "cdebd076179f620e8f3cdbec40bc653ab7b1f32f8e1f23308467ca8527c4024c"
+}

@@ -20,7 +20,7 @@ def main():
     parser.add_argument('app', type=Path)
     parser.add_argument('out', type=Path)
     parser.add_argument('first', choices=('seed', 'local'))
-    parser.add_argument('baseline', type=Path, help='Freshly downloaded verified 3.5.3 final app')
+    parser.add_argument('baseline', type=Path, nargs='?', help='Verified 3.5.3 final app, when the archived ZIP is available')
     options = parser.parse_args()
     app, out = options.app.resolve(), options.out.resolve()
     out.mkdir(parents=True, exist_ok=False)
@@ -42,16 +42,24 @@ def main():
                                                  f'config/custom_user_dir_name="{user}"\n')
             return Path.home() / 'Library/Application Support' / user
 
-        previous = options.baseline.resolve()
-        original, = (previous / 'Contents/Resources').glob('*.pck')
-        if digest(original) != '4ef40667bc6c00acc93a5b5eb5ccdfb28c609573815c351288435e00fd5af2d5':
-            raise RuntimeError('The 3.5.3 control pack is not the verified final PCK.')
-        previous_pack = folder / 'original.pck'
-        shutil.copy2(original, previous_pack)
-        previous_info = plistlib.loads((previous / 'Contents/Info.plist').read_bytes())
-        previous_binary = str(previous / 'Contents/MacOS' / previous_info['CFBundleExecutable'])
+        original_digest = '4ef40667bc6c00acc93a5b5eb5ccdfb28c609573815c351288435e00fd5af2d5'
+        (out / 'historical-comparison.json').write_text(json.dumps({
+            'available': options.baseline is not None, 'required_pck_sha256': original_digest,
+            'archived_run': 44691491220,
+        }, indent=2))
+        if options.baseline:
+            previous = options.baseline.resolve()
+            original, = (previous / 'Contents/Resources').glob('*.pck')
+            if digest(original) != original_digest:
+                raise RuntimeError('The 3.5.3 control pack is not the verified final PCK.')
+            previous_pack = folder / 'original.pck'
+            shutil.copy2(original, previous_pack)
+            previous_info = plistlib.loads((previous / 'Contents/Info.plist').read_bytes())
+            previous_binary = str(previous / 'Contents/MacOS' / previous_info['CFBundleExecutable'])
 
         def baseline(condition):
+            if not options.baseline:
+                return
             user = select('original')
             name = 'original-' + condition
             record = measure(previous_binary, folder, out, name, 'startup_probe.gd',
