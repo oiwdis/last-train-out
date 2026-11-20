@@ -1,0 +1,145 @@
+revision,preset,location,stage,frames,mean_ms,median_ms,p95_ms,p99_ms,worst_ms,over33_3,over50,over100
+baseline,Low,Harlow platform,entry,120,5.919,5.786,6.933,7.33,7.862,0,0,0
+baseline,Low,Harlow platform,steady,1200,6.09,5.962,7.102,7.749,8.927,0,0,0
+baseline,Low,Warehouse A,entry,120,7.273,7.341,7.871,8.096,10.01,0,0,0
+baseline,Low,Warehouse A,steady,1200,7.499,7.46,8.629,9.512,10.847,0,0,0
+baseline,Low,Warehouse B,entry,120,6.883,6.764,7.936,8.974,9.051,0,0,0
+baseline,Low,Warehouse B,steady,1200,6.901,6.847,7.837,8.511,10.015,0,0,0
+baseline,Low,Locomotive cab,entry,120,7.774,7.828,9.055,9.373,9.514,0,0,0
+baseline,Low,Locomotive cab,steady,1200,8.108,8.079,8.956,9.304,10.199,0,0,0
+baseline,Low,Passenger car,entry,120,8.793,8.599,10.414,29.348,39.856,1,0,0
+baseline,Low,Passenger car,steady,1200,8.48,8.471,9.241,9.626,10.484,0,0,0
+baseline,Low,Curved railway,entry,120,5.521,5.694,6.424,6.808,6.868,0,0,0
+baseline,Low,Curved railway,steady,1200,5.192,5.061,5.98,6.243,11.798,0,0,0
+baseline,Low,Ashford Depot,entry,120,4.631,3.933,7.149,8.412,8.533,0,0,0
+baseline,Low,Ashford Depot,steady,1200,4.186,4.032,5.281,5.655,6.891,0,0,0
+baseline,Low,Ashford workshop,entry,120,4.698,4.631,5.543,5.751,6.055,0,0,0
+baseline,Low,Ashford workshop,steady,1200,5.002,4.941,6.012,6.803,9.532,0,0,0
+baseline,Low,Blackwater Crossing,entry,120,4.252,4.274,4.761,4.984,5.046,0,0,0
+baseline,Low,Blackwater Crossing,steady,1200,4.174,4.13,4.615,5.468,6.536,0,0,0
+baseline,Low,Near advancing fog,entry,120,5.17,5.212,5.924,6.217,6.261,0,0,0
+baseline,Low,Near advancing fog,steady,1200,5.502,5.312,6.447,8.345,10.53,0,0,0
+baseline,Low,Inside dangerous fog,entry,120,5.983,5.87,6.827,7.802,9.214,0,0,0
+baseline,Low,Inside dangerous fog,steady,1200,5.895,5.617,8.126,10.649,15.638,0,0,0
+baseline,Low,Mission completion,entry,120,4.676,4.222,7.68,10.659,10.762,0,0,0
+baseline,Low,Mission completion,steady,1200,4.807,4.649,6.311,8.695,13.968,0,0,0
+baseline,Medium,Harlow platform,entry,120,13.051,7.263,8.882,9.696,705.806,1,1,1
+baseline,Medium,Harlow platform,steady,1200,7.063,7.021,8.504,8.854,13.097,0,0,0
+baseline,Medium,Warehouse A,entry,120,8.089,7.449,9.506,11.365,64.217,1,1,0
+baseline,Medium,Warehouse A,steady,1200,8.746,8.538,10.389,12.026,16.903,0,0,0
+baseline,Medium,Warehouse B,entry,120,7.466,7.221,8.944,10.31,10.669,0,0,0
+baseline,Medium,Warehouse B,steady,1200,7.389,7.309,8.629,9.08,10.845,0,0,0
+baseline,Medium,Locomotive cab,entry,120,8.212,8.488,9.295,10.006,10.084,0,0,0
+baseline,Medium,Locomotive cab,steady,1200,8.291,8.336,9.261,9.604,10.245,0,0,0
+baseline,Medium,Passenger car,entry,120,8.969,8.575,9.761,32.05,34.561,1,0,0
+baseline,Medium,Passenger car,steady,1200,8.492,8.457,9.348,9.781,10.088,0,0,0
+baseline,Medium,Curved railway,entry,120,5.937,6.032,6.36,6.747,6.832,0,0,0
+baseline,Medium,Curved railway,steady,1200,5.945,5.99,6.616,6.991,7.871,0,0,0
+baseline,Medium,Ashford Depot,entry,120,4.974,5.042,5.321,5.37,5.379,0,0,0
+baseline,Medium,Ashford Depot,steady,1200,4.955,4.969,5.371,5.578,10.061,0,0,0
+baseline,Medium,Ashford workshop,entry,120,5.335,5.285,5.927,6.009,6.167,0,0,0
+baseline,Medium,Ashford workshop,steady,1200,5.577,5.517,6.519,7.019,7.622,0,0,0
+baseline,Medium,Blackwater Crossing,entry,120,5.019,5.068,5.402,5.458,5.627,0,0,0
+baseline,Medium,Blackwater Crossing,steady,1200,5.471,5.393,6.304,6.548,7.221,0,0,0
+baseline,Medium,Near advancing fog,entry,120,6.589,6.232,8.327,10.656,12.587,0,0,0
+baseline,Medium,Near advancing fog,steady,1200,7.008,6.984,8.305,8.746,11.236,0,0,0
+baseline,Medium,Inside dangerous fog,entry,120,7.157,7.171,8.449,8.602,8.97,0,0,0
+baseline,Medium,Inside dangerous fog,steady,1200,7.086,7.193,8.735,9.422,12.343,0,0,0
+baseline,Medium,Mission completion,entry,120,5.691,5.807,6.796,8.151,8.411,0,0,0
+baseline,Medium,Mission completion,steady,1200,5.741,5.86,6.981,7.321,7.777,0,0,0
+baseline,High,Harlow platform,entry,120,39.35,7.582,9.14,994.806,1846.242,3,3,3
+baseline,High,Harlow platform,steady,1200,7.852,7.854,8.778,9.18,9.794,0,0,0
+baseline,High,Warehouse A,entry,120,10.393,8.812,10.921,56.017,76.384,3,2,0
+baseline,High,Warehouse A,steady,1200,8.925,8.873,9.573,10.171,14.052,0,0,0
+baseline,High,Warehouse B,entry,120,8.311,8.156,9.661,11.247,11.906,0,0,0
+baseline,High,Warehouse B,steady,1200,8.535,8.428,9.554,10.241,10.773,0,0,0
+baseline,High,Locomotive cab,entry,120,9.227,9.156,10.516,11.569,12.755,0,0,0
+baseline,High,Locomotive cab,steady,1200,9.185,9.038,10.664,11.254,12.645,0,0,0
+baseline,High,Passenger car,entry,120,10.43,9.947,12.01,33.605,33.615,2,0,0
+baseline,High,Passenger car,steady,1200,9.15,9.058,10.174,10.904,12.272,0,0,0
+baseline,High,Curved railway,entry,120,6.873,6.803,8.7,8.934,10.434,0,0,0
+baseline,High,Curved railway,steady,1200,6.87,6.681,8.581,8.965,9.739,0,0,0
+baseline,High,Ashford Depot,entry,120,5.607,5.591,6.447,6.883,7.217,0,0,0
+baseline,High,Ashford Depot,steady,1200,6.318,6.596,7.865,8.51,9.286,0,0,0
+baseline,High,Ashford workshop,entry,120,6.798,6.408,9.579,9.841,10.976,0,0,0
+baseline,High,Ashford workshop,steady,1200,7.202,6.971,9.591,9.971,11.939,0,0,0
+baseline,High,Blackwater Crossing,entry,120,7.496,7.237,10.789,11.103,11.155,0,0,0
+baseline,High,Blackwater Crossing,steady,1200,6.904,7.184,8.714,9.448,10.914,0,0,0
+baseline,High,Near advancing fog,entry,120,9.147,8.289,12.131,13.806,61.212,1,1,0
+baseline,High,Near advancing fog,steady,1200,8.478,8.536,10.387,10.99,13.338,0,0,0
+baseline,High,Inside dangerous fog,entry,120,9.319,9.26,10.986,12.011,12.642,0,0,0
+baseline,High,Inside dangerous fog,steady,1200,8.391,8.46,10.571,11.69,15.877,0,0,0
+baseline,High,Mission completion,entry,120,7.908,8.051,11.157,13.254,32.756,0,0,0
+baseline,High,Mission completion,steady,1200,6.978,6.807,9.271,10.428,14.116,0,0,0
+optimized,Low,Harlow platform,entry,120,4.691,4.742,5.38,5.505,5.582,0,0,0
+optimized,Low,Harlow platform,steady,1200,4.939,5.013,5.478,6.313,8.529,0,0,0
+optimized,Low,Warehouse A,entry,120,5.925,5.729,7.054,8.334,8.918,0,0,0
+optimized,Low,Warehouse A,steady,1200,6.042,5.952,6.969,7.872,8.942,0,0,0
+optimized,Low,Warehouse B,entry,120,4.927,4.842,5.631,5.839,6.325,0,0,0
+optimized,Low,Warehouse B,steady,1200,5.351,5.354,6.066,7.31,9.318,0,0,0
+optimized,Low,Locomotive cab,entry,120,6.613,6.702,7.473,7.585,8.214,0,0,0
+optimized,Low,Locomotive cab,steady,1200,6.71,6.594,8.22,8.825,11.972,0,0,0
+optimized,Low,Passenger car,entry,120,7.068,7.248,7.881,26.282,28.415,0,0,0
+optimized,Low,Passenger car,steady,1200,7.515,7.701,8.703,9.261,11.367,0,0,0
+optimized,Low,Curved railway,entry,120,4.421,4.439,4.941,5.18,5.365,0,0,0
+optimized,Low,Curved railway,steady,1200,5.234,4.94,6.673,8.884,14.595,0,0,0
+optimized,Low,Ashford Depot,entry,120,3.964,3.671,5.527,6.081,6.521,0,0,0
+optimized,Low,Ashford Depot,steady,1200,3.998,3.564,5.83,6.794,11.849,0,0,0
+optimized,Low,Ashford workshop,entry,120,4.073,4.085,4.861,4.989,5.051,0,0,0
+optimized,Low,Ashford workshop,steady,1200,4.401,4.295,5.084,5.369,9.894,0,0,0
+optimized,Low,Blackwater Crossing,entry,120,4.063,4.065,5.023,5.54,5.691,0,0,0
+optimized,Low,Blackwater Crossing,steady,1200,4.165,3.96,5.163,5.543,9.007,0,0,0
+optimized,Low,Near advancing fog,entry,120,5.082,4.873,6.323,8.199,8.449,0,0,0
+optimized,Low,Near advancing fog,steady,1200,4.779,4.774,5.104,5.308,5.598,0,0,0
+optimized,Low,Inside dangerous fog,entry,120,4.662,4.702,4.927,4.99,5.066,0,0,0
+optimized,Low,Inside dangerous fog,steady,1200,4.935,4.817,5.944,6.538,7.593,0,0,0
+optimized,Low,Mission completion,entry,120,4.352,4.327,5.244,18.495,21.236,0,0,0
+optimized,Low,Mission completion,steady,1200,4.502,4.406,5.273,5.753,6.827,0,0,0
+optimized,Medium,Harlow platform,entry,120,6.939,5.771,9.496,10.327,11.177,0,0,0
+optimized,Medium,Harlow platform,steady,1200,7.412,7.136,10.043,11.284,12.892,0,0,0
+optimized,Medium,Warehouse A,entry,120,8.753,8.588,10.441,11.991,14.066,0,0,0
+optimized,Medium,Warehouse A,steady,1200,7.028,6.619,8.857,10.092,10.912,0,0,0
+optimized,Medium,Warehouse B,entry,120,6.201,5.889,8.083,8.562,8.606,0,0,0
+optimized,Medium,Warehouse B,steady,1200,5.805,5.594,7.269,8.461,9.578,0,0,0
+optimized,Medium,Locomotive cab,entry,120,7.883,7.668,8.716,9.733,31.113,0,0,0
+optimized,Medium,Locomotive cab,steady,1200,7.583,7.469,9.384,10.109,10.735,0,0,0
+optimized,Medium,Passenger car,entry,120,8.621,8.288,9.205,29.752,32.685,0,0,0
+optimized,Medium,Passenger car,steady,1200,8.083,8.148,8.746,9.275,9.937,0,0,0
+optimized,Medium,Curved railway,entry,120,5.215,5.093,5.936,7.113,12.329,0,0,0
+optimized,Medium,Curved railway,steady,1200,5.257,5.158,6.046,6.348,6.791,0,0,0
+optimized,Medium,Ashford Depot,entry,120,3.847,3.871,4.132,4.378,4.731,0,0,0
+optimized,Medium,Ashford Depot,steady,1200,3.944,3.915,4.313,4.443,5.937,0,0,0
+optimized,Medium,Ashford workshop,entry,120,4.755,4.764,5.226,5.627,6.117,0,0,0
+optimized,Medium,Ashford workshop,steady,1200,4.944,4.915,5.415,5.64,6.283,0,0,0
+optimized,Medium,Blackwater Crossing,entry,120,4.174,4.137,4.82,5.055,5.282,0,0,0
+optimized,Medium,Blackwater Crossing,steady,1200,4.526,4.495,5.117,5.335,5.82,0,0,0
+optimized,Medium,Near advancing fog,entry,120,5.045,5.12,5.744,6.478,7.549,0,0,0
+optimized,Medium,Near advancing fog,steady,1200,5.351,5.344,5.986,6.441,6.761,0,0,0
+optimized,Medium,Inside dangerous fog,entry,120,4.93,4.899,5.494,5.617,5.697,0,0,0
+optimized,Medium,Inside dangerous fog,steady,1200,5.266,5.187,5.996,6.737,7.045,0,0,0
+optimized,Medium,Mission completion,entry,120,5.053,4.814,5.666,12.755,15.224,0,0,0
+optimized,Medium,Mission completion,steady,1200,5.129,5.027,6.026,6.385,6.872,0,0,0
+optimized,High,Harlow platform,entry,120,7.102,6.345,9.643,10.921,11.088,0,0,0
+optimized,High,Harlow platform,steady,1200,7.913,7.912,10.101,10.722,11.398,0,0,0
+optimized,High,Warehouse A,entry,120,12.13,10.055,12.431,74.836,81.152,4,3,0
+optimized,High,Warehouse A,steady,1200,9.996,9.938,12.077,12.932,13.704,0,0,0
+optimized,High,Warehouse B,entry,120,9.174,8.831,10.974,11.672,12.831,0,0,0
+optimized,High,Warehouse B,steady,1200,8.378,8.29,9.813,10.715,12.368,0,0,0
+optimized,High,Locomotive cab,entry,120,8.192,8.21,8.992,9.242,9.243,0,0,0
+optimized,High,Locomotive cab,steady,1200,8.7,8.587,10.235,11.401,17.628,0,0,0
+optimized,High,Passenger car,entry,120,10.265,9.409,12.816,36.507,44.67,2,0,0
+optimized,High,Passenger car,steady,1200,9.205,9.12,10.436,11.263,13.646,0,0,0
+optimized,High,Curved railway,entry,120,5.908,5.656,6.757,16.458,17.726,0,0,0
+optimized,High,Curved railway,steady,1200,5.527,5.454,6.458,7.067,7.651,0,0,0
+optimized,High,Ashford Depot,entry,120,4.32,4.328,4.633,4.851,4.928,0,0,0
+optimized,High,Ashford Depot,steady,1200,4.365,4.312,4.951,5.279,6.198,0,0,0
+optimized,High,Ashford workshop,entry,120,4.99,4.856,5.72,6.305,6.376,0,0,0
+optimized,High,Ashford workshop,steady,1200,4.988,4.953,5.889,6.422,7.928,0,0,0
+optimized,High,Blackwater Crossing,entry,120,4.639,4.622,5.278,5.701,5.832,0,0,0
+optimized,High,Blackwater Crossing,steady,1200,4.536,4.476,5.174,5.817,6.964,0,0,0
+optimized,High,Near advancing fog,entry,120,5.883,6.015,6.611,6.779,7.31,0,0,0
+optimized,High,Near advancing fog,steady,1200,6.006,5.799,7.866,8.617,10.053,0,0,0
+optimized,High,Inside dangerous fog,entry,120,6.151,6.16,6.868,7.016,7.783,0,0,0
+optimized,High,Inside dangerous fog,steady,1200,6.122,5.955,7.722,9.124,10.623,0,0,0
+optimized,High,Mission completion,entry,120,6.264,5.54,6.609,24.509,62.171,1,1,0
+optimized,High,Mission completion,steady,1200,5.427,5.387,6.176,6.723,8.213,0,0,0

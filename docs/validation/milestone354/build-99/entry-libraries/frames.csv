@@ -1,0 +1,17 @@
+host,attempt,stage,samples,mean_ms,median_ms,p95_ms,p99_ms,worst_ms,worst_preset,worst_location,over33_3,over50,over100,peak_rss_bytes,shader_compile,compute_pipeline_create,render_pipeline_create,unmatched_endpoints
+entry-extended-first,extended-matrix-1,entry,2160,12.172,9.169,27.674,61.153,280.862,High,Passenger car,84,46,6,497500160,0,184,538,0
+entry-extended-first,extended-matrix-1,steady,6480,11.386,9.246,23.306,48.881,216.011,Medium,Passenger car,147,60,4,497500160,0,184,538,0
+entry-extended-first,shipped-matrix-1,entry,2160,12.416,8.424,19.662,53.342,1517.104,Low,Warehouse A,41,23,12,488095744,46,184,538,0
+entry-extended-first,shipped-matrix-1,steady,6480,9.853,8.631,17.43,31.702,87.858,Medium,Warehouse A,57,21,0,488095744,46,184,538,0
+entry-extended-first,shipped-matrix-2,entry,2160,9.582,7.951,16.727,30.708,169.225,High,Warehouse A,18,11,5,578289664,,,,
+entry-extended-first,shipped-matrix-2,steady,6480,9.016,8.237,14.633,21.258,179.227,Medium,Mission completion,7,2,2,578289664,,,,
+entry-extended-first,extended-matrix-2,entry,2160,9.422,8.483,14.45,26.467,149.565,High,Warehouse A,15,6,2,589299712,,,,
+entry-extended-first,extended-matrix-2,steady,6480,9.122,8.505,14.129,19.45,75.24,High,Warehouse B,8,1,0,589299712,,,,
+entry-shipped-first,shipped-matrix-1,entry,2160,13.452,10.358,31.499,60.725,205.535,High,Warehouse A,99,41,5,482459648,46,184,538,0
+entry-shipped-first,shipped-matrix-1,steady,6480,12.677,10.093,27.231,55.126,248.98,Low,Ashford workshop,211,90,4,482459648,46,184,538,0
+entry-shipped-first,extended-matrix-1,entry,2160,11.124,8.873,23.504,43.274,175.939,High,Warehouse A,48,15,3,510328832,0,184,538,0
+entry-shipped-first,extended-matrix-1,steady,6480,10.095,8.314,20.51,36.577,106.184,High,Warehouse A,84,26,2,510328832,0,184,538,0
+entry-shipped-first,extended-matrix-2,entry,2160,8.811,7.665,14.45,28.288,169.681,High,Near advancing fog,15,8,4,580370432,,,,
+entry-shipped-first,extended-matrix-2,steady,6480,8.289,7.797,13.155,18.436,44.057,Low,Passenger car,3,0,0,580370432,,,,
+entry-shipped-first,shipped-matrix-2,entry,2160,8.948,8.021,13.784,24.887,160.344,Medium,Near advancing fog,12,8,4,576782336,,,,
+entry-shipped-first,shipped-matrix-2,steady,6480,8.285,7.659,13.522,18.253,38.078,High,Warehouse B,3,0,0,576782336,,,,
