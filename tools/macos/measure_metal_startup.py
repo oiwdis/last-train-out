@@ -11,6 +11,7 @@ import time
 import uuid
 
 from benchmark_release import measure
+from stress_release import digest
 from renderer_diagnostics import engine_diagnostics
 
 
@@ -19,6 +20,7 @@ def main():
     parser.add_argument('app', type=Path)
     parser.add_argument('out', type=Path)
     parser.add_argument('first', choices=('seed', 'local'))
+    parser.add_argument('baseline', type=Path, help='Freshly downloaded verified 3.5.3 final app')
     options = parser.parse_args()
     app, out = options.app.resolve(), options.out.resolve()
     out.mkdir(parents=True, exist_ok=False)
@@ -40,8 +42,32 @@ def main():
                                                  f'config/custom_user_dir_name="{user}"\n')
             return Path.home() / 'Library/Application Support' / user
 
+        previous = options.baseline.resolve()
+        original, = (previous / 'Contents/Resources').glob('*.pck')
+        if digest(original) != '4ef40667bc6c00acc93a5b5eb5ccdfb28c609573815c351288435e00fd5af2d5':
+            raise RuntimeError('The 3.5.3 control pack is not the verified final PCK.')
+        previous_pack = folder / 'original.pck'
+        shutil.copy2(original, previous_pack)
+        previous_info = plistlib.loads((previous / 'Contents/Info.plist').read_bytes())
+        previous_binary = str(previous / 'Contents/MacOS' / previous_info['CFBundleExecutable'])
+
+        def baseline(condition):
+            user = select('original')
+            name = 'original-' + condition
+            record = measure(previous_binary, folder, out, name, 'startup_probe.gd',
+                             ['--graphics=high', '--profile-phases'], 210,
+                             ['--main-pack', str(previous_pack), '--rendering-method', 'forward_plus', '--rendering-driver', 'metal'],
+                             user / 'shader_cache')
+            data = json.loads((out / (name + '.json')).read_text()) if record['report_exists'] else {}
+            record['passed'] = (not record['returncode'] and record.get('mission_ready') and not record['engine_diagnostics']
+                                and data.get('driver') == 'metal' and data.get('user_data_directory') == str(user))
+            attempts.append(record)
+            (out / 'startup.json').write_text(json.dumps(attempts, indent=2))
+
         flags = ['metal', '--main-pack', str(target)]
         for stage in ('cold', 'warm'):
+            prior_first = (options.first == 'local') == (stage == 'cold')
+            if prior_first: baseline(stage)
             for mode in order if stage == 'cold' else reversed(order):
                 user = select(mode)
                 os.environ['LTO_METAL_SHADER_SEED'] = '1' if mode == 'seed' else '0'
@@ -54,8 +80,14 @@ def main():
                 record['passed'] = (not record['returncode'] and record.get('mission_ready') and not record['engine_diagnostics']
                                     and data.get('driver') == 'metal' and data.get('user_data_directory') == str(user))
                 record['cache_selection'] = [s for s in log.splitlines() if s.startswith('[renderer] Metal shader')]
+                if mode == 'seed' and stage == 'cold':
+                    record['passed'] &= any(f"{len(profile['files'])} installed, 0 existing, 0 unavailable" in msg
+                                             for msg in record['cache_selection'])
+                if mode == 'local':
+                    record['passed'] &= any('compiling locally' in msg for msg in record['cache_selection'])
                 attempts.append(record)
                 (out / 'startup.json').write_text(json.dumps(attempts, indent=2))
+            if not prior_first: baseline(stage)
         # Compare the former origin fog view against the same seeded geometry
         # on an already-conditioned host. Both use fresh writable directories.
         for mode in (('origin', 'platform') if options.first == 'seed' else ('platform', 'origin')):

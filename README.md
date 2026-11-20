@@ -68,6 +68,12 @@ reference; physical 2020 M1 fullscreen performance remains unverified.
 
 ## Play on macOS (no Godot needed)
 
+The development build opens with Forward+ on Vulkan. On Apple Silicon, quit the game and use its bundled selector to evaluate native Metal. In Terminal, run the following command with the path to your app. Use `vulkan` in the same command for the experimental comparison. The selector prints the resolved backend and uses the same mission, graphics settings and saves. [Physical M1 test and log collection](docs/M1_MILESTONE354.md)
+
+```bash
+"/Applications/Last Train Out.app/Contents/MacOS/choose-renderer" metal --fullscreen
+```
+
 Milestone pull requests and configured development branches are tested by GitHub Actions and built into a standalone
 **Last Train Out.app**: one universal app for Apple Silicon and Intel Macs that contains the
 Godot runtime and all game data. You do not need Godot, Xcode or anything else to play it.

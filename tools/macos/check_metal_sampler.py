@@ -46,7 +46,7 @@ def main():
             assert not warnings, warnings
         pairs.append([hashlib.sha256((part / f['file']).read_bytes()).hexdigest() for f in data['frames']])
     assert len(pairs[0]) == 6 and pairs[0] == pairs[1] == pairs[2], pairs
-    print('Both actual Metal runs produced six identical rendered images; both positive controls warned.')
+    print('All three Metal processes produced six identical images each. Both positive controls warned.')
 
 
 if __name__ == '__main__':

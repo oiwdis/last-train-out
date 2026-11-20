@@ -634,6 +634,19 @@ jobs:
           shasum -a 256 "$zip"
           ditto -x -k "$zip" extracted
           codesign --verify --deep --strict "extracted/$APP_NAME.app"
+      - if: matrix.group == 'seed-first' || matrix.group == 'local-first'
+        uses: actions/download-artifact@v8
+        with:
+          name: LastTrainOut-macos-universal.zip
+          run-id: 44691491220
+          github-token: ${{ github.token }}
+          path: original-download
+          skip-decompress: true
+      - if: matrix.group == 'seed-first' || matrix.group == 'local-first'
+        run: |
+          zip=$(find original-download -type f -name '*.zip' | head -n 1)
+          echo "af92124afee5a8d44902c94ff5ee6da7c7816650ba727a0d046833b71c38f6f3  $zip" | shasum -a 256 -c -
+          ditto -x -k "$zip" original
       - name: Run the selected packaged workload
         env:
           GROUP: ${{ matrix.group }}
@@ -642,7 +655,7 @@ jobs:
           out="$RUNNER_TEMP/metal-evidence"
           case "$GROUP" in
             sampler) python3 tools/macos/check_metal_sampler.py "$app" "$out" ;;
-            seed-first|local-first) python3 tools/macos/measure_metal_startup.py "$app" "$out" "${GROUP%-first}" ;;
+            seed-first|local-first) python3 tools/macos/measure_metal_startup.py "$app" "$out" "${GROUP%-first}" "original/$APP_NAME.app" ;;
             drivers) python3 tools/macos/measure_export_drivers.py "$app" "$out" ;;
             art) python3 tools/macos/compare_metal_art.py "$app" "$out" ;;
             journey)

@@ -46,7 +46,8 @@ func run() -> void:
 	var report := {"events":events,"godot":Engine.get_version_info().string,"adapter":RenderingServer.get_video_adapter_name(),
 		"renderer":RenderingServer.get_current_rendering_method(),"driver":RenderingServer.get_current_rendering_driver_name(),
 		"headless":DisplayServer.get_name()=="headless","mission_ready":bool(game.get("journey").get("ready_to_play")),
-		"user_data_directory":OS.get_user_data_dir(),
+		"user_data_directory":OS.get_user_data_dir(),"window_pixels":str(root.size),"render_scale":root.scaling_3d_scale,
+		"window_mode":DisplayServer.window_get_mode(),"api_version":RenderingServer.get_video_adapter_api_version(),
 		"launcher_to_playable_ms":launcher_ready_ms,"phases":PerformanceTrace.events,"first_frames_ms":first_frames_ms,"preset":graphics.get("current_index")}
 	FileAccess.open(destination,FileAccess.WRITE).store_string(JSON.stringify(report,"  "))
 	await DiagnosticSceneRetirement.release(game)
