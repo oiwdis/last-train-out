@@ -20,8 +20,10 @@ git -C "$work" init --quiet
 git -C "$work" fetch --quiet --depth 1 https://github.com/godotengine/godot.git "$revision"
 git -C "$work" checkout --quiet --detach FETCH_HEAD
 test "$(git -C "$work" rev-parse HEAD)" = "$revision"
-git -C "$work" apply --check "${patches[@]}"
-git -C "$work" apply "${patches[@]}"
+for patch_file in "${patches[@]}"; do
+  git -C "$work" apply --check "$patch_file"
+  git -C "$work" apply "$patch_file"
+done
 cd "$work"
 python3 -m venv "$work/build-env"
 "$work/build-env/bin/pip" -q install 'scons==4.8.1'

@@ -235,14 +235,14 @@
  
  #include "shader_rd.h"
  
-@@ -433,6 +435,7 @@
+@@ -432,6 +434,7 @@
+ 	return shader_cache_dir.path_join(relative_path);
  }
  
  bool ShaderRD::_load_from_cache(Version *p_version, int p_group) {
 +	LTOStartupInterval lto_interval("shader_cache_read");
  	String api_safe_name = String(RD::get_singleton()->get_device_api_name()).validate_filename().to_lower();
  	Ref<FileAccess> f;
- 	// The pre-device selector enables this read-only directory only for a
 @@ -482,6 +485,8 @@
  
  		p_version->variant_data.write[variant_id] = variant_bytes;
