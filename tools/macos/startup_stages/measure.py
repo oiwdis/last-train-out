@@ -42,16 +42,7 @@ def summarize(events):
     return summary, unmatched + list(starts)
 
 
-def main():
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('app', type=Path)
-    parser.add_argument('out', type=Path)
-    opt = parser.parse_args()
-    out = opt.out.resolve()
-    out.mkdir(parents=True)
-    with metal_signposts(out):
-        code = subprocess.run([sys.executable, MACOS / 'measure_fresh_player.py', opt.app.resolve(), out / 'player',
-                               '--without-signposts']).returncode
+def evaluate(out, code):
     rows = [json.loads(s) for s in (out / 'signposts.ndjson').read_bytes().splitlines() if s.startswith(b'{')]
     filtered = [r for r in rows if r.get('signpostName') == 'startup_stage']
     summary, unpaired = summarize(filtered)
@@ -65,13 +56,43 @@ def main():
     uploads = {}
     for name in ('first-launch', 'warm-launch'):
         log = (out / 'player' / (name + '.log')).read_text(errors='replace')
-        counts = re.findall(r'^\[startup-stages\] uploads (\d+) total_ns (\d+) longest_ns (\d+)$', log, re.M)
+        # stderr can interrupt a partially flushed Godot stdout line.
+        marker = '[startup-stages] uploads '
+        counts = re.findall(re.escape(marker) + r'(\d+) total_ns (\d+) longest_ns (\d+)(?=\s|$)', log)
         uploads[name] = [dict(zip(('calls','total_ns','longest_ns'), map(int, row))) for row in counts]
-    valid_uploads = all(items and items[-1]['calls'] > 0 and items[-1]['total_ns'] >= items[-1]['longest_ns'] > 0
-                        for items in uploads.values())
+        if len(counts) != log.count(marker):
+            raise ValueError(f'{name} contains a partial upload-counter record')
+    valid_uploads = all(items and all(row['calls'] > 0 and row['total_ns'] >= row['longest_ns'] > 0
+                                     for row in items) for items in uploads.values())
     (out / 'stage-timings.json').write_text(json.dumps({'player_code': code, 'missing':missing, 'unpaired':unpaired,
                                                        'spans': summary, 'upload_cpu': uploads}, indent=2))
     return int(code != 0 or len(by_process) != 2 or bool(unpaired) or any(missing.values()) or not valid_uploads)
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('app', type=Path, nargs='?')
+    parser.add_argument('out', type=Path, nargs='?')
+    parser.add_argument('--recheck', type=Path, help='Evaluate a recorded native capture with its original player outcomes')
+    opt = parser.parse_args()
+    if opt.recheck:
+        if opt.app or opt.out:
+            parser.error('--recheck takes only the recorded directory')
+        out = opt.recheck
+        original = json.loads((out / 'stage-timings.json').read_text())
+        player = json.loads((out / 'player/player-launches.json').read_text())
+        attempts = player['attempts']
+        clean = ([a['name'] for a in attempts] == ['first-launch','warm-launch']
+                 and all(a['passed'] and a['returncode'] == 0 for a in attempts))
+        return evaluate(out, original['player_code'] or int(not clean))
+    if not opt.app or not opt.out:
+        parser.error('provide the application and a new output directory')
+    out = opt.out.resolve()
+    out.mkdir(parents=True)
+    with metal_signposts(out):
+        code = subprocess.run([sys.executable, MACOS / 'measure_fresh_player.py', opt.app.resolve(), out / 'player',
+                               '--without-signposts']).returncode
+    return evaluate(out, code)
 
 
 if __name__ == '__main__':

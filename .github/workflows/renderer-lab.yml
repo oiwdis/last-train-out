@@ -10,6 +10,7 @@ on:
       - tools/macos/experiments/**
       - tools/macos/offline_bake/**
       - tools/macos/startup_stages/**
+      - tools/macos/profile_metal_entry.py
       - tools/macos/engine/worker-pool-shutdown.patch
       - tools/macos/worker_shutdown/**
       - tools/macos/renderer_lab.py
@@ -37,6 +38,7 @@ jobs:
       offline_run: ${{ steps.select.outputs.offline_run }}
       pool_run: ${{ steps.select.outputs.pool_run }}
       stages_run: ${{ steps.select.outputs.stages_run }}
+      entry_run: ${{ steps.select.outputs.entry_run }}
       run: ${{ steps.select.outputs.run }}
       exported: ${{ steps.select.outputs.exported }}
       followup: ${{ steps.select.outputs.followup }}
@@ -65,7 +67,16 @@ jobs:
             id=$(tools/macos/find_reference_artifact.sh "$run")
             if [[ -n "$id" ]]; then echo "pool_run=$run" >> "$GITHUB_OUTPUT"; fi
           fi
-          if ! git diff --quiet HEAD^ HEAD -- tools/macos/startup_stages; then
+          if ! git diff --quiet HEAD^ HEAD -- tools/macos/profile_metal_entry.py; then
+            run=$(jq -r .workflow_run docs/validation/milestone354/build-99.json)
+            id=$(tools/macos/find_reference_artifact.sh "$run")
+            if [[ -n "$id" ]]; then echo "entry_run=$run" >> "$GITHUB_OUTPUT"; fi
+          fi
+          if ! git diff --quiet HEAD^ HEAD -- tools/macos/startup_stages/measure.py; then
+            unzip -q docs/validation/milestone354/raw/counted-native-stages.zip -d "$RUNNER_TEMP/stages-recheck"
+            python3 tools/macos/startup_stages/measure.py --recheck "$RUNNER_TEMP/stages-recheck/stages"
+          fi
+          if ! git diff --quiet HEAD^ HEAD -- tools/macos/startup_stages/phases.patch; then
             run=$(jq -r .workflow_run docs/validation/milestone354/build-86.json)
             id=$(tools/macos/find_reference_artifact.sh "$run")
             if [[ -n "$id" ]]; then echo "stages_run=$run" >> "$GITHUB_OUTPUT"; fi
@@ -178,6 +189,36 @@ jobs:
         with:
           name: pool-${{ matrix.observer }}
           path: ${{ runner.temp }}/pool/
+          retention-days: 30
+
+  warehouse-entry:
+    name: Sample the first packaged Metal Warehouse A entry
+    needs: select
+    if: needs.select.outputs.entry_run != ''
+    runs-on: macos-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/download-artifact@v8
+        with:
+          name: LastTrainOut-macos-universal.zip
+          run-id: ${{ needs.select.outputs.entry_run }}
+          github-token: ${{ github.token }}
+          path: download
+          skip-decompress: true
+      - name: Verify the frozen bundle and observe its first entry and repeat
+        run: |
+          zip=download/LastTrainOut-macos-universal.zip
+          echo "$(jq -r .zip_sha256 docs/validation/milestone354/build-99.json)  $zip" | shasum -a 256 -c -
+          ditto -x -k "$zip" extracted
+          app="extracted/Last Train Out.app"
+          codesign --verify --strict --deep "$app"
+          python3 tools/macos/profile_metal_entry.py "$app" "$RUNNER_TEMP/entry"
+      - if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: warehouse-metal-entry
+          path: ${{ runner.temp }}/entry/
           retention-days: 30
 
   startup-stages:

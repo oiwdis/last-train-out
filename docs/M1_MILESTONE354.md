@@ -2,6 +2,8 @@
 
 Use a native Terminal on the 2020 M1, connect power and quit demanding applications. Record the macOS version, display mode, refresh rate, desktop scaling, external displays and Low Power Mode. The hosted Apple Paravirtual GPU has a different device and driver. The downloaded app includes the engine. Python and Godot are optional for play.
 
+Download the development ZIP linked in the [release report](PERFORMANCE_MILESTONE354.md). Compare the complete result from `shasum -a 256 LastTrainOut-macos-universal.zip` with its receipt before unzipping. The Finder application starts the default Vulkan player. The commands below select one backend for a single launch.
+
 ## Choose and identify the renderer
 
 Unzip the development build and follow the repository’s macOS first-open instructions. In Terminal, set the app path and choose a driver for one launch. Quit before running the second command. Metal requires Apple Silicon. The primary executable remains universal. An ordinary double-click uses the project default, Forward+ on Vulkan.
@@ -29,6 +31,12 @@ tools/macos/benchmark_m1_renderers.sh "$app" "$out/measurements"
 The script runs both renderers, fullscreen and 1280×720 windowed, through Low, Medium and High. Startup JSON includes the normal loading scene, actual first playable time and subsequent 30 frames. The uncapped matrix records separate entry and steady intervals for all 12 locations, including Warehouse B, both train interiors, fog and mission results. Compare like-for-like resolution and preset. Record the worst frame, p95/p99, counts above 33.3/50/100 ms, and process RSS. A nonzero process exit, missing JSON, wrong backend, device loss or rendering warning is a failed attempt. Keep its log even if a retry succeeds. An offline movie’s 12 fps is its encoding rate.
 
 If Xcode is installed, use Instruments → Metal System Trace for an additional launch on a separate recording pass. Select the shipped `LastTrainOutMetal` process for native Metal or `Last Train Out` for Vulkan. Save the trace with the preset, cache condition and display mode. Pipeline creation, command-buffer execution and texture transfers on a physical GPU can help explain long intervals in the unprofiled JSON.
+
+For a Warehouse A hitch, the repository also includes a targeted 960×540 diagnostic. It samples the first Warehouse A entry at each preset and the steady Low locomotive cab, then repeats the full matrix without an observer. The resulting native stacks, phase markers and Metal pipeline signposts help identify where the process waited. Use its output alongside the fullscreen measurements.
+
+```bash
+python3 tools/macos/profile_metal_entry.py "$app" "$out/warehouse-profile"
+```
 
 ## Play and inspect
 

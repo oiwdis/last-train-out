@@ -1,0 +1,17 @@
+archive,report,stage,preset,location,window_frame,previous_ms,interval_ms,next_ms,timeline_frame,render_bracket_ms,render_setup_cpu_ms,physics_ms,process_ms,draw_delta,surface_delta,specialization_delta
+offline-source-first,comparison/binary-matrix.json,entry,Low,Warehouse A,4,190.791,1010.106,16.874,457,1007.767,0.052,0.463,0.263,0.0,0.0,0.0
+offline-source-first,comparison/binary-matrix.json,steady,Low,Harlow platform,35,9.808,68.815,10.495,281,66.96,0.122,0.117,0.372,0.0,0.0,0.0
+offline-source-first,comparison/source-matrix.json,entry,Low,Near advancing fog,4,30.013,192.408,12.519,3113,190.244,0.065,0.253,0.245,0.0,0.0,0.0
+offline-source-first,comparison/source-matrix.json,steady,High,Warehouse B,113,15.373,44.35,37.737,8958,42.484,0.057,0.169,0.782,0.0,0.0,0.0
+offline-binary-first,comparison/binary-matrix.json,entry,High,Mission completion,2,13.187,174.266,26.943,11762,174.036,0.018,0.012,0.005,0.0,0.0,0.0
+offline-binary-first,comparison/binary-matrix.json,steady,High,Curved railway,37,14.717,44.231,4.079,9995,40.816,0.24,1.39,0.528,0.0,0.0,0.0
+offline-binary-first,comparison/source-matrix.json,entry,Low,Warehouse A,3,21.54,1097.194,12.296,446,1096.451,0.041,0.055,0.142,0.0,0.0,0.0
+offline-binary-first,comparison/source-matrix.json,steady,High,Curved railway,143,23.434,50.48,30.871,9904,46.985,0.473,0.333,0.884,0.0,0.0,0.0
+metal-drivers,metal-matrix-1.json,entry,Medium,Warehouse A,5,21.817,1083.577,16.59,4406,1082.895,0.051,0.077,0.145,0.0,0.0,0.0
+metal-drivers,metal-matrix-1.json,steady,Low,Locomotive cab,25,8.947,437.04,8.873,1210,436.452,0.044,0.164,0.155,0.0,0.0,0.0
+metal-drivers,metal-matrix-2.json,entry,High,Warehouse A,4,87.059,181.683,12.325,8477,180.526,0.076,0.121,0.341,0.0,0.0,7.0
+metal-drivers,metal-matrix-2.json,steady,Low,Near advancing fog,21,13.96,32.941,9.08,3287,1.991,0.095,0.361,9.665,0.0,0.0,0.0
+metal-drivers,vulkan-matrix-1.json,entry,High,Near advancing fog,3,29.279,261.201,20.702,10574,257.523,0.12,0.083,2.26,0.0,0.0,0.0
+metal-drivers,vulkan-matrix-1.json,steady,Low,Passenger car,96,27.479,168.304,10.635,1603,166.645,0.04,0.12,0.306,0.0,0.0,0.0
+metal-drivers,vulkan-matrix-2.json,entry,High,Harlow platform,4,16.048,280.422,16.654,8026,279.557,0.049,0.059,0.209,0.0,0.0,0.0
+metal-drivers,vulkan-matrix-2.json,steady,High,Warehouse A,172,16.643,74.763,21.015,8628,71.362,0.046,0.064,2.646,0.0,0.0,0.0

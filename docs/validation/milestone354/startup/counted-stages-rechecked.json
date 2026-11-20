@@ -1,0 +1,218 @@
+{
+  "player_code": 0,
+  "missing": {
+    "21291": [],
+    "23935": []
+  },
+  "unpaired": [],
+  "spans": [
+    {
+      "pid": 21291,
+      "stage": "compressed_texture_load",
+      "count": 146,
+      "worker_s": 2.7336816787719727,
+      "union_s": 2.7336816787719727,
+      "max_s": 0.06800508499145508
+    },
+    {
+      "pid": 21291,
+      "stage": "main_setup",
+      "count": 1,
+      "worker_s": 35.829211950302124,
+      "union_s": 35.829211950302124,
+      "max_s": 35.829211950302124
+    },
+    {
+      "pid": 21291,
+      "stage": "main_setup2",
+      "count": 1,
+      "worker_s": 35.80266499519348,
+      "union_s": 35.80266499519348,
+      "max_s": 35.80266499519348
+    },
+    {
+      "pid": 21291,
+      "stage": "main_start",
+      "count": 1,
+      "worker_s": 0.15489506721496582,
+      "union_s": 0.15489506721496582,
+      "max_s": 0.15489506721496582
+    },
+    {
+      "pid": 21291,
+      "stage": "material_update_shader",
+      "count": 1844,
+      "worker_s": 0.45985960960388184,
+      "union_s": 0.45985960960388184,
+      "max_s": 0.13380718231201172
+    },
+    {
+      "pid": 21291,
+      "stage": "metal_context",
+      "count": 1,
+      "worker_s": 0.029088973999023438,
+      "union_s": 0.029088973999023438,
+      "max_s": 0.029088973999023438
+    },
+    {
+      "pid": 21291,
+      "stage": "metal_default_device",
+      "count": 1,
+      "worker_s": 0.005257129669189453,
+      "union_s": 0.005257129669189453,
+      "max_s": 0.005257129669189453
+    },
+    {
+      "pid": 21291,
+      "stage": "metal_device_driver",
+      "count": 1,
+      "worker_s": 0.00034999847412109375,
+      "union_s": 0.00034999847412109375,
+      "max_s": 0.00034999847412109375
+    },
+    {
+      "pid": 21291,
+      "stage": "metal_texture_allocate",
+      "count": 242,
+      "worker_s": 0.04301261901855469,
+      "union_s": 0.04301261901855469,
+      "max_s": 0.0026030540466308594
+    },
+    {
+      "pid": 21291,
+      "stage": "physics_servers",
+      "count": 1,
+      "worker_s": 0.0005471706390380859,
+      "union_s": 0.0005471706390380859,
+      "max_s": 0.0005471706390380859
+    },
+    {
+      "pid": 21291,
+      "stage": "shader_cache_read",
+      "count": 87,
+      "worker_s": 0.11001873016357422,
+      "union_s": 0.11001873016357422,
+      "max_s": 0.02455615997314453
+    },
+    {
+      "pid": 21291,
+      "stage": "texture_staging",
+      "count": 234,
+      "worker_s": 0.31151652336120605,
+      "union_s": 0.31151652336120605,
+      "max_s": 0.012537002563476562
+    },
+    {
+      "pid": 23935,
+      "stage": "compressed_texture_load",
+      "count": 146,
+      "worker_s": 2.460627555847168,
+      "union_s": 2.460627555847168,
+      "max_s": 0.06622910499572754
+    },
+    {
+      "pid": 23935,
+      "stage": "main_setup",
+      "count": 1,
+      "worker_s": 4.340620994567871,
+      "union_s": 4.340620994567871,
+      "max_s": 4.340620994567871
+    },
+    {
+      "pid": 23935,
+      "stage": "main_setup2",
+      "count": 1,
+      "worker_s": 4.319694995880127,
+      "union_s": 4.319694995880127,
+      "max_s": 4.319694995880127
+    },
+    {
+      "pid": 23935,
+      "stage": "main_start",
+      "count": 1,
+      "worker_s": 0.12326312065124512,
+      "union_s": 0.12326312065124512,
+      "max_s": 0.12326312065124512
+    },
+    {
+      "pid": 23935,
+      "stage": "material_update_shader",
+      "count": 1844,
+      "worker_s": 0.4388248920440674,
+      "union_s": 0.4388248920440674,
+      "max_s": 0.059255123138427734
+    },
+    {
+      "pid": 23935,
+      "stage": "metal_context",
+      "count": 1,
+      "worker_s": 0.00899505615234375,
+      "union_s": 0.00899505615234375,
+      "max_s": 0.00899505615234375
+    },
+    {
+      "pid": 23935,
+      "stage": "metal_default_device",
+      "count": 1,
+      "worker_s": 0.008203983306884766,
+      "union_s": 0.008203983306884766,
+      "max_s": 0.008203983306884766
+    },
+    {
+      "pid": 23935,
+      "stage": "metal_device_driver",
+      "count": 1,
+      "worker_s": 0.0003859996795654297,
+      "union_s": 0.0003859996795654297,
+      "max_s": 0.0003859996795654297
+    },
+    {
+      "pid": 23935,
+      "stage": "metal_texture_allocate",
+      "count": 242,
+      "worker_s": 0.04283452033996582,
+      "union_s": 0.04283452033996582,
+      "max_s": 0.009171009063720703
+    },
+    {
+      "pid": 23935,
+      "stage": "physics_servers",
+      "count": 1,
+      "worker_s": 0.00019788742065429688,
+      "union_s": 0.00019788742065429688,
+      "max_s": 0.00019788742065429688
+    },
+    {
+      "pid": 23935,
+      "stage": "shader_cache_read",
+      "count": 87,
+      "worker_s": 0.22251629829406738,
+      "union_s": 0.22251629829406738,
+      "max_s": 0.0567631721496582
+    },
+    {
+      "pid": 23935,
+      "stage": "texture_staging",
+      "count": 234,
+      "worker_s": 0.2987964153289795,
+      "union_s": 0.2987964153289795,
+      "max_s": 0.01306295394897461
+    }
+  ],
+  "upload_cpu": {
+    "first-launch": [
+      {
+        "calls": 8577,
+        "total_ns": 6957669,
+        "longest_ns": 517334
+      }
+    ],
+    "warm-launch": [
+      {
+        "calls": 8577,
+        "total_ns": 6753997,
+        "longest_ns": 300584
+      }
+    ]
+  }
+}
