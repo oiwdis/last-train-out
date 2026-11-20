@@ -1,0 +1,3 @@
+archive,stream,pid,operation,count,aggregate_worker_s,union_wall_s,longest_ms,longest_event,unpaired
+selftest-arm64-metal.zip,player-first/signposts.ndjson,1960,compute_pipeline_create,184,4.762,4.762,120.621,shader_name=CanvasSdfShaderRD:0,0
+selftest-arm64-metal.zip,player-first/signposts.ndjson,1960,render_pipeline_create,253,5.6261,2.6869,401.794,shader_name=SceneForwardClusteredShaderRD:16,0

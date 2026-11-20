@@ -1,0 +1,80 @@
+{
+  "zip_sha256": "abfb1842e86b044d0a4a143a683d64fa52bdf0d3a957c25a38e6cfec6b94a3bd",
+  "bytes": 332320165,
+  "artifact": 14673852596,
+  "workflow_run": 44822226233,
+  "source_head": "48fe07d96e95d8a6bea7e3e9e249d0d0b085d09c",
+  "bundle_commit": "7a040c7a02392d15ad0ea89844b00c1ea781b566",
+  "build": "103",
+  "kind": "development",
+  "crc_bad_entry": null,
+  "shader_profile": {
+    "adapter": "Apple Paravirtual device (Apple5)",
+    "argumentBuffers": 1,
+    "bundled_library_groups": 83,
+    "device": "Apple Paravirtual device",
+    "engine": "4.5.1-stable (lto_metal)",
+    "family": 1005,
+    "language": 262144,
+    "source": "7a040c7a02392d15ad0ea89844b00c1ea781b566"
+  },
+  "shader_groups": 94,
+  "cache_bytes": 8265096,
+  "cache_hashes_accepted": true,
+  "offline_libraries": {
+    "shader_profile": {
+      "adapter": "Apple Paravirtual device (Apple5)",
+      "argumentBuffers": 1,
+      "device": "Apple Paravirtual device",
+      "engine": "4.5.1-stable (lto_metal)",
+      "family": 1005,
+      "language": 262144,
+      "min_os_version": "26.0",
+      "source": "7a040c7a02392d15ad0ea89844b00c1ea781b566"
+    },
+    "shader_groups": 83,
+    "cache_bytes": 17427592,
+    "cache_hashes_accepted": true
+  },
+  "runtimes": {
+    "Last Train Out": {
+      "arch": [
+        "x86_64",
+        "arm64"
+      ],
+      "bytes": 187369968,
+      "sha256": "dc819368a999875f15abcd3523779817f38f4ff1f095926091269189d27e865c"
+    },
+    "LastTrainOutMetal": {
+      "arch": [
+        "arm64"
+      ],
+      "bytes": 64040928,
+      "sha256": "bc06ab5d56e536bd1c6ad8dabaf226109ce841bf7273ae6ef0f1b91e4c292a04"
+    },
+    "choose-renderer": {
+      "arch": [
+        "x86_64",
+        "arm64"
+      ],
+      "bytes": 157024,
+      "sha256": "10befdf25b6122011c87c814ee53a247e9e918889d79ef92711e22556c862558"
+    }
+  },
+  "pack_sha256": "e4dfd14ccfa967a6d72fc46c5adcf809400449140118b650637c6370133e515d",
+  "pr_build_identity": {
+    "branch_head": "48fe07d96e95d8a6bea7e3e9e249d0d0b085d09c",
+    "pull_request_test_merge": "7a040c7a02392d15ad0ea89844b00c1ea781b566",
+    "parents": [
+      "e523c8a9017259040e36034ac0cf25d73b53d6a3",
+      "48fe07d96e95d8a6bea7e3e9e249d0d0b085d09c"
+    ],
+    "identical_git_tree": "8f1f2c2838f57031e1939e2c1404ea2ea2dbe590",
+    "github_artifact_digest_matches": true
+  },
+  "verified_route_libraries": {
+    "matched_groups": 83,
+    "compiled_stages": 365,
+    "asset_archive_sha256": "46ef1b92e01e3b417b51fa50924e58e19442b1f155f0ae2e05e78c5bcc653e03"
+  }
+}

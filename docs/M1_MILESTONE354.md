@@ -12,13 +12,14 @@ Unzip the development build and follow the repository’s macOS first-open instr
 app="/Applications/Last Train Out.app"
 out="$HOME/Desktop/LastTrainOut-M1-$(date +%Y%m%d-%H%M%S)"
 mkdir "$out"
+"$app/Contents/MacOS/choose-renderer" --device-profile > "$out/metal-device-profile.json"
 "$app/Contents/MacOS/choose-renderer" metal --fullscreen --verbose > "$out/metal-play.log" 2>&1
 "$app/Contents/MacOS/choose-renderer" vulkan --fullscreen --verbose > "$out/vulkan-play.log" 2>&1
 ```
 
 Look for both the engine banner and `[renderer] active forward_plus/metal` or `[renderer] active forward_plus/vulkan`. Keep the shader-cache selection line. On an incompatible source-cache profile Metal compiles locally. An unavailable requested backend ends the explicit launch. The chooser never relaunches an interrupted mission. Preserve the original log and macOS crash report before starting another game.
 
-On a compatible M1 running macOS 26 or later, the Metal selector logs the number of read-only library groups. With `--verbose` the engine logs `Loaded bundled Metal library group` when it uses one. An older OS or a different shader profile can take the source path. For a paired source-only diagnostic, place `LTO_METAL_LIBRARIES=0` before the same Metal selector command and record that override alongside the results.
+On a compatible M1 running macOS 26 or later, the Metal selector logs the number of read-only library groups. Keep the device-profile JSON and the group count with the ZIP hash so the result identifies the GPU family, language version and argument-buffer tier. With `--verbose` the engine logs `Loaded bundled Metal library group` when it uses one. An older OS or a different shader profile can take the source path. For a paired source-only diagnostic, place `LTO_METAL_LIBRARIES=0` before the same Metal selector command and record that override alongside the results.
 
 ## Collect startup and frame distributions
 

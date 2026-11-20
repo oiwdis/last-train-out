@@ -1,0 +1,483 @@
+{
+  "build_99_count": 908,
+  "build_103_count": 908,
+  "identical_payloads": 882,
+  "added": [
+    ".godot/shader_cache/SceneForwardClusteredShaderRD/6a184745fdc168cf1854f82e467b075c7754389099dd4260c7cfd820f974abb7/6728f7bd7005c04fe432972d0575e7918cce556e.vulkan.cache",
+    ".godot/shader_cache/SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/6728f7bd7005c04fe432972d0575e7918cce556e.vulkan.cache"
+  ],
+  "removed": [
+    ".godot/shader_cache/SceneForwardClusteredShaderRD/6a184745fdc168cf1854f82e467b075c7754389099dd4260c7cfd820f974abb7/c973f1f68ae5670dc941621353dde6ab8790087e.vulkan.cache",
+    ".godot/shader_cache/SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/c973f1f68ae5670dc941621353dde6ab8790087e.vulkan.cache"
+  ],
+  "changed": {
+    ".godot/imported/brick_wall_001_albedo.jpg-9cfd87d007bdb8fc91ae3319fcdf30a4.bptc.ctex": {
+      "99": {
+        "bytes": 1398180,
+        "sha256": "0297e5a2f25b1e4796bb4eb7577d086eaa1400ac42029fcec47ddf050a162fcc"
+      },
+      "103": {
+        "bytes": 1398180,
+        "sha256": "6286cb6cb5211704faef733b0769a714eab69932a95724db9175a60150900a50"
+      },
+      "differing_bytes": 16,
+      "first_difference": 357956,
+      "last_difference": 357971,
+      "same_texture_header": true,
+      "all_mip_pixels": 1398101,
+      "changed_decoded_pixels": 16,
+      "decoded_max_channel_delta": 3,
+      "decoded_mean_absolute_channel_delta": 7.867814986184832e-06,
+      "format": "BC7"
+    },
+    ".godot/imported/carriage_door_green_metal_rust_albedo.jpg-58a029c3634b6c5d4fa06a8c9aef3f46.bptc.ctex": {
+      "99": {
+        "bytes": 1398180,
+        "sha256": "b877843931167e21288b507c6d5c4a762e57df611a23cafd3f7f25f301a5678f"
+      },
+      "103": {
+        "bytes": 1398180,
+        "sha256": "947301f90f6f9eb3ce15b9a4cf2e8362ea7082495bbc93840034a5e3c95ed3dd"
+      },
+      "differing_bytes": 719,
+      "first_difference": 420212,
+      "last_difference": 1382947,
+      "same_texture_header": true,
+      "all_mip_pixels": 1398101,
+      "changed_decoded_pixels": 165,
+      "decoded_max_channel_delta": 2,
+      "decoded_mean_absolute_channel_delta": 3.433228357607927e-05,
+      "format": "BC7"
+    },
+    ".godot/imported/carriage_door_green_metal_rust_normal.jpg-eef1099293773ef958b5c59f4590c6ca.bptc.ctex": {
+      "99": {
+        "bytes": 1398180,
+        "sha256": "9ce64281ae799ed1e853a0b9618e9104dd8346fbb86656ea8d24df850b012894"
+      },
+      "103": {
+        "bytes": 1398180,
+        "sha256": "f0569f68a9bed1128dd298e9158ffa3b7c5d733562f929a32bc05ab463a26b81"
+      },
+      "differing_bytes": 5726,
+      "first_difference": 772,
+      "last_difference": 1048035,
+      "same_texture_header": true,
+      "all_mip_pixels": 1398101,
+      "changed_decoded_pixels": 5514,
+      "decoded_max_channel_delta": 3,
+      "decoded_mean_absolute_channel_delta": 0.0017509464623800426,
+      "format": "BC7"
+    },
+    ".godot/imported/crew_car_finish_green_metal_rust_albedo.jpg-6048e42c92d90ab15814c8365f3399cd.bptc.ctex": {
+      "99": {
+        "bytes": 1398180,
+        "sha256": "b877843931167e21288b507c6d5c4a762e57df611a23cafd3f7f25f301a5678f"
+      },
+      "103": {
+        "bytes": 1398180,
+        "sha256": "947301f90f6f9eb3ce15b9a4cf2e8362ea7082495bbc93840034a5e3c95ed3dd"
+      },
+      "differing_bytes": 719,
+      "first_difference": 420212,
+      "last_difference": 1382947,
+      "same_texture_header": true,
+      "all_mip_pixels": 1398101,
+      "changed_decoded_pixels": 165,
+      "decoded_max_channel_delta": 2,
+      "decoded_mean_absolute_channel_delta": 3.433228357607927e-05,
+      "format": "BC7"
+    },
+    ".godot/imported/crew_car_finish_green_metal_rust_normal.jpg-acb6e98de816418659fc3c3c17dfd4a7.bptc.ctex": {
+      "99": {
+        "bytes": 1398180,
+        "sha256": "9ce64281ae799ed1e853a0b9618e9104dd8346fbb86656ea8d24df850b012894"
+      },
+      "103": {
+        "bytes": 1398180,
+        "sha256": "f0569f68a9bed1128dd298e9158ffa3b7c5d733562f929a32bc05ab463a26b81"
+      },
+      "differing_bytes": 5726,
+      "first_difference": 772,
+      "last_difference": 1048035,
+      "same_texture_header": true,
+      "all_mip_pixels": 1398101,
+      "changed_decoded_pixels": 5514,
+      "decoded_max_channel_delta": 3,
+      "decoded_mean_absolute_channel_delta": 0.0017509464623800426,
+      "format": "BC7"
+    },
+    ".godot/imported/factory_kit_modular_factory_facade_doors_arm_2k.jpg-64dd5aed4d48d8d8d8e94ea4756da756.bptc.ctex": {
+      "99": {
+        "bytes": 5592484,
+        "sha256": "2de6b794301e5442cf5a9a06f0549790cf06175cfea608d3ca3bacc20c1feefd"
+      },
+      "103": {
+        "bytes": 5592484,
+        "sha256": "f947554496138459fae6affcfdf020a0c5420bff8ea0a36ad5fea20ebabc3451"
+      },
+      "differing_bytes": 96,
+      "first_difference": 239028,
+      "last_difference": 4544931,
+      "same_texture_header": true,
+      "all_mip_pixels": 5592405,
+      "changed_decoded_pixels": 72,
+      "decoded_max_channel_delta": 2,
+      "decoded_mean_absolute_channel_delta": 5.230307890791171e-06,
+      "format": "BC7"
+    },
+    ".godot/imported/factory_kit_modular_factory_facade_doors_diff_2k.jpg-5848fe4a7cd5cc2943757afe1c1d024d.bptc.ctex": {
+      "99": {
+        "bytes": 5592484,
+        "sha256": "22a5f36babc5d2d540ed8717073c6345a5a43fabb8d5acbfbf78e824039527c0"
+      },
+      "103": {
+        "bytes": 5592484,
+        "sha256": "d9346874c381a7c0713db75d82acdf1e41bb5c6229b28b334bf1870f32bcad43"
+      },
+      "differing_bytes": 783,
+      "first_difference": 1702692,
+      "last_difference": 5552963,
+      "same_texture_header": true,
+      "all_mip_pixels": 5592405,
+      "changed_decoded_pixels": 267,
+      "decoded_max_channel_delta": 11,
+      "decoded_mean_absolute_channel_delta": 1.9624830462028413e-05,
+      "format": "BC7"
+    },
+    ".godot/imported/factory_kit_modular_factory_facade_doors_nor_gl_2k.jpg-fec05a0380113dd3b9ae6384ccc84588.bptc.ctex": {
+      "99": {
+        "bytes": 5592484,
+        "sha256": "046bb300003ea1e80fd2f50f1bef15dfb562b0d38fc23bf24f4f1ac22a880aaa"
+      },
+      "103": {
+        "bytes": 5592484,
+        "sha256": "9e810e0c06236b6cfca0f52a99937d46fb24434fbf43b3412cafb8fb8e22da25"
+      },
+      "differing_bytes": 728,
+      "first_difference": 1694996,
+      "last_difference": 5548291,
+      "same_texture_header": true,
+      "all_mip_pixels": 5592405,
+      "changed_decoded_pixels": 523,
+      "decoded_max_channel_delta": 2,
+      "decoded_mean_absolute_channel_delta": 3.7595631932951925e-05,
+      "format": "BC7"
+    },
+    ".godot/imported/factory_kit_modular_factory_facade_trim_01_diff_2k.jpg-f8fca181073f4b9adfef16ee6e9c2d83.bptc.ctex": {
+      "99": {
+        "bytes": 5592484,
+        "sha256": "72fcb0c8414c53628d75a22a26920ffecd8e26968c1621c869997aaaa1d2b8f5"
+      },
+      "103": {
+        "bytes": 5592484,
+        "sha256": "2507bdd41fa8eed5cd9228f7ae12a9050352cb1d47f560e6d303679a7b2b0309"
+      },
+      "differing_bytes": 96,
+      "first_difference": 7076,
+      "last_difference": 1356099,
+      "same_texture_header": true,
+      "all_mip_pixels": 5592405,
+      "changed_decoded_pixels": 60,
+      "decoded_max_channel_delta": 1,
+      "decoded_mean_absolute_channel_delta": 3.218651009717644e-06,
+      "format": "BC7"
+    },
+    ".godot/imported/factory_kit_modular_factory_facade_windows_diff_2k.png-bea3bbae6a9dcfd1f49201e186019727.bptc.ctex": {
+      "99": {
+        "bytes": 5592484,
+        "sha256": "bb328d8c30981387b3dc8dfcdd2efc8c9e46b1ccbd76505b81194db314ac9cf4"
+      },
+      "103": {
+        "bytes": 5592484,
+        "sha256": "9d1a743bb387b8492421d40f175fe557d1f5435ec317775490014aaabc27c21b"
+      },
+      "differing_bytes": 624,
+      "first_difference": 196,
+      "last_difference": 3468147,
+      "same_texture_header": true,
+      "all_mip_pixels": 5592405,
+      "changed_decoded_pixels": 285,
+      "decoded_max_channel_delta": 4,
+      "decoded_mean_absolute_channel_delta": 1.4171005140006849e-05,
+      "format": "BC7"
+    },
+    ".godot/imported/factory_kit_modular_factory_facade_windows_diff_2k_6.jpg-96d1afd7a4274cea75ede949b0ab5833.bptc.ctex": {
+      "99": {
+        "bytes": 5592484,
+        "sha256": "772e605f111a5bd8038306362e60a64937cedd5ba9ceb7a98227516404d1d0e5"
+      },
+      "103": {
+        "bytes": 5592484,
+        "sha256": "9d1a743bb387b8492421d40f175fe557d1f5435ec317775490014aaabc27c21b"
+      },
+      "differing_bytes": 190,
+      "first_difference": 1794836,
+      "last_difference": 5510899,
+      "same_texture_header": true,
+      "all_mip_pixels": 5592405,
+      "changed_decoded_pixels": 105,
+      "decoded_max_channel_delta": 2,
+      "decoded_mean_absolute_channel_delta": 7.376075230602934e-06,
+      "format": "BC7"
+    },
+    ".godot/imported/factory_kit_modular_factory_facade_windows_nor_gl_2k.jpg-cfda3fedcde33969200ed699a7ff7db0.bptc.ctex": {
+      "99": {
+        "bytes": 5592484,
+        "sha256": "97c052d0df77dfce2aaa91589b8d5e5b5e6497af6726281ebdd64557e3e7b34b"
+      },
+      "103": {
+        "bytes": 5592484,
+        "sha256": "5ac76c3129c9904525f071abe86d0b7db6e13f6c4dd41e234c1f8873749776bc"
+      },
+      "differing_bytes": 196,
+      "first_difference": 206148,
+      "last_difference": 4081347,
+      "same_texture_header": true,
+      "all_mip_pixels": 5592405,
+      "changed_decoded_pixels": 149,
+      "decoded_max_channel_delta": 2,
+      "decoded_mean_absolute_channel_delta": 8.225441469278423e-06,
+      "format": "BC7"
+    },
+    ".godot/imported/green_metal_rust_albedo.jpg-f7fa696810f2b2f5cdcf32ac1f910655.bptc.ctex": {
+      "99": {
+        "bytes": 1398180,
+        "sha256": "b4ab0e2e7f32c2118488dbf4c5ead1558926ea8962d640e7260e333b7a2701b7"
+      },
+      "103": {
+        "bytes": 1398180,
+        "sha256": "947301f90f6f9eb3ce15b9a4cf2e8362ea7082495bbc93840034a5e3c95ed3dd"
+      },
+      "differing_bytes": 543,
+      "first_difference": 179300,
+      "last_difference": 1109155,
+      "same_texture_header": true,
+      "all_mip_pixels": 1398101,
+      "changed_decoded_pixels": 161,
+      "decoded_max_channel_delta": 2,
+      "decoded_mean_absolute_channel_delta": 3.7193307207419206e-05,
+      "format": "BC7"
+    },
+    ".godot/imported/green_metal_rust_normal.jpg-b400b461e9e772e9dd46795811b3164b.bptc.ctex": {
+      "99": {
+        "bytes": 1398180,
+        "sha256": "b482e9d35943a6bd7f8bc7fcbac4f7c1ba1770282a3da11e745eaa2bcef2f9a9"
+      },
+      "103": {
+        "bytes": 1398180,
+        "sha256": "f0569f68a9bed1128dd298e9158ffa3b7c5d733562f929a32bc05ab463a26b81"
+      },
+      "differing_bytes": 4707,
+      "first_difference": 419748,
+      "last_difference": 837219,
+      "same_texture_header": true,
+      "all_mip_pixels": 1398101,
+      "changed_decoded_pixels": 4444,
+      "decoded_max_channel_delta": 3,
+      "decoded_mean_absolute_channel_delta": 0.0013904574848312104,
+      "format": "BC7"
+    },
+    ".godot/imported/painted_wooden_bench_painted_wooden_bench_diff_1k.jpg-cac0b543479d5ad6c2954c8c3215c4df.bptc.ctex": {
+      "99": {
+        "bytes": 1398180,
+        "sha256": "c3df79666a6122cc1266732f65a0462145f247630554887df5db112d1d3ce192"
+      },
+      "103": {
+        "bytes": 1398180,
+        "sha256": "a2db191b637c6692904ea1471f7c3d840b697cf5b5b1cefb5a8a22b9975761f5"
+      },
+      "differing_bytes": 16,
+      "first_difference": 657044,
+      "last_difference": 657059,
+      "same_texture_header": true,
+      "all_mip_pixels": 1398101,
+      "changed_decoded_pixels": 16,
+      "decoded_max_channel_delta": 2,
+      "decoded_mean_absolute_channel_delta": 7.152559078349847e-06,
+      "format": "BC7"
+    },
+    ".godot/imported/painted_wooden_bench_painted_wooden_bench_nor_gl_1k.jpg-95609816b0ad7c749612b53c48ea9f06.bptc.ctex": {
+      "99": {
+        "bytes": 1398180,
+        "sha256": "efac693805b53a34929d2764d6c280cd5dc905204a040e20f6f609c6334eb7e0"
+      },
+      "103": {
+        "bytes": 1398180,
+        "sha256": "ad0f987f165f4fb4ee99fa1432d91d44b13d8dbcc77c4c7ba6fd246f1707c581"
+      },
+      "differing_bytes": 32,
+      "first_difference": 923124,
+      "last_difference": 1041027,
+      "same_texture_header": true,
+      "all_mip_pixels": 1398101,
+      "changed_decoded_pixels": 8,
+      "decoded_max_channel_delta": 1,
+      "decoded_mean_absolute_channel_delta": 1.4305118156699695e-06,
+      "format": "BC7"
+    },
+    ".godot/imported/railway_survivor_brown_eye.png-34e10ea39e03e94d6bd06e88de2e1d28.bptc.ctex": {
+      "99": {
+        "bytes": 1398180,
+        "sha256": "bd82f799889bb9dc014e5d2d1349d7acf636735e01a584178833736ddc73b643"
+      },
+      "103": {
+        "bytes": 1398180,
+        "sha256": "c5620ddd57b3650fa5c4e2cb1d4fe44c344d01f1a9df53ee4e5634e1db4f618c"
+      },
+      "differing_bytes": 362,
+      "first_difference": 423284,
+      "last_difference": 1183939,
+      "same_texture_header": true,
+      "all_mip_pixels": 1398101,
+      "changed_decoded_pixels": 317,
+      "decoded_max_channel_delta": 3,
+      "decoded_mean_absolute_channel_delta": 0.00010442736254390777,
+      "format": "BC7"
+    },
+    ".godot/imported/railway_survivor_male_casualsuit05_diffuse.png-3ee3d2c7a4d24fa8144007387c8badd3.bptc.ctex": {
+      "99": {
+        "bytes": 5592484,
+        "sha256": "9120bd4bbc64aac567b42431fc5f9f85953b87cbd84966871a1b7dc5ece247f8"
+      },
+      "103": {
+        "bytes": 5592484,
+        "sha256": "f077e072daa87d3948aa54d469aa18f2768fdf7537953cb264acea07f5e0fbfa"
+      },
+      "differing_bytes": 566,
+      "first_difference": 31620,
+      "last_difference": 4222947,
+      "same_texture_header": true,
+      "all_mip_pixels": 5592405,
+      "changed_decoded_pixels": 495,
+      "decoded_max_channel_delta": 18,
+      "decoded_mean_absolute_channel_delta": 0.00025154651710668306,
+      "format": "BC7"
+    },
+    ".godot/imported/railway_survivor_male_casualsuit05_normal.png-31c9accb15e517415e3f8f40ef7f7753.bptc.ctex": {
+      "99": {
+        "bytes": 5592484,
+        "sha256": "b6c9b2ecd552397e2fd984b831923c287ce6f8d6978922499e410703c77de127"
+      },
+      "103": {
+        "bytes": 5592484,
+        "sha256": "16be1ba14d486bcb12b5a3ee3915fd21f64ed6d9a039dda83123d8e0cf4c45c7"
+      },
+      "differing_bytes": 93,
+      "first_difference": 819508,
+      "last_difference": 4438483,
+      "same_texture_header": true,
+      "all_mip_pixels": 5592405,
+      "changed_decoded_pixels": 50,
+      "decoded_max_channel_delta": 2,
+      "decoded_mean_absolute_channel_delta": 3.3080579822098007e-06,
+      "format": "BC7"
+    },
+    ".godot/imported/railway_survivor_middleage_lightskinned_male_diffuse.png-b76f8538b55d9c630c4422ec81ea0f80.bptc.ctex": {
+      "99": {
+        "bytes": 5592484,
+        "sha256": "4dc63c2710f69fb348a0210f85ae34ffaef9727bf5a800c59993706e0b881abf"
+      },
+      "103": {
+        "bytes": 5592484,
+        "sha256": "75156cbd7b2d7442392f0a93519f57c8ee65e8af53c4f7b90f750cb989ce9921"
+      },
+      "differing_bytes": 562,
+      "first_difference": 1977956,
+      "last_difference": 5502995,
+      "same_texture_header": true,
+      "all_mip_pixels": 5592405,
+      "changed_decoded_pixels": 447,
+      "decoded_max_channel_delta": 20,
+      "decoded_mean_absolute_channel_delta": 0.0002160966525135429,
+      "format": "BC7"
+    },
+    ".godot/imported/railway_survivor_skin_male_african_middleage_NRM.png-8a56666743742c4837537ad4e91386d9.bptc.ctex": {
+      "99": {
+        "bytes": 5592484,
+        "sha256": "2a60a5d7e4efb624d98ee07c3114603dc4dfb44d3a15d26d332ef46da2763b6e"
+      },
+      "103": {
+        "bytes": 5592484,
+        "sha256": "846ca256ea2d53927bba05bce2c79a9d218d9a4a5ebb9d9648efbcdc6cba1144"
+      },
+      "differing_bytes": 1179,
+      "first_difference": 162212,
+      "last_difference": 4122866,
+      "same_texture_header": true,
+      "all_mip_pixels": 5592405,
+      "changed_decoded_pixels": 826,
+      "decoded_max_channel_delta": 8,
+      "decoded_mean_absolute_channel_delta": 6.20484389095568e-05,
+      "format": "BC7"
+    },
+    ".godot/imported/rusty_corrugated_iron_normal.jpg-53b84cbd2053ddc22df38c78f823ab0f.bptc.ctex": {
+      "99": {
+        "bytes": 1398180,
+        "sha256": "3d03ec122be6d1474c766e37f3b65f9059753b1e9dcded395ce69e0ccb5d8107"
+      },
+      "103": {
+        "bytes": 1398180,
+        "sha256": "46022855ea51589b4aa3cf79bb54a6845bc6cc065525f5ed77b7be917a901497"
+      },
+      "differing_bytes": 16,
+      "first_difference": 1384692,
+      "last_difference": 1384707,
+      "same_texture_header": true,
+      "all_mip_pixels": 1398101,
+      "changed_decoded_pixels": 16,
+      "decoded_max_channel_delta": 2,
+      "decoded_mean_absolute_channel_delta": 4.2915354470099084e-06,
+      "format": "BC7"
+    },
+    ".godot/imported/weed_plant_02_weed_plant_02_nor_gl_1k.jpg-bdd560bfa4617f88fa2bec0cf612cde6.bptc.ctex": {
+      "99": {
+        "bytes": 1398180,
+        "sha256": "7306cc5fc6766647e46792eeb7cb17ba621d437365c64090752808cf51bcde0e"
+      },
+      "103": {
+        "bytes": 1398180,
+        "sha256": "6e6242c2cf4052e8a6f664f57f64dc6ec53831a99c542e462dcbe71ff12ef053"
+      },
+      "differing_bytes": 265,
+      "first_difference": 465300,
+      "last_difference": 1174707,
+      "same_texture_header": true,
+      "all_mip_pixels": 1398101,
+      "changed_decoded_pixels": 224,
+      "decoded_max_channel_delta": 3,
+      "decoded_mean_absolute_channel_delta": 5.757810058071627e-05,
+      "format": "BC7"
+    },
+    "scripts/train/train_car.gdc": {
+      "99": {
+        "bytes": 1198,
+        "sha256": "e5d09a8357ea8a79f62bb6fa35b59c91c6de386c31d0f2f9d1c924e80d4fed0f"
+      },
+      "103": {
+        "bytes": 1193,
+        "sha256": "429939cfb3c0edcbfe38370a9d0f03708ff2986d928367337d43967f4a3df825"
+      },
+      "token_buffer_identical": false,
+      "token_buffer_bytes": {
+        "99": 3572,
+        "103": 3572
+      },
+      "token_buffer_hashes": {
+        "99": "0b9ae944aef4b44fa97ccf0e7925751866df94b034dc29085c8bd4a8ca472d91",
+        "103": "68d60676e1988a5bd9c1e8b64ec73ee337690272999f0000739887406b369ebe"
+      },
+      "only_differences": {
+        "zero_based_offsets": [
+          1686,
+          1687
+        ],
+        "meaning": "Two alignment padding bytes after the six-byte Wheels string. All other token-buffer bytes match."
+      }
+    }
+  },
+  "texture_summary": {
+    "all_mip_pixels_across_23_changed_imports": 78293667,
+    "different_decoded_pixels": 19839,
+    "maximum_channel_delta_8bit": 20
+  }
+}

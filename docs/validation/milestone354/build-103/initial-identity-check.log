@@ -1,0 +1,6 @@
+abfb1842e86b044d0a4a143a683d64fa52bdf0d3a957c25a38e6cfec6b94a3bd 103 e4dfd14ccfa967a6d72fc46c5adcf809400449140118b650637c6370133e515d 94
+Traceback (most recent call last):
+  File "/tmp/lto354-work/receive103.py", line 19, in <module>
+    assert r['source_head']==r['bundle_commit']==head and r['build']=='103' and r['kind']=='development'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

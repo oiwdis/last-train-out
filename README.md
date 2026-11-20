@@ -2,9 +2,9 @@
 
 This draft combines PR #4’s detailed survivor, locomotive and Harlow art with PR #5’s continuous three-station survival journey. Press **J** for Save / Continue / New / Restart and **V** to switch camera. [Integration history](docs/MILESTONE3_INTEGRATION.md)
 
-**Hold the merge.** On a fresh hosted Mac the native Metal player reached High gameplay in 33.1 s cold and 26.6 s warm. It completed the 4.26 km journey and all 167 checks. A separate first-use trace recorded a 1.21 s Warehouse A frame. The default Vulkan player lost its device during a fresh-download test. Fullscreen testing on the owner’s 2020 M1 remains pending. [Draft PR #6](https://github.com/oiwdis/last-train-out/pull/6) · [Performance report](docs/PERFORMANCE_MILESTONE354.md) · [Owner test](docs/M1_MILESTONE354.md)
+**Hold the merge.** The optional native Metal player reached High gameplay in 35.1 s cold and 26.1 s warm on a fresh hosted Mac. Precompiling the observed route shaders reduced a 1.52 s Warehouse A entry frame to 73 ms in a paired test. Metal passed all 95 packaged stress processes. Vulkan lost the GPU on ten cold High starts. Approaching fog still produced a 237 ms Metal entry frame. The owner’s fullscreen 2020 M1 test remains pending. [Draft PR #6](https://github.com/oiwdis/last-train-out/pull/6) · [Performance report](docs/PERFORMANCE_MILESTONE354.md) · [M1 owner test](docs/M1_MILESTONE354.md)
 
-[Download the verified universal development ZIP](https://github.com/oiwdis/last-train-out/actions/runs/44804764620/artifacts/14666253056) · [SHA-256 and build identity](docs/validation/milestone354/build-99.json) · [Full Metal journey](docs/recording/milestone354-native-metal.mp4) · [All 36 paired views](docs/validation/milestone354/build-99/matched/README.md) · [Visual comparison gallery](docs/validation/milestone354/build-99/README.md#character-train-and-environment)
+[Download the verified universal development ZIP](https://github.com/oiwdis/last-train-out/actions/runs/44822226233/artifacts/14673852596) · [SHA-256 and build identity](docs/validation/milestone354/build-103.json) · [Matched frame times](docs/validation/milestone354/build-103/matched/README.md) · [Visual gallery](docs/validation/milestone354/build-103/README.md#visual-compatibility) · [Full Metal journey](docs/recording/milestone354-native-metal.mp4)
 
 The reports below describe their respective source milestones.
 
@@ -80,8 +80,8 @@ Godot runtime and all game data. You do not need Godot, Xcode or anything else t
 
 ### 1. Download the latest build
 
-1. Sign in to GitHub and open the [tested development ZIP](https://github.com/oiwdis/last-train-out/actions/runs/44781367462/artifacts/14653133684).
-2. Verify the downloaded file with `shasum -a 256 LastTrainOut-macos-universal.zip` and compare the result with the [build receipt](docs/validation/milestone354/build-86.json).
+1. Sign in to GitHub and open the [tested development ZIP](https://github.com/oiwdis/last-train-out/actions/runs/44822226233/artifacts/14673852596).
+2. Verify the downloaded file with `shasum -a 256 LastTrainOut-macos-universal.zip` and compare the result with the [build receipt](docs/validation/milestone354/build-103.json).
 
 The run page also shows the build number, the commit it was built from and the ZIP's SHA-256.
 Development builds are kept for 30 days.
@@ -151,15 +151,7 @@ Each build is only uploaded after the workflow has:
    transfers inventory and carries cargo;
 5. checked that the ZIP holds the complete bundle, file for file.
 
-Two more jobs then download the ZIP the way you would, unzip it and launch it again - one on an
-Apple Silicon Mac, one on an Intel Mac. On Apple Silicon the app opens its window and renders
-with Vulkan through bundled MoltenVK. GitHub's Intel Macs have no usable GPU, so there the Intel half of the app is only
-run without a window: the game logic is checked on Intel, the picture is not.
-
-This shows that the app starts and the game runs on GitHub's Macs. It does not replace a person
-playing it: nobody sees the picture or feels the controls in CI, and GitHub's Macs are virtual
-machines (their GPU cannot render the game's volumetric haze, so that effect is switched off
-there; High enables it only on hardware that reports support).
+Independent Apple Silicon runners download the exported ZIP and render with native Metal and Vulkan through MoltenVK. The Intel runner exercises the x86_64 player headless. The workflow also runs the packaged launch and lifecycle stress tests, visual comparisons and a continuous native gameplay journey. The hosted GPU is virtual. High enables volumetric haze only on hardware that reports support. The owner procedure measures fullscreen rendering on a physical 2020 M1. [Build 103 job results](docs/validation/milestone354/build-103/workflow.json) · [M1 procedure](docs/M1_MILESTONE354.md)
 
 ### Signed and notarized builds
 
