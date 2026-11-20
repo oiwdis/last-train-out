@@ -55,3 +55,24 @@ done
 ```
 
 For release acceptance, require zero device losses and complete rendered, save/restore and shutdown checks. Compare every distribution and retain every frame over 100 ms. The existing targets are responsive cold startup under 30 s, warm under 15 s and entries within 100 ms. Report 3D resolution and displayed resolution independently when scaling is active. Physical-M1 acceptance remains pending until these data and the normal fullscreen playthrough are available.
+
+## Optional comparison on Apple Silicon
+
+A normal double-click starts the project's Forward+ Vulkan configuration. To test the same app with Forward+ and Godot's native Metal driver, quit the game and run the launcher from the checkout. This is an explicit choice for that launch. It preserves the same assets, game, saves and selected preset and leaves double-click behavior intact.
+
+```bash
+tools/macos/launch_native_metal.sh "$HOME/Downloads/Last Train Out.app" --fullscreen --verbose > "$out/metal-fullscreen.log" 2>&1
+```
+
+You can perform the same launch without a checkout. With the `bin` and `out` variables from above, use the following commands for a real play session and a frame-time matrix.
+
+```bash
+/usr/bin/arch -arm64 "$bin" --rendering-method forward_plus --rendering-driver metal \
+  --fullscreen --verbose > "$out/metal-gameplay.log" 2>&1
+/usr/bin/arch -arm64 "$bin" --rendering-method forward_plus --rendering-driver metal \
+  --fullscreen --audio-driver Dummy --script res://scripts/diagnostics/integration_benchmark.gd -- \
+  --graphics=low --suite=matrix --warmup=120 --samples=600 --out="$out/metal-matrix.json" \
+  > "$out/metal-matrix.log" 2>&1
+```
+
+Check the JSON for `"renderer": "forward_plus"` and `"driver": "metal"` before comparing results. Use matching window sizes, quality presets, display scaling and power settings. Keep the first cold attempt even if it times out. Native Metal on the hosted virtual Mac had a successful cold High launch lasting over 114 s. Only measurements on the physical M1 can establish performance on that machine.

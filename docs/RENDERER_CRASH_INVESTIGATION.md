@@ -63,3 +63,12 @@ An external script then instrumented the **original shipped executable and PCK**
 The historical harness installed the same diagnostic teardown and time sampler in every checkout. Production diffs between cc50670 and 6038bfc add three interior preparation markers and explicitly copy the play camera's cull mask. Their effects occur before steady measurements. The other changes are diagnostic retirement and tests. The per-location raw draw counts and intervals are available alongside the source diffs. The High Harlow improvement was present at cc50670 in both longer historical acceptance data and the fresh three-way experiment. The original already suffered device loss, and the short three-way sample cannot assign onset of the higher cold High failure rate to an individual change.
 
 [Production source diff](https://github.com/oiwdis/last-train-out/compare/cc50670c9ae70aa2de7ce92185a229d284c075f8...6038bfcd0f0c5427ae6c53435d2867282938f6e4) · [Historical frame distributions](validation/milestone353/history/pooled.csv)
+
+
+## Shadow replications and backend selection
+
+Three independent hosts ran the same four-condition, 16-launch experiment on the original High export. Control lost 3/12, directional-only 3/12, positional-only 6/12, and both reduced together 2/12. All 14 native timeouts remain in the raw archives. Lowering covered shadow memory fails as a deterministic workaround and trades another resource reallocation for unproven protection. The game retains the original shadow sizes during every view.
+
+The hosted Compatibility backend selected Apple's OpenGL software renderer, logged per-texture format conversion and timed out on every cold and warm launch in both source and export experiments. Mobile/Vulkan finished faster in several steady locations and preserved the character, car interiors and painted fog, but the original export timed out on its first cold Mobile start. The candidate's separate mixed Mobile cohort also exceeded 180 s on its first cold Low start. These are startup timeouts without the Vulkan-device-loss signature.
+
+[Every original-export process and native crash archive](validation/milestone353/exported-experiments/EXPERIMENTS.md) · [Source renderer comparison and paired screenshots](validation/milestone353/backends/README.md)

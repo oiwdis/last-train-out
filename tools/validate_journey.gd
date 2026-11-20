@@ -1,7 +1,8 @@
 extends Node
 ## Continuous input-driven playthrough. Never edits train position, fog, fuel, inventory or mission.
+const InputRoute = preload("res://tests/framework/route_bot.gd")
 var game: Game
-var bot: RouteBot
+var bot: InputRoute
 var view: ExplorationCamera
 var checks: Array = []
 var failed := false
@@ -46,7 +47,7 @@ func _run() -> void:
 	await game.graphics.wait_for_render_ready()
 	while not game.journey.ready_to_play: await get_tree().process_frame
 	await seconds(0.3)
-	bot = RouteBot.new(game.player)
+	bot = InputRoute.new(game.player)
 	view = game.camera_rig.exploration
 	game.player.teleported.connect(func(_at: Vector3,_facing: Vector3) -> void: teleports += 1)
 	game.graphics.set_preset(quality)
@@ -239,7 +240,7 @@ func save_and_continue() -> void:
 	while not game.journey.ready_to_play: await get_tree().process_frame
 	await seconds(.4)
 	view = game.camera_rig.exploration
-	bot = RouteBot.new(game.player)
+	bot = InputRoute.new(game.player)
 	game.player.teleported.connect(func(_at: Vector3,_facing: Vector3) -> void: teleports += 1)
 	check(absf(game.train.distance-float(saved.train.distance)) < .2 and game.journey.current_station() == expected_station,"Continue restores actual "+expected_station.capitalize()+" stop")
 	check(game.player.global_position.distance_to(JourneySave.unpack(saved.player.position)) < .2,"saved player world position recovered")
@@ -432,6 +433,8 @@ func finish() -> void:
 	if finished: return
 	finished = true
 	var report := {"source_commit":source_commit,"checks":checks,"failed":failed,"teleports":teleports,"save_restore_repositions":load_restores,"integration_tour":integration_tour,"graphics_preset":quality,"late_escape":late_escape,"scenario":scenario,"observations":observations,
+		"renderer":RenderingServer.get_current_rendering_method(),"driver":RenderingServer.get_current_rendering_driver_name(),
+		"editor":OS.has_feature("editor"),"user_directory":OS.get_user_data_dir(),
 		"results":game.journey.mission.results(game.fog_system.simulation.elapsed,game.train.distance)}
 	var filename := "continuous-journey.json" if scenario == "journey" else scenario+"-gameplay.json"
 	FileAccess.open(output.path_join(filename),FileAccess.WRITE).store_string(JSON.stringify(report,"  "))

@@ -4,6 +4,10 @@ All cases ran the same exported 6038bfcd game at 960×540, High. Each runner use
 
 | Raw archive | Method/driver | Covered atlas change | Cache | Passed / attempted | GPU loss | Other failure | Ready min / median / max, s |
 |---|---|---|---|---:|---:|---:|---|
+| [followup-shadow-replica-a.zip](followup-shadow-replica-a.zip) | forward_plus/vulkan | control | cold | 3/4 | 1 | 0 | 22.623 / 22.722 / 63.807 |
+| [followup-shadow-replica-a.zip](followup-shadow-replica-a.zip) | forward_plus/vulkan | directional | cold | 3/4 | 1 | 0 | 22.960 / 23.252 / 23.856 |
+| [followup-shadow-replica-a.zip](followup-shadow-replica-a.zip) | forward_plus/vulkan | local | cold | 0/4 | 4 | 0 | — |
+| [followup-shadow-replica-a.zip](followup-shadow-replica-a.zip) | forward_plus/vulkan | both | cold | 3/4 | 1 | 0 | 22.919 / 22.963 / 33.522 |
 | [followup-shadow-replica-b.zip](followup-shadow-replica-b.zip) | forward_plus/vulkan | control | cold | 3/4 | 1 | 0 | 19.081 / 19.414 / 91.870 |
 | [followup-shadow-replica-b.zip](followup-shadow-replica-b.zip) | forward_plus/vulkan | directional | cold | 3/4 | 1 | 0 | 18.277 / 19.775 / 23.464 |
 | [followup-shadow-replica-b.zip](followup-shadow-replica-b.zip) | forward_plus/vulkan | local | cold | 3/4 | 1 | 0 | 18.370 / 18.572 / 20.920 |

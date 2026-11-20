@@ -11,6 +11,8 @@ on:
       - tools/macos/stress_release.py
       - tools/macos/measure_export_drivers.py
       - tools/macos/launch_native_metal.sh
+      - tools/macos/exported_journey.gd
+      - tools/macos/record_integration.py
 
 permissions:
   contents: read
@@ -25,6 +27,7 @@ jobs:
       exported: ${{ steps.select.outputs.exported }}
       followup: ${{ steps.select.outputs.followup }}
       drivers: ${{ steps.select.outputs.drivers }}
+      journey: ${{ steps.select.outputs.journey }}
     steps:
       - uses: actions/checkout@v7
         with:
@@ -45,6 +48,10 @@ jobs:
 
           if [ "$GITHUB_EVENT_NAME" = workflow_dispatch ] || ! git diff --quiet HEAD^ HEAD -- tools/macos/measure_export_drivers.py tools/macos/launch_native_metal.sh; then
             echo 'drivers=true' >> "$GITHUB_OUTPUT"
+          fi
+
+          if [ "$GITHUB_EVENT_NAME" = workflow_dispatch ] || ! git diff --quiet HEAD^ HEAD -- tools/macos/exported_journey.gd tools/macos/record_integration.py; then
+            echo 'journey=true' >> "$GITHUB_OUTPUT"
           fi
 
   isolate:
@@ -233,4 +240,37 @@ jobs:
         with:
           name: native-metal-${{ matrix.group }}
           path: ${{ runner.temp }}/metal
+          retention-days: 30
+
+  exported_journey:
+    needs: select
+    if: needs.select.outputs.journey == 'true'
+    name: Continuous journey in the exported app on native Metal
+    runs-on: macos-latest
+    timeout-minutes: 38
+    env:
+      SOURCE_SHA: 5534cf82c2e6e494cbf54add169e6ab4e8101b46
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/download-artifact@v8
+        with:
+          name: LastTrainOut-macos-universal.zip
+          run-id: 44675841777
+          github-token: ${{ github.token }}
+          path: download
+          skip-decompress: true
+      - name: Drive and record the three-station escape using the shipped binary and PCK
+        run: |
+          zip=$(find download -name '*.zip' -type f | head -n 1)
+          echo "e779c8b73b9e46a1b46c4a95c327e421d7f3da393b3123bc8d7cdb26b884f2a7  $zip" | shasum -a 256 -c -
+          ditto -x -k "$zip" extracted
+          command -v ffmpeg || brew install ffmpeg
+          python3 tools/macos/record_integration.py 'extracted/Last Train Out.app' "$RUNNER_TEMP/metal-journey" --exported-native-metal
+      - if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: native-metal-exported-journey
+          path: ${{ runner.temp }}/metal-journey
           retention-days: 30
