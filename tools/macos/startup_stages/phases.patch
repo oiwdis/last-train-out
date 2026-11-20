@@ -1,0 +1,221 @@
+--- /dev/null
++++ b/core/os/lto_startup_interval.h
+@@ -0,0 +1,27 @@
++// Timing-only macOS template. Each interval runs on the caller's thread.
++#pragma once
++#include <os/signpost.h>
++
++class LTOStartupInterval {
++	static os_log_t log() {
++		static os_log_t instance = os_log_create("org.godotengine.godot.metal", "startup-stages");
++		return instance;
++	}
++
++	os_signpost_id_t id;
++
++public:
++	explicit LTOStartupInterval(const char *label) {
++		id = os_signpost_id_generate(log());
++		os_signpost_interval_begin(log(), id, "startup_stage", "stage=%{public}s", label);
++	}
++
++	void finish() {
++		if (id != OS_SIGNPOST_ID_INVALID) {
++			os_signpost_interval_end(log(), id, "startup_stage");
++			id = OS_SIGNPOST_ID_INVALID;
++		}
++	}
++
++	~LTOStartupInterval() { finish(); }
++};
+--- a/main/main.cpp
++++ b/main/main.cpp
+@@ -27,6 +27,8 @@
+ /* TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE      */
+ /* SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.                 */
+ /**************************************************************************/
++
++#include "core/os/lto_startup_interval.h"
+ 
+ #include "main.h"
+ 
+@@ -347,6 +349,7 @@
+ 
+ // FIXME: Could maybe be moved to have less code in main.cpp.
+ void initialize_physics() {
++	LTOStartupInterval lto_interval("physics_servers");
+ #ifndef PHYSICS_3D_DISABLED
+ 	/// 3D Physics Server
+ 	physics_server_3d = PhysicsServer3DManager::get_singleton()->new_server(
+@@ -960,6 +963,7 @@
+  */
+ 
+ Error Main::setup(const char *execpath, int argc, char *argv[], bool p_second_phase) {
++	LTOStartupInterval lto_interval("main_setup");
+ 	Thread::make_main_thread();
+ 	set_current_thread_safe_for_nodes(true);
+ 
+@@ -2931,6 +2935,7 @@
+ }
+ 
+ Error Main::setup2(bool p_show_boot_logo) {
++	LTOStartupInterval lto_interval("main_setup2");
+ 	OS::get_singleton()->benchmark_begin_measure("Startup", "Main::Setup2");
+ 
+ 	Thread::make_main_thread(); // Make whatever thread call this the main thread.
+@@ -3849,6 +3854,7 @@
+ // and should move on to `OS::run`, and EXIT_FAILURE otherwise for
+ // an early exit with that error code.
+ int Main::start() {
++	LTOStartupInterval lto_interval("main_start");
+ 	OS::get_singleton()->benchmark_begin_measure("Startup", "Main::Start");
+ 
+ 	ERR_FAIL_COND_V(!_start_success, EXIT_FAILURE);
+--- a/drivers/metal/rendering_context_driver_metal.mm
++++ b/drivers/metal/rendering_context_driver_metal.mm
+@@ -28,6 +28,8 @@
+ /* SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.                 */
+ /**************************************************************************/
+ 
++#include "core/os/lto_startup_interval.h"
++
+ #import "rendering_context_driver_metal.h"
+ 
+ #import "rendering_device_driver_metal.h"
+@@ -45,11 +47,15 @@
+ }
+ 
+ Error RenderingContextDriverMetal::initialize() {
++	LTOStartupInterval lto_interval("metal_context");
+ 	if (OS::get_singleton()->get_environment("MTL_CAPTURE_ENABLED") == "1") {
+ 		capture_available = true;
+ 	}
+ 
+-	metal_device = MTLCreateSystemDefaultDevice();
++	{
++		LTOStartupInterval query("metal_default_device");
++		metal_device = MTLCreateSystemDefaultDevice();
++	}
+ #if TARGET_OS_OSX
+ 	if (@available(macOS 13.3, *)) {
+ 		[id<MTLDeviceEx>(metal_device) setShouldMaximizeConcurrentCompilation:YES];
+--- a/drivers/metal/rendering_device_driver_metal.mm
++++ b/drivers/metal/rendering_device_driver_metal.mm
+@@ -48,6 +48,8 @@
+ /* permissions and limitations under the License.                         */
+ /**************************************************************************/
+ 
++#include "core/os/lto_startup_interval.h"
++
+ #import "rendering_device_driver_metal.h"
+ 
+ #import "pixel_formats.h"
+@@ -209,6 +211,7 @@
+ }
+ 
+ RDD::TextureID RenderingDeviceDriverMetal::texture_create(const TextureFormat &p_format, const TextureView &p_view) {
++	LTOStartupInterval lto_interval("metal_texture_allocate");
+ 	MTLTextureDescriptor *desc = [MTLTextureDescriptor new];
+ 	desc.textureType = TEXTURE_TYPE[p_format.texture_type];
+ 
+@@ -1731,6 +1734,7 @@
+ }
+ 
+ void RenderingDeviceDriverMetal::command_copy_buffer_to_texture(CommandBufferID p_cmd_buffer, BufferID p_src_buffer, TextureID p_dst_texture, TextureLayout p_dst_texture_layout, VectorView<BufferTextureCopyRegion> p_regions) {
++	LTOStartupInterval lto_interval("metal_upload_commands");
+ 	_copy_texture_buffer(p_cmd_buffer, CopySource::Buffer, p_dst_texture, p_src_buffer, p_regions);
+ }
+ 
+@@ -2921,6 +2925,7 @@
+ }
+ 
+ Error RenderingDeviceDriverMetal::initialize(uint32_t p_device_index, uint32_t p_frame_count) {
++	LTOStartupInterval lto_interval("metal_device_driver");
+ 	context_device = context_driver->device_get(p_device_index);
+ 	Error err = _create_device();
+ 	ERR_FAIL_COND_V(err, ERR_CANT_CREATE);
+--- a/servers/rendering/rendering_device.cpp
++++ b/servers/rendering/rendering_device.cpp
+@@ -27,6 +27,8 @@
+ /* TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE      */
+ /* SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.                 */
+ /**************************************************************************/
++
++#include "core/os/lto_startup_interval.h"
+ 
+ #include "rendering_device.h"
+ #include "rendering_device.compat.inc"
+@@ -1422,6 +1424,7 @@
+ }
+ 
+ Error RenderingDevice::_texture_initialize(RID p_texture, uint32_t p_layer, const Vector<uint8_t> &p_data, RDD::TextureLayout p_dst_layout, bool p_immediate_flush) {
++	LTOStartupInterval lto_interval("texture_staging");
+ 	Texture *texture = texture_owner.get_or_null(p_texture);
+ 	ERR_FAIL_NULL_V(texture, ERR_INVALID_PARAMETER);
+ 
+--- a/scene/resources/material.cpp
++++ b/scene/resources/material.cpp
+@@ -28,6 +28,8 @@
+ /* SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.                 */
+ /**************************************************************************/
+ 
++#include "core/os/lto_startup_interval.h"
++
+ #include "material.h"
+ 
+ #include "core/config/engine.h"
+@@ -683,6 +685,7 @@
+ }
+ 
+ void BaseMaterial3D::_update_shader() {
++	LTOStartupInterval lto_interval("material_update_shader");
+ 	if (!_is_initialized()) {
+ 		_mark_ready();
+ 	}
+--- a/scene/resources/compressed_texture.cpp
++++ b/scene/resources/compressed_texture.cpp
+@@ -28,6 +28,8 @@
+ /* SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.                 */
+ /**************************************************************************/
+ 
++#include "core/os/lto_startup_interval.h"
++
+ #include "compressed_texture.h"
+ 
+ #include "scene/resources/bit_map.h"
+@@ -463,6 +465,7 @@
+ }
+ 
+ Ref<Resource> ResourceFormatLoaderCompressedTexture2D::load(const String &p_path, const String &p_original_path, Error *r_error, bool p_use_sub_threads, float *r_progress, CacheMode p_cache_mode) {
++	LTOStartupInterval lto_interval("compressed_texture_load");
+ 	Ref<CompressedTexture2D> st;
+ 	st.instantiate();
+ 	Error err = st->load(p_path);
+--- a/servers/rendering/renderer_rd/shader_rd.cpp
++++ b/servers/rendering/renderer_rd/shader_rd.cpp
+@@ -27,6 +27,8 @@
+ /* TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE      */
+ /* SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.                 */
+ /**************************************************************************/
++
++#include "core/os/lto_startup_interval.h"
+ 
+ #include "shader_rd.h"
+ 
+@@ -433,6 +435,7 @@
+ }
+ 
+ bool ShaderRD::_load_from_cache(Version *p_version, int p_group) {
++	LTOStartupInterval lto_interval("shader_cache_read");
+ 	String api_safe_name = String(RD::get_singleton()->get_device_api_name()).validate_filename().to_lower();
+ 	Ref<FileAccess> f;
+ 	if (shader_cache_user_dir_valid) {
+@@ -482,6 +485,8 @@
+ 
+ 		p_version->variant_data.write[variant_id] = variant_bytes;
+ 	}
++
++	lto_interval.finish(); // Byte reads and validation precede native library creation.
+ 
+ 	for (uint32_t i = 0; i < variant_count; i++) {
+ 		int variant_id = group_to_variant_map[p_group][i];

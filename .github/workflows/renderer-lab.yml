@@ -9,6 +9,7 @@ on:
       - tools/macos/check_native_selftest.sh
       - tools/macos/experiments/**
       - tools/macos/offline_bake/**
+      - tools/macos/startup_stages/**
       - tools/macos/engine/worker-pool-shutdown.patch
       - tools/macos/worker_shutdown/**
       - tools/macos/renderer_lab.py
@@ -35,6 +36,7 @@ jobs:
       gi_run: ${{ steps.select.outputs.gi_run }}
       offline_run: ${{ steps.select.outputs.offline_run }}
       pool_run: ${{ steps.select.outputs.pool_run }}
+      stages_run: ${{ steps.select.outputs.stages_run }}
       run: ${{ steps.select.outputs.run }}
       exported: ${{ steps.select.outputs.exported }}
       followup: ${{ steps.select.outputs.followup }}
@@ -62,6 +64,11 @@ jobs:
             run=$(jq -r .workflow_run docs/validation/milestone354/build-86.json)
             id=$(tools/macos/find_reference_artifact.sh "$run")
             if [[ -n "$id" ]]; then echo "pool_run=$run" >> "$GITHUB_OUTPUT"; fi
+          fi
+          if ! git diff --quiet HEAD^ HEAD -- tools/macos/startup_stages; then
+            run=$(jq -r .workflow_run docs/validation/milestone354/build-86.json)
+            id=$(tools/macos/find_reference_artifact.sh "$run")
+            if [[ -n "$id" ]]; then echo "stages_run=$run" >> "$GITHUB_OUTPUT"; fi
           fi
           if ! git diff --quiet HEAD^ HEAD -- tools/macos/offline_bake; then
             run=$(jq -r .workflow_run docs/validation/milestone354/build-86.json)
@@ -171,6 +178,43 @@ jobs:
         with:
           name: pool-${{ matrix.observer }}
           path: ${{ runner.temp }}/pool/
+          retention-days: 30
+
+  startup-stages:
+    needs: select
+    if: needs.select.outputs.stages_run != ''
+    name: Attribute native engine, device, texture and physics startup on a fresh Mac
+    runs-on: macos-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/download-artifact@v8
+        with:
+          name: LastTrainOut-macos-universal.zip
+          run-id: ${{ needs.select.outputs.stages_run }}
+          github-token: ${{ github.token }}
+          path: download
+          skip-decompress: true
+      - name: Build a timing-only native template and retain the exact signed game pack
+        run: |
+          zip=$(find download -type f -name '*.zip' | head -n 1)
+          echo "$(jq -r .zip_sha256 docs/validation/milestone354/build-86.json)  $zip" | shasum -a 256 -c -
+          ditto -x -k "$zip" traced
+          tools/macos/engine/build_metal_template.sh "$RUNNER_TEMP/compiler" tools/macos/startup_stages/phases.patch
+          app="traced/Last Train Out.app"
+          install -m 755 "$RUNNER_TEMP/compiler/LastTrainOutMetal" "$app/Contents/MacOS/LastTrainOutMetal"
+          codesign --force --sign - "$app"
+          codesign --verify --strict --deep "$app"
+      - name: Record a cold and a warm ordinary High launch with native audio
+        run: python3 tools/macos/startup_stages/measure.py "traced/Last Train Out.app" "$RUNNER_TEMP/stages"
+      - if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: startup-native-stages
+          path: |
+            ${{ runner.temp }}/compiler/compile.log
+            ${{ runner.temp }}/compiler/provenance.txt
+            ${{ runner.temp }}/stages/
           retention-days: 30
 
   offline-libraries:
