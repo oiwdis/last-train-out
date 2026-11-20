@@ -1,5 +1,6 @@
 name: Renderer investigation
 on:
+  workflow_dispatch:
   pull_request:
     paths:
       - .github/workflows/renderer-lab.yml
@@ -11,7 +12,25 @@ permissions:
   actions: read
 
 jobs:
+  select:
+    name: Check investigation inputs
+    runs-on: ubuntu-latest
+    outputs:
+      run: ${{ steps.select.outputs.run }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 2
+      - id: select
+        run: |
+          if [ "$GITHUB_EVENT_NAME" = workflow_dispatch ] || ! git diff --quiet HEAD^ HEAD -- tools/macos/renderer_lab.py tools/macos/renderer_probe.gd; then
+            echo 'run=true' >> "$GITHUB_OUTPUT"
+          fi
+
   isolate:
+    needs: select
+    if: needs.select.outputs.run == 'true'
     name: Diagnostic / ${{ matrix.group }}
     runs-on: macos-latest
     timeout-minutes: 75
@@ -22,7 +41,7 @@ jobs:
     steps:
       - uses: actions/checkout@v7
         with:
-          ref: ${{ github.event.pull_request.head.sha }}
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
       - uses: actions/cache/restore@v6
         with:
           path: ~/godot-ci

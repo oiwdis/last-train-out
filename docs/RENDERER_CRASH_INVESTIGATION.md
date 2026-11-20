@@ -39,3 +39,15 @@ In the 3.5.2 comparison, High Warehouse B p99 regressed from 39.59 to 49.00 ms a
 Godot 4.5.1 exposes Forward+ and Mobile on Vulkan and Compatibility on native OpenGL on macOS. Godot can fall back to another driver, so each rendered report must identify the actual backend. Mobile and Compatibility lack Forward+ SSAO and volumetric fog. The game checks volumetric storage-atomic support separately. The screen-space and lighting paths differ. The default remains Forward+/Vulkan.
 
 [Godot 4.5 renderer feature matrix](https://docs.godotengine.org/en/4.5/tutorials/rendering/renderers.html) · [macOS display server in Godot 4.5.1](https://github.com/godotengine/godot/blob/4.5.1-stable/platform/macos/display_server_macos.mm) · [Frame queue, cache and transfer submission implementation](https://github.com/godotengine/godot/blob/4.5.1-stable/servers/rendering/rendering_device.cpp)
+
+## Isolated workload and synchronization
+
+The standalone probe uses three 512×512 texture uploads, textured StandardMaterial3D surfaces, a shadowed directional light, the shipped fog shader and a camera. It has no train, physics, imported station, player or audio. The runner retains a flushed stage journal plus every measured frame. Its controlled diagnostic readback completes through Godot's public viewport texture API. No explicit fence or readback was added to gameplay. The Medium factor models Medium scale and MSAA on this small fixture. The complete-game comparisons use the actual presets.
+
+The control and nine single-factor variants each completed three cold hosted starts. A separate run with Metal API Validation enabled also completed. **0/31 device losses** on Apple Paravirtual. The Linux llvmpipe sanity series completed 11/11. These observations put the small workload below the observed failure threshold and motivate the controlled full-game series. They do not rule out an interaction involving these components in the full game.
+
+[Probe source](../tools/macos/renderer_probe.gd) · [Native logs, stages and Metal validation](validation/milestone353/probes/minimal-hosted.zip) · [Linux sanity evidence](validation/milestone353/probes/minimal-linux.zip)
+
+The clustered renderer attempts its specialized graphics pipeline and can draw with a general shader while specialization is pending. The queue contains submitted work even after the CPU receives `frame_post_draw`. Godot rotates through at least two frames before reusing a frame fence. A successful wait orders that reuse, while a timeout surfaces an earlier GPU failure. The four cold High crashes all last reported 35 then 76 specializations. Two more native crash reports identify VirtualMac2,1. Their stacks do not identify a shader compiler failure or a dangling resource.
+
+[Godot 4.5.1 clustered draw and shader selection](https://github.com/godotengine/godot/blob/4.5.1-stable/servers/rendering/renderer_rd/forward_clustered/render_forward_clustered.cpp#L486) · [Vulkan driver](https://github.com/godotengine/godot/blob/4.5.1-stable/drivers/vulkan/rendering_device_driver_vulkan.cpp)

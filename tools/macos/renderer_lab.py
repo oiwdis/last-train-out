@@ -151,7 +151,13 @@ def main():
                    device_loss=any('device was lost' in l.lower() or 'kIOGPUCommandBufferCallbackErrorTimeout' in l for l in lines),
                    diagnostics=[l for l in lines if l.startswith(('ERROR:', 'SCRIPT ERROR:', 'WARNING:', '[mvk-error]'))],
                    cache_events=[l for l in lines if 'PSO cache' in l])
-        data = json.loads(report.read_text()) if report.exists() else {}
+        data = {}
+        if report.exists():
+            try:
+                data = json.loads(report.read_text())
+            except (ValueError, OSError) as error:
+                # Preserve interrupted reports without truncating the test matrix.
+                row['report_error'] = str(error)
         actual = data.get('actual_method', data.get('renderer'))
         driver = data.get('actual_driver', data.get('driver'))
         row.update(actual=actual, actual_driver=driver, adapter=data.get('adapter'),
