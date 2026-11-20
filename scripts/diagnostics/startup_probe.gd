@@ -27,16 +27,23 @@ func run() -> void:
 	mark("add_child_end")
 	var graphics: Node = game.get("graphics")
 	await graphics.call("wait_for_render_ready")
+	while not game.get("journey").get("ready_to_play") or paused:
+		await process_frame
 	for i in 3: await physics_frame
 	mark("mission_ready")
+	var first_frames_ms: Array[float] = []
+	var previous := Time.get_ticks_usec()
 	for i in settle_frames:
 		if DisplayServer.get_name() == "headless": await process_frame
 		else: await RenderingServer.frame_post_draw
+		var now := Time.get_ticks_usec()
+		first_frames_ms.append((now - previous) / 1000.0)
+		previous = now
 	var report := {"events":events,"godot":Engine.get_version_info().string,"adapter":RenderingServer.get_video_adapter_name(),
 		"renderer":RenderingServer.get_current_rendering_method(),"driver":RenderingServer.get_current_rendering_driver_name(),
 		"headless":DisplayServer.get_name()=="headless","mission_ready":bool(game.get("journey").get("ready_to_play")),
 		"user_data_directory":OS.get_user_data_dir(),
-		"phases":PerformanceTrace.events}
+		"phases":PerformanceTrace.events,"first_frames_ms":first_frames_ms,"preset":graphics.get("current_index")}
 	FileAccess.open(destination,FileAccess.WRITE).store_string(JSON.stringify(report,"  "))
 	await DiagnosticSceneRetirement.release(game)
 	packed = null

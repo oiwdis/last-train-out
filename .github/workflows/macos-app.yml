@@ -57,9 +57,36 @@ env:
   DEV_ZIP: LastTrainOut-macos-universal.zip
   SIGNED_ZIP: LastTrainOut-macos-universal-signed.zip
   # The build fails if fewer tests than this pass, so tests cannot silently go missing.
-  MIN_TESTS: "304"
+  MIN_TESTS: "305"
 
 jobs:
+  linux:
+    name: Linux gameplay tests
+    if: ${{ !inputs.investigate }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/cache@v6
+        with:
+          path: .godot/imported
+          key: godot-imports-linux-4.5.1-${{ hashFiles('project.godot', 'assets/**', 'resources/**') }}
+      - name: Verify Godot and run the complete suite
+        run: |
+          cd "$RUNNER_TEMP"
+          curl --fail --location --silent --show-error -o godot.zip https://github.com/godotengine/godot-builds/releases/download/4.5.1-stable/Godot_v4.5.1-stable_linux.x86_64.zip
+          echo '02ec53d1cc7dbb9cc6355393c61b9ab43d1244751a124f10248a4802830788cd  godot.zip' | sha256sum --check
+          unzip -q godot.zip
+          cd "$GITHUB_WORKSPACE"
+          tools/run_tests.sh "$RUNNER_TEMP/Godot_v4.5.1-stable_linux.x86_64"
+          python3 tools/check_integration_tests.py tests/_output/results.json
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: linux-tests
+          path: tests/_output/
+          retention-days: 14
+
   investigate:
     name: Performance investigation (no release)
     if: ${{ github.event_name == 'workflow_dispatch' && inputs.investigate }}
@@ -118,6 +145,9 @@ jobs:
   build:
     if: ${{ !inputs.investigate }}
     name: Test, export and package
+    outputs:
+      artifact_id: ${{ steps.upload.outputs.artifact-id }}
+      render: ${{ steps.diagnostics.outputs.render }}
     runs-on: macos-latest # GitHub's macos-latest runners are Apple Silicon (arm64)
     timeout-minutes: 90
     env:
@@ -201,31 +231,6 @@ jobs:
           include-hidden-files: true
           retention-days: 7
 
-      - name: Trace repeated native startup
-        run: python3 tools/macos/profile_integration.py "$GODOT" tests/_output/startup startup
-
-      - name: Retain startup evidence before export
-        if: always()
-        uses: actions/upload-artifact@v7
-        with:
-          name: performance-startup
-          path: tests/_output/startup/
-          retention-days: 30
-
-      - name: Stress rendered preparation, preset switching and Continue
-        timeout-minutes: 10
-        run: |
-          "$GODOT" --verbose --path . --audio-driver Dummy --resolution 960x540 --fixed-fps 60 tests/test_runner.tscn -- --only=preparation_lifecycle --graphics=low --report=tests/_output/renderer-stress.json > tests/_output/renderer-stress.log 2>&1
-          if grep -E '^(ERROR|SCRIPT ERROR)|ObjectDB instances leaked|resources still in use' tests/_output/renderer-stress.log; then exit 1; fi
-
-      - name: Retain renderer stress evidence
-        if: always()
-        uses: actions/upload-artifact@v7
-        with:
-          name: renderer-stress
-          path: tests/_output/renderer-stress.*
-          retention-days: 30
-
       - name: Validate journey, fuel, fog and cold resume
         run: |
           "$GODOT" --headless --path . --fixed-fps 60 tools/validate_journey.tscn -- --integration-tour --late-escape > tests/_output/journey.log 2>&1
@@ -273,22 +278,6 @@ jobs:
           python3 tools/macos/verify_app.py "$APP" --expect-signature adhoc --title "Exported bundle"
           du -sh "$APP"
 
-      # Start the real bundle (no editor, no project folder) and let it test itself:
-      # once without a window, once with its window so the renderer is exercised too.
-      - name: Launch the exported app without a window
-        run: tools/macos/run_selftest.sh "$APP" build-headless --headless --expect-arch arm64
-
-      - name: Launch the exported app with its window
-        run: |
-          if tools/macos/run_selftest.sh "$APP" build-window --expect-arch arm64; then
-            echo 'The default rendering driver passed the exported launch gate.'
-          else
-            # Preserve the original failure. This bounded alternative-driver probe
-            # is diagnostic evidence only; it cannot publish or pass a broken build.
-            python3 tools/macos/probe_renderer.py "$APP" "$RUNNER_TEMP/selftest" metal || true
-            exit 1
-          fi
-
       - name: Select rendering diagnostics for changed runtime
         id: diagnostics
         env:
@@ -307,34 +296,6 @@ jobs:
             echo 'render=false' >> "$GITHUB_OUTPUT"
             echo 'Runtime unchanged: retaining the documented comparison and tour; all release checks still run.'
           fi
-
-      - name: Measure windowed rendering on hosted Apple Silicon
-        id: performance
-        if: steps.diagnostics.outputs.render == 'true'
-        # Additional hardware evidence. A measurement timeout must not discard a
-        # playable build; failures/logs remain visible and are reported separately.
-        continue-on-error: true
-        run: |
-          python3 tools/macos/benchmark_release.py "$GODOT" tests/_output/performance
-
-      - name: Record the uninterrupted integrated journey
-        id: recording
-        if: steps.diagnostics.outputs.render == 'true'
-        # Fixed-rate recording runs AFTER all real-time measurements.
-        continue-on-error: true
-        timeout-minutes: 30
-        run: |
-          command -v ffmpeg || brew install ffmpeg
-          python3 tools/macos/record_integration.py "$GODOT" tests/_output/visual
-
-      - name: Upload the test logs
-        if: always()
-        uses: actions/upload-artifact@v7
-        with:
-          name: test-logs
-          path: tests/_output/
-          if-no-files-found: warn
-          retention-days: 14
 
       # upload-artifact would drop executable bits if it zipped the bundle itself, which breaks
       # an .app. So the ZIP is made here with ditto and uploaded as it is (archive: false):
@@ -370,6 +331,59 @@ jobs:
             echo "  confirmation the first time: see *Play on macOS* in the README."
           } >> "$GITHUB_STEP_SUMMARY"
 
+      - name: Trace repeated native startup
+        run: python3 tools/macos/profile_integration.py "$GODOT" tests/_output/startup startup
+
+      - name: Retain startup evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: performance-startup
+          path: tests/_output/startup/
+          retention-days: 30
+
+      - name: Stress rendered preparation, preset switching and Continue
+        if: ${{ !cancelled() && steps.upload.outputs.artifact-id != '' }}
+        timeout-minutes: 10
+        run: |
+          "$GODOT" --verbose --path . --audio-driver Dummy --resolution 960x540 --fixed-fps 60 tests/test_runner.tscn -- --only=preparation_lifecycle --graphics=low --report=tests/_output/renderer-stress.json > tests/_output/renderer-stress.log 2>&1
+          if grep -E '^(ERROR|SCRIPT ERROR)|ObjectDB instances leaked|resources still in use' tests/_output/renderer-stress.log; then exit 1; fi
+
+      - name: Retain renderer stress evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: renderer-stress
+          path: tests/_output/renderer-stress.*
+          retention-days: 30
+
+      # Start the real bundle (no editor, no project folder) and let it test itself:
+      # once without a window, once with its window so the renderer is exercised too.
+      - name: Launch the exported app without a window
+        if: ${{ !cancelled() && steps.upload.outputs.artifact-id != '' }}
+        run: tools/macos/run_selftest.sh "$APP" build-headless --headless --expect-arch arm64
+
+      - name: Launch the exported app with its window
+        if: ${{ !cancelled() && steps.upload.outputs.artifact-id != '' }}
+        run: |
+          if tools/macos/run_selftest.sh "$APP" build-window --expect-arch arm64; then
+            echo 'The default rendering driver passed the exported launch gate.'
+          else
+            # Preserve the original failure. This bounded alternative-driver probe
+            # is diagnostic evidence only; it cannot publish or pass a broken build.
+            python3 tools/macos/probe_renderer.py "$APP" "$RUNNER_TEMP/selftest" metal || true
+            exit 1
+          fi
+
+      - name: Upload the test logs
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: test-logs
+          path: tests/_output/
+          if-no-files-found: warn
+          retention-days: 14
+
       - name: Retain export diagnostics
         if: always()
         run: |
@@ -388,8 +402,58 @@ jobs:
           if-no-files-found: warn
           retention-days: 14
 
+  performance:
+    name: Matched frame pacing and continuous journey
+    needs: build
+    if: ${{ !cancelled() && needs.build.outputs.artifact_id != '' && needs.build.outputs.render == 'true' }}
+    runs-on: macos-latest
+    timeout-minutes: 105
+    env:
+      SOURCE_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/cache/restore@v6
+        with:
+          path: ~/godot-ci
+          key: godot-4.5.1-stable-macos-universal-template-v1
+      - run: tools/macos/install_godot.sh
+      - uses: actions/download-artifact@v8
+        with:
+          name: validated-imports
+          path: .godot/imported
+      - name: Rebuild scene dependencies against the validated textures
+        run: |
+          mkdir -p tests/_output
+          find .godot/imported -name '*.scn' -delete
+          "$GODOT" --headless --path . --import > tests/_output/evidence-import.log 2>&1
+          if grep -E '^(ERROR|SCRIPT ERROR)|Parse Error' tests/_output/evidence-import.log; then exit 1; fi
+
+      - name: Measure windowed rendering on hosted Apple Silicon
+        id: performance
+        # Additional hardware evidence. A measurement timeout must not discard a
+        # playable build; failures/logs remain visible and are reported separately.
+        continue-on-error: true
+        run: |
+          python3 tools/macos/benchmark_release.py "$GODOT" tests/_output/performance
+
+      - name: Record the uninterrupted integrated journey
+        id: recording
+        # Fixed-rate recording runs AFTER all real-time measurements.
+        continue-on-error: true
+        timeout-minutes: 30
+        run: |
+          command -v ffmpeg || brew install ffmpeg
+          python3 tools/macos/record_integration.py "$GODOT" tests/_output/visual
+
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: performance-and-journey
+          path: tests/_output/
+          retention-days: 30
+
       - name: Require completed integration evidence
-        if: always() && steps.diagnostics.outputs.render == 'true'
+        if: always()
         env:
           PERFORMANCE_OUTCOME: ${{ steps.performance.outcome }}
           RECORDING_OUTCOME: ${{ steps.recording.outcome }}
@@ -408,6 +472,7 @@ jobs:
   check:
     name: Download and launch (${{ matrix.label }})
     needs: build
+    if: ${{ !cancelled() && needs.build.outputs.artifact_id != '' }}
     strategy:
       fail-fast: false
       matrix:
@@ -478,8 +543,13 @@ jobs:
           retention-days: 14
 
   stress:
-    name: Exported Vulkan launch and lifetime stress
+    name: Exported Vulkan launch and lifetime stress (${{ matrix.series }})
+    strategy:
+      fail-fast: false
+      matrix:
+        series: [mixed, high, low-medium]
     needs: build
+    if: ${{ !cancelled() && needs.build.outputs.artifact_id != '' }}
     runs-on: macos-latest
     timeout-minutes: 45
     env:
@@ -499,11 +569,11 @@ jobs:
           ditto -x -k "$ZIP_PATH" extracted
           python3 tools/macos/verify_app.py "extracted/$APP_NAME.app" --expect-signature adhoc --title "Stress bundle"
       - name: Retain every cold, warm and lifecycle attempt
-        run: python3 tools/macos/stress_release.py "extracted/$APP_NAME.app" tests/_output/release-stress
+        run: python3 tools/macos/stress_release.py "extracted/$APP_NAME.app" tests/_output/release-stress --series "${{ matrix.series }}"
       - uses: actions/upload-artifact@v7
         if: always()
         with:
-          name: release-stress
+          name: release-stress-${{ matrix.series }}
           path: tests/_output/release-stress/
           retention-days: 30
 
@@ -513,7 +583,7 @@ jobs:
   sign:
     name: Sign with Developer ID, notarize and staple
     if: ${{ github.event_name == 'workflow_dispatch' && inputs.sign_and_notarize }}
-    needs: [build, check, stress]
+    needs: [linux, build, check, stress, performance]
     runs-on: macos-latest
     timeout-minutes: 90
     env:

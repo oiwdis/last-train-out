@@ -36,6 +36,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('app', type=Path)
     parser.add_argument('destination', type=Path)
+    parser.add_argument('--series', choices=['mixed', 'high', 'low-medium'], default='mixed',
+                        help='Run all three series on separate idle runners for the full 3.5.3 matrix.')
     options = parser.parse_args()
     app, out = options.app.resolve(), options.destination.resolve()
     out.mkdir(parents=True, exist_ok=True)
@@ -55,7 +57,7 @@ def main():
     pack = private / packs[0].name
     shutil.copy2(packs[0], pack)
     assert digest(pack) == digest(packs[0])
-    token = 'LTO-352-stress-' + uuid.uuid4().hex
+    token = 'LTO-353-stress-' + uuid.uuid4().hex
     started = time.monotonic()
     wall_start = time.time()
     metadata = {'source': os.environ.get('SOURCE_SHA', ''), 'bundle': info,
@@ -63,7 +65,7 @@ def main():
                 'pack_sha256': digest(pack), 'resolution': '960x540 windowed',
                 'cache_conditions': 'fresh writable app caches; baked shaders retained; OS/driver/filesystem shared',
                 'scope': 'exported runtime rendering/lifetime fixtures, not physical M1 acceptance',
-                'deadline_seconds': 2400, 'runs': []}
+                'deadline_seconds': 2400, 'series': options.series, 'runs': []}
 
     def attempt(name, user_name, script, args, timeout=180, headless=False):
         report = out / (name + '.json')
@@ -109,7 +111,8 @@ def main():
                        peak_rss_bytes=max((r['bytes'] for r in row['rss']), default=0),
                        cache_after=inventory(user_dir / 'shader_cache'),
                        cache_events=[line for line in lines if 'PSO cache' in line],
-                       device_loss=any('Vulkan device was lost' in line or 'VK_ERROR_DEVICE_LOST' in line for line in lines),
+                       device_loss=any('Vulkan device was lost' in line or 'VK_ERROR_DEVICE_LOST' in line
+                                       or 'kIOGPUCommandBufferCallbackErrorTimeout' in line for line in lines),
                        diagnostics=[line for line in lines if line.startswith(('ERROR:', 'SCRIPT ERROR:',
                                     'WARNING:', 'Leaked instance:', 'Resource still in use:'))])
             if report.exists():
@@ -125,7 +128,12 @@ def main():
                 if 'user_data_directory' in data and Path(data['user_data_directory']) != user_dir:
                     row['isolation_error'] = data['user_data_directory']
                 if script == 'startup_probe.gd':
-                    row['complete'] = data.get('mission_ready', False)
+                    preset = next(a.split('=', 1)[1] for a in args if a.startswith('--graphics='))
+                    row['preset'] = preset
+                    frames = data.get('first_frames_ms', [])
+                    row['complete'] = (data.get('mission_ready') is True and len(frames) == 30
+                                       and data.get('preset') == ['low', 'medium', 'high'].index(preset))
+                    row['first_frames_worst_ms'] = max(frames, default=None)
                     row['ready_ms'] = next((e['ticks_ms'] for e in data.get('events', []) if e['phase'] == 'mission_ready'), None)
                 elif script == 'integration_benchmark.gd':
                     row['complete'] = len(data.get('results', [])) == 72
@@ -133,6 +141,9 @@ def main():
                     row['complete'] = data.get('complete', False) and data.get('failed', 1) == 0
                 row['renderer'] = data.get('renderer')
                 row['driver'] = data.get('driver')
+                if not headless and (row['renderer'], row['driver']) != ('forward_plus', 'vulkan'):
+                    row['complete'] = False
+                    row['backend_mismatch'] = True
         metadata['runs'].append(row)
         index.write_text(json.dumps(metadata, indent=2))
         print(name, 'exit', row['returncode'], 'complete', row.get('complete', False), flush=True)
@@ -144,25 +155,30 @@ def main():
                     ['--graphics=low'], headless=True)
     if not probe.get('complete') or probe.get('returncode') != 0:
         raise RuntimeError('Cannot verify private application data; stress series not started.')
-    for number in range(10):
-        preset = ['low', 'medium', 'high'][number % 3]
-        attempt('cold-' + str(number+1), token + '-cold-' + str(number+1), 'startup_probe.gd',
-                ['--graphics=' + preset, '--profile-phases'])
+    # The original 31-process series stays intact. The other two groups bring
+    # each cache condition to exactly 20 High, 10 Medium and 10 Low launches.
+    presets = {
+        'mixed': ['low', 'medium', 'high'] * 3 + ['low'],
+        'high': ['high'] * 17,
+        'low-medium': ['medium', 'low'] * 6 + ['medium'],
+    }[options.series]
     warm = token + '-warm'
-    # Explicit seed process prepares all presets; it remains part of the report.
-    attempt('warm-seed-matrix', warm, 'integration_benchmark.gd',
-            ['--graphics=low', '--suite=matrix', '--samples=24', '--warmup=8'], 300)
-    for number in range(10):
-        preset = ['low', 'medium', 'high'][number % 3]
-        attempt('warm-' + str(number+1), warm, 'startup_probe.gd',
-                ['--graphics=' + preset, '--profile-phases'])
-    for number in range(3):
-        attempt('cycles-' + str(number+1), warm, 'preparation_stress.gd',
-                ['--graphics=low', '--scenario=cycles'], 300)
-        attempt('exit-preparing-' + str(number+1), warm, 'preparation_stress.gd',
-                ['--graphics=high', '--scenario=exit-during-preparation'])
-        attempt('station-entries-' + str(number+1), warm, 'integration_benchmark.gd',
-                ['--graphics=low', '--suite=matrix', '--samples=24', '--warmup=8'], 300)
+    for condition in ['cold', 'warm']:
+        if condition == 'warm':
+            attempt('warm-seed-matrix', warm, 'integration_benchmark.gd',
+                    ['--graphics=low', '--suite=matrix', '--samples=24', '--warmup=8'], 300)
+        for number, preset in enumerate(presets, 1):
+            name = f'{condition}-{number}'
+            attempt(name, token + '-' + name if condition == 'cold' else warm,
+                    'startup_probe.gd', ['--graphics=' + preset, '--profile-phases'])
+    if options.series == 'mixed':
+        for number in range(1, 4):
+            attempt(f'cycles-{number}', warm, 'preparation_stress.gd',
+                    ['--graphics=low', '--scenario=cycles'], 300)
+            attempt(f'exit-preparing-{number}', warm, 'preparation_stress.gd',
+                    ['--graphics=high', '--scenario=exit-during-preparation'])
+            attempt(f'station-entries-{number}', warm, 'integration_benchmark.gd',
+                    ['--graphics=low', '--suite=matrix', '--samples=24', '--warmup=8'], 300)
     # Crash reports are evidence, not a replacement for per-attempt logs.
     reports = Path.home() / 'Library/Logs/DiagnosticReports'
     for path in reports.glob('*'):
