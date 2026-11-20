@@ -13,6 +13,7 @@ import tempfile
 import uuid
 import zipfile
 
+from renderer_diagnostics import engine_diagnostics
 from stress_release import digest
 
 parser = argparse.ArgumentParser(description=__doc__)
@@ -60,10 +61,7 @@ with tempfile.TemporaryDirectory(prefix='lto-integration-movie-') as temporary:
         assert len(report['checks']) == 167 and report['save_restore_repositions'] == 1
     assert report['results']['status'] == 'escaped'
     assert any(row['check'] == 'Continue restores actual Blackwater stop' and row['passed'] for row in report['checks'])
-    diagnostics = [line for line in (out / 'full-journey.log').read_text().splitlines()
-                   if line.startswith(('ERROR:', 'SCRIPT ERROR:', 'WARNING:',
-                                       'Leaked instance:', 'Resource still in use:'))]
-    assert not diagnostics, 'Recording emitted errors/warnings: ' + '\n'.join(diagnostics)
+    diagnostics = engine_diagnostics((out / 'full-journey.log').read_text(errors='replace').splitlines())
     subprocess.run(['ffmpeg', '-hide_banner', '-loglevel', 'error', '-y', '-i', str(raw),
                     '-c:v', 'libx264', '-crf', '29', '-preset', 'medium', '-pix_fmt', 'yuv420p',
                     '-c:a', 'aac', '-b:a', '64k', '-movflags', '+faststart', str(movie)],
@@ -76,8 +74,10 @@ assert video['r_frame_rate'] == '12/1' and float(media['format']['duration']) > 
 (out / 'media.json').write_text(json.dumps({
     'commit': os.environ.get('SOURCE_SHA', os.environ.get('GITHUB_SHA', '')),
     'capture_fps': 12, 'realtime_benchmark': False, 'preset': 'Medium',
-    **provenance,
+    **provenance, 'engine_diagnostics': diagnostics,
     'sha256': hashlib.sha256(movie.read_bytes()).hexdigest(), 'media': media,
     'editing': 'one continuous engine recording; actual Save/Continue scene reload included; no cuts or time acceleration'
 }, indent=2))
 print('Recorded and decoded the full journey including Save/Continue and final results.', flush=True)
+if diagnostics:
+    raise SystemExit('Recording retained with engine diagnostics:\n' + '\n'.join(diagnostics))

@@ -234,7 +234,7 @@ jobs:
           data=json.loads(report.read_text())
           assert (data['rendering_method'],data['rendering_driver'])==('forward_plus','metal')
           PY
-          if grep -E '^(ERROR:|SCRIPT ERROR:)|ObjectDB instances leaked|resources still in use' "$RUNNER_TEMP/metal/owner-selftest.log"; then exit 1; fi
+          python3 tools/macos/renderer_diagnostics.py "$RUNNER_TEMP/metal/owner-selftest.log"
       - if: always()
         uses: actions/upload-artifact@v7
         with:

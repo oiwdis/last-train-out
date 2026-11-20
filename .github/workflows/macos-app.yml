@@ -80,6 +80,7 @@ jobs:
           cd "$GITHUB_WORKSPACE"
           tools/run_tests.sh "$RUNNER_TEMP/Godot_v4.5.1-stable_linux.x86_64"
           python3 tools/check_integration_tests.py tests/_output/results.json
+          python3 tools/macos/test_renderer_diagnostics.py
       - uses: actions/upload-artifact@v7
         if: always()
         with:

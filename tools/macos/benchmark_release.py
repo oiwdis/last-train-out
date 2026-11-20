@@ -16,6 +16,8 @@ import subprocess
 import tempfile
 import time
 
+from renderer_diagnostics import engine_diagnostics
+
 BASELINE = '7df2f5abee54b8adcf27b8668263fba231a79033'
 ROOT = Path(__file__).resolve().parents[2]
 
@@ -58,8 +60,7 @@ def measure(godot, project, out, name, script, args, timeout, engine_args=(), ca
                 process.kill()
                 process.wait()
     lines = (out / (name + '.log')).read_text().splitlines()
-    diagnostics = [line for line in lines if line.startswith(('ERROR:', 'SCRIPT ERROR:',
-                   'WARNING:', 'Leaked instance:', 'Resource still in use:'))]
+    diagnostics = engine_diagnostics(lines)
     result = {'name': name, 'command': command, 'returncode': process.returncode,
               'timed_out': timed_out, 'wall_seconds': time.monotonic() - started,
               'report_exists': report.exists(), 'peak_rss_bytes': max((r['bytes'] for r in rss), default=0),

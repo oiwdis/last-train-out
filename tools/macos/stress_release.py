@@ -17,6 +17,8 @@ import subprocess
 import time
 import uuid
 
+from renderer_diagnostics import engine_diagnostics
+
 
 def inventory(directory):
     files = list(directory.rglob('*')) if directory.exists() else []
@@ -122,8 +124,7 @@ def main():
                        cache_events=[line for line in lines if 'PSO cache' in line],
                        device_loss=any('Vulkan device was lost' in line or 'VK_ERROR_DEVICE_LOST' in line
                                        or 'kIOGPUCommandBufferCallbackErrorTimeout' in line for line in lines),
-                       diagnostics=[line for line in lines if line.startswith(('ERROR:', 'SCRIPT ERROR:',
-                                    'WARNING:', 'Leaked instance:', 'Resource still in use:'))])
+                       diagnostics=engine_diagnostics(lines))
             if report.exists():
                 try:
                     data = json.loads(report.read_text())
