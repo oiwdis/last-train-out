@@ -108,6 +108,7 @@ func _describe_environment() -> void:
 	_report["executable"] = OS.get_executable_path()
 	_report["headless"] = _is_headless()
 	_report["display_server"] = DisplayServer.get_name()
+	_report["runtime_binary"] = OS.get_executable_path().get_file()
 	_report["rendering_method"] = RenderingServer.get_current_rendering_method()
 	_report["rendering_driver"] = RenderingServer.get_current_rendering_driver_name()
 	_report["video_adapter"] = RenderingServer.get_video_adapter_name()

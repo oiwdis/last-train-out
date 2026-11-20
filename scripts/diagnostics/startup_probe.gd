@@ -44,7 +44,7 @@ func run() -> void:
 		first_frames_ms.append((now - previous) / 1000.0)
 		previous = now
 	var report := {"events":events,"godot":Engine.get_version_info().string,"adapter":RenderingServer.get_video_adapter_name(),
-		"renderer":RenderingServer.get_current_rendering_method(),"driver":RenderingServer.get_current_rendering_driver_name(),
+		"runtime_binary":OS.get_executable_path().get_file(),"engine_build":Engine.get_version_info().build,"renderer":RenderingServer.get_current_rendering_method(),"driver":RenderingServer.get_current_rendering_driver_name(),
 		"headless":DisplayServer.get_name()=="headless","mission_ready":bool(game.get("journey").get("ready_to_play")),
 		"user_data_directory":OS.get_user_data_dir(),"window_pixels":str(root.size),"render_scale":root.scaling_3d_scale,
 		"window_mode":DisplayServer.window_get_mode(),"api_version":RenderingServer.get_video_adapter_api_version(),

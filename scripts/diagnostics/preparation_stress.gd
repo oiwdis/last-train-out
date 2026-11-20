@@ -70,7 +70,7 @@ func run() -> void:
 	var failed := checks.filter(func(row: Dictionary) -> bool: return not row.passed).size()
 	FileAccess.open(destination,FileAccess.WRITE).store_string(JSON.stringify({
 		"scenario":scenario,"checks":checks,"complete":true,"failed":failed,
-		"renderer":RenderingServer.get_current_rendering_method(),
+		"runtime_binary":OS.get_executable_path().get_file(),"engine_build":Engine.get_version_info().build,"renderer":RenderingServer.get_current_rendering_method(),
 		"driver":RenderingServer.get_current_rendering_driver_name(),
 		"user_data_directory":OS.get_user_data_dir()},"  "))
 	quit(1 if failed else 0)

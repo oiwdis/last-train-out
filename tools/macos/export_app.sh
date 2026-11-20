@@ -112,6 +112,7 @@ if [ "$(uname -s)" = Darwin ]; then
 	xcrun clang -fobjc-arc -O2 -arch arm64 -arch x86_64 -mmacosx-version-min=11.0 \
 		-framework Metal -framework Foundation tools/macos/choose_renderer.m -o "$CHOOSER"
 	codesign --force --sign - "$CHOOSER"
+	cp tools/macos/notices/Godot-*.txt "$APP/Contents/Resources/"
 	python3 tools/macos/prepare_metal_shaders.py "$APP" "$(dirname "$APP")/metal-inventory"
 	codesign --force --sign - "$APP"
 fi

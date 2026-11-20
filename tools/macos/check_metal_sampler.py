@@ -1,6 +1,5 @@
 """Run positive/negative Metal sampler controls on the stock editor, with no game assets."""
 import argparse
-import hashlib
 import json
 from pathlib import Path
 import plistlib
@@ -44,7 +43,8 @@ def main():
             assert len(warnings) == 1 and 'Metal does not support LOD bias for samplers' in warnings[0], warnings
         else:
             assert not warnings, warnings
-        pairs.append([hashlib.sha256((part / f['file']).read_bytes()).hexdigest() for f in data['frames']])
+        assert all((part / f['file']).stat().st_size > 0 for f in data['frames'])
+        pairs.append([f['rgba_sha256'] for f in data['frames']])
     assert len(pairs[0]) == 6 and pairs[0] == pairs[1] == pairs[2], pairs
     print('All three Metal processes produced six identical images each. Both positive controls warned.')
 

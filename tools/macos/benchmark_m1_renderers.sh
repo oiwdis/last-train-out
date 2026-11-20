@@ -32,7 +32,10 @@ run() {
   code=0
   /usr/bin/time -l "$selector" "$@" > "$out/$name.log" 2>&1 || code=$?
   echo "$name $code" >> "$out/exits.txt"
-  if [[ "$code" != 0 ]]; then failed=1; fi
+  if [[ "$code" != 0 || ! -s "$out/$name.json" ]] ||
+      grep -Eq 'SCRIPT ERROR:|ERROR:|WARNING:|ObjectDB instances leaked|resources still in use|\[mvk-error\]|VK_ERROR_DEVICE_LOST' "$out/$name.log"; then
+    failed=1
+  fi
 }
 select_user() {
   printf '[application]\nconfig/use_custom_user_dir=true\nconfig/custom_user_dir_name="%s"\n' "$1" > "$work/override.cfg"

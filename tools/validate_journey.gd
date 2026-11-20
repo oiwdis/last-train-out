@@ -433,7 +433,7 @@ func finish() -> void:
 	if finished: return
 	finished = true
 	var report := {"source_commit":source_commit,"checks":checks,"failed":failed,"teleports":teleports,"save_restore_repositions":load_restores,"integration_tour":integration_tour,"graphics_preset":quality,"late_escape":late_escape,"scenario":scenario,"observations":observations,
-		"renderer":RenderingServer.get_current_rendering_method(),"driver":RenderingServer.get_current_rendering_driver_name(),
+		"runtime_binary":OS.get_executable_path().get_file(),"engine_build":Engine.get_version_info().build,"renderer":RenderingServer.get_current_rendering_method(),"driver":RenderingServer.get_current_rendering_driver_name(),
 		"editor":OS.has_feature("editor"),"user_directory":OS.get_user_data_dir(),
 		"results":game.journey.mission.results(game.fog_system.simulation.elapsed,game.train.distance)}
 	var filename := "continuous-journey.json" if scenario == "journey" else scenario+"-gameplay.json"

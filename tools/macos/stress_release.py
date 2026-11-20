@@ -152,6 +152,11 @@ def main():
                     row['complete'] = len(data.get('results', [])) == 72
                 else:
                     row['complete'] = data.get('complete', False) and data.get('failed', 1) == 0
+                row['runtime_binary'] = data.get('runtime_binary')
+                if not headless and options.experimental_backend == 'forward-metal' and (binary.parent / 'choose-renderer').exists():
+                    if row['runtime_binary'] != 'LastTrainOutMetal':
+                        row['complete'] = False
+                        row['unexpected_executable'] = True
                 row['renderer'] = data.get('renderer')
                 row['driver'] = data.get('driver')
                 if not headless and (row['renderer'], row['driver']) != expected_backend:

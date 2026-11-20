@@ -59,7 +59,10 @@ func run() -> void:
 		if capture.save_png(output.path_join(name)) != OK:
 			quit(1)
 			return
-		frames.append({"file":name,"scale":root.scaling_3d_scale,"bias":root.texture_mipmap_bias})
+		var digest := HashingContext.new()
+		digest.start(HashingContext.HASH_SHA256)
+		digest.update(capture.get_data())
+		frames.append({"rgba_sha256":digest.finish().hex_encode(),"file":name,"scale":root.scaling_3d_scale,"bias":root.texture_mipmap_bias})
 	var report := {"frames":frames,"variant":variant,"method":RenderingServer.get_current_rendering_method(),
 		"driver":RenderingServer.get_current_rendering_driver_name(),"adapter":RenderingServer.get_video_adapter_name()}
 	FileAccess.open(output.path_join("result.json"),FileAccess.WRITE).store_string(JSON.stringify(report,"  "))

@@ -40,7 +40,7 @@ def main():
         if result['returncode'] or not result.get('complete_matrix') or result['engine_diagnostics']:
             raise SystemExit('The packaged Metal shader inventory failed; see source-inventory.log.')
         report = json.loads((out / 'source-inventory.json').read_text())
-        if (report['renderer'], report['driver']) != ('forward_plus', 'metal'):
+        if (report['renderer'], report['driver'], report['runtime_binary']) != ('forward_plus', 'metal', 'LastTrainOutMetal'):
             raise SystemExit('Wrong renderer in shader inventory.')
     dest = resources / 'MetalShaders'
     dest.mkdir()

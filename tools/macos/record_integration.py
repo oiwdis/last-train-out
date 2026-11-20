@@ -58,6 +58,8 @@ with tempfile.TemporaryDirectory(prefix='lto-integration-movie-') as temporary:
     if options.exported_native_metal:
         assert not report['editor'] and Path(report['user_directory']).name == user
         assert (report['renderer'], report['driver']) == ('forward_plus', 'metal')
+        if (app / 'Contents/MacOS/choose-renderer').exists():
+            assert report['runtime_binary'] == 'LastTrainOutMetal'
         assert len(report['checks']) == 167 and report['save_restore_repositions'] == 1
     assert report['results']['status'] == 'escaped'
     assert any(row['check'] == 'Continue restores actual Blackwater stop' and row['passed'] for row in report['checks'])

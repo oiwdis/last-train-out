@@ -104,7 +104,7 @@ func run() -> void:
 			if journey != null: journey.ui.panel.hide()
 	var report := {"suite":suite,"fixture_only":true,"fixed_fps":false,"vsync":"disabled","resolution":str(root.size),"samples":samples,"warmup":warmup,
 		"godot":Engine.get_version_info().string,"processor":OS.get_processor_name(),"processor_count":OS.get_processor_count(),"os":OS.get_name(),
-		"adapter":RenderingServer.get_video_adapter_name(),"renderer":RenderingServer.get_current_rendering_method(),"driver":RenderingServer.get_current_rendering_driver_name(),
+		"adapter":RenderingServer.get_video_adapter_name(),"runtime_binary":OS.get_executable_path().get_file(),"engine_build":Engine.get_version_info().build,"renderer":RenderingServer.get_current_rendering_method(),"driver":RenderingServer.get_current_rendering_driver_name(),
 		"window_mode":DisplayServer.window_get_mode(),"loading":loading,"fixture_transitions":transitions,"preset_preparation":prepared,"results":rows,
 		"static_memory_peak_bytes":OS.get_static_memory_peak_usage(),"total_memory_note":"process RSS sampled externally; static memory is not total RSS"}
 	FileAccess.open(destination,FileAccess.WRITE).store_string(JSON.stringify(report,"  "))

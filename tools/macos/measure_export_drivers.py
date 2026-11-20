@@ -69,7 +69,10 @@ def main():
             report = out / (name + '.json')
             data = json.loads(report.read_text()) if report.exists() and not row.get('report_error') else {}
             row['actual'] = [data.get('renderer'), data.get('driver')]
+            row['binary'] = data.get('runtime_binary')
+            expected_binary = 'LastTrainOutMetal' if driver == 'metal' else info['CFBundleExecutable']
             row['passed'] = (row['returncode'] == 0 and row.get('complete_matrix', False)
+                             and (not chooser.exists() or row['binary'] == expected_binary)
                              and row['actual'] == ['forward_plus', driver] and not row['engine_diagnostics'])
             summary['runs'].append(row)
             index.write_text(json.dumps(summary, indent=2))
