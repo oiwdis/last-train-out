@@ -1,0 +1,65 @@
+{
+  "zip_sha256": "a49497c51f951f52524743afd878463f0dc08959ca1a411f5c2854a04bdd71d5",
+  "bytes": 330035528,
+  "artifact": 14666253056,
+  "workflow_run": 44804764620,
+  "source_head": "a7a4c1a7c828199aef0c5d37d109f2d919a99e7c",
+  "bundle_commit": "a7a4c1a7c828199aef0c5d37d109f2d919a99e7c",
+  "build": "99",
+  "kind": "development",
+  "crc_bad_entry": null,
+  "shader_profile": {
+    "adapter": "Apple Paravirtual device (Apple5)",
+    "argumentBuffers": 1,
+    "bundled_library_groups": 79,
+    "device": "Apple Paravirtual device",
+    "engine": "4.5.1-stable (lto_metal)",
+    "family": 1005,
+    "language": 262144,
+    "source": "a7a4c1a7c828199aef0c5d37d109f2d919a99e7c"
+  },
+  "shader_groups": 94,
+  "cache_bytes": 8265096,
+  "cache_hashes_accepted": true,
+  "offline_libraries": {
+    "shader_profile": {
+      "adapter": "Apple Paravirtual device (Apple5)",
+      "argumentBuffers": 1,
+      "device": "Apple Paravirtual device",
+      "engine": "4.5.1-stable (lto_metal)",
+      "family": 1005,
+      "language": 262144,
+      "min_os_version": "26.0",
+      "source": "a7a4c1a7c828199aef0c5d37d109f2d919a99e7c"
+    },
+    "shader_groups": 79,
+    "cache_bytes": 14866704,
+    "cache_hashes_accepted": true
+  },
+  "runtimes": {
+    "Last Train Out": {
+      "arch": [
+        "x86_64",
+        "arm64"
+      ],
+      "bytes": 187369968,
+      "sha256": "f4036776476b6ab1da5e8bd5e6e9b0239707450bfadb97c3c4b90373d0ec51c4"
+    },
+    "LastTrainOutMetal": {
+      "arch": [
+        "arm64"
+      ],
+      "bytes": 64040928,
+      "sha256": "bc06ab5d56e536bd1c6ad8dabaf226109ce841bf7273ae6ef0f1b91e4c292a04"
+    },
+    "choose-renderer": {
+      "arch": [
+        "x86_64",
+        "arm64"
+      ],
+      "bytes": 157024,
+      "sha256": "10befdf25b6122011c87c814ee53a247e9e918889d79ef92711e22556c862558"
+    }
+  },
+  "pack_sha256": "3076fc36e0dd8cf2bd33c1e18e276c12ceb0d5060260bca73d11c4e1a0774474"
+}

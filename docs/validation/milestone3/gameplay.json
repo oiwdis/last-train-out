@@ -1,0 +1,250 @@
+{
+  "checks": [
+    {
+      "check": "route: (13.0, 1.0, 1.2)",
+      "passed": true
+    },
+    {
+      "check": "searched platform_luggage using E",
+      "passed": true
+    },
+    {
+      "check": "route: (13.0, 1.0, 0.3)",
+      "passed": true
+    },
+    {
+      "check": "route: (27.2, 1.0, 0.3)",
+      "passed": true
+    },
+    {
+      "check": "route: (27.2, 1.0, 1.2)",
+      "passed": true
+    },
+    {
+      "check": "searched platform_locker using E",
+      "passed": true
+    },
+    {
+      "check": "A: two real searches completed safely",
+      "passed": true
+    },
+    {
+      "check": "A: safe departure with collected supplies",
+      "passed": true
+    },
+    {
+      "check": "searched b_precision using E",
+      "passed": true
+    },
+    {
+      "check": "route: (94.9, 0.0, 0.6)",
+      "passed": true
+    },
+    {
+      "check": "route: (93.4, 0.0, 1.5)",
+      "passed": true
+    },
+    {
+      "check": "route: (91.7, 0.0, 1.5)",
+      "passed": true
+    },
+    {
+      "check": "route: (91.7, 0.0, 0.0)",
+      "passed": true
+    },
+    {
+      "check": "route: (88.3, 0.0, 0.1)",
+      "passed": true
+    },
+    {
+      "check": "route: (87.4, 0.0, -0.7)",
+      "passed": true
+    },
+    {
+      "check": "route: (86.5, 0.0, 0.2)",
+      "passed": true
+    },
+    {
+      "check": "route: (83.0, 0.0, -0.1)",
+      "passed": true
+    },
+    {
+      "check": "route: (83.0, 0.0, 1.6)",
+      "passed": true
+    },
+    {
+      "check": "route: (81.6, 0.0, 2.2)",
+      "passed": true
+    },
+    {
+      "check": "route: (78.9, 0.0, 2.2)",
+      "passed": true
+    },
+    {
+      "check": "route: (78.6, 0.0, 0.7)",
+      "passed": true
+    },
+    {
+      "check": "route: (76.1, 0.0, 0.7)",
+      "passed": true
+    },
+    {
+      "check": "route: (74.3, 0.0, 3.3)",
+      "passed": true
+    },
+    {
+      "check": "route: (71.3, 0.0, 2.6)",
+      "passed": true
+    },
+    {
+      "check": "route: (70.6, 0.0, 1.1)",
+      "passed": true
+    },
+    {
+      "check": "route: (69.4, 0.0, 1.1)",
+      "passed": true
+    },
+    {
+      "check": "route: (65.3, 0.0, 1.5)",
+      "passed": true
+    },
+    {
+      "check": "route: (60.6, 0.0, 1.1)",
+      "passed": true
+    },
+    {
+      "check": "route: (58.6, 0.0, 1.1)",
+      "passed": true
+    },
+    {
+      "check": "route: (54.8, 0.0, 1.1)",
+      "passed": true
+    },
+    {
+      "check": "route: (50.6, 0.0, 1.2)",
+      "passed": true
+    },
+    {
+      "check": "route: (49.7, 0.0, 3.0)",
+      "passed": true
+    },
+    {
+      "check": "route: (47.3, 0.0, 3.3)",
+      "passed": true
+    },
+    {
+      "check": "route: (46.6, 0.0, 1.1)",
+      "passed": true
+    },
+    {
+      "check": "route: (35.8, 0.0, 1.1)",
+      "passed": true
+    },
+    {
+      "check": "route: (33.9, 0.0, 1.0)",
+      "passed": true
+    },
+    {
+      "check": "route: (29.6, 0.0, 1.0)",
+      "passed": true
+    },
+    {
+      "check": "route: (20.6, 0.0, -1.5)",
+      "passed": true
+    },
+    {
+      "check": "route: (20.5, 1.0, -1.8)",
+      "passed": true
+    },
+    {
+      "check": "B: physically returned, vaulted and climbed onto train",
+      "passed": true
+    },
+    {
+      "check": "route: (19.1, 1.0, -3.5)",
+      "passed": true
+    },
+    {
+      "check": "B: dropped from roof onto connecting gangway",
+      "passed": true
+    },
+    {
+      "check": "route: (21.3, 1.0, -3.5)",
+      "passed": true
+    },
+    {
+      "check": "B: cab regulator starts escape",
+      "passed": true
+    },
+    {
+      "check": "B: survived return while fog continued",
+      "passed": true
+    },
+    {
+      "check": "F: train outruns persistent front",
+      "passed": true
+    },
+    {
+      "check": "G: exposure recovers after escape",
+      "passed": true
+    },
+    {
+      "check": "F: sustained pursuit along baseline route",
+      "passed": true
+    },
+    {
+      "check": "searched a_coal using E",
+      "passed": true
+    },
+    {
+      "check": "C: searched reserve reveals actual coal",
+      "passed": true
+    },
+    {
+      "check": "C: reticle pickup holds coal sack",
+      "passed": true
+    },
+    {
+      "check": "C: heavy cargo caps movement",
+      "passed": true
+    },
+    {
+      "check": "C: abandoned loot remains recoverable",
+      "passed": true
+    },
+    {
+      "check": "D: empty boiler prevents departure; fog advances",
+      "passed": true
+    },
+    {
+      "check": "E: deliberate exposure causes progressive damage",
+      "passed": true
+    },
+    {
+      "check": "route: (29.0, 1.0, 1.0)",
+      "passed": true
+    },
+    {
+      "check": "route: (33.9, 0.0, 1.0)",
+      "passed": true
+    },
+    {
+      "check": "route: (35.8, 0.0, 1.1)",
+      "passed": true
+    },
+    {
+      "check": "route: (46.6, 0.0, 1.1)",
+      "passed": true
+    },
+    {
+      "check": "G: walking clear allows recovery",
+      "passed": true
+    }
+  ],
+  "godot": "4.5.1-stable (official)",
+  "headless": false,
+  "passed": true,
+  "preset": "Low",
+  "setup_cuts": "A cab boarding; B Warehouse B/front=-14; C coal reserve/front=-12; D cab/fuel=0.4; E platform/front=5; final surge/front=-25. No cuts within B return/boarding/departure/recovery.",
+  "viewport": "(1280.0, 880.0)"
+}

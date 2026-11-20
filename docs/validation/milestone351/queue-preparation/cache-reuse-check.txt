@@ -1,0 +1,38 @@
+[
+  {
+    "attempt": 1,
+    "driver": "vulkan",
+    "mission_ready": true,
+    "loaded_pso_mib": [
+      0.0
+    ],
+    "saved_pso_mib": [
+      10.4
+    ],
+    "shader_misses": 94,
+    "diagnostics": []
+  },
+  {
+    "attempt": 2,
+    "driver": "vulkan",
+    "mission_ready": true,
+    "loaded_pso_mib": [
+      10.4
+    ],
+    "saved_pso_mib": [],
+    "shader_misses": 0,
+    "diagnostics": []
+  },
+  {
+    "attempt": 3,
+    "driver": "vulkan",
+    "mission_ready": true,
+    "loaded_pso_mib": [
+      10.4
+    ],
+    "saved_pso_mib": [],
+    "shader_misses": 0,
+    "diagnostics": []
+  }
+]
+PASS: three clean ready states and persisted PSO cache reuse across both warm launches.

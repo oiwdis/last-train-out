@@ -1,0 +1,5 @@
+archive,scenario,process_code,passed,ready_s,first_worst_ms,after_report_s,diagnostics
+offline-source-first.zip,first-launch,124,False,136.889,95.678,163.05612283299996,[]
+offline-source-first.zip,warm-launch,0,True,38.926,34.527,0.6081703329999755,[]
+offline-binary-first.zip,first-launch,0,True,43.714,24.096,0.1272008330000176,[]
+offline-binary-first.zip,warm-launch,0,True,42.041,93.842,0.977594291999992,[]

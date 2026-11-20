@@ -23,8 +23,22 @@ on:
       - claude/serene-turing-0vpdmt
       - codex/milestone-1-5-visual-overhaul
       - codex/milestone-2-scavenging
+      - feature/milestone-2-5-full-3d
   workflow_dispatch:
     inputs:
+      investigate:
+        description: Run exploratory profiling only (no release artifact or acceptance claim)
+        type: boolean
+        default: false
+      profile_suite:
+        description: Exploratory profiling suite
+        type: choice
+        options: [all, startup, matrix, cleanup, quick, preparation]
+        default: all
+      import_run:
+        description: Optional successful PR test run containing validated-imports (avoids a cold texture import)
+        type: string
+        default: ''
       sign_and_notarize:
         description: Sign with Developer ID and notarize (needs the signing secrets)
         type: boolean
@@ -32,6 +46,7 @@ on:
 
 permissions:
   contents: read
+  actions: read
 
 concurrency:
   group: macos-app-${{ github.ref }}-${{ github.event_name }}-${{ inputs.sign_and_notarize && 'signed' || 'dev' }}
@@ -42,15 +57,126 @@ env:
   DEV_ZIP: LastTrainOut-macos-universal.zip
   SIGNED_ZIP: LastTrainOut-macos-universal-signed.zip
   # The build fails if fewer tests than this pass, so tests cannot silently go missing.
-  MIN_TESTS: "168"
+  MIN_TESTS: "305"
 
 jobs:
-  build:
-    name: Test, export and package
-    runs-on: macos-latest # GitHub's macos-latest runners are Apple Silicon (arm64)
+  metal-template:
+    name: Build pinned 4.5.1 Metal runtime
+    if: ${{ !inputs.investigate }}
+    runs-on: macos-latest
+    timeout-minutes: 150
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/cache@v6
+        id: compiled
+        with:
+          path: ~/lto-metal-template
+          key: godot-macos-arm64-4.5.1-metal-v1-${{ hashFiles('tools/macos/engine/**') }}
+      - if: steps.compiled.outputs.cache-hit != 'true'
+        run: tools/macos/engine/build_metal_template.sh "$HOME/lto-metal-template"
+      - if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: metal-template
+          path: ~/lto-metal-template/
+          retention-days: 30
+
+  linux:
+    name: Linux gameplay tests
+    if: ${{ !inputs.investigate }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/cache@v6
+        with:
+          path: .godot/imported
+          key: godot-imports-linux-4.5.1-${{ hashFiles('project.godot', 'assets/**', 'resources/**') }}
+      - name: Verify Godot and run the complete suite
+        run: |
+          cd "$RUNNER_TEMP"
+          curl --fail --location --silent --show-error -o godot.zip https://github.com/godotengine/godot-builds/releases/download/4.5.1-stable/Godot_v4.5.1-stable_linux.x86_64.zip
+          echo '02ec53d1cc7dbb9cc6355393c61b9ab43d1244751a124f10248a4802830788cd  godot.zip' | sha256sum --check
+          unzip -q godot.zip
+          cd "$GITHUB_WORKSPACE"
+          tools/run_tests.sh "$RUNNER_TEMP/Godot_v4.5.1-stable_linux.x86_64"
+          python3 tools/check_integration_tests.py tests/_output/results.json
+          python3 tools/macos/test_renderer_diagnostics.py
+          python3 tools/macos/metal_libraries/test_prepare.py
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: linux-tests
+          path: tests/_output/
+          retention-days: 14
+
+  investigate:
+    name: Performance investigation (no release)
+    if: ${{ github.event_name == 'workflow_dispatch' && inputs.investigate }}
+    runs-on: macos-latest
     timeout-minutes: 45
     env:
+      SOURCE_SHA: ${{ github.sha }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/cache@v6
+        with:
+          path: ~/godot-ci
+          key: godot-4.5.1-stable-macos-universal-template-v1
+      - run: tools/macos/install_godot.sh
+      - uses: actions/cache/restore@v6
+        with:
+          path: .godot/imported
+          key: godot-imports-macos-arm64-4.5.1-v1-${{ hashFiles('project.godot', 'assets/**', 'resources/**') }}
+          restore-keys: godot-imports-macos-arm64-4.5.1-v1-
+      - name: Reuse validated imports from the PR
+        if: ${{ inputs.import_run != '' }}
+        uses: actions/download-artifact@v8
+        with:
+          name: validated-imports
+          path: .godot/imported
+          run-id: ${{ inputs.import_run }}
+          github-token: ${{ github.token }}
+      - name: Validate imported diagnostic scripts
+        run: |
+          mkdir -p tests/_output/investigation
+          if [ -d .godot/imported ]; then find .godot/imported -name '*.scn' -delete; fi
+          "$GODOT" --headless --path . --import > tests/_output/investigation/import.log 2>&1
+          if grep -E '^(ERROR|SCRIPT ERROR)|Parse Error' tests/_output/investigation/import.log; then exit 1; fi
+      - name: Collect startup traces
+        if: ${{ inputs.profile_suite == 'all' || inputs.profile_suite == 'startup' || inputs.profile_suite == 'preparation' }}
+        run: python3 tools/macos/profile_integration.py "$GODOT" tests/_output/investigation startup
+      - name: Retain startup evidence before longer measurements
+        if: always() && (inputs.profile_suite == 'all' || inputs.profile_suite == 'startup' || inputs.profile_suite == 'preparation')
+        uses: actions/upload-artifact@v7
+        with:
+          name: performance-startup
+          path: tests/_output/investigation/
+          retention-days: 30
+      - name: Collect raw baseline and stack profiling evidence
+        if: ${{ inputs.profile_suite != 'startup' }}
+        env:
+          PROFILE_SUITE: ${{ inputs.profile_suite == 'all' && 'matrix' || inputs.profile_suite }}
+        run: python3 tools/macos/profile_integration.py "$GODOT" tests/_output/investigation "$PROFILE_SUITE"
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: performance-investigation
+          path: tests/_output/investigation/
+          retention-days: 30
+
+  build:
+    needs: metal-template
+    if: ${{ !inputs.investigate }}
+    name: Test, export and package
+    outputs:
+      artifact_id: ${{ steps.upload.outputs.artifact-id }}
+      render: ${{ steps.diagnostics.outputs.render }}
+    runs-on: macos-latest # GitHub's macos-latest runners are Apple Silicon (arm64)
+    timeout-minutes: 90
+    env:
       APP: build/macos/Last Train Out.app
+      SOURCE_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
     steps:
       - uses: actions/checkout@v7
 
@@ -70,11 +196,40 @@ jobs:
       - name: Install Godot 4.5.1 and its macOS export template
         run: tools/macos/install_godot.sh
 
+      # Cold GPU texture compression takes roughly half an hour on this runner.
+      # Godot still checks source/import hashes and rebuilds changed resources.
+      - name: Restore imported assets
+        id: imports
+        uses: actions/cache@v6
+        with:
+          path: .godot/imported
+          key: godot-imports-macos-arm64-4.5.1-v1-${{ hashFiles('project.godot', 'assets/**', 'resources/**') }}
+          restore-keys: godot-imports-macos-arm64-4.5.1-v1-
+
+      - name: Reuse validated imports for a manual release
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.import_run != '' }}
+        uses: actions/download-artifact@v8
+        with:
+          name: validated-imports
+          path: .godot/imported
+          run-id: ${{ inputs.import_run }}
+          github-token: ${{ github.token }}
+
+      - name: Discard cached scenes with obsolete texture UIDs
+        # Keep expensive compressed textures, but rebuild scene dependencies
+        # from source when a restored cache predates an asset replacement.
+        run: |
+          if [ -d .godot/imported ]; then
+            find .godot/imported -name '*.scn' -delete
+          fi
+
       # Import, a headless run of the main scene, then every automated test. Nothing is
       # exported unless this passes.
       - name: Run the automated tests
         run: |
+          python3 tools/assets/check_assets.py
           tools/run_tests.sh "$GODOT"
+          python3 tools/check_integration_tests.py tests/_output/results.json
           {
             echo "### Automated tests (Godot $("$GODOT" --version), macOS $(sw_vers -productVersion), $(uname -m))"
             echo
@@ -83,34 +238,92 @@ jobs:
             echo '```'
           } >> "$GITHUB_STEP_SUMMARY"
 
-      - name: Upload the test logs
-        if: always()
+      - name: Save validated asset imports before rendering checks
+        if: steps.imports.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v6
+        with:
+          path: .godot/imported
+          key: godot-imports-macos-arm64-4.5.1-v1-${{ hashFiles('project.godot', 'assets/**', 'resources/**') }}
+
+      # Manual workflows cannot read caches scoped to refs/pull/N/merge. A
+      # short-lived artifact permits the same validated inputs in investigations.
+      - name: Share validated imports with exploratory workflows
         uses: actions/upload-artifact@v7
         with:
-          name: test-logs
-          path: tests/_output/
-          if-no-files-found: warn
-          retention-days: 14
+          name: validated-imports
+          path: .godot/imported/
+          include-hidden-files: true
+          retention-days: 7
 
+      - name: Validate journey, fuel, fog and cold resume
+        run: |
+          "$GODOT" --headless --path . --fixed-fps 60 tools/validate_journey.tscn -- --integration-tour --late-escape > tests/_output/journey.log 2>&1
+          cp docs/validation/milestone35/gameplay/continuous-journey.json tests/_output/continuous-journey.json
+          if grep -E '^(ERROR|SCRIPT ERROR)|\[journey\] FAIL' tests/_output/journey.log; then exit 1; fi
+          for scenario in fuel-shortage stranded; do
+            "$GODOT" --headless --path . --fixed-fps 60 tools/validate_journey.tscn -- "--$scenario" > "tests/_output/$scenario.log" 2>&1
+            cp "docs/validation/milestone35/gameplay/$scenario-gameplay.json" tests/_output/
+            if grep -E '^(ERROR|SCRIPT ERROR)|\[journey\] FAIL' "tests/_output/$scenario.log"; then exit 1; fi
+          done
+          for phase in write read; do
+            "$GODOT" --headless --path . --fixed-fps 60 --script res://tools/validate_resume.gd -- "--phase=$phase" > "tests/_output/resume-$phase.log" 2>&1
+            if grep -E '^(ERROR|SCRIPT ERROR)|\[resume\] FAIL' "tests/_output/resume-$phase.log"; then exit 1; fi
+          done
+          cp docs/validation/milestone35/gameplay/process-resume.json tests/_output/
+
+      - name: Restore baked Vulkan shaders
+        id: shaders
+        uses: actions/cache/restore@v6
+        with:
+          # Resource-customization metadata is needed as well as the shader files.
+          # Godot validates source/configuration hashes before reusing either.
+          path: .godot/exported
+          # Keep backend families separate: customization metadata must never
+          # skip baking after a Metal/Vulkan switch.
+          key: godot-vulkan-bake-4.5.1-v1-${{ hashFiles('project.godot', 'export_presets.cfg', 'scripts/**', 'resources/**', 'assets/**') }}
+          restore-keys: godot-vulkan-bake-4.5.1-v1-
+
+      - uses: actions/download-artifact@v8
+        with:
+          name: metal-template
+          path: ${{ runner.temp }}/metal-template
       - name: Export Last Train Out.app
         env:
           BUILD_NUMBER: ${{ github.run_number }}
           BUILD_COMMIT: ${{ github.sha }}
           BUILD_KIND: development
-        run: tools/macos/export_app.sh "$GODOT" "$APP"
+        run: LTO_METAL_TEMPLATE="$RUNNER_TEMP/metal-template/LastTrainOutMetal" tools/macos/export_app.sh "$GODOT" "$APP"
+
+      - name: Save baked Vulkan shaders
+        if: steps.shaders.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v6
+        with:
+          path: .godot/exported
+          key: ${{ steps.shaders.outputs.cache-primary-key }}
 
       - name: Check the bundle
         run: |
           python3 tools/macos/verify_app.py "$APP" --expect-signature adhoc --title "Exported bundle"
           du -sh "$APP"
 
-      # Start the real bundle (no editor, no project folder) and let it test itself:
-      # once without a window, once with its window so the renderer is exercised too.
-      - name: Launch the exported app without a window
-        run: tools/macos/run_selftest.sh "$APP" build-headless --headless --expect-arch arm64
-
-      - name: Launch the exported app with its window
-        run: tools/macos/run_selftest.sh "$APP" build-window --expect-arch arm64
+      - name: Select rendering diagnostics for changed runtime
+        id: diagnostics
+        env:
+          SOURCE_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          # Documentation/evidence-only commits still run every test, export and
+          # fresh-download launch check. Their unchanged runtime does not need
+          # another fifteen-minute comparison and identical gameplay recording.
+          git fetch --no-tags --depth=2 origin "$SOURCE_SHA"
+          if [ "$EVENT_NAME" = workflow_dispatch ] || ! git rev-parse "$SOURCE_SHA^" > /dev/null 2>&1; then
+            echo 'render=true' >> "$GITHUB_OUTPUT"
+          elif git diff --name-only "$SOURCE_SHA^" "$SOURCE_SHA" | grep -Ev '^(docs/|README\.md$|$)' > /dev/null; then
+            echo 'render=true' >> "$GITHUB_OUTPUT"
+          else
+            echo 'render=false' >> "$GITHUB_OUTPUT"
+            echo 'Runtime unchanged: retaining the documented comparison and tour; all release checks still run.'
+          fi
 
       # upload-artifact would drop executable bits if it zipped the bundle itself, which breaks
       # an .app. So the ZIP is made here with ditto and uploaded as it is (archive: false):
@@ -146,6 +359,69 @@ jobs:
             echo "  confirmation the first time: see *Play on macOS* in the README."
           } >> "$GITHUB_STEP_SUMMARY"
 
+      - name: Trace repeated native startup
+        run: python3 tools/macos/profile_integration.py "$GODOT" tests/_output/startup startup
+
+      - name: Retain startup evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: performance-startup
+          path: tests/_output/startup/
+          retention-days: 30
+
+      - name: Stress rendered preparation, preset switching and Continue
+        if: ${{ !cancelled() && steps.upload.outputs.artifact-id != '' }}
+        timeout-minutes: 10
+        run: |
+          "$GODOT" --verbose --path . --audio-driver Dummy --resolution 960x540 --fixed-fps 60 tests/test_runner.tscn -- --only=preparation_lifecycle --graphics=low --report=tests/_output/renderer-stress.json > tests/_output/renderer-stress.log 2>&1
+          if grep -E '^(ERROR|SCRIPT ERROR)|ObjectDB instances leaked|resources still in use' tests/_output/renderer-stress.log; then exit 1; fi
+
+      - name: Retain renderer stress evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: renderer-stress
+          path: tests/_output/renderer-stress.*
+          retention-days: 30
+
+      # Start the real bundle (no editor, no project folder) and let it test itself:
+      # once without a window, once with its window so the renderer is exercised too.
+      - name: Launch the exported app without a window
+        if: ${{ !cancelled() && steps.upload.outputs.artifact-id != '' }}
+        run: tools/macos/run_selftest.sh "$APP" build-headless --headless --expect-arch arm64
+
+      - name: Launch the exported app with its window
+        if: ${{ !cancelled() && steps.upload.outputs.artifact-id != '' }}
+        run: |
+          if tools/macos/run_selftest.sh "$APP" build-window --expect-arch arm64; then
+            echo 'The default rendering driver passed the exported launch gate.'
+          else
+            # Preserve the original failure. This bounded alternative-driver probe
+            # is diagnostic evidence only; it cannot publish or pass a broken build.
+            python3 tools/macos/probe_renderer.py "$APP" "$RUNNER_TEMP/selftest" metal || true
+            exit 1
+          fi
+
+      - name: Upload the test logs
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: test-logs
+          path: tests/_output/
+          if-no-files-found: warn
+          retention-days: 14
+
+      - name: Retain export diagnostics
+        if: always()
+        run: |
+          if [ -f build/macos/export.log ]; then
+            mkdir -p "$RUNNER_TEMP/selftest"
+            if [ -d build/macos/metal-inventory ]; then cp -R build/macos/metal-inventory "$RUNNER_TEMP/selftest/"; fi
+            cp build/macos/export.log "$RUNNER_TEMP/selftest/export.log"
+            cp build/macos/shader-inventory.log "$RUNNER_TEMP/selftest/shader-inventory.log"
+          fi
+
       - name: Upload the self-test reports
         if: always()
         uses: actions/upload-artifact@v7
@@ -155,6 +431,69 @@ jobs:
           if-no-files-found: warn
           retention-days: 14
 
+  performance:
+    name: Matched frame pacing and continuous journey
+    needs: build
+    if: ${{ !cancelled() && needs.build.outputs.artifact_id != '' && needs.build.outputs.render == 'true' }}
+    runs-on: macos-latest
+    timeout-minutes: 105
+    env:
+      SOURCE_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/cache/restore@v6
+        with:
+          path: ~/godot-ci
+          key: godot-4.5.1-stable-macos-universal-template-v1
+      - run: tools/macos/install_godot.sh
+      - uses: actions/download-artifact@v8
+        with:
+          name: validated-imports
+          path: .godot/imported
+      - name: Rebuild scene dependencies against the validated textures
+        run: |
+          mkdir -p tests/_output
+          find .godot/imported -name '*.scn' -delete
+          "$GODOT" --headless --path . --import > tests/_output/evidence-import.log 2>&1
+          if grep -E '^(ERROR|SCRIPT ERROR)|Parse Error' tests/_output/evidence-import.log; then exit 1; fi
+
+      - name: Measure windowed rendering on hosted Apple Silicon
+        id: performance
+        # Additional hardware evidence. A measurement timeout must not discard a
+        # playable build; failures/logs remain visible and are reported separately.
+        continue-on-error: true
+        run: |
+          python3 tools/macos/benchmark_release.py "$GODOT" tests/_output/performance
+
+      - name: Record the uninterrupted integrated journey
+        id: recording
+        # Fixed-rate recording runs AFTER all real-time measurements.
+        continue-on-error: true
+        timeout-minutes: 30
+        run: |
+          command -v ffmpeg || brew install ffmpeg
+          python3 tools/macos/record_integration.py "$GODOT" tests/_output/visual
+
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: performance-and-journey
+          path: tests/_output/
+          retention-days: 30
+
+      - name: Require completed integration evidence
+        if: always()
+        env:
+          PERFORMANCE_OUTCOME: ${{ steps.performance.outcome }}
+          RECORDING_OUTCOME: ${{ steps.recording.outcome }}
+        run: |
+          # Package/log uploads happen first, but failed evidence must leave a
+          # failed check rather than a misleading green finalization build.
+          test "$PERFORMANCE_OUTCOME" = success
+          test "$RECORDING_OUTCOME" = success
+          test -s tests/_output/performance/integration-matrix.json
+          test -s tests/_output/visual/media.json
+
   # Downloads the artifact the way a player would, unzips it and launches it - on an Apple
   # Silicon Mac and on an Intel Mac, so both halves of the universal app are really run.
   # GitHub's Intel Mac runners have no usable GPU (the app's renderer cannot start there),
@@ -162,6 +501,7 @@ jobs:
   check:
     name: Download and launch (${{ matrix.label }})
     needs: build
+    if: ${{ !cancelled() && needs.build.outputs.artifact_id != '' }}
     strategy:
       fail-fast: false
       matrix:
@@ -169,11 +509,15 @@ jobs:
           - label: Apple Silicon
             runner: macos-latest
             arch: arm64
-            window: true
+            driver: vulkan
+          - label: Apple Silicon native Metal
+            runner: macos-latest
+            arch: arm64
+            driver: metal
           - label: Intel
             runner: macos-15-intel
             arch: x86_64
-            window: false
+            driver: headless
     runs-on: ${{ matrix.runner }}
     timeout-minutes: 20
     steps:
@@ -181,6 +525,7 @@ jobs:
 
       - name: Confirm the runner's architecture
         run: |
+          touch "$RUNNER_TEMP/fresh-download-start"
           sw_vers
           test "$(uname -m)" = "${{ matrix.arch }}"
 
@@ -201,6 +546,7 @@ jobs:
           ls -la extracted
 
       - name: Check the unzipped bundle
+        id: checked_bundle
         run: python3 tools/macos/verify_app.py "extracted/$APP_NAME.app" --expect-signature adhoc --title "Unzipped bundle (${{ matrix.label }})"
 
       # For information only: a development build is not notarized, so Gatekeeper is expected
@@ -212,20 +558,178 @@ jobs:
           echo "spctl exit code: $? (not zero is expected for a build that is not notarized)"
 
       - name: Launch the unzipped app without a window
+        if: matrix.driver != 'metal'
         run: tools/macos/run_selftest.sh "extracted/$APP_NAME.app" "${{ matrix.arch }}-headless" --headless --expect-arch "${{ matrix.arch }}"
 
       - name: Launch the unzipped app with its window
-        if: ${{ matrix.window }}
+        if: matrix.driver == 'vulkan'
         run: tools/macos/run_selftest.sh "extracted/$APP_NAME.app" "${{ matrix.arch }}-window" --expect-arch "${{ matrix.arch }}"
 
+      - name: Time the first ordinary Metal player launch on this fresh machine
+        if: matrix.driver == 'metal'
+        run: python3 tools/macos/measure_fresh_player.py "extracted/$APP_NAME.app" "$RUNNER_TEMP/selftest/player-first"
+      - name: Check read-only library selection and source fallback on the same warm cache
+        if: ${{ !cancelled() && matrix.driver == 'metal' && steps.checked_bundle.outcome == 'success' }}
+        run: |
+          python3 tools/macos/metal_libraries/check_launch.py "extracted/$APP_NAME.app" \
+            "$RUNNER_TEMP/selftest/player-first" "$RUNNER_TEMP/selftest/library-fallback"
+      - name: Verify the opt-in packaged renderer with native audio
+        if: ${{ !cancelled() && matrix.driver == 'metal' && steps.checked_bundle.outcome == 'success' }}
+        run: tools/macos/check_native_selftest.sh "extracted/$APP_NAME.app" "$RUNNER_TEMP/selftest"
+      - name: Check that native shutdown drains queued work and releases all workers
+        if: ${{ !cancelled() && matrix.driver == 'metal' && steps.checked_bundle.outcome == 'success' }}
+        run: |
+          python3 tools/macos/worker_shutdown/check.py "extracted/$APP_NAME.app/Contents/MacOS/LastTrainOutMetal" \
+            "$RUNNER_TEMP/selftest/worker-shutdown" --pack "extracted/$APP_NAME.app/Contents/Resources/$APP_NAME.pck"
+      - name: Verify early rejection of native Metal on Intel
+        if: ${{ !cancelled() && matrix.arch == 'x86_64' && steps.checked_bundle.outcome == 'success' }}
+        run: |
+          out="$RUNNER_TEMP/selftest/intel-metal-selection.log"
+          code=0
+          "extracted/$APP_NAME.app/Contents/MacOS/choose-renderer" metal > "$out" 2>&1 || code=$?
+          test "$code" -eq 2
+          grep -F 'requires the arm64 slice' "$out"
+
+      - name: Validate the packaged M1 diagnostic
+        if: matrix.driver == 'vulkan'
+        run: python3 tools/macos/check_packaged_benchmark.py "extracted/$APP_NAME.app" "$RUNNER_TEMP/selftest"
+
+      - name: Collect crash reports from fresh launches
+        if: always()
+        run: |
+          reports="$HOME/Library/Logs/DiagnosticReports"
+          if [[ -d "$reports" && -f "$RUNNER_TEMP/fresh-download-start" ]]; then
+            mkdir -p "$RUNNER_TEMP/selftest/crash-reports"
+            find "$reports" -type f -newer "$RUNNER_TEMP/fresh-download-start" \
+              \( -iname 'Last Train Out*.ips' -o -iname 'LastTrainOut*.ips' -o -iname 'choose-renderer*.ips' \) \
+              -exec cp -p {} "$RUNNER_TEMP/selftest/crash-reports/" \;
+          fi
       - name: Upload the self-test reports
         if: always()
         uses: actions/upload-artifact@v7
         with:
-          name: selftest-${{ matrix.arch }}
+          name: selftest-${{ matrix.driver == 'metal' && 'arm64-metal' || matrix.arch }}
           path: ${{ runner.temp }}/selftest/
           if-no-files-found: warn
           retention-days: 14
+
+  stress:
+    name: Exported ${{ matrix.backend }} launch and lifetime stress (${{ matrix.series }})
+    strategy:
+      fail-fast: false
+      matrix:
+        series: [mixed, high, low-medium]
+        backend: [Vulkan, Metal]
+    needs: build
+    if: ${{ !cancelled() && needs.build.outputs.artifact_id != '' }}
+    runs-on: macos-latest
+    timeout-minutes: 45
+    env:
+      SOURCE_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/download-artifact@v8
+        with:
+          name: ${{ env.DEV_ZIP }}
+          path: download
+          skip-decompress: true
+      - name: Verify and unpack the exact development artifact
+        run: |
+          ZIP_PATH="$(find download -type f -name '*.zip' | head -n 1)"
+          test -n "$ZIP_PATH"
+          python3 tools/macos/verify_app.py --zip "$ZIP_PATH" --title "Stress ZIP"
+          ditto -x -k "$ZIP_PATH" extracted
+          python3 tools/macos/verify_app.py "extracted/$APP_NAME.app" --expect-signature adhoc --title "Stress bundle"
+      - name: Retain every cold, warm and lifecycle attempt
+        run: |
+          args=()
+          if [[ "${{ matrix.backend }}" = Metal ]]; then args+=(--experimental-backend forward-metal); fi
+          python3 tools/macos/stress_release.py "extracted/$APP_NAME.app" tests/_output/release-stress --series "${{ matrix.series }}" "${args[@]}"
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: ${{ matrix.backend == 'Metal' && 'metal-stress' || 'release-stress' }}-${{ matrix.series }}
+          path: tests/_output/release-stress/
+          retention-days: 30
+
+  metal-evidence:
+    name: Packaged Metal / ${{ matrix.group }}
+    needs: build
+    if: ${{ !cancelled() && needs.build.outputs.artifact_id != '' && needs.build.outputs.render == 'true' }}
+    strategy:
+      fail-fast: false
+      matrix:
+        group: [sampler, seed-first, local-first, drivers, art, journey, library-policy]
+    runs-on: macos-latest
+    timeout-minutes: 55
+    env:
+      SOURCE_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/download-artifact@v8
+        with:
+          name: ${{ env.DEV_ZIP }}
+          path: download
+          skip-decompress: true
+      - name: Check and unpack the shared development build
+        run: |
+          zip=$(find download -type f -name '*.zip' | head -n 1)
+          shasum -a 256 "$zip"
+          ditto -x -k "$zip" extracted
+          codesign --verify --deep --strict "extracted/$APP_NAME.app"
+      - name: Locate the frozen 3.5.3 development build
+        if: matrix.group == 'seed-first' || matrix.group == 'local-first'
+        id: original
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # Artifact retention expires independently of a game revision. Continue
+          # measuring the current app if the original ZIP has aged out. A failed
+          # lookup, an available ZIP that fails to download, or a wrong hash fails CI.
+          id=$(tools/macos/find_reference_artifact.sh 44691491220)
+          echo "id=$id" >> "$GITHUB_OUTPUT"
+          if [[ -z "$id" ]]; then
+            echo 'Historical comparison unavailable. The paired measurements are retained in docs/validation/milestone354.' >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - if: steps.original.outputs.id != ''
+        uses: actions/download-artifact@v8
+        with:
+          name: LastTrainOut-macos-universal.zip
+          run-id: 44691491220
+          github-token: ${{ github.token }}
+          path: original-download
+          skip-decompress: true
+      - if: steps.original.outputs.id != ''
+        run: |
+          zip=$(find original-download -type f -name '*.zip' | head -n 1)
+          echo "af92124afee5a8d44902c94ff5ee6da7c7816650ba727a0d046833b71c38f6f3  $zip" | shasum -a 256 -c -
+          ditto -x -k "$zip" original
+      - name: Run the selected packaged workload
+        env:
+          GROUP: ${{ matrix.group }}
+        run: |
+          app="extracted/$APP_NAME.app"
+          out="$RUNNER_TEMP/metal-evidence"
+          case "$GROUP" in
+            sampler) python3 tools/macos/check_metal_sampler.py "$app" "$out" ;;
+            seed-first|local-first)
+              original=()
+              if [[ -d "original/$APP_NAME.app" ]]; then original+=("original/$APP_NAME.app"); fi
+              python3 tools/macos/measure_metal_startup.py "$app" "$out" "${GROUP%-first}" "${original[@]}"
+              ;;
+            library-policy) python3 tools/macos/metal_library_lab.py "$app" "$out" immediate --matrix ;;
+            drivers) python3 tools/macos/measure_export_drivers.py "$app" "$out" ;;
+            art) python3 tools/macos/compare_metal_art.py "$app" "$out" ;;
+            journey)
+              command -v ffmpeg || brew install ffmpeg
+              python3 tools/macos/record_integration.py "$app" "$out" --exported-native-metal ;;
+          esac
+      - if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: metal-${{ matrix.group }}
+          path: ${{ runner.temp }}/metal-evidence/
+          retention-days: 30
 
   # Optional, manual only. Signs the build that was tested above with a Developer ID
   # Application certificate (hardened runtime), has Apple notarize it and staples the ticket.
@@ -233,9 +737,9 @@ jobs:
   sign:
     name: Sign with Developer ID, notarize and staple
     if: ${{ github.event_name == 'workflow_dispatch' && inputs.sign_and_notarize }}
-    needs: [build, check]
+    needs: [linux, build, check, stress, performance, metal-evidence]
     runs-on: macos-latest
-    timeout-minutes: 60
+    timeout-minutes: 90
     env:
       APP: signed/Last Train Out.app
     steps:

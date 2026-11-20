@@ -1,0 +1,97 @@
+WorkerThreadPool: 5 threads, 4 max low-priority.
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+TextServer: Added interface "Dummy"
+TextServer: Added interface "ICU / HarfBuzz / Graphite (Built-in)"
+Unrecognized output string "misc2" in mapping:
+030000000d0f0000ab01000011010000,Horipad Steam,a:b0,b:b1,back:b10,dpdown:h0.4,dpleft:h0.8,dpright:h0.2,dpup:h0.1,guide:b12,leftshoulder:b6,leftstick:b13,lefttrigger:a5,leftx:a0,lefty:a1,misc2:b2,paddle1:b19,paddle2:b18,paddle3:b15,paddle4:b5,rightshoulder:b7,rightstick:b14,righttrigger:a4,rightx:a2,righty:a3,start:b11,x:b3,y:b4,platform:Linux,
+Unrecognized output string "misc2" in mapping:
+050000000d0f00009601000091000000,Horipad Steam,a:b0,b:b1,back:b10,dpdown:h0.4,dpleft:h0.8,dpright:h0.2,dpup:h0.1,guide:b12,leftshoulder:b6,leftstick:b13,lefttrigger:a5,leftx:a0,lefty:a1,misc2:b2,paddle1:b19,paddle2:b18,paddle3:b15,paddle4:b5,rightshoulder:b7,rightstick:b14,righttrigger:a4,rightx:a2,righty:a3,start:b11,x:b3,y:b4,platform:Linux,
+Unrecognized output string "misc2" in mapping:
+030000007e0500006920000011010000,Nintendo Switch 2 Pro Controller,a:b0,b:b1,back:b14,dpdown:b8,dpleft:b10,dpright:b9,dpup:b11,guide:b16,leftshoulder:b12,leftstick:b15,lefttrigger:b13,leftx:a0,lefty:a1~,misc1:b17,misc2:b20,paddle1:b18,paddle2:b19,rightshoulder:b4,rightstick:b7,righttrigger:b5,rightx:a2,righty:a3~,start:b6,x:b2,y:b3,platform:Linux,
+SDL: Init OK!
+Using "default" pen tablet driver...
+
+TextServer: Primary interface set to: "ICU / HarfBuzz / Graphite (Built-in)".
+CORE API HASH: 937899573
+EDITOR API HASH: 1777164193
+SceneTreeFTI: traversal method DEFAULT
+Loaded system CA certificates
+Loading resource: res://tests/test_runner.tscn
+Loading resource: res://tests/test_runner.gd
+
+=== Last Train Out - automated tests (Godot 4.5.1-stable (official), physics: Jolt Physics) ===
+Loading resource: res://tests/unit/test_scene_retirement.gd
+
+[SUITE] test_scene_retirement.gd
+Loading resource: res://assets/audio/fog/rumble.wav
+Loading resource: res://.godot/imported/rumble.wav-132216cc68021fd18308db261aa6b9d8.sample
+Loading resource: res://assets/audio/fog/wind.wav
+Loading resource: res://.godot/imported/wind.wav-e6dbabd37679e079974d2bed445497eb.sample
+Loading resource: res://assets/audio/fog/breath.wav
+Loading resource: res://.godot/imported/breath.wav-1d862fa562288a1ff066a53d5827fc4c.sample
+Loading resource: res://assets/audio/fog/rumble.wav
+Loading resource: res://.godot/imported/rumble.wav-132216cc68021fd18308db261aa6b9d8.sample
+Loading resource: res://assets/audio/fog/wind.wav
+Loading resource: res://.godot/imported/wind.wav-e6dbabd37679e079974d2bed445497eb.sample
+Loading resource: res://assets/audio/fog/breath.wav
+Loading resource: res://.godot/imported/breath.wav-1d862fa562288a1ff066a53d5827fc4c.sample
+Loading resource: res://assets/audio/fog/rumble.wav
+Loading resource: res://.godot/imported/rumble.wav-132216cc68021fd18308db261aa6b9d8.sample
+Loading resource: res://assets/audio/fog/wind.wav
+Loading resource: res://.godot/imported/wind.wav-e6dbabd37679e079974d2bed445497eb.sample
+Loading resource: res://assets/audio/fog/breath.wav
+Loading resource: res://.godot/imported/breath.wav-1d862fa562288a1ff066a53d5827fc4c.sample
+Loading resource: res://assets/audio/fog/rumble.wav
+Loading resource: res://.godot/imported/rumble.wav-132216cc68021fd18308db261aa6b9d8.sample
+Loading resource: res://assets/audio/fog/wind.wav
+Loading resource: res://.godot/imported/wind.wav-e6dbabd37679e079974d2bed445497eb.sample
+Loading resource: res://assets/audio/fog/breath.wav
+Loading resource: res://.godot/imported/breath.wav-1d862fa562288a1ff066a53d5827fc4c.sample
+Loading resource: res://assets/audio/fog/rumble.wav
+Loading resource: res://.godot/imported/rumble.wav-132216cc68021fd18308db261aa6b9d8.sample
+Loading resource: res://assets/audio/fog/wind.wav
+Loading resource: res://.godot/imported/wind.wav-e6dbabd37679e079974d2bed445497eb.sample
+Loading resource: res://assets/audio/fog/breath.wav
+Loading resource: res://.godot/imported/breath.wav-1d862fa562288a1ff066a53d5827fc4c.sample
+Loading resource: res://assets/audio/fog/rumble.wav
+Loading resource: res://.godot/imported/rumble.wav-132216cc68021fd18308db261aa6b9d8.sample
+Loading resource: res://assets/audio/fog/wind.wav
+Loading resource: res://.godot/imported/wind.wav-e6dbabd37679e079974d2bed445497eb.sample
+Loading resource: res://assets/audio/fog/breath.wav
+Loading resource: res://.godot/imported/breath.wav-1d862fa562288a1ff066a53d5827fc4c.sample
+  PASS  test_stopped_looping_audio_releases_mixer_owners_before_scene_completion
+Loading resource: res://assets/audio/fog/rumble.wav
+Loading resource: res://.godot/imported/rumble.wav-132216cc68021fd18308db261aa6b9d8.sample
+Loading resource: res://assets/audio/fog/wind.wav
+Loading resource: res://.godot/imported/wind.wav-e6dbabd37679e079974d2bed445497eb.sample
+Loading resource: res://assets/audio/fog/breath.wav
+Loading resource: res://.godot/imported/breath.wav-1d862fa562288a1ff066a53d5827fc4c.sample
+  PASS  test_spawned_fixture_cleanup_retires_audio_owners_before_returning
+Loading resource: res://assets/audio/fog/wind.wav
+Loading resource: res://.godot/imported/wind.wav-e6dbabd37679e079974d2bed445497eb.sample
+ERROR: Audio playback retirement timed out: 1 owners remain
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] _process (res://scripts/diagnostics/scene_retirement.gd:40)
+       [1] test_retirement_deadline_requires_main_thread_update_opportunities (res://tests/unit/test_scene_retirement.gd:58)
+       [2] _run (res://tests/test_runner.gd:56)
+       [3] test_spawned_fixture_cleanup_retires_audio_owners_before_returning (res://tests/unit/test_scene_retirement.gd:43)
+       [4] free_spawned (res://tests/framework/test_suite.gd:101)
+       [5] physics_frames (res://tests/framework/test_suite.gd:63)
+  FAIL  test_retirement_deadline_requires_main_thread_update_opportunities
+          ! elapsed wall time alone cannot bypass audio retirement before main-thread updates
+          ! engine error during test: ERROR: Audio playback retirement timed out: 1 owners remain (core/variant/variant_utility.cpp:1024)
+
+=== 2 passed, 1 failed, 3 total (0.6 s wall clock) ===
+
+XR: Clearing primary interface
+XR: Removed interface "Native mobile"
+XR: Removed interface "OpenXR"
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+     at: cleanup (core/object/object.cpp:2514)
+Leaked instance: AudioStreamWAV:9223372069184472472 - Resource path: 
+Leaked instance: AudioStreamPlaybackWAV:9223372069201249698
+Hint: Leaked instances typically happen when nodes are removed from the scene tree (with `remove_child()`) but not freed (with `free()` or `queue_free()`).
+Orphan StringName: servers (static: 1, total: 2)
+Orphan StringName: Master (static: 0, total: 1)
+StringName: 2 unclaimed string names at exit.

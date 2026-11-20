@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "source_commit": "c86d6f31ffaef820e72994cc031a317634bd8c57",
+  "ci_checkout": "aaedb630cb854be1e0ebdf124ee3ca98361be064",
+  "matching_tree": "97f13e5db29d36c69167be1f8e239ef9218ddf98",
+  "completed_benchmark_processes": 8,
+  "sample_count_per_case": 600,
+  "warmup_frames": 120,
+  "all_entry_pan_pipeline_counters_unchanged": true,
+  "final_rendering_driver": "vulkan",
+  "baseline_rendering_driver": "metal",
+  "recording_decode_passed": true,
+  "recording_gameplay_assertions": 11,
+  "recording_sha256": "519c9a74923307e42b4494c11bc3cc93e047f7484046cae405c2b4c000969f58",
+  "scope": "Source comparison and recording; complete builds with different drivers. Source benchmarks run after export/launch, not cold-start measurements."
+}

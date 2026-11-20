@@ -1,0 +1,10 @@
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+
+[journey] PASS J opens actual save ledger
+[journey] PASS Save Game button writes the played world
+[journey] PASS Continue restores actual Harlow stop
+[journey] PASS saved camera perspective recovered
+[journey] PASS saved player support recovered
+[journey] PASS collected supplies survive Continue
+[journey] PASS evacuation note progress restored
+[journey] PASS Continue preserves cargo count without duplication

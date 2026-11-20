@@ -1,0 +1,654 @@
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Started Project initialization (5 steps)[39m[0m
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Scanning file structure...[39m[0m
+[  16% ] [90m[1mfirst_scan_filesystem[22m | Loading global class names...[39m[0m
+[  33% ] [90m[1mfirst_scan_filesystem[22m | Verifying GDExtensions...[39m[0m
+[  50% ] [90m[1mfirst_scan_filesystem[22m | Creating autoload scripts...[39m[0m
+[  66% ] [90m[1mfirst_scan_filesystem[22m | Initializing plugins...[39m[0m
+[  83% ] [90m[1mfirst_scan_filesystem[22m | Starting file scan...[39m[0m
+[92m[ DONE ][39m [1mfirst_scan_filesystem[22m
+[0m
+[   0% ] [90m[1mupdate_scripts_classes[22m | Started Registering global classes... (140 steps)[39m[0m
+[   0% ] [90m[1mupdate_scripts_classes[22m | CameraProfile[39m[0m
+[   0% ] [90m[1mupdate_scripts_classes[22m | CameraRig[39m[0m
+[   1% ] [90m[1mupdate_scripts_classes[22m | CameraZone[39m[0m
+[   2% ] [90m[1mupdate_scripts_classes[22m | ExplorationCamera[39m[0m
+[   2% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[   3% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[   4% ] [90m[1mupdate_scripts_classes[22m | Atmosphere[39m[0m
+[   4% ] [90m[1mupdate_scripts_classes[22m | BoxPart[39m[0m
+[   5% ] [90m[1mupdate_scripts_classes[22m | BoxVisual[39m[0m
+[   6% ] [90m[1mupdate_scripts_classes[22m | CutawayTrigger[39m[0m
+[   7% ] [90m[1mupdate_scripts_classes[22m | CutawayWall[39m[0m
+[   7% ] [90m[1mupdate_scripts_classes[22m | ExplorationDistrict[39m[0m
+[   8% ] [90m[1mupdate_scripts_classes[22m | PropLight[39m[0m
+[   9% ] [90m[1mupdate_scripts_classes[22m | ShelfRack[39m[0m
+[   9% ] [90m[1mupdate_scripts_classes[22m | Stairs[39m[0m
+[  10% ] [90m[1mupdate_scripts_classes[22m | Station[39m[0m
+[  11% ] [90m[1mupdate_scripts_classes[22m | Track[39m[0m
+[  12% ] [90m[1mupdate_scripts_classes[22m | FogAudio[39m[0m
+[  12% ] [90m[1mupdate_scripts_classes[22m | FogConfig[39m[0m
+[  13% ] [90m[1mupdate_scripts_classes[22m | FogExposure[39m[0m
+[  14% ] [90m[1mupdate_scripts_classes[22m | FogFuel[39m[0m
+[  14% ] [90m[1mupdate_scripts_classes[22m | FogHUD[39m[0m
+[  15% ] [90m[1mupdate_scripts_classes[22m | FogPresentation[39m[0m
+[  16% ] [90m[1mupdate_scripts_classes[22m | FogRoute[39m[0m
+[  17% ] [90m[1mupdate_scripts_classes[22m | FogRouteSegment[39m[0m
+[  17% ] [90m[1mupdate_scripts_classes[22m | FogShelter[39m[0m
+[  18% ] [90m[1mupdate_scripts_classes[22m | FogSimulation[39m[0m
+[  19% ] [90m[1mupdate_scripts_classes[22m | GrabRail[39m[0m
+[  19% ] [90m[1mupdate_scripts_classes[22m | Interactable[39m[0m
+[  20% ] [90m[1mupdate_scripts_classes[22m | Ladder[39m[0m
+[  21% ] [90m[1mupdate_scripts_classes[22m | WorldDoor[39m[0m
+[  21% ] [90m[1mupdate_scripts_classes[22m | InventoryModel[39m[0m
+[  22% ] [90m[1mupdate_scripts_classes[22m | ItemCatalog[39m[0m
+[  23% ] [90m[1mupdate_scripts_classes[22m | ItemDefinition[39m[0m
+[  24% ] [90m[1mupdate_scripts_classes[22m | ItemVisual[39m[0m
+[  24% ] [90m[1mupdate_scripts_classes[22m | WorldItem[39m[0m
+[  25% ] [90m[1mupdate_scripts_classes[22m | JourneyController[39m[0m
+[  26% ] [90m[1mupdate_scripts_classes[22m | JourneyDefinition[39m[0m
+[  26% ] [90m[1mupdate_scripts_classes[22m | JourneySave[39m[0m
+[  27% ] [90m[1mupdate_scripts_classes[22m | JourneyStation[39m[0m
+[  28% ] [90m[1mupdate_scripts_classes[22m | JourneyUI[39m[0m
+[  29% ] [90m[1mupdate_scripts_classes[22m | MissionState[39m[0m
+[  29% ] [90m[1mupdate_scripts_classes[22m | RouteTrack[39m[0m
+[  30% ] [90m[1mupdate_scripts_classes[22m | StationBuilding[39m[0m
+[  31% ] [90m[1mupdate_scripts_classes[22m | Game[39m[0m
+[  31% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  32% ] [90m[1mupdate_scripts_classes[22m | Player[39m[0m
+[  33% ] [90m[1mupdate_scripts_classes[22m | PlayerInput[39m[0m
+[  34% ] [90m[1mupdate_scripts_classes[22m | PlayerInteractor[39m[0m
+[  34% ] [90m[1mupdate_scripts_classes[22m | PlayerMovementConfig[39m[0m
+[  35% ] [90m[1mupdate_scripts_classes[22m | PlayerStamina[39m[0m
+[  36% ] [90m[1mupdate_scripts_classes[22m | AssetDressing[39m[0m
+[  36% ] [90m[1mupdate_scripts_classes[22m | DetailBuilder[39m[0m
+[  37% ] [90m[1mupdate_scripts_classes[22m | EnvironmentArt[39m[0m
+[  38% ] [90m[1mupdate_scripts_classes[22m | FabricatedMesh[39m[0m
+[  39% ] [90m[1mupdate_scripts_classes[22m | JourneyStationArt[39m[0m
+[  39% ] [90m[1mupdate_scripts_classes[22m | PresentationEffects[39m[0m
+[  40% ] [90m[1mupdate_scripts_classes[22m | RailAudio[39m[0m
+[  41% ] [90m[1mupdate_scripts_classes[22m | RenderWarmup[39m[0m
+[  41% ] [90m[1mupdate_scripts_classes[22m | StationArt[39m[0m
+[  42% ] [90m[1mupdate_scripts_classes[22m | TrainArt[39m[0m
+[  43% ] [90m[1mupdate_scripts_classes[22m | TrainMechanics[39m[0m
+[  43% ] [90m[1mupdate_scripts_classes[22m | WorkerAnimator[39m[0m
+[  44% ] [90m[1mupdate_scripts_classes[22m | WorkerPose[39m[0m
+[  45% ] [90m[1mupdate_scripts_classes[22m | LootEntry[39m[0m
+[  46% ] [90m[1mupdate_scripts_classes[22m | LootTable[39m[0m
+[  46% ] [90m[1mupdate_scripts_classes[22m | ScavengingSystem[39m[0m
+[  47% ] [90m[1mupdate_scripts_classes[22m | SearchContainer[39m[0m
+[  48% ] [90m[1mupdate_scripts_classes[22m | SupplyInteractable[39m[0m
+[  48% ] [90m[1mupdate_scripts_classes[22m | CameraSettings[39m[0m
+[  49% ] [90m[1mupdate_scripts_classes[22m | GraphicsPreset[39m[0m
+[  50% ] [90m[1mupdate_scripts_classes[22m | GraphicsSettings[39m[0m
+[  51% ] [90m[1mupdate_scripts_classes[22m | DepartureMode[39m[0m
+[  51% ] [90m[1mupdate_scripts_classes[22m | Train[39m[0m
+[  52% ] [90m[1mupdate_scripts_classes[22m | TrainCar[39m[0m
+[  53% ] [90m[1mupdate_scripts_classes[22m | TrainConsole[39m[0m
+[  53% ] [90m[1mupdate_scripts_classes[22m | TrainInterior[39m[0m
+[  54% ] [90m[1mupdate_scripts_classes[22m | DebugMenu[39m[0m
+[  55% ] [90m[1mupdate_scripts_classes[22m | Hud[39m[0m
+[  56% ] [90m[1mupdate_scripts_classes[22m | RailTheme[39m[0m
+[  56% ] [90m[1mupdate_scripts_classes[22m | SupplyUI[39m[0m
+[  57% ] [90m[1mupdate_scripts_classes[22m | FogSystem[39m[0m
+[  58% ] [90m[1mupdate_scripts_classes[22m | InventorySystem[39m[0m
+[  58% ] [90m[1mupdate_scripts_classes[22m | PassengerSystem[39m[0m
+[  59% ] [90m[1mupdate_scripts_classes[22m | TestErrorWatcher[39m[0m
+[  60% ] [90m[1mupdate_scripts_classes[22m | RouteBot[39m[0m
+[  60% ] [90m[1mupdate_scripts_classes[22m | TestSuite[39m[0m
+[  61% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  62% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  63% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  63% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  64% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  65% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  65% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  66% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  67% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  68% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  68% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  69% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  70% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  70% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  71% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  72% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  73% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  73% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  74% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  75% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  75% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  76% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  77% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  78% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  78% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  79% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  80% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  80% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  81% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  82% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  82% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  83% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  84% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  85% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  85% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  86% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  87% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  87% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  88% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  89% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  90% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  90% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  91% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  92% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  92% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  93% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  94% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  95% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  95% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  96% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  97% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  97% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  98% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[92m[ DONE ][39m [1mupdate_scripts_classes[22m
+[0m
+[   0% ] [90m[1m_update_scan_actions[22m | Started Scanning actions... (191 steps)[39m[0m
+[   0% ] [90m[1m_update_scan_actions[22m | breath.wav[39m[0m
+[   0% ] [90m[1m_update_scan_actions[22m | metal.wav[39m[0m
+[   1% ] [90m[1m_update_scan_actions[22m | rumble.wav[39m[0m
+[   1% ] [90m[1m_update_scan_actions[22m | wind.wav[39m[0m
+[   2% ] [90m[1m_update_scan_actions[22m | engine.wav[39m[0m
+[   2% ] [90m[1m_update_scan_actions[22m | latch.wav[39m[0m
+[   3% ] [90m[1m_update_scan_actions[22m | step.wav[39m[0m
+[   3% ] [90m[1m_update_scan_actions[22m | wind.wav[39m[0m
+[   4% ] [90m[1m_update_scan_actions[22m | railway_survivor.glb[39m[0m
+[   4% ] [90m[1m_update_scan_actions[22m | railway_survivor_BootsAnkle-norm.png[39m[0m
+[   5% ] [90m[1m_update_scan_actions[22m | railway_survivor_BootsAnkleM.png[39m[0m
+[   5% ] [90m[1m_update_scan_actions[22m | railway_survivor_brown_eye.png[39m[0m
+[   6% ] [90m[1m_update_scan_actions[22m | railway_survivor_eyebrow001.png[39m[0m
+[   6% ] [90m[1m_update_scan_actions[22m | railway_survivor_eyelashes01.png[39m[0m
+[   7% ] [90m[1m_update_scan_actions[22m | railway_survivor_male_casualsuit05_diffuse.png[39m[0m
+[   7% ] [90m[1m_update_scan_actions[22m | railway_survivor_male_casualsuit05_normal.png[39m[0m
+[   8% ] [90m[1m_update_scan_actions[22m | railway_survivor_middleage_lightskinned_male_diffuse.png[39m[0m
+[   8% ] [90m[1m_update_scan_actions[22m | railway_survivor_short04_diffuse.png[39m[0m
+[   9% ] [90m[1m_update_scan_actions[22m | railway_survivor_skin_male_african_middleage_NRM.png[39m[0m
+[   9% ] [90m[1m_update_scan_actions[22m | broken_pallet.glb[39m[0m
+[  10% ] [90m[1m_update_scan_actions[22m | factory_kit.glb[39m[0m
+[  10% ] [90m[1m_update_scan_actions[22m | factory_kit_modular_factory_facade_brick_arm_2k.jpg[39m[0m
+[  11% ] [90m[1m_update_scan_actions[22m | factory_kit_modular_factory_facade_brick_diff_2k.jpg[39m[0m
+[  11% ] [90m[1m_update_scan_actions[22m | factory_kit_modular_factory_facade_brick_nor_gl_2k.jpg[39m[0m
+[  12% ] [90m[1m_update_scan_actions[22m | factory_kit_modular_factory_facade_doors_arm_2k.jpg[39m[0m
+[  13% ] [90m[1m_update_scan_actions[22m | factory_kit_modular_factory_facade_doors_diff_2k.jpg[39m[0m
+[  13% ] [90m[1m_update_scan_actions[22m | factory_kit_modular_factory_facade_doors_nor_gl_2k.jpg[39m[0m
+[  14% ] [90m[1m_update_scan_actions[22m | factory_kit_modular_factory_facade_garage_arm_2k.jpg[39m[0m
+[  14% ] [90m[1m_update_scan_actions[22m | factory_kit_modular_factory_facade_garage_diff_2k.jpg[39m[0m
+[  15% ] [90m[1m_update_scan_actions[22m | factory_kit_modular_factory_facade_garage_nor_gl_2k.jpg[39m[0m
+[  15% ] [90m[1m_update_scan_actions[22m | factory_kit_modular_factory_facade_trim_01_arm_2k.jpg[39m[0m
+[  16% ] [90m[1m_update_scan_actions[22m | factory_kit_modular_factory_facade_trim_01_diff_2k.jpg[39m[0m
+[  16% ] [90m[1m_update_scan_actions[22m | factory_kit_modular_factory_facade_trim_01_nor_gl_2k.jpg[39m[0m
+[  17% ] [90m[1m_update_scan_actions[22m | factory_kit_modular_factory_facade_windows_arm_2k.jpg[39m[0m
+[  17% ] [90m[1m_update_scan_actions[22m | factory_kit_modular_factory_facade_windows_diff_2k.png[39m[0m
+[  18% ] [90m[1m_update_scan_actions[22m | factory_kit_modular_factory_facade_windows_diff_2k_6.jpg[39m[0m
+[  18% ] [90m[1m_update_scan_actions[22m | factory_kit_modular_factory_facade_windows_nor_gl_2k.jpg[39m[0m
+[  19% ] [90m[1m_update_scan_actions[22m | freight_container.glb[39m[0m
+[  19% ] [90m[1m_update_scan_actions[22m | medical_cabinet.glb[39m[0m
+[  20% ] [90m[1m_update_scan_actions[22m | painted_wooden_bench.glb[39m[0m
+[  20% ] [90m[1m_update_scan_actions[22m | painted_wooden_bench_painted_wooden_bench_arm_1k.jpg[39m[0m
+[  21% ] [90m[1m_update_scan_actions[22m | painted_wooden_bench_painted_wooden_bench_diff_1k.jpg[39m[0m
+[  21% ] [90m[1m_update_scan_actions[22m | painted_wooden_bench_painted_wooden_bench_nor_gl_1k.jpg[39m[0m
+[  22% ] [90m[1m_update_scan_actions[22m | parked_box_van.glb[39m[0m
+[  22% ] [90m[1m_update_scan_actions[22m | station_house_roof.glb[39m[0m
+[  23% ] [90m[1m_update_scan_actions[22m | supply_locker.glb[39m[0m
+[  23% ] [90m[1m_update_scan_actions[22m | supply_toolbox.glb[39m[0m
+[  24% ] [90m[1m_update_scan_actions[22m | waiting_hall_roof.glb[39m[0m
+[  25% ] [90m[1m_update_scan_actions[22m | weed_plant_02.glb[39m[0m
+[  25% ] [90m[1m_update_scan_actions[22m | weed_plant_02_weed_plant_02_arm_1k.jpg[39m[0m
+[  26% ] [90m[1m_update_scan_actions[22m | weed_plant_02_weed_plant_02_diff_1k.png[39m[0m
+[  26% ] [90m[1m_update_scan_actions[22m | weed_plant_02_weed_plant_02_nor_gl_1k.jpg[39m[0m
+[  27% ] [90m[1m_update_scan_actions[22m | bandages.svg[39m[0m
+[  27% ] [90m[1m_update_scan_actions[22m | canned_food.svg[39m[0m
+[  28% ] [90m[1m_update_scan_actions[22m | coal_sack.svg[39m[0m
+[  28% ] [90m[1m_update_scan_actions[22m | fuel_drum.svg[39m[0m
+[  29% ] [90m[1m_update_scan_actions[22m | lantern_oil.svg[39m[0m
+[  29% ] [90m[1m_update_scan_actions[22m | machine_component.svg[39m[0m
+[  30% ] [90m[1m_update_scan_actions[22m | medicine.svg[39m[0m
+[  30% ] [90m[1m_update_scan_actions[22m | scrap_metal.svg[39m[0m
+[  31% ] [90m[1m_update_scan_actions[22m | tools.svg[39m[0m
+[  31% ] [90m[1m_update_scan_actions[22m | beveled_box.glb[39m[0m
+[  32% ] [90m[1m_update_scan_actions[22m | coal_sack.glb[39m[0m
+[  32% ] [90m[1m_update_scan_actions[22m | locomotive_machinery.glb[39m[0m
+[  33% ] [90m[1m_update_scan_actions[22m | rail_wheel.glb[39m[0m
+[  33% ] [90m[1m_update_scan_actions[22m | rail_worker.glb[39m[0m
+[  34% ] [90m[1m_update_scan_actions[22m | asphalt_02_albedo.jpg[39m[0m
+[  34% ] [90m[1m_update_scan_actions[22m | asphalt_02_normal.jpg[39m[0m
+[  35% ] [90m[1m_update_scan_actions[22m | asphalt_02_roughness.jpg[39m[0m
+[  35% ] [90m[1m_update_scan_actions[22m | brick_wall_001_albedo.jpg[39m[0m
+[  36% ] [90m[1m_update_scan_actions[22m | brick_wall_001_normal.jpg[39m[0m
+[  36% ] [90m[1m_update_scan_actions[22m | brick_wall_001_roughness.jpg[39m[0m
+[  37% ] [90m[1m_update_scan_actions[22m | concrete_floor_worn_001_albedo.jpg[39m[0m
+[  38% ] [90m[1m_update_scan_actions[22m | concrete_floor_worn_001_normal.jpg[39m[0m
+[  38% ] [90m[1m_update_scan_actions[22m | concrete_floor_worn_001_roughness.jpg[39m[0m
+[  39% ] [90m[1m_update_scan_actions[22m | denim_fabric_albedo.jpg[39m[0m
+[  39% ] [90m[1m_update_scan_actions[22m | denim_fabric_normal.jpg[39m[0m
+[  40% ] [90m[1m_update_scan_actions[22m | denim_fabric_roughness.jpg[39m[0m
+[  40% ] [90m[1m_update_scan_actions[22m | gravel_stones_albedo.jpg[39m[0m
+[  41% ] [90m[1m_update_scan_actions[22m | gravel_stones_normal.jpg[39m[0m
+[  41% ] [90m[1m_update_scan_actions[22m | gravel_stones_roughness.jpg[39m[0m
+[  42% ] [90m[1m_update_scan_actions[22m | green_metal_rust_albedo.jpg[39m[0m
+[  42% ] [90m[1m_update_scan_actions[22m | green_metal_rust_normal.jpg[39m[0m
+[  43% ] [90m[1m_update_scan_actions[22m | green_metal_rust_roughness.jpg[39m[0m
+[  43% ] [90m[1m_update_scan_actions[22m | rusty_corrugated_iron_albedo.jpg[39m[0m
+[  44% ] [90m[1m_update_scan_actions[22m | rusty_corrugated_iron_normal.jpg[39m[0m
+[  44% ] [90m[1m_update_scan_actions[22m | rusty_corrugated_iron_roughness.jpg[39m[0m
+[  45% ] [90m[1m_update_scan_actions[22m | rusty_painted_metal_albedo.jpg[39m[0m
+[  45% ] [90m[1m_update_scan_actions[22m | rusty_painted_metal_normal.jpg[39m[0m
+[  46% ] [90m[1m_update_scan_actions[22m | rusty_painted_metal_roughness.jpg[39m[0m
+[  46% ] [90m[1m_update_scan_actions[22m | wood_planks_grey_albedo.jpg[39m[0m
+[  47% ] [90m[1m_update_scan_actions[22m | wood_planks_grey_normal.jpg[39m[0m
+[  47% ] [90m[1m_update_scan_actions[22m | wood_planks_grey_roughness.jpg[39m[0m
+[  48% ] [90m[1m_update_scan_actions[22m | Barrel_02.glb[39m[0m
+[  48% ] [90m[1m_update_scan_actions[22m | Barrel_02_Barrel_02_arm_1k.jpg[39m[0m
+[  49% ] [90m[1m_update_scan_actions[22m | Barrel_02_Barrel_02_diff_1k.jpg[39m[0m
+[  50% ] [90m[1m_update_scan_actions[22m | Barrel_02_Barrel_02_nor_gl_1k.jpg[39m[0m
+[  50% ] [90m[1m_update_scan_actions[22m | brass_blowtorch.glb[39m[0m
+[  51% ] [90m[1m_update_scan_actions[22m | brass_blowtorch_brass_blowtorch_arm_1k.jpg[39m[0m
+[  51% ] [90m[1m_update_scan_actions[22m | brass_blowtorch_brass_blowtorch_diff_1k.jpg[39m[0m
+[  52% ] [90m[1m_update_scan_actions[22m | brass_blowtorch_brass_blowtorch_nor_gl_1k.jpg[39m[0m
+[  52% ] [90m[1m_update_scan_actions[22m | caged_hanging_light.glb[39m[0m
+[  53% ] [90m[1m_update_scan_actions[22m | caged_hanging_light_caged_hanging_light_arm_1k.jpg[39m[0m
+[  53% ] [90m[1m_update_scan_actions[22m | caged_hanging_light_caged_hanging_light_diff_1k.jpg[39m[0m
+[  54% ] [90m[1m_update_scan_actions[22m | caged_hanging_light_caged_hanging_light_emissive_1k.jpg[39m[0m
+[  54% ] [90m[1m_update_scan_actions[22m | caged_hanging_light_caged_hanging_light_nor_gl_1k.jpg[39m[0m
+[  55% ] [90m[1m_update_scan_actions[22m | drill_press_01.glb[39m[0m
+[  55% ] [90m[1m_update_scan_actions[22m | drill_press_01_drill_press_01_arm_1k.jpg[39m[0m
+[  56% ] [90m[1m_update_scan_actions[22m | drill_press_01_drill_press_01_diff_1k.jpg[39m[0m
+[  56% ] [90m[1m_update_scan_actions[22m | drill_press_01_drill_press_01_nor_gl_1k.jpg[39m[0m
+[  57% ] [90m[1m_update_scan_actions[22m | hand_truck.glb[39m[0m
+[  57% ] [90m[1m_update_scan_actions[22m | hand_truck_hand_truck_arm_1k.jpg[39m[0m
+[  58% ] [90m[1m_update_scan_actions[22m | hand_truck_hand_truck_diff_1k.jpg[39m[0m
+[  58% ] [90m[1m_update_scan_actions[22m | hand_truck_hand_truck_nor_gl_1k.jpg[39m[0m
+[  59% ] [90m[1m_update_scan_actions[22m | industrial_caged_sconce.glb[39m[0m
+[  59% ] [90m[1m_update_scan_actions[22m | industrial_caged_sconce_industrial_caged_sconce_arm_1k.jpg[39m[0m
+[  60% ] [90m[1m_update_scan_actions[22m | industrial_caged_sconce_industrial_caged_sconce_diff_1k.jpg[39m[0m
+[  60% ] [90m[1m_update_scan_actions[22m | industrial_caged_sconce_industrial_caged_sconce_emissive_1k.jpg[39m[0m
+[  61% ] [90m[1m_update_scan_actions[22m | industrial_caged_sconce_industrial_caged_sconce_nor_gl_1k.jpg[39m[0m
+[  61% ] [90m[1m_update_scan_actions[22m | industrial_storage_cart.glb[39m[0m
+[  62% ] [90m[1m_update_scan_actions[22m | industrial_storage_cart_industrial_storage_cart_arm_1k.jpg[39m[0m
+[  63% ] [90m[1m_update_scan_actions[22m | industrial_storage_cart_industrial_storage_cart_diff_1k.jpg[39m[0m
+[  63% ] [90m[1m_update_scan_actions[22m | industrial_storage_cart_industrial_storage_cart_nor_gl_1k.jpg[39m[0m
+[  64% ] [90m[1m_update_scan_actions[22m | small_oil_can_01.glb[39m[0m
+[  64% ] [90m[1m_update_scan_actions[22m | small_oil_can_01_small_oil_can_01_arm_1k.jpg[39m[0m
+[  65% ] [90m[1m_update_scan_actions[22m | small_oil_can_01_small_oil_can_01_diff_1k.jpg[39m[0m
+[  65% ] [90m[1m_update_scan_actions[22m | small_oil_can_01_small_oil_can_01_nor_gl_1k.jpg[39m[0m
+[  66% ] [90m[1m_update_scan_actions[22m | steel_frame_shelves_02.glb[39m[0m
+[  66% ] [90m[1m_update_scan_actions[22m | steel_frame_shelves_02_steel_frame_shelves_02_arm_1k.jpg[39m[0m
+[  67% ] [90m[1m_update_scan_actions[22m | steel_frame_shelves_02_steel_frame_shelves_02_diff_1k.jpg[39m[0m
+[  67% ] [90m[1m_update_scan_actions[22m | steel_frame_shelves_02_steel_frame_shelves_02_nor_gl_1k.jpg[39m[0m
+[  68% ] [90m[1m_update_scan_actions[22m | vintage_flashlight.glb[39m[0m
+[  68% ] [90m[1m_update_scan_actions[22m | vintage_flashlight_vintage_flashlight_arm_1k.jpg[39m[0m
+[  69% ] [90m[1m_update_scan_actions[22m | vintage_flashlight_vintage_flashlight_diff_1k.jpg[39m[0m
+[  69% ] [90m[1m_update_scan_actions[22m | vintage_flashlight_vintage_flashlight_diff_1k_3.png[39m[0m
+[  70% ] [90m[1m_update_scan_actions[22m | vintage_flashlight_vintage_flashlight_nor_gl_1k.jpg[39m[0m
+[  70% ] [90m[1m_update_scan_actions[22m | vintage_suitcase.glb[39m[0m
+[  71% ] [90m[1m_update_scan_actions[22m | vintage_suitcase_vintage_suitcase_01_arm_1k.jpg[39m[0m
+[  71% ] [90m[1m_update_scan_actions[22m | vintage_suitcase_vintage_suitcase_01_diff_1k.jpg[39m[0m
+[  72% ] [90m[1m_update_scan_actions[22m | vintage_suitcase_vintage_suitcase_01_nor_gl_1k.jpg[39m[0m
+[  72% ] [90m[1m_update_scan_actions[22m | wooden_crate_01.glb[39m[0m
+[  73% ] [90m[1m_update_scan_actions[22m | wooden_crate_01_wooden_crate_01_arm_1k.jpg[39m[0m
+[  73% ] [90m[1m_update_scan_actions[22m | wooden_crate_01_wooden_crate_01_diff_1k.jpg[39m[0m
+[  74% ] [90m[1m_update_scan_actions[22m | wooden_crate_01_wooden_crate_01_nor_gl_1k.jpg[39m[0m
+[  75% ] [90m[1m_update_scan_actions[22m | wooden_military_crate.glb[39m[0m
+[  75% ] [90m[1m_update_scan_actions[22m | wooden_military_crate_wooden_military_crate_arm_1k.jpg[39m[0m
+[  76% ] [90m[1m_update_scan_actions[22m | wooden_military_crate_wooden_military_crate_diff_1k.jpg[39m[0m
+[  76% ] [90m[1m_update_scan_actions[22m | wooden_military_crate_wooden_military_crate_nor_gl_1k.jpg[39m[0m
+[  77% ] [90m[1m_update_scan_actions[22m | worn_metal_rack.glb[39m[0m
+[  77% ] [90m[1m_update_scan_actions[22m | worn_metal_rack_worn_metal_rack_arm_1k.jpg[39m[0m
+[  78% ] [90m[1m_update_scan_actions[22m | worn_metal_rack_worn_metal_rack_diff_1k.jpg[39m[0m
+[  78% ] [90m[1m_update_scan_actions[22m | worn_metal_rack_worn_metal_rack_nor_gl_1k.jpg[39m[0m
+[  79% ] [90m[1m_update_scan_actions[22m | kloofendal_overcast_puresky_1k.hdr[39m[0m
+[  79% ] [90m[1m_update_scan_actions[22m | carriage_door.glb[39m[0m
+[  80% ] [90m[1m_update_scan_actions[22m | carriage_door_green_metal_rust_albedo.jpg[39m[0m
+[  80% ] [90m[1m_update_scan_actions[22m | carriage_door_green_metal_rust_normal.jpg[39m[0m
+[  81% ] [90m[1m_update_scan_actions[22m | carriage_door_green_metal_rust_roughness.png[39m[0m
+[  81% ] [90m[1m_update_scan_actions[22m | carriage_door_wood_planks_grey_albedo.jpg[39m[0m
+[  82% ] [90m[1m_update_scan_actions[22m | carriage_door_wood_planks_grey_normal.jpg[39m[0m
+[  82% ] [90m[1m_update_scan_actions[22m | carriage_door_wood_planks_grey_roughness.png[39m[0m
+[  83% ] [90m[1m_update_scan_actions[22m | control_lever.glb[39m[0m
+[  83% ] [90m[1m_update_scan_actions[22m | control_lever_wood_planks_grey_albedo.jpg[39m[0m
+[  84% ] [90m[1m_update_scan_actions[22m | control_lever_wood_planks_grey_normal.jpg[39m[0m
+[  84% ] [90m[1m_update_scan_actions[22m | control_lever_wood_planks_grey_roughness.png[39m[0m
+[  85% ] [90m[1m_update_scan_actions[22m | crew_car_finish.glb[39m[0m
+[  85% ] [90m[1m_update_scan_actions[22m | crew_car_finish_green_metal_rust_albedo.jpg[39m[0m
+[  86% ] [90m[1m_update_scan_actions[22m | crew_car_finish_green_metal_rust_normal.jpg[39m[0m
+[  86% ] [90m[1m_update_scan_actions[22m | crew_car_finish_green_metal_rust_roughness.png[39m[0m
+[  87% ] [90m[1m_update_scan_actions[22m | crew_car_finish_wood_planks_grey_albedo.jpg[39m[0m
+[  88% ] [90m[1m_update_scan_actions[22m | crew_car_finish_wood_planks_grey_normal.jpg[39m[0m
+[  88% ] [90m[1m_update_scan_actions[22m | crew_car_finish_wood_planks_grey_roughness.png[39m[0m
+[  89% ] [90m[1m_update_scan_actions[22m | locomotive_cab_finish.glb[39m[0m
+[  89% ] [90m[1m_update_scan_actions[22m | locomotive_cab_finish_green_metal_rust_albedo.jpg[39m[0m
+[  90% ] [90m[1m_update_scan_actions[22m | locomotive_cab_finish_green_metal_rust_normal.jpg[39m[0m
+[  90% ] [90m[1m_update_scan_actions[22m | locomotive_cab_finish_green_metal_rust_roughness.png[39m[0m
+[  91% ] [90m[1m_update_scan_actions[22m | locomotive_cab_finish_wood_planks_grey_albedo.jpg[39m[0m
+[  91% ] [90m[1m_update_scan_actions[22m | locomotive_cab_finish_wood_planks_grey_normal.jpg[39m[0m
+[  92% ] [90m[1m_update_scan_actions[22m | locomotive_cab_finish_wood_planks_grey_roughness.png[39m[0m
+[  92% ] [90m[1m_update_scan_actions[22m | steam_locomotive.glb[39m[0m
+[  93% ] [90m[1m_update_scan_actions[22m | steam_locomotive_rusty_painted_metal_albedo.jpg[39m[0m
+[  93% ] [90m[1m_update_scan_actions[22m | steam_locomotive_rusty_painted_metal_albedo_3.jpg[39m[0m
+[  94% ] [90m[1m_update_scan_actions[22m | steam_locomotive_rusty_painted_metal_albedo_4.jpg[39m[0m
+[  94% ] [90m[1m_update_scan_actions[22m | steam_locomotive_rusty_painted_metal_albedo_5.jpg[39m[0m
+[  95% ] [90m[1m_update_scan_actions[22m | steam_locomotive_rusty_painted_metal_albedo_6.jpg[39m[0m
+[  95% ] [90m[1m_update_scan_actions[22m | steam_locomotive_rusty_painted_metal_albedo_7.jpg[39m[0m
+[  96% ] [90m[1m_update_scan_actions[22m | steam_locomotive_rusty_painted_metal_albedo_8.jpg[39m[0m
+[  96% ] [90m[1m_update_scan_actions[22m | steam_locomotive_rusty_painted_metal_albedo_9.jpg[39m[0m
+[  97% ] [90m[1m_update_scan_actions[22m | steam_locomotive_rusty_painted_metal_albedo_10.jpg[39m[0m
+[  97% ] [90m[1m_update_scan_actions[22m | steam_locomotive_rusty_painted_metal_normal.jpg[39m[0m
+[  98% ] [90m[1m_update_scan_actions[22m | steam_locomotive_rusty_painted_metal_roughness.png[39m[0m
+[  98% ] [90m[1m_update_scan_actions[22m | icon.svg[39m[0m
+[92m[ DONE ][39m [1m_update_scan_actions[22m
+[0m
+[   0% ] [90m[1mreimport[22m | Started (Re)Importing Assets (36 steps)[39m[0m
+[   0% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   2% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   5% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   8% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  10% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  13% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  16% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  18% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  21% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  24% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  27% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  29% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  32% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  35% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  37% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  40% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  43% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  45% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  48% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  51% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  54% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  56% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  59% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  62% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  64% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  67% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  70% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  72% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  75% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  78% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  81% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  83% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  86% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  89% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  91% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[  94% ] [90m[1mreimport[22m | Preparing files to reimport...[39m[0m
+[   0% ] [90m[1mreimport[22m | Executing pre-reimport operations...[39m[0m
+[   0% ] [90m[1mpreload_reimporting_scene[22m | Started Preparing scenes for reload (1 steps)[39m[0m
+[   0% ] [90m[1mpreload_reimporting_scene[22m | Analyzing scene [empty][39m[0m
+[  50% ] [90m[1mpreload_reimporting_scene[22m | Preparation done.[39m[0m
+[92m[ DONE ][39m [1mpreload_reimporting_scene[22m
+[0m
+[   0% ] [90m[1mreimport[22m | brass_blowtorch.glb[39m[0m
+[   0% ] [90m[1mimport[22m | Started Import Scene (104 steps)[39m[0m
+[   0% ] [90m[1mimport[22m | Importing Scene...[39m[0m
+[   1% ] [90m[1mimport[22m | Running Custom Script...[39m[0m
+[  99% ] [90m[1mimport[22m | Saving...[39m[0m
+[92m[ DONE ][39m [1mimport[22m
+[0m
+[   2% ] [90m[1mreimport[22m | caged_hanging_light.glb[39m[0m
+[   0% ] [90m[1mimport[22m | Started Import Scene (104 steps)[39m[0m
+[   0% ] [90m[1mimport[22m | Importing Scene...[39m[0m
+[   1% ] [90m[1mimport[22m | Running Custom Script...[39m[0m
+[  99% ] [90m[1mimport[22m | Saving...[39m[0m
+[92m[ DONE ][39m [1mimport[22m
+[0m
+[   5% ] [90m[1mreimport[22m | drill_press_01.glb[39m[0m
+[   0% ] [90m[1mimport[22m | Started Import Scene (104 steps)[39m[0m
+[   0% ] [90m[1mimport[22m | Importing Scene...[39m[0m
+[   1% ] [90m[1mimport[22m | Running Custom Script...[39m[0m
+[  99% ] [90m[1mimport[22m | Saving...[39m[0m
+[92m[ DONE ][39m [1mimport[22m
+[0m
+[   8% ] [90m[1mreimport[22m | hand_truck.glb[39m[0m
+[   0% ] [90m[1mimport[22m | Started Import Scene (104 steps)[39m[0m
+[   0% ] [90m[1mimport[22m | Importing Scene...[39m[0m
+[   1% ] [90m[1mimport[22m | Running Custom Script...[39m[0m
+[  99% ] [90m[1mimport[22m | Saving...[39m[0m
+[92m[ DONE ][39m [1mimport[22m
+[0m
+[  10% ] [90m[1mreimport[22m | industrial_caged_sconce.glb[39m[0m
+[   0% ] [90m[1mimport[22m | Started Import Scene (104 steps)[39m[0m
+[   0% ] [90m[1mimport[22m | Importing Scene...[39m[0m
+[   1% ] [90m[1mimport[22m | Running Custom Script...[39m[0m
+[  99% ] [90m[1mimport[22m | Saving...[39m[0m
+[92m[ DONE ][39m [1mimport[22m
+[0m
+[  13% ] [90m[1mreimport[22m | industrial_storage_cart.glb[39m[0m
+[   0% ] [90m[1mimport[22m | Started Import Scene (104 steps)[39m[0m
+[   0% ] [90m[1mimport[22m | Importing Scene...[39m[0m
+[   1% ] [90m[1mimport[22m | Running Custom Script...[39m[0m
+[  99% ] [90m[1mimport[22m | Saving...[39m[0m
+[92m[ DONE ][39m [1mimport[22m
+[0m
+[  16% ] [90m[1mreimport[22m | small_oil_can_01.glb[39m[0m
+[   0% ] [90m[1mimport[22m | Started Import Scene (104 steps)[39m[0m
+[   0% ] [90m[1mimport[22m | Importing Scene...[39m[0m
+[   1% ] [90m[1mimport[22m | Running Custom Script...[39m[0m
+[  99% ] [90m[1mimport[22m | Saving...[39m[0m
+[92m[ DONE ][39m [1mimport[22m
+[0m
+[  18% ] [90m[1mreimport[22m | steel_frame_shelves_02.glb[39m[0m
+[   0% ] [90m[1mimport[22m | Started Import Scene (104 steps)[39m[0m
+[   0% ] [90m[1mimport[22m | Importing Scene...[39m[0m
+[   1% ] [90m[1mimport[22m | Running Custom Script...[39m[0m
+[  99% ] [90m[1mimport[22m | Saving...[39m[0m
+[92m[ DONE ][39m [1mimport[22m
+[0m
+[  21% ] [90m[1mreimport[22m | vintage_flashlight.glb[39m[0m
+[   0% ] [90m[1mimport[22m | Started Import Scene (104 steps)[39m[0m
+[   0% ] [90m[1mimport[22m | Importing Scene...[39m[0m
+[   1% ] [90m[1mimport[22m | Running Custom Script...[39m[0m
+[  99% ] [90m[1mimport[22m | Saving...[39m[0m
+[92m[ DONE ][39m [1mimport[22m
+[0m
+[  24% ] [90m[1mreimport[22m | vintage_suitcase.glb[39m[0m
+[   0% ] [90m[1mimport[22m | Started Import Scene (104 steps)[39m[0m
+[   0% ] [90m[1mimport[22m | Importing Scene...[39m[0m
+[   1% ] [90m[1mimport[22m | Running Custom Script...[39m[0m
+[  99% ] [90m[1mimport[22m | Saving...[39m[0m
+[92m[ DONE ][39m [1mimport[22m
+[0m
+[  27% ] [90m[1mreimport[22m | wooden_crate_01.glb[39m[0m
+[   0% ] [90m[1mimport[22m | Started Import Scene (104 steps)[39m[0m
+[   0% ] [90m[1mimport[22m | Importing Scene...[39m[0m
+[   1% ] [90m[1mimport[22m | Running Custom Script...[39m[0m
+[  99% ] [90m[1mimport[22m | Saving...[39m[0m
+[92m[ DONE ][39m [1mimport[22m
+[0m
+[  29% ] [90m[1mreimport[22m | wooden_military_crate.glb[39m[0m
+[   0% ] [90m[1mimport[22m | Started Import Scene (104 steps)[39m[0m
+[   0% ] [90m[1mimport[22m | Importing Scene...[39m[0m
+[   1% ] [90m[1mimport[22m | Running Custom Script...[39m[0m
+[  99% ] [90m[1mimport[22m | Saving...[39m[0m
+[92m[ DONE ][39m [1mimport[22m
+[0m
+[  32% ] [90m[1mreimport[22m | worn_metal_rack.glb[39m[0m
+[   0% ] [90m[1mimport[22m | Started Import Scene (104 steps)[39m[0m
+[   0% ] [90m[1mimport[22m | Importing Scene...[39m[0m
+[   1% ] [90m[1mimport[22m | Running Custom Script...[39m[0m
+[  99% ] [90m[1mimport[22m | Saving...[39m[0m
+[92m[ DONE ][39m [1mimport[22m
+[0m
+[  35% ] [90m[1mreimport[22m | carriage_door.glb[39m[0m
+[   0% ] [90m[1mimport[22m | Started Import Scene (104 steps)[39m[0m
+[   0% ] [90m[1mimport[22m | Importing Scene...[39m[0m
+[   1% ] [90m[1mimport[22m | Running Custom Script...[39m[0m
+[  99% ] [90m[1mimport[22m | Saving...[39m[0m
+[92m[ DONE ][39m [1mimport[22m
+[0m
+[  37% ] [90m[1mreimport[22m | control_lever.glb[39m[0m
+[   0% ] [90m[1mimport[22m | Started Import Scene (104 steps)[39m[0m
+[   0% ] [90m[1mimport[22m | Importing Scene...[39m[0m
+[   1% ] [90m[1mimport[22m | Running Custom Script...[39m[0m
+[  99% ] [90m[1mimport[22m | Saving...[39m[0m
+[92m[ DONE ][39m [1mimport[22m
+[0m
+[  40% ] [90m[1mreimport[22m | crew_car_finish.glb[39m[0m
+[   0% ] [90m[1mimport[22m | Started Import Scene (104 steps)[39m[0m
+[   0% ] [90m[1mimport[22m | Importing Scene...[39m[0m
+[   1% ] [90m[1mimport[22m | Running Custom Script...[39m[0m
+[  99% ] [90m[1mimport[22m | Saving...[39m[0m
+[92m[ DONE ][39m [1mimport[22m
+[0m
+[  43% ] [90m[1mreimport[22m | locomotive_cab_finish.glb[39m[0m
+[   0% ] [90m[1mimport[22m | Started Import Scene (104 steps)[39m[0m
+[   0% ] [90m[1mimport[22m | Importing Scene...[39m[0m
+[   1% ] [90m[1mimport[22m | Running Custom Script...[39m[0m
+[  99% ] [90m[1mimport[22m | Saving...[39m[0m
+[92m[ DONE ][39m [1mimport[22m
+[0m
+[  45% ] [90m[1mreimport[22m | steam_locomotive.glb[39m[0m
+[   0% ] [90m[1mimport[22m | Started Import Scene (104 steps)[39m[0m
+[   0% ] [90m[1mimport[22m | Importing Scene...[39m[0m
+[   1% ] [90m[1mimport[22m | Running Custom Script...[39m[0m
+[  99% ] [90m[1mimport[22m | Saving...[39m[0m
+[92m[ DONE ][39m [1mimport[22m
+[0m
+[  48% ] [90m[1mreimport[22m | railway_survivor.glb[39m[0m
+[   0% ] [90m[1mimport[22m | Started Import Scene (104 steps)[39m[0m
+[   0% ] [90m[1mimport[22m | Importing Scene...[39m[0m
+[   1% ] [90m[1mimport[22m | Running Custom Script...[39m[0m
+[  99% ] [90m[1mimport[22m | Saving...[39m[0m
+[92m[ DONE ][39m [1mimport[22m
+[0m
+[  51% ] [90m[1mreimport[22m | broken_pallet.glb[39m[0m
+[   0% ] [90m[1mimport[22m | Started Import Scene (104 steps)[39m[0m
+[   0% ] [90m[1mimport[22m | Importing Scene...[39m[0m
+[   1% ] [90m[1mimport[22m | Running Custom Script...[39m[0m
+[  99% ] [90m[1mimport[22m | Saving...[39m[0m
+[92m[ DONE ][39m [1mimport[22m
+[0m
+[  54% ] [90m[1mreimport[22m | factory_kit.glb[39m[0m
+[   0% ] [90m[1mimport[22m | Started Import Scene (104 steps)[39m[0m
+[   0% ] [90m[1mimport[22m | Importing Scene...[39m[0m
+[   1% ] [90m[1mimport[22m | Running Custom Script...[39m[0m
+[  99% ] [90m[1mimport[22m | Saving...[39m[0m
+[92m[ DONE ][39m [1mimport[22m
+[0m
+[  56% ] [90m[1mreimport[22m | freight_container.glb[39m[0m
+[   0% ] [90m[1mimport[22m | Started Import Scene (104 steps)[39m[0m
+[   0% ] [90m[1mimport[22m | Importing Scene...[39m[0m
+[   1% ] [90m[1mimport[22m | Running Custom Script...[39m[0m
+[  99% ] [90m[1mimport[22m | Saving...[39m[0m
+[92m[ DONE ][39m [1mimport[22m
+[0m
+[  59% ] [90m[1mreimport[22m | medical_cabinet.glb[39m[0m
+[   0% ] [90m[1mimport[22m | Started Import Scene (104 steps)[39m[0m
+[   0% ] [90m[1mimport[22m | Importing Scene...[39m[0m
+[   1% ] [90m[1mimport[22m | Running Custom Script...[39m[0m
+[  99% ] [90m[1mimport[22m | Saving...[39m[0m
+[92m[ DONE ][39m [1mimport[22m
+[0m
+[  62% ] [90m[1mreimport[22m | painted_wooden_bench.glb[39m[0m
+[   0% ] [90m[1mimport[22m | Started Import Scene (104 steps)[39m[0m
+[   0% ] [90m[1mimport[22m | Importing Scene...[39m[0m
+[   1% ] [90m[1mimport[22m | Running Custom Script...[39m[0m
+[  99% ] [90m[1mimport[22m | Saving...[39m[0m
+[92m[ DONE ][39m [1mimport[22m
+[0m
+[  64% ] [90m[1mreimport[22m | parked_box_van.glb[39m[0m
+[   0% ] [90m[1mimport[22m | Started Import Scene (104 steps)[39m[0m
+[   0% ] [90m[1mimport[22m | Importing Scene...[39m[0m
+[   1% ] [90m[1mimport[22m | Running Custom Script...[39m[0m
+[  99% ] [90m[1mimport[22m | Saving...[39m[0m
+[92m[ DONE ][39m [1mimport[22m
+[0m
+[  67% ] [90m[1mreimport[22m | station_house_roof.glb[39m[0m
+[   0% ] [90m[1mimport[22m | Started Import Scene (104 steps)[39m[0m
+[   0% ] [90m[1mimport[22m | Importing Scene...[39m[0m
+[   1% ] [90m[1mimport[22m | Running Custom Script...[39m[0m
+[  99% ] [90m[1mimport[22m | Saving...[39m[0m
+[92m[ DONE ][39m [1mimport[22m
+[0m
+[  70% ] [90m[1mreimport[22m | supply_locker.glb[39m[0m
+[   0% ] [90m[1mimport[22m | Started Import Scene (104 steps)[39m[0m
+[   0% ] [90m[1mimport[22m | Importing Scene...[39m[0m
+[   1% ] [90m[1mimport[22m | Running Custom Script...[39m[0m
+[  99% ] [90m[1mimport[22m | Saving...[39m[0m
+[92m[ DONE ][39m [1mimport[22m
+[0m
+[  72% ] [90m[1mreimport[22m | supply_toolbox.glb[39m[0m
+[   0% ] [90m[1mimport[22m | Started Import Scene (104 steps)[39m[0m
+[   0% ] [90m[1mimport[22m | Importing Scene...[39m[0m
+[   1% ] [90m[1mimport[22m | Running Custom Script...[39m[0m
+[  99% ] [90m[1mimport[22m | Saving...[39m[0m
+[92m[ DONE ][39m [1mimport[22m
+[0m
+[  75% ] [90m[1mreimport[22m | waiting_hall_roof.glb[39m[0m
+[   0% ] [90m[1mimport[22m | Started Import Scene (104 steps)[39m[0m
+[   0% ] [90m[1mimport[22m | Importing Scene...[39m[0m
+[   1% ] [90m[1mimport[22m | Running Custom Script...[39m[0m
+[  99% ] [90m[1mimport[22m | Saving...[39m[0m
+[92m[ DONE ][39m [1mimport[22m
+[0m
+[  78% ] [90m[1mreimport[22m | weed_plant_02.glb[39m[0m
+[   0% ] [90m[1mimport[22m | Started Import Scene (104 steps)[39m[0m
+[   0% ] [90m[1mimport[22m | Importing Scene...[39m[0m
+[   1% ] [90m[1mimport[22m | Running Custom Script...[39m[0m
+[  99% ] [90m[1mimport[22m | Saving...[39m[0m
+[92m[ DONE ][39m [1mimport[22m
+[0m
+[  81% ] [90m[1mreimport[22m | beveled_box.glb[39m[0m
+[   0% ] [90m[1mimport[22m | Started Import Scene (104 steps)[39m[0m
+[   0% ] [90m[1mimport[22m | Importing Scene...[39m[0m
+[   1% ] [90m[1mimport[22m | Running Custom Script...[39m[0m
+[  99% ] [90m[1mimport[22m | Saving...[39m[0m
+[92m[ DONE ][39m [1mimport[22m
+[0m
+[  83% ] [90m[1mreimport[22m | coal_sack.glb[39m[0m
+[   0% ] [90m[1mimport[22m | Started Import Scene (104 steps)[39m[0m
+[   0% ] [90m[1mimport[22m | Importing Scene...[39m[0m
+[   1% ] [90m[1mimport[22m | Running Custom Script...[39m[0m
+[  99% ] [90m[1mimport[22m | Saving...[39m[0m
+[92m[ DONE ][39m [1mimport[22m
+[0m
+[  86% ] [90m[1mreimport[22m | locomotive_machinery.glb[39m[0m
+[   0% ] [90m[1mimport[22m | Started Import Scene (104 steps)[39m[0m
+[   0% ] [90m[1mimport[22m | Importing Scene...[39m[0m
+[   1% ] [90m[1mimport[22m | Running Custom Script...[39m[0m
+[  99% ] [90m[1mimport[22m | Saving...[39m[0m
+[92m[ DONE ][39m [1mimport[22m
+[0m
+[  89% ] [90m[1mreimport[22m | rail_wheel.glb[39m[0m
+[   0% ] [90m[1mimport[22m | Started Import Scene (104 steps)[39m[0m
+[   0% ] [90m[1mimport[22m | Importing Scene...[39m[0m
+[   1% ] [90m[1mimport[22m | Running Custom Script...[39m[0m
+[  99% ] [90m[1mimport[22m | Saving...[39m[0m
+[92m[ DONE ][39m [1mimport[22m
+[0m
+[  91% ] [90m[1mreimport[22m | rail_worker.glb[39m[0m
+[   0% ] [90m[1mimport[22m | Started Import Scene (104 steps)[39m[0m
+[   0% ] [90m[1mimport[22m | Importing Scene...[39m[0m
+[   1% ] [90m[1mimport[22m | Running Custom Script...[39m[0m
+[  99% ] [90m[1mimport[22m | Saving...[39m[0m
+[92m[ DONE ][39m [1mimport[22m
+[0m
+[  94% ] [90m[1mreimport[22m | Barrel_02.glb[39m[0m
+[   0% ] [90m[1mimport[22m | Started Import Scene (104 steps)[39m[0m
+[   0% ] [90m[1mimport[22m | Importing Scene...[39m[0m
+[   1% ] [90m[1mimport[22m | Running Custom Script...[39m[0m
+[  99% ] [90m[1mimport[22m | Saving...[39m[0m
+[92m[ DONE ][39m [1mimport[22m
+[0m
+[  97% ] [90m[1mreimport[22m | Finalizing Asset Import...[39m[0m
+[92m[ DONE ][39m [1mreimport[22m
+[0m
+[   0% ] [90m[1mreimport[22m | Started (Re)Importing Assets (36 steps)[39m[0m
+[   0% ] [90m[1mreimport[22m | Executing post-reimport operations...[39m[0m
+[92m[ DONE ][39m [1mreimport[22m
+[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Started Loading editor (5 steps)[39m[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Loading editor layout...[39m[0m
+[92m[ DONE ][39m [1mloading_editor_layout[22m
+[0m

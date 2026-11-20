@@ -1,0 +1,2207 @@
+{
+  "status": {
+    "name": "startup-3",
+    "command": [
+      "/Users/runner/godot-ci/Godot.app/Contents/MacOS/Godot",
+      "--verbose",
+      "--path",
+      "/Users/runner/work/last-train-out/last-train-out",
+      "--audio-driver",
+      "Dummy",
+      "--resolution",
+      "960x540",
+      "--script",
+      "res://scripts/diagnostics/startup_probe.gd",
+      "--",
+      "--graphics=low",
+      "--profile-phases",
+      "--out=/Users/runner/work/last-train-out/last-train-out/tests/_output/startup/startup-3.json"
+    ],
+    "returncode": 0,
+    "wall_seconds": 23.420698458000004,
+    "sampling_profiler": false,
+    "report_exists": true,
+    "peak_rss_bytes": 521863168,
+    "engine_diagnostics": []
+  },
+  "rss": [
+    {
+      "seconds": 0.0062864160000231095,
+      "bytes": 294912
+    },
+    {
+      "seconds": 0.5603274160000069,
+      "bytes": 154042368
+    },
+    {
+      "seconds": 1.1296681659999877,
+      "bytes": 171425792
+    },
+    {
+      "seconds": 1.6534542500000384,
+      "bytes": 175390720
+    },
+    {
+      "seconds": 2.179955457999995,
+      "bytes": 176750592
+    },
+    {
+      "seconds": 2.7752340829999866,
+      "bytes": 177373184
+    },
+    {
+      "seconds": 3.334821583000007,
+      "bytes": 178044928
+    },
+    {
+      "seconds": 3.9199359579999964,
+      "bytes": 221544448
+    },
+    {
+      "seconds": 4.472600957999987,
+      "bytes": 308019200
+    },
+    {
+      "seconds": 5.091032583000015,
+      "bytes": 352387072
+    },
+    {
+      "seconds": 5.637143750000007,
+      "bytes": 375177216
+    },
+    {
+      "seconds": 6.159859707999999,
+      "bytes": 380321792
+    },
+    {
+      "seconds": 6.751792249999994,
+      "bytes": 386842624
+    },
+    {
+      "seconds": 7.2751694579999935,
+      "bytes": 395509760
+    },
+    {
+      "seconds": 7.897267833000001,
+      "bytes": 399179776
+    },
+    {
+      "seconds": 8.459825791000014,
+      "bytes": 406667264
+    },
+    {
+      "seconds": 9.052144250000026,
+      "bytes": 413188096
+    },
+    {
+      "seconds": 9.650182333000032,
+      "bytes": 414629888
+    },
+    {
+      "seconds": 10.275096582999993,
+      "bytes": 416546816
+    },
+    {
+      "seconds": 10.904662625000014,
+      "bytes": 422494208
+    },
+    {
+      "seconds": 11.413920958000006,
+      "bytes": 434012160
+    },
+    {
+      "seconds": 11.959857916000033,
+      "bytes": 440401920
+    },
+    {
+      "seconds": 12.53298004100003,
+      "bytes": 511148032
+    },
+    {
+      "seconds": 13.09803283299999,
+      "bytes": 511148032
+    },
+    {
+      "seconds": 13.746300708000035,
+      "bytes": 511148032
+    },
+    {
+      "seconds": 14.385527582999998,
+      "bytes": 511148032
+    },
+    {
+      "seconds": 14.920893958000022,
+      "bytes": 511148032
+    },
+    {
+      "seconds": 15.53098054100002,
+      "bytes": 515932160
+    },
+    {
+      "seconds": 16.084613916000023,
+      "bytes": 515948544
+    },
+    {
+      "seconds": 16.717479291000018,
+      "bytes": 515948544
+    },
+    {
+      "seconds": 17.349613791000024,
+      "bytes": 515948544
+    },
+    {
+      "seconds": 17.915767666000022,
+      "bytes": 515948544
+    },
+    {
+      "seconds": 18.527724207999995,
+      "bytes": 515948544
+    },
+    {
+      "seconds": 19.15703316600002,
+      "bytes": 516145152
+    },
+    {
+      "seconds": 19.786693500000013,
+      "bytes": 516145152
+    },
+    {
+      "seconds": 20.404061833000014,
+      "bytes": 516145152
+    },
+    {
+      "seconds": 21.058489500000007,
+      "bytes": 520077312
+    },
+    {
+      "seconds": 21.715708208000024,
+      "bytes": 520077312
+    },
+    {
+      "seconds": 22.289425916000027,
+      "bytes": 521863168
+    },
+    {
+      "seconds": 22.888639291000004,
+      "bytes": 498204672
+    }
+  ],
+  "stdout_arrival_timeline": [
+    {
+      "process_wall_ms": 192.06883300000754,
+      "line": "Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org"
+    },
+    {
+      "process_wall_ms": 273.55729100003146,
+      "line": "Vulkan 1.2.283 - Forward+ - Using Device #0: Apple - Apple Paravirtual device"
+    },
+    {
+      "process_wall_ms": 3852.723875000038,
+      "line": "Loading resource: res://scripts/diagnostics/startup_probe.gd"
+    },
+    {
+      "process_wall_ms": 3949.1689580000298,
+      "line": "[startup] {\"nodes\":0.0,\"phase\":\"script_initialized\",\"static_bytes\":58384559,\"texture_bytes\":0.0,\"ticks_ms\":3768}"
+    },
+    {
+      "process_wall_ms": 4016.488874999993,
+      "line": "[startup] {\"nodes\":1.0,\"phase\":\"load_begin\",\"static_bytes\":58391575,\"texture_bytes\":0.0,\"ticks_ms\":3836}"
+    },
+    {
+      "process_wall_ms": 4016.5981659999943,
+      "line": "Loading resource: res://scenes/missions/harlow_escape.tscn"
+    },
+    {
+      "process_wall_ms": 4018.2305829999905,
+      "line": "Loading resource: res://scenes/main/main.tscn"
+    },
+    {
+      "process_wall_ms": 4032.4390000000108,
+      "line": "Loading resource: res://scripts/main/game.gd"
+    },
+    {
+      "process_wall_ms": 4068.7799160000395,
+      "line": "Loading resource: res://resources/fog/standard.tres"
+    },
+    {
+      "process_wall_ms": 4068.8267080000173,
+      "line": "Loading resource: res://scripts/fog/fog_config.gd"
+    },
+    {
+      "process_wall_ms": 4075.7024580000234,
+      "line": "Loading resource: res://resources/journey/escape_fog.tres"
+    },
+    {
+      "process_wall_ms": 4094.0932910000356,
+      "line": "Loading resource: res://resources/materials/platform_concrete.tres"
+    },
+    {
+      "process_wall_ms": 4094.1484580000065,
+      "line": "Loading resource: res://assets/pbr/concrete_floor_worn_001_albedo.jpg"
+    },
+    {
+      "process_wall_ms": 4094.3677500000035,
+      "line": "Loading resource: res://.godot/imported/concrete_floor_worn_001_albedo.jpg-3f77a254960a3cb272a82f8934c9d09b.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4099.3419580000245,
+      "line": "Loading resource: res://assets/pbr/concrete_floor_worn_001_normal.jpg"
+    },
+    {
+      "process_wall_ms": 4099.66487500003,
+      "line": "Loading resource: res://.godot/imported/concrete_floor_worn_001_normal.jpg-cb84dc9415e5f570bb309a539606a9f2.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4104.907083,
+      "line": "Loading resource: res://assets/pbr/concrete_floor_worn_001_roughness.jpg"
+    },
+    {
+      "process_wall_ms": 4105.214291000038,
+      "line": "Loading resource: res://.godot/imported/concrete_floor_worn_001_roughness.jpg-ea220afa850f9a98e1d77917eba0026f.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4108.3357500000375,
+      "line": "Loading resource: res://resources/materials/ground_asphalt.tres"
+    },
+    {
+      "process_wall_ms": 4108.400500000016,
+      "line": "Loading resource: res://assets/pbr/asphalt_02_albedo.jpg"
+    },
+    {
+      "process_wall_ms": 4108.876415999986,
+      "line": "Loading resource: res://.godot/imported/asphalt_02_albedo.jpg-f6d3596155d4884cf4340198fd0459d4.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4112.036791000037,
+      "line": "Loading resource: res://assets/pbr/asphalt_02_normal.jpg"
+    },
+    {
+      "process_wall_ms": 4112.544208000031,
+      "line": "Loading resource: res://.godot/imported/asphalt_02_normal.jpg-670e1d2471d602e2cbd85652912ba73d.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4115.881333000005,
+      "line": "Loading resource: res://assets/pbr/asphalt_02_roughness.jpg"
+    },
+    {
+      "process_wall_ms": 4116.164249999997,
+      "line": "Loading resource: res://.godot/imported/asphalt_02_roughness.jpg-08aef1060e6a3b8e048751dd60442fc9.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4119.987458000025,
+      "line": "Loading resource: res://resources/materials/ballast.tres"
+    },
+    {
+      "process_wall_ms": 4120.060416000001,
+      "line": "Loading resource: res://assets/pbr/gravel_stones_albedo.jpg"
+    },
+    {
+      "process_wall_ms": 4120.339041000023,
+      "line": "Loading resource: res://.godot/imported/gravel_stones_albedo.jpg-851ca137bc08161a3bb81e5e2fab0a89.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4123.114832999989,
+      "line": "Loading resource: res://assets/pbr/gravel_stones_normal.jpg"
+    },
+    {
+      "process_wall_ms": 4123.300458000017,
+      "line": "Loading resource: res://.godot/imported/gravel_stones_normal.jpg-3146b4b1dae931f563abebefb199fa04.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4125.978416000009,
+      "line": "Loading resource: res://assets/pbr/gravel_stones_roughness.jpg"
+    },
+    {
+      "process_wall_ms": 4126.229375000037,
+      "line": "Loading resource: res://.godot/imported/gravel_stones_roughness.jpg-42e92b79088e4313c177b6c8465fc954.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4130.198083000039,
+      "line": "Loading resource: res://resources/materials/train_body.tres"
+    },
+    {
+      "process_wall_ms": 4130.250332999993,
+      "line": "Loading resource: res://assets/pbr/green_metal_rust_albedo.jpg"
+    },
+    {
+      "process_wall_ms": 4130.452750000018,
+      "line": "Loading resource: res://.godot/imported/green_metal_rust_albedo.jpg-f7fa696810f2b2f5cdcf32ac1f910655.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4133.318083000006,
+      "line": "Loading resource: res://assets/pbr/green_metal_rust_normal.jpg"
+    },
+    {
+      "process_wall_ms": 4133.583958000031,
+      "line": "Loading resource: res://.godot/imported/green_metal_rust_normal.jpg-b400b461e9e772e9dd46795811b3164b.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4137.10366600003,
+      "line": "Loading resource: res://assets/pbr/green_metal_rust_roughness.jpg"
+    },
+    {
+      "process_wall_ms": 4137.325874999988,
+      "line": "Loading resource: res://.godot/imported/green_metal_rust_roughness.jpg-3a7ecec798ed8c1a7ae75a9f071e4105.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4143.222374999994,
+      "line": "Loading resource: res://assets/environment/supply_locker.glb"
+    },
+    {
+      "process_wall_ms": 4143.290665999984,
+      "line": "Loading resource: res://.godot/imported/supply_locker.glb-b68fff4219e057f3ab93fd838d7fd555.scn"
+    },
+    {
+      "process_wall_ms": 4148.783916000013,
+      "line": "Loading resource: res://assets/environment/supply_toolbox.glb"
+    },
+    {
+      "process_wall_ms": 4148.838166000019,
+      "line": "Loading resource: res://.godot/imported/supply_toolbox.glb-3cf2c8f288e4aaf0fa25724a1fda0db4.scn"
+    },
+    {
+      "process_wall_ms": 4149.683625000023,
+      "line": "Loading resource: res://assets/environment/medical_cabinet.glb"
+    },
+    {
+      "process_wall_ms": 4149.767625000039,
+      "line": "Loading resource: res://.godot/imported/medical_cabinet.glb-4a53fd910df944b0a36d96b973ff9bab.scn"
+    },
+    {
+      "process_wall_ms": 4168.887458000028,
+      "line": "Loading resource: res://assets/models/beveled_box.glb"
+    },
+    {
+      "process_wall_ms": 4168.946790999997,
+      "line": "Loading resource: res://.godot/imported/beveled_box.glb-32d35ef390ef2c8d388795260e360acd.scn"
+    },
+    {
+      "process_wall_ms": 4185.398958000007,
+      "line": "Loading resource: res://assets/props/wooden_crate_01.glb"
+    },
+    {
+      "process_wall_ms": 4185.4541659999995,
+      "line": "Loading resource: res://.godot/imported/wooden_crate_01.glb-8c7be117d67679c9f8c80d9064935aae.scn"
+    },
+    {
+      "process_wall_ms": 4185.69020800004,
+      "line": "Loading resource: res://assets/props/wooden_crate_01_wooden_crate_01_diff_1k.jpg"
+    },
+    {
+      "process_wall_ms": 4185.839416000022,
+      "line": "Loading resource: res://.godot/imported/wooden_crate_01_wooden_crate_01_diff_1k.jpg-6bda0aa10f1569fbbab2a37a603f1d34.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4200.210416000004,
+      "line": "Loading resource: res://assets/props/wooden_crate_01_wooden_crate_01_arm_1k.jpg"
+    },
+    {
+      "process_wall_ms": 4200.448999999991,
+      "line": "Loading resource: res://.godot/imported/wooden_crate_01_wooden_crate_01_arm_1k.jpg-de7db153f24a1849d0223dd6d65eb930.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4202.877457999989,
+      "line": "Loading resource: res://assets/props/wooden_crate_01_wooden_crate_01_nor_gl_1k.jpg"
+    },
+    {
+      "process_wall_ms": 4203.074333000018,
+      "line": "Loading resource: res://.godot/imported/wooden_crate_01_wooden_crate_01_nor_gl_1k.jpg-ea644931ddaa013e8be91ccba7d1f202.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4209.756666000032,
+      "line": "Loading resource: res://assets/props/wooden_military_crate.glb"
+    },
+    {
+      "process_wall_ms": 4209.987875000024,
+      "line": "Loading resource: res://.godot/imported/wooden_military_crate.glb-f19f6db0a7b6c97e256ce27aa7242a1d.scn"
+    },
+    {
+      "process_wall_ms": 4210.21487500002,
+      "line": "Loading resource: res://assets/props/wooden_military_crate_wooden_military_crate_diff_1k.jpg"
+    },
+    {
+      "process_wall_ms": 4210.366625000006,
+      "line": "Loading resource: res://.godot/imported/wooden_military_crate_wooden_military_crate_diff_1k.jpg-d66c71456a5409af0248c86650f8b01c.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4213.1749160000145,
+      "line": "Loading resource: res://assets/props/wooden_military_crate_wooden_military_crate_arm_1k.jpg"
+    },
+    {
+      "process_wall_ms": 4213.399500000037,
+      "line": "Loading resource: res://.godot/imported/wooden_military_crate_wooden_military_crate_arm_1k.jpg-5485b42ad6e285d4b01b1fc133a1165c.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4216.133291000006,
+      "line": "Loading resource: res://assets/props/wooden_military_crate_wooden_military_crate_nor_gl_1k.jpg"
+    },
+    {
+      "process_wall_ms": 4216.323791000036,
+      "line": "Loading resource: res://.godot/imported/wooden_military_crate_wooden_military_crate_nor_gl_1k.jpg-8c1ba0535dcef4fe09ed294bad436a8b.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4220.080708000012,
+      "line": "Loading resource: res://assets/props/worn_metal_rack.glb"
+    },
+    {
+      "process_wall_ms": 4220.134125000015,
+      "line": "Loading resource: res://.godot/imported/worn_metal_rack.glb-8a9629f4c3c31a2c09b9ab6db4ea6bfe.scn"
+    },
+    {
+      "process_wall_ms": 4220.507957999985,
+      "line": "Loading resource: res://assets/props/worn_metal_rack_worn_metal_rack_diff_1k.jpg"
+    },
+    {
+      "process_wall_ms": 4220.630540999991,
+      "line": "Loading resource: res://.godot/imported/worn_metal_rack_worn_metal_rack_diff_1k.jpg-fb6b987774029e8c2e14dfb4ec3d07e7.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4222.668708000015,
+      "line": "Loading resource: res://assets/props/worn_metal_rack_worn_metal_rack_arm_1k.jpg"
+    },
+    {
+      "process_wall_ms": 4222.99616600003,
+      "line": "Loading resource: res://.godot/imported/worn_metal_rack_worn_metal_rack_arm_1k.jpg-455e9fad23c6856945a7d5cd91e82ba1.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4225.697666000031,
+      "line": "Loading resource: res://assets/props/worn_metal_rack_worn_metal_rack_nor_gl_1k.jpg"
+    },
+    {
+      "process_wall_ms": 4226.042333000009,
+      "line": "Loading resource: res://.godot/imported/worn_metal_rack_worn_metal_rack_nor_gl_1k.jpg-5fa65802117abb1b9cfe28655182796a.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4229.429208,
+      "line": "Loading resource: res://assets/props/steel_frame_shelves_02.glb"
+    },
+    {
+      "process_wall_ms": 4229.469208000011,
+      "line": "Loading resource: res://.godot/imported/steel_frame_shelves_02.glb-a0162c248bd3a4980f6a6d3f823cd6ee.scn"
+    },
+    {
+      "process_wall_ms": 4229.817875000037,
+      "line": "Loading resource: res://assets/props/steel_frame_shelves_02_steel_frame_shelves_02_diff_1k.jpg"
+    },
+    {
+      "process_wall_ms": 4229.936082999984,
+      "line": "Loading resource: res://.godot/imported/steel_frame_shelves_02_steel_frame_shelves_02_diff_1k.jpg-a7bfb8a5bb9a8489a209680b59309670.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4249.678875000029,
+      "line": "Loading resource: res://assets/props/steel_frame_shelves_02_steel_frame_shelves_02_arm_1k.jpg"
+    },
+    {
+      "process_wall_ms": 4249.9456660000305,
+      "line": "Loading resource: res://.godot/imported/steel_frame_shelves_02_steel_frame_shelves_02_arm_1k.jpg-dbfcf9779d6e97ccf23f793a17dc4248.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4252.4502080000275,
+      "line": "Loading resource: res://assets/props/steel_frame_shelves_02_steel_frame_shelves_02_nor_gl_1k.jpg"
+    },
+    {
+      "process_wall_ms": 4252.830791000008,
+      "line": "Loading resource: res://.godot/imported/steel_frame_shelves_02_steel_frame_shelves_02_nor_gl_1k.jpg-d340392f314e63b21d875f090f4cc39b.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4257.012416000009,
+      "line": "Loading resource: res://assets/props/Barrel_02.glb"
+    },
+    {
+      "process_wall_ms": 4257.084125000006,
+      "line": "Loading resource: res://.godot/imported/Barrel_02.glb-fab46f08e09adfacf8662a64b474f26f.scn"
+    },
+    {
+      "process_wall_ms": 4257.476499999995,
+      "line": "Loading resource: res://assets/props/Barrel_02_Barrel_02_diff_1k.jpg"
+    },
+    {
+      "process_wall_ms": 4257.769332999998,
+      "line": "Loading resource: res://.godot/imported/Barrel_02_Barrel_02_diff_1k.jpg-86e26564195316561e1fad0564c0b9d6.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4260.485291000009,
+      "line": "Loading resource: res://assets/props/Barrel_02_Barrel_02_arm_1k.jpg"
+    },
+    {
+      "process_wall_ms": 4260.762624999984,
+      "line": "Loading resource: res://.godot/imported/Barrel_02_Barrel_02_arm_1k.jpg-a7e4bb160ac45a220e810bac0edb07b1.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4263.09150000003,
+      "line": "Loading resource: res://assets/props/Barrel_02_Barrel_02_nor_gl_1k.jpg"
+    },
+    {
+      "process_wall_ms": 4263.313041000003,
+      "line": "Loading resource: res://.godot/imported/Barrel_02_Barrel_02_nor_gl_1k.jpg-dd8dcd1d131052ec9edc8ec5a25bc8e8.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4267.927083000018,
+      "line": "Loading resource: res://assets/props/vintage_suitcase.glb"
+    },
+    {
+      "process_wall_ms": 4267.981666000025,
+      "line": "Loading resource: res://.godot/imported/vintage_suitcase.glb-0786858f74589bb18f60531ee70a703e.scn"
+    },
+    {
+      "process_wall_ms": 4268.411000000015,
+      "line": "Loading resource: res://assets/props/vintage_suitcase_vintage_suitcase_01_diff_1k.jpg"
+    },
+    {
+      "process_wall_ms": 4268.560041000001,
+      "line": "Loading resource: res://.godot/imported/vintage_suitcase_vintage_suitcase_01_diff_1k.jpg-602f48069b4dc14aabb8219d6350404e.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4271.169041000007,
+      "line": "Loading resource: res://assets/props/vintage_suitcase_vintage_suitcase_01_arm_1k.jpg"
+    },
+    {
+      "process_wall_ms": 4271.405415999993,
+      "line": "Loading resource: res://.godot/imported/vintage_suitcase_vintage_suitcase_01_arm_1k.jpg-c1b59dc48d48d74e213579532378106b.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4273.542249999991,
+      "line": "Loading resource: res://assets/props/vintage_suitcase_vintage_suitcase_01_nor_gl_1k.jpg"
+    },
+    {
+      "process_wall_ms": 4273.752166000008,
+      "line": "Loading resource: res://.godot/imported/vintage_suitcase_vintage_suitcase_01_nor_gl_1k.jpg-fe80858bc622e1e76c83f906884b34f8.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4278.119790999995,
+      "line": "Loading resource: res://assets/props/drill_press_01.glb"
+    },
+    {
+      "process_wall_ms": 4278.124250000019,
+      "line": "Loading resource: res://.godot/imported/drill_press_01.glb-712c4ed955e7d0f20ada7d9adeae6fc2.scn"
+    },
+    {
+      "process_wall_ms": 4278.482457999985,
+      "line": "Loading resource: res://assets/props/drill_press_01_drill_press_01_diff_1k.jpg"
+    },
+    {
+      "process_wall_ms": 4278.4884160000165,
+      "line": "Loading resource: res://.godot/imported/drill_press_01_drill_press_01_diff_1k.jpg-97a37abd081cb39ebb8892d12970a2fd.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4281.084082999996,
+      "line": "Loading resource: res://assets/props/drill_press_01_drill_press_01_arm_1k.jpg"
+    },
+    {
+      "process_wall_ms": 4281.334041000036,
+      "line": "Loading resource: res://.godot/imported/drill_press_01_drill_press_01_arm_1k.jpg-82765b5cb247cfd5ba3ca6bb33cd2696.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4283.7558329999865,
+      "line": "Loading resource: res://assets/props/drill_press_01_drill_press_01_nor_gl_1k.jpg"
+    },
+    {
+      "process_wall_ms": 4283.951957999989,
+      "line": "Loading resource: res://.godot/imported/drill_press_01_drill_press_01_nor_gl_1k.jpg-4011620a664561b4e831150ae613df31.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4287.621666000006,
+      "line": "Loading resource: res://assets/props/industrial_storage_cart.glb"
+    },
+    {
+      "process_wall_ms": 4287.669999999991,
+      "line": "Loading resource: res://.godot/imported/industrial_storage_cart.glb-5d334953e88a6cc85d495b2fff01e6ca.scn"
+    },
+    {
+      "process_wall_ms": 4288.051666000001,
+      "line": "Loading resource: res://assets/props/industrial_storage_cart_industrial_storage_cart_diff_1k.jpg"
+    },
+    {
+      "process_wall_ms": 4288.329833000034,
+      "line": "Loading resource: res://.godot/imported/industrial_storage_cart_industrial_storage_cart_diff_1k.jpg-578f264126999235e48a7be8203fe27d.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4290.65700000001,
+      "line": "Loading resource: res://assets/props/industrial_storage_cart_industrial_storage_cart_arm_1k.jpg"
+    },
+    {
+      "process_wall_ms": 4290.831666000031,
+      "line": "Loading resource: res://.godot/imported/industrial_storage_cart_industrial_storage_cart_arm_1k.jpg-650ee150954878dc5fedc37724ae43f6.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4292.854416000011,
+      "line": "Loading resource: res://assets/props/industrial_storage_cart_industrial_storage_cart_nor_gl_1k.jpg"
+    },
+    {
+      "process_wall_ms": 4293.018041000039,
+      "line": "Loading resource: res://.godot/imported/industrial_storage_cart_industrial_storage_cart_nor_gl_1k.jpg-65b2ef46f86b276b68f8693c53ecd0cc.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4295.698708000032,
+      "line": "Loading resource: res://assets/props/hand_truck.glb"
+    },
+    {
+      "process_wall_ms": 4295.778374999998,
+      "line": "Loading resource: res://.godot/imported/hand_truck.glb-b1f3f800d0c6f51432cc06b0fa6423f5.scn"
+    },
+    {
+      "process_wall_ms": 4296.075166000037,
+      "line": "Loading resource: res://assets/props/hand_truck_hand_truck_diff_1k.jpg"
+    },
+    {
+      "process_wall_ms": 4296.332916000039,
+      "line": "Loading resource: res://.godot/imported/hand_truck_hand_truck_diff_1k.jpg-dffa4e766266b03c92734438cd0c93e1.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4298.662707999994,
+      "line": "Loading resource: res://assets/props/hand_truck_hand_truck_arm_1k.jpg"
+    },
+    {
+      "process_wall_ms": 4298.859290999985,
+      "line": "Loading resource: res://.godot/imported/hand_truck_hand_truck_arm_1k.jpg-039a502686f09b828b95ee1dadc071f1.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4301.45487499999,
+      "line": "Loading resource: res://assets/props/hand_truck_hand_truck_nor_gl_1k.jpg"
+    },
+    {
+      "process_wall_ms": 4301.657540999997,
+      "line": "Loading resource: res://.godot/imported/hand_truck_hand_truck_nor_gl_1k.jpg-d08e4e3d31363499512bc63cd15effd7.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4305.64958299999,
+      "line": "Loading resource: res://assets/props/industrial_caged_sconce.glb"
+    },
+    {
+      "process_wall_ms": 4305.7147080000395,
+      "line": "Loading resource: res://.godot/imported/industrial_caged_sconce.glb-1dc4363a69075155e45e051dafd3c998.scn"
+    },
+    {
+      "process_wall_ms": 4306.087208000008,
+      "line": "Loading resource: res://assets/props/industrial_caged_sconce_industrial_caged_sconce_diff_1k.jpg"
+    },
+    {
+      "process_wall_ms": 4306.26883299999,
+      "line": "Loading resource: res://.godot/imported/industrial_caged_sconce_industrial_caged_sconce_diff_1k.jpg-9f4e1a534c350ebd178d315fb42d7721.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4308.538124999985,
+      "line": "Loading resource: res://assets/props/industrial_caged_sconce_industrial_caged_sconce_arm_1k.jpg"
+    },
+    {
+      "process_wall_ms": 4308.733375000031,
+      "line": "Loading resource: res://.godot/imported/industrial_caged_sconce_industrial_caged_sconce_arm_1k.jpg-0c7b4056e294fe962751b64d962e8375.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4310.757582999997,
+      "line": "Loading resource: res://assets/props/industrial_caged_sconce_industrial_caged_sconce_emissive_1k.jpg"
+    },
+    {
+      "process_wall_ms": 4310.983666000027,
+      "line": "Loading resource: res://.godot/imported/industrial_caged_sconce_industrial_caged_sconce_emissive_1k.jpg-28751585e504f241cfa3f527dfdadfc2.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4313.687833000017,
+      "line": "Loading resource: res://assets/props/industrial_caged_sconce_industrial_caged_sconce_nor_gl_1k.jpg"
+    },
+    {
+      "process_wall_ms": 4313.8974999999955,
+      "line": "Loading resource: res://.godot/imported/industrial_caged_sconce_industrial_caged_sconce_nor_gl_1k.jpg-c1cae6cfbf6236d946a2a714a366234f.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4319.465625000021,
+      "line": "Loading resource: res://assets/props/caged_hanging_light.glb"
+    },
+    {
+      "process_wall_ms": 4319.582666000031,
+      "line": "Loading resource: res://.godot/imported/caged_hanging_light.glb-3788c40e4209308a6cf06b138b2a200d.scn"
+    },
+    {
+      "process_wall_ms": 4320.029333000037,
+      "line": "Loading resource: res://assets/props/caged_hanging_light_caged_hanging_light_diff_1k.jpg"
+    },
+    {
+      "process_wall_ms": 4320.3074159999915,
+      "line": "Loading resource: res://.godot/imported/caged_hanging_light_caged_hanging_light_diff_1k.jpg-7e35d4eb02e81edb6d2b5d10880fcc16.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4322.9552910000275,
+      "line": "Loading resource: res://assets/props/caged_hanging_light_caged_hanging_light_arm_1k.jpg"
+    },
+    {
+      "process_wall_ms": 4323.178374999998,
+      "line": "Loading resource: res://.godot/imported/caged_hanging_light_caged_hanging_light_arm_1k.jpg-360ed07c8c0b765f7cb2f666f7064a82.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4325.301082999999,
+      "line": "Loading resource: res://assets/props/caged_hanging_light_caged_hanging_light_emissive_1k.jpg"
+    },
+    {
+      "process_wall_ms": 4325.506958000005,
+      "line": "Loading resource: res://.godot/imported/caged_hanging_light_caged_hanging_light_emissive_1k.jpg-f408c55392765d2933381e3af01ff72e.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4327.224750000028,
+      "line": "Loading resource: res://assets/props/caged_hanging_light_caged_hanging_light_nor_gl_1k.jpg"
+    },
+    {
+      "process_wall_ms": 4327.403166000011,
+      "line": "Loading resource: res://.godot/imported/caged_hanging_light_caged_hanging_light_nor_gl_1k.jpg-2c180d8a98476040b490f6a5d7019815.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4332.290290999992,
+      "line": "Loading resource: res://assets/props/small_oil_can_01.glb"
+    },
+    {
+      "process_wall_ms": 4332.341583000016,
+      "line": "Loading resource: res://.godot/imported/small_oil_can_01.glb-5d8adb67ffa8eed79c5b1938da4feab9.scn"
+    },
+    {
+      "process_wall_ms": 4332.695583000032,
+      "line": "Loading resource: res://assets/props/small_oil_can_01_small_oil_can_01_diff_1k.jpg"
+    },
+    {
+      "process_wall_ms": 4332.870541000034,
+      "line": "Loading resource: res://.godot/imported/small_oil_can_01_small_oil_can_01_diff_1k.jpg-c0f9f650b7ad355c6f20d4c503645272.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4335.473041,
+      "line": "Loading resource: res://assets/props/small_oil_can_01_small_oil_can_01_arm_1k.jpg"
+    },
+    {
+      "process_wall_ms": 4335.682208000037,
+      "line": "Loading resource: res://.godot/imported/small_oil_can_01_small_oil_can_01_arm_1k.jpg-9950dac339d6a645b3eac8a54e8f9902.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4338.008708000018,
+      "line": "Loading resource: res://assets/props/small_oil_can_01_small_oil_can_01_nor_gl_1k.jpg"
+    },
+    {
+      "process_wall_ms": 4338.205041000037,
+      "line": "Loading resource: res://.godot/imported/small_oil_can_01_small_oil_can_01_nor_gl_1k.jpg-fcf77313e15d731890d617b65f41c740.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4341.663332999986,
+      "line": "Loading resource: res://assets/props/brass_blowtorch.glb"
+    },
+    {
+      "process_wall_ms": 4341.759040999988,
+      "line": "Loading resource: res://.godot/imported/brass_blowtorch.glb-581b53dbd9c1744a5b964196f3f91e99.scn"
+    },
+    {
+      "process_wall_ms": 4342.16008300001,
+      "line": "Loading resource: res://assets/props/brass_blowtorch_brass_blowtorch_diff_1k.jpg"
+    },
+    {
+      "process_wall_ms": 4342.329375000019,
+      "line": "Loading resource: res://.godot/imported/brass_blowtorch_brass_blowtorch_diff_1k.jpg-a813a9ff8cc5cbf8de1cc4a3c29055f6.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4344.476208000004,
+      "line": "Loading resource: res://assets/props/brass_blowtorch_brass_blowtorch_arm_1k.jpg"
+    },
+    {
+      "process_wall_ms": 4344.710333000023,
+      "line": "Loading resource: res://.godot/imported/brass_blowtorch_brass_blowtorch_arm_1k.jpg-239bfed5de6e6691153934d914b890d0.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4347.3050830000375,
+      "line": "Loading resource: res://assets/props/brass_blowtorch_brass_blowtorch_nor_gl_1k.jpg"
+    },
+    {
+      "process_wall_ms": 4347.584291000032,
+      "line": "Loading resource: res://.godot/imported/brass_blowtorch_brass_blowtorch_nor_gl_1k.jpg-3628ee7399949306cc36389297210a9f.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4353.244208000035,
+      "line": "Loading resource: res://assets/props/vintage_flashlight.glb"
+    },
+    {
+      "process_wall_ms": 4353.299832999994,
+      "line": "Loading resource: res://.godot/imported/vintage_flashlight.glb-7c234f0662c906660a6e27c345a22a65.scn"
+    },
+    {
+      "process_wall_ms": 4353.676166000014,
+      "line": "Loading resource: res://assets/props/vintage_flashlight_vintage_flashlight_diff_1k.jpg"
+    },
+    {
+      "process_wall_ms": 4353.80354099999,
+      "line": "Loading resource: res://.godot/imported/vintage_flashlight_vintage_flashlight_diff_1k.jpg-57ced1cf9ee02e284745497d92b3c0ca.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4355.762249999998,
+      "line": "Loading resource: res://assets/props/vintage_flashlight_vintage_flashlight_arm_1k.jpg"
+    },
+    {
+      "process_wall_ms": 4355.935125000031,
+      "line": "Loading resource: res://.godot/imported/vintage_flashlight_vintage_flashlight_arm_1k.jpg-ccf245184d60caa93265ac1b9bdec02c.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4357.575790999988,
+      "line": "Loading resource: res://assets/props/vintage_flashlight_vintage_flashlight_nor_gl_1k.jpg"
+    },
+    {
+      "process_wall_ms": 4357.764416000009,
+      "line": "Loading resource: res://.godot/imported/vintage_flashlight_vintage_flashlight_nor_gl_1k.jpg-59d57e619cbb18c17b2eccbe3d1e8330.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4359.336958000029,
+      "line": "Loading resource: res://assets/props/vintage_flashlight_vintage_flashlight_diff_1k_3.png"
+    },
+    {
+      "process_wall_ms": 4359.491375000005,
+      "line": "Loading resource: res://.godot/imported/vintage_flashlight_vintage_flashlight_diff_1k_3.png-a9bffd8c935e69a01b19e2dadb0ff9e8.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4375.460374999989,
+      "line": "Loading resource: res://assets/environment/factory_kit.glb"
+    },
+    {
+      "process_wall_ms": 4375.523416000022,
+      "line": "Loading resource: res://.godot/imported/factory_kit.glb-94d8a63c716f7385beeba80db880f42c.scn"
+    },
+    {
+      "process_wall_ms": 4376.053458000001,
+      "line": "Loading resource: res://assets/environment/factory_kit_modular_factory_facade_windows_diff_2k.png"
+    },
+    {
+      "process_wall_ms": 4376.20212500002,
+      "line": "Loading resource: res://.godot/imported/factory_kit_modular_factory_facade_windows_diff_2k.png-bea3bbae6a9dcfd1f49201e186019727.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4381.692999999985,
+      "line": "Loading resource: res://assets/environment/factory_kit_modular_factory_facade_windows_arm_2k.jpg"
+    },
+    {
+      "process_wall_ms": 4381.974208000031,
+      "line": "Loading resource: res://.godot/imported/factory_kit_modular_factory_facade_windows_arm_2k.jpg-3b000e78b00ac07539fd0f1b88499798.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4404.537208000022,
+      "line": "Loading resource: res://assets/environment/factory_kit_modular_factory_facade_windows_nor_gl_2k.jpg"
+    },
+    {
+      "process_wall_ms": 4404.837041000008,
+      "line": "Loading resource: res://.godot/imported/factory_kit_modular_factory_facade_windows_nor_gl_2k.jpg-cfda3fedcde33969200ed699a7ff7db0.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4409.554125,
+      "line": "Loading resource: res://assets/environment/factory_kit_modular_factory_facade_brick_diff_2k.jpg"
+    },
+    {
+      "process_wall_ms": 4409.840166000038,
+      "line": "Loading resource: res://.godot/imported/factory_kit_modular_factory_facade_brick_diff_2k.jpg-67b401927a672cc86548322700763083.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4414.910833000022,
+      "line": "Loading resource: res://assets/environment/factory_kit_modular_factory_facade_brick_arm_2k.jpg"
+    },
+    {
+      "process_wall_ms": 4415.247708000038,
+      "line": "Loading resource: res://.godot/imported/factory_kit_modular_factory_facade_brick_arm_2k.jpg-f915a7564c1580e0adbf87fe77c0d856.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4422.026291000009,
+      "line": "Loading resource: res://assets/environment/factory_kit_modular_factory_facade_brick_nor_gl_2k.jpg"
+    },
+    {
+      "process_wall_ms": 4422.265625000023,
+      "line": "Loading resource: res://.godot/imported/factory_kit_modular_factory_facade_brick_nor_gl_2k.jpg-0337208eabc4dad194cdfd0edd6834c5.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4427.93875000001,
+      "line": "Loading resource: res://assets/environment/factory_kit_modular_factory_facade_windows_diff_2k_6.jpg"
+    },
+    {
+      "process_wall_ms": 4428.20662500003,
+      "line": "Loading resource: res://.godot/imported/factory_kit_modular_factory_facade_windows_diff_2k_6.jpg-96d1afd7a4274cea75ede949b0ab5833.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4436.135416000014,
+      "line": "Loading resource: res://assets/environment/factory_kit_modular_factory_facade_doors_diff_2k.jpg"
+    },
+    {
+      "process_wall_ms": 4436.459415999991,
+      "line": "Loading resource: res://.godot/imported/factory_kit_modular_factory_facade_doors_diff_2k.jpg-5848fe4a7cd5cc2943757afe1c1d024d.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4442.626958000005,
+      "line": "Loading resource: res://assets/environment/factory_kit_modular_factory_facade_doors_arm_2k.jpg"
+    },
+    {
+      "process_wall_ms": 4442.946833000007,
+      "line": "Loading resource: res://.godot/imported/factory_kit_modular_factory_facade_doors_arm_2k.jpg-64dd5aed4d48d8d8d8e94ea4756da756.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4449.580083000001,
+      "line": "Loading resource: res://assets/environment/factory_kit_modular_factory_facade_doors_nor_gl_2k.jpg"
+    },
+    {
+      "process_wall_ms": 4449.8557910000045,
+      "line": "Loading resource: res://.godot/imported/factory_kit_modular_factory_facade_doors_nor_gl_2k.jpg-fec05a0380113dd3b9ae6384ccc84588.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4455.513583000027,
+      "line": "Loading resource: res://assets/environment/factory_kit_modular_factory_facade_garage_diff_2k.jpg"
+    },
+    {
+      "process_wall_ms": 4455.865166000023,
+      "line": "Loading resource: res://.godot/imported/factory_kit_modular_factory_facade_garage_diff_2k.jpg-6a721aa4e1fa82ded225f7310490e8e4.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4462.424999999996,
+      "line": "Loading resource: res://assets/environment/factory_kit_modular_factory_facade_garage_arm_2k.jpg"
+    },
+    {
+      "process_wall_ms": 4462.694250000027,
+      "line": "Loading resource: res://.godot/imported/factory_kit_modular_factory_facade_garage_arm_2k.jpg-6d51189cb1fe3c93b08afa07d18559ef.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4470.803250000017,
+      "line": "Loading resource: res://assets/environment/factory_kit_modular_factory_facade_garage_nor_gl_2k.jpg"
+    },
+    {
+      "process_wall_ms": 4471.333125000001,
+      "line": "Loading resource: res://.godot/imported/factory_kit_modular_factory_facade_garage_nor_gl_2k.jpg-4ea30dc5899aae947c42ecef98d04347.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4478.088833000015,
+      "line": "Loading resource: res://assets/environment/factory_kit_modular_factory_facade_trim_01_diff_2k.jpg"
+    },
+    {
+      "process_wall_ms": 4478.357833000018,
+      "line": "Loading resource: res://.godot/imported/factory_kit_modular_factory_facade_trim_01_diff_2k.jpg-f8fca181073f4b9adfef16ee6e9c2d83.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4485.123583000018,
+      "line": "Loading resource: res://assets/environment/factory_kit_modular_factory_facade_trim_01_arm_2k.jpg"
+    },
+    {
+      "process_wall_ms": 4485.403625000004,
+      "line": "Loading resource: res://.godot/imported/factory_kit_modular_factory_facade_trim_01_arm_2k.jpg-7725e85c16daeb197b19fa87934b5885.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4491.914790999999,
+      "line": "Loading resource: res://assets/environment/factory_kit_modular_factory_facade_trim_01_nor_gl_2k.jpg"
+    },
+    {
+      "process_wall_ms": 4492.171625000026,
+      "line": "Loading resource: res://.godot/imported/factory_kit_modular_factory_facade_trim_01_nor_gl_2k.jpg-0d2fee5465de1c1358d69ed5659188cd.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4507.888083000012,
+      "line": "Loading resource: res://assets/environment/freight_container.glb"
+    },
+    {
+      "process_wall_ms": 4507.96541599999,
+      "line": "Loading resource: res://.godot/imported/freight_container.glb-84c516cb770f3438b98929c870a8439d.scn"
+    },
+    {
+      "process_wall_ms": 4510.668791,
+      "line": "Loading resource: res://assets/environment/parked_box_van.glb"
+    },
+    {
+      "process_wall_ms": 4510.7327910000095,
+      "line": "Loading resource: res://.godot/imported/parked_box_van.glb-d60fefaa615383219030382f7edc717a.scn"
+    },
+    {
+      "process_wall_ms": 4515.636625000014,
+      "line": "Loading resource: res://assets/environment/waiting_hall_roof.glb"
+    },
+    {
+      "process_wall_ms": 4515.705875000038,
+      "line": "Loading resource: res://.godot/imported/waiting_hall_roof.glb-70c1c670afac67b8421d9334149facc8.scn"
+    },
+    {
+      "process_wall_ms": 4517.822666000029,
+      "line": "Loading resource: res://assets/environment/station_house_roof.glb"
+    },
+    {
+      "process_wall_ms": 4517.88183299999,
+      "line": "Loading resource: res://.godot/imported/station_house_roof.glb-501237dcf0ff23ba5687664d897d6fb7.scn"
+    },
+    {
+      "process_wall_ms": 4519.530833000033,
+      "line": "Loading resource: res://assets/environment/painted_wooden_bench.glb"
+    },
+    {
+      "process_wall_ms": 4519.592291000037,
+      "line": "Loading resource: res://.godot/imported/painted_wooden_bench.glb-6b4b816c3db8183fd3a660a0ca11529f.scn"
+    },
+    {
+      "process_wall_ms": 4520.006666000028,
+      "line": "Loading resource: res://assets/environment/painted_wooden_bench_painted_wooden_bench_diff_1k.jpg"
+    },
+    {
+      "process_wall_ms": 4520.1694579999985,
+      "line": "Loading resource: res://.godot/imported/painted_wooden_bench_painted_wooden_bench_diff_1k.jpg-cac0b543479d5ad6c2954c8c3215c4df.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4521.631375000026,
+      "line": "Loading resource: res://assets/environment/painted_wooden_bench_painted_wooden_bench_arm_1k.jpg"
+    },
+    {
+      "process_wall_ms": 4521.8626660000045,
+      "line": "Loading resource: res://.godot/imported/painted_wooden_bench_painted_wooden_bench_arm_1k.jpg-68fc6f422c18478df286bf06d7e10157.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4527.090625000028,
+      "line": "Loading resource: res://assets/environment/painted_wooden_bench_painted_wooden_bench_nor_gl_1k.jpg"
+    },
+    {
+      "process_wall_ms": 4527.363083000011,
+      "line": "Loading resource: res://.godot/imported/painted_wooden_bench_painted_wooden_bench_nor_gl_1k.jpg-95609816b0ad7c749612b53c48ea9f06.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4529.875666000009,
+      "line": "Loading resource: res://assets/environment/weed_plant_02.glb"
+    },
+    {
+      "process_wall_ms": 4529.933958000015,
+      "line": "Loading resource: res://.godot/imported/weed_plant_02.glb-9f7b82fef0546222bf95398ea6f1ceea.scn"
+    },
+    {
+      "process_wall_ms": 4530.19845800003,
+      "line": "Loading resource: res://assets/environment/weed_plant_02_weed_plant_02_diff_1k.png"
+    },
+    {
+      "process_wall_ms": 4531.054458000028,
+      "line": "Loading resource: res://.godot/imported/weed_plant_02_weed_plant_02_diff_1k.png-aa27d01831d014f81ff4f58a08a69818.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4532.670208000013,
+      "line": "Loading resource: res://assets/environment/weed_plant_02_weed_plant_02_arm_1k.jpg"
+    },
+    {
+      "process_wall_ms": 4532.834541,
+      "line": "Loading resource: res://.godot/imported/weed_plant_02_weed_plant_02_arm_1k.jpg-c0a49169f9bb391ad07572a6ba211ead.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4534.650041000021,
+      "line": "Loading resource: res://assets/environment/weed_plant_02_weed_plant_02_nor_gl_1k.jpg"
+    },
+    {
+      "process_wall_ms": 4534.817750000002,
+      "line": "Loading resource: res://.godot/imported/weed_plant_02_weed_plant_02_nor_gl_1k.jpg-bdd560bfa4617f88fa2bec0cf612cde6.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4539.681207999991,
+      "line": "Loading resource: res://assets/environment/broken_pallet.glb"
+    },
+    {
+      "process_wall_ms": 4539.684458000011,
+      "line": "Loading resource: res://.godot/imported/broken_pallet.glb-7e4f6eee72e333ab4ac6e5be9237936c.scn"
+    },
+    {
+      "process_wall_ms": 4542.017999999985,
+      "line": "Loading resource: res://resources/materials/wall_brick.tres"
+    },
+    {
+      "process_wall_ms": 4542.092958000012,
+      "line": "Loading resource: res://assets/pbr/brick_wall_001_albedo.jpg"
+    },
+    {
+      "process_wall_ms": 4542.277041000034,
+      "line": "Loading resource: res://.godot/imported/brick_wall_001_albedo.jpg-9cfd87d007bdb8fc91ae3319fcdf30a4.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4546.906791000027,
+      "line": "Loading resource: res://assets/pbr/brick_wall_001_normal.jpg"
+    },
+    {
+      "process_wall_ms": 4547.094875000028,
+      "line": "Loading resource: res://.godot/imported/brick_wall_001_normal.jpg-3f561ee76bbda3b3d70fab92dc942985.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4548.36179099999,
+      "line": "Loading resource: res://assets/pbr/brick_wall_001_roughness.jpg"
+    },
+    {
+      "process_wall_ms": 4548.511375000033,
+      "line": "Loading resource: res://.godot/imported/brick_wall_001_roughness.jpg-b21df40a19dd5f7a1e2ff665c08075e6.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4550.302874999999,
+      "line": "Loading resource: res://resources/materials/environment_painted_steel.tres"
+    },
+    {
+      "process_wall_ms": 4550.363333000007,
+      "line": "Loading resource: res://assets/pbr/rusty_painted_metal_albedo.jpg"
+    },
+    {
+      "process_wall_ms": 4550.494125,
+      "line": "Loading resource: res://.godot/imported/rusty_painted_metal_albedo.jpg-f58225a3dfdace63f9baf7eae2f1ba8b.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4551.168041000039,
+      "line": "Loading resource: res://assets/pbr/rusty_painted_metal_normal.jpg"
+    },
+    {
+      "process_wall_ms": 4551.302625000006,
+      "line": "Loading resource: res://.godot/imported/rusty_painted_metal_normal.jpg-0ad643988f1f036664bccb15ae98ddfc.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4552.706,
+      "line": "Loading resource: res://assets/pbr/rusty_painted_metal_roughness.jpg"
+    },
+    {
+      "process_wall_ms": 4552.825625000025,
+      "line": "Loading resource: res://.godot/imported/rusty_painted_metal_roughness.jpg-771aabd5fb83b3eb3e5cdd14bbbe5b41.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4558.260333000021,
+      "line": "Loading resource: res://resources/materials/roof_metal.tres"
+    },
+    {
+      "process_wall_ms": 4558.357041000022,
+      "line": "Loading resource: res://assets/pbr/rusty_corrugated_iron_albedo.jpg"
+    },
+    {
+      "process_wall_ms": 4558.561957999984,
+      "line": "Loading resource: res://.godot/imported/rusty_corrugated_iron_albedo.jpg-3e265e18a821f6dd61a02dcbee91977b.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4560.524041000008,
+      "line": "Loading resource: res://assets/pbr/rusty_corrugated_iron_normal.jpg"
+    },
+    {
+      "process_wall_ms": 4560.690166000029,
+      "line": "Loading resource: res://.godot/imported/rusty_corrugated_iron_normal.jpg-53b84cbd2053ddc22df38c78f823ab0f.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4562.713291000023,
+      "line": "Loading resource: res://assets/pbr/rusty_corrugated_iron_roughness.jpg"
+    },
+    {
+      "process_wall_ms": 4562.8601249999865,
+      "line": "Loading resource: res://.godot/imported/rusty_corrugated_iron_roughness.jpg-d1b38c2fc1790c0053ad6fec1f38819f.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4568.437708000033,
+      "line": "Loading resource: res://resources/materials/interact_yellow.tres"
+    },
+    {
+      "process_wall_ms": 4569.992208000031,
+      "line": "Loading resource: res://assets/train/carriage_door.glb"
+    },
+    {
+      "process_wall_ms": 4570.085875000018,
+      "line": "Loading resource: res://.godot/imported/carriage_door.glb-604c470890ead2733a28a2a79070150d.scn"
+    },
+    {
+      "process_wall_ms": 4570.531833000018,
+      "line": "Loading resource: res://assets/train/carriage_door_green_metal_rust_albedo.jpg"
+    },
+    {
+      "process_wall_ms": 4570.881625000027,
+      "line": "Loading resource: res://.godot/imported/carriage_door_green_metal_rust_albedo.jpg-58a029c3634b6c5d4fa06a8c9aef3f46.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4571.939208000003,
+      "line": "Loading resource: res://assets/train/carriage_door_green_metal_rust_roughness.png"
+    },
+    {
+      "process_wall_ms": 4572.302333000039,
+      "line": "Loading resource: res://.godot/imported/carriage_door_green_metal_rust_roughness.png-8ed1d10ef20e0a12ba050e340151ca80.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4577.264291000006,
+      "line": "Loading resource: res://assets/train/carriage_door_green_metal_rust_normal.jpg"
+    },
+    {
+      "process_wall_ms": 4577.533708000033,
+      "line": "Loading resource: res://.godot/imported/carriage_door_green_metal_rust_normal.jpg-eef1099293773ef958b5c59f4590c6ca.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4578.672665999989,
+      "line": "Loading resource: res://assets/train/carriage_door_wood_planks_grey_albedo.jpg"
+    },
+    {
+      "process_wall_ms": 4578.831333000039,
+      "line": "Loading resource: res://.godot/imported/carriage_door_wood_planks_grey_albedo.jpg-0300595cfb6533588679bb94faf758a4.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4580.246499999987,
+      "line": "Loading resource: res://assets/train/carriage_door_wood_planks_grey_roughness.png"
+    },
+    {
+      "process_wall_ms": 4580.4091250000165,
+      "line": "Loading resource: res://.godot/imported/carriage_door_wood_planks_grey_roughness.png-9c4d7fbf7ed420a5b3c24ff850c8a532.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4581.45029100001,
+      "line": "Loading resource: res://assets/train/carriage_door_wood_planks_grey_normal.jpg"
+    },
+    {
+      "process_wall_ms": 4581.5824580000135,
+      "line": "Loading resource: res://.godot/imported/carriage_door_wood_planks_grey_normal.jpg-c90fcf878c77e521e10060737b5b162c.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4586.532540999997,
+      "line": "Loading resource: res://assets/audio/latch.wav"
+    },
+    {
+      "process_wall_ms": 4586.536207999984,
+      "line": "Loading resource: res://.godot/imported/latch.wav-fc307c6c961de2689745bc2c552a728f.sample"
+    },
+    {
+      "process_wall_ms": 4588.922749999994,
+      "line": "Loading resource: res://resources/materials/metal_dark.tres"
+    },
+    {
+      "process_wall_ms": 4602.172916000029,
+      "line": "Loading resource: res://resources/materials/wall_industrial.tres"
+    },
+    {
+      "process_wall_ms": 4602.477582999995,
+      "line": "Loading resource: res://resources/materials/floor_interior.tres"
+    },
+    {
+      "process_wall_ms": 4602.685000000009,
+      "line": "Loading resource: res://resources/materials/floor_wood.tres"
+    },
+    {
+      "process_wall_ms": 4602.749875000029,
+      "line": "Loading resource: res://assets/pbr/wood_planks_grey_albedo.jpg"
+    },
+    {
+      "process_wall_ms": 4602.957250000031,
+      "line": "Loading resource: res://.godot/imported/wood_planks_grey_albedo.jpg-b424932ff21224c7566a833fed2d6f38.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4607.992333000027,
+      "line": "Loading resource: res://assets/pbr/wood_planks_grey_normal.jpg"
+    },
+    {
+      "process_wall_ms": 4608.242333000021,
+      "line": "Loading resource: res://.godot/imported/wood_planks_grey_normal.jpg-77900876fa0c12a34f2027579a3b5001.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4609.618666000017,
+      "line": "Loading resource: res://assets/pbr/wood_planks_grey_roughness.jpg"
+    },
+    {
+      "process_wall_ms": 4609.7881659999875,
+      "line": "Loading resource: res://.godot/imported/wood_planks_grey_roughness.jpg-32206f20a6a3635bc1dfc5e93811f55d.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4628.656750000005,
+      "line": "Loading resource: res://resources/materials/train_glass.tres"
+    },
+    {
+      "process_wall_ms": 4629.863790999991,
+      "line": "Loading resource: res://assets/train/control_lever.glb"
+    },
+    {
+      "process_wall_ms": 4629.924415999994,
+      "line": "Loading resource: res://.godot/imported/control_lever.glb-87b88210eba2716216304059ebadfab1.scn"
+    },
+    {
+      "process_wall_ms": 4630.2322910000275,
+      "line": "Loading resource: res://assets/train/control_lever_wood_planks_grey_albedo.jpg"
+    },
+    {
+      "process_wall_ms": 4630.576749999989,
+      "line": "Loading resource: res://.godot/imported/control_lever_wood_planks_grey_albedo.jpg-f6f787eff396deddfbcb7cd141e394e5.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4631.941208,
+      "line": "Loading resource: res://assets/train/control_lever_wood_planks_grey_roughness.png"
+    },
+    {
+      "process_wall_ms": 4632.107749999988,
+      "line": "Loading resource: res://.godot/imported/control_lever_wood_planks_grey_roughness.png-45eae4e8e7eca1f42c31d7ac33fd3d42.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4633.133041000008,
+      "line": "Loading resource: res://assets/train/control_lever_wood_planks_grey_normal.jpg"
+    },
+    {
+      "process_wall_ms": 4633.257333000018,
+      "line": "Loading resource: res://.godot/imported/control_lever_wood_planks_grey_normal.jpg-1b9faab0fcd504496f5fd8d0d3f4fa10.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4642.1487910000105,
+      "line": "Loading resource: res://resources/materials/rail_steel.tres"
+    },
+    {
+      "process_wall_ms": 4659.526040999992,
+      "line": "Loading resource: res://assets/characters/railway_survivor.glb"
+    },
+    {
+      "process_wall_ms": 4659.597833000021,
+      "line": "Loading resource: res://.godot/imported/railway_survivor.glb-e4aaa97afa3a17afe374ea14645abd3f.scn"
+    },
+    {
+      "process_wall_ms": 4660.3262500000255,
+      "line": "Loading resource: res://assets/characters/railway_survivor_eyebrow001.png"
+    },
+    {
+      "process_wall_ms": 4660.488541000006,
+      "line": "Loading resource: res://.godot/imported/railway_survivor_eyebrow001.png-54f62f28241300c657e71efd36120fe7.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4660.926166000025,
+      "line": "Loading resource: res://assets/characters/railway_survivor_eyelashes01.png"
+    },
+    {
+      "process_wall_ms": 4661.087666000014,
+      "line": "Loading resource: res://.godot/imported/railway_survivor_eyelashes01.png-17498c1cb98219525bdab0231a1c69eb.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4662.417750000031,
+      "line": "Loading resource: res://assets/characters/railway_survivor_brown_eye.png"
+    },
+    {
+      "process_wall_ms": 4662.632333000033,
+      "line": "Loading resource: res://.godot/imported/railway_survivor_brown_eye.png-34e10ea39e03e94d6bd06e88de2e1d28.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4664.912291000008,
+      "line": "Loading resource: res://assets/characters/railway_survivor_male_casualsuit05_diffuse.png"
+    },
+    {
+      "process_wall_ms": 4665.149750000011,
+      "line": "Loading resource: res://.godot/imported/railway_survivor_male_casualsuit05_diffuse.png-3ee3d2c7a4d24fa8144007387c8badd3.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4673.925875000009,
+      "line": "Loading resource: res://assets/characters/railway_survivor_male_casualsuit05_normal.png"
+    },
+    {
+      "process_wall_ms": 4674.243041000011,
+      "line": "Loading resource: res://.godot/imported/railway_survivor_male_casualsuit05_normal.png-31c9accb15e517415e3f8f40ef7f7753.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4684.114333000025,
+      "line": "Loading resource: res://assets/characters/railway_survivor_middleage_lightskinned_male_diffuse.png"
+    },
+    {
+      "process_wall_ms": 4684.495540999989,
+      "line": "Loading resource: res://.godot/imported/railway_survivor_middleage_lightskinned_male_diffuse.png-b76f8538b55d9c630c4422ec81ea0f80.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4694.449915999996,
+      "line": "Loading resource: res://assets/characters/railway_survivor_skin_male_african_middleage_NRM.png"
+    },
+    {
+      "process_wall_ms": 4695.0685410000115,
+      "line": "Loading resource: res://.godot/imported/railway_survivor_skin_male_african_middleage_NRM.png-8a56666743742c4837537ad4e91386d9.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4710.822457999995,
+      "line": "Loading resource: res://assets/characters/railway_survivor_BootsAnkleM.png"
+    },
+    {
+      "process_wall_ms": 4711.152707999986,
+      "line": "Loading resource: res://.godot/imported/railway_survivor_BootsAnkleM.png-44f8af70b3be8903e8c8cdc394e1ef54.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4720.6865,
+      "line": "Loading resource: res://assets/characters/railway_survivor_BootsAnkle-norm.png"
+    },
+    {
+      "process_wall_ms": 4721.503125000027,
+      "line": "Loading resource: res://.godot/imported/railway_survivor_BootsAnkle-norm.png-e2c04f999b1b0656606679c4468fc2bc.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4734.922165999989,
+      "line": "Loading resource: res://assets/characters/railway_survivor_short04_diffuse.png"
+    },
+    {
+      "process_wall_ms": 4735.488166000039,
+      "line": "Loading resource: res://.godot/imported/railway_survivor_short04_diffuse.png-9f65b855935ff4a0904bd33791686741.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4779.34645800002,
+      "line": "Loading resource: res://assets/models/coal_sack.glb"
+    },
+    {
+      "process_wall_ms": 4779.420666000022,
+      "line": "Loading resource: res://.godot/imported/coal_sack.glb-7b0f3794e81000548c3cbd585cde6aca.scn"
+    },
+    {
+      "process_wall_ms": 4781.068250000033,
+      "line": "Loading resource: res://resources/materials/coal_canvas.tres"
+    },
+    {
+      "process_wall_ms": 4781.071457999986,
+      "line": "Loading resource: res://assets/pbr/denim_fabric_albedo.jpg"
+    },
+    {
+      "process_wall_ms": 4781.082791000017,
+      "line": "Loading resource: res://.godot/imported/denim_fabric_albedo.jpg-1d7139cd50dc485d326742e6b119d2cb.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4782.864708000034,
+      "line": "Loading resource: res://assets/pbr/denim_fabric_normal.jpg"
+    },
+    {
+      "process_wall_ms": 4783.094500000005,
+      "line": "Loading resource: res://.godot/imported/denim_fabric_normal.jpg-372825ca20cb8e7aeb9e30b8513ad919.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4827.3648329999905,
+      "line": "Loading resource: res://assets/pbr/denim_fabric_roughness.jpg"
+    },
+    {
+      "process_wall_ms": 4828.186833000018,
+      "line": "Loading resource: res://.godot/imported/denim_fabric_roughness.jpg-c8baed7be97d71b2658c7e1d8e56f653.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4865.56170800003,
+      "line": "Loading resource: res://scripts/fog/fog_front.gdshader"
+    },
+    {
+      "process_wall_ms": 4868.009625000013,
+      "line": "Loading resource: res://assets/audio/fog/metal.wav"
+    },
+    {
+      "process_wall_ms": 4868.200290999994,
+      "line": "Loading resource: res://.godot/imported/metal.wav-7e9236e187d47f611fd5f132ede9a674.sample"
+    },
+    {
+      "process_wall_ms": 4873.072083000011,
+      "line": "Loading resource: res://resources/graphics/low.tres"
+    },
+    {
+      "process_wall_ms": 4873.107083000036,
+      "line": "Loading resource: res://scripts/settings/graphics_preset.gd"
+    },
+    {
+      "process_wall_ms": 4873.829250000028,
+      "line": "Loading resource: res://resources/graphics/medium.tres"
+    },
+    {
+      "process_wall_ms": 4874.002625000003,
+      "line": "Loading resource: res://resources/graphics/high.tres"
+    },
+    {
+      "process_wall_ms": 4876.681000000019,
+      "line": "Loading resource: res://assets/sky/kloofendal_overcast_puresky_1k.hdr"
+    },
+    {
+      "process_wall_ms": 4876.75008299999,
+      "line": "Loading resource: res://.godot/imported/kloofendal_overcast_puresky_1k.hdr-fafe61f0c30cd0e8442d153a6222f638.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4916.181583000025,
+      "line": "Loading resource: res://assets/audio/wind.wav"
+    },
+    {
+      "process_wall_ms": 4916.230083000017,
+      "line": "Loading resource: res://.godot/imported/wind.wav-26bd3f95e99896071b625821c2f0df7a.sample"
+    },
+    {
+      "process_wall_ms": 4917.288499999984,
+      "line": "Loading resource: res://assets/audio/engine.wav"
+    },
+    {
+      "process_wall_ms": 4917.385416000002,
+      "line": "Loading resource: res://.godot/imported/engine.wav-13a2907be8290064892a1d44408db00f.sample"
+    },
+    {
+      "process_wall_ms": 4918.545541000014,
+      "line": "Loading resource: res://assets/audio/step.wav"
+    },
+    {
+      "process_wall_ms": 4918.631124999991,
+      "line": "Loading resource: res://.godot/imported/step.wav-7c1afa4d3561f9fd67ecf320728c68cf.sample"
+    },
+    {
+      "process_wall_ms": 4922.629166000035,
+      "line": "Loading resource: res://resources/camera/train_departure.tres"
+    },
+    {
+      "process_wall_ms": 4922.945125000013,
+      "line": "Loading resource: res://scenes/station/harlow_junction.tscn"
+    },
+    {
+      "process_wall_ms": 4923.092999999994,
+      "line": "Loading resource: res://scripts/presentation/station_art.gd"
+    },
+    {
+      "process_wall_ms": 4934.804625000026,
+      "line": "Loading resource: res://resources/materials/sleeper_wood.tres"
+    },
+    {
+      "process_wall_ms": 4935.657999999989,
+      "line": "Loading resource: res://resources/materials/platform_edge.tres"
+    },
+    {
+      "process_wall_ms": 4935.974208000005,
+      "line": "Loading resource: res://resources/materials/crate_dark.tres"
+    },
+    {
+      "process_wall_ms": 4936.23475000004,
+      "line": "Loading resource: res://resources/materials/crate_wood.tres"
+    },
+    {
+      "process_wall_ms": 4936.57220800003,
+      "line": "Loading resource: res://scenes/props/station_lamp.tscn"
+    },
+    {
+      "process_wall_ms": 4936.7872500000085,
+      "line": "Loading resource: res://scripts/environment/prop_light.gd"
+    },
+    {
+      "process_wall_ms": 4937.418291000029,
+      "line": "Loading resource: res://resources/materials/lamp_cool.tres"
+    },
+    {
+      "process_wall_ms": 4938.239415999988,
+      "line": "Loading resource: res://resources/materials/metal_rust.tres"
+    },
+    {
+      "process_wall_ms": 4938.688666000018,
+      "line": "Loading resource: res://scenes/buildings/warehouse_a.tscn"
+    },
+    {
+      "process_wall_ms": 4939.345416000037,
+      "line": "Loading resource: res://resources/materials/glass_dark.tres"
+    },
+    {
+      "process_wall_ms": 4939.703708000025,
+      "line": "Loading resource: res://resources/materials/shelf_metal.tres"
+    },
+    {
+      "process_wall_ms": 4940.048165999997,
+      "line": "Loading resource: res://scenes/props/hanging_lamp.tscn"
+    },
+    {
+      "process_wall_ms": 4940.308333000019,
+      "line": "Loading resource: res://resources/materials/lamp_warm.tres"
+    },
+    {
+      "process_wall_ms": 4940.923124999983,
+      "line": "Loading resource: res://resources/materials/window_warm.tres"
+    },
+    {
+      "process_wall_ms": 4941.338625000015,
+      "line": "Loading resource: res://scripts/environment/cutaway_trigger.gd"
+    },
+    {
+      "process_wall_ms": 4943.7332910000005,
+      "line": "Loading resource: res://resources/camera/indoor.tres"
+    },
+    {
+      "process_wall_ms": 4949.421958000016,
+      "line": "Loading resource: res://scenes/buildings/warehouse_b.tscn"
+    },
+    {
+      "process_wall_ms": 4950.003874999993,
+      "line": "Loading resource: res://resources/materials/wall_interior.tres"
+    },
+    {
+      "process_wall_ms": 4950.4877910000005,
+      "line": "Loading resource: res://resources/materials/window_dim.tres"
+    },
+    {
+      "process_wall_ms": 4954.020249999985,
+      "line": "Loading resource: res://scenes/props/freight_car.tscn"
+    },
+    {
+      "process_wall_ms": 4954.307749999998,
+      "line": "Loading resource: res://resources/materials/freight_body.tres"
+    },
+    {
+      "process_wall_ms": 4955.316041000004,
+      "line": "Loading resource: res://resources/materials/silhouette.tres"
+    },
+    {
+      "process_wall_ms": 4961.001666000016,
+      "line": "Loading resource: res://scenes/train/train.tscn"
+    },
+    {
+      "process_wall_ms": 4961.671458000012,
+      "line": "Loading resource: res://resources/train/departure_emergency.tres"
+    },
+    {
+      "process_wall_ms": 4962.247332999994,
+      "line": "Loading resource: res://resources/train/departure_normal.tres"
+    },
+    {
+      "process_wall_ms": 4962.501040999996,
+      "line": "Loading resource: res://resources/train/departure_slow.tres"
+    },
+    {
+      "process_wall_ms": 4962.7888329999905,
+      "line": "Loading resource: res://scenes/train/flat_car.tscn"
+    },
+    {
+      "process_wall_ms": 4962.981458000002,
+      "line": "Loading resource: res://scripts/presentation/train_art.gd"
+    },
+    {
+      "process_wall_ms": 4967.229833000033,
+      "line": "Loading resource: res://assets/models/rail_wheel.glb"
+    },
+    {
+      "process_wall_ms": 4967.292583000017,
+      "line": "Loading resource: res://.godot/imported/rail_wheel.glb-46ffb59367c77c4fedc4a798a46e47ce.scn"
+    },
+    {
+      "process_wall_ms": 4969.329000000016,
+      "line": "Loading resource: res://assets/train/steam_locomotive.glb"
+    },
+    {
+      "process_wall_ms": 4969.387665999989,
+      "line": "Loading resource: res://.godot/imported/steam_locomotive.glb-a9c06e9e3b187b9a33fee7013a9ce14d.scn"
+    },
+    {
+      "process_wall_ms": 4970.046500000024,
+      "line": "Loading resource: res://assets/train/steam_locomotive_rusty_painted_metal_albedo.jpg"
+    },
+    {
+      "process_wall_ms": 4970.427833000031,
+      "line": "Loading resource: res://.godot/imported/steam_locomotive_rusty_painted_metal_albedo.jpg-18bb33c3e46f8ff88caa7a74427c5d21.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4971.710083000005,
+      "line": "Loading resource: res://assets/train/steam_locomotive_rusty_painted_metal_roughness.png"
+    },
+    {
+      "process_wall_ms": 4971.9232909999955,
+      "line": "Loading resource: res://.godot/imported/steam_locomotive_rusty_painted_metal_roughness.png-f1f1cde3454dee3ff128651975af1d54.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4973.825416000011,
+      "line": "Loading resource: res://assets/train/steam_locomotive_rusty_painted_metal_normal.jpg"
+    },
+    {
+      "process_wall_ms": 4974.138458000027,
+      "line": "Loading resource: res://.godot/imported/steam_locomotive_rusty_painted_metal_normal.jpg-93586e24d7575eaeb7269014b4083560.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4976.884165999991,
+      "line": "Loading resource: res://assets/train/steam_locomotive_rusty_painted_metal_albedo_3.jpg"
+    },
+    {
+      "process_wall_ms": 4977.19541600003,
+      "line": "Loading resource: res://.godot/imported/steam_locomotive_rusty_painted_metal_albedo_3.jpg-83210c5f9cb55bae8a230ce064466b28.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4984.261457999992,
+      "line": "Loading resource: res://assets/train/steam_locomotive_rusty_painted_metal_albedo_4.jpg"
+    },
+    {
+      "process_wall_ms": 4984.812165999983,
+      "line": "Loading resource: res://.godot/imported/steam_locomotive_rusty_painted_metal_albedo_4.jpg-63c8488325fe071b9d2ae239aace19a2.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4987.4931250000145,
+      "line": "Loading resource: res://assets/train/steam_locomotive_rusty_painted_metal_albedo_5.jpg"
+    },
+    {
+      "process_wall_ms": 4988.006583000015,
+      "line": "Loading resource: res://.godot/imported/steam_locomotive_rusty_painted_metal_albedo_5.jpg-a6a5a8c79d1a5e683bd9a8e90f02bb7b.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4989.1955410000155,
+      "line": "Loading resource: res://assets/train/steam_locomotive_rusty_painted_metal_albedo_6.jpg"
+    },
+    {
+      "process_wall_ms": 4989.4057500000035,
+      "line": "Loading resource: res://.godot/imported/steam_locomotive_rusty_painted_metal_albedo_6.jpg-ec8989444d9275a69e364d112054228d.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4990.705290999984,
+      "line": "Loading resource: res://assets/train/steam_locomotive_rusty_painted_metal_albedo_7.jpg"
+    },
+    {
+      "process_wall_ms": 4990.902500000004,
+      "line": "Loading resource: res://.godot/imported/steam_locomotive_rusty_painted_metal_albedo_7.jpg-21e6249f9e15ee43890fa2e2acfcca8a.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4992.446374999986,
+      "line": "Loading resource: res://assets/train/steam_locomotive_rusty_painted_metal_albedo_8.jpg"
+    },
+    {
+      "process_wall_ms": 4992.6936660000365,
+      "line": "Loading resource: res://.godot/imported/steam_locomotive_rusty_painted_metal_albedo_8.jpg-7bedfbff6ed5fccd784f341da11d47d6.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4998.125666000022,
+      "line": "Loading resource: res://assets/train/steam_locomotive_rusty_painted_metal_albedo_9.jpg"
+    },
+    {
+      "process_wall_ms": 4998.467208000022,
+      "line": "Loading resource: res://.godot/imported/steam_locomotive_rusty_painted_metal_albedo_9.jpg-0ebf1d0c408448bb151abf3987a3c2d8.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 4999.989916000004,
+      "line": "Loading resource: res://assets/train/steam_locomotive_rusty_painted_metal_albedo_10.jpg"
+    },
+    {
+      "process_wall_ms": 5000.155250000034,
+      "line": "Loading resource: res://.godot/imported/steam_locomotive_rusty_painted_metal_albedo_10.jpg-9e67f33475127c32c8fe7937ae0ca048.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 5040.521291000005,
+      "line": "Loading resource: res://assets/train/crew_car_finish.glb"
+    },
+    {
+      "process_wall_ms": 5040.58679100001,
+      "line": "Loading resource: res://.godot/imported/crew_car_finish.glb-29b7d7dd6ce10cebc0702df51d3aa824.scn"
+    },
+    {
+      "process_wall_ms": 5041.097333000039,
+      "line": "Loading resource: res://assets/train/crew_car_finish_green_metal_rust_albedo.jpg"
+    },
+    {
+      "process_wall_ms": 5041.441082999995,
+      "line": "Loading resource: res://.godot/imported/crew_car_finish_green_metal_rust_albedo.jpg-6048e42c92d90ab15814c8365f3399cd.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 5188.814165999986,
+      "line": "Loading resource: res://assets/train/crew_car_finish_green_metal_rust_roughness.png"
+    },
+    {
+      "process_wall_ms": 5190.586499999995,
+      "line": "Loading resource: res://.godot/imported/crew_car_finish_green_metal_rust_roughness.png-95a57d2900da7d41634990e44c18e8b1.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 5203.790833000028,
+      "line": "Loading resource: res://assets/train/crew_car_finish_green_metal_rust_normal.jpg"
+    },
+    {
+      "process_wall_ms": 5204.076750000013,
+      "line": "Loading resource: res://.godot/imported/crew_car_finish_green_metal_rust_normal.jpg-acb6e98de816418659fc3c3c17dfd4a7.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 5205.542125000022,
+      "line": "Loading resource: res://assets/train/crew_car_finish_wood_planks_grey_albedo.jpg"
+    },
+    {
+      "process_wall_ms": 5205.737999999997,
+      "line": "Loading resource: res://.godot/imported/crew_car_finish_wood_planks_grey_albedo.jpg-f6704aa623790f71f328e69aa711df2f.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 5207.215125000004,
+      "line": "Loading resource: res://assets/train/crew_car_finish_wood_planks_grey_roughness.png"
+    },
+    {
+      "process_wall_ms": 5207.488333000015,
+      "line": "Loading resource: res://.godot/imported/crew_car_finish_wood_planks_grey_roughness.png-4207a7ce51fc8edfec8d4fa22f0127d5.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 5208.725958000003,
+      "line": "Loading resource: res://assets/train/crew_car_finish_wood_planks_grey_normal.jpg"
+    },
+    {
+      "process_wall_ms": 5208.905415999993,
+      "line": "Loading resource: res://.godot/imported/crew_car_finish_wood_planks_grey_normal.jpg-e86bfea6a5957abe0563673e775a2325.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 5226.09616599999,
+      "line": "Loading resource: res://assets/train/locomotive_cab_finish.glb"
+    },
+    {
+      "process_wall_ms": 5226.16416599999,
+      "line": "Loading resource: res://.godot/imported/locomotive_cab_finish.glb-7f045b09a31d0c75bade7a9c05256599.scn"
+    },
+    {
+      "process_wall_ms": 5226.530625000009,
+      "line": "Loading resource: res://assets/train/locomotive_cab_finish_green_metal_rust_albedo.jpg"
+    },
+    {
+      "process_wall_ms": 5226.883999999984,
+      "line": "Loading resource: res://.godot/imported/locomotive_cab_finish_green_metal_rust_albedo.jpg-e9d8b2bd7eca64bc8d270725b84c2784.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 5229.448208000008,
+      "line": "Loading resource: res://assets/train/locomotive_cab_finish_green_metal_rust_roughness.png"
+    },
+    {
+      "process_wall_ms": 5229.684082999995,
+      "line": "Loading resource: res://.godot/imported/locomotive_cab_finish_green_metal_rust_roughness.png-a66baf1f4fa7be6ca24cbb56fc84d5b3.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 5231.348333000028,
+      "line": "Loading resource: res://assets/train/locomotive_cab_finish_green_metal_rust_normal.jpg"
+    },
+    {
+      "process_wall_ms": 5231.650333000005,
+      "line": "Loading resource: res://.godot/imported/locomotive_cab_finish_green_metal_rust_normal.jpg-88f36a78bd669980995676a7af03b3a4.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 5235.112666000021,
+      "line": "Loading resource: res://assets/train/locomotive_cab_finish_wood_planks_grey_albedo.jpg"
+    },
+    {
+      "process_wall_ms": 5235.4775830000335,
+      "line": "Loading resource: res://.godot/imported/locomotive_cab_finish_wood_planks_grey_albedo.jpg-a5b8b1d4d009452b4029bfb8e002626f.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 5236.922832999994,
+      "line": "Loading resource: res://assets/train/locomotive_cab_finish_wood_planks_grey_roughness.png"
+    },
+    {
+      "process_wall_ms": 5237.319875000026,
+      "line": "Loading resource: res://.godot/imported/locomotive_cab_finish_wood_planks_grey_roughness.png-91eadb1c3da9e93cb55fbf843b266861.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 5245.536375000029,
+      "line": "Loading resource: res://assets/train/locomotive_cab_finish_wood_planks_grey_normal.jpg"
+    },
+    {
+      "process_wall_ms": 5245.978958000023,
+      "line": "Loading resource: res://.godot/imported/locomotive_cab_finish_wood_planks_grey_normal.jpg-a4a98618124e5689f710cdd17099eb5a.bptc.ctex"
+    },
+    {
+      "process_wall_ms": 5267.05854100004,
+      "line": "Loading resource: res://resources/materials/train_trim.tres"
+    },
+    {
+      "process_wall_ms": 5268.934916000035,
+      "line": "Loading resource: res://resources/materials/train_deck.tres"
+    },
+    {
+      "process_wall_ms": 5269.71125,
+      "line": "Loading resource: res://resources/materials/train_stripe.tres"
+    },
+    {
+      "process_wall_ms": 5271.255166000003,
+      "line": "Loading resource: res://scenes/train/crew_car.tscn"
+    },
+    {
+      "process_wall_ms": 5272.872041000028,
+      "line": "Loading resource: res://scenes/train/locomotive.tscn"
+    },
+    {
+      "process_wall_ms": 5275.254125000003,
+      "line": "Loading resource: res://scenes/player/player.tscn"
+    },
+    {
+      "process_wall_ms": 5275.560791000033,
+      "line": "Loading resource: res://resources/player/default_movement.tres"
+    },
+    {
+      "process_wall_ms": 5275.83258300001,
+      "line": "Loading resource: res://resources/materials/player_coat.tres"
+    },
+    {
+      "process_wall_ms": 5276.235791000034,
+      "line": "Loading resource: res://resources/materials/player_trousers.tres"
+    },
+    {
+      "process_wall_ms": 5276.521624999987,
+      "line": "Loading resource: res://resources/materials/player_skin.tres"
+    },
+    {
+      "process_wall_ms": 5276.782291000018,
+      "line": "Loading resource: res://resources/materials/player_accent.tres"
+    },
+    {
+      "process_wall_ms": 5277.528791000009,
+      "line": "Loading resource: res://resources/camera/outdoor.tres"
+    },
+    {
+      "process_wall_ms": 5277.891833000012,
+      "line": "Loading resource: res://scenes/ui/hud.tscn"
+    },
+    {
+      "process_wall_ms": 5278.124958000035,
+      "line": "Loading resource: res://scenes/ui/debug/debug_menu.tscn"
+    },
+    {
+      "process_wall_ms": 5279.162499999984,
+      "line": "Loading resource: res://resources/journey/harlow_escape.tres"
+    },
+    {
+      "process_wall_ms": 5279.3294580000065,
+      "line": "Loading resource: res://scenes/station/ashford_depot.tscn"
+    },
+    {
+      "process_wall_ms": 5279.4935000000005,
+      "line": "Loading resource: res://scenes/station/blackwater_crossing.tscn"
+    },
+    {
+      "process_wall_ms": 5279.892375000031,
+      "line": "[startup] {\"nodes\":1.0,\"phase\":\"load_end\",\"static_bytes\":82551407,\"texture_bytes\":0.0,\"ticks_ms\":5099}"
+    },
+    {
+      "process_wall_ms": 5287.886082999989,
+      "line": "Loading resource: res://resources/fog/harlow_route.tres"
+    },
+    {
+      "process_wall_ms": 5289.13320800001,
+      "line": "[startup] {\"nodes\":1.0,\"phase\":\"instantiate_end\",\"static_bytes\":87599583,\"texture_bytes\":0.0,\"ticks_ms\":5108}"
+    },
+    {
+      "process_wall_ms": 9722.916666000003,
+      "line": "[phase] {\"duration_ms\":3453.834,\"nodes\":1401.0,\"phase\":\"station_art\",\"pipeline_draw\":0.0,\"pipeline_mesh\":45.0,\"pipeline_specialization\":0.0,\"resources\":600.0,\"static_bytes\":134150586,\"texture_bytes\":0.0,\"ticks_ms\":9542.592}"
+    },
+    {
+      "process_wall_ms": 10471.86158300002,
+      "line": "[phase] {\"duration_ms\":97.627,\"nodes\":1663.0,\"phase\":\"train_art\",\"pipeline_draw\":0.0,\"pipeline_mesh\":45.0,\"pipeline_specialization\":0.0,\"resources\":600.0,\"static_bytes\":137457250,\"texture_bytes\":0.0,\"ticks_ms\":10291.625}"
+    },
+    {
+      "process_wall_ms": 10661.554249999994,
+      "line": "[phase] {\"duration_ms\":111.359,\"nodes\":1709.0,\"phase\":\"train_art\",\"pipeline_draw\":0.0,\"pipeline_mesh\":45.0,\"pipeline_specialization\":0.0,\"resources\":600.0,\"static_bytes\":137835370,\"texture_bytes\":0.0,\"ticks_ms\":10481.348}"
+    },
+    {
+      "process_wall_ms": 10819.720915999995,
+      "line": "[phase] {\"duration_ms\":145.701,\"nodes\":1768.0,\"phase\":\"train_art\",\"pipeline_draw\":0.0,\"pipeline_mesh\":45.0,\"pipeline_specialization\":0.0,\"resources\":600.0,\"static_bytes\":138603590,\"texture_bytes\":0.0,\"ticks_ms\":10639.513}"
+    },
+    {
+      "process_wall_ms": 10821.828832999983,
+      "line": "[phase] {\"duration_ms\":1.256,\"nodes\":1788.0,\"phase\":\"worker_bind\",\"pipeline_draw\":0.0,\"pipeline_mesh\":45.0,\"pipeline_specialization\":0.0,\"resources\":600.0,\"static_bytes\":139012098,\"texture_bytes\":0.0,\"ticks_ms\":10641.66}"
+    },
+    {
+      "process_wall_ms": 10837.806999999997,
+      "line": "[phase] {\"duration_ms\":0.0,\"nodes\":1832.0,\"phase\":\"game_ready_begin\",\"pipeline_draw\":0.0,\"pipeline_mesh\":45.0,\"pipeline_specialization\":0.0,\"resources\":600.0,\"static_bytes\":140676246,\"texture_bytes\":0.0,\"ticks_ms\":10657.577}"
+    },
+    {
+      "process_wall_ms": 11336.706665999998,
+      "line": "Loading resource: res://resources/items/coal_sack.tres"
+    },
+    {
+      "process_wall_ms": 11337.459749999995,
+      "line": "Loading resource: res://assets/icons/items/coal_sack.svg"
+    },
+    {
+      "process_wall_ms": 11338.160458000004,
+      "line": "Loading resource: res://.godot/imported/coal_sack.svg-97c7acbb1820bf18ad463889dcbea987.ctex"
+    },
+    {
+      "process_wall_ms": 11338.639041000022,
+      "line": "Loading resource: res://scenes/items/item_visual.tscn"
+    },
+    {
+      "process_wall_ms": 11339.95600000003,
+      "line": "Loading resource: res://resources/items/tools.tres"
+    },
+    {
+      "process_wall_ms": 11340.195499999993,
+      "line": "Loading resource: res://assets/icons/items/tools.svg"
+    },
+    {
+      "process_wall_ms": 11340.67266599999,
+      "line": "Loading resource: res://.godot/imported/tools.svg-1cc4af35da2a3c215037c321d06493bf.ctex"
+    },
+    {
+      "process_wall_ms": 11341.457290999984,
+      "line": "Loading resource: res://resources/items/machine_component.tres"
+    },
+    {
+      "process_wall_ms": 11341.772583000022,
+      "line": "Loading resource: res://assets/icons/items/machine_component.svg"
+    },
+    {
+      "process_wall_ms": 11342.190915999992,
+      "line": "Loading resource: res://.godot/imported/machine_component.svg-8a7a1a788b58721837cbff8b1b95f783.ctex"
+    },
+    {
+      "process_wall_ms": 11343.039540999996,
+      "line": "Loading resource: res://resources/items/medicine.tres"
+    },
+    {
+      "process_wall_ms": 11343.252666000011,
+      "line": "Loading resource: res://assets/icons/items/medicine.svg"
+    },
+    {
+      "process_wall_ms": 11343.673749999994,
+      "line": "Loading resource: res://.godot/imported/medicine.svg-deab8f1b62a3c4d479d2109ee0f33c79.ctex"
+    },
+    {
+      "process_wall_ms": 11344.281207999984,
+      "line": "Loading resource: res://resources/items/canned_food.tres"
+    },
+    {
+      "process_wall_ms": 11344.663333000028,
+      "line": "Loading resource: res://assets/icons/items/canned_food.svg"
+    },
+    {
+      "process_wall_ms": 11345.044958000017,
+      "line": "Loading resource: res://.godot/imported/canned_food.svg-4d6e4b21810f0bada7056f3d76c2a341.ctex"
+    },
+    {
+      "process_wall_ms": 11346.007250000013,
+      "line": "Loading resource: res://resources/items/scrap_metal.tres"
+    },
+    {
+      "process_wall_ms": 11346.14183299999,
+      "line": "Loading resource: res://assets/icons/items/scrap_metal.svg"
+    },
+    {
+      "process_wall_ms": 11346.319125000036,
+      "line": "Loading resource: res://.godot/imported/scrap_metal.svg-989d8405fa9bbfff0d9d8e84e3a490ed.ctex"
+    },
+    {
+      "process_wall_ms": 11582.338416000028,
+      "line": "Loading resource: res://resources/items/bandages.tres"
+    },
+    {
+      "process_wall_ms": 11582.607875000009,
+      "line": "Loading resource: res://assets/icons/items/bandages.svg"
+    },
+    {
+      "process_wall_ms": 11582.799582999996,
+      "line": "Loading resource: res://.godot/imported/bandages.svg-8e4aa1dbc2903e9492f5097f709f400e.ctex"
+    },
+    {
+      "process_wall_ms": 11624.929957999995,
+      "line": "[phase] {\"duration_ms\":787.13,\"nodes\":3319.0,\"phase\":\"journey_setup\",\"pipeline_draw\":0.0,\"pipeline_mesh\":45.0,\"pipeline_specialization\":0.0,\"resources\":610.0,\"static_bytes\":153863495,\"texture_bytes\":0.0,\"ticks_ms\":11444.704}"
+    },
+    {
+      "process_wall_ms": 11628.107416000035,
+      "line": "[phase] {\"duration_ms\":3.106,\"nodes\":3356.0,\"phase\":\"harlow_props\",\"pipeline_draw\":0.0,\"pipeline_mesh\":45.0,\"pipeline_specialization\":0.0,\"resources\":610.0,\"static_bytes\":154085503,\"texture_bytes\":0.0,\"ticks_ms\":11447.914}"
+    },
+    {
+      "process_wall_ms": 11915.247625000007,
+      "line": "[phase] {\"duration_ms\":287.063,\"nodes\":3484.0,\"phase\":\"harlow_architecture\",\"pipeline_draw\":0.0,\"pipeline_mesh\":45.0,\"pipeline_specialization\":0.0,\"resources\":599.0,\"static_bytes\":155427239,\"texture_bytes\":0.0,\"ticks_ms\":11735.045}"
+    },
+    {
+      "process_wall_ms": 11915.907541000024,
+      "line": "[phase] {\"duration_ms\":0.608,\"nodes\":3505.0,\"phase\":\"worker_bind\",\"pipeline_draw\":0.0,\"pipeline_mesh\":45.0,\"pipeline_specialization\":0.0,\"resources\":599.0,\"static_bytes\":155561727,\"texture_bytes\":0.0,\"ticks_ms\":11735.759}"
+    },
+    {
+      "process_wall_ms": 11917.517040999996,
+      "line": "Loading resource: res://scenes/station/scavenging_sites.tscn"
+    },
+    {
+      "process_wall_ms": 11918.07908300001,
+      "line": "Loading resource: res://resources/loot/coal_reserve.tres"
+    },
+    {
+      "process_wall_ms": 11918.375958000013,
+      "line": "Loading resource: res://resources/loot/freight.tres"
+    },
+    {
+      "process_wall_ms": 11918.58745799999,
+      "line": "Loading resource: res://resources/items/fuel_drum.tres"
+    },
+    {
+      "process_wall_ms": 11918.780416000005,
+      "line": "Loading resource: res://assets/icons/items/fuel_drum.svg"
+    },
+    {
+      "process_wall_ms": 11918.964875000029,
+      "line": "Loading resource: res://.godot/imported/fuel_drum.svg-c1a5b0f5dc74f196a2524808841d55af.ctex"
+    },
+    {
+      "process_wall_ms": 11919.476707999991,
+      "line": "Loading resource: res://resources/loot/fuel_reserve.tres"
+    },
+    {
+      "process_wall_ms": 11919.779250000032,
+      "line": "Loading resource: res://resources/loot/medical.tres"
+    },
+    {
+      "process_wall_ms": 11920.252375000018,
+      "line": "Loading resource: res://resources/loot/platform.tres"
+    },
+    {
+      "process_wall_ms": 11920.475415999988,
+      "line": "Loading resource: res://resources/items/lantern_oil.tres"
+    },
+    {
+      "process_wall_ms": 11920.659916000033,
+      "line": "Loading resource: res://assets/icons/items/lantern_oil.svg"
+    },
+    {
+      "process_wall_ms": 11920.807500000024,
+      "line": "Loading resource: res://.godot/imported/lantern_oil.svg-f16be63b1c86e1e7594eb3ee6934d2cd.ctex"
+    },
+    {
+      "process_wall_ms": 11921.235875000037,
+      "line": "Loading resource: res://resources/loot/precision.tres"
+    },
+    {
+      "process_wall_ms": 11921.52466600004,
+      "line": "Loading resource: res://resources/loot/warehouse_a.tres"
+    },
+    {
+      "process_wall_ms": 11921.899541000017,
+      "line": "Loading resource: res://resources/loot/warehouse_b.tres"
+    },
+    {
+      "process_wall_ms": 11993.66091600001,
+      "line": "[phase] {\"duration_ms\":78.273,\"nodes\":3814.0,\"phase\":\"game_wiring\",\"pipeline_draw\":0.0,\"pipeline_mesh\":45.0,\"pipeline_specialization\":0.0,\"resources\":631.0,\"static_bytes\":164353243,\"texture_bytes\":0.0,\"ticks_ms\":11813.377}"
+    },
+    {
+      "process_wall_ms": 11993.687040999986,
+      "line": "[startup] {\"nodes\":3814.0,\"phase\":\"add_child_end\",\"static_bytes\":164354335,\"texture_bytes\":0.0,\"ticks_ms\":11813}"
+    },
+    {
+      "process_wall_ms": 12146.671583,
+      "line": "[phase] {\"duration_ms\":4.803,\"nodes\":3993.0,\"phase\":\"graphics_collect\",\"pipeline_draw\":0.0,\"pipeline_mesh\":45.0,\"pipeline_specialization\":0.0,\"resources\":631.0,\"static_bytes\":168063323,\"texture_bytes\":0.0,\"ticks_ms\":11966.482}"
+    },
+    {
+      "process_wall_ms": 12147.322374999987,
+      "line": "[phase] {\"duration_ms\":0.626,\"nodes\":3993.0,\"phase\":\"preset_apply_0\",\"pipeline_draw\":0.0,\"pipeline_mesh\":45.0,\"pipeline_specialization\":0.0,\"resources\":631.0,\"static_bytes\":168038879,\"texture_bytes\":0.0,\"ticks_ms\":11967.177}"
+    },
+    {
+      "process_wall_ms": 12152.971707999995,
+      "line": "Loading resource: res://assets/audio/fog/rumble.wav"
+    },
+    {
+      "process_wall_ms": 12153.372375000003,
+      "line": "Loading resource: res://.godot/imported/rumble.wav-132216cc68021fd18308db261aa6b9d8.sample"
+    },
+    {
+      "process_wall_ms": 12155.17545800003,
+      "line": "Loading resource: res://assets/audio/fog/wind.wav"
+    },
+    {
+      "process_wall_ms": 12155.353832999992,
+      "line": "Loading resource: res://.godot/imported/wind.wav-e6dbabd37679e079974d2bed445497eb.sample"
+    },
+    {
+      "process_wall_ms": 12156.526332999987,
+      "line": "Loading resource: res://assets/audio/fog/breath.wav"
+    },
+    {
+      "process_wall_ms": 12156.815041000016,
+      "line": "Loading resource: res://.godot/imported/breath.wav-1d862fa562288a1ff066a53d5827fc4c.sample"
+    },
+    {
+      "process_wall_ms": 12161.843083000007,
+      "line": "[phase] {\"duration_ms\":0.0,\"nodes\":4092.0,\"phase\":\"warmup_begin\",\"pipeline_draw\":0.0,\"pipeline_mesh\":45.0,\"pipeline_specialization\":0.0,\"resources\":631.0,\"static_bytes\":170259597,\"texture_bytes\":0.0,\"ticks_ms\":11981.671}"
+    },
+    {
+      "process_wall_ms": 20520.315374999995,
+      "line": "[phase] {\"duration_ms\":5274.82,\"nodes\":3904.0,\"phase\":\"warmup_view_Platform\",\"pipeline_draw\":46.0,\"pipeline_mesh\":45.0,\"pipeline_specialization\":50.0,\"resources\":631.0,\"static_bytes\":177096975,\"texture_bytes\":302972480.0,\"ticks_ms\":20338.382}"
+    },
+    {
+      "process_wall_ms": 21018.349083000034,
+      "line": "[phase] {\"duration_ms\":495.927,\"nodes\":3904.0,\"phase\":\"warmup_view_WarehouseA\",\"pipeline_draw\":53.0,\"pipeline_mesh\":45.0,\"pipeline_specialization\":63.0,\"resources\":631.0,\"static_bytes\":178430325,\"texture_bytes\":302972480.0,\"ticks_ms\":20837.293}"
+    },
+    {
+      "process_wall_ms": 21948.228416000005,
+      "line": "[phase] {\"duration_ms\":929.958,\"nodes\":3904.0,\"phase\":\"warmup_view_WarehouseBEntry\",\"pipeline_draw\":53.0,\"pipeline_mesh\":45.0,\"pipeline_specialization\":63.0,\"resources\":631.0,\"static_bytes\":178444573,\"texture_bytes\":302972480.0,\"ticks_ms\":21767.397}"
+    },
+    {
+      "process_wall_ms": 21967.733666000015,
+      "line": "[phase] {\"duration_ms\":19.772,\"nodes\":3904.0,\"phase\":\"warmup_view_WarehouseBHall\",\"pipeline_draw\":53.0,\"pipeline_mesh\":45.0,\"pipeline_specialization\":63.0,\"resources\":631.0,\"static_bytes\":178445761,\"texture_bytes\":302972480.0,\"ticks_ms\":21787.395}"
+    },
+    {
+      "process_wall_ms": 22002.876041000036,
+      "line": "[phase] {\"duration_ms\":34.886,\"nodes\":3904.0,\"phase\":\"warmup_view_WarehouseBStores\",\"pipeline_draw\":53.0,\"pipeline_mesh\":45.0,\"pipeline_specialization\":63.0,\"resources\":631.0,\"static_bytes\":178453429,\"texture_bytes\":302972480.0,\"ticks_ms\":21822.411}"
+    },
+    {
+      "process_wall_ms": 22037.232415999995,
+      "line": "[phase] {\"duration_ms\":34.36,\"nodes\":3904.0,\"phase\":\"warmup_view_Freight\",\"pipeline_draw\":53.0,\"pipeline_mesh\":45.0,\"pipeline_specialization\":63.0,\"resources\":631.0,\"static_bytes\":178467577,\"texture_bytes\":302972480.0,\"ticks_ms\":21856.971}"
+    },
+    {
+      "process_wall_ms": 22070.912666000026,
+      "line": "[phase] {\"duration_ms\":33.448,\"nodes\":3904.0,\"phase\":\"warmup_view_@Marker3D@1990\",\"pipeline_draw\":53.0,\"pipeline_mesh\":45.0,\"pipeline_specialization\":63.0,\"resources\":631.0,\"static_bytes\":178614661,\"texture_bytes\":302972480.0,\"ticks_ms\":21890.578}"
+    },
+    {
+      "process_wall_ms": 22104.20700000003,
+      "line": "[phase] {\"duration_ms\":33.02,\"nodes\":3904.0,\"phase\":\"warmup_view_@Marker3D@1991\",\"pipeline_draw\":53.0,\"pipeline_mesh\":45.0,\"pipeline_specialization\":63.0,\"resources\":631.0,\"static_bytes\":178665545,\"texture_bytes\":302972480.0,\"ticks_ms\":21923.846}"
+    },
+    {
+      "process_wall_ms": 22136.965540999994,
+      "line": "[phase] {\"duration_ms\":32.413,\"nodes\":3904.0,\"phase\":\"warmup_view_@Marker3D@2152\",\"pipeline_draw\":53.0,\"pipeline_mesh\":45.0,\"pipeline_specialization\":63.0,\"resources\":631.0,\"static_bytes\":178820693,\"texture_bytes\":302972480.0,\"ticks_ms\":21956.554}"
+    },
+    {
+      "process_wall_ms": 22169.734000000004,
+      "line": "[phase] {\"duration_ms\":32.817,\"nodes\":3904.0,\"phase\":\"warmup_view_@Marker3D@2153\",\"pipeline_draw\":53.0,\"pipeline_mesh\":45.0,\"pipeline_specialization\":63.0,\"resources\":631.0,\"static_bytes\":178861857,\"texture_bytes\":302972480.0,\"ticks_ms\":21989.505}"
+    },
+    {
+      "process_wall_ms": 22205.047833000037,
+      "line": "[phase] {\"duration_ms\":0.0,\"nodes\":3900.0,\"phase\":\"warmup_end\",\"pipeline_draw\":53.0,\"pipeline_mesh\":45.0,\"pipeline_specialization\":63.0,\"resources\":631.0,\"static_bytes\":178842465,\"texture_bytes\":302972480.0,\"ticks_ms\":22024.538}"
+    },
+    {
+      "process_wall_ms": 22258.557583000027,
+      "line": "[startup] {\"nodes\":3900.0,\"phase\":\"mission_ready\",\"static_bytes\":180022913,\"texture_bytes\":304021056.0,\"ticks_ms\":22078}"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "runtime_source": "5534cf82c2e6e494cbf54add169e6ab4e8101b46",
+  "ci_merge_commit": "89bc264fccbe547b9f125e063e5bbd877744a743",
+  "tree": "9d4799cdd8a7c054498688e09070190903d6ef17",
+  "run": 44675841777,
+  "artifact": 14602615877,
+  "bytes": 292541485,
+  "sha256": "e779c8b73b9e46a1b46c4a95c327e421d7f3da393b3123bc8d7cdb26b884f2a7",
+  "pack_sha256": "dd21a5ccd9a1537a99bba028b16825ed2bc40ec7fa843b8861dc839fd4bae72d",
+  "zip_roots": [
+    "Last Train Out.app"
+  ],
+  "crc_failed_member": null,
+  "macho_architectures": [
+    "x86_64",
+    "arm64"
+  ],
+  "unix_mode": "0o100755",
+  "archive_version": "73",
+  "signature": "ad-hoc, verified in native CI",
+  "notarized": false
+}

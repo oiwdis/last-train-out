@@ -1,0 +1,7 @@
+{
+  "completed": false,
+  "timed_out": true,
+  "timeout_seconds": 90,
+  "elapsed_seconds": 98.33375958300007,
+  "scope": "Diagnostic only: skin scattering is disabled in shipped presets."
+}

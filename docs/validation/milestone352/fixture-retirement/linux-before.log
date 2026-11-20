@@ -1,0 +1,16 @@
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+
+
+=== Last Train Out - automated tests (Godot 4.5.1-stable (official), physics: Jolt Physics) ===
+
+[SUITE] test_scene_retirement.gd
+  PASS  test_stopped_looping_audio_releases_mixer_owners_before_scene_completion
+  FAIL  test_spawned_fixture_cleanup_retires_audio_owners_before_returning
+          ! fixture teardown cannot leave mixer-owned playback at test runner exit
+          ! fixture teardown cannot leave mixer-owned playback at test runner exit
+          ! fixture teardown cannot leave mixer-owned playback at test runner exit
+
+=== 1 passed, 1 failed, 2 total (0.5 s wall clock) ===
+
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+     at: cleanup (core/object/object.cpp:2514)

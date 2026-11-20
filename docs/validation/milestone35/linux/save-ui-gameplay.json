@@ -1,0 +1,60 @@
+{
+  "checks": [
+    {
+      "check": "J opens actual save ledger",
+      "passed": true
+    },
+    {
+      "check": "Save Game button writes the played world",
+      "passed": true
+    },
+    {
+      "check": "Continue restores actual Harlow stop",
+      "passed": true
+    },
+    {
+      "check": "saved camera perspective recovered",
+      "passed": true
+    },
+    {
+      "check": "saved player support recovered",
+      "passed": true
+    },
+    {
+      "check": "collected supplies survive Continue",
+      "passed": true
+    },
+    {
+      "check": "evacuation note progress restored",
+      "passed": true
+    },
+    {
+      "check": "Continue preserves cargo count without duplication",
+      "passed": true
+    }
+  ],
+  "failed": false,
+  "graphics_preset": 0,
+  "integration_tour": false,
+  "late_escape": false,
+  "observations": [],
+  "results": {
+    "distance": 0.0,
+    "exposure_seconds": 0.0,
+    "mission": "harlow_escape_v1",
+    "peak_exposure": 0.0,
+    "stations_visited": [
+      "harlow"
+    ],
+    "status": "active",
+    "supplies_collected": {
+
+    },
+    "time_survived": 1.1,
+    "version": 1
+  },
+  "save_restore_repositions": 1,
+  "scenario": "save-ui",
+  "source_commit": "0f39785bbd5fa308059774c4523ecf31d7fb2b95",
+  "teleports": 0
+}

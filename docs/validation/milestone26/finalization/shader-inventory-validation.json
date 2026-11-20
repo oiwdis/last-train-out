@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "rebuilds": 2,
+  "entries": 1080,
+  "sha256": "4c5628e2e8c648fc35d2c7234c804643a038be0dea8e7c447e5177552206ca15",
+  "engine_errors": 0,
+  "only_generated_image_identifier_changed": true
+}

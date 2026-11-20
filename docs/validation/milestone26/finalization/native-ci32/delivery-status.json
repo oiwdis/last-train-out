@@ -1,0 +1,12 @@
+{
+  "passed": false,
+  "run": 43792163402,
+  "source_commit": "dbfbdac40564af869e64cad0bccf49c7afa2146e",
+  "universal_export_integrity_passed": true,
+  "arm64_headless_checks_passed": 31,
+  "arm64_window_passed": false,
+  "fatal": "timed out after 120 seconds",
+  "initial_preparation_ms": 82500,
+  "initial_player_check_elapsed_ms": 144279,
+  "note": "The 0.9 worker ratio fixes the controlled local shutdown but did not fix native packaged startup. No validated ZIP published; fresh-download jobs did not run."
+}

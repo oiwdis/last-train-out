@@ -13,12 +13,15 @@ extends Node3D
 		_rebuild()
 
 ## Distance between the rail centres.
-@export var gauge := 1.5:
+const STANDARD_GAUGE := 1.5
+const STANDARD_RAIL_HEIGHT := 0.1
+
+@export var gauge := STANDARD_GAUGE:
 	set(value):
 		gauge = maxf(value, 0.3)
 		_rebuild()
 
-@export var rail_height := 0.1:
+@export var rail_height := STANDARD_RAIL_HEIGHT:
 	set(value):
 		rail_height = maxf(value, 0.02)
 		_rebuild()
@@ -73,13 +76,19 @@ func _rebuild() -> void:
 		ballast.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 		_visual_root.add_child(ballast)
 
-	var rail_mesh := BoxMesh.new()
-	rail_mesh.size = Vector3(length, rail_height - 0.04, 0.08)
-	rail_mesh.material = rail_material
+	# A railway rail has a wide foot, narrow web and rounded running head.
+	var section := SurfaceTool.new()
+	section.begin(Mesh.PRIMITIVE_TRIANGLES)
+	var height := maxf(rail_height - 0.04, 0.035)
+	for profile in [Vector3(0.15, 0.2, 0.1), Vector3(0.025, 0.5, 0.45), Vector3(0.075, 0.3, 0.85)]:
+		section.append_from(FabricatedMesh.box_source(Vector3(length, height * profile.y, profile.x), rail_material), 0,
+			Transform3D(Basis.IDENTITY, Vector3(0, 0.04 + height * profile.z, 0)))
+	var rail_mesh := section.commit()
+	rail_mesh.surface_set_material(0, rail_material)
 	for side: float in [-1.0, 1.0]:
 		var rail := MeshInstance3D.new()
 		rail.mesh = rail_mesh
-		rail.position = Vector3(length * 0.5, 0.04 + (rail_height - 0.04) * 0.5, side * gauge * 0.5)
+		rail.position = Vector3(length * 0.5, 0, side * gauge * 0.5)
 		rail.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 		_visual_root.add_child(rail)
 
@@ -90,14 +99,56 @@ func _rebuild() -> void:
 	var sleeper_mesh := BoxMesh.new()
 	sleeper_mesh.size = Vector3(0.24, 0.05, gauge + 0.8)
 	sleeper_mesh.material = sleeper_material
-	var multimesh := MultiMesh.new()
-	multimesh.transform_format = MultiMesh.TRANSFORM_3D
-	multimesh.mesh = sleeper_mesh
-	multimesh.instance_count = count
+	var sleeper_poses: Array[Transform3D] = []
 	for i in count:
 		var x := sleeper_spacing * (float(i) + 0.5)
-		multimesh.set_instance_transform(i, Transform3D(Basis.IDENTITY, Vector3(x, 0.035, 0.0)))
-	var sleepers := MultiMeshInstance3D.new()
-	sleepers.multimesh = multimesh
-	sleepers.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
-	_visual_root.add_child(sleepers)
+		sleeper_poses.append(Transform3D(Basis.IDENTITY, Vector3(x, 0.035, 0.0)))
+	_instance_sections(sleeper_mesh, sleeper_poses, 100.0)
+	# Repeated base plates and fastening bolts share a single draw call.
+	var fastener := SurfaceTool.new()
+	fastener.begin(Mesh.PRIMITIVE_TRIANGLES)
+	var plate := BoxMesh.new()
+	plate.size = Vector3(0.19, 0.012, 0.24)
+	fastener.append_from(CpuMeshSource.new(plate.get_mesh_arrays()), 0, Transform3D.IDENTITY)
+	var bolt := CylinderMesh.new()
+	bolt.top_radius = 0.016
+	bolt.bottom_radius = 0.016
+	bolt.height = 0.025
+	bolt.radial_segments = 6
+	bolt.rings = 1
+	var bolt_source := CpuMeshSource.new(bolt.get_mesh_arrays())
+	for side in [-0.095, 0.095]:
+		fastener.append_from(bolt_source, 0, Transform3D(Basis.IDENTITY, Vector3(0,0.015,side)))
+	var fastener_mesh := fastener.commit()
+	fastener_mesh.surface_set_material(0, rail_material)
+	var plate_poses: Array[Transform3D] = []
+	for i in count:
+		for side in 2:
+			plate_poses.append(Transform3D(Basis.IDENTITY, Vector3(sleeper_spacing*(i+0.5),0.061,(side*2-1)*gauge*0.5)))
+	_instance_sections(fastener_mesh, plate_poses, 55.0)
+
+
+func _instance_sections(mesh: Mesh, poses: Array[Transform3D], distance: float) -> void:
+	# A single track-length MultiMesh submits every tiny fastener, including those
+	# hundreds of metres away. Local bounds let normal frustum/distance culling work.
+	var sections: Dictionary = {}
+	for pose in poses:
+		var section := floori(pose.origin.x / 20.0)
+		if not sections.has(section):
+			sections[section] = []
+		pose.origin.x -= section * 20.0
+		sections[section].append(pose)
+	for section: int in sections:
+		var instances := MultiMesh.new()
+		instances.transform_format = MultiMesh.TRANSFORM_3D
+		instances.mesh = mesh
+		instances.instance_count = sections[section].size()
+		for index in instances.instance_count:
+			instances.set_instance_transform(index, sections[section][index])
+		var visual := MultiMeshInstance3D.new()
+		visual.position.x = section * 20.0
+		visual.multimesh = instances
+		visual.visibility_range_end = distance
+		visual.visibility_range_end_margin = 10.0
+		visual.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+		_visual_root.add_child(visual)

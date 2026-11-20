@@ -18,8 +18,12 @@ const MAIN_SCENE_SETTING := "application/run/main_scene"
 const REPORT_ARGUMENT := "--selftest-report="
 const SCREENSHOT_ARGUMENT := "--selftest-screenshot="
 const REPORT_ENVIRONMENT := "LASTTRAINOUT_SELFTEST"
-## The whole run is abandoned after this many real seconds.
-const WATCHDOG_SECONDS := 120.0
+## The combined suite loads the shipped mission plus the legacy mechanics
+## fixture and prepares every preset. Hosted run 45 was still passing checks
+## when its old 120-second timer expired during preparation. Retain every
+## assertion with a larger bounded budget; the launcher also kills at 300s wall
+## time. This budget is not a startup-performance acceptance threshold.
+const WATCHDOG_SECONDS := 240.0
 const THUMBNAIL_SIZE := Vector2i(480, 270)
 
 
@@ -84,6 +88,9 @@ func _run() -> void:
 	await _check_game()
 	if not _is_headless():
 		await _check_rendering()
+	for child in get_children():
+		if child is Game:
+			await DiagnosticSceneRetirement.release(child)
 	var errors := _errors.get_messages()
 	_check("no_engine_errors", errors.is_empty(), "; ".join(errors.slice(0, 5)))
 	_finish("")
@@ -101,6 +108,7 @@ func _describe_environment() -> void:
 	_report["executable"] = OS.get_executable_path()
 	_report["headless"] = _is_headless()
 	_report["display_server"] = DisplayServer.get_name()
+	_report["runtime_binary"] = OS.get_executable_path().get_file()
 	_report["rendering_method"] = RenderingServer.get_current_rendering_method()
 	_report["rendering_driver"] = RenderingServer.get_current_rendering_driver_name()
 	_report["video_adapter"] = RenderingServer.get_video_adapter_name()
@@ -120,7 +128,26 @@ func _check_game() -> void:
 	if not _check("main_scene_is_the_game", game != null):
 		return
 	add_child(game)
+	await game.graphics.wait_for_render_ready()
 	await _physics_frames(45)
+
+	if game.journey != null:
+		_check("exported_journey_ready", game.journey.ready_to_play)
+		_check("exported_three_station_route", game.journey.stations.size() == 2 and game.train.track_length > 4200)
+		_check("exported_save_schema", JourneySave.valid(game.journey, JourneySave.snapshot(game.journey)))
+		var worker := game.player.visual.get_node_or_null("RailWorker") as WorkerAnimator
+		_check("exported_survival_character_skin", worker != null and worker.skeleton.get_bone_count() > 40)
+		_check("exported_first_person_skin", game.camera_rig.exploration._first_person_hands.has_node("FirstPersonWorker"))
+		_check("exported_detailed_locomotive", game.train.get_node("Locomotive").find_child("AuthoredLocomotive",true,false) != null)
+		_check("exported_station_art", game.journey.stations[0].has_node("AuthoredStationDetails") and game.journey.stations[1].has_node("AuthoredStationDetails"))
+		_check("exported_fog_shader", game.fog_system.presentation.layers[0].material_override is ShaderMaterial)
+		_check("exported_camera_save", JourneySave.snapshot(game.journey).has("camera"))
+		await DiagnosticSceneRetirement.release(game)
+		# Retain every legacy mechanics assertion against its original sandbox.
+		game = (load("res://scenes/main/main.tscn") as PackedScene).instantiate() as Game
+		add_child(game)
+		await game.graphics.wait_for_render_ready()
+		await _physics_frames(45)
 
 	var player := game.player
 	var train := game.train
@@ -195,6 +222,7 @@ func _check_game() -> void:
 	player.input.clear()
 	await _check_immersive_train(game)
 	await _check_scavenging(game)
+	await _check_fog(game)
 
 
 func _check_immersive_train(game: Game) -> void:
@@ -264,9 +292,11 @@ func _check_scavenging(game: Game) -> void:
 	_check("physical_cargo_is_released_in_export", cargo.available and not game.player.carrying_heavy)
 	for i in 3:
 		game.graphics.set_preset(i)
+		await game.graphics.wait_for_render_ready()
 		await _physics_frames(2)
 	_check("graphics_presets_work_in_export", game.graphics.current_index == 2)
 	game.graphics.set_preset(1)
+	await game.graphics.wait_for_render_ready()
 	game.supply_ui.open()
 	_check("inventory_ui_opens_in_export", game.supply_ui.is_open())
 
@@ -311,7 +341,7 @@ func _check(check_name: String, passed: bool, detail: String = "") -> bool:
 	_checks[check_name] = passed
 	if detail != "":
 		_details[check_name] = detail
-	print("[self-test] %s  %s%s" % ["ok  " if passed else "FAIL", check_name, ("  (%s)" % detail) if detail != "" else ""])
+	print("[self-test] %s  %s%s [%d ms]" % ["ok  " if passed else "FAIL", check_name, ("  (%s)" % detail) if detail != "" else "", Time.get_ticks_msec()])
 	return passed
 
 
@@ -346,3 +376,25 @@ func _finish(fatal: String) -> void:
 			push_warning("Self-test could not write its report to %s" % _report_path)
 	print("[self-test] %s" % ("PASSED" if passed else "FAILED" + ((": " + fatal) if fatal != "" else "")))
 	get_tree().quit(0 if passed else (2 if fatal != "" else 1))
+
+
+func _check_fog(game: Game) -> void:
+	game.reset_station()
+	await _physics_frames(6)
+	var fog := game.fog_system
+	var dose := fog.players.local.exposure as FogExposure
+	_check("fog_authority_and_hud_in_export", fog.simulation != null and fog.survival_hud.status != null)
+	var before := fog.simulation.front
+	await _physics_frames(30)
+	_check("fog_advances_in_export", fog.simulation.front > before)
+	fog.simulation.front = dose.progress + 10
+	dose.exposure = 65
+	await _physics_frames(60)
+	_check("fog_damages_in_export", dose.health < 100 and dose.exposure > 65)
+	var saved := fog.snapshot()
+	_check("fog_snapshot_in_export", fog.restore(saved))
+	fog.fuel.amount = 0
+	_check("fuel_failure_in_export", not game.train.start())
+	game.reset_station()
+	await _physics_frames(6)
+	_check("fog_new_run_in_export", dose.health == 100 and dose.exposure == 0 and fog.simulation.front < -209)

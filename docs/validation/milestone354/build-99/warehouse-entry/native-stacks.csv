@@ -1,0 +1,5 @@
+phase,samples_main,samples_in_frame_fence,worst_frame_ms,worst_frame_position,sample_header_minus_frame_begin_ms,sample_header_utc,stack
+High/Warehouse A/entry,221,107,217.135,3,149.82,2026-11-20 20:54:36.444 +0000,high-warehouse-a-entry.sample.txt
+Low/Locomotive cab/steady,301,144,207.314,75,-707.38,2026-11-20 20:52:57.787 +0000,low-locomotive-cab-steady.sample.txt
+Low/Warehouse A/entry,102,79,1210.421,3,287.33,2026-11-20 20:52:49.257 +0000,low-warehouse-a-entry.sample.txt
+Medium/Warehouse A/entry,340,212,120.975,3,301.73,2026-11-20 20:53:34.221 +0000,medium-warehouse-a-entry.sample.txt

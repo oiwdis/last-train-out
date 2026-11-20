@@ -1,0 +1,1174 @@
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+Vulkan 1.2.283 - Forward+ - Using Device #0: Apple - Apple Paravirtual device
+
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Started Project initialization (5 steps)[39m[0m
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Scanning file structure...[39m[0m
+[  16% ] [90m[1mfirst_scan_filesystem[22m | Loading global class names...[39m[0m
+[  33% ] [90m[1mfirst_scan_filesystem[22m | Verifying GDExtensions...[39m[0m
+[  50% ] [90m[1mfirst_scan_filesystem[22m | Creating autoload scripts...[39m[0m
+[  66% ] [90m[1mfirst_scan_filesystem[22m | Initializing plugins...[39m[0m
+[  83% ] [90m[1mfirst_scan_filesystem[22m | Starting file scan...[39m[0m
+[92m[ DONE ][39m [1mfirst_scan_filesystem[22m
+[0m
+[   0% ] [90m[1mexport[22m | Started Exporting for macOS (3 steps)[39m[0m
+[   0% ] [90m[1mexport[22m | Creating app bundle[39m[0m
+[  25% ] [90m[1mexport[22m | Making PKG[39m[0m
+[   0% ] [90m[1msavepack[22m | Started Packing (102 steps)[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/breath.wav-1d862fa562288a1ff066a53d5827fc4c.sample[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://assets/audio/fog/breath.wav.import[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/metal.wav-7e9236e187d47f611fd5f132ede9a674.sample[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://assets/audio/fog/metal.wav.import[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/rumble.wav-132216cc68021fd18308db261aa6b9d8.sample[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://assets/audio/fog/rumble.wav.import[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/wind.wav-e6dbabd37679e079974d2bed445497eb.sample[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://assets/audio/fog/wind.wav.import[39m[0m
+[   2% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/engine.wav-13a2907be8290064892a1d44408db00f.sample[39m[0m
+[   2% ] [90m[1msavepack[22m | Storing File: res://assets/audio/engine.wav.import[39m[0m
+[   2% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/latch.wav-fc307c6c961de2689745bc2c552a728f.sample[39m[0m
+[   2% ] [90m[1msavepack[22m | Storing File: res://assets/audio/latch.wav.import[39m[0m
+[   2% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/step.wav-7c1afa4d3561f9fd67ecf320728c68cf.sample[39m[0m
+[   2% ] [90m[1msavepack[22m | Storing File: res://assets/audio/step.wav.import[39m[0m
+[   2% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/wind.wav-26bd3f95e99896071b625821c2f0df7a.sample[39m[0m
+[   2% ] [90m[1msavepack[22m | Storing File: res://assets/audio/wind.wav.import[39m[0m
+[   3% ] [90m[1msavepack[22m | Storing File: res://assets/characters/locomotion_metrics.json[39m[0m
+[   3% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/railway_survivor.glb-e4aaa97afa3a17afe374ea14645abd3f.scn[39m[0m
+[   3% ] [90m[1msavepack[22m | Storing File: res://assets/characters/railway_survivor.glb.import[39m[0m
+[   3% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/railway_survivor_BootsAnkle-norm.png-e2c04f999b1b0656606679c4468fc2bc.bptc.ctex[39m[0m
+[   3% ] [90m[1msavepack[22m | Storing File: res://assets/characters/railway_survivor_BootsAnkle-norm.png.import[39m[0m
+[   3% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/railway_survivor_BootsAnkleM.png-44f8af70b3be8903e8c8cdc394e1ef54.bptc.ctex[39m[0m
+[   3% ] [90m[1msavepack[22m | Storing File: res://assets/characters/railway_survivor_BootsAnkleM.png.import[39m[0m
+[   4% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/railway_survivor_brown_eye.png-34e10ea39e03e94d6bd06e88de2e1d28.bptc.ctex[39m[0m
+[   4% ] [90m[1msavepack[22m | Storing File: res://assets/characters/railway_survivor_brown_eye.png.import[39m[0m
+[   4% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/railway_survivor_eyebrow001.png-54f62f28241300c657e71efd36120fe7.bptc.ctex[39m[0m
+[   4% ] [90m[1msavepack[22m | Storing File: res://assets/characters/railway_survivor_eyebrow001.png.import[39m[0m
+[   4% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/railway_survivor_eyelashes01.png-17498c1cb98219525bdab0231a1c69eb.bptc.ctex[39m[0m
+[   4% ] [90m[1msavepack[22m | Storing File: res://assets/characters/railway_survivor_eyelashes01.png.import[39m[0m
+[   4% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/railway_survivor_male_casualsuit05_diffuse.png-3ee3d2c7a4d24fa8144007387c8badd3.bptc.ctex[39m[0m
+[   4% ] [90m[1msavepack[22m | Storing File: res://assets/characters/railway_survivor_male_casualsuit05_diffuse.png.import[39m[0m
+[   5% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/railway_survivor_male_casualsuit05_normal.png-31c9accb15e517415e3f8f40ef7f7753.bptc.ctex[39m[0m
+[   5% ] [90m[1msavepack[22m | Storing File: res://assets/characters/railway_survivor_male_casualsuit05_normal.png.import[39m[0m
+[   5% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/railway_survivor_middleage_lightskinned_male_diffuse.png-b76f8538b55d9c630c4422ec81ea0f80.bptc.ctex[39m[0m
+[   5% ] [90m[1msavepack[22m | Storing File: res://assets/characters/railway_survivor_middleage_lightskinned_male_diffuse.png.import[39m[0m
+[   5% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/railway_survivor_short04_diffuse.png-9f65b855935ff4a0904bd33791686741.bptc.ctex[39m[0m
+[   5% ] [90m[1msavepack[22m | Storing File: res://assets/characters/railway_survivor_short04_diffuse.png.import[39m[0m
+[   6% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/railway_survivor_skin_male_african_middleage_NRM.png-8a56666743742c4837537ad4e91386d9.bptc.ctex[39m[0m
+[   6% ] [90m[1msavepack[22m | Storing File: res://assets/characters/railway_survivor_skin_male_african_middleage_NRM.png.import[39m[0m
+[   6% ] [90m[1msavepack[22m | Storing File: res://assets/characters/sources.json[39m[0m
+[   6% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/broken_pallet.glb-7e4f6eee72e333ab4ac6e5be9237936c.scn[39m[0m
+[   6% ] [90m[1msavepack[22m | Storing File: res://assets/environment/broken_pallet.glb.import[39m[0m
+[   6% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/factory_kit.glb-94d8a63c716f7385beeba80db880f42c.scn[39m[0m
+[   6% ] [90m[1msavepack[22m | Storing File: res://assets/environment/factory_kit.glb.import[39m[0m
+[   7% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/factory_kit_modular_factory_facade_brick_arm_2k.jpg-f915a7564c1580e0adbf87fe77c0d856.bptc.ctex[39m[0m
+[   7% ] [90m[1msavepack[22m | Storing File: res://assets/environment/factory_kit_modular_factory_facade_brick_arm_2k.jpg.import[39m[0m
+[   7% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/factory_kit_modular_factory_facade_brick_diff_2k.jpg-67b401927a672cc86548322700763083.bptc.ctex[39m[0m
+[   7% ] [90m[1msavepack[22m | Storing File: res://assets/environment/factory_kit_modular_factory_facade_brick_diff_2k.jpg.import[39m[0m
+[   7% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/factory_kit_modular_factory_facade_brick_nor_gl_2k.jpg-0337208eabc4dad194cdfd0edd6834c5.bptc.ctex[39m[0m
+[   7% ] [90m[1msavepack[22m | Storing File: res://assets/environment/factory_kit_modular_factory_facade_brick_nor_gl_2k.jpg.import[39m[0m
+[   7% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/factory_kit_modular_factory_facade_doors_arm_2k.jpg-64dd5aed4d48d8d8d8e94ea4756da756.bptc.ctex[39m[0m
+[   7% ] [90m[1msavepack[22m | Storing File: res://assets/environment/factory_kit_modular_factory_facade_doors_arm_2k.jpg.import[39m[0m
+[   8% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/factory_kit_modular_factory_facade_doors_diff_2k.jpg-5848fe4a7cd5cc2943757afe1c1d024d.bptc.ctex[39m[0m
+[   8% ] [90m[1msavepack[22m | Storing File: res://assets/environment/factory_kit_modular_factory_facade_doors_diff_2k.jpg.import[39m[0m
+[   8% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/factory_kit_modular_factory_facade_doors_nor_gl_2k.jpg-fec05a0380113dd3b9ae6384ccc84588.bptc.ctex[39m[0m
+[   8% ] [90m[1msavepack[22m | Storing File: res://assets/environment/factory_kit_modular_factory_facade_doors_nor_gl_2k.jpg.import[39m[0m
+[   8% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/factory_kit_modular_factory_facade_garage_arm_2k.jpg-6d51189cb1fe3c93b08afa07d18559ef.bptc.ctex[39m[0m
+[   8% ] [90m[1msavepack[22m | Storing File: res://assets/environment/factory_kit_modular_factory_facade_garage_arm_2k.jpg.import[39m[0m
+[   8% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/factory_kit_modular_factory_facade_garage_diff_2k.jpg-6a721aa4e1fa82ded225f7310490e8e4.bptc.ctex[39m[0m
+[   8% ] [90m[1msavepack[22m | Storing File: res://assets/environment/factory_kit_modular_factory_facade_garage_diff_2k.jpg.import[39m[0m
+[   9% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/factory_kit_modular_factory_facade_garage_nor_gl_2k.jpg-4ea30dc5899aae947c42ecef98d04347.bptc.ctex[39m[0m
+[   9% ] [90m[1msavepack[22m | Storing File: res://assets/environment/factory_kit_modular_factory_facade_garage_nor_gl_2k.jpg.import[39m[0m
+[   9% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/factory_kit_modular_factory_facade_trim_01_arm_2k.jpg-7725e85c16daeb197b19fa87934b5885.bptc.ctex[39m[0m
+[   9% ] [90m[1msavepack[22m | Storing File: res://assets/environment/factory_kit_modular_factory_facade_trim_01_arm_2k.jpg.import[39m[0m
+[   9% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/factory_kit_modular_factory_facade_trim_01_diff_2k.jpg-f8fca181073f4b9adfef16ee6e9c2d83.bptc.ctex[39m[0m
+[   9% ] [90m[1msavepack[22m | Storing File: res://assets/environment/factory_kit_modular_factory_facade_trim_01_diff_2k.jpg.import[39m[0m
+[  10% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/factory_kit_modular_factory_facade_trim_01_nor_gl_2k.jpg-0d2fee5465de1c1358d69ed5659188cd.bptc.ctex[39m[0m
+[  10% ] [90m[1msavepack[22m | Storing File: res://assets/environment/factory_kit_modular_factory_facade_trim_01_nor_gl_2k.jpg.import[39m[0m
+[  10% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/factory_kit_modular_factory_facade_windows_arm_2k.jpg-3b000e78b00ac07539fd0f1b88499798.bptc.ctex[39m[0m
+[  10% ] [90m[1msavepack[22m | Storing File: res://assets/environment/factory_kit_modular_factory_facade_windows_arm_2k.jpg.import[39m[0m
+[  10% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/factory_kit_modular_factory_facade_windows_diff_2k.png-bea3bbae6a9dcfd1f49201e186019727.bptc.ctex[39m[0m
+[  10% ] [90m[1msavepack[22m | Storing File: res://assets/environment/factory_kit_modular_factory_facade_windows_diff_2k.png.import[39m[0m
+[  10% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/factory_kit_modular_factory_facade_windows_diff_2k_6.jpg-96d1afd7a4274cea75ede949b0ab5833.bptc.ctex[39m[0m
+[  10% ] [90m[1msavepack[22m | Storing File: res://assets/environment/factory_kit_modular_factory_facade_windows_diff_2k_6.jpg.import[39m[0m
+[  11% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/factory_kit_modular_factory_facade_windows_nor_gl_2k.jpg-cfda3fedcde33969200ed699a7ff7db0.bptc.ctex[39m[0m
+[  11% ] [90m[1msavepack[22m | Storing File: res://assets/environment/factory_kit_modular_factory_facade_windows_nor_gl_2k.jpg.import[39m[0m
+[  11% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/freight_container.glb-84c516cb770f3438b98929c870a8439d.scn[39m[0m
+[  11% ] [90m[1msavepack[22m | Storing File: res://assets/environment/freight_container.glb.import[39m[0m
+[  11% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/medical_cabinet.glb-4a53fd910df944b0a36d96b973ff9bab.scn[39m[0m
+[  11% ] [90m[1msavepack[22m | Storing File: res://assets/environment/medical_cabinet.glb.import[39m[0m
+[  11% ] [90m[1msavepack[22m | Storing File: res://assets/environment/original_mesh_metrics.json[39m[0m
+[  12% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/painted_wooden_bench.glb-6b4b816c3db8183fd3a660a0ca11529f.scn[39m[0m
+[  12% ] [90m[1msavepack[22m | Storing File: res://assets/environment/painted_wooden_bench.glb.import[39m[0m
+[  12% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/painted_wooden_bench_painted_wooden_bench_arm_1k.jpg-68fc6f422c18478df286bf06d7e10157.bptc.ctex[39m[0m
+[  12% ] [90m[1msavepack[22m | Storing File: res://assets/environment/painted_wooden_bench_painted_wooden_bench_arm_1k.jpg.import[39m[0m
+[  12% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/painted_wooden_bench_painted_wooden_bench_diff_1k.jpg-cac0b543479d5ad6c2954c8c3215c4df.bptc.ctex[39m[0m
+[  12% ] [90m[1msavepack[22m | Storing File: res://assets/environment/painted_wooden_bench_painted_wooden_bench_diff_1k.jpg.import[39m[0m
+[  12% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/painted_wooden_bench_painted_wooden_bench_nor_gl_1k.jpg-95609816b0ad7c749612b53c48ea9f06.bptc.ctex[39m[0m
+[  12% ] [90m[1msavepack[22m | Storing File: res://assets/environment/painted_wooden_bench_painted_wooden_bench_nor_gl_1k.jpg.import[39m[0m
+[  13% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/parked_box_van.glb-d60fefaa615383219030382f7edc717a.scn[39m[0m
+[  13% ] [90m[1msavepack[22m | Storing File: res://assets/environment/parked_box_van.glb.import[39m[0m
+[  13% ] [90m[1msavepack[22m | Storing File: res://assets/environment/sources.json[39m[0m
+[  13% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/station_house_roof.glb-501237dcf0ff23ba5687664d897d6fb7.scn[39m[0m
+[  13% ] [90m[1msavepack[22m | Storing File: res://assets/environment/station_house_roof.glb.import[39m[0m
+[  14% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/supply_locker.glb-b68fff4219e057f3ab93fd838d7fd555.scn[39m[0m
+[  14% ] [90m[1msavepack[22m | Storing File: res://assets/environment/supply_locker.glb.import[39m[0m
+[  14% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/supply_toolbox.glb-3cf2c8f288e4aaf0fa25724a1fda0db4.scn[39m[0m
+[  14% ] [90m[1msavepack[22m | Storing File: res://assets/environment/supply_toolbox.glb.import[39m[0m
+[  14% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/waiting_hall_roof.glb-70c1c670afac67b8421d9334149facc8.scn[39m[0m
+[  14% ] [90m[1msavepack[22m | Storing File: res://assets/environment/waiting_hall_roof.glb.import[39m[0m
+[  14% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/weed_plant_02.glb-9f7b82fef0546222bf95398ea6f1ceea.scn[39m[0m
+[  14% ] [90m[1msavepack[22m | Storing File: res://assets/environment/weed_plant_02.glb.import[39m[0m
+[  15% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/weed_plant_02_weed_plant_02_arm_1k.jpg-c0a49169f9bb391ad07572a6ba211ead.bptc.ctex[39m[0m
+[  15% ] [90m[1msavepack[22m | Storing File: res://assets/environment/weed_plant_02_weed_plant_02_arm_1k.jpg.import[39m[0m
+[  15% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/weed_plant_02_weed_plant_02_diff_1k.png-aa27d01831d014f81ff4f58a08a69818.bptc.ctex[39m[0m
+[  15% ] [90m[1msavepack[22m | Storing File: res://assets/environment/weed_plant_02_weed_plant_02_diff_1k.png.import[39m[0m
+[  15% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/weed_plant_02_weed_plant_02_nor_gl_1k.jpg-bdd560bfa4617f88fa2bec0cf612cde6.bptc.ctex[39m[0m
+[  15% ] [90m[1msavepack[22m | Storing File: res://assets/environment/weed_plant_02_weed_plant_02_nor_gl_1k.jpg.import[39m[0m
+[  15% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/bandages.svg-8e4aa1dbc2903e9492f5097f709f400e.ctex[39m[0m
+[  15% ] [90m[1msavepack[22m | Storing File: res://assets/icons/items/bandages.svg.import[39m[0m
+[  16% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/canned_food.svg-4d6e4b21810f0bada7056f3d76c2a341.ctex[39m[0m
+[  16% ] [90m[1msavepack[22m | Storing File: res://assets/icons/items/canned_food.svg.import[39m[0m
+[  16% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/coal_sack.svg-97c7acbb1820bf18ad463889dcbea987.ctex[39m[0m
+[  16% ] [90m[1msavepack[22m | Storing File: res://assets/icons/items/coal_sack.svg.import[39m[0m
+[  16% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/fuel_drum.svg-c1a5b0f5dc74f196a2524808841d55af.ctex[39m[0m
+[  16% ] [90m[1msavepack[22m | Storing File: res://assets/icons/items/fuel_drum.svg.import[39m[0m
+[  16% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/lantern_oil.svg-f16be63b1c86e1e7594eb3ee6934d2cd.ctex[39m[0m
+[  16% ] [90m[1msavepack[22m | Storing File: res://assets/icons/items/lantern_oil.svg.import[39m[0m
+[  17% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/machine_component.svg-8a7a1a788b58721837cbff8b1b95f783.ctex[39m[0m
+[  17% ] [90m[1msavepack[22m | Storing File: res://assets/icons/items/machine_component.svg.import[39m[0m
+[  17% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/medicine.svg-deab8f1b62a3c4d479d2109ee0f33c79.ctex[39m[0m
+[  17% ] [90m[1msavepack[22m | Storing File: res://assets/icons/items/medicine.svg.import[39m[0m
+[  17% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/scrap_metal.svg-989d8405fa9bbfff0d9d8e84e3a490ed.ctex[39m[0m
+[  17% ] [90m[1msavepack[22m | Storing File: res://assets/icons/items/scrap_metal.svg.import[39m[0m
+[  18% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/tools.svg-1cc4af35da2a3c215037c321d06493bf.ctex[39m[0m
+[  18% ] [90m[1msavepack[22m | Storing File: res://assets/icons/items/tools.svg.import[39m[0m
+[  18% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/beveled_box.glb-32d35ef390ef2c8d388795260e360acd.scn[39m[0m
+[  18% ] [90m[1msavepack[22m | Storing File: res://assets/models/beveled_box.glb.import[39m[0m
+[  18% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/coal_sack.glb-7b0f3794e81000548c3cbd585cde6aca.scn[39m[0m
+[  18% ] [90m[1msavepack[22m | Storing File: res://assets/models/coal_sack.glb.import[39m[0m
+[  18% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/locomotive_machinery.glb-69848e3318196177604219a73b1559d4.scn[39m[0m
+[  18% ] [90m[1msavepack[22m | Storing File: res://assets/models/locomotive_machinery.glb.import[39m[0m
+[  19% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/rail_wheel.glb-46ffb59367c77c4fedc4a798a46e47ce.scn[39m[0m
+[  19% ] [90m[1msavepack[22m | Storing File: res://assets/models/rail_wheel.glb.import[39m[0m
+[  19% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/rail_worker.glb-86d6c028be8090ded3da691127dadfd2.scn[39m[0m
+[  19% ] [90m[1msavepack[22m | Storing File: res://assets/models/rail_worker.glb.import[39m[0m
+[  19% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/asphalt_02_albedo.jpg-f6d3596155d4884cf4340198fd0459d4.bptc.ctex[39m[0m
+[  19% ] [90m[1msavepack[22m | Storing File: res://assets/pbr/asphalt_02_albedo.jpg.import[39m[0m
+[  19% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/asphalt_02_normal.jpg-670e1d2471d602e2cbd85652912ba73d.bptc.ctex[39m[0m
+[  19% ] [90m[1msavepack[22m | Storing File: res://assets/pbr/asphalt_02_normal.jpg.import[39m[0m
+[  20% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/asphalt_02_roughness.jpg-08aef1060e6a3b8e048751dd60442fc9.bptc.ctex[39m[0m
+[  20% ] [90m[1msavepack[22m | Storing File: res://assets/pbr/asphalt_02_roughness.jpg.import[39m[0m
+[  20% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/brick_wall_001_albedo.jpg-9cfd87d007bdb8fc91ae3319fcdf30a4.bptc.ctex[39m[0m
+[  20% ] [90m[1msavepack[22m | Storing File: res://assets/pbr/brick_wall_001_albedo.jpg.import[39m[0m
+[  20% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/brick_wall_001_normal.jpg-3f561ee76bbda3b3d70fab92dc942985.bptc.ctex[39m[0m
+[  20% ] [90m[1msavepack[22m | Storing File: res://assets/pbr/brick_wall_001_normal.jpg.import[39m[0m
+[  20% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/brick_wall_001_roughness.jpg-b21df40a19dd5f7a1e2ff665c08075e6.bptc.ctex[39m[0m
+[  20% ] [90m[1msavepack[22m | Storing File: res://assets/pbr/brick_wall_001_roughness.jpg.import[39m[0m
+[  21% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/concrete_floor_worn_001_albedo.jpg-3f77a254960a3cb272a82f8934c9d09b.bptc.ctex[39m[0m
+[  21% ] [90m[1msavepack[22m | Storing File: res://assets/pbr/concrete_floor_worn_001_albedo.jpg.import[39m[0m
+[  21% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/concrete_floor_worn_001_normal.jpg-cb84dc9415e5f570bb309a539606a9f2.bptc.ctex[39m[0m
+[  21% ] [90m[1msavepack[22m | Storing File: res://assets/pbr/concrete_floor_worn_001_normal.jpg.import[39m[0m
+[  21% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/concrete_floor_worn_001_roughness.jpg-ea220afa850f9a98e1d77917eba0026f.bptc.ctex[39m[0m
+[  21% ] [90m[1msavepack[22m | Storing File: res://assets/pbr/concrete_floor_worn_001_roughness.jpg.import[39m[0m
+[  22% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/denim_fabric_albedo.jpg-1d7139cd50dc485d326742e6b119d2cb.bptc.ctex[39m[0m
+[  22% ] [90m[1msavepack[22m | Storing File: res://assets/pbr/denim_fabric_albedo.jpg.import[39m[0m
+[  22% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/denim_fabric_normal.jpg-372825ca20cb8e7aeb9e30b8513ad919.bptc.ctex[39m[0m
+[  22% ] [90m[1msavepack[22m | Storing File: res://assets/pbr/denim_fabric_normal.jpg.import[39m[0m
+[  22% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/denim_fabric_roughness.jpg-c8baed7be97d71b2658c7e1d8e56f653.bptc.ctex[39m[0m
+[  22% ] [90m[1msavepack[22m | Storing File: res://assets/pbr/denim_fabric_roughness.jpg.import[39m[0m
+[  22% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/gravel_stones_albedo.jpg-851ca137bc08161a3bb81e5e2fab0a89.bptc.ctex[39m[0m
+[  22% ] [90m[1msavepack[22m | Storing File: res://assets/pbr/gravel_stones_albedo.jpg.import[39m[0m
+[  23% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/gravel_stones_normal.jpg-3146b4b1dae931f563abebefb199fa04.bptc.ctex[39m[0m
+[  23% ] [90m[1msavepack[22m | Storing File: res://assets/pbr/gravel_stones_normal.jpg.import[39m[0m
+[  23% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/gravel_stones_roughness.jpg-42e92b79088e4313c177b6c8465fc954.bptc.ctex[39m[0m
+[  23% ] [90m[1msavepack[22m | Storing File: res://assets/pbr/gravel_stones_roughness.jpg.import[39m[0m
+[  23% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/green_metal_rust_albedo.jpg-f7fa696810f2b2f5cdcf32ac1f910655.bptc.ctex[39m[0m
+[  23% ] [90m[1msavepack[22m | Storing File: res://assets/pbr/green_metal_rust_albedo.jpg.import[39m[0m
+[  23% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/green_metal_rust_normal.jpg-b400b461e9e772e9dd46795811b3164b.bptc.ctex[39m[0m
+[  23% ] [90m[1msavepack[22m | Storing File: res://assets/pbr/green_metal_rust_normal.jpg.import[39m[0m
+[  24% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/green_metal_rust_roughness.jpg-3a7ecec798ed8c1a7ae75a9f071e4105.bptc.ctex[39m[0m
+[  24% ] [90m[1msavepack[22m | Storing File: res://assets/pbr/green_metal_rust_roughness.jpg.import[39m[0m
+[  24% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/rusty_corrugated_iron_albedo.jpg-3e265e18a821f6dd61a02dcbee91977b.bptc.ctex[39m[0m
+[  24% ] [90m[1msavepack[22m | Storing File: res://assets/pbr/rusty_corrugated_iron_albedo.jpg.import[39m[0m
+[  24% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/rusty_corrugated_iron_normal.jpg-53b84cbd2053ddc22df38c78f823ab0f.bptc.ctex[39m[0m
+[  24% ] [90m[1msavepack[22m | Storing File: res://assets/pbr/rusty_corrugated_iron_normal.jpg.import[39m[0m
+[  24% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/rusty_corrugated_iron_roughness.jpg-d1b38c2fc1790c0053ad6fec1f38819f.bptc.ctex[39m[0m
+[  24% ] [90m[1msavepack[22m | Storing File: res://assets/pbr/rusty_corrugated_iron_roughness.jpg.import[39m[0m
+[  25% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/rusty_painted_metal_albedo.jpg-f58225a3dfdace63f9baf7eae2f1ba8b.bptc.ctex[39m[0m
+[  25% ] [90m[1msavepack[22m | Storing File: res://assets/pbr/rusty_painted_metal_albedo.jpg.import[39m[0m
+[  25% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/rusty_painted_metal_normal.jpg-0ad643988f1f036664bccb15ae98ddfc.bptc.ctex[39m[0m
+[  25% ] [90m[1msavepack[22m | Storing File: res://assets/pbr/rusty_painted_metal_normal.jpg.import[39m[0m
+[  25% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/rusty_painted_metal_roughness.jpg-771aabd5fb83b3eb3e5cdd14bbbe5b41.bptc.ctex[39m[0m
+[  25% ] [90m[1msavepack[22m | Storing File: res://assets/pbr/rusty_painted_metal_roughness.jpg.import[39m[0m
+[  26% ] [90m[1msavepack[22m | Storing File: res://assets/pbr/sources.json[39m[0m
+[  26% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/wood_planks_grey_albedo.jpg-b424932ff21224c7566a833fed2d6f38.bptc.ctex[39m[0m
+[  26% ] [90m[1msavepack[22m | Storing File: res://assets/pbr/wood_planks_grey_albedo.jpg.import[39m[0m
+[  26% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/wood_planks_grey_normal.jpg-77900876fa0c12a34f2027579a3b5001.bptc.ctex[39m[0m
+[  26% ] [90m[1msavepack[22m | Storing File: res://assets/pbr/wood_planks_grey_normal.jpg.import[39m[0m
+[  26% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/wood_planks_grey_roughness.jpg-32206f20a6a3635bc1dfc5e93811f55d.bptc.ctex[39m[0m
+[  26% ] [90m[1msavepack[22m | Storing File: res://assets/pbr/wood_planks_grey_roughness.jpg.import[39m[0m
+[  27% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/Barrel_02.glb-fab46f08e09adfacf8662a64b474f26f.scn[39m[0m
+[  27% ] [90m[1msavepack[22m | Storing File: res://assets/props/Barrel_02.glb.import[39m[0m
+[  27% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/Barrel_02_Barrel_02_arm_1k.jpg-a7e4bb160ac45a220e810bac0edb07b1.bptc.ctex[39m[0m
+[  27% ] [90m[1msavepack[22m | Storing File: res://assets/props/Barrel_02_Barrel_02_arm_1k.jpg.import[39m[0m
+[  27% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/Barrel_02_Barrel_02_diff_1k.jpg-86e26564195316561e1fad0564c0b9d6.bptc.ctex[39m[0m
+[  27% ] [90m[1msavepack[22m | Storing File: res://assets/props/Barrel_02_Barrel_02_diff_1k.jpg.import[39m[0m
+[  27% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/Barrel_02_Barrel_02_nor_gl_1k.jpg-dd8dcd1d131052ec9edc8ec5a25bc8e8.bptc.ctex[39m[0m
+[  27% ] [90m[1msavepack[22m | Storing File: res://assets/props/Barrel_02_Barrel_02_nor_gl_1k.jpg.import[39m[0m
+[  28% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/brass_blowtorch.glb-581b53dbd9c1744a5b964196f3f91e99.scn[39m[0m
+[  28% ] [90m[1msavepack[22m | Storing File: res://assets/props/brass_blowtorch.glb.import[39m[0m
+[  28% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/brass_blowtorch_brass_blowtorch_arm_1k.jpg-239bfed5de6e6691153934d914b890d0.bptc.ctex[39m[0m
+[  28% ] [90m[1msavepack[22m | Storing File: res://assets/props/brass_blowtorch_brass_blowtorch_arm_1k.jpg.import[39m[0m
+[  28% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/brass_blowtorch_brass_blowtorch_diff_1k.jpg-a813a9ff8cc5cbf8de1cc4a3c29055f6.bptc.ctex[39m[0m
+[  28% ] [90m[1msavepack[22m | Storing File: res://assets/props/brass_blowtorch_brass_blowtorch_diff_1k.jpg.import[39m[0m
+[  28% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/brass_blowtorch_brass_blowtorch_nor_gl_1k.jpg-3628ee7399949306cc36389297210a9f.bptc.ctex[39m[0m
+[  28% ] [90m[1msavepack[22m | Storing File: res://assets/props/brass_blowtorch_brass_blowtorch_nor_gl_1k.jpg.import[39m[0m
+[  29% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/caged_hanging_light.glb-3788c40e4209308a6cf06b138b2a200d.scn[39m[0m
+[  29% ] [90m[1msavepack[22m | Storing File: res://assets/props/caged_hanging_light.glb.import[39m[0m
+[  29% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/caged_hanging_light_caged_hanging_light_arm_1k.jpg-360ed07c8c0b765f7cb2f666f7064a82.bptc.ctex[39m[0m
+[  29% ] [90m[1msavepack[22m | Storing File: res://assets/props/caged_hanging_light_caged_hanging_light_arm_1k.jpg.import[39m[0m
+[  29% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/caged_hanging_light_caged_hanging_light_diff_1k.jpg-7e35d4eb02e81edb6d2b5d10880fcc16.bptc.ctex[39m[0m
+[  29% ] [90m[1msavepack[22m | Storing File: res://assets/props/caged_hanging_light_caged_hanging_light_diff_1k.jpg.import[39m[0m
+[  29% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/caged_hanging_light_caged_hanging_light_emissive_1k.jpg-f408c55392765d2933381e3af01ff72e.bptc.ctex[39m[0m
+[  29% ] [90m[1msavepack[22m | Storing File: res://assets/props/caged_hanging_light_caged_hanging_light_emissive_1k.jpg.import[39m[0m
+[  30% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/caged_hanging_light_caged_hanging_light_nor_gl_1k.jpg-2c180d8a98476040b490f6a5d7019815.bptc.ctex[39m[0m
+[  30% ] [90m[1msavepack[22m | Storing File: res://assets/props/caged_hanging_light_caged_hanging_light_nor_gl_1k.jpg.import[39m[0m
+[  30% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/drill_press_01.glb-712c4ed955e7d0f20ada7d9adeae6fc2.scn[39m[0m
+[  30% ] [90m[1msavepack[22m | Storing File: res://assets/props/drill_press_01.glb.import[39m[0m
+[  30% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/drill_press_01_drill_press_01_arm_1k.jpg-82765b5cb247cfd5ba3ca6bb33cd2696.bptc.ctex[39m[0m
+[  30% ] [90m[1msavepack[22m | Storing File: res://assets/props/drill_press_01_drill_press_01_arm_1k.jpg.import[39m[0m
+[  31% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/drill_press_01_drill_press_01_diff_1k.jpg-97a37abd081cb39ebb8892d12970a2fd.bptc.ctex[39m[0m
+[  31% ] [90m[1msavepack[22m | Storing File: res://assets/props/drill_press_01_drill_press_01_diff_1k.jpg.import[39m[0m
+[  31% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/drill_press_01_drill_press_01_nor_gl_1k.jpg-4011620a664561b4e831150ae613df31.bptc.ctex[39m[0m
+[  31% ] [90m[1msavepack[22m | Storing File: res://assets/props/drill_press_01_drill_press_01_nor_gl_1k.jpg.import[39m[0m
+[  31% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/hand_truck.glb-b1f3f800d0c6f51432cc06b0fa6423f5.scn[39m[0m
+[  31% ] [90m[1msavepack[22m | Storing File: res://assets/props/hand_truck.glb.import[39m[0m
+[  31% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/hand_truck_hand_truck_arm_1k.jpg-039a502686f09b828b95ee1dadc071f1.bptc.ctex[39m[0m
+[  31% ] [90m[1msavepack[22m | Storing File: res://assets/props/hand_truck_hand_truck_arm_1k.jpg.import[39m[0m
+[  32% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/hand_truck_hand_truck_diff_1k.jpg-dffa4e766266b03c92734438cd0c93e1.bptc.ctex[39m[0m
+[  32% ] [90m[1msavepack[22m | Storing File: res://assets/props/hand_truck_hand_truck_diff_1k.jpg.import[39m[0m
+[  32% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/hand_truck_hand_truck_nor_gl_1k.jpg-d08e4e3d31363499512bc63cd15effd7.bptc.ctex[39m[0m
+[  32% ] [90m[1msavepack[22m | Storing File: res://assets/props/hand_truck_hand_truck_nor_gl_1k.jpg.import[39m[0m
+[  32% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/industrial_caged_sconce.glb-1dc4363a69075155e45e051dafd3c998.scn[39m[0m
+[  32% ] [90m[1msavepack[22m | Storing File: res://assets/props/industrial_caged_sconce.glb.import[39m[0m
+[  32% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/industrial_caged_sconce_industrial_caged_sconce_arm_1k.jpg-0c7b4056e294fe962751b64d962e8375.bptc.ctex[39m[0m
+[  32% ] [90m[1msavepack[22m | Storing File: res://assets/props/industrial_caged_sconce_industrial_caged_sconce_arm_1k.jpg.import[39m[0m
+[  33% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/industrial_caged_sconce_industrial_caged_sconce_diff_1k.jpg-9f4e1a534c350ebd178d315fb42d7721.bptc.ctex[39m[0m
+[  33% ] [90m[1msavepack[22m | Storing File: res://assets/props/industrial_caged_sconce_industrial_caged_sconce_diff_1k.jpg.import[39m[0m
+[  33% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/industrial_caged_sconce_industrial_caged_sconce_emissive_1k.jpg-28751585e504f241cfa3f527dfdadfc2.bptc.ctex[39m[0m
+[  33% ] [90m[1msavepack[22m | Storing File: res://assets/props/industrial_caged_sconce_industrial_caged_sconce_emissive_1k.jpg.import[39m[0m
+[  33% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/industrial_caged_sconce_industrial_caged_sconce_nor_gl_1k.jpg-c1cae6cfbf6236d946a2a714a366234f.bptc.ctex[39m[0m
+[  33% ] [90m[1msavepack[22m | Storing File: res://assets/props/industrial_caged_sconce_industrial_caged_sconce_nor_gl_1k.jpg.import[39m[0m
+[  33% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/industrial_storage_cart.glb-5d334953e88a6cc85d495b2fff01e6ca.scn[39m[0m
+[  33% ] [90m[1msavepack[22m | Storing File: res://assets/props/industrial_storage_cart.glb.import[39m[0m
+[  33% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/industrial_storage_cart_industrial_storage_cart_arm_1k.jpg-650ee150954878dc5fedc37724ae43f6.bptc.ctex[39m[0m
+[  33% ] [90m[1msavepack[22m | Storing File: res://assets/props/industrial_storage_cart_industrial_storage_cart_arm_1k.jpg.import[39m[0m
+[  33% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/industrial_storage_cart_industrial_storage_cart_diff_1k.jpg-578f264126999235e48a7be8203fe27d.bptc.ctex[39m[0m
+[  33% ] [90m[1msavepack[22m | Storing File: res://assets/props/industrial_storage_cart_industrial_storage_cart_diff_1k.jpg.import[39m[0m
+[  33% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/industrial_storage_cart_industrial_storage_cart_nor_gl_1k.jpg-65b2ef46f86b276b68f8693c53ecd0cc.bptc.ctex[39m[0m
+[  33% ] [90m[1msavepack[22m | Storing File: res://assets/props/industrial_storage_cart_industrial_storage_cart_nor_gl_1k.jpg.import[39m[0m
+[  34% ] [90m[1msavepack[22m | Storing File: res://assets/props/mesh_metrics.json[39m[0m
+[  34% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/small_oil_can_01.glb-5d8adb67ffa8eed79c5b1938da4feab9.scn[39m[0m
+[  34% ] [90m[1msavepack[22m | Storing File: res://assets/props/small_oil_can_01.glb.import[39m[0m
+[  34% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/small_oil_can_01_small_oil_can_01_arm_1k.jpg-9950dac339d6a645b3eac8a54e8f9902.bptc.ctex[39m[0m
+[  34% ] [90m[1msavepack[22m | Storing File: res://assets/props/small_oil_can_01_small_oil_can_01_arm_1k.jpg.import[39m[0m
+[  34% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/small_oil_can_01_small_oil_can_01_diff_1k.jpg-c0f9f650b7ad355c6f20d4c503645272.bptc.ctex[39m[0m
+[  34% ] [90m[1msavepack[22m | Storing File: res://assets/props/small_oil_can_01_small_oil_can_01_diff_1k.jpg.import[39m[0m
+[  35% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/small_oil_can_01_small_oil_can_01_nor_gl_1k.jpg-fcf77313e15d731890d617b65f41c740.bptc.ctex[39m[0m
+[  35% ] [90m[1msavepack[22m | Storing File: res://assets/props/small_oil_can_01_small_oil_can_01_nor_gl_1k.jpg.import[39m[0m
+[  35% ] [90m[1msavepack[22m | Storing File: res://assets/props/sources.json[39m[0m
+[  35% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/steel_frame_shelves_02.glb-a0162c248bd3a4980f6a6d3f823cd6ee.scn[39m[0m
+[  35% ] [90m[1msavepack[22m | Storing File: res://assets/props/steel_frame_shelves_02.glb.import[39m[0m
+[  35% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/steel_frame_shelves_02_steel_frame_shelves_02_arm_1k.jpg-dbfcf9779d6e97ccf23f793a17dc4248.bptc.ctex[39m[0m
+[  35% ] [90m[1msavepack[22m | Storing File: res://assets/props/steel_frame_shelves_02_steel_frame_shelves_02_arm_1k.jpg.import[39m[0m
+[  36% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/steel_frame_shelves_02_steel_frame_shelves_02_diff_1k.jpg-a7bfb8a5bb9a8489a209680b59309670.bptc.ctex[39m[0m
+[  36% ] [90m[1msavepack[22m | Storing File: res://assets/props/steel_frame_shelves_02_steel_frame_shelves_02_diff_1k.jpg.import[39m[0m
+[  36% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/steel_frame_shelves_02_steel_frame_shelves_02_nor_gl_1k.jpg-d340392f314e63b21d875f090f4cc39b.bptc.ctex[39m[0m
+[  36% ] [90m[1msavepack[22m | Storing File: res://assets/props/steel_frame_shelves_02_steel_frame_shelves_02_nor_gl_1k.jpg.import[39m[0m
+[  36% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/vintage_flashlight.glb-7c234f0662c906660a6e27c345a22a65.scn[39m[0m
+[  36% ] [90m[1msavepack[22m | Storing File: res://assets/props/vintage_flashlight.glb.import[39m[0m
+[  36% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/vintage_flashlight_vintage_flashlight_arm_1k.jpg-ccf245184d60caa93265ac1b9bdec02c.bptc.ctex[39m[0m
+[  36% ] [90m[1msavepack[22m | Storing File: res://assets/props/vintage_flashlight_vintage_flashlight_arm_1k.jpg.import[39m[0m
+[  37% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/vintage_flashlight_vintage_flashlight_diff_1k.jpg-57ced1cf9ee02e284745497d92b3c0ca.bptc.ctex[39m[0m
+[  37% ] [90m[1msavepack[22m | Storing File: res://assets/props/vintage_flashlight_vintage_flashlight_diff_1k.jpg.import[39m[0m
+[  37% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/vintage_flashlight_vintage_flashlight_diff_1k_3.png-a9bffd8c935e69a01b19e2dadb0ff9e8.bptc.ctex[39m[0m
+[  37% ] [90m[1msavepack[22m | Storing File: res://assets/props/vintage_flashlight_vintage_flashlight_diff_1k_3.png.import[39m[0m
+[  37% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/vintage_flashlight_vintage_flashlight_nor_gl_1k.jpg-59d57e619cbb18c17b2eccbe3d1e8330.bptc.ctex[39m[0m
+[  37% ] [90m[1msavepack[22m | Storing File: res://assets/props/vintage_flashlight_vintage_flashlight_nor_gl_1k.jpg.import[39m[0m
+[  38% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/vintage_suitcase.glb-0786858f74589bb18f60531ee70a703e.scn[39m[0m
+[  38% ] [90m[1msavepack[22m | Storing File: res://assets/props/vintage_suitcase.glb.import[39m[0m
+[  38% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/vintage_suitcase_vintage_suitcase_01_arm_1k.jpg-c1b59dc48d48d74e213579532378106b.bptc.ctex[39m[0m
+[  38% ] [90m[1msavepack[22m | Storing File: res://assets/props/vintage_suitcase_vintage_suitcase_01_arm_1k.jpg.import[39m[0m
+[  38% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/vintage_suitcase_vintage_suitcase_01_diff_1k.jpg-602f48069b4dc14aabb8219d6350404e.bptc.ctex[39m[0m
+[  38% ] [90m[1msavepack[22m | Storing File: res://assets/props/vintage_suitcase_vintage_suitcase_01_diff_1k.jpg.import[39m[0m
+[  38% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/vintage_suitcase_vintage_suitcase_01_nor_gl_1k.jpg-fe80858bc622e1e76c83f906884b34f8.bptc.ctex[39m[0m
+[  38% ] [90m[1msavepack[22m | Storing File: res://assets/props/vintage_suitcase_vintage_suitcase_01_nor_gl_1k.jpg.import[39m[0m
+[  39% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/wooden_crate_01.glb-8c7be117d67679c9f8c80d9064935aae.scn[39m[0m
+[  39% ] [90m[1msavepack[22m | Storing File: res://assets/props/wooden_crate_01.glb.import[39m[0m
+[  39% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/wooden_crate_01_wooden_crate_01_arm_1k.jpg-de7db153f24a1849d0223dd6d65eb930.bptc.ctex[39m[0m
+[  39% ] [90m[1msavepack[22m | Storing File: res://assets/props/wooden_crate_01_wooden_crate_01_arm_1k.jpg.import[39m[0m
+[  39% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/wooden_crate_01_wooden_crate_01_diff_1k.jpg-6bda0aa10f1569fbbab2a37a603f1d34.bptc.ctex[39m[0m
+[  39% ] [90m[1msavepack[22m | Storing File: res://assets/props/wooden_crate_01_wooden_crate_01_diff_1k.jpg.import[39m[0m
+[  39% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/wooden_crate_01_wooden_crate_01_nor_gl_1k.jpg-ea644931ddaa013e8be91ccba7d1f202.bptc.ctex[39m[0m
+[  39% ] [90m[1msavepack[22m | Storing File: res://assets/props/wooden_crate_01_wooden_crate_01_nor_gl_1k.jpg.import[39m[0m
+[  40% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/wooden_military_crate.glb-f19f6db0a7b6c97e256ce27aa7242a1d.scn[39m[0m
+[  40% ] [90m[1msavepack[22m | Storing File: res://assets/props/wooden_military_crate.glb.import[39m[0m
+[  40% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/wooden_military_crate_wooden_military_crate_arm_1k.jpg-5485b42ad6e285d4b01b1fc133a1165c.bptc.ctex[39m[0m
+[  40% ] [90m[1msavepack[22m | Storing File: res://assets/props/wooden_military_crate_wooden_military_crate_arm_1k.jpg.import[39m[0m
+[  40% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/wooden_military_crate_wooden_military_crate_diff_1k.jpg-d66c71456a5409af0248c86650f8b01c.bptc.ctex[39m[0m
+[  40% ] [90m[1msavepack[22m | Storing File: res://assets/props/wooden_military_crate_wooden_military_crate_diff_1k.jpg.import[39m[0m
+[  40% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/wooden_military_crate_wooden_military_crate_nor_gl_1k.jpg-8c1ba0535dcef4fe09ed294bad436a8b.bptc.ctex[39m[0m
+[  40% ] [90m[1msavepack[22m | Storing File: res://assets/props/wooden_military_crate_wooden_military_crate_nor_gl_1k.jpg.import[39m[0m
+[  41% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/worn_metal_rack.glb-8a9629f4c3c31a2c09b9ab6db4ea6bfe.scn[39m[0m
+[  41% ] [90m[1msavepack[22m | Storing File: res://assets/props/worn_metal_rack.glb.import[39m[0m
+[  41% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/worn_metal_rack_worn_metal_rack_arm_1k.jpg-455e9fad23c6856945a7d5cd91e82ba1.bptc.ctex[39m[0m
+[  41% ] [90m[1msavepack[22m | Storing File: res://assets/props/worn_metal_rack_worn_metal_rack_arm_1k.jpg.import[39m[0m
+[  41% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/worn_metal_rack_worn_metal_rack_diff_1k.jpg-fb6b987774029e8c2e14dfb4ec3d07e7.bptc.ctex[39m[0m
+[  41% ] [90m[1msavepack[22m | Storing File: res://assets/props/worn_metal_rack_worn_metal_rack_diff_1k.jpg.import[39m[0m
+[  42% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/worn_metal_rack_worn_metal_rack_nor_gl_1k.jpg-5fa65802117abb1b9cfe28655182796a.bptc.ctex[39m[0m
+[  42% ] [90m[1msavepack[22m | Storing File: res://assets/props/worn_metal_rack_worn_metal_rack_nor_gl_1k.jpg.import[39m[0m
+[  42% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/kloofendal_overcast_puresky_1k.hdr-fafe61f0c30cd0e8442d153a6222f638.bptc.ctex[39m[0m
+[  42% ] [90m[1msavepack[22m | Storing File: res://assets/sky/kloofendal_overcast_puresky_1k.hdr.import[39m[0m
+[  42% ] [90m[1msavepack[22m | Storing File: res://assets/sky/source.json[39m[0m
+[  42% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/carriage_door.glb-604c470890ead2733a28a2a79070150d.scn[39m[0m
+[  42% ] [90m[1msavepack[22m | Storing File: res://assets/train/carriage_door.glb.import[39m[0m
+[  43% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/carriage_door_green_metal_rust_albedo.jpg-58a029c3634b6c5d4fa06a8c9aef3f46.bptc.ctex[39m[0m
+[  43% ] [90m[1msavepack[22m | Storing File: res://assets/train/carriage_door_green_metal_rust_albedo.jpg.import[39m[0m
+[  43% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/carriage_door_green_metal_rust_normal.jpg-eef1099293773ef958b5c59f4590c6ca.bptc.ctex[39m[0m
+[  43% ] [90m[1msavepack[22m | Storing File: res://assets/train/carriage_door_green_metal_rust_normal.jpg.import[39m[0m
+[  43% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/carriage_door_green_metal_rust_roughness.png-8ed1d10ef20e0a12ba050e340151ca80.bptc.ctex[39m[0m
+[  43% ] [90m[1msavepack[22m | Storing File: res://assets/train/carriage_door_green_metal_rust_roughness.png.import[39m[0m
+[  43% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/carriage_door_wood_planks_grey_albedo.jpg-0300595cfb6533588679bb94faf758a4.bptc.ctex[39m[0m
+[  43% ] [90m[1msavepack[22m | Storing File: res://assets/train/carriage_door_wood_planks_grey_albedo.jpg.import[39m[0m
+[  44% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/carriage_door_wood_planks_grey_normal.jpg-c90fcf878c77e521e10060737b5b162c.bptc.ctex[39m[0m
+[  44% ] [90m[1msavepack[22m | Storing File: res://assets/train/carriage_door_wood_planks_grey_normal.jpg.import[39m[0m
+[  44% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/carriage_door_wood_planks_grey_roughness.png-9c4d7fbf7ed420a5b3c24ff850c8a532.bptc.ctex[39m[0m
+[  44% ] [90m[1msavepack[22m | Storing File: res://assets/train/carriage_door_wood_planks_grey_roughness.png.import[39m[0m
+[  44% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/control_lever.glb-87b88210eba2716216304059ebadfab1.scn[39m[0m
+[  44% ] [90m[1msavepack[22m | Storing File: res://assets/train/control_lever.glb.import[39m[0m
+[  44% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/control_lever_wood_planks_grey_albedo.jpg-f6f787eff396deddfbcb7cd141e394e5.bptc.ctex[39m[0m
+[  44% ] [90m[1msavepack[22m | Storing File: res://assets/train/control_lever_wood_planks_grey_albedo.jpg.import[39m[0m
+[  45% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/control_lever_wood_planks_grey_normal.jpg-1b9faab0fcd504496f5fd8d0d3f4fa10.bptc.ctex[39m[0m
+[  45% ] [90m[1msavepack[22m | Storing File: res://assets/train/control_lever_wood_planks_grey_normal.jpg.import[39m[0m
+[  45% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/control_lever_wood_planks_grey_roughness.png-45eae4e8e7eca1f42c31d7ac33fd3d42.bptc.ctex[39m[0m
+[  45% ] [90m[1msavepack[22m | Storing File: res://assets/train/control_lever_wood_planks_grey_roughness.png.import[39m[0m
+[  45% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/crew_car_finish.glb-29b7d7dd6ce10cebc0702df51d3aa824.scn[39m[0m
+[  45% ] [90m[1msavepack[22m | Storing File: res://assets/train/crew_car_finish.glb.import[39m[0m
+[  46% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/crew_car_finish_green_metal_rust_albedo.jpg-6048e42c92d90ab15814c8365f3399cd.bptc.ctex[39m[0m
+[  46% ] [90m[1msavepack[22m | Storing File: res://assets/train/crew_car_finish_green_metal_rust_albedo.jpg.import[39m[0m
+[  46% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/crew_car_finish_green_metal_rust_normal.jpg-acb6e98de816418659fc3c3c17dfd4a7.bptc.ctex[39m[0m
+[  46% ] [90m[1msavepack[22m | Storing File: res://assets/train/crew_car_finish_green_metal_rust_normal.jpg.import[39m[0m
+[  46% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/crew_car_finish_green_metal_rust_roughness.png-95a57d2900da7d41634990e44c18e8b1.bptc.ctex[39m[0m
+[  46% ] [90m[1msavepack[22m | Storing File: res://assets/train/crew_car_finish_green_metal_rust_roughness.png.import[39m[0m
+[  46% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/crew_car_finish_wood_planks_grey_albedo.jpg-f6704aa623790f71f328e69aa711df2f.bptc.ctex[39m[0m
+[  46% ] [90m[1msavepack[22m | Storing File: res://assets/train/crew_car_finish_wood_planks_grey_albedo.jpg.import[39m[0m
+[  47% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/crew_car_finish_wood_planks_grey_normal.jpg-e86bfea6a5957abe0563673e775a2325.bptc.ctex[39m[0m
+[  47% ] [90m[1msavepack[22m | Storing File: res://assets/train/crew_car_finish_wood_planks_grey_normal.jpg.import[39m[0m
+[  47% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/crew_car_finish_wood_planks_grey_roughness.png-4207a7ce51fc8edfec8d4fa22f0127d5.bptc.ctex[39m[0m
+[  47% ] [90m[1msavepack[22m | Storing File: res://assets/train/crew_car_finish_wood_planks_grey_roughness.png.import[39m[0m
+[  47% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/locomotive_cab_finish.glb-7f045b09a31d0c75bade7a9c05256599.scn[39m[0m
+[  47% ] [90m[1msavepack[22m | Storing File: res://assets/train/locomotive_cab_finish.glb.import[39m[0m
+[  47% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/locomotive_cab_finish_green_metal_rust_albedo.jpg-e9d8b2bd7eca64bc8d270725b84c2784.bptc.ctex[39m[0m
+[  47% ] [90m[1msavepack[22m | Storing File: res://assets/train/locomotive_cab_finish_green_metal_rust_albedo.jpg.import[39m[0m
+[  48% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/locomotive_cab_finish_green_metal_rust_normal.jpg-88f36a78bd669980995676a7af03b3a4.bptc.ctex[39m[0m
+[  48% ] [90m[1msavepack[22m | Storing File: res://assets/train/locomotive_cab_finish_green_metal_rust_normal.jpg.import[39m[0m
+[  48% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/locomotive_cab_finish_green_metal_rust_roughness.png-a66baf1f4fa7be6ca24cbb56fc84d5b3.bptc.ctex[39m[0m
+[  48% ] [90m[1msavepack[22m | Storing File: res://assets/train/locomotive_cab_finish_green_metal_rust_roughness.png.import[39m[0m
+[  48% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/locomotive_cab_finish_wood_planks_grey_albedo.jpg-a5b8b1d4d009452b4029bfb8e002626f.bptc.ctex[39m[0m
+[  48% ] [90m[1msavepack[22m | Storing File: res://assets/train/locomotive_cab_finish_wood_planks_grey_albedo.jpg.import[39m[0m
+[  48% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/locomotive_cab_finish_wood_planks_grey_normal.jpg-a4a98618124e5689f710cdd17099eb5a.bptc.ctex[39m[0m
+[  48% ] [90m[1msavepack[22m | Storing File: res://assets/train/locomotive_cab_finish_wood_planks_grey_normal.jpg.import[39m[0m
+[  49% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/locomotive_cab_finish_wood_planks_grey_roughness.png-91eadb1c3da9e93cb55fbf843b266861.bptc.ctex[39m[0m
+[  49% ] [90m[1msavepack[22m | Storing File: res://assets/train/locomotive_cab_finish_wood_planks_grey_roughness.png.import[39m[0m
+[  49% ] [90m[1msavepack[22m | Storing File: res://assets/train/source.json[39m[0m
+[  49% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/steam_locomotive.glb-a9c06e9e3b187b9a33fee7013a9ce14d.scn[39m[0m
+[  49% ] [90m[1msavepack[22m | Storing File: res://assets/train/steam_locomotive.glb.import[39m[0m
+[  50% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/steam_locomotive_rusty_painted_metal_albedo.jpg-18bb33c3e46f8ff88caa7a74427c5d21.bptc.ctex[39m[0m
+[  50% ] [90m[1msavepack[22m | Storing File: res://assets/train/steam_locomotive_rusty_painted_metal_albedo.jpg.import[39m[0m
+[  50% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/steam_locomotive_rusty_painted_metal_albedo_3.jpg-83210c5f9cb55bae8a230ce064466b28.bptc.ctex[39m[0m
+[  50% ] [90m[1msavepack[22m | Storing File: res://assets/train/steam_locomotive_rusty_painted_metal_albedo_3.jpg.import[39m[0m
+[  50% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/steam_locomotive_rusty_painted_metal_albedo_4.jpg-63c8488325fe071b9d2ae239aace19a2.bptc.ctex[39m[0m
+[  50% ] [90m[1msavepack[22m | Storing File: res://assets/train/steam_locomotive_rusty_painted_metal_albedo_4.jpg.import[39m[0m
+[  50% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/steam_locomotive_rusty_painted_metal_albedo_5.jpg-a6a5a8c79d1a5e683bd9a8e90f02bb7b.bptc.ctex[39m[0m
+[  50% ] [90m[1msavepack[22m | Storing File: res://assets/train/steam_locomotive_rusty_painted_metal_albedo_5.jpg.import[39m[0m
+[  51% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/steam_locomotive_rusty_painted_metal_albedo_6.jpg-ec8989444d9275a69e364d112054228d.bptc.ctex[39m[0m
+[  51% ] [90m[1msavepack[22m | Storing File: res://assets/train/steam_locomotive_rusty_painted_metal_albedo_6.jpg.import[39m[0m
+[  51% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/steam_locomotive_rusty_painted_metal_albedo_7.jpg-21e6249f9e15ee43890fa2e2acfcca8a.bptc.ctex[39m[0m
+[  51% ] [90m[1msavepack[22m | Storing File: res://assets/train/steam_locomotive_rusty_painted_metal_albedo_7.jpg.import[39m[0m
+[  51% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/steam_locomotive_rusty_painted_metal_albedo_8.jpg-7bedfbff6ed5fccd784f341da11d47d6.bptc.ctex[39m[0m
+[  51% ] [90m[1msavepack[22m | Storing File: res://assets/train/steam_locomotive_rusty_painted_metal_albedo_8.jpg.import[39m[0m
+[  51% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/steam_locomotive_rusty_painted_metal_albedo_9.jpg-0ebf1d0c408448bb151abf3987a3c2d8.bptc.ctex[39m[0m
+[  51% ] [90m[1msavepack[22m | Storing File: res://assets/train/steam_locomotive_rusty_painted_metal_albedo_9.jpg.import[39m[0m
+[  52% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/steam_locomotive_rusty_painted_metal_albedo_10.jpg-9e67f33475127c32c8fe7937ae0ca048.bptc.ctex[39m[0m
+[  52% ] [90m[1msavepack[22m | Storing File: res://assets/train/steam_locomotive_rusty_painted_metal_albedo_10.jpg.import[39m[0m
+[  52% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/steam_locomotive_rusty_painted_metal_normal.jpg-93586e24d7575eaeb7269014b4083560.bptc.ctex[39m[0m
+[  52% ] [90m[1msavepack[22m | Storing File: res://assets/train/steam_locomotive_rusty_painted_metal_normal.jpg.import[39m[0m
+[  52% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/steam_locomotive_rusty_painted_metal_roughness.png-f1f1cde3454dee3ff128651975af1d54.bptc.ctex[39m[0m
+[  52% ] [90m[1msavepack[22m | Storing File: res://assets/train/steam_locomotive_rusty_painted_metal_roughness.png.import[39m[0m
+[  52% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-2665a0ad15242331c888abd60b192a1d-indoor.res[39m[0m
+[  53% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-312f84577032f59feab518f757339f50-outdoor.res[39m[0m
+[  53% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-1a45d483d27c09a84766aabe3426f896-train_departure.res[39m[0m
+[  53% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-08568952900b15e4935287efba6e1de9-harlow_route.res[39m[0m
+[  53% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-beb4e8347bf8d8d7fd55099c601927e9-standard.res[39m[0m
+[  54% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-0f5f8324ba4f2cfd4cb1c8b615feb04a-high.res[39m[0m
+[  54% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-ff5e8272cbe96b6997289bf9c2e7ed24-low.res[39m[0m
+[  54% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-fc0a940563bb72e5616fdaee07e91795-medium.res[39m[0m
+[  55% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-37049dae9a8d64aee183dd2bda8e5f86-runtime_material_library.scn[39m[0m
+[  55% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-6cbc7fd765ca813c31118c045838d42c-bandages.res[39m[0m
+[  55% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-841358cf9af141bf31d3ef4f8b854264-canned_food.res[39m[0m
+[  55% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-d290a3920be8d2530d562534ca3a9a60-coal_sack.res[39m[0m
+[  56% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-3f0248316c94f8c076c49b9cc21fbf38-fuel_drum.res[39m[0m
+[  56% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-a3061e26892f3fb821fd7ddd226eda88-lantern_oil.res[39m[0m
+[  56% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-460b889ee8d6c79bc541103cab5a56b7-machine_component.res[39m[0m
+[  56% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-f562ae3ec0dd5c1578c2d632efe23347-medicine.res[39m[0m
+[  57% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-0d6047d01d8ad845f16728391ac0a81e-scrap_metal.res[39m[0m
+[  57% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-bb4c8e97c8b7f39d499fa8f9484e6cbe-tools.res[39m[0m
+[  57% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-d80db24cd0879cd202c405d2f32ab959-escape_fog.res[39m[0m
+[  57% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-18c5100d96740dcf465be651e4114aa3-harlow_escape.res[39m[0m
+[  58% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-da72b683c531f19b1f31f90796652b2d-coal_reserve.res[39m[0m
+[  58% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-93bea26f6a89cd1a4cf6b81ad746c4ce-freight.res[39m[0m
+[  58% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-60240e252f6baacd943b42854b35301b-fuel_reserve.res[39m[0m
+[  59% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-3d86260ead108dc1f49e185e1c89baf6-medical.res[39m[0m
+[  59% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-2b8109020305135832e8e9098cec6170-platform.res[39m[0m
+[  59% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-0b17afd66968057f7132b43b6095f816-precision.res[39m[0m
+[  59% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-100f92ceb278742eacc3016cfe3201f2-warehouse_a.res[39m[0m
+[  60% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-2ad361693dd292344dc3387ce10317d5-warehouse_b.res[39m[0m
+[  60% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-4341b88e3c0a4a39e27cfefead57a88e-ballast.res[39m[0m
+[  60% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-57557c88f059bba7eb4ee3e49123f359-coal_canvas.res[39m[0m
+[  60% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-110276e407cea3d58c0cfca557a879ee-crate_dark.res[39m[0m
+[  61% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-0573fa8acfbeccdf091081444ac7d4c5-crate_wood.res[39m[0m
+[  61% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-63cb467ba2e41e6ecca19357f3c46ad7-debris.res[39m[0m
+[  61% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-de66063481d2836439ddb424e5743df0-environment_painted_steel.res[39m[0m
+[  61% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-ef694fdb933ddcf3b01400fc0068f41a-floor_interior.res[39m[0m
+[  62% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-eebd0fc7dc82c5a8e4abadfc2094910f-floor_wood.res[39m[0m
+[  62% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-d6aca92ae4a364f19a1c51331642e170-freight_body.res[39m[0m
+[  62% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-c620feef1117749588d1c4d2b99998dc-glass_dark.res[39m[0m
+[  63% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-61b3e1316761e6890e0b9d226f64d4ed-ground_asphalt.res[39m[0m
+[  63% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-5822d558d720e0dd6dac6a81b2a3944c-interact_yellow.res[39m[0m
+[  63% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-2503da58949051ea081a98b7561e9133-lamp_cool.res[39m[0m
+[  63% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-9a7d2d2a6355efcd30c9a03e202861cc-lamp_warm.res[39m[0m
+[  64% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-9fa06432aecc791169ce0c703b7ee651-metal_dark.res[39m[0m
+[  64% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-5e1508434cf1344aca3906af817e1d15-metal_rust.res[39m[0m
+[  64% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-b25dbcb016feb72490bca0424700337d-platform_concrete.res[39m[0m
+[  64% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-b825ac0065c44c169b2907b2c52568fc-platform_edge.res[39m[0m
+[  65% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-d9a2fb5b09ec0e0b30fc32ba7cd7dec4-player_accent.res[39m[0m
+[  65% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-d4e3e7814eda21380b33859c8b81d7b7-player_coat.res[39m[0m
+[  65% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-e65a34411e83458d7002b037b5a6a7e2-player_skin.res[39m[0m
+[  65% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-11895f2b359e294465cfa1a2f244d28b-player_trousers.res[39m[0m
+[  66% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-c44431588fef67b5831215995eaea301-rail_steel.res[39m[0m
+[  66% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-aff81354a25b0a7a898b3cb00b1962b0-roof_metal.res[39m[0m
+[  66% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-355c2f5f1437e54695826f5c32c7fff5-shelf_metal.res[39m[0m
+[  66% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-2bee0b1cf31d4b84127249b6480d1c99-silhouette.res[39m[0m
+[  66% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-e09e760eb66f98f61a3824065ae9f33f-sleeper_wood.res[39m[0m
+[  66% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-9adaa5122e62e5e82a0da6a3640e5053-train_body.res[39m[0m
+[  66% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-99744705cdbb3577a4a7d0b3ac455c19-train_deck.res[39m[0m
+[  67% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-cf0d4ef10c7e333e0b9d4a2c73ecf864-train_glass.res[39m[0m
+[  67% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-f5021bad6b9a406319008f90fc31ba0d-train_stripe.res[39m[0m
+[  67% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-222a719570828830cdf39cfe23b210c0-train_trim.res[39m[0m
+[  67% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-91d1837ad15488c88a6e617dbfe330b0-wall_brick.res[39m[0m
+[  68% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-60b4e9ab74b1d1895d2a15d527a2bf94-wall_industrial.res[39m[0m
+[  68% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-a5578fbbfdc2849cc54d3551a3cfc57f-wall_interior.res[39m[0m
+[  68% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-3ab93c5ed1309f39f47fa5bcbeb469d2-window_cool.res[39m[0m
+[  68% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-a03edd172047904b1679925a578697e0-window_dim.res[39m[0m
+[  69% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-172ae5ea8842493775cf5dd90c1db147-window_warm.res[39m[0m
+[  69% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-25a2865e361b008d49763a752759254f-default_movement.res[39m[0m
+[  69% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-3be4e59761ee590e07eff3c366345853-departure_emergency.res[39m[0m
+[  70% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-d80851b33963e360f1caa00448c8c440-departure_normal.res[39m[0m
+[  70% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-a393c0acf10beed66d6e87a6ea66c867-departure_slow.res[39m[0m
+[  70% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-f43bc4f475360b9bd036c503de8bbb8c-warehouse_a.scn[39m[0m
+[  70% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-8a2c91640d46f3b4552f8332a0706a8a-warehouse_b.scn[39m[0m
+[  71% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-e30ffcc9d3f1374db0f9058d94c60700-item_visual.scn[39m[0m
+[  71% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-f39996a6d27a38698d16421ab974097b-main.scn[39m[0m
+[  71% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-cf176d9f5bca4116c03007c8bf39f0b8-movement_sandbox.scn[39m[0m
+[  71% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-3a08ab3e148943fde5ef5a71a25908a9-self_test.scn[39m[0m
+[  72% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-1df62347dc60185b27cf3b183b03da7e-harlow_escape.scn[39m[0m
+[  72% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-c2c62cb8c73458cd122faf659769dc80-player.scn[39m[0m
+[  72% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-8bf7e3cf3b70d18ae69b566e41a1678c-freight_car.scn[39m[0m
+[  72% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-c6179092b3fde8d1682edb90b4e25e3c-hanging_lamp.scn[39m[0m
+[  73% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-e50beaea0ee65b394deed7158cefb9ae-station_lamp.scn[39m[0m
+[  73% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-39dea79d073c513f58c5d83612f2874e-ashford_depot.scn[39m[0m
+[  73% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-ff1d119836f954089b053c1fe60b6029-blackwater_crossing.scn[39m[0m
+[  74% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-bab36c48970a914b2c921834ccfcd034-harlow_junction.scn[39m[0m
+[  74% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-4d35831675b0936b541714e715a31dd3-scavenging_sites.scn[39m[0m
+[  74% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-b39ea99ffb50c8b9736d05c28ab1e336-crew_car.scn[39m[0m
+[  74% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-cc287e5c7181e181ecf3679237a77051-flat_car.scn[39m[0m
+[  75% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-e43691d9fc8bb0a6289e662b7389aa94-locomotive.scn[39m[0m
+[  75% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-dff69328ba89d0f4a13c6684b4f2221c-train.scn[39m[0m
+[  75% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-17489923929ae5a1d998c34d70467eaa-debug_menu.scn[39m[0m
+[  75% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/2667228594/export-f26fe175837e58804f1c48b99041ac16-hud.scn[39m[0m
+[  76% ] [90m[1msavepack[22m | Storing File: res://scripts/camera/camera_profile.gdc[39m[0m
+[  76% ] [90m[1msavepack[22m | Storing File: res://scripts/camera/camera_rig.gdc[39m[0m
+[  76% ] [90m[1msavepack[22m | Storing File: res://scripts/camera/camera_zone.gdc[39m[0m
+[  76% ] [90m[1msavepack[22m | Storing File: res://scripts/camera/exploration_camera.gdc[39m[0m
+[  77% ] [90m[1msavepack[22m | Storing File: res://scripts/diagnostics/integration_benchmark.gdc[39m[0m
+[  77% ] [90m[1msavepack[22m | Storing File: res://scripts/diagnostics/render_benchmark.gdc[39m[0m
+[  77% ] [90m[1msavepack[22m | Storing File: res://scripts/environment/atmosphere.gdc[39m[0m
+[  77% ] [90m[1msavepack[22m | Storing File: res://scripts/environment/box_part.gdc[39m[0m
+[  78% ] [90m[1msavepack[22m | Storing File: res://scripts/environment/box_visual.gdc[39m[0m
+[  78% ] [90m[1msavepack[22m | Storing File: res://scripts/environment/cutaway_trigger.gdc[39m[0m
+[  78% ] [90m[1msavepack[22m | Storing File: res://scripts/environment/cutaway_wall.gdc[39m[0m
+[  79% ] [90m[1msavepack[22m | Storing File: res://scripts/environment/exploration_district.gdc[39m[0m
+[  79% ] [90m[1msavepack[22m | Storing File: res://scripts/environment/prop_light.gdc[39m[0m
+[  79% ] [90m[1msavepack[22m | Storing File: res://scripts/environment/shelf_rack.gdc[39m[0m
+[  79% ] [90m[1msavepack[22m | Storing File: res://scripts/environment/stairs.gdc[39m[0m
+[  80% ] [90m[1msavepack[22m | Storing File: res://scripts/environment/station.gdc[39m[0m
+[  80% ] [90m[1msavepack[22m | Storing File: res://scripts/environment/track.gdc[39m[0m
+[  80% ] [90m[1msavepack[22m | Storing File: res://scripts/fog/fog_audio.gdc[39m[0m
+[  80% ] [90m[1msavepack[22m | Storing File: res://scripts/fog/fog_config.gdc[39m[0m
+[  81% ] [90m[1msavepack[22m | Storing File: res://scripts/fog/fog_exposure.gdc[39m[0m
+[  81% ] [90m[1msavepack[22m | Storing File: res://scripts/fog/fog_front.gdshader[39m[0m
+[  81% ] [90m[1msavepack[22m | Storing File: res://scripts/fog/fog_fuel.gdc[39m[0m
+[  81% ] [90m[1msavepack[22m | Storing File: res://scripts/fog/fog_hud.gdc[39m[0m
+[  82% ] [90m[1msavepack[22m | Storing File: res://scripts/fog/fog_presentation.gdc[39m[0m
+[  82% ] [90m[1msavepack[22m | Storing File: res://scripts/fog/fog_route.gdc[39m[0m
+[  82% ] [90m[1msavepack[22m | Storing File: res://scripts/fog/fog_route_segment.gdc[39m[0m
+[  83% ] [90m[1msavepack[22m | Storing File: res://scripts/fog/fog_shelter.gdc[39m[0m
+[  83% ] [90m[1msavepack[22m | Storing File: res://scripts/fog/fog_simulation.gdc[39m[0m
+[  83% ] [90m[1msavepack[22m | Storing File: res://scripts/interaction/grab_rail.gdc[39m[0m
+[  83% ] [90m[1msavepack[22m | Storing File: res://scripts/interaction/interactable.gdc[39m[0m
+[  84% ] [90m[1msavepack[22m | Storing File: res://scripts/interaction/ladder.gdc[39m[0m
+[  84% ] [90m[1msavepack[22m | Storing File: res://scripts/interaction/world_door.gdc[39m[0m
+[  84% ] [90m[1msavepack[22m | Storing File: res://scripts/items/inventory_model.gdc[39m[0m
+[  84% ] [90m[1msavepack[22m | Storing File: res://scripts/items/item_catalog.gdc[39m[0m
+[  85% ] [90m[1msavepack[22m | Storing File: res://scripts/items/item_definition.gdc[39m[0m
+[  85% ] [90m[1msavepack[22m | Storing File: res://scripts/items/item_visual.gdc[39m[0m
+[  85% ] [90m[1msavepack[22m | Storing File: res://scripts/items/world_item.gdc[39m[0m
+[  85% ] [90m[1msavepack[22m | Storing File: res://scripts/journey/journey_controller.gdc[39m[0m
+[  86% ] [90m[1msavepack[22m | Storing File: res://scripts/journey/journey_definition.gdc[39m[0m
+[  86% ] [90m[1msavepack[22m | Storing File: res://scripts/journey/journey_save.gdc[39m[0m
+[  86% ] [90m[1msavepack[22m | Storing File: res://scripts/journey/journey_station.gdc[39m[0m
+[  87% ] [90m[1msavepack[22m | Storing File: res://scripts/journey/journey_ui.gdc[39m[0m
+[  87% ] [90m[1msavepack[22m | Storing File: res://scripts/journey/mission_state.gdc[39m[0m
+[  87% ] [90m[1msavepack[22m | Storing File: res://scripts/journey/route_track.gdc[39m[0m
+[  87% ] [90m[1msavepack[22m | Storing File: res://scripts/journey/station_building.gdc[39m[0m
+[  88% ] [90m[1msavepack[22m | Storing File: res://scripts/main/game.gdc[39m[0m
+[  88% ] [90m[1msavepack[22m | Storing File: res://scripts/main/self_test.gdc[39m[0m
+[  88% ] [90m[1msavepack[22m | Storing File: res://scripts/player/player.gdc[39m[0m
+[  88% ] [90m[1msavepack[22m | Storing File: res://scripts/player/player_input.gdc[39m[0m
+[  89% ] [90m[1msavepack[22m | Storing File: res://scripts/player/player_interactor.gdc[39m[0m
+[  89% ] [90m[1msavepack[22m | Storing File: res://scripts/player/player_movement_config.gdc[39m[0m
+[  89% ] [90m[1msavepack[22m | Storing File: res://scripts/player/player_stamina.gdc[39m[0m
+[  89% ] [90m[1msavepack[22m | Storing File: res://scripts/presentation/asset_dressing.gdc[39m[0m
+[  90% ] [90m[1msavepack[22m | Storing File: res://scripts/presentation/detail_builder.gdc[39m[0m
+[  90% ] [90m[1msavepack[22m | Storing File: res://scripts/presentation/environment_art.gdc[39m[0m
+[  90% ] [90m[1msavepack[22m | Storing File: res://scripts/presentation/fabricated_mesh.gdc[39m[0m
+[  91% ] [90m[1msavepack[22m | Storing File: res://scripts/presentation/journey_station_art.gdc[39m[0m
+[  91% ] [90m[1msavepack[22m | Storing File: res://scripts/presentation/presentation_effects.gdc[39m[0m
+[  91% ] [90m[1msavepack[22m | Storing File: res://scripts/presentation/rail_audio.gdc[39m[0m
+[  91% ] [90m[1msavepack[22m | Storing File: res://scripts/presentation/render_warmup.gdc[39m[0m
+[  92% ] [90m[1msavepack[22m | Storing File: res://scripts/presentation/station_art.gdc[39m[0m
+[  92% ] [90m[1msavepack[22m | Storing File: res://scripts/presentation/train_art.gdc[39m[0m
+[  92% ] [90m[1msavepack[22m | Storing File: res://scripts/presentation/train_mechanics.gdc[39m[0m
+[  92% ] [90m[1msavepack[22m | Storing File: res://scripts/presentation/worker_animator.gdc[39m[0m
+[  93% ] [90m[1msavepack[22m | Storing File: res://scripts/presentation/worker_pose.gdc[39m[0m
+[  93% ] [90m[1msavepack[22m | Storing File: res://scripts/scavenging/loot_entry.gdc[39m[0m
+[  93% ] [90m[1msavepack[22m | Storing File: res://scripts/scavenging/loot_table.gdc[39m[0m
+[  93% ] [90m[1msavepack[22m | Storing File: res://scripts/scavenging/scavenging_system.gdc[39m[0m
+[  94% ] [90m[1msavepack[22m | Storing File: res://scripts/scavenging/search_container.gdc[39m[0m
+[  94% ] [90m[1msavepack[22m | Storing File: res://scripts/scavenging/supply_interactable.gdc[39m[0m
+[  94% ] [90m[1msavepack[22m | Storing File: res://scripts/settings/camera_settings.gdc[39m[0m
+[  95% ] [90m[1msavepack[22m | Storing File: res://scripts/settings/graphics_preset.gdc[39m[0m
+[  95% ] [90m[1msavepack[22m | Storing File: res://scripts/settings/graphics_settings.gdc[39m[0m
+[  95% ] [90m[1msavepack[22m | Storing File: res://scripts/train/departure_mode.gdc[39m[0m
+[  95% ] [90m[1msavepack[22m | Storing File: res://scripts/train/train.gdc[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://scripts/train/train_car.gdc[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://scripts/train/train_console.gdc[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://scripts/train/train_interior.gdc[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://scripts/ui/debug_menu.gdc[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/ui/hud.gdc[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/ui/rail_theme.gdc[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://scripts/ui/supply_ui.gdc[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://systems/fog_system.gdc[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://systems/inventory_system.gdc[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://systems/passenger_system.gdc[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://icon.svg.import[39m[0m
+[   0% ] [90m[1mbaking_shaders[22m | Started Baking shaders (312 steps)[39m[0m
+[   0% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[   1% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[   1% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[   2% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[   2% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[   3% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[   3% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[   3% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[   4% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[   5% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[   5% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[   5% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[   6% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[   6% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[   7% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[   7% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[   7% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[   7% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[   8% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[   8% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[   8% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[   9% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[   9% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  10% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  10% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  10% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  11% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  11% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  11% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  13% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  13% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  14% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  15% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  15% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  15% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  16% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  16% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  16% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  17% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  17% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  17% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  18% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  18% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  18% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  19% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  19% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  19% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  20% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  20% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  20% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  21% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  21% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  21% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  22% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  22% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  23% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  23% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  23% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  24% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  24% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  25% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  26% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  26% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  28% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  28% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  29% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  29% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  30% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  31% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  31% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  32% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  33% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  33% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  33% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  34% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  34% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  34% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  35% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  35% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  36% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  36% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  36% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  37% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  37% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  38% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  38% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  39% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  39% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  39% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  40% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  40% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  41% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  41% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  41% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  42% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  42% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  42% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  43% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  43% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  43% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  44% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  44% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  44% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  45% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  45% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  45% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  46% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  46% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  46% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  46% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  47% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  47% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  47% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  48% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  48% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  48% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  49% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  49% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  49% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  50% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  50% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  50% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  51% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  51% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  52% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  52% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  52% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  53% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  53% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  53% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  53% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  54% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  54% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  54% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  55% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  55% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  55% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  56% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  56% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  56% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  57% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  57% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  58% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  58% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  58% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  59% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  59% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  59% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  60% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  60% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  60% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  61% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  61% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  61% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  62% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  62% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  62% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  63% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  63% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  64% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  64% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  64% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  65% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  65% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  65% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  66% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  66% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  66% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  67% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  67% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  68% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  68% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  69% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  69% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  69% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  69% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  70% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  70% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  71% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  72% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  72% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  73% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  73% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  74% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  74% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  75% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  75% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  75% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  76% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  76% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  76% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  76% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  77% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  77% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  77% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  78% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  78% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  78% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  79% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  79% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  79% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  80% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  80% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  80% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  81% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  81% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  81% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  82% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  82% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  82% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  83% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  83% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  83% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  84% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  84% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  84% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  84% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  85% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  85% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  85% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  86% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  86% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  87% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  87% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  87% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  88% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  88% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  88% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  89% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  89% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  89% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  90% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  90% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  90% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  91% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  91% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  92% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  92% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  92% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  93% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  93% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  93% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  94% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  94% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  94% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  95% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  95% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  95% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  96% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  96% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  96% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  97% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  97% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  97% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  98% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  98% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  98% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  99% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  99% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[  99% ] [90m[1mbaking_shaders[22m | Baking...[39m[0m
+[92m[ DONE ][39m [1mbaking_shaders[22m
+[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/CanvasSdfShaderRD/e3e36a196484fd7752bf3d5dca5d9ff7512a4e981b5f5f57e6f0a0fc50640721/087916079fba7c625e62b0c2cca570e0fb87c99a.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SkeletonShaderRD/e0325885d3b45ea42d045525d1c732805f14a5a6cc4b6b67ce336626653e9573/087916079fba7c625e62b0c2cca570e0fb87c99a.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SortShaderRD/ce9b4120b1d1a35c1bea19b12a6206dee2526af5e61fd4520555d6b447f15e34/087916079fba7c625e62b0c2cca570e0fb87c99a.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/ParticlesShaderRD/c77129ff51da9b8bd8037785c1a2afcdca1f25aa602d8d22c4973640d55305a4/f128cab0b22fb7e0d9f023d6cdb81309be392d95.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/ParticlesCopyShaderRD/76ee6b7648ff369a05e8340a639ce08c065370fd23e6d18634d522db1c3ac055/087916079fba7c625e62b0c2cca570e0fb87c99a.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/CanvasShaderRD/8f73ea59600218c7f4a72f38f0a825d4b9edae392f00688807259ea2faf43974/087916079fba7c625e62b0c2cca570e0fb87c99a.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/CanvasOcclusionShaderRD/2e1e40e085c85bd3960b7bad3be9bad88a3e02174708138d2eb3215933437ede/087916079fba7c625e62b0c2cca570e0fb87c99a.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/ClusterRenderShaderRD/5520632edde9dc7efc467666b1888d0f07fe10e4c2e113e68f1757bab97a847b/087916079fba7c625e62b0c2cca570e0fb87c99a.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/ClusterStoreShaderRD/9ca626ebec243544ae7398e49713da5e69391ab29de1ced02b03e718a013c28f/087916079fba7c625e62b0c2cca570e0fb87c99a.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/ClusterDebugShaderRD/7253e84e6deaaf9cd1391aff49a754db31e162f9ecaf776485fde4bc31121aa6/087916079fba7c625e62b0c2cca570e0fb87c99a.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/BestFitNormalShaderRD/8c748b5176971d04b037d61fe8ee9c0da50efc42fb21ff2f4fc11dbf138ac284/087916079fba7c625e62b0c2cca570e0fb87c99a.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/IntegrateDfgShaderRD/287328d7c084c243ad82ac05423c4a58662ea18582b5b369f3288be49e4a66d8/087916079fba7c625e62b0c2cca570e0fb87c99a.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/ResolveShaderRD/5e0937d6a862fc03f2a42b11dd8fcc8ca9fa948bc51bc5504f3e3a92e954cc33/087916079fba7c625e62b0c2cca570e0fb87c99a.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/TaaResolveShaderRD/8e863ed5b6e6cf5b67a722559308f90a5653d397bdedd8d8c2abe45a89893049/087916079fba7c625e62b0c2cca570e0fb87c99a.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/Fsr2DepthClipPassShaderRD/4130c931008b9d81bce5757c91876fb1c64a992525002d1a9d24c756cdaeb55f/087916079fba7c625e62b0c2cca570e0fb87c99a.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/Fsr2ReconstructPreviousDepthPassShaderRD/7ef7cdf239edd510c42b9e6ef2ca760f08ac92b57c6b2e5562cf430770b69d49/087916079fba7c625e62b0c2cca570e0fb87c99a.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/Fsr2LockPassShaderRD/50c95f98dbda1ad902b8fac4668d32cbfc11a3e86b890460da50600750d6d636/087916079fba7c625e62b0c2cca570e0fb87c99a.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/Fsr2AccumulatePassShaderRD/acf7ce56f0f217fbe6fc54b42313d025af58be39a197ea6e6a9c10b1c03de903/087916079fba7c625e62b0c2cca570e0fb87c99a.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/Fsr2RcasPassShaderRD/3f4d394a0080ce37da6dc5f05c36e082efc8f3a0a333428f23697d21a1e665cd/087916079fba7c625e62b0c2cca570e0fb87c99a.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/Fsr2ComputeLuminancePyramidPassShaderRD/246789de2d6807e12325bb146b5b960cbec70a2119fe15f67d12c0a1d55213dd/087916079fba7c625e62b0c2cca570e0fb87c99a.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/Fsr2AutogenReactivePassShaderRD/ea81f3d2612452e92eebad3230c8885356cf352779194322ac0b390d949e0a9f/087916079fba7c625e62b0c2cca570e0fb87c99a.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/Fsr2TcrAutogenPassShaderRD/c6b965d8d141ea41ff88aa0df571ed29f4b8b5c974713f24b7fa44f23e3db020/087916079fba7c625e62b0c2cca570e0fb87c99a.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SsEffectsDownsampleShaderRD/47ce5b07a7399a4ea52ee0ba0ba0016f7c1b3429f72c2ef29b4382bf8f1d92e7/087916079fba7c625e62b0c2cca570e0fb87c99a.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SsilShaderRD/335e8f9954286db1ee28430b2c9ef17fb01fb4bb8b74d688be9cec967dee41e6/087916079fba7c625e62b0c2cca570e0fb87c99a.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SsilImportanceMapShaderRD/3d668b995f5f00c0cdb73fd8c13cd3bed37bf5f45c10621fcc2475eefd50a7bd/087916079fba7c625e62b0c2cca570e0fb87c99a.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SsilBlurShaderRD/9d2d3e521c5d1601e636d8fc3e533a52362ad011112fde07a344fe3511cea943/087916079fba7c625e62b0c2cca570e0fb87c99a.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SsilInterleaveShaderRD/36d769d4532c446edf161d4b3d932557d4fad2904fda9c5f6861ae7fd162c9ee/087916079fba7c625e62b0c2cca570e0fb87c99a.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SsaoShaderRD/6831fded981ced729634af4cf4f5515538ff84cbb773c0d583873e29462e1080/087916079fba7c625e62b0c2cca570e0fb87c99a.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SsaoImportanceMapShaderRD/fe84d24f104b577d6ae2183f611ddfa9ef6ba4834d972f00460c66aa67c6e788/087916079fba7c625e62b0c2cca570e0fb87c99a.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SsaoBlurShaderRD/4d3910b2d37af6bb5a68153677dd3f49c424b932871284ee1bb2e31936b31ca0/087916079fba7c625e62b0c2cca570e0fb87c99a.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SsaoInterleaveShaderRD/b804d0579b589636ca331298d9f8885e277e5fd8be1d20d4560044000a029a49/087916079fba7c625e62b0c2cca570e0fb87c99a.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/ScreenSpaceReflectionScaleShaderRD/f028513910f44db288a6d0d7315df152a910214dd680426d7817a0db185bb512/087916079fba7c625e62b0c2cca570e0fb87c99a.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/ScreenSpaceReflectionShaderRD/aa7798f702ec7502be62da736ef869c792a69bb4310d9a535e0b6596ad1c4c8f/087916079fba7c625e62b0c2cca570e0fb87c99a.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/ScreenSpaceReflectionFilterShaderRD/b8974626c582dd282d9ca1bd58b6ffeda45b41e5b160baa199088657ad7eca95/087916079fba7c625e62b0c2cca570e0fb87c99a.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SubsurfaceScatteringShaderRD/cfc79a4166aa45746b6bfa4b2a3345978e68ace79a0a82ab13fdda9f32a7a0b0/087916079fba7c625e62b0c2cca570e0fb87c99a.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/MotionVectorsStoreShaderRD/05018280647fe1f752a156ae0d11f3a1a9841115e92e60702347a74051be9940/087916079fba7c625e62b0c2cca570e0fb87c99a.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SkyShaderRD/9c26bd5dc001c975a8ec36520d74f1e5aa9d8125c8172a160acf52f8ebf362f3/de678811d1bad3cad4892a8db7b6ea0be197d51d.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SkyShaderRD/9c26bd5dc001c975a8ec36520d74f1e5aa9d8125c8172a160acf52f8ebf362f3/03e3b11c69e24394b2d955a8c0ba85587bb70839.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/VoxelGiShaderRD/3d7b0b0258a2977a47dc0a84db7cb49a5e1bfaa74053e42ffae7d3e87d48965f/087916079fba7c625e62b0c2cca570e0fb87c99a.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/VoxelGiDebugShaderRD/49ee1e463ded1be1341dc6ee222f492cd9f8484aabe4cf39ca46f519abecbb6c/087916079fba7c625e62b0c2cca570e0fb87c99a.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SdfgiPreprocessShaderRD/60c77a38319fd7cc123270bcc0dfbdddd8f74e985d1907c08c726e3d4dbf7b06/087916079fba7c625e62b0c2cca570e0fb87c99a.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SdfgiDirectLightShaderRD/a3474a0b60ebab5bb7010596e49cfb91bbfc3689c4df741b809ddc92e1fa90e9/087916079fba7c625e62b0c2cca570e0fb87c99a.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SdfgiIntegrateShaderRD/62e2ae895bf90996b40c48aeab6a59c24d27c6c843ef9ee94adf3f6de80b26ac/087916079fba7c625e62b0c2cca570e0fb87c99a.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/GiShaderRD/e4e3882307beba471cbf1d2ebf8ca49fedccbba528ef384e7d1e2461d14a71f0/087916079fba7c625e62b0c2cca570e0fb87c99a.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SdfgiDebugShaderRD/6de37bb5aa871af3d348d47b0cbfc09f6873bf5a2500f0cf9280e404ff4ce97b/087916079fba7c625e62b0c2cca570e0fb87c99a.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SdfgiDebugProbesShaderRD/c25d7a81827da688487a69637d3e61ae9f31c125940f4fbf05b6de4a2c1e78a9/087916079fba7c625e62b0c2cca570e0fb87c99a.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/VolumetricFogShaderRD/f44655a2103d6cb3b1d0a206e66c4427aca3de3b5de59f72bf7e08db5144f83c/9a227745af2d65830f930370a9fbba551fbd6f60.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/VolumetricFogProcessShaderRD/8333ba62fcdf5c0ffe915641fe9faa88286844b2bb245d94b41eb48eca8e881d/087916079fba7c625e62b0c2cca570e0fb87c99a.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/BokehDofShaderRD/5a14c722b7cad6a5d1853b764825b687b8e8c26d08a7edef6f50a28c2a237b9c/087916079fba7c625e62b0c2cca570e0fb87c99a.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/CopyShaderRD/363226e4e754f4dd97b1000777a12a1e717a0202ef34a8bb5cbbee343880d1a3/087916079fba7c625e62b0c2cca570e0fb87c99a.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/CopyToFbShaderRD/0adebb67e6205ddab89bef68d0541718044b8408d301ef90fcc572ab1f1dc3c1/087916079fba7c625e62b0c2cca570e0fb87c99a.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/CubeToDpShaderRD/f3ba78a7ce282686c1bace415c6d4852f8b5df07fd90aff0139030354b9c53e6/087916079fba7c625e62b0c2cca570e0fb87c99a.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/CubemapDownsamplerShaderRD/831be8c39044041b2e1da3b55ee6c2d5d5242c0c11326369eda23b7ae42ee04c/087916079fba7c625e62b0c2cca570e0fb87c99a.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/CubemapFilterShaderRD/73d1b21cf27dc843bbcc28dc35d902623419ae7f0c17dba1d9c725d82959f576/087916079fba7c625e62b0c2cca570e0fb87c99a.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/CubemapRoughnessShaderRD/bb92ea060a11d89f9121ad84bf077cdf954f39a59c3cc78038611f19f3d94533/087916079fba7c625e62b0c2cca570e0fb87c99a.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SpecularMergeShaderRD/99444119f03d2c92d5ab325e0fa261255c819d4cb4b019c0eaa369b2d0383a8f/087916079fba7c625e62b0c2cca570e0fb87c99a.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/ShadowFrustumShaderRD/851c9007fbee11476e65c3cbb595c7113c7e98676c38d49b88056bdb1eb5904b/087916079fba7c625e62b0c2cca570e0fb87c99a.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/MotionVectorsShaderRD/e9ac9ae0667a399f458196d55204937c545356cd64ba755844d9c9943cffdc55/087916079fba7c625e62b0c2cca570e0fb87c99a.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/LuminanceReduceShaderRD/62fd065f2a03f76e82ff0efdd729b029811828e67b3dc62b0dd4c1b2a8eb2c23/087916079fba7c625e62b0c2cca570e0fb87c99a.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SmaaEdgeDetectionShaderRD/e4c623cbbd80f252ca1afe76f478a818c89eb124cff6ca285865b0ba733f1f07/087916079fba7c625e62b0c2cca570e0fb87c99a.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SmaaWeightCalculationShaderRD/604beebafad6f83aaaead58113c3a3e5b0ed7a7c5605fd197dd952e3821b5878/087916079fba7c625e62b0c2cca570e0fb87c99a.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SmaaBlendingShaderRD/9f3b4dcf01e8d340348bba93235fb3c9c13964b1e1bd23e7d59891cc9748a71c/087916079fba7c625e62b0c2cca570e0fb87c99a.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/TonemapShaderRD/06d49e3e1e33f4e3f9069e4df65b734ffc54e7ad36b2b03be9c40766a30f7576/087916079fba7c625e62b0c2cca570e0fb87c99a.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/FsrUpscaleShaderRD/0715ca028e84f0a9b6f91a4ac308d37a5c185438f466e254fac8b7377dc10759/087916079fba7c625e62b0c2cca570e0fb87c99a.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/BlitShaderRD/25c59c709fcd7c8e69780f3edeaebc055b68c06b660c69bb43d8246614325591/087916079fba7c625e62b0c2cca570e0fb87c99a.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SkyShaderRD/9c26bd5dc001c975a8ec36520d74f1e5aa9d8125c8172a160acf52f8ebf362f3/e105b1e014f9523daf8d734c2f2dc115ba341902.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/CanvasShaderRD/8f73ea59600218c7f4a72f38f0a825d4b9edae392f00688807259ea2faf43974/8a7277c8d3ac029b087c3fa9c55de85560be5119.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/CanvasShaderRD/8f73ea59600218c7f4a72f38f0a825d4b9edae392f00688807259ea2faf43974/45fb1ddc6499e56682916a355ce2839e61f42dfe.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/a38af1e47720abf30ca44f3d3c099c07b046df81.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/6a184745fdc168cf1854f82e467b075c7754389099dd4260c7cfd820f974abb7/a38af1e47720abf30ca44f3d3c099c07b046df81.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/ab0b960474f1491b42ef9f2ca13dbd4ccaf64911.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/6a184745fdc168cf1854f82e467b075c7754389099dd4260c7cfd820f974abb7/ab0b960474f1491b42ef9f2ca13dbd4ccaf64911.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/111f8cfd3c260d918df85827eb251dc36a43cb13.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/6a184745fdc168cf1854f82e467b075c7754389099dd4260c7cfd820f974abb7/111f8cfd3c260d918df85827eb251dc36a43cb13.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/6a184745fdc168cf1854f82e467b075c7754389099dd4260c7cfd820f974abb7/18c88fd93cec3f95e673ecb1eaa470e51cbdba18.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/6a184745fdc168cf1854f82e467b075c7754389099dd4260c7cfd820f974abb7/1ccef963f1bb7287f37c6884e6591aed44200381.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/6a184745fdc168cf1854f82e467b075c7754389099dd4260c7cfd820f974abb7/2c98fb908b9fe40c223fb3fa208b3c392e10987f.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/6a184745fdc168cf1854f82e467b075c7754389099dd4260c7cfd820f974abb7/321e42e1280eb440cb08d0ceb1689cb32a542119.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/6a184745fdc168cf1854f82e467b075c7754389099dd4260c7cfd820f974abb7/33d11bdbda5317fef07f2c5597e686619835094b.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/6a184745fdc168cf1854f82e467b075c7754389099dd4260c7cfd820f974abb7/41b4245d37811b4aa90ab7df57a8c9843115d805.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/6a184745fdc168cf1854f82e467b075c7754389099dd4260c7cfd820f974abb7/5b901de302fa1d5d32bb0646eae4835578e64d0f.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/6a184745fdc168cf1854f82e467b075c7754389099dd4260c7cfd820f974abb7/5bb40bb2938a55f05ebd16cc5899a27c86a28370.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/6a184745fdc168cf1854f82e467b075c7754389099dd4260c7cfd820f974abb7/61708cad501a5b3e5dd395c03a8dc7469ced5bc6.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/6a184745fdc168cf1854f82e467b075c7754389099dd4260c7cfd820f974abb7/61d761d28b7c6f56b1c947c1beea858d26a3e388.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/6a184745fdc168cf1854f82e467b075c7754389099dd4260c7cfd820f974abb7/637e967d17b6f62c0806986fba9b4427add0cf03.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/6a184745fdc168cf1854f82e467b075c7754389099dd4260c7cfd820f974abb7/6728f7bd7005c04fe432972d0575e7918cce556e.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/6a184745fdc168cf1854f82e467b075c7754389099dd4260c7cfd820f974abb7/6ba29230d0fce99d2954d35dbd261ece67d54b5e.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/6a184745fdc168cf1854f82e467b075c7754389099dd4260c7cfd820f974abb7/6cf868b287d7a1e9fe6ec2ff3f766d68ada4ca0a.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/6a184745fdc168cf1854f82e467b075c7754389099dd4260c7cfd820f974abb7/6e60f1da0f59c693ebf78e53a2f5c1d65c380213.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/6a184745fdc168cf1854f82e467b075c7754389099dd4260c7cfd820f974abb7/70cc2f00359bdee8ec8605c1cb72ee9ff68d8393.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/6a184745fdc168cf1854f82e467b075c7754389099dd4260c7cfd820f974abb7/7763795aad6cd981cf2fb53a45b1e2133d077c66.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/6a184745fdc168cf1854f82e467b075c7754389099dd4260c7cfd820f974abb7/7b5acd3f66bd89336d7260db8454507d0153401b.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/6a184745fdc168cf1854f82e467b075c7754389099dd4260c7cfd820f974abb7/a901653044aaf2cadc9b710d733524faac5c54be.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/6a184745fdc168cf1854f82e467b075c7754389099dd4260c7cfd820f974abb7/aa9d0127eb5672f63de4cc15b9b89d35fbe6334b.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/6a184745fdc168cf1854f82e467b075c7754389099dd4260c7cfd820f974abb7/abf1ec7384caa29b0f4070b68f6ca530c1ba47ae.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/6a184745fdc168cf1854f82e467b075c7754389099dd4260c7cfd820f974abb7/ac73e4c30be277e8bf77a0cb83da9cb25725c565.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/6a184745fdc168cf1854f82e467b075c7754389099dd4260c7cfd820f974abb7/b1674463de1a81a30c97e621ea8a8dcc583a5446.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/6a184745fdc168cf1854f82e467b075c7754389099dd4260c7cfd820f974abb7/b36709f3705989a3b9fe12a08e045c7a07a2f017.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/6a184745fdc168cf1854f82e467b075c7754389099dd4260c7cfd820f974abb7/b5fb3ce33b2b08397fda3642420386474951701c.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/6a184745fdc168cf1854f82e467b075c7754389099dd4260c7cfd820f974abb7/ba1b0683ef2844e2972039972dc99a779f9b343c.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/6a184745fdc168cf1854f82e467b075c7754389099dd4260c7cfd820f974abb7/c375df82e30d3298efda75bd6444bcb9dd2cdc82.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/6a184745fdc168cf1854f82e467b075c7754389099dd4260c7cfd820f974abb7/c97aa4f62cd88d08ebbd2e5468ab22679686eb9a.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/6a184745fdc168cf1854f82e467b075c7754389099dd4260c7cfd820f974abb7/ca91dd094afef91cbd2432a3675cef24cf741aa9.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/6a184745fdc168cf1854f82e467b075c7754389099dd4260c7cfd820f974abb7/d11c4bb7a8b6d42e743075e96df095753bd912fe.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/6a184745fdc168cf1854f82e467b075c7754389099dd4260c7cfd820f974abb7/d5b65da8b54fd78c9941c2c7f18eed94888383af.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/6a184745fdc168cf1854f82e467b075c7754389099dd4260c7cfd820f974abb7/d646cccbe1ee588ad6ba8a90ddfde937b66521b4.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/6a184745fdc168cf1854f82e467b075c7754389099dd4260c7cfd820f974abb7/ec1ef4068505d10ee8e11e3434f234dbfb2746ab.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/6a184745fdc168cf1854f82e467b075c7754389099dd4260c7cfd820f974abb7/f407568d0ae46b5742ff6f47048d32bfa75efa00.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/6a184745fdc168cf1854f82e467b075c7754389099dd4260c7cfd820f974abb7/fd3c20d22d829f994d3b112c0deffc7d7e2b7373.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/18c88fd93cec3f95e673ecb1eaa470e51cbdba18.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/1ccef963f1bb7287f37c6884e6591aed44200381.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/2c98fb908b9fe40c223fb3fa208b3c392e10987f.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/321e42e1280eb440cb08d0ceb1689cb32a542119.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/33d11bdbda5317fef07f2c5597e686619835094b.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/41b4245d37811b4aa90ab7df57a8c9843115d805.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/5b901de302fa1d5d32bb0646eae4835578e64d0f.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/5bb40bb2938a55f05ebd16cc5899a27c86a28370.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/61708cad501a5b3e5dd395c03a8dc7469ced5bc6.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/61d761d28b7c6f56b1c947c1beea858d26a3e388.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/637e967d17b6f62c0806986fba9b4427add0cf03.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/6728f7bd7005c04fe432972d0575e7918cce556e.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/6ba29230d0fce99d2954d35dbd261ece67d54b5e.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/6cf868b287d7a1e9fe6ec2ff3f766d68ada4ca0a.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/6e60f1da0f59c693ebf78e53a2f5c1d65c380213.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/70cc2f00359bdee8ec8605c1cb72ee9ff68d8393.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/7763795aad6cd981cf2fb53a45b1e2133d077c66.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/7b5acd3f66bd89336d7260db8454507d0153401b.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/a901653044aaf2cadc9b710d733524faac5c54be.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/aa9d0127eb5672f63de4cc15b9b89d35fbe6334b.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/abf1ec7384caa29b0f4070b68f6ca530c1ba47ae.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/ac73e4c30be277e8bf77a0cb83da9cb25725c565.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/b1674463de1a81a30c97e621ea8a8dcc583a5446.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/b36709f3705989a3b9fe12a08e045c7a07a2f017.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/b5fb3ce33b2b08397fda3642420386474951701c.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/ba1b0683ef2844e2972039972dc99a779f9b343c.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/c375df82e30d3298efda75bd6444bcb9dd2cdc82.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/c97aa4f62cd88d08ebbd2e5468ab22679686eb9a.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/ca91dd094afef91cbd2432a3675cef24cf741aa9.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/d11c4bb7a8b6d42e743075e96df095753bd912fe.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/d5b65da8b54fd78c9941c2c7f18eed94888383af.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/d646cccbe1ee588ad6ba8a90ddfde937b66521b4.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/ec1ef4068505d10ee8e11e3434f234dbfb2746ab.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/f407568d0ae46b5742ff6f47048d32bfa75efa00.vulkan.cache[39m[0m
+[   1% ] [90m[1msavepack[22m | Storing File: res://.godot/shader_cache/SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/fd3c20d22d829f994d3b112c0deffc7d7e2b7373.vulkan.cache[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/camera/indoor.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/camera/outdoor.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/camera/train_departure.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/fog/harlow_route.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/fog/standard.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/graphics/high.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/graphics/low.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/graphics/medium.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/graphics/runtime_material_library.tscn.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/items/bandages.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/items/canned_food.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/items/coal_sack.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/items/fuel_drum.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/items/lantern_oil.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/items/machine_component.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/items/medicine.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/items/scrap_metal.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/items/tools.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/journey/escape_fog.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/journey/harlow_escape.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/loot/coal_reserve.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/loot/freight.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/loot/fuel_reserve.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/loot/medical.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/loot/platform.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/loot/precision.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/loot/warehouse_a.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/loot/warehouse_b.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/materials/ballast.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/materials/coal_canvas.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/materials/crate_dark.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/materials/crate_wood.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/materials/debris.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/materials/environment_painted_steel.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/materials/floor_interior.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/materials/floor_wood.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/materials/freight_body.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/materials/glass_dark.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/materials/ground_asphalt.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/materials/interact_yellow.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/materials/lamp_cool.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/materials/lamp_warm.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/materials/metal_dark.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/materials/metal_rust.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/materials/platform_concrete.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/materials/platform_edge.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/materials/player_accent.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/materials/player_coat.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/materials/player_skin.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/materials/player_trousers.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/materials/rail_steel.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/materials/roof_metal.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/materials/shelf_metal.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/materials/silhouette.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/materials/sleeper_wood.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/materials/train_body.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/materials/train_deck.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/materials/train_glass.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/materials/train_stripe.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/materials/train_trim.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/materials/wall_brick.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/materials/wall_industrial.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/materials/wall_interior.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/materials/window_cool.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/materials/window_dim.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/materials/window_warm.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/player/default_movement.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/train/departure_emergency.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/train/departure_normal.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://resources/train/departure_slow.tres.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scenes/buildings/warehouse_a.tscn.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scenes/buildings/warehouse_b.tscn.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scenes/items/item_visual.tscn.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scenes/main/main.tscn.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scenes/main/movement_sandbox.tscn.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scenes/main/self_test.tscn.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scenes/missions/harlow_escape.tscn.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scenes/player/player.tscn.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scenes/props/freight_car.tscn.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scenes/props/hanging_lamp.tscn.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scenes/props/station_lamp.tscn.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scenes/station/ashford_depot.tscn.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scenes/station/blackwater_crossing.tscn.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scenes/station/harlow_junction.tscn.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scenes/station/scavenging_sites.tscn.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scenes/train/crew_car.tscn.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scenes/train/flat_car.tscn.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scenes/train/locomotive.tscn.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scenes/train/train.tscn.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scenes/ui/debug/debug_menu.tscn.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scenes/ui/hud.tscn.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/camera/camera_profile.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/camera/camera_rig.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/camera/camera_zone.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/camera/exploration_camera.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/diagnostics/integration_benchmark.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/diagnostics/render_benchmark.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/environment/atmosphere.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/environment/box_part.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/environment/box_visual.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/environment/cutaway_trigger.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/environment/cutaway_wall.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/environment/exploration_district.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/environment/prop_light.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/environment/shelf_rack.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/environment/stairs.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/environment/station.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/environment/track.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/fog/fog_audio.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/fog/fog_config.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/fog/fog_exposure.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/fog/fog_fuel.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/fog/fog_hud.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/fog/fog_presentation.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/fog/fog_route.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/fog/fog_route_segment.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/fog/fog_shelter.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/fog/fog_simulation.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/interaction/grab_rail.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/interaction/interactable.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/interaction/ladder.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/interaction/world_door.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/items/inventory_model.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/items/item_catalog.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/items/item_definition.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/items/item_visual.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/items/world_item.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/journey/journey_controller.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/journey/journey_definition.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/journey/journey_save.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/journey/journey_station.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/journey/journey_ui.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/journey/mission_state.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/journey/route_track.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/journey/station_building.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/main/game.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/main/self_test.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/player/player.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/player/player_input.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/player/player_interactor.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/player/player_movement_config.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/player/player_stamina.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/presentation/asset_dressing.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/presentation/detail_builder.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/presentation/environment_art.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/presentation/fabricated_mesh.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/presentation/journey_station_art.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/presentation/presentation_effects.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/presentation/rail_audio.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/presentation/render_warmup.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/presentation/station_art.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/presentation/train_art.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/presentation/train_mechanics.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/presentation/worker_animator.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/presentation/worker_pose.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/scavenging/loot_entry.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/scavenging/loot_table.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/scavenging/scavenging_system.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/scavenging/search_container.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/scavenging/supply_interactable.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/settings/camera_settings.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/settings/graphics_preset.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/settings/graphics_settings.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/train/departure_mode.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/train/train.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/train/train_car.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/train/train_console.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/train/train_interior.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/ui/debug_menu.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/ui/hud.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/ui/rail_theme.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/ui/supply_ui.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://systems/fog_system.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://systems/inventory_system.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://systems/passenger_system.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://.godot/global_script_class_cache.cfg[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://icon.svg[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://.godot/uid_cache.bin[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://project.binary[39m[0m
+[92m[ DONE ][39m [1msavepack[22m
+[0m
+[  50% ] [90m[1mexport[22m | Code signing bundle[39m[0m
+[92m[ DONE ][39m [1mexport[22m
+[0m

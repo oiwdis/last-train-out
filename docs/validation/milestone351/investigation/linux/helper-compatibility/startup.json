@@ -1,0 +1,54 @@
+{
+  "adapter": "",
+  "driver": "vulkan",
+  "events": [
+    {
+      "nodes": 0.0,
+      "phase": "script_initialized",
+      "static_bytes": 21547434,
+      "texture_bytes": 0.0,
+      "ticks_ms": 98
+    },
+    {
+      "nodes": 1.0,
+      "phase": "load_begin",
+      "static_bytes": 21584662,
+      "texture_bytes": 0.0,
+      "ticks_ms": 99
+    },
+    {
+      "nodes": 1.0,
+      "phase": "load_end",
+      "static_bytes": 611089034,
+      "texture_bytes": 0.0,
+      "ticks_ms": 1122
+    },
+    {
+      "nodes": 1.0,
+      "phase": "instantiate_end",
+      "static_bytes": 614276742,
+      "texture_bytes": 0.0,
+      "ticks_ms": 1128
+    },
+    {
+      "nodes": 3806.0,
+      "phase": "add_child_end",
+      "static_bytes": 705516290,
+      "texture_bytes": 0.0,
+      "ticks_ms": 1786
+    },
+    {
+      "nodes": 3885.0,
+      "phase": "mission_ready",
+      "static_bytes": 713406978,
+      "texture_bytes": 0.0,
+      "ticks_ms": 1888
+    }
+  ],
+  "godot": "4.5.1-stable (official)",
+  "headless": true,
+  "mission_ready": true,
+  "phases": [],
+  "renderer": "forward_plus",
+  "user_data_directory": "/tmp/lto-m35-data/godot/app_userdata/Last Train Out"
+}

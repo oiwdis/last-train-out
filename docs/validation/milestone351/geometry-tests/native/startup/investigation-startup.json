@@ -1,0 +1,86 @@
+{
+  "source": "e69a275342408cbdddababf43c075a1769cdcbbf",
+  "platform": "macOS-26.7.2-arm64-arm-64bit-Mach-O",
+  "processor_count": 3,
+  "scope": "hosted exploratory investigation; not physical M1",
+  "runs": [
+    {
+      "name": "startup-1",
+      "command": [
+        "/Users/runner/godot-ci/Godot.app/Contents/MacOS/Godot",
+        "--verbose",
+        "--path",
+        "/Users/runner/work/last-train-out/last-train-out",
+        "--audio-driver",
+        "Dummy",
+        "--resolution",
+        "960x540",
+        "--script",
+        "res://scripts/diagnostics/startup_probe.gd",
+        "--",
+        "--graphics=low",
+        "--profile-phases",
+        "--out=/Users/runner/work/last-train-out/last-train-out/tests/_output/startup/startup-1.json"
+      ],
+      "returncode": 0,
+      "wall_seconds": 99.38249845799999,
+      "sampling_profiler": false,
+      "report_exists": true,
+      "peak_rss_bytes": 509722624,
+      "engine_diagnostics": [
+        "ERROR: VALIDATION - Message Id Number: 0 | Message Id Name: mvk-error",
+        "ERROR: VALIDATION - Message Id Number: 0 | Message Id Name: mvk-error"
+      ]
+    },
+    {
+      "name": "startup-2",
+      "command": [
+        "/Users/runner/godot-ci/Godot.app/Contents/MacOS/Godot",
+        "--verbose",
+        "--path",
+        "/Users/runner/work/last-train-out/last-train-out",
+        "--audio-driver",
+        "Dummy",
+        "--resolution",
+        "960x540",
+        "--script",
+        "res://scripts/diagnostics/startup_probe.gd",
+        "--",
+        "--graphics=low",
+        "--profile-phases",
+        "--out=/Users/runner/work/last-train-out/last-train-out/tests/_output/startup/startup-2.json"
+      ],
+      "returncode": 0,
+      "wall_seconds": 26.944896040999993,
+      "sampling_profiler": false,
+      "report_exists": true,
+      "peak_rss_bytes": 528515072,
+      "engine_diagnostics": []
+    },
+    {
+      "name": "startup-3",
+      "command": [
+        "/Users/runner/godot-ci/Godot.app/Contents/MacOS/Godot",
+        "--verbose",
+        "--path",
+        "/Users/runner/work/last-train-out/last-train-out",
+        "--audio-driver",
+        "Dummy",
+        "--resolution",
+        "960x540",
+        "--script",
+        "res://scripts/diagnostics/startup_probe.gd",
+        "--",
+        "--graphics=low",
+        "--profile-phases",
+        "--out=/Users/runner/work/last-train-out/last-train-out/tests/_output/startup/startup-3.json"
+      ],
+      "returncode": 0,
+      "wall_seconds": 24.460017499999935,
+      "sampling_profiler": false,
+      "report_exists": true,
+      "peak_rss_bytes": 529350656,
+      "engine_diagnostics": []
+    }
+  ]
+}

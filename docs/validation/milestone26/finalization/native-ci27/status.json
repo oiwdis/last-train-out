@@ -1,0 +1,16 @@
+{
+  "run": 43786384588,
+  "source_commit": "e13b6eeaec9dc666ee966e60a0fed46f6dbe8c09",
+  "cancelled": true,
+  "completed_suites": [
+    "final26-presets",
+    "final26-route"
+  ],
+  "clean_exits": true,
+  "incomplete_suites": [
+    "final26-ablations",
+    "milestone25",
+    "previous26"
+  ],
+  "note": "Cancelled after final presets and entry route, during ablations, to advance CI to the texture import/export fixes. No build is claimed for this run."
+}

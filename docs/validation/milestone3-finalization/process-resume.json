@@ -1,0 +1,58 @@
+{
+  "checks": [
+    {
+      "check": "previous process file exists",
+      "passed": true
+    },
+    {
+      "check": "moving train resumes at saved route position",
+      "passed": true
+    },
+    {
+      "check": "saved rider restored aboard",
+      "passed": true
+    },
+    {
+      "check": "fog time continues without reset",
+      "passed": true
+    },
+    {
+      "check": "event RNG survives process restart",
+      "passed": true
+    },
+    {
+      "check": "storage preserved",
+      "passed": true
+    },
+    {
+      "check": "backpack preserved",
+      "passed": true
+    },
+    {
+      "check": "held cargo preserved",
+      "passed": true
+    },
+    {
+      "check": "cargo not duplicated",
+      "passed": true
+    },
+    {
+      "check": "searched station remains depleted",
+      "passed": true
+    },
+    {
+      "check": "mission note preserved",
+      "passed": true
+    },
+    {
+      "check": "health preserved",
+      "passed": true
+    },
+    {
+      "check": "journey continues after cold load",
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "phase": "read"
+}

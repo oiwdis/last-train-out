@@ -1,0 +1,34 @@
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+
+[journey] PASS walk: (5.0, 1.0, 1.2)
+[journey] PASS reticle selects @Area3D@2536 (got @Area3D@2536:<Area3D#269140107038>)
+[journey] PASS search harlow_departure_coal
+[journey] PASS reticle selects @Area3D@2592 (got @Area3D@2592:<Area3D#291235696325>)
+[journey] PASS physical heavy pickup: coal_sack
+[journey] PASS walk: (5.0, 1.0, 0.0)
+[journey] PASS walk: (5.0, 1.0, -0.8)
+[journey] PASS reticle selects TrainStorage (got TrainStorage:<Area3D#242598551841>)
+[journey] PASS storage opened using E
+[journey] PASS coal deposited using R
+[journey] PASS walk: (6.6, 1.0, -1.5)
+[journey] PASS walk: (6.6, 1.0, -2.9)
+[journey] PASS walk: (9.7, 1.0, -2.9)
+[journey] PASS walk: (10.2, 1.0, -3.5)
+[journey] PASS walk: (12.4, 1.0, -3.5)
+[journey] PASS walk: (17.8, 1.0, -3.5)
+[journey] PASS walk: (21.3, 1.0, -3.5)
+[journey] PASS walked aboard and through cars to cab
+[journey-observation] {"distance":0.0,"exposure":0.0,"front":-884.292386666666,"fuel":55.0,"health":100.0,"label":"waiting in stationary cab","time":70.6000000000003}
+[journey-observation] {"distance":0.0,"exposure":0.0,"front":-738.240386666667,"fuel":55.0,"health":100.0,"label":"waiting in stationary cab","time":130.599999999997}
+[journey-observation] {"distance":0.0,"exposure":0.0,"front":-569.173826666667,"fuel":55.0,"health":100.0,"label":"waiting in stationary cab","time":190.599999999993}
+[journey-observation] {"distance":0.0,"exposure":0.0,"front":-413.521826666668,"fuel":55.0,"health":100.0,"label":"waiting in stationary cab","time":250.59999999999}
+[journey-observation] {"distance":0.0,"exposure":0.0,"front":-272.160866666668,"fuel":55.0,"health":100.0,"label":"waiting in stationary cab","time":310.600000000002}
+[journey-observation] {"distance":0.0,"exposure":0.0,"front":-99.7577428666674,"fuel":55.0,"health":100.0,"label":"waiting in stationary cab","time":370.600000000016}
+[journey-observation] {"distance":0.0,"exposure":82.4803985819924,"front":63.8832810333343,"fuel":55.0,"health":26.8700731259544,"label":"waiting in stationary cab","time":430.600000000029}
+[journey-observation] {"distance":0.0,"exposure":97.3040558113989,"front":70.7852010333344,"fuel":55.0,"health":0.0,"label":"stranded outcome","time":433.00000000003}
+[journey] PASS train stayed at Harlow throughout the wait
+[journey] PASS fog advanced naturally from its initial position
+[journey] PASS stationary cab occupant takes real exposure damage
+[journey] PASS cab shelter only delays lethal fog
+[journey] PASS natural fog death produces mission failure
+[journey] PASS zero teleports during natural fog catch

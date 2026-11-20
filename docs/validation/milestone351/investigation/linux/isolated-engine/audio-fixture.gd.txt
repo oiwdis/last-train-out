@@ -1,0 +1,25 @@
+extends SceneTree
+func _initialize() -> void:
+ run.call_deferred()
+func run() -> void:
+ var scene := Node3D.new()
+ root.add_child(scene)
+ var camera := Camera3D.new()
+ scene.add_child(camera)
+ camera.position.z = 4
+ var box := MeshInstance3D.new()
+ box.mesh = BoxMesh.new()
+ scene.add_child(box)
+ var sound := AudioStreamPlayer.new()
+ sound.stream = AudioStreamGenerator.new()
+ scene.add_child(sound)
+ sound.play()
+ for i in 120:
+  var unused_device := RenderingServer.get_rendering_device()
+  var unused_monitor := Performance.get_monitor(Performance.PIPELINE_COMPILATIONS_DRAW)
+  await RenderingServer.frame_post_draw
+ sound.stop()
+ scene.queue_free()
+ await process_frame
+ await process_frame
+ quit()

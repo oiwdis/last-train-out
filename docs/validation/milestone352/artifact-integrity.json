@@ -1,0 +1,86 @@
+[
+  {
+    "file": "final-native/arm64-selftest-failed.zip",
+    "bytes": 3496,
+    "sha256": "162ff3dccca09f8c5b1f5cd4f8a684b2cf9b4ec4b5daed4eaabbe02b5a1e657c",
+    "entries": 3
+  },
+  {
+    "file": "final-native/build-selftest.zip",
+    "bytes": 644993,
+    "sha256": "e41737438381e010a60d887bd352dd7a0443c42a7cac7396032bbb8f586ab7cb",
+    "entries": 7
+  },
+  {
+    "file": "final-native/intel-selftest.zip",
+    "bytes": 2199,
+    "sha256": "5aed76de012c05eb4243ca24fef7380fabefceec0921629b9037a854a31806e3",
+    "entries": 2
+  },
+  {
+    "file": "final-native/release-stress.zip",
+    "bytes": 1094268,
+    "sha256": "361c4c3e8090c637f6e6defb432cf7846dc20709004ae677ff9c4ce139e55b41",
+    "entries": 68
+  },
+  {
+    "file": "final-native/renderer-stress.zip",
+    "bytes": 19153,
+    "sha256": "3fa345f1c5c4daa56b8c41ea62bd1801f1b4e41aa09e621ddb90ad56ae333c78",
+    "entries": 2
+  },
+  {
+    "file": "final-native/startup.zip",
+    "bytes": 148657,
+    "sha256": "effc03583021f4f558cf8bba3915047871efd5ce9193da56b3763f2460cb52f1",
+    "entries": 10
+  },
+  {
+    "file": "final-native/test-logs-without-movie.zip",
+    "bytes": 11964670,
+    "sha256": "8f0b8f675c84cf54b92b1c228e325aca3d7d627e2231820cada8dd55897c823a",
+    "entries": 80
+  },
+  {
+    "file": "fixture-retirement/failed-native-run44601576522.zip",
+    "bytes": 185943,
+    "sha256": "b9d266e91d620b2dc0179abef121425caad988e34a9b525126d0ca3594c1a867",
+    "entries": 16
+  },
+  {
+    "file": "intermediate-f9ca/cancelled-run44605742748-test-logs.zip",
+    "bytes": 395292,
+    "sha256": "048d369756e018017fc8b4208105c3480bda7bc84a7532789594f04809f82f4b",
+    "entries": 48
+  },
+  {
+    "file": "intermediate-f9ca/export-and-selftest.zip",
+    "bytes": 647328,
+    "sha256": "8a74515afdadbfbe3c0f81643afefcba0a98a7e4bea5c995114f03e7eb2a5286",
+    "entries": 7
+  },
+  {
+    "file": "intermediate-f9ca/initial-startup.zip",
+    "bytes": 148699,
+    "sha256": "b84812549af4f95cb773d57da714bf8b9ddbb12626f396aa054031e3fec515b8",
+    "entries": 10
+  },
+  {
+    "file": "intermediate-f9ca/renderer-stress.zip",
+    "bytes": 19162,
+    "sha256": "7d650decf83c43b865a02f7ed97438380179657abc6b2067932aa744fc202848",
+    "entries": 2
+  },
+  {
+    "file": "preparation/native-pr-run44602598542.zip",
+    "bytes": 167713,
+    "sha256": "e6ce4509331f9d780bdb4c6d6c6b92aa93d2d17b7770c278e8b8eb5c8f40ad14",
+    "entries": 11
+  },
+  {
+    "file": "preparation/native-run44602970934.zip",
+    "bytes": 153726,
+    "sha256": "95f0905cfcef45ed497f444bb497ca9e84a8d461682d273cf8a9e1e84a7d1d64",
+    "entries": 9
+  }
+]

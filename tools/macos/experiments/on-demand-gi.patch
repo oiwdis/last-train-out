@@ -1,0 +1,118 @@
+--- a/servers/rendering/renderer_rd/environment/gi.h
++++ b/servers/rendering/renderer_rd/environment/gi.h
+@@ -816,6 +816,7 @@
+ 	GiShaderRD shader;
+ 	RID shader_version;
+ 	RID pipelines[SHADER_SPECIALIZATION_VARIATIONS][MODE_MAX];
++	RID _get_gi_pipeline(uint32_t p_specialization, Mode p_mode);
+ 
+ 	GI();
+ 	~GI();
+--- a/servers/rendering/renderer_rd/environment/gi.cpp
++++ b/servers/rendering/renderer_rd/environment/gi.cpp
+@@ -31,6 +31,7 @@
+ #include "gi.h"
+ 
+ #include "core/config/project_settings.h"
++#include "core/os/os.h"
+ #include "servers/rendering/renderer_rd/renderer_compositor_rd.h"
+ #include "servers/rendering/renderer_rd/renderer_scene_render_rd.h"
+ #include "servers/rendering/renderer_rd/storage_rd/material_storage.h"
+@@ -3565,34 +3566,13 @@
+ 
+ 		shader_version = shader.version_create();
+ 
+-		Vector<RD::PipelineSpecializationConstant> specialization_constants;
+-
+-		{
+-			RD::PipelineSpecializationConstant sc;
+-			sc.type = RD::PIPELINE_SPECIALIZATION_CONSTANT_TYPE_BOOL;
+-			sc.constant_id = 0; // SHADER_SPECIALIZATION_HALF_RES
+-			sc.bool_value = false;
+-			specialization_constants.push_back(sc);
+-
+-			sc.type = RD::PIPELINE_SPECIALIZATION_CONSTANT_TYPE_BOOL;
+-			sc.constant_id = 1; // SHADER_SPECIALIZATION_USE_FULL_PROJECTION_MATRIX
+-			sc.bool_value = false;
+-			specialization_constants.push_back(sc);
+-
+-			sc.type = RD::PIPELINE_SPECIALIZATION_CONSTANT_TYPE_BOOL;
+-			sc.constant_id = 2; // SHADER_SPECIALIZATION_USE_VRS
+-			sc.bool_value = false;
+-			specialization_constants.push_back(sc);
+-		}
+-
+-		for (int v = 0; v < SHADER_SPECIALIZATION_VARIATIONS; v++) {
+-			specialization_constants.ptrw()[0].bool_value = (v & SHADER_SPECIALIZATION_HALF_RES) ? true : false;
+-			specialization_constants.ptrw()[1].bool_value = (v & SHADER_SPECIALIZATION_USE_FULL_PROJECTION_MATRIX) ? true : false;
+-			specialization_constants.ptrw()[2].bool_value = (v & SHADER_SPECIALIZATION_USE_VRS) ? true : false;
+-
+-			int variant_base = vrs_supported ? MODE_MAX : 0;
+-			for (int i = 0; i < MODE_MAX; i++) {
+-				pipelines[v][i] = RD::get_singleton()->compute_pipeline_create(shader.version_get_shader(shader_version, variant_base + i), specialization_constants);
++		// Metal creates each compute PSO synchronously. Most scenes never
++		// dispatch GI composition. Keep eager preparation as an A/B control.
++		if (RD::get_singleton()->get_device_api_name() != "Metal" || OS::get_singleton()->get_environment("LTO_METAL_EAGER_GI") == "1") {
++			for (int v = 0; v < SHADER_SPECIALIZATION_VARIATIONS; v++) {
++				for (int i = 0; i < MODE_MAX; i++) {
++					_get_gi_pipeline(v, Mode(i));
++				}
+ 			}
+ 		}
+ 
+@@ -3796,6 +3776,24 @@
+ 	}
+ }
+ 
++RID GI::_get_gi_pipeline(uint32_t p_specialization, Mode p_mode) {
++	RID &pipeline = pipelines[p_specialization][p_mode];
++	if (pipeline.is_null()) {
++		// Constant IDs 0, 1 and 2 are the corresponding bits in ShaderSpecializations.
++		Vector<RD::PipelineSpecializationConstant> constants;
++		for (uint32_t id = 0; id < 3; id++) {
++			RD::PipelineSpecializationConstant sc;
++			sc.type = RD::PIPELINE_SPECIALIZATION_CONSTANT_TYPE_BOOL;
++			sc.constant_id = id;
++			sc.bool_value = (p_specialization & (1u << id)) != 0;
++			constants.push_back(sc);
++		}
++		const int variant_base = RendererSceneRenderRD::get_singleton()->is_vrs_supported() ? MODE_MAX : 0;
++		pipeline = RD::get_singleton()->compute_pipeline_create(shader.version_get_shader(shader_version, variant_base + p_mode), constants);
++	}
++	return pipeline;
++}
++
+ void GI::process_gi(Ref<RenderSceneBuffersRD> p_render_buffers, const RID *p_normal_roughness_slices, RID p_voxel_gi_buffer, RID p_environment, uint32_t p_view_count, const Projection *p_projections, const Vector3 *p_eye_offsets, const Transform3D &p_cam_transform, const PagedArray<RID> &p_voxel_gi_instances) {
+ 	RendererRD::TextureStorage *texture_storage = RendererRD::TextureStorage::get_singleton();
+ 	RendererRD::MaterialStorage *material_storage = RendererRD::MaterialStorage::get_singleton();
+@@ -3859,9 +3857,6 @@
+ 
+ 		RD::get_singleton()->buffer_update(rbgi->scene_data_ubo, 0, sizeof(SceneData), &scene_data);
+ 	}
+-
+-	// Now compute the contents of our buffers.
+-	RD::ComputeListID compute_list = RD::get_singleton()->compute_list_begin();
+ 
+ 	// Render each eye separately.
+ 	// We need to look into whether we can make our compute shader use Multiview but not sure that works or makes a difference..
+@@ -3914,6 +3909,11 @@
+ 		mode = without_sampler ? MODE_VOXEL_GI_WITHOUT_SAMPLER : MODE_VOXEL_GI;
+ 	}
+ 
++	// Obtain the pipeline before opening the compute list. The cache and its
++	// shader dependencies have the same renderer-owned lifetime as before.
++	RID pipeline = _get_gi_pipeline(pipeline_specialization, mode);
++	RD::ComputeListID compute_list = RD::get_singleton()->compute_list_begin();
++
+ 	for (uint32_t v = 0; v < p_view_count; v++) {
+ 		push_constant.view_index = v;
+ 
+@@ -4090,7 +4090,7 @@
+ 			rbgi->uniform_set[v] = RD::get_singleton()->uniform_set_create(uniforms, shader.version_get_shader(shader_version, variant_base), 0);
+ 		}
+ 
+-		RD::get_singleton()->compute_list_bind_compute_pipeline(compute_list, pipelines[pipeline_specialization][mode]);
++		RD::get_singleton()->compute_list_bind_compute_pipeline(compute_list, pipeline);
+ 		RD::get_singleton()->compute_list_bind_uniform_set(compute_list, rbgi->uniform_set[v], 0);
+ 		RD::get_singleton()->compute_list_set_push_constant(compute_list, &push_constant, sizeof(PushConstant));
+ 

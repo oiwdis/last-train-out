@@ -1,0 +1,138 @@
+{
+  "baseline_commit": "ebfa2689d31135588ae1f7c140e1c1cf274b39d4",
+  "baseline_count": 214,
+  "linux_count": 246,
+  "macos_count": 246,
+  "missing_baseline_tests": [],
+  "linux_macos_difference": [],
+  "added_tests": [
+    {
+      "suite": "test_journey_gameplay.gd",
+      "test": "test_aimed_boarding_and_ladder_climb_during_curved_departure"
+    },
+    {
+      "suite": "test_journey_gameplay.gd",
+      "test": "test_automatic_arrival_and_departure_never_reset_fog_or_inventory"
+    },
+    {
+      "suite": "test_journey_gameplay.gd",
+      "test": "test_falling_out_of_route_fails_without_teleporting_to_harlow"
+    },
+    {
+      "suite": "test_journey_gameplay.gd",
+      "test": "test_file_save_round_trip_and_missing_file"
+    },
+    {
+      "suite": "test_journey_gameplay.gd",
+      "test": "test_fog_catches_stranded_train_and_records_failure"
+    },
+    {
+      "suite": "test_journey_gameplay.gd",
+      "test": "test_fog_rng_and_warning_continue_after_restore"
+    },
+    {
+      "suite": "test_journey_gameplay.gd",
+      "test": "test_fuel_shortage_stops_train_and_stored_coal_restores_departure"
+    },
+    {
+      "suite": "test_journey_gameplay.gd",
+      "test": "test_heavy_collection_counts_pickup_once_and_not_revealed_abandoned_sacks"
+    },
+    {
+      "suite": "test_journey_gameplay.gd",
+      "test": "test_malformed_save_is_rejected_before_any_mutation"
+    },
+    {
+      "suite": "test_journey_gameplay.gd",
+      "test": "test_modular_buildings_have_passable_doorways_and_solid_walls"
+    },
+    {
+      "suite": "test_journey_gameplay.gd",
+      "test": "test_presets_do_not_change_route_or_survival_state"
+    },
+    {
+      "suite": "test_journey_gameplay.gd",
+      "test": "test_reloading_scene_creates_clean_mission_without_duplicate_cache_ownership"
+    },
+    {
+      "suite": "test_journey_gameplay.gd",
+      "test": "test_save_and_resume_moving_train_retains_rider_and_fuel"
+    },
+    {
+      "suite": "test_journey_gameplay.gd",
+      "test": "test_save_from_another_seed_restores_cache_layout_atomically"
+    },
+    {
+      "suite": "test_journey_gameplay.gd",
+      "test": "test_save_preserves_held_and_loose_heavy_cargo"
+    },
+    {
+      "suite": "test_journey_gameplay.gd",
+      "test": "test_save_restores_backpack_storage_and_searched_containers_without_duplication"
+    },
+    {
+      "suite": "test_journey_gameplay.gd",
+      "test": "test_save_restores_door_ids_and_future_item_ownership"
+    },
+    {
+      "suite": "test_journey_gameplay.gd",
+      "test": "test_three_station_content_is_resident_and_unique"
+    },
+    {
+      "suite": "test_journey_gameplay.gd",
+      "test": "test_train_rides_curve_and_grade_with_passenger_and_loose_cargo"
+    },
+    {
+      "suite": "test_journey_gameplay.gd",
+      "test": "test_walk_and_switch_cameras_on_curved_moving_train"
+    },
+    {
+      "suite": "test_journey_gameplay.gd",
+      "test": "test_walk_between_all_three_cars_on_a_live_curve"
+    },
+    {
+      "suite": "test_journey_state.gd",
+      "test": "test_arrivals_do_not_reset_seeded_fog_events"
+    },
+    {
+      "suite": "test_journey_state.gd",
+      "test": "test_mission_death_and_abandoned_train_cannot_win"
+    },
+    {
+      "suite": "test_journey_state.gd",
+      "test": "test_mission_json_round_trip_and_invalid_values"
+    },
+    {
+      "suite": "test_journey_state.gd",
+      "test": "test_mission_requires_real_station_objectives"
+    },
+    {
+      "suite": "test_journey_state.gd",
+      "test": "test_mission_results_capture_completed_objectives"
+    },
+    {
+      "suite": "test_journey_state.gd",
+      "test": "test_persistence_validation_rejects_nonfinite_and_fractional_counts"
+    },
+    {
+      "suite": "test_journey_state.gd",
+      "test": "test_rail_frames_are_orthonormal_and_continuous"
+    },
+    {
+      "suite": "test_journey_state.gd",
+      "test": "test_route_itinerary_has_unique_linked_segments"
+    },
+    {
+      "suite": "test_journey_state.gd",
+      "test": "test_route_samples_project_back_through_curves_and_elevation"
+    },
+    {
+      "suite": "test_journey_state.gd",
+      "test": "test_starting_fuel_requires_scavenging"
+    },
+    {
+      "suite": "test_journey_state.gd",
+      "test": "test_station_approaches_are_level_and_straight"
+    }
+  ]
+}

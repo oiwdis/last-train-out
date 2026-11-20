@@ -1,0 +1,30 @@
+{
+  "group_count": 94,
+  "distinct_source_stages": 607,
+  "distinct_verified_apple_libraries": 319,
+  "total_library_bytes": 9254048,
+  "total_cache_bytes": 16189540,
+  "compiler_log_counts": {
+    "compiler logs": 319,
+    "logs with compiler warnings": 201,
+    "logs with compiler errors": 0
+  },
+  "trace_sha256": "aa9750e19e00aa1914c43c4387cac7431550dcea4951b3fae32ea74e1a908181",
+  "source_equivalent_by_sha256": true,
+  "file_sha256": "506cdd7dd31adfaf93a132b50660058574e269900c599f4e3dc5eb25462a7af5",
+  "compile_warnings_by_flag": {
+    "-Wsometimes-uninitialized": 1,
+    "-Wuninitialized": 56,
+    "-Wuninitialized-const-reference": 56,
+    "-Wunused-const-variable": 121,
+    "-Wunused-function": 36,
+    "-Wunused-variable": 3617
+  },
+  "uninitialized_warning_groups": {
+    "SceneForwardClusteredShaderRD": 56,
+    "SdfgiPreprocessShaderRD": 1
+  },
+  "clustered_vertex_screen_pos_identifier_counts": {
+    "(1, 1)": 56
+  }
+}

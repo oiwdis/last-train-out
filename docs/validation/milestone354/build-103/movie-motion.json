@@ -1,0 +1,13 @@
+{
+  "movie_sha256": "6f418f125ce755b188edc7f6e3be5985594934a6fe55740d7d6053db93e663f9",
+  "frames": 16925,
+  "decoded_gray_size": [
+    160,
+    90
+  ],
+  "frame_index": "zero-based",
+  "pulse_definition": "Central frame differs from both neighbors by >22 mean absolute 8-bit levels; neighbors differ by <8.",
+  "pulses": [],
+  "black_definition": "All downsampled pixel values <=2.",
+  "black_frames": []
+}

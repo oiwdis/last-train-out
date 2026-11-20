@@ -354,6 +354,36 @@ transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 35.0, 0.0, 
 [node name="WarehouseB" parent="." instance=ExtResource("22_warehouse_b")]
 transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 70.0, 0.0, 0.0)
 
+[node name="RenderWarmupViews" type="Node3D" parent="."]
+
+[node name="Platform" type="Marker3D" parent="RenderWarmupViews" groups=["render_warmup_view"]]
+position = Vector3(26, 2.6, 0.5)
+rotation = Vector3(0, 0.6435, 0)
+
+[node name="WarehouseA" type="Marker3D" parent="RenderWarmupViews" groups=["render_warmup_view"]]
+position = Vector3(36, 1.6, 1)
+rotation = Vector3(0, -1.5708, 0)
+
+[node name="WarehouseAInterior" type="Marker3D" parent="RenderWarmupViews" groups=["render_warmup_view"]]
+position = Vector3(38, 1.6, 3)
+rotation = Vector3(0, -1.4601391, 0)
+
+[node name="WarehouseBEntry" type="Marker3D" parent="RenderWarmupViews" groups=["render_warmup_view"]]
+position = Vector3(69, 1.6, 3)
+rotation = Vector3(0, -1.5708, 0)
+
+[node name="WarehouseBHall" type="Marker3D" parent="RenderWarmupViews" groups=["render_warmup_view"]]
+position = Vector3(74, 1.6, 3)
+rotation = Vector3(0, -1.5708, 0)
+
+[node name="WarehouseBStores" type="Marker3D" parent="RenderWarmupViews" groups=["render_warmup_view"]]
+position = Vector3(80, 1.6, 3)
+rotation = Vector3(0, -1.5708, 0)
+
+[node name="Freight" type="Marker3D" parent="RenderWarmupViews" groups=["render_warmup_view"]]
+position = Vector3(103, 2, 7)
+rotation = Vector3(0, -1.8158, 0)
+
 [node name="FreightYard" type="StaticBody3D" parent="."]
 collision_layer = 1
 collision_mask = 0

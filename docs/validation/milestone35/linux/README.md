@@ -1,0 +1,7 @@
+# Linux integration validation
+
+Godot 4.5.1, Jolt, headless 60 fixed simulation ticks/s. `results.json` and `tests.log` contain **292/292** tests (144.6 s), with the runtime changes committed as `140ce820c087d8a28734b7bab3ed14135d7cc527`. The identity guard confirms all 274 distinct source tests plus 18 new integration tests. Fixed timestep runs are correctness tests, not performance measurements.
+
+`load-before.log` reproduces the Continue/render-preparation race: a rider and loose cargo restored 3.4 km from their saved location. `load-after.log` passes all 18 integration tests after the fix. `blackwater-save-ui.json` and its log then validate the actual Save/Continue buttons in a 960×540 rendered Linux Compatibility window at 12 fixed FPS, with all nine checks passing. This focused regression starts from a declared Blackwater save fixture; it is not a continuous journey. Its Mesa llvmpipe software renderer supplies no target-hardware performance evidence.
+
+The older `save-ui` files are retained as historical pre-fix checks. The stronger Blackwater test and final controls-driven [full journey](../gameplay/) supersede their save assertions. `source-selftest.json` / `.log` pass all 46 checks at `45c3b338a694f587b5290af0e8ce19208d0a702e`, after the exported-self-test budget adjustment; they explicitly report `exported_build: false`. Native exported-app acceptance is linked from [the main review](../../../MILESTONE35_REVIEW.md).

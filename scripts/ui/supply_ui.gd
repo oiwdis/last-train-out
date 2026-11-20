@@ -93,7 +93,7 @@ func _build() -> void:
 	_panel.add_child(rows)
 	var header := HBoxContainer.new()
 	rows.add_child(header)
-	var title := _label(header, "SUPPLY LEDGER  /  HARLOW JUNCTION", 23)
+	var title := _label(header, "SUPPLY LEDGER  /  TRAIN 07", 23)
 	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	_button(header, "Close  [Esc]", close)
 	var columns := HBoxContainer.new()
@@ -166,6 +166,10 @@ func _build() -> void:
 		_quality.add_item(name)
 	_quality.item_selected.connect(func(index: int) -> void: _graphics.set_preset(index, true))
 	settings.add_child(_quality)
+	if OS.get_name() == "macOS":
+		var renderer := _label(settings, RenderingServer.get_current_rendering_driver_name().capitalize(), 12, RailTheme.MUTED)
+		renderer.mouse_filter = Control.MOUSE_FILTER_STOP
+		renderer.tooltip_text = "Quit to change renderer. In Terminal, run the app’s Contents/MacOS/choose-renderer with metal or vulkan."
 	_quality_description = _label(settings, "", 12, RailTheme.MUTED)
 	_quality_description.custom_minimum_size.x = 680
 	_quality_description.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART

@@ -1,0 +1,7 @@
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+Vulkan 1.4.305 - Forward+ - Using Device #0: Unknown - llvmpipe (LLVM 19.1.7, 256 bits)
+
+[environment-benchmark] {"case":"Low","draw_calls":217.166666666667,"fps_from_mean":1.98039965455229,"mean_frame_ms":504.948583333333,"median_frame_ms":479.017,"p95_frame_ms":586.373,"primitives":387696.666666667,"render_scale":0.649999976158142,"samples":24,"view":"Platform"}
+[environment-benchmark] {"case":"Low","draw_calls":282.0,"fps_from_mean":1.49828717682804,"mean_frame_ms":667.428791666667,"median_frame_ms":667.422,"p95_frame_ms":688.469,"primitives":359797.0,"render_scale":0.649999976158142,"samples":24,"view":"Warehouse B"}
+[environment-benchmark] {"case":"Low","draw_calls":143.0,"fps_from_mean":2.67087715612123,"mean_frame_ms":374.408833333333,"median_frame_ms":372.938,"p95_frame_ms":388.597,"primitives":243548.0,"render_scale":0.649999976158142,"samples":24,"view":"Freight yard"}
+[environment-benchmark] wrote /workspace/last-train-out/docs/validation/milestone26/environment/performance-after.json

@@ -1,0 +1,50 @@
+{
+  "adapter": "llvmpipe (LLVM 19.1.7, 256 bits)",
+  "events": [
+    {
+      "nodes": 0.0,
+      "phase": "script_initialized",
+      "static_bytes": 28468133,
+      "texture_bytes": 2367.0,
+      "ticks_ms": 9652
+    },
+    {
+      "nodes": 1.0,
+      "phase": "load_begin",
+      "static_bytes": 28472689,
+      "texture_bytes": 4175155.0,
+      "ticks_ms": 9667
+    },
+    {
+      "nodes": 1.0,
+      "phase": "load_end",
+      "static_bytes": 49571709,
+      "texture_bytes": 420812629.0,
+      "ticks_ms": 11023
+    },
+    {
+      "nodes": 1.0,
+      "phase": "instantiate_end",
+      "static_bytes": 54559873,
+      "texture_bytes": 420812629.0,
+      "ticks_ms": 11027
+    },
+    {
+      "nodes": 3814.0,
+      "phase": "add_child_end",
+      "static_bytes": 120870293,
+      "texture_bytes": 421021161.0,
+      "ticks_ms": 11671
+    },
+    {
+      "nodes": 3900.0,
+      "phase": "mission_ready",
+      "static_bytes": 129492874,
+      "texture_bytes": 427087545.0,
+      "ticks_ms": 29588
+    }
+  ],
+  "godot": "4.5.1-stable (official)",
+  "headless": false,
+  "renderer": "gl_compatibility"
+}

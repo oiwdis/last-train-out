@@ -1,0 +1,25 @@
+{
+  "checks": [
+    {
+      "check": "exit intersects an active preparation job",
+      "passed": true,
+      "ticks_ms": 18068
+    },
+    {
+      "check": "cancelled preparation releases its controller",
+      "passed": true,
+      "ticks_ms": 37371
+    },
+    {
+      "check": "cancelled preparation releases the pause",
+      "passed": true,
+      "ticks_ms": 37372
+    }
+  ],
+  "complete": true,
+  "driver": "opengl3",
+  "failed": 0,
+  "renderer": "gl_compatibility",
+  "scenario": "exit-during-preparation",
+  "user_data_directory": "/tmp/lto-m35-data/godot/app_userdata/Last Train Out"
+}

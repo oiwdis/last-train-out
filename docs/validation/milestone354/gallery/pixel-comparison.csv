@@ -1,0 +1,54 @@
+group,view,width,height,mean_abs_red,mean_abs_green,mean_abs_blue,metal_mean_luma,vulkan_mean_luma
+Low,harlow_platform,960,540,0.008,0.007,0.007,75.886,75.887
+Low,warehouse_a,960,540,0.0,0.0,0.0,82.919,82.919
+Low,warehouse_b,960,540,0.0,0.0,0.001,79.66,79.66
+Low,locomotive_cab,960,540,0.0,0.0,0.0,61.196,61.196
+Low,passenger_car,960,540,0.001,0.001,0.001,72.411,72.411
+Low,curved_railway,960,540,0.025,0.022,0.021,79.141,79.14
+Low,ashford_depot,960,540,0.0,0.0,0.0,99.713,99.713
+Low,ashford_workshop,960,540,0.011,0.006,0.003,60.842,60.836
+Low,blackwater_crossing,960,540,0.0,0.0,0.0,100.11,100.11
+Low,near_advancing_fog,960,540,1.425,1.313,1.618,91.261,91.191
+Low,inside_dangerous_fog,960,540,0.0,0.0,0.001,95.883,95.883
+Low,mission_completion,960,540,0.0,0.0,0.0,55.329,55.329
+Medium,harlow_platform,960,540,0.002,0.002,0.001,80.818,80.817
+Medium,warehouse_a,960,540,0.0,0.0,0.0,79.904,79.904
+Medium,warehouse_b,960,540,0.0,0.0,0.0,76.632,76.632
+Medium,locomotive_cab,960,540,0.0,0.0,0.0,60.792,60.791
+Medium,passenger_car,960,540,0.001,0.001,0.001,73.167,73.167
+Medium,curved_railway,960,540,1.956,1.902,1.957,81.043,82.938
+Medium,ashford_depot,960,540,0.0,0.0,0.0,102.811,102.811
+Medium,ashford_workshop,960,540,0.002,0.002,0.002,66.911,66.91
+Medium,blackwater_crossing,960,540,0.0,0.0,0.0,103.276,103.276
+Medium,near_advancing_fog,960,540,0.176,0.167,0.17,95.289,95.311
+Medium,inside_dangerous_fog,960,540,0.002,0.001,0.001,100.983,100.983
+Medium,mission_completion,960,540,0.0,0.0,0.0,56.548,56.548
+High,harlow_platform,960,540,4.701,4.467,3.874,80.281,75.919
+High,warehouse_a,960,540,0.791,0.696,0.626,78.25,77.534
+High,warehouse_b,960,540,0.945,0.853,0.787,74.957,74.086
+High,locomotive_cab,960,540,0.763,0.73,0.675,59.92,59.188
+High,passenger_car,960,540,0.859,0.85,0.797,72.542,71.697
+High,curved_railway,960,540,7.628,7.427,6.466,83.786,78.238
+High,ashford_depot,960,540,10.82,10.455,9.053,102.714,92.314
+High,ashford_workshop,960,540,1.111,1.102,0.994,66.651,65.558
+High,blackwater_crossing,960,540,10.616,10.189,8.836,103.152,92.983
+High,near_advancing_fog,960,540,6.041,5.556,5.262,94.558,89.44
+High,inside_dangerous_fog,960,540,6.876,6.577,5.66,100.455,93.923
+High,mission_completion,960,540,3.863,3.777,3.241,56.529,52.776
+Character,01_character_face,960,540,5.406,5.132,4.483,85.016,79.954
+Character,02_character_front,960,540,4.849,4.609,4.103,89.292,84.715
+Character,03_character_side,960,540,1.792,1.734,1.926,61.667,60.268
+Character,04_character_rear,960,540,4.913,4.819,4.549,84.667,80.039
+Character,05_walking,960,540,4.38,4.169,3.715,88.379,84.565
+Character,06_sprinting,960,540,4.415,4.213,3.841,91.734,87.868
+Character,07_heavy_carry,960,540,5.121,4.858,4.191,86.028,81.448
+Character,08_first_person_hands,960,540,6.066,5.818,5.29,88.923,83.137
+Train and station,09_locomotive,960,540,5.14,4.984,4.63,86.066,81.777
+Train and station,10_moving_wheels,960,540,1.824,1.804,1.706,76.588,74.787
+Train and station,11_cab,960,540,1.464,1.397,1.276,67.486,66.093
+Train and station,12_crew,960,540,0.829,0.819,0.765,72.465,71.655
+Train and station,13_platform,960,540,6.935,6.719,6.099,108.222,101.522
+Train and station,14_warehouse_a,960,540,0.854,0.762,0.692,76.244,75.462
+Train and station,15_warehouse_b,960,540,0.967,0.873,0.806,75.039,74.146
+Train and station,16_freight_yard,960,540,9.564,9.173,8.43,98.593,89.402
+Train and station,17_distant_environment,960,540,9.128,8.646,7.557,105.983,97.908

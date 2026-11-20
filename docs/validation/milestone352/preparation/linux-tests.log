@@ -1,0 +1,17 @@
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+
+
+=== Last Train Out - automated tests (Godot 4.5.1-stable (official), physics: Jolt Physics) ===
+
+[SUITE] test_preparation_lifecycle.gd
+  PASS  test_scene_exit_during_preparation_releases_pause_and_controller
+  PASS  test_fog_danger_and_quality_reuse_materials_without_mutating_simulation
+  PASS  test_rapid_preset_requests_finish_on_last_quality_without_orphan_preparation
+[render-warmup] 13 views / 5 ms / draw pipelines=0.0
+  PASS  test_fog_preparation_isolates_its_proxy_and_preserves_the_game_camera
+  PASS  test_idle_hud_reuses_style_but_exhaustion_still_changes_color
+[render-warmup] 13 views / 16 ms / draw pipelines=0.0
+  PASS  test_continue_during_preset_preparation_restores_rider_and_cargo_together
+
+=== 6 passed, 0 failed, 6 total (5.4 s wall clock) ===
+

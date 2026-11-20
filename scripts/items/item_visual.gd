@@ -8,7 +8,12 @@ func configure(item: ItemDefinition) -> void:
 	var tint := item.tint
 	match item.id:
 		&"coal_sack":
-			add_child(preload("res://assets/models/coal_sack.glb").instantiate())
+			var sack := preload("res://assets/models/coal_sack.glb").instantiate()
+			add_child(sack)
+			for mesh: MeshInstance3D in sack.find_children("*", "MeshInstance3D", true, false):
+				for surface in mesh.mesh.get_surface_count():
+					if mesh.mesh.surface_get_material(surface).resource_name.contains("Waxed"):
+						mesh.set_surface_override_material(surface, preload("res://resources/materials/coal_canvas.tres"))
 			d.box(Vector3(0, 0.33, 0.195), Vector3(0.29, 0.25, 0.015), DetailBuilder.INK)
 			d.lettering(Vector3(0, 0.33, 0.21), "COAL", 0.08)
 		&"fuel_drum":

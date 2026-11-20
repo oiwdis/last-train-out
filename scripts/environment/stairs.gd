@@ -65,6 +65,9 @@ func _rebuild() -> void:
 		_visual_root.queue_free()
 	_visual_root = Node3D.new()
 	add_child(_visual_root, false, Node.INTERNAL_MODE_BACK)
+	if rise > 2.0:
+		_build_industrial_flight(tread, riser)
+		return
 	for i in step_count:
 		var step := MeshInstance3D.new()
 		var mesh := BoxMesh.new()
@@ -74,3 +77,32 @@ func _rebuild() -> void:
 		step.mesh = mesh
 		step.position = Vector3(tread * float(i) + length * 0.5, riser * (float(i) + 0.5), 0.0)
 		_visual_root.add_child(step)
+
+
+func _build_industrial_flight(tread: float, riser: float) -> void:
+	var steel := preload("res://resources/materials/metal_dark.tres")
+	var surfaces := SurfaceTool.new()
+	surfaces.begin(Mesh.PRIMITIVE_TRIANGLES)
+	var tread_bar := FabricatedMesh.box_source(Vector3(tread / 8, 0.05, width), steel)
+	var post := FabricatedMesh.box_source(Vector3(0.035, 0.9, 0.035), steel)
+	# Open treads and structural stringers replace the solid staircase silhouette.
+	for i in step_count:
+		var y := riser * (i + 1)
+		for bar in 6:
+			var at := Vector3(tread * (i + (bar + 0.5) / 6.0), y - 0.025, 0)
+			surfaces.append_from(tread_bar, 0, Transform3D(Basis.IDENTITY, at))
+	for side in [-1.0, 1.0]:
+		var a := Vector3(0, 0.03, side * (width / 2 - 0.035))
+		var b := Vector3(run, rise, a.z)
+		var direction := b-a
+		var basis := Basis.looking_at(direction.normalized(), Vector3.UP)
+		surfaces.append_from(FabricatedMesh.box_source(Vector3(0.08, 0.18, direction.length()), steel), 0, Transform3D(basis, (a+b)/2))
+		for i in range(0, step_count, 3):
+			var at := Vector3(tread*(i+0.5), riser*(i+1)+0.45, a.z)
+			surfaces.append_from(post, 0, Transform3D(Basis.IDENTITY, at))
+		surfaces.append_from(FabricatedMesh.box_source(Vector3(0.045, 0.045, direction.length()), steel), 0, Transform3D(basis, (a+b)/2+Vector3.UP*0.95))
+	var mesh := surfaces.commit()
+	mesh.surface_set_material(0, steel)
+	var flight := MeshInstance3D.new()
+	flight.mesh = mesh
+	_visual_root.add_child(flight)

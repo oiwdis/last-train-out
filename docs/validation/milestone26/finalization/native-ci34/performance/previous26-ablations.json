@@ -1,0 +1,256 @@
+{
+  "adapter": "Apple Paravirtual device (Apple5)",
+  "fixed_fps": false,
+  "godot": "4.5.1-stable (official)",
+  "low_priority_thread_ratio": 0.3,
+  "processor": "Apple M1 (Virtual)",
+  "processor_count": 3,
+  "renderer": "forward_plus",
+  "rendering_driver": "metal",
+  "resolution": "(960, 540)",
+  "results": [
+    {
+      "case": "High",
+      "draw_calls": 632.999999999997,
+      "median_ms": 12.362,
+      "p95_ms": 17.611,
+      "pipeline_compilations": {
+        "canvas": 2.0,
+        "draw": 43.0,
+        "mesh": 48.0,
+        "specialization": 128.0,
+        "surface": 62.0
+      },
+      "primitives": 896476.999999994,
+      "render_cpu_ms": 1.34821666677793,
+      "render_gpu_ms": 0.0,
+      "render_scale": 1.0,
+      "samples": 600,
+      "texture_bytes": 383238144.000003,
+      "volumetric_fog": false
+    },
+    {
+      "case": "No local shadows",
+      "draw_calls": 494.999999999995,
+      "median_ms": 9.846,
+      "p95_ms": 14.266,
+      "pipeline_compilations": {
+        "canvas": 2.0,
+        "draw": 43.0,
+        "mesh": 48.0,
+        "specialization": 128.0,
+        "surface": 62.0
+      },
+      "primitives": 682723.000000001,
+      "render_cpu_ms": 0.886776668280363,
+      "render_gpu_ms": 0.0,
+      "render_scale": 1.0,
+      "samples": 600,
+      "texture_bytes": 383238144.000003,
+      "volumetric_fog": false
+    },
+    {
+      "case": "No directional shadows",
+      "draw_calls": 419.999999999996,
+      "median_ms": 13.297,
+      "p95_ms": 18.537,
+      "pipeline_compilations": {
+        "canvas": 2.0,
+        "draw": 43.0,
+        "mesh": 48.0,
+        "specialization": 128.0,
+        "surface": 62.0
+      },
+      "primitives": 580885.000000002,
+      "render_cpu_ms": 1.14212166835864,
+      "render_gpu_ms": 0.0,
+      "render_scale": 1.0,
+      "samples": 600,
+      "texture_bytes": 383238144.000003,
+      "volumetric_fog": false
+    },
+    {
+      "case": "No shadows",
+      "draw_calls": 282.000000000001,
+      "median_ms": 11.488,
+      "p95_ms": 20.312,
+      "pipeline_compilations": {
+        "canvas": 2.0,
+        "draw": 43.0,
+        "mesh": 48.0,
+        "specialization": 128.0,
+        "surface": 62.0
+      },
+      "primitives": 366651.000000002,
+      "render_cpu_ms": 0.970243332187335,
+      "render_gpu_ms": 0.0,
+      "render_scale": 1.0,
+      "samples": 600,
+      "texture_bytes": 383238144.000003,
+      "volumetric_fog": false
+    },
+    {
+      "case": "No local lights",
+      "draw_calls": 494.999999999995,
+      "median_ms": 13.894,
+      "p95_ms": 23.368,
+      "pipeline_compilations": {
+        "canvas": 2.0,
+        "draw": 43.0,
+        "mesh": 48.0,
+        "specialization": 128.0,
+        "surface": 62.0
+      },
+      "primitives": 682723.000000001,
+      "render_cpu_ms": 1.29158666869005,
+      "render_gpu_ms": 0.0,
+      "render_scale": 1.0,
+      "samples": 600,
+      "texture_bytes": 383238144.000003,
+      "volumetric_fog": false
+    },
+    {
+      "case": "No SSAO",
+      "draw_calls": 632.999999999997,
+      "median_ms": 15.74,
+      "p95_ms": 29.473,
+      "pipeline_compilations": {
+        "canvas": 2.0,
+        "draw": 43.0,
+        "mesh": 48.0,
+        "specialization": 146.0,
+        "surface": 62.0
+      },
+      "primitives": 896957.000000005,
+      "render_cpu_ms": 1.30290000100931,
+      "render_gpu_ms": 0.0,
+      "render_scale": 1.0,
+      "samples": 600,
+      "texture_bytes": 383238144.000003,
+      "volumetric_fog": false
+    },
+    {
+      "case": "No MSAA",
+      "draw_calls": 632.999999999997,
+      "median_ms": 14.95,
+      "p95_ms": 24.1,
+      "pipeline_compilations": {
+        "canvas": 2.0,
+        "draw": 63.0,
+        "mesh": 48.0,
+        "specialization": 171.0,
+        "surface": 62.0
+      },
+      "primitives": 896957.000000005,
+      "render_cpu_ms": 1.37397166758776,
+      "render_gpu_ms": 0.0,
+      "render_scale": 1.0,
+      "samples": 600,
+      "texture_bytes": 352698368.000003,
+      "volumetric_fog": false
+    },
+    {
+      "case": "No normal or roughness maps",
+      "draw_calls": 632.999999999997,
+      "median_ms": 12.851,
+      "p95_ms": 18.866,
+      "pipeline_compilations": {
+        "canvas": 2.0,
+        "draw": 63.0,
+        "mesh": 48.0,
+        "specialization": 206.0,
+        "surface": 118.0
+      },
+      "primitives": 896957.000000005,
+      "render_cpu_ms": 1.20175000180801,
+      "render_gpu_ms": 0.0,
+      "render_scale": 1.0,
+      "samples": 600,
+      "texture_bytes": 359546880.000004,
+      "volumetric_fog": false
+    },
+    {
+      "case": "LOD 2.5",
+      "draw_calls": 633.999999999996,
+      "median_ms": 11.141,
+      "p95_ms": 17.679,
+      "pipeline_compilations": {
+        "canvas": 2.0,
+        "draw": 63.0,
+        "mesh": 48.0,
+        "specialization": 249.0,
+        "surface": 184.0
+      },
+      "primitives": 876140.999999993,
+      "render_cpu_ms": 1.13239000151555,
+      "render_gpu_ms": 0.0,
+      "render_scale": 1.0,
+      "samples": 600,
+      "texture_bytes": 359546880.000004,
+      "volumetric_fog": false
+    },
+    {
+      "case": "65% pixels",
+      "draw_calls": 633.999999999996,
+      "median_ms": 12.129,
+      "p95_ms": 17.05,
+      "pipeline_compilations": {
+        "canvas": 2.0,
+        "draw": 63.0,
+        "mesh": 48.0,
+        "specialization": 249.0,
+        "surface": 184.0
+      },
+      "primitives": 896957.000000005,
+      "render_cpu_ms": 1.17777333289385,
+      "render_gpu_ms": 0.0,
+      "render_scale": 0.649999976158142,
+      "samples": 600,
+      "texture_bytes": 325500927.999998,
+      "volumetric_fog": false
+    },
+    {
+      "case": "No animation",
+      "draw_calls": 495.999999999994,
+      "median_ms": 8.804,
+      "p95_ms": 11.944,
+      "pipeline_compilations": {
+        "canvas": 2.0,
+        "draw": 63.0,
+        "mesh": 48.0,
+        "specialization": 249.0,
+        "surface": 184.0
+      },
+      "primitives": 682723.000000001,
+      "render_cpu_ms": 0.903693333566189,
+      "render_gpu_ms": 0.0,
+      "render_scale": 1.0,
+      "samples": 600,
+      "texture_bytes": 342654975.999999,
+      "volumetric_fog": false
+    },
+    {
+      "case": "High repeat",
+      "draw_calls": 633.999999999996,
+      "median_ms": 11.947,
+      "p95_ms": 18.132,
+      "pipeline_compilations": {
+        "canvas": 2.0,
+        "draw": 63.0,
+        "mesh": 48.0,
+        "specialization": 249.0,
+        "surface": 184.0
+      },
+      "primitives": 896957.000000005,
+      "render_cpu_ms": 1.14074999858936,
+      "render_gpu_ms": 0.0,
+      "render_scale": 1.0,
+      "samples": 600,
+      "texture_bytes": 342654975.999999,
+      "volumetric_fog": false
+    }
+  ],
+  "view": "Warehouse B",
+  "volumetric_policy": "disabled for the ablation series to match Apple Paravirtual CI capability",
+  "vsync": "disabled"
+}

@@ -1,0 +1,36 @@
+{
+  "failed": 0,
+  "godot": "4.5.1-stable (official)",
+  "passed": 4,
+  "physics_engine": "Jolt Physics",
+  "results": [
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_preparation_lifecycle.gd",
+      "test": "test_scene_exit_during_preparation_releases_pause_and_controller"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_preparation_lifecycle.gd",
+      "test": "test_fog_danger_and_quality_reuse_materials_without_mutating_simulation"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_preparation_lifecycle.gd",
+      "test": "test_rapid_preset_requests_finish_on_last_quality_without_orphan_preparation"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_preparation_lifecycle.gd",
+      "test": "test_continue_during_preset_preparation_restores_rider_and_cargo_together"
+    }
+  ]
+}

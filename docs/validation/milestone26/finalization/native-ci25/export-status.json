@@ -1,0 +1,11 @@
+{
+  "run": 43782172054,
+  "source_commit": "2927c03506b73afb6481be3aa1b97041743241aa",
+  "cancelled": true,
+  "passed": false,
+  "shader_bake_completed": true,
+  "bundle_signing_completed": true,
+  "post_export_texture_reimports": 133,
+  "metal_voxelization_variant_compile_errors": 40,
+  "note": "Cancelled during redundant texture reimports after signing; not a validated downloadable release. Metal baker retains source fallback for offline compilation failures. Shipping render paths still require native packaged tests."
+}

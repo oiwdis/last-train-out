@@ -21,7 +21,7 @@ var _requests: Dictionary = {}
 ## 0 = fully visible, 1 = fully cut away.
 var _fade := 0.0
 var _target := 0.0
-var _meshes: Array[MeshInstance3D] = []
+var _meshes: Array[GeometryInstance3D] = []
 var _fade_materials: Dictionary = {}
 var _source_alpha: Dictionary = {}
 
@@ -83,8 +83,15 @@ func _collect() -> void:
 			# A permanent shadow-only twin keeps the lighting stable while the
 			# visible mesh fades. It is a sibling, not a child, so hiding the
 			# mesh does not hide it.
-			var proxy := MeshInstance3D.new()
-			proxy.mesh = mesh_instance.mesh
+			var proxy: GeometryInstance3D
+			if mesh_instance is MultiMeshInstance3D:
+				var multi_proxy := MultiMeshInstance3D.new()
+				multi_proxy.multimesh = mesh_instance.multimesh
+				proxy = multi_proxy
+			else:
+				var mesh_proxy := MeshInstance3D.new()
+				mesh_proxy.mesh = mesh_instance.mesh
+				proxy = mesh_proxy
 			proxy.transform = mesh_instance.transform
 			proxy.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_SHADOWS_ONLY
 			mesh_instance.get_parent().add_child(proxy, false, Node.INTERNAL_MODE_BACK)
@@ -93,7 +100,11 @@ func _collect() -> void:
 
 
 func _collect_meshes(node: Node) -> void:
-	if node is MeshInstance3D:
+	# Authored replacements deliberately hide obsolete visuals. Do not resurrect
+	# those blocks (or give them shadow twins) when the cutaway initializes.
+	if node.is_queued_for_deletion() or (node is Node3D and not node.visible):
+		return
+	if node is MeshInstance3D or node is MultiMeshInstance3D:
 		_meshes.append(node)
 	for child in node.get_children(true):
 		_collect_meshes(child)
@@ -117,10 +128,14 @@ func _apply_fade() -> void:
 			mesh_instance.visible = true
 
 
-func _get_fade_material(mesh_instance: MeshInstance3D) -> BaseMaterial3D:
+func _get_fade_material(mesh_instance: GeometryInstance3D) -> BaseMaterial3D:
 	if mesh_instance.material_override != null:
 		return mesh_instance.material_override as BaseMaterial3D
-	var source := mesh_instance.get_active_material(0) as BaseMaterial3D
+	var source: BaseMaterial3D
+	if mesh_instance is MultiMeshInstance3D:
+		source = mesh_instance.multimesh.mesh.surface_get_material(0) as BaseMaterial3D
+	else:
+		source = mesh_instance.get_active_material(0) as BaseMaterial3D
 	if source == null:
 		return null
 	if not _fade_materials.has(source):

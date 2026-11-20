@@ -1,0 +1,415 @@
+{
+  "id": 44822226233,
+  "html_url": "https://github.com/oiwdis/last-train-out/actions/runs/44822226233",
+  "run_number": 103,
+  "run_attempt": 1,
+  "head_sha": "48fe07d96e95d8a6bea7e3e9e249d0d0b085d09c",
+  "event": "pull_request",
+  "status": "completed",
+  "conclusion": "failure",
+  "created_at": "2026-11-20T21:39:16Z",
+  "updated_at": "2026-11-20T23:16:40Z",
+  "jobs": [
+    {
+      "id": 136586026099,
+      "name": "Linux gameplay tests",
+      "html_url": "https://github.com/oiwdis/last-train-out/actions/runs/44822226233/job/136586026099",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-20T21:39:56Z",
+      "completed_at": "2026-11-20T21:43:00Z",
+      "failed_steps": []
+    },
+    {
+      "id": 136586026551,
+      "name": "Build pinned 4.5.1 Metal runtime",
+      "html_url": "https://github.com/oiwdis/last-train-out/actions/runs/44822226233/job/136586026551",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-20T21:39:57Z",
+      "completed_at": "2026-11-20T22:01:35Z",
+      "failed_steps": []
+    },
+    {
+      "id": 136586028545,
+      "name": "Performance investigation (no release)",
+      "html_url": "https://github.com/oiwdis/last-train-out/actions/runs/44822226233/job/136586028545",
+      "status": "completed",
+      "conclusion": "skipped",
+      "started_at": "2026-11-20T21:39:54Z",
+      "completed_at": "2026-11-20T21:39:54Z",
+      "failed_steps": []
+    },
+    {
+      "id": 136596622183,
+      "name": "Test, export and package",
+      "html_url": "https://github.com/oiwdis/last-train-out/actions/runs/44822226233/job/136596622183",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-20T22:01:38Z",
+      "completed_at": "2026-11-20T22:26:08Z",
+      "failed_steps": []
+    },
+    {
+      "id": 136608552158,
+      "name": "Matched frame pacing and continuous journey",
+      "html_url": "https://github.com/oiwdis/last-train-out/actions/runs/44822226233/job/136608552158",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-20T22:26:11Z",
+      "completed_at": "2026-11-20T23:10:02Z",
+      "failed_steps": []
+    },
+    {
+      "id": 136608552236,
+      "name": "Download and launch (Intel)",
+      "html_url": "https://github.com/oiwdis/last-train-out/actions/runs/44822226233/job/136608552236",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-20T22:31:35Z",
+      "completed_at": "2026-11-20T22:33:41Z",
+      "failed_steps": []
+    },
+    {
+      "id": 136608552237,
+      "name": "Download and launch (Apple Silicon native Metal)",
+      "html_url": "https://github.com/oiwdis/last-train-out/actions/runs/44822226233/job/136608552237",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-20T22:26:11Z",
+      "completed_at": "2026-11-20T22:31:31Z",
+      "failed_steps": []
+    },
+    {
+      "id": 136608552268,
+      "name": "Exported Metal launch and lifetime stress (high)",
+      "html_url": "https://github.com/oiwdis/last-train-out/actions/runs/44822226233/job/136608552268",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-20T22:26:11Z",
+      "completed_at": "2026-11-20T22:43:05Z",
+      "failed_steps": []
+    },
+    {
+      "id": 136608552274,
+      "name": "Exported Metal launch and lifetime stress (low-medium)",
+      "html_url": "https://github.com/oiwdis/last-train-out/actions/runs/44822226233/job/136608552274",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-20T22:48:22Z",
+      "completed_at": "2026-11-20T23:02:35Z",
+      "failed_steps": []
+    },
+    {
+      "id": 136608552316,
+      "name": "Download and launch (Apple Silicon)",
+      "html_url": "https://github.com/oiwdis/last-train-out/actions/runs/44822226233/job/136608552316",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-20T22:40:03Z",
+      "completed_at": "2026-11-20T22:49:19Z",
+      "failed_steps": []
+    },
+    {
+      "id": 136608552320,
+      "name": "Packaged Metal / journey",
+      "html_url": "https://github.com/oiwdis/last-train-out/actions/runs/44822226233/job/136608552320",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-20T22:52:09Z",
+      "completed_at": "2026-11-20T23:03:13Z",
+      "failed_steps": []
+    },
+    {
+      "id": 136608552326,
+      "name": "Exported Metal launch and lifetime stress (mixed)",
+      "html_url": "https://github.com/oiwdis/last-train-out/actions/runs/44822226233/job/136608552326",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-20T22:26:10Z",
+      "completed_at": "2026-11-20T22:47:33Z",
+      "failed_steps": []
+    },
+    {
+      "id": 136608552353,
+      "name": "Packaged Metal / art",
+      "html_url": "https://github.com/oiwdis/last-train-out/actions/runs/44822226233/job/136608552353",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-20T22:58:59Z",
+      "completed_at": "2026-11-20T23:03:44Z",
+      "failed_steps": []
+    },
+    {
+      "id": 136608552354,
+      "name": "Exported Vulkan launch and lifetime stress (mixed)",
+      "html_url": "https://github.com/oiwdis/last-train-out/actions/runs/44822226233/job/136608552354",
+      "status": "completed",
+      "conclusion": "failure",
+      "started_at": "2026-11-20T22:26:11Z",
+      "completed_at": "2026-11-20T22:48:18Z",
+      "failed_steps": [
+        "Retain every cold, warm and lifecycle attempt"
+      ]
+    },
+    {
+      "id": 136608552359,
+      "name": "Packaged Metal / drivers",
+      "html_url": "https://github.com/oiwdis/last-train-out/actions/runs/44822226233/job/136608552359",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-20T22:43:08Z",
+      "completed_at": "2026-11-20T22:58:56Z",
+      "failed_steps": []
+    },
+    {
+      "id": 136608552363,
+      "name": "Packaged Metal / seed-first",
+      "html_url": "https://github.com/oiwdis/last-train-out/actions/runs/44822226233/job/136608552363",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-20T22:33:43Z",
+      "completed_at": "2026-11-20T22:40:01Z",
+      "failed_steps": []
+    },
+    {
+      "id": 136608552365,
+      "name": "Exported Vulkan launch and lifetime stress (high)",
+      "html_url": "https://github.com/oiwdis/last-train-out/actions/runs/44822226233/job/136608552365",
+      "status": "completed",
+      "conclusion": "failure",
+      "started_at": "2026-11-20T22:47:36Z",
+      "completed_at": "2026-11-20T23:06:44Z",
+      "failed_steps": [
+        "Retain every cold, warm and lifecycle attempt"
+      ]
+    },
+    {
+      "id": 136608552374,
+      "name": "Packaged Metal / sampler",
+      "html_url": "https://github.com/oiwdis/last-train-out/actions/runs/44822226233/job/136608552374",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-20T22:49:22Z",
+      "completed_at": "2026-11-20T22:52:07Z",
+      "failed_steps": []
+    },
+    {
+      "id": 136608552394,
+      "name": "Packaged Metal / local-first",
+      "html_url": "https://github.com/oiwdis/last-train-out/actions/runs/44822226233/job/136608552394",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-20T23:03:15Z",
+      "completed_at": "2026-11-20T23:15:00Z",
+      "failed_steps": []
+    },
+    {
+      "id": 136608552419,
+      "name": "Packaged Metal / library-policy",
+      "html_url": "https://github.com/oiwdis/last-train-out/actions/runs/44822226233/job/136608552419",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-20T23:03:47Z",
+      "completed_at": "2026-11-20T23:13:13Z",
+      "failed_steps": []
+    },
+    {
+      "id": 136608552440,
+      "name": "Exported Vulkan launch and lifetime stress (low-medium)",
+      "html_url": "https://github.com/oiwdis/last-train-out/actions/runs/44822226233/job/136608552440",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-11-20T23:02:37Z",
+      "completed_at": "2026-11-20T23:16:39Z",
+      "failed_steps": []
+    },
+    {
+      "id": 136631026224,
+      "name": "Sign with Developer ID, notarize and staple",
+      "html_url": "https://github.com/oiwdis/last-train-out/actions/runs/44822226233/job/136631026224",
+      "status": "completed",
+      "conclusion": "skipped",
+      "started_at": "2026-11-20T23:16:40Z",
+      "completed_at": "2026-11-20T23:16:40Z",
+      "failed_steps": []
+    }
+  ],
+  "artifacts": [
+    {
+      "name": "release-stress-low-medium",
+      "id": 14678416169,
+      "size_in_bytes": 684389,
+      "digest": "sha256:2512e64dc8d918b670fd1a5cbbb039d47e763fc87a7468bb330ceb4ce65b0fdf",
+      "expired": false
+    },
+    {
+      "name": "metal-library-policy",
+      "id": 14678022216,
+      "size_in_bytes": 1223634,
+      "digest": "sha256:72147fd60a4dbcc4f0af080222296245ec8585cbfaaeeb559b546048c257997a",
+      "expired": false
+    },
+    {
+      "name": "metal-journey",
+      "id": 14677653047,
+      "size_in_bytes": 36658052,
+      "digest": "sha256:30c7c2cfa72479a0d297aa76663cf110f938ba594b754cddfb4a28f4f3868601",
+      "expired": false
+    },
+    {
+      "name": "release-stress-mixed",
+      "id": 14677560403,
+      "size_in_bytes": 1104344,
+      "digest": "sha256:9877117e814b9ecfefbd14e15cc3b71f0439925eb571738043d206df94e9697b",
+      "expired": false
+    },
+    {
+      "name": "metal-drivers",
+      "id": 14677557256,
+      "size_in_bytes": 28470779,
+      "digest": "sha256:65866c4800136a500a3a41df0e16ef4d8f3f86c13e350f372fa44a046228cb26",
+      "expired": false
+    },
+    {
+      "name": "release-stress-high",
+      "id": 14677508605,
+      "size_in_bytes": 892497,
+      "digest": "sha256:d1f8a4b2719e8672ab5e261122e52567f24afc97c222babfb0f0c6a1b7e429ef",
+      "expired": false
+    },
+    {
+      "name": "metal-art",
+      "id": 14677303068,
+      "size_in_bytes": 17524424,
+      "digest": "sha256:e6644eb68c4e9e8eb821a2e3f93352d94d99971de96af35c1fee2f65d5bf00ed",
+      "expired": false
+    },
+    {
+      "name": "performance-and-journey",
+      "id": 14677229410,
+      "size_in_bytes": 42927729,
+      "digest": "sha256:6d97b551a95f7642ed2e881f2543e3969506fb6e0cdedde67ad23a053edb211e",
+      "expired": false
+    },
+    {
+      "name": "selftest-arm64",
+      "id": 14677035677,
+      "size_in_bytes": 750060,
+      "digest": "sha256:c25c5865863a50ddd21974d3f7fa4a916cf21a4c8984379b05eaeff2646db8fe",
+      "expired": false
+    },
+    {
+      "name": "metal-local-first",
+      "id": 14676533980,
+      "size_in_bytes": 279887,
+      "digest": "sha256:bc5f1920e40b75169bf03d6639ed6e986c4c62c1d86d7c601d21240765e58351",
+      "expired": false
+    },
+    {
+      "name": "metal-stress-low-medium",
+      "id": 14676479105,
+      "size_in_bytes": 630545,
+      "digest": "sha256:9869e234437fcb928abf98216226e25da6a01d47a4f01ac3a9676031051445da",
+      "expired": false
+    },
+    {
+      "name": "metal-stress-high",
+      "id": 14676141956,
+      "size_in_bytes": 775593,
+      "digest": "sha256:9fe54e7b878971918b71e623219bb87ae2ca9f4fd2e17604e3e9daec9021696e",
+      "expired": false
+    },
+    {
+      "name": "metal-sampler",
+      "id": 14675993867,
+      "size_in_bytes": 174352,
+      "digest": "sha256:35e29d269f227a03f217fa584e7419ef03098b9d3fb57cb8d12d978ffc7306ed",
+      "expired": false
+    },
+    {
+      "name": "selftest-x86_64",
+      "id": 14675970824,
+      "size_in_bytes": 2438,
+      "digest": "sha256:0b4fd2d583f8bd996886d6be9cf80449ebcdb2bd9d2e58c77d895ac791e8d386",
+      "expired": false
+    },
+    {
+      "name": "performance-startup",
+      "id": 14675850332,
+      "size_in_bytes": 154829,
+      "digest": "sha256:04a6ec7b873616422f6b726c3d1df790ef94a86af0f527172b9d62777d89e5c6",
+      "expired": false
+    },
+    {
+      "name": "metal-stress-mixed",
+      "id": 14675809995,
+      "size_in_bytes": 1024894,
+      "digest": "sha256:7b358a902cd50ae6da6625451cd96b99577293638b1706185a72969a06071af6",
+      "expired": false
+    },
+    {
+      "name": "renderer-stress",
+      "id": 14675451274,
+      "size_in_bytes": 19218,
+      "digest": "sha256:c005fad85a23892691522abcde4f4952cf6701a768bd59d70aaeb5b253495352",
+      "expired": false
+    },
+    {
+      "name": "metal-seed-first",
+      "id": 14675399268,
+      "size_in_bytes": 295581,
+      "digest": "sha256:1705341a440c75f1db1ff6ed74e19c406fa2731130bf8bcbb2cbbc58673c47d4",
+      "expired": false
+    },
+    {
+      "name": "selftest-build",
+      "id": 14674634042,
+      "size_in_bytes": 743719,
+      "digest": "sha256:4a453c10863018977a462c066c2846e4aab05e3db575b64cb141b31f8afa4616",
+      "expired": false
+    },
+    {
+      "name": "test-logs",
+      "id": 14674619146,
+      "size_in_bytes": 203827,
+      "digest": "sha256:01c89f14477e8f999bf41e225b5a17d61b9949bd9a34a80ee0e97f7986f085cc",
+      "expired": false
+    },
+    {
+      "name": "selftest-arm64-metal",
+      "id": 14674348702,
+      "size_in_bytes": 709421,
+      "digest": "sha256:73b383723feed2cc96ddb8b1a18d475eb7693f7bc76ce91ca16bb9aaaaf598dd",
+      "expired": false
+    },
+    {
+      "name": "metal-template",
+      "id": 14674105673,
+      "size_in_bytes": 21562308,
+      "digest": "sha256:59645971778a60e1930b725171c21b94ce476d06b731f215c6f6f6ccaf0044a3",
+      "expired": false
+    },
+    {
+      "name": "LastTrainOut-macos-universal.zip",
+      "id": 14673852596,
+      "size_in_bytes": 332320165,
+      "digest": "sha256:abfb1842e86b044d0a4a143a683d64fa52bdf0d3a957c25a38e6cfec6b94a3bd",
+      "expired": false
+    },
+    {
+      "name": "validated-imports",
+      "id": 14673701656,
+      "size_in_bytes": 414203002,
+      "digest": "sha256:6b522f5f65a639d0fabdfe66806bcb98b1429c68153005f9f7cd846600ae2bc4",
+      "expired": false
+    },
+    {
+      "name": "linux-tests",
+      "id": 14673160480,
+      "size_in_bytes": 18143,
+      "digest": "sha256:59557f5c196611524186eedc7febeb8754f0d5e88c5cfda9b53586e779d38131",
+      "expired": false
+    }
+  ]
+}

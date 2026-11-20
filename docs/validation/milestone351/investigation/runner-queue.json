@@ -1,0 +1,17 @@
+{
+  "run": 44575815962,
+  "head": "7a53907840eae936f98c4a5d10344581cffe5f92",
+  "attempt1": "Cancelled after approximately 15 minutes queued with no assigned runner and no build/test execution. Restarted the cancelled build job once.",
+  "attempt2": "Remained queued without a runner; cancelled after the CI-only manual-import fallback commit.",
+  "separate_stress_run": 44578287174,
+  "service_status_note": "GitHub status reported an investigating disruption beginning 2026-11-19T17:06:26Z. It did not identify affected components; causation of this queue delay is not established.",
+  "service_status_url": "https://stspg.io/pvjz2g01trc7",
+  "replacement_pr_run": 44579035899,
+  "replacement_pr_run_note": "Source 31a0e4a, same gameplay runtime. Acquired a runner and began the full suite.",
+  "unused_manual_release": 44579040737,
+  "unused_manual_release_note": "Cancelled while pending after the normal PR run started. No test or build result claimed.",
+  "cc50670_normal_run": 44583413439,
+  "cc50670_startup_probe": 44583438066,
+  "cc50670_unused_manual_release": 44583512762,
+  "cc50670_unused_manual_note": "Queued behind the startup probe, then cancelled during setup once the normal PR job acquired a runner. No tests or export result claimed."
+}

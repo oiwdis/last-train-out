@@ -1,0 +1,34 @@
+extends SceneTree
+var destination := "/tmp/lto-cpu.json"
+var game: Node
+func _initialize() -> void:
+	for arg in OS.get_cmdline_user_args():
+		if arg.begins_with("--out="): destination = arg.trim_prefix("--out=")
+	run.call_deferred()
+func run() -> void:
+	var mission := "res://scenes/missions/harlow_escape.tscn"
+	game = load(mission if ResourceLoader.exists(mission) else "res://scenes/main/main.tscn").instantiate()
+	root.add_child(game)
+	if game.graphics.has_method("wait_for_render_ready"): await game.graphics.wait_for_render_ready()
+	game.player.input.scripted = true
+	game.camera_rig.exploration.request_perspective(1)
+	var rows: Array = []
+	for label in ["idle station", "departing train"]:
+		if label == "departing train": game.train.start()
+		for tick in 300: await physics_frame
+		var values: Array[float] = []
+		var last := Time.get_ticks_usec()
+		for tick in 1200:
+			await physics_frame
+			var now := Time.get_ticks_usec()
+			values.append((now-last)/1000.0)
+			last = now
+		var mean := 0.0
+		for value in values: mean += value/values.size()
+		var raw := values.duplicate()
+		values.sort()
+		rows.append({"case":label,"samples":values.size(),"mean_wall_ms_per_tick":mean,"p99_wall_ms_per_tick":values[1187],"worst_wall_ms_per_tick":values[-1],"train_distance":game.train.distance,"train_speed":game.train.speed,"wall_ms_per_tick":raw})
+	FileAccess.open(destination,FileAccess.WRITE).store_string(JSON.stringify({"scope":"Linux headless CPU-only wall time per complete fixed-60Hz tick; all gameplay updates active; no GPU cost or physical-M1 claim", "godot":Engine.get_version_info().string,"processor":OS.get_processor_name(),"results":rows},"  "))
+	game.queue_free()
+	await process_frame
+	quit()

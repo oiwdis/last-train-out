@@ -1,0 +1,77 @@
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+Movie Maker mode enabled, recording movie at 24 FPS...
+[fog-gameplay] PASS route: (13.0, 1.0, 1.2)
+[fog-gameplay] PASS searched platform_luggage using E
+[fog-gameplay] PASS route: (13.0, 1.0, 0.3)
+[fog-gameplay] PASS route: (27.2, 1.0, 0.3)
+[fog-gameplay] PASS route: (27.2, 1.0, 1.2)
+[fog-gameplay] PASS searched platform_locker using E
+[fog-gameplay] PASS A: two real searches completed safely
+[fog-gameplay] PASS A: safe departure with collected supplies
+[fog-gameplay] PASS searched b_precision using E
+[fog-gameplay] PASS route: (94.9, 0.0, 0.6)
+[fog-gameplay] PASS route: (93.4, 0.0, 1.5)
+[fog-gameplay] PASS route: (91.7, 0.0, 1.5)
+[fog-gameplay] PASS route: (91.7, 0.0, 0.0)
+[fog-gameplay] PASS route: (88.3, 0.0, 0.1)
+[fog-gameplay] PASS route: (87.4, 0.0, -0.7)
+[fog-gameplay] PASS route: (86.5, 0.0, 0.2)
+[fog-gameplay] PASS route: (83.0, 0.0, -0.1)
+[fog-gameplay] PASS route: (83.0, 0.0, 1.6)
+[fog-gameplay] PASS route: (81.6, 0.0, 2.2)
+[fog-gameplay] PASS route: (78.9, 0.0, 2.2)
+[fog-gameplay] PASS route: (78.6, 0.0, 0.7)
+[fog-gameplay] PASS route: (76.1, 0.0, 0.7)
+[fog-gameplay] PASS route: (74.3, 0.0, 3.3)
+[fog-gameplay] PASS route: (71.3, 0.0, 2.6)
+[fog-gameplay] PASS route: (70.6, 0.0, 1.1)
+[fog-gameplay] PASS route: (69.4, 0.0, 1.1)
+[fog-gameplay] PASS route: (65.3, 0.0, 1.5)
+[fog-gameplay] PASS route: (60.6, 0.0, 1.1)
+[fog-gameplay] PASS route: (58.6, 0.0, 1.1)
+[fog-gameplay] PASS route: (54.8, 0.0, 1.1)
+[fog-gameplay] PASS route: (50.6, 0.0, 1.2)
+[fog-gameplay] PASS route: (49.7, 0.0, 3.0)
+[fog-gameplay] PASS route: (47.3, 0.0, 3.3)
+[fog-gameplay] PASS route: (46.6, 0.0, 1.1)
+[fog-gameplay] PASS route: (35.8, 0.0, 1.1)
+[fog-gameplay] PASS route: (33.9, 0.0, 1.0)
+[fog-gameplay] PASS route: (29.6, 0.0, 1.0)
+[fog-gameplay] PASS route: (20.6, 0.0, -1.5)
+[fog-gameplay] PASS route: (20.5, 1.0, -1.8)
+[fog-gameplay] PASS B: physically returned, vaulted and climbed onto train
+[fog-gameplay] boarding clearance -3.329374 health 100.0
+[fog-gameplay] PASS route: (19.1, 1.0, -3.5)
+[fog-gameplay] PASS B: dropped from roof onto connecting gangway
+[fog-gameplay] PASS route: (21.3, 1.0, -3.5)
+[fog-gameplay] regulator: 1 player (21.93285, 1.001, -3.514135) health 100.0
+[fog-gameplay] PASS B: cab regulator starts escape
+[fog-gameplay] PASS B: survived return while fog continued
+[fog-gameplay] PASS F: train outruns persistent front
+[fog-gameplay] PASS G: exposure recovers after escape
+[fog-gameplay] PASS F: sustained pursuit along baseline route
+[fog-gameplay] PASS searched a_coal using E
+[fog-gameplay] PASS C: searched reserve reveals actual coal
+[fog-gameplay] PASS C: reticle pickup holds coal sack
+[fog-gameplay] PASS C: heavy cargo caps movement
+[fog-gameplay] PASS C: abandoned loot remains recoverable
+[fog-gameplay] PASS D: empty boiler prevents departure; fog advances
+[fog-gameplay] PASS E: deliberate exposure causes progressive damage
+[fog-gameplay] PASS route: (29.0, 1.0, 1.0)
+[fog-gameplay] PASS route: (33.9, 0.0, 1.0)
+[fog-gameplay] PASS route: (35.8, 0.0, 1.1)
+[fog-gameplay] PASS route: (46.6, 0.0, 1.1)
+[fog-gameplay] PASS G: walking clear allows recovery
+--------------------------------------------------------------------------------
+Done recording movie at path: /workspace/fog-survival-delivery.avi
+2715 frames at 24 FPS (movie length: 00:01:53:03), recorded in 00:06:19 (29% of real-time speed).
+CPU render time: 289.73 seconds (average: 106.72 ms/frame)
+GPU render time: 288.73 seconds (average: 106.35 ms/frame)
+Encoding time: 39.05 seconds (average: 14.38 ms/frame)
+--------------------------------------------------------------------------------
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+     at: cleanup (core/object/object.cpp:2514)

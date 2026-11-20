@@ -1,0 +1,19 @@
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+
+[resume] PASS previous process file exists
+[resume] PASS moving train resumes at saved route position
+[resume] PASS saved rider restored aboard
+[resume] PASS fog time continues without reset
+[resume] PASS event RNG survives process restart
+[resume] PASS storage preserved
+[resume] PASS backpack preserved
+[resume] PASS held cargo preserved
+[resume] PASS cargo not duplicated
+[resume] PASS searched station remains depleted
+[resume] PASS mission note preserved
+[resume] PASS health preserved
+[resume] PASS camera mode and heading survive cold load
+[resume] PASS authored survivor restored
+[resume] PASS rod phase synchronizes after cold load
+[resume] PASS live gauge synchronizes after cold load
+[resume] PASS journey continues after cold load

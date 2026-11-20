@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "run": 43797534032,
+  "attempt": 2,
+  "job": 133078796200,
+  "source_commit": "c86d6f31ffaef820e72994cc031a317634bd8c57",
+  "same_zip_sha256": "b5b00a441bbf8b59dc4acef826a68eda83773aac21382acc8cc2669bec182e15",
+  "arm64_headless_checks": 31,
+  "arm64_window_checks": 34,
+  "packaged_presets_cases": 6,
+  "packaged_route_cases": 3,
+  "note": "Independent fresh runner, same artifact. Initial GPU-timeout failure did not reproduce; its cause remains unproven and attempt1 logs are preserved. Physical M1 target unverified."
+}

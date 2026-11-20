@@ -40,11 +40,11 @@ func bind(who: Player, eye: Camera3D) -> void:
 	player.teleported.connect(_on_teleported)
 	_third_person_anchor = Node3D.new()
 	_third_person_anchor.name = "CarryAnchor"
-	_third_person_anchor.position = Vector3(0, 0.76, 0.5)
+	_third_person_anchor.position = Vector3(0, 0.76, 0.42)
 	player.visual.add_child(_third_person_anchor)
 	first_person_anchor = Node3D.new()
 	first_person_anchor.name = "FirstPersonCarryAnchor"
-	first_person_anchor.position = Vector3(0.25, -0.63, -0.84)
+	first_person_anchor.position = Vector3(0, -0.66, -0.62)
 	first_person_anchor.rotation.y = PI
 	camera.add_child(first_person_anchor)
 	_first_person_hands = Node3D.new()
@@ -114,6 +114,17 @@ func apply_settings(persist: bool = true) -> void:
 	settings_changed.emit()
 
 
+func restore_view(mode: int, heading: float, tilt: float) -> void:
+	# A loaded world must not inherit a queued traversal switch or an old boom.
+	_queued_perspective = -1
+	request_perspective(mode)
+	yaw = wrapf(heading, -PI, PI)
+	pitch = clampf(tilt, deg_to_rad(-75), deg_to_rad(75))
+	player.input.camera_yaw = yaw
+	_boom = settings.third_person_distance if perspective == Perspective.THIRD_PERSON else 0.0
+	snap_to_target()
+
+
 func set_menu_open(source: StringName, open: bool) -> void:
 	if open:
 		_menu_sources[source] = true
@@ -144,7 +155,7 @@ func _process(delta: float) -> void:
 	_boom = lerpf(_boom, distance, 1.0 - exp(-settings.smoothing * delta))
 	# The interpolated player and train share the same render time, including between ticks.
 	_place_camera(player.get_global_transform_interpolated().origin, delta)
-	_first_person_hands.visible = perspective == Perspective.FIRST_PERSON and player.carrying_heavy
+	_update_hand_visibility()
 
 
 func snap_to_target() -> void:
@@ -190,32 +201,19 @@ func _place_camera(feet: Vector3, delta: float = 0) -> void:
 
 func _update_presentation() -> void:
 	player.set_carry_anchor(first_person_anchor if perspective == Perspective.FIRST_PERSON else _third_person_anchor)
-	_first_person_hands.visible = perspective == Perspective.FIRST_PERSON and player.carrying_heavy
+	_update_hand_visibility()
+
+
+func _update_hand_visibility() -> void:
+	var arms := _first_person_hands.get_node_or_null("FirstPersonWorker") as WorkerAnimator
+	var action := arms != null and arms._action_remaining > 0 and arms.current_state in [&"pickup", &"drop", &"operate"]
+	_first_person_hands.visible = perspective == Perspective.FIRST_PERSON and (player.carrying_heavy or action)
 
 
 func _make_hands() -> void:
-	# Rounded, human-sized forearms; the full character art pass supplies matching materials.
-	var cloth := preload("res://resources/materials/player_coat.tres")
-	for side in [-1.0, 1.0]:
-		var arm := MeshInstance3D.new()
-		var mesh := CapsuleMesh.new()
-		mesh.radius = 0.045
-		mesh.height = 0.36
-		mesh.radial_segments = 16
-		mesh.rings = 4
-		mesh.material = cloth
-		arm.mesh = mesh
-		arm.position = Vector3(side * 0.22, -0.35, -0.48)
-		arm.rotation.x = PI * 0.42
-		_first_person_hands.add_child(arm)
-		var glove := MeshInstance3D.new()
-		var palm := SphereMesh.new()
-		palm.radius = 0.052
-		palm.height = 0.12
-		palm.radial_segments = 16
-		palm.rings = 8
-		palm.material = preload("res://resources/materials/player_trousers.tres")
-		glove.mesh = palm
-		glove.position = Vector3(side * 0.22, -0.36, -0.68)
-		glove.rotation.x = PI / 2
-		_first_person_hands.add_child(glove)
+	var arms := WorkerAnimator.new()
+	arms.name = "FirstPersonWorker"
+	arms.position = Vector3(0, -EYE_HEIGHT + 0.32, -0.2)
+	arms.rotation.y = PI
+	_first_person_hands.add_child(arms)
+	arms.bind(player, true)

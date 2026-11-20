@@ -101,7 +101,7 @@ def expected_game_files() -> list[str]:
     files = []
     for directory in GAME_DIRECTORIES:
         for path in sorted((ROOT / directory).rglob("*")):
-            if path.suffix in (".tscn", ".tres", ".gd", ".svg", ".png", ".jpg", ".glb", ".wav"):
+            if path.suffix in (".tscn", ".tres", ".gd", ".svg", ".png", ".jpg", ".glb", ".wav", ".hdr"):
                 files.append(path.relative_to(ROOT).as_posix())
     return files
 
@@ -174,6 +174,37 @@ def verify_bundle(app: Path, expect_signature: str) -> None:
 
     check((contents / "Resources" / str(info.get("CFBundleIconFile", "icon.icns"))).is_file(), "the app icon exists")
 
+    chooser = contents / "MacOS" / "choose-renderer"
+    metal = contents / "MacOS" / "LastTrainOutMetal"
+    check(chooser.is_file() and os.access(chooser, os.X_OK) and set(macho_architectures(chooser)) == {"arm64", "x86_64"},
+          "the pre-launch renderer selector is universal and executable")
+    check(metal.is_file() and os.access(metal, os.X_OK) and macho_architectures(metal) == ["arm64"],
+          "the optional native Metal runtime is explicitly arm64")
+    cache_dir = contents / "Resources" / "MetalShaders"
+    manifest = cache_dir / "Profile.plist"
+    if check(manifest.is_file(), "the Metal shader profile is present"):
+        profile = plistlib.loads(manifest.read_bytes())
+        files = profile.get("files", {})
+        exact = {p.relative_to(cache_dir).as_posix() for p in cache_dir.rglob("*") if p.is_file() and p != manifest}
+        check(bool(files) and set(files) == exact and profile.get("source") == info.get("LTOBuildCommit") and
+              all(k.endswith(".metal.cache") and file_digest(cache_dir / k) == d for k, d in files.items()),
+              "every optional Metal cache file matches the signed build inventory", f"{len(files)} shader groups")
+
+        if "bundled_library_groups" in profile:
+            count = profile["bundled_library_groups"]
+            library_dir = contents / "Resources" / "MetalLibraries"
+            if count and check((library_dir / "Profile.plist").is_file(), "the signed Metal library inventory is present"):
+                baked = plistlib.loads((library_dir / "Profile.plist").read_bytes())
+                outputs = baked.get("files", {})
+                actual = {p.relative_to(library_dir).as_posix() for p in library_dir.rglob("*.metal.cache")}
+                check(len(outputs) == count and set(outputs) == actual and set(outputs) <= set(files)
+                      and all(profile.get(k) == baked.get(k) for k in ("source","family","language","argumentBuffers"))
+                      and baked.get("min_os_version") == "26.0"
+                      and all(file_digest(library_dir / key) == digest for key, digest in outputs.items()),
+                      "every read-only Metal library group matches the signed inventory", str(count))
+            elif count == 0:
+                check(not library_dir.exists(), "this source-only device profile has no binary override")
+
     packs = sorted((contents / "Resources").glob("*.pck"))
     if check(len(packs) == 1, "the game data pack exists", packs[0].name if packs else "no .pck in Contents/Resources"):
         verify_pack(packs[0])
@@ -189,6 +220,8 @@ def verify_pack(pack: Path) -> None:
         return
     check(len(packed) > 50, "the game data pack can be read", f"{len(packed)} files, {pack.stat().st_size / 1000:.0f} kB")
     check("project.binary" in packed, "project settings are in the pack")
+    baked = [path for path in packed if "/shader_cache/" in path]
+    check(bool(baked), "baked shader code is included", f"{len(baked)} cache files")
     main_scene = project_setting("run/main_scene").removeprefix("res://")
     check(bool(main_scene) and in_pack(main_scene, packed), "the main scene is in the pack", main_scene)
     expected = expected_game_files()

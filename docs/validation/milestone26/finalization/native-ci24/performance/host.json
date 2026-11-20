@@ -1,0 +1,8 @@
+{
+  "platform": "macOS-26.7.2-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "requested_resolution": "(960, 540)",
+  "samples": 120,
+  "warmup_frames": 60,
+  "scope": "hosted windowed runner; not physical 2020 M1 fullscreen"
+}

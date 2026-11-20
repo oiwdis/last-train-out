@@ -1,0 +1,237 @@
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+Vulkan 1.2.283 - Forward+ - Using Device #0: Apple - Apple Paravirtual device
+
+Movie Maker mode enabled, recording movie at 12 FPS...
+[render-warmup] 10 views / 11534 ms / draw pipelines=53.0
+[render-warmup] 10 views / 374 ms / draw pipelines=54.0
+[journey] PASS walk: (13.0, 1.0, 1.2)
+[journey] PASS reticle selects platform_luggage (got platform_luggage:<Area3D#249041002611>)
+[journey] PASS search platform_luggage
+[journey] PASS walk: (13.0, 1.0, 0.4)
+[journey] PASS walk: (27.2, 1.0, 0.4)
+[journey] PASS walk: (27.2, 1.0, 1.1)
+[journey] PASS reticle selects platform_locker (got platform_locker:<Area3D#249074557047>)
+[journey] PASS search platform_locker
+[journey] PASS walk: (27.2, 1.0, 0.4)
+[journey] PASS walk: (30.0, 1.0, 0.4)
+[journey] PASS V selects detailed third-person survivor
+[journey] PASS walk: (13.0, 1.0, 0.4)
+[journey] PASS walk: (5.0, 1.0, 1.2)
+[journey] PASS reticle selects @Area3D@2551 (got @Area3D@2551:<Area3D#282796760739>)
+[journey] PASS search harlow_departure_coal
+[journey] PASS reticle selects @Area3D@2617 (got @Area3D@2617:<Area3D#414783114400>)
+[journey] PASS physical heavy pickup: coal_sack
+[journey] PASS walk: (5.0, 1.0, 0.0)
+[journey] PASS walk: (5.0, 1.0, -0.8)
+[journey] PASS reticle selects TrainStorage (got TrainStorage:<Area3D#251658248367>)
+[journey] PASS storage opened using E
+[journey] PASS coal deposited using R
+[journey] PASS walk: (6.6, 1.0, -1.5)
+[journey] PASS walk: (6.6, 1.0, -2.9)
+[journey] PASS walk: (9.7, 1.0, -2.9)
+[journey] PASS walk: (10.2, 1.0, -3.5)
+[journey] PASS walk: (12.4, 1.0, -3.5)
+[journey] PASS walk: (17.8, 1.0, -3.5)
+[journey] PASS walk: (21.3, 1.0, -3.5)
+[journey] PASS walked aboard and through cars to cab
+[journey] PASS reticle selects StokeBoiler (got StokeBoiler:<Area3D#280213071174>)
+[journey] PASS stored coal stokes boiler
+[journey] PASS reticle selects Regulator (got Regulator:<Area3D#276773741847>)
+[journey] PASS physical regulator starts departure
+[journey-travel] ashford distance=42.3333357175126 fuel=96.7040000000004 fog=-955.9892 hp=100.0
+[journey-travel] ashford distance=122.333335717515 fuel=93.5040000000007 fog=-932.3832 hp=100.0
+[journey-travel] ashford distance=202.333335717511 fuel=90.3040000000011 fog=-908.643866666666 hp=100.0
+[journey-travel] ashford distance=282.333335717507 fuel=87.1040000000014 fog=-884.7712 hp=100.0
+[journey-travel] ashford distance=362.333335717502 fuel=83.9040000000018 fog=-860.7652 hp=100.0
+[journey-travel] ashford distance=442.333335717498 fuel=80.7040000000021 fog=-836.625866666666 hp=100.0
+[journey-travel] ashford distance=522.333335717493 fuel=77.5040000000025 fog=-812.3532 hp=100.0
+[journey-travel] ashford distance=602.333335717489 fuel=74.3040000000028 fog=-787.9472 hp=100.0
+[journey-travel] ashford distance=682.333335717484 fuel=71.1040000000032 fog=-763.407866666667 hp=100.0
+[journey-travel] ashford distance=762.33333571748 fuel=67.9040000000035 fog=-738.7352 hp=100.0
+[journey-travel] ashford distance=842.333335717475 fuel=64.7040000000039 fog=-713.9292 hp=100.0
+[journey-travel] ashford distance=922.333335717471 fuel=61.5040000000042 fog=-688.989866666667 hp=100.0
+[journey-travel] ashford distance=1002.33333571747 fuel=58.3040000000046 fog=-663.9172 hp=100.0
+[journey-travel] ashford distance=1082.33333571751 fuel=55.1040000000049 fog=-631.785016 hp=100.0
+[journey-travel] ashford distance=1162.33333571757 fuel=51.9040000000053 fog=-595.157306666667 hp=100.0
+[journey-travel] ashford distance=1242.33333571764 fuel=48.7040000000056 fog=-569.68464 hp=100.0
+[journey-travel] ashford distance=1322.3333357177 fuel=45.504000000006 fog=-544.078640000001 hp=100.0
+[journey-travel] ashford distance=1402.33333571777 fuel=42.3040000000064 fog=-518.339306666667 hp=100.0
+[journey-travel] ashford distance=1482.33333571783 fuel=39.1040000000067 fog=-492.466640000001 hp=100.0
+[journey-travel] ashford distance=1562.33333571789 fuel=35.9040000000071 fog=-466.460640000001 hp=100.0
+[journey-travel] ashford distance=1642.33333571796 fuel=32.7040000000074 fog=-440.321306666668 hp=100.0
+[journey-travel] ashford distance=1722.33333571802 fuel=29.5040000000075 fog=-414.048640000001 hp=100.0
+[journey-travel] ashford distance=1802.31490097375 fuel=26.3040000000075 fog=-393.353824000001 hp=100.0
+[journey] PASS continuous arrival ashford
+[journey] PASS walk: (1813.0, 7.0, 180.0)
+[journey] PASS walk: (1810.1, 7.0, 180.0)
+[journey] PASS walk: (1809.6, 7.0, 180.6)
+[journey] PASS walk: (1806.5, 7.0, 180.6)
+[journey] PASS walk: (1806.5, 7.0, 182.0)
+[journey] PASS walk: (1803.0, 7.0, 183.4)
+[journey] PASS reticle selects coal_a (got coal_a:<Area3D#222969208051>)
+[journey] PASS search ashford_coal_a
+[journey] PASS reticle selects @Area3D@2640 (got @Area3D@2640:<Area3D#1641147274055>)
+[journey] PASS physical heavy pickup: coal_sack
+[journey] PASS walk: (1805.0, 7.0, 182.0)
+[journey] PASS reticle selects TrainStorage (got TrainStorage:<Area3D#251658248367>)
+[journey] PASS storage opened using E
+[journey] PASS coal deposited using R
+[journey] PASS walk: (1803.0, 7.0, 186.0)
+[journey] PASS walk: (1803.0, 6.0, 195.0)
+[journey] PASS walk: (1837.0, 6.0, 213.0)
+[journey] PASS walk: (1837.0, 6.0, 206.4)
+[journey] PASS reticle selects coal_b (got coal_b:<Area3D#223673851139>)
+[journey] PASS search ashford_coal_b
+[journey] PASS reticle selects @Area3D@2654 (got @Area3D@2654:<Area3D#1744092271257>)
+[journey] PASS physical heavy pickup: coal_sack
+[journey] PASS walk: (1837.0, 6.0, 213.0)
+[journey] PASS walk: (1803.0, 6.0, 195.0)
+[journey] PASS walk: (1803.0, 7.0, 186.0)
+[journey] PASS walk: (1805.0, 7.0, 182.0)
+[journey] PASS reticle selects TrainStorage (got TrainStorage:<Area3D#251658248367>)
+[journey] PASS storage opened using E
+[journey] PASS coal deposited using R
+[journey] PASS walk: (1806.5, 7.0, 182.0)
+[journey] PASS walk: (1806.5, 7.0, 180.6)
+[journey] PASS walk: (1809.6, 7.0, 180.6)
+[journey] PASS walk: (1810.1, 7.0, 180.0)
+[journey] PASS walk: (1812.4, 7.0, 180.0)
+[journey] PASS walk: (1817.8, 7.0, 180.0)
+[journey] PASS walk: (1821.2, 7.0, 180.0)
+[journey] PASS walked aboard and through cars to cab
+[journey] PASS walk: (1813.0, 7.0, 180.0)
+[journey] PASS walk: (1810.1, 7.0, 180.0)
+[journey] PASS walk: (1809.6, 7.0, 180.6)
+[journey] PASS walk: (1806.5, 7.0, 180.6)
+[journey] PASS walk: (1806.5, 7.0, 182.0)
+[journey] PASS walk: (1803.0, 7.0, 186.0)
+[journey] PASS walk: (1803.0, 6.0, 195.0)
+[journey] PASS walk: (1803.0, 6.0, 215.0)
+[journey] PASS walk: (1937.0, 6.0, 226.0)
+[journey] PASS walk: (1937.0, 6.0, 222.0)
+[journey] PASS walk: (1937.0, 6.0, 219.3)
+[journey] PASS reticle selects workshop (got workshop:<Area3D#223891954959>)
+[journey] PASS search ashford_workshop
+[journey] PASS walk: (1937.0, 6.0, 222.0)
+[journey] PASS walk: (1941.7, 6.0, 219.0)
+[journey] PASS reticle selects components (got components:<Area3D#224445603100>)
+[journey] PASS search ashford_components
+[journey] PASS reticle selects @Area3D@2676 (got @Area3D@2676:<Area3D#2152667812418>)
+[journey] PASS physical heavy pickup: machine_component
+[journey] PASS walk: (1937.0, 6.0, 222.0)
+[journey] PASS walk: (1937.0, 6.0, 226.0)
+[journey] PASS walk: (1880.0, 6.0, 216.0)
+[journey] PASS abandoned heavy spares using G as fog closes
+[journey] PASS walk: (1803.0, 6.0, 216.0)
+[journey] PASS walk: (1803.0, 6.0, 195.0)
+[journey] PASS walk: (1803.0, 7.0, 186.0)
+[journey] PASS walk: (1805.0, 7.0, 182.0)
+[journey] PASS walk: (1806.5, 7.0, 182.0)
+[journey] PASS walk: (1806.5, 7.0, 180.6)
+[journey] PASS walk: (1809.6, 7.0, 180.6)
+[journey] PASS walk: (1810.1, 7.0, 180.0)
+[journey] PASS walk: (1812.4, 7.0, 180.0)
+[journey] PASS walk: (1817.8, 7.0, 180.0)
+[journey] PASS walk: (1821.2, 7.0, 180.0)
+[journey] PASS walked aboard and through cars to cab
+[journey] PASS reticle selects StokeBoiler (got StokeBoiler:<Area3D#280213071174>)
+[journey] PASS stored coal stokes boiler
+[journey] PASS reticle selects StokeBoiler (got StokeBoiler:<Area3D#280213071174>)
+[journey] PASS stored coal stokes boiler
+[journey] PASS reticle selects Regulator (got Regulator:<Area3D#276773741847>)
+[journey] PASS physical regulator starts departure
+[journey-travel] blackwater distance=1865.13333667176 fuel=111.248000000008 fog=1784.68059600006 hp=100.0
+[journey-travel] blackwater distance=1945.13333667183 fuel=108.048000000008 fog=1815.2494293334 hp=100.0
+[journey-travel] blackwater distance=2025.13333667189 fuel=104.848000000009 fog=1849.99434600007 hp=100.0
+[journey-travel] blackwater distance=2105.13333667186 fuel=101.648000000009 fog=1886.22434600007 hp=100.0
+[journey-travel] blackwater distance=2185.13333667178 fuel=98.4480000000093 fog=1922.58767933341 hp=100.0
+[journey-travel] blackwater distance=2265.13333667171 fuel=95.2480000000096 fog=1959.08434600008 hp=100.0
+[journey-travel] blackwater distance=2345.13333667164 fuel=92.04800000001 fog=1995.71434600008 hp=100.0
+[journey-travel] blackwater distance=2425.13333667157 fuel=88.8480000000103 fog=2032.47767933341 hp=100.0
+[journey-travel] blackwater distance=2505.13333667149 fuel=85.6480000000107 fog=2069.37434600008 hp=100.0
+[journey-travel] blackwater distance=2585.13333667142 fuel=82.448000000011 fog=2106.40434600008 hp=100.0
+[journey-travel] blackwater distance=2665.13333667135 fuel=79.2480000000114 fog=2143.56767933342 hp=100.0
+[journey-travel] blackwater distance=2745.13333667128 fuel=76.0480000000117 fog=2180.86434600009 hp=100.0
+[journey-travel] blackwater distance=2825.1333366712 fuel=72.8480000000121 fog=2218.29434600009 hp=100.0
+[journey-travel] blackwater distance=2905.13333667113 fuel=69.6480000000124 fog=2255.85767933342 hp=100.0
+[journey-travel] blackwater distance=2985.13333667106 fuel=66.4480000000128 fog=2293.55434600009 hp=100.0
+[journey-travel] blackwater distance=3065.13333667098 fuel=63.2480000000131 fog=2331.38434600009 hp=100.0
+[journey-travel] blackwater distance=3145.13333667091 fuel=60.0480000000135 fog=2369.34767933343 hp=100.0
+[journey-travel] blackwater distance=3225.13333667084 fuel=56.8480000000138 fog=2407.44434600009 hp=100.0
+[journey-travel] blackwater distance=3305.13333667077 fuel=53.6480000000142 fog=2445.67434600009 hp=100.0
+[journey-travel] blackwater distance=3385.13333667069 fuel=50.4480000000145 fog=2484.03767933343 hp=100.0
+[journey-travel] blackwater distance=3458.91372491077 fuel=47.2480000000149 fog=2522.5343460001 hp=100.0
+[journey] PASS continuous arrival blackwater
+[journey] PASS walk: (3413.0, 3.0, -80.0)
+[journey] PASS walk: (3410.2, 3.0, -80.0)
+[journey] PASS walk: (3409.7, 3.0, -79.4)
+[journey] PASS walk: (3406.6, 3.0, -79.4)
+[journey] PASS walk: (3406.6, 3.0, -78.0)
+[journey] PASS walk: (3403.0, 3.0, -74.0)
+[journey] PASS walk: (3403.0, 2.0, -65.0)
+[journey] PASS walk: (3427.0, 2.0, -51.0)
+[journey] PASS walk: (3427.0, 2.0, -56.7)
+[journey] PASS reticle selects food (got food:<Area3D#233337527922>)
+[journey] PASS search blackwater_food
+[journey] PASS walk: (3427.0, 2.0, -51.0)
+[journey] PASS walk: (3497.0, 2.0, -35.0)
+[journey] PASS walk: (3497.0, 2.0, -40.7)
+[journey] PASS reticle selects medicine (got medicine:<Area3D#233555631742>)
+[journey] PASS search blackwater_medicine
+[journey] PASS walk: (3497.0, 2.0, -35.0)
+[journey] PASS walk: (3583.0, 2.0, -25.0)
+[journey] PASS walk: (3583.0, 2.0, -30.0)
+[journey] PASS walk: (3579.2, 2.0, -31.0)
+[journey] PASS reticle selects EvacuationNote (got EvacuationNote:<Area3D#234763591344>)
+[journey] PASS evacuation note read using E
+[journey] PASS walk: (3583.0, 2.0, -30.0)
+[journey] PASS walk: (3583.0, 2.0, -24.0)
+[journey] PASS walk: (3403.0, 2.0, -24.0)
+[journey] PASS walk: (3403.0, 2.0, -65.0)
+[journey] PASS walk: (3403.0, 3.0, -74.0)
+[journey] PASS walk: (3405.0, 3.0, -78.0)
+[journey] PASS reticle selects TrainStorage (got TrainStorage:<Area3D#251658248367>)
+[journey] PASS storage opened using E
+[journey] PASS coal deposited using R
+[journey] PASS walk: (3406.6, 3.0, -78.0)
+[journey] PASS walk: (3406.6, 3.0, -79.4)
+[journey] PASS walk: (3409.7, 3.0, -79.4)
+[journey] PASS walk: (3410.2, 3.0, -80.0)
+[journey] PASS walk: (3412.4, 3.0, -80.0)
+[journey] PASS walk: (3417.8, 3.0, -80.0)
+[journey] PASS walk: (3421.3, 3.0, -80.0)
+[journey] PASS walked aboard and through cars to cab
+[journey] PASS J opens actual save ledger
+[journey] PASS Save Game button writes the played world
+[render-warmup] 10 views / 615 ms / draw pipelines=56.0
+[journey] PASS Continue restores actual Blackwater stop
+[journey] PASS saved player world position recovered
+[journey] PASS saved camera perspective recovered
+[journey] PASS saved player support recovered
+[journey] PASS collected supplies survive Continue
+[journey] PASS evacuation note progress restored
+[journey] PASS Continue preserves cargo count without duplication
+[journey] PASS reticle selects Regulator (got Regulator:<Area3D#6486541470779>)
+[journey] PASS physical regulator starts departure
+[journey-travel] escape distance=3504.33333762432 fuel=43.1200000000154 fog=3009.8090260001 hp=100.0
+[journey-travel] escape distance=3584.33333762425 fuel=39.9200000000157 fog=3050.18435933343 hp=100.0
+[journey-travel] escape distance=3664.33333762418 fuel=36.7200000000161 fog=3090.69302600009 hp=100.0
+[journey-travel] escape distance=3744.33333762411 fuel=33.5200000000164 fog=3131.33502600009 hp=100.0
+[journey-travel] escape distance=3824.33333762403 fuel=30.3200000000166 fog=3172.11035933342 hp=100.0
+[journey-travel] escape distance=3904.33333762396 fuel=27.1200000000166 fog=3213.01902600009 hp=100.0
+[journey-travel] escape distance=3984.33333762389 fuel=23.9200000000166 fog=3254.06102600009 hp=100.0
+[journey-travel] escape distance=4064.33333762381 fuel=20.7200000000166 fog=3295.23635933342 hp=100.0
+[journey-travel] escape distance=4144.33333762374 fuel=17.5200000000166 fog=3336.54502600008 hp=100.0
+[journey-travel] escape distance=4224.33333762367 fuel=14.3200000000166 fog=3374.13056400008 hp=100.0
+[journey] PASS continuous arrival escape
+[journey] PASS mission completed through normal objectives
+[journey] PASS zero player teleports across entire journey
+--------------------------------------------------------------------------------
+Done recording movie at path: /var/folders/q2/p1t6rgxj5fj32g1dc7dmd49r0000gn/T/lto-integration-movie-h9tkfu44/journey.avi
+16848 frames at 12 FPS (movie length: 00:23:24:00), recorded in 00:05:48 (403% of real-time speed).
+CPU render time: 9.20 seconds (average: 0.55 ms/frame)
+GPU render time: 0.00 seconds (average: 0.00 ms/frame)
+Encoding time: 62.46 seconds (average: 3.71 ms/frame)
+--------------------------------------------------------------------------------
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+     at: cleanup (core/object/object.cpp:2514)

@@ -1,0 +1,23 @@
+{
+  "99": {
+    "x86_64": {
+      "text_bytes": 70772949,
+      "text_sha256": "03a2bf0b2dcb488588f47cae5b83365752b41114fa21a58798a42cd3d9e1d95f"
+    },
+    "arm64": {
+      "text_bytes": 66487868,
+      "text_sha256": "f3f25b1d6968bdf6bd0bd0b552e8b5bd7f4b3d2cf54f4c4c1fed78bc6b0f7ad0"
+    }
+  },
+  "103": {
+    "x86_64": {
+      "text_bytes": 70772949,
+      "text_sha256": "03a2bf0b2dcb488588f47cae5b83365752b41114fa21a58798a42cd3d9e1d95f"
+    },
+    "arm64": {
+      "text_bytes": 66487868,
+      "text_sha256": "f3f25b1d6968bdf6bd0bd0b552e8b5bd7f4b3d2cf54f4c4c1fed78bc6b0f7ad0"
+    }
+  },
+  "identical_native_code_sections": true
+}

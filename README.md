@@ -1,36 +1,78 @@
+# Last Train Out — Milestone 3.5.4 macOS renderer acceptance
+
+This draft combines PR #4’s detailed survivor, locomotive and Harlow art with PR #5’s continuous three-station survival journey. Press **J** for Save / Continue / New / Restart and **V** to switch camera. [Integration history](docs/MILESTONE3_INTEGRATION.md)
+
+**Hold the merge.** The optional native Metal player reached High gameplay in 35.1 s cold and 26.1 s warm on a fresh hosted Mac. Precompiling the observed route shaders reduced a 1.52 s Warehouse A entry frame to 73 ms in a paired test. Metal passed all 95 packaged stress processes. Vulkan lost the GPU on ten cold High starts. Approaching fog still produced a 237 ms Metal entry frame. The owner’s fullscreen 2020 M1 test remains pending. [Draft PR #6](https://github.com/oiwdis/last-train-out/pull/6) · [Performance report](docs/PERFORMANCE_MILESTONE354.md) · [M1 owner test](docs/M1_MILESTONE354.md)
+
+[Download the verified universal development ZIP](https://github.com/oiwdis/last-train-out/actions/runs/44822226233/artifacts/14673852596) · [SHA-256 and build identity](docs/validation/milestone354/build-103.json) · [Matched frame times](docs/validation/milestone354/build-103/matched/README.md) · [Visual gallery](docs/validation/milestone354/build-103/README.md#visual-compatibility) · [Full Metal journey](docs/recording/milestone354-native-metal.mp4)
+
+The reports below describe their respective source milestones.
+
+> Milestone 3 now opens **The Harlow Escape**, a continuous three-station survival mission. Press **J** for route progress, Save / Continue / New / Restart. See [journey, controls and save format](docs/MILESTONE3_JOURNEY.md) and [PR #4 integration notes](docs/MILESTONE3_INTEGRATION.md).
+
+> [Finalization tests, scenarios and screenshots](docs/MILESTONE3_FINALIZATION_VALIDATION.md) · [Continuous gameplay video](docs/validation/milestone3-finalization/harlow-escape-continuous.mp4) · [Performance comparison](docs/PERFORMANCE_MILESTONE3_FINALIZATION.md). Current macOS download and build checks are linked on [draft PR #5](https://github.com/oiwdis/last-train-out/pull/5).
+
+# Milestone 3: advancing fog
+
+This branch adds survival pressure to the stable M2.5 gameplay baseline. See [Milestone 3](docs/MILESTONE_3.md), [fog architecture](docs/FOG_ARCHITECTURE.md) and [balancing](docs/FOG_BALANCING.md). F3 shows fog diagnostics; R restarts after fog death. E at the locomotive bunker burns one coal sack from train storage. Closed doors reduce exposure, but no interior is immune.
+
+The historical milestone notes below describe the baseline. Milestone 3 validation and remaining scope are tracked separately in the linked report.
+
 # Last Train Out
 
 A survival adventure about the operator of the last working train in a city being swallowed by fog.
-**Milestone 2.5** adds full 3D exploration, switchable first- and third-person views,
-walkable train interiors, physical cab controls, and a wider Harlow Junction.
-Built in **Godot 4.5.1 and GDScript**, with original models and commercially usable CC0 materials.
+**Milestone 2.6** replaces the blockout worker with a licensed, skinned human and animations,
+adds an authored steam locomotive and industrial props, and improves the train interiors.
+The environment continuation adds modeled factory facades, recessed windows, pitched roofs,
+weathered benches, detailed freight vans/containers and replacement supply props.
+The finalization adds improved skin/eyes/hair, complete first-person wrists, foot and
+cargo contacts, moving locomotive rods, live gauges and damaged warehouse finishing.
+Full 3D movement, perspective switching, scavenging and moving-train gameplay remain.
+Built in **Godot 4.5.1 and GDScript**, with original project art and commercially usable CC0 models, animations and PBR materials.
 
 Search the station, fill a six-slot backpack, carry bulky supplies back to the train,
 and secure them in its hold. Enter the cab, choose a departure mode, and start the train.
 Its existing acceleration, moving-platform physics, climbing and inventory rules remain.
 
-![Harlow Junction in first person](docs/screenshots/milestone25/01_first_person_platform.png)
+![The rigged survivor at Harlow Junction](docs/screenshots/milestone26/finalization/after/02_character_front.png)
 
 | | |
 |---|---|
 | Engine | Godot **4.5.1** (the version used for this milestone's tests and exports) |
 | Language | GDScript |
-| Renderer | Forward+ on desktop (Compatibility fallback configured for web) |
+| Renderer | Desktop Forward+ with Vulkan/MoltenVK by default on macOS and optional native Metal on Apple Silicon |
 | Physics | Jolt Physics, 60 ticks/s, physics interpolation on |
 | macOS app | Built automatically by GitHub Actions for Apple Silicon and Intel - [download and play](#play-on-macos-no-godot-needed) |
-| Status | See [docs/TEST_REPORT.md](docs/TEST_REPORT.md) for what is verified and what is not |
+| Status | [Finalization review, validation and limitations](docs/FINALIZATION_REVIEW.md) |
 
-[Watch the Milestone 2.5 tour](docs/recording/milestone25_tour.mp4): perspective switching,
-walking inside a moving car, scavenging and carrying. The recording uses scripted gameplay
+[Watch the finalization tour](docs/recording/milestone26_finalization_tour.mp4): movement,
+perspective switching, moving-car traversal, scavenging, carrying and gantry climbing.
+The recording uses scripted gameplay
 inputs and explicit location cuts; it is not a frame-rate measurement.
 [Art and asset credits](docs/ASSET_CREDITS.md).
+[Environment continuation and matched screenshots](docs/ENVIRONMENT_PASS.md).
+[Watch the environment tour](docs/recording/environment_tour.mp4) and
+[review its measured rendering comparison](docs/PERFORMANCE_ENVIRONMENT.md).
 Graphics default to **Medium**. On a 2020 M1 Mac in full-screen, try **Low** using
 **F2** (often **Fn+F2** on Mac) or **Tab → Graphics**. Low and Medium cap 3D rendering
-resolution while keeping the interface sharp. [Measurements and limits](docs/PERFORMANCE.md).
+resolution while keeping the interface sharp. Startup and preset changes can show
+“Preparing scene…” while destination-GPU pipelines are prepared; gameplay pauses
+during this loading step. [Matched performance comparison and limitations](docs/PERFORMANCE_MILESTONE26.md).
+[Three-way final comparison gallery](docs/FINALIZATION_GALLERY.md),
+[final performance comparison](docs/PERFORMANCE_FINALIZATION.md) and
+[physical M1 fullscreen benchmark procedure](docs/M1_BENCHMARK.md).
+Close-up character rendering and some distant geometry remain below a photorealistic
+reference; physical 2020 M1 fullscreen performance remains unverified.
 
 ---
 
 ## Play on macOS (no Godot needed)
+
+The development build opens with Forward+ on Vulkan. On Apple Silicon, quit the game and use its bundled selector to evaluate native Metal. In Terminal, run the following command with the path to your app. Use `vulkan` in the same command for the experimental comparison. The selector prints the resolved backend and uses the same mission, graphics settings and saves. [Physical M1 test and log collection](docs/M1_MILESTONE354.md)
+
+```bash
+"/Applications/Last Train Out.app/Contents/MacOS/choose-renderer" metal --fullscreen
+```
 
 Milestone pull requests and configured development branches are tested by GitHub Actions and built into a standalone
 **Last Train Out.app**: one universal app for Apple Silicon and Intel Macs that contains the
@@ -38,10 +80,8 @@ Godot runtime and all game data. You do not need Godot, Xcode or anything else t
 
 ### 1. Download the latest build
 
-1. Open **[Actions → macOS app](https://github.com/oiwdis/last-train-out/actions/workflows/macos-app.yml?query=is%3Asuccess)**
-   (the link lists successful runs only) and click the newest run.
-2. At the bottom of the run page, under **Artifacts**, click
-   **LastTrainOut-macos-universal.zip**. You need to be signed in to GitHub.
+1. Sign in to GitHub and open the [tested development ZIP](https://github.com/oiwdis/last-train-out/actions/runs/44822226233/artifacts/14673852596).
+2. Verify the downloaded file with `shasum -a 256 LastTrainOut-macos-universal.zip` and compare the result with the [build receipt](docs/validation/milestone354/build-103.json).
 
 The run page also shows the build number, the commit it was built from and the ZIP's SHA-256.
 Development builds are kept for 30 days.
@@ -75,8 +115,10 @@ not mean the download is broken. Use either of these, once per downloaded build:
   click **Open Anyway**, and confirm with your password or Touch ID. On macOS 14 and earlier you
   can instead Control-click the app, choose **Open**, then **Open** again.
 
-If macOS says the app *"is damaged and can't be opened"*, it is the same quarantine block; the
-Terminal command above clears it. Signed builds (below) open without any of this.
+The message *"is damaged and can't be opened"* can also result from quarantine on an
+ad-hoc signed build. Check the download's SHA-256 against its run page before using
+the command above; a mismatched download should be downloaded again. Signed builds
+(below) avoid this development-build approval step.
 
 ### 4. Replacing an older build
 
@@ -109,15 +151,7 @@ Each build is only uploaded after the workflow has:
    transfers inventory and carries cargo;
 5. checked that the ZIP holds the complete bundle, file for file.
 
-Two more jobs then download the ZIP the way you would, unzip it and launch it again - one on an
-Apple Silicon Mac, one on an Intel Mac. On Apple Silicon the app opens its window and renders
-with Metal. GitHub's Intel Macs have no usable GPU, so there the Intel half of the app is only
-run without a window: the game logic is checked on Intel, the picture is not.
-
-This shows that the app starts and the game runs on GitHub's Macs. It does not replace a person
-playing it: nobody sees the picture or feels the controls in CI, and GitHub's Macs are virtual
-machines (their GPU cannot render the game's volumetric haze, so that effect is switched off
-there; High enables it only on hardware that reports support).
+Independent Apple Silicon runners download the exported ZIP and render with native Metal and Vulkan through MoltenVK. The Intel runner exercises the x86_64 player headless. The workflow also runs the packaged launch and lifecycle stress tests, visual comparisons and a continuous native gameplay journey. The hosted GPU is virtual. High enables volumetric haze only on hardware that reports support. The owner procedure measures fullscreen rendering on a physical 2020 M1. [Build 103 job results](docs/validation/milestone354/build-103/workflow.json) · [M1 procedure](docs/M1_MILESTONE354.md)
 
 ### Signed and notarized builds
 
@@ -254,7 +288,7 @@ working while it is open.
   (Emergency Steam 6 s / Normal 10 s / Slow Departure 16 s to full speed),
   maximum speed slider.
 - **Player:** Reset position, Reset stamina, Reset entire station.
-- **Future systems:** Trigger fog surge (prints a message; placeholder only).
+- **Fog:** Warn of a surge, with a configurable lead time before acceleration.
 - **Live diagnostics:** FPS, player speed, stamina, movement state, grounded,
   on train, train speed, train state, departure mode.
 
@@ -289,7 +323,7 @@ last-train-out/
 │   ├── settings/        render-only graphics presets
 │   ├── main/            game.gd - wires the systems together
 │   └── ui/              debug_menu, hud, supply_ui
-├── systems/             inventory_system; fog and passenger placeholders
+├── systems/             inventory_system; advancing fog; passenger placeholder
 ├── assets/icons/items/  original SVG inventory icons
 ├── resources/           tunable data: movement, departure modes, camera profiles, materials
 ├── tests/               test runner, unit and integration tests
@@ -336,7 +370,7 @@ last-train-out/
   **ScavengingSystem** coordinates caches, backpack, physical cargo and the moving train hold.
   **SupplyUI** subscribes to state signals.
 - **GraphicsSettings** applies Resource-based rendering presets without changing physics.
-- **Fog and passengers** remain small scene-owned placeholders. Nothing is an autoload.
+- **Fog** has a scene-owned survival authority; **passengers** remain a placeholder. Nothing is an autoload.
 
 More detail, including the reasoning behind the moving-platform approach, is
 in [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
@@ -345,7 +379,7 @@ in [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
 
 ## Tests
 
-The project has **168 automated tests** using a small Godot-native runner (no add-ons). Tests drive the
+The project has **187 automated tests** using a small Godot-native runner (no add-ons). Tests drive the
 real player through a scripted-input hook and run the real physics.
 
 ```bash
@@ -393,24 +427,24 @@ verified); the second writes `build/macos/Last Train Out.app`.
 
 ## Screenshots and recording
 
-[Milestone 2.5 screenshot gallery](docs/screenshots/milestone25/) and
-[gameplay recording](docs/recording/milestone25_tour.mp4), captured from the running game.
+[Milestone 2.6 comparison gallery](docs/screenshots/milestone26/README.md) and
+[gameplay recording](docs/recording/milestone26_tour.mp4), captured from the running game.
 Older milestone evidence remains in `docs/`.
 
 | First person | Third person |
 |---|---|
-| ![Cab controls](docs/screenshots/milestone25/04_cab_controls.png) | ![Train exterior](docs/screenshots/milestone25/02_third_person_train.png) |
-| ![Crew interior](docs/screenshots/milestone25/03_crew_interior.png) | ![Freight yard](docs/screenshots/milestone25/07_freight_yard.png) |
+| ![Cab controls](docs/screenshots/milestone26/after/09_cab.png) | ![Train exterior](docs/screenshots/milestone26/after/07_locomotive.png) |
+| ![Crew interior](docs/screenshots/milestone26/after/10_crew.png) | ![Rebuilt freight yard](docs/screenshots/milestone26/environment/after/06_freight_yard.png) |
 
 ---
 
 ## Scope
 
-Milestone 2.5 adds immersive cameras, train interiors and controls, expanded environments,
-PBR materials, an articulated worker and original ambient sound. The art is an original
-procedural interpretation; it is not a claim of AAA photorealism.
-There is no advancing dangerous fog, damage, consumption, healing, crafting, combat,
-passenger AI, train upgrades, route selection, additional stations or full save/load.
-Graphics and camera preferences persist across launches; inventory and train progress do not.
+Milestone 3.5 integrates the authored survivor, licensed locomotive, scanned materials and
+Harlow architecture from M2.6 with the three-station Harlow Escape survival journey.
+Advancing fog, exposure, shelter, fuel, scavenging, cargo and manual save/resume share one build.
+Full photorealism remains incomplete, especially at the modular Ashford and Blackwater sites.
+There is no combat, passenger AI, train upgrading, route selection or additional mission.
+Graphics and camera preferences persist; the journey ledger saves world and survival progress.
 
 [Scavenging rules and reset semantics](docs/SCAVENGING.md).

@@ -1,0 +1,14 @@
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+
+[tour-final] PASS cab starts train
+[tour-final] PASS walking passenger stays aboard
+[tour-final] PASS searched a_toolbox using E
+[tour-final] PASS searched a_coal using E
+[tour-final] PASS search reveals coal sack
+[tour-final] PASS reticle pickup holds discovered cargo
+[tour-final] PASS dropped cargo can be recovered
+[tour-final] PASS camera target opens train hold while carrying
+[tour-final] PASS exactly one discovered sack is stored
+[tour-final] PASS E grabs the gantry ladder
+[tour-final] PASS climber reaches the gantry through its open rail gap
+[tour-final] complete: camera switch, cab departure, moving interior walk, search, carry, drop/recovery and storage

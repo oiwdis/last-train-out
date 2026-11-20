@@ -16,11 +16,11 @@ var _unit_box: Mesh
 
 
 func _init(parent: Node3D, title: String = "Details") -> void:
-	_unit_box = FabricatedMesh.unit_box()
+	_unit_box = FabricatedMesh.unit_box_source()
 	root = Node3D.new()
 	root.name = title
 	root.add_to_group(&"presentation_detail")
-	parent.add_child(root)
+	parent.add_child(root, true)
 
 
 func material(color: Color, emission: float = 0.0) -> StandardMaterial3D:
@@ -85,7 +85,7 @@ func cylinder(at: Vector3, radius: float, height: float, color: Color, rotation:
 		var surface := SurfaceTool.new()
 		surface.begin(Mesh.PRIMITIVE_TRIANGLES)
 		_batches[mat] = surface
-	(_batches[mat] as SurfaceTool).append_from(shape, 0, Transform3D(Basis.from_euler(rotation), at))
+	(_batches[mat] as SurfaceTool).append_from(CpuMeshSource.new(shape.get_mesh_arrays()), 0, Transform3D(Basis.from_euler(rotation), at))
 
 
 func lettering(at: Vector3, text: String, height: float, color: Color = PALE) -> MeshInstance3D:
@@ -98,10 +98,11 @@ func lettering(at: Vector3, text: String, height: float, color: Color = PALE) ->
 	return mesh(shape, at, color, Vector3.ZERO, 0.25)
 
 
-func signboard(at: Vector3, text: String, width: float, height: float = 0.65, color: Color = AMBER) -> void:
-	box(at, Vector3(width, height, 0.06), INK)
-	box(at + Vector3(0, -height * 0.46, 0.04), Vector3(width, 0.025, 0.02), color)
-	lettering(at + Vector3(0, -height * 0.05, 0.04), text, height * 0.43, color)
+func signboard(at: Vector3, text: String, width: float, height: float = 0.65, color: Color = AMBER, yaw: float = 0.0) -> void:
+	box(at, Vector3(width, height, 0.06), INK,Vector3(0,yaw,0))
+	box(at + Vector3(0, -height * 0.46, 0.04).rotated(Vector3.UP,yaw), Vector3(width, 0.025, 0.02), color,Vector3(0,yaw,0))
+	var label := lettering(at + Vector3(0, -height * 0.05, 0.04).rotated(Vector3.UP,yaw), text, height * 0.43, color)
+	label.rotation.y = yaw
 
 
 func finish() -> void:

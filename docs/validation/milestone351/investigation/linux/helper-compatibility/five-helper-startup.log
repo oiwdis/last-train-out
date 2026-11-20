@@ -1,0 +1,8 @@
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+
+[startup] {"nodes":0.0,"phase":"script_initialized","static_bytes":21582362,"texture_bytes":0.0,"ticks_ms":132}
+[startup] {"nodes":1.0,"phase":"load_begin","static_bytes":21619638,"texture_bytes":0.0,"ticks_ms":135}
+[startup] {"nodes":1.0,"phase":"load_end","static_bytes":611123866,"texture_bytes":0.0,"ticks_ms":1354}
+[startup] {"nodes":1.0,"phase":"instantiate_end","static_bytes":614311574,"texture_bytes":0.0,"ticks_ms":1359}
+[startup] {"nodes":3806.0,"phase":"add_child_end","static_bytes":705551662,"texture_bytes":0.0,"ticks_ms":2130}
+[startup] {"nodes":3885.0,"phase":"mission_ready","static_bytes":713461122,"texture_bytes":0.0,"ticks_ms":2194}

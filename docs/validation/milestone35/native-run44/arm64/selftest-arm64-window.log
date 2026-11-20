@@ -1,0 +1,60 @@
+[mvk-error] VK_INCOMPLETE: Error writing pipeline cache data: Failed to write 4 bytes to output stream! Wrote 0
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+Vulkan 1.2.283 - Forward+ - Using Device #0: Apple - Apple Paravirtual device
+
+[self-test] ok    main_scene_loads  (res://scenes/missions/harlow_escape.tscn) [21330 ms]
+[self-test] ok    main_scene_is_the_game [21338 ms]
+[render-warmup] 10 views / 23490 ms / draw pipelines=53.0
+[self-test] ok    exported_journey_ready [53890 ms]
+[self-test] ok    exported_three_station_route [53890 ms]
+[self-test] ok    exported_save_schema [53907 ms]
+[self-test] ok    exported_survival_character_skin [53907 ms]
+[self-test] ok    exported_first_person_skin [53907 ms]
+[self-test] ok    exported_detailed_locomotive [53907 ms]
+[self-test] ok    exported_station_art [53907 ms]
+[self-test] ok    exported_fog_shader [53907 ms]
+[self-test] ok    exported_camera_save [53914 ms]
+[render-warmup] 6 views / 234 ms / draw pipelines=54.0
+[self-test] ok    station_is_harlow_junction [59072 ms]
+[self-test] ok    train_has_locomotive_and_two_cars [59072 ms]
+[self-test] ok    player_stands_on_the_platform  ((16.0, 1.0, 0.6)) [59072 ms]
+[self-test] ok    input_map_is_complete [59072 ms]
+[self-test] ok    player_walks  (1.93 m) [59741 ms]
+[self-test] ok    player_jumps [60123 ms]
+[self-test] ok    player_lands [60642 ms]
+[self-test] ok    flat_car_exists [60642 ms]
+[self-test] ok    train_departs  (5.00 m/s after 5.0 m) [63807 ms]
+[self-test] ok    player_rides_the_moving_train  (drift 0.0000 m) [63807 ms]
+[self-test] ok    debug_menu_reports_live_state  (On train: yes, train state: ACCELERATING) [64140 ms]
+[self-test] ok    immersive_camera_present [64224 ms]
+[self-test] ok    first_person_eye_in_export [65223 ms]
+[self-test] ok    walk_inside_moving_car_in_export [66223 ms]
+[self-test] ok    perspective_switch_preserves_motion_in_export [66223 ms]
+[self-test] ok    third_person_camera_in_export [67223 ms]
+[self-test] ok    physical_cab_control_in_export [68475 ms]
+[self-test] ok    scavenging_system_present [68557 ms]
+[self-test] ok    search_completes_in_export [70592 ms]
+[self-test] ok    supplies_deposit_in_export [70925 ms]
+[self-test] ok    exported_loot_is_conserved [70925 ms]
+[self-test] ok    supplies_withdraw_in_export [70926 ms]
+[self-test] ok    physical_cargo_is_carried_in_export [71830 ms]
+[self-test] ok    cargo_anchor_perspective_1_in_export [71971 ms]
+[self-test] ok    cargo_anchor_perspective_0_in_export [71978 ms]
+[self-test] ok    physical_cargo_is_released_in_export [71978 ms]
+[render-warmup] 6 views / 10581 ms / draw pipelines=84.0
+[render-warmup] 6 views / 3927 ms / draw pipelines=112.0
+[render-warmup] 6 views / 8214 ms / draw pipelines=112.0
+[self-test] ok    graphics_presets_work_in_export [95259 ms]
+[render-warmup] 6 views / 232 ms / draw pipelines=112.0
+[self-test] ok    inventory_ui_opens_in_export [95494 ms]
+[self-test] ok    fog_authority_and_hud_in_export [95590 ms]
+[self-test] ok    fog_advances_in_export [96089 ms]
+[self-test] ok    fog_damages_in_export [97090 ms]
+[self-test] ok    fog_snapshot_in_export [97092 ms]
+[self-test] ok    fuel_failure_in_export [97092 ms]
+[self-test] ok    fog_new_run_in_export [97191 ms]
+[self-test] ok    frames_are_produced  (121 frames in 2.0 s) [99193 ms]
+[self-test] ok    frame_can_be_captured [99210 ms]
+[self-test] ok    frame_is_not_blank  (67 distinct colours) [99450 ms]
+[self-test] ok    no_engine_errors [99456 ms]
+[self-test] PASSED

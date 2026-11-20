@@ -1,0 +1,52 @@
+archive,stream,pid,operation,count,aggregate_worker_s,union_wall_s,longest_ms,longest_event,unpaired
+original-metal-libraries-immediate.zip,signposts.ndjson,4664,shader_compile,517,0.0678,0.0678,1.224,shader_name=CanvasSdfShaderRD:4 stage=comp hash=2CF0DA62,0
+original-metal-libraries-immediate.zip,signposts.ndjson,4664,compute_pipeline_create,184,3.1629,3.1629,57.593,shader_name=GiShaderRD:4,0
+original-metal-libraries-immediate.zip,signposts.ndjson,4664,render_pipeline_create,253,0.3928,0.1079,6.009,shader_name=SceneForwardClusteredShaderRD:2,0
+original-metal-libraries-lazy.zip,signposts.ndjson,9480,compute_pipeline_create,184,4.6418,4.6418,105.661,shader_name=GiShaderRD:4,0
+original-metal-libraries-lazy.zip,signposts.ndjson,9480,shader_compile,319,0.0945,0.0877,3.142,shader_name=SceneForwardClusteredShaderRD:16 stage=vert hash=D8097473,0
+original-metal-libraries-lazy.zip,signposts.ndjson,9480,render_pipeline_create,253,0.7509,0.3819,15.753,shader_name=SceneForwardClusteredShaderRD:2,0
+repeat-87-libraries-immediate.zip,signposts.ndjson,7348,shader_compile,517,0.1471,0.1471,4.688,shader_name=CanvasSdfShaderRD:0 stage=comp hash=C690A6C6,0
+repeat-87-libraries-immediate.zip,signposts.ndjson,7348,compute_pipeline_create,184,4.4091,4.4091,97.585,shader_name=GiShaderRD:3,0
+repeat-87-libraries-immediate.zip,signposts.ndjson,7348,render_pipeline_create,253,0.9263,0.4682,42.611,shader_name=SceneForwardClusteredShaderRD:16,0
+repeat-87-libraries-lazy.zip,signposts.ndjson,7025,compute_pipeline_create,184,5.1866,5.1866,117.389,shader_name=GiShaderRD:3,0
+repeat-87-libraries-lazy.zip,signposts.ndjson,7025,shader_compile,319,0.1634,0.1489,27.95,shader_name=SceneForwardClusteredShaderRD:16 stage=frag hash=2D8FBB61,0
+repeat-87-libraries-lazy.zip,signposts.ndjson,7025,render_pipeline_create,253,1.066,0.5402,46.492,shader_name=SceneForwardClusteredShaderRD:16,0
+repeat-88-libraries-immediate.zip,signposts.ndjson,6771,shader_compile,517,0.1611,0.1611,6.817,shader_name=CanvasSdfShaderRD:0 stage=comp hash=C690A6C6,0
+repeat-88-libraries-immediate.zip,signposts.ndjson,6771,compute_pipeline_create,184,5.6785,5.6785,114.062,shader_name=GiShaderRD:4,0
+repeat-88-libraries-immediate.zip,signposts.ndjson,6771,render_pipeline_create,253,0.7316,0.3588,23.895,shader_name=SceneForwardClusteredShaderRD:16,0
+repeat-88-libraries-lazy.zip,signposts.ndjson,7196,compute_pipeline_create,184,4.2207,4.2207,108.333,shader_name=GiShaderRD:3,0
+repeat-88-libraries-lazy.zip,signposts.ndjson,7196,shader_compile,319,0.0962,0.0884,19.335,shader_name=SceneForwardClusteredShaderRD:16 stage=frag hash=24F8CCE4,0
+repeat-88-libraries-lazy.zip,signposts.ndjson,7196,render_pipeline_create,253,0.5963,0.297,21.917,shader_name=SceneForwardClusteredShaderRD:16,0
+metal-library-policy.zip,signposts.ndjson,15367,shader_compile,517,0.0672,0.0672,2.837,shader_name=CanvasSdfShaderRD:0 stage=comp hash=C690A6C6,0
+metal-library-policy.zip,signposts.ndjson,15367,compute_pipeline_create,184,3.5463,3.5463,98.111,shader_name=CanvasSdfShaderRD:0,0
+metal-library-policy.zip,signposts.ndjson,15367,render_pipeline_create,253,0.3928,0.1965,7.769,shader_name=SceneForwardClusteredShaderRD:2,0
+fresh-native-metal-replay.zip,player-first/signposts.ndjson,1847,compute_pipeline_create,184,36.4172,36.4172,757.008,shader_name=GiShaderRD:3,0
+fresh-native-metal-replay.zip,player-first/signposts.ndjson,1847,shader_compile,319,149.3636,91.7601,1748.123,shader_name=SceneForwardClusteredShaderRD:17 stage=frag hash=5A01C976,0
+fresh-native-metal-replay.zip,player-first/signposts.ndjson,1847,render_pipeline_create,253,142.2685,60.9742,2317.335,shader_name=SceneForwardClusteredShaderRD:17,0
+fresh-native-metal-signposts.zip,player-first/signposts.ndjson,1887,compute_pipeline_create,184,51.6173,51.6173,1617.964,shader_name=GiShaderRD:0,0
+fresh-native-metal-signposts.zip,player-first/signposts.ndjson,1887,shader_compile,319,202.4357,125.5141,2231.932,shader_name=SceneForwardClusteredShaderRD:17 stage=frag hash=7AF8729E,0
+fresh-native-metal-signposts.zip,player-first/signposts.ndjson,1887,render_pipeline_create,253,191.6029,82.1859,4532.493,shader_name=SceneForwardClusteredShaderRD:17,0
+worker-corrected-instrumented.zip,player/signposts.ndjson,1811,compute_pipeline_create,184,50.8276,50.8276,1292.105,shader_name=CanvasSdfShaderRD:0,0
+worker-corrected-instrumented.zip,player/signposts.ndjson,1811,shader_compile,319,172.5338,109.7019,1588.676,shader_name=SceneForwardClusteredShaderRD:17 stage=frag hash=6FE1642C,0
+worker-corrected-instrumented.zip,player/signposts.ndjson,1811,render_pipeline_create,253,161.9419,67.0222,3552.169,shader_name=SceneForwardClusteredShaderRD:17,0
+worker-early-instrumented.zip,player/signposts.ndjson,1490,compute_pipeline_create,184,39.2122,39.2122,1140.106,shader_name=SsilShaderRD:0,0
+worker-early-instrumented.zip,player/signposts.ndjson,1490,shader_compile,319,141.1384,88.9995,1599.345,shader_name=SceneForwardClusteredShaderRD:17 stage=frag hash=86DC6D71,0
+worker-early-instrumented.zip,player/signposts.ndjson,1490,render_pipeline_create,253,134.1355,56.0373,3769.337,shader_name=SceneForwardClusteredShaderRD:17,0
+gi-eager-gi.zip,feature/eager/signposts.ndjson,7148,compute_pipeline_create,184,4.7293,4.7293,104.665,shader_name=GiShaderRD:4,0
+gi-eager-gi.zip,feature/eager/signposts.ndjson,7148,shader_compile,177,3.9944,3.9877,953.011,shader_name=SceneForwardClusteredShaderRD:15 stage=frag hash=D89D3570,0
+gi-eager-gi.zip,feature/eager/signposts.ndjson,7148,render_pipeline_create,27,7.516,4.0487,1745.742,shader_name=SceneForwardClusteredShaderRD:15,0
+gi-eager-gi.zip,feature/on-demand/signposts.ndjson,7654,compute_pipeline_create,145,2.5727,2.5727,78.343,shader_name=CanvasSdfShaderRD:0,0
+gi-eager-gi.zip,feature/on-demand/signposts.ndjson,7654,shader_compile,175,0.034,0.0326,2.115,shader_name=ParticlesCopyShaderRD:7 stage=comp hash=29FA4FF0,0
+gi-eager-gi.zip,feature/on-demand/signposts.ndjson,7654,render_pipeline_create,27,0.0544,0.0277,6.978,shader_name=SceneForwardClusteredShaderRD:0,0
+gi-eager-gi.zip,lab/signposts.ndjson,6300,compute_pipeline_create,184,5.4264,5.4264,107.901,shader_name=GiShaderRD:3,0
+gi-eager-gi.zip,lab/signposts.ndjson,6300,shader_compile,319,0.1271,0.1183,12.885,shader_name=CanvasSdfShaderRD:0 stage=comp hash=C690A6C6,0
+gi-eager-gi.zip,lab/signposts.ndjson,6300,render_pipeline_create,253,0.7963,0.3688,15.82,shader_name=SceneForwardClusteredShaderRD:16,0
+gi-on-demand-gi.zip,feature/eager/signposts.ndjson,7144,compute_pipeline_create,184,2.7283,2.7283,47.973,shader_name=GiShaderRD:4,0
+gi-on-demand-gi.zip,feature/eager/signposts.ndjson,7144,shader_compile,177,1.8232,0.9734,511.844,shader_name=SceneForwardClusteredShaderRD:15 stage=frag hash=D89D3570,0
+gi-on-demand-gi.zip,feature/eager/signposts.ndjson,7144,render_pipeline_create,27,3.6774,0.9804,932.39,shader_name=SceneForwardClusteredShaderRD:15,0
+gi-on-demand-gi.zip,feature/on-demand/signposts.ndjson,7389,compute_pipeline_create,145,1.3915,1.3915,47.383,shader_name=FsrUpscaleShaderRD:0,0
+gi-on-demand-gi.zip,feature/on-demand/signposts.ndjson,7389,shader_compile,175,0.0131,0.0112,0.605,shader_name=CanvasSdfShaderRD:0 stage=comp hash=C690A6C6,0
+gi-on-demand-gi.zip,feature/on-demand/signposts.ndjson,7389,render_pipeline_create,27,0.0326,0.0115,3.244,shader_name=SceneForwardClusteredShaderRD:17,0
+gi-on-demand-gi.zip,lab/signposts.ndjson,6637,compute_pipeline_create,144,2.1307,2.1307,53.875,shader_name=FsrUpscaleShaderRD:0,0
+gi-on-demand-gi.zip,lab/signposts.ndjson,6637,shader_compile,316,0.0398,0.0346,1.194,shader_name=SsilImportanceMapShaderRD:1 stage=comp hash=EC267709,0
+gi-on-demand-gi.zip,lab/signposts.ndjson,6637,render_pipeline_create,253,0.356,0.0993,3.748,shader_name=SceneForwardClusteredShaderRD:2,0

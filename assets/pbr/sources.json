@@ -182,5 +182,28 @@
         "sha256": "f214f22608dd75aa3e7b4da8bffac97c344cbacbc50f49ba0beb0236701a622c"
       }
     ]
+  },
+  {
+    "asset": "gravel_stones",
+    "source": "https://polyhaven.com/a/gravel_stones",
+    "license": "CC0-1.0",
+    "license_url": "https://polyhaven.com/license",
+    "files": [
+      {
+        "path": "assets/pbr/gravel_stones_albedo.jpg",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/gravel_stones/gravel_stones_diff_1k.jpg",
+        "sha256": "b77a4c0824f4c860b9230949baca764fdb0651fa0016b2644cd07490f82fac43"
+      },
+      {
+        "path": "assets/pbr/gravel_stones_normal.jpg",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/gravel_stones/gravel_stones_nor_gl_1k.jpg",
+        "sha256": "49b4a592f021e7eb44f1638be5309ef6f0c3c8a51e7c857ffb54dc4836a8a070"
+      },
+      {
+        "path": "assets/pbr/gravel_stones_roughness.jpg",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/gravel_stones/gravel_stones_rough_1k.jpg",
+        "sha256": "874b326f617f4ce59b3522871482dfc569d37624d1948f521a46d7668bdef950"
+      }
+    ]
   }
 ]

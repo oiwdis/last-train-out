@@ -4,6 +4,7 @@ extends Interactable
 
 var train: Train
 var command := 0
+var _handle: Node3D
 
 
 func _ready() -> void:
@@ -13,10 +14,9 @@ func _ready() -> void:
 	sphere.radius = 0.19
 	collider.shape = sphere
 	add_child(collider)
-	var d := DetailBuilder.new(self)
-	d.cylinder(Vector3.ZERO, 0.085, 0.05, [Color("789780"), Color("a2553e"), DetailBuilder.AMBER][command], Vector3(0, 0, PI / 2))
-	d.beam(Vector3.ZERO, Vector3(-0.17, 0.12, 0), 0.025, DetailBuilder.STEEL)
-	d.finish()
+	var fixture := preload("res://assets/train/control_lever.glb").instantiate()
+	add_child(fixture)
+	_handle = fixture.find_child("Handle", true, false) as Node3D
 	set_process(true)
 	_refresh()
 
@@ -33,11 +33,18 @@ func interact(player: Player) -> bool:
 		1: train.stop()
 		2: train.set_mode_index((train.get_mode_index() + 1) % 3)
 	_refresh()
+	player.present_action(&"operate", .8, _handle.to_global(Vector3(-.19,.15,0)), _handle)
 	return true
 
 
 func _process(_delta: float) -> void:
 	_refresh()
+	if _handle != null and train != null:
+		if command == 2:
+			_handle.rotation.z = (train.get_mode_index() - 1) * 0.22
+			return
+		var engaged := train.state == Train.State.ACCELERATING if command == 0 else train.state == Train.State.BRAKING
+		_handle.rotation.z = -0.35 if engaged else 0.0
 
 
 func _refresh() -> void:

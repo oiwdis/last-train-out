@@ -56,11 +56,26 @@ sed \
 
 rm -rf "$APP"
 mkdir -p "$(dirname "$APP")"
+# The graphical editor keeps scanning while shaders bake. Do not import the
+# bundle being written inside this project's build directory (including .icns).
+mkdir -p "$ROOT/build"
+touch "$ROOT/build/.gdignore"
 LOG="$(dirname "$APP")/export.log"
 
 echo "Exporting build $BUILD_NUMBER ($BUILD_KIND, commit $BUILD_COMMIT) to $APP"
+# Refresh the export-only inventory from the actual generated game materials.
+# Its one-pixel maps preserve shader features without duplicating source images.
+"$GODOT" --headless --path "$ROOT" --script tools/assets/bake_runtime_materials.gd > "$(dirname "$APP")/shader-inventory.log" 2>&1
+# Godot 4.5 silently skips shader baking with the dummy/headless renderer.
+# Native Mac exports need the configured real renderer, even without an editor UI.
+EXPORT_RENDERER=(--headless)
+if [ "$(uname -s)" = Darwin ]; then
+	MAC_DRIVER="$(python3 -c 'from tools.macos.verify_app import project_setting; print(project_setting("rendering_device/driver.macos") or "metal")')"
+	case "$MAC_DRIVER" in metal|vulkan) ;; *) echo "Unsupported Mac rendering driver: $MAC_DRIVER" >&2; exit 1 ;; esac
+	EXPORT_RENDERER=(--rendering-method forward_plus --rendering-driver "$MAC_DRIVER" --audio-driver Dummy)
+fi
 set +e
-"$GODOT" --headless --path "$ROOT" --export-release "macOS" "$APP" > "$LOG" 2>&1
+"$GODOT" "${EXPORT_RENDERER[@]}" --path "$ROOT" --export-release "macOS" "$APP" > "$LOG" 2>&1
 CODE=$?
 set -e
 
@@ -78,5 +93,27 @@ fi
 if [ ! -d "$APP" ]; then
 	echo "The export finished but $APP does not exist (full log: $LOG)." >&2
 	exit 1
+fi
+if [ "$(uname -s)" = Darwin ] && ! grep -qi "$MAC_DRIVER.*Forward+" "$LOG"; then
+	echo "The native export did not initialize the $MAC_DRIVER shader-baking backend (full log: $LOG)." >&2
+	exit 1
+fi
+if [ "$(uname -s)" = Darwin ]; then
+	# Keep the stock Godot executable and its single PCK untouched. The optional
+	# selector is a second universal executable, signed inside the same bundle.
+	METAL_TEMPLATE="${LTO_METAL_TEMPLATE:-}"
+	if [ -z "$METAL_TEMPLATE" ]; then
+		tools/macos/engine/build_metal_template.sh "$(dirname "$APP")/metal-template"
+		METAL_TEMPLATE="$(dirname "$APP")/metal-template/LastTrainOutMetal"
+	fi
+	install -m 755 "$METAL_TEMPLATE" "$APP/Contents/MacOS/LastTrainOutMetal"
+	codesign --force --sign - "$APP/Contents/MacOS/LastTrainOutMetal"
+	CHOOSER="$APP/Contents/MacOS/choose-renderer"
+	xcrun clang -fobjc-arc -O2 -arch arm64 -arch x86_64 -mmacosx-version-min=11.0 \
+		-framework Metal -framework Foundation tools/macos/choose_renderer.m -o "$CHOOSER"
+	codesign --force --sign - "$CHOOSER"
+	cp tools/macos/notices/Godot-*.txt "$APP/Contents/Resources/"
+	python3 tools/macos/prepare_metal_shaders.py "$APP" "$(dirname "$APP")/metal-inventory"
+	codesign --force --sign - "$APP"
 fi
 echo "Exported $APP ($(du -sh "$APP" | cut -f1))"

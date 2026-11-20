@@ -6,6 +6,7 @@ extends CanvasLayer
 var _player: Player
 var _train: Train
 var _station: Station
+var _journey: Node
 var _refresh := 0.0
 var _message_time := 0.0
 var _location_time := 0.0
@@ -41,7 +42,7 @@ func _build() -> void:
 	add_child(_root)
 	var location_box := _panel("Location", Vector2(30, 28), Vector2(320, 78))
 	var location_rows := _rows(location_box)
-	_label(location_rows, "LAST TRAIN OUT     /     HARLOW JUNCTION", 11, RailTheme.MUTED)
+	_label(location_rows, "LAST TRAIN OUT     /     TRAIN 07", 11, RailTheme.MUTED)
 	_location = _label(location_rows, "01  /  PLATFORM", 20, RailTheme.PAPER)
 	var train_box := _panel("Departure", Vector2(-294, 28), Vector2(264, 104), Vector2(1, 0))
 	var train_rows := _rows(train_box)
@@ -142,12 +143,13 @@ func _ignore_mouse(node: Node) -> void:
 		_ignore_mouse(child)
 
 
-func bind(player: Player, train: Train = null, station: Station = null) -> void:
+func bind(player: Player, train: Train = null, station: Station = null, journey: Node = null) -> void:
 	if is_instance_valid(_player) and _player.stamina.changed.is_connected(_on_stamina_changed):
 		_player.stamina.changed.disconnect(_on_stamina_changed)
 	_player = player
 	_train = train
 	_station = station
+	_journey = journey
 	_aboard = false
 	_board_time = 0
 	if _player == null:
@@ -163,9 +165,15 @@ func _process(delta: float) -> void:
 	_message_panel.modulate.a = move_toward(_message_panel.modulate.a, minf(_message_time / 0.4, 1), delta * 5)
 	if not is_instance_valid(_player):
 		return
-	_stamina_bar.value = lerpf(_stamina_bar.value, _stamina_target, 1.0 - exp(-14 * delta))
+	# Stop imperceptible subpixel updates once the visual has reached its target.
+	var stamina_shown := lerpf(_stamina_bar.value, _stamina_target, 1.0 - exp(-14 * delta))
+	_stamina_bar.value = _stamina_target if absf(stamina_shown-_stamina_target) < .01 else stamina_shown
 	var exhausted := _player.stamina.is_exhausted
-	_fill.bg_color = RailTheme.ALERT if exhausted else RailTheme.AMBER
+	var fill_color := RailTheme.ALERT if exhausted else RailTheme.AMBER
+	# StyleBoxFlat emits changed even for the same color. Reassigning this every
+	# frame rebuilds/upload polygons and waits for a transfer fence on Vulkan.
+	if _fill.bg_color != fill_color:
+		_fill.bg_color = fill_color
 	_stamina_label.text = "EXHAUSTED / RECOVER" if exhausted else "STAMINA"
 	_stamina_label.modulate = RailTheme.ALERT if exhausted else Color.WHITE
 	_prompt_panel.modulate.a = move_toward(_prompt_panel.modulate.a, 0.0 if _prompt.text.is_empty() else 1.0, delta * 7)
@@ -191,13 +199,21 @@ func _refresh_context() -> void:
 	_stamina_value.text = "%03d" % roundi(_player.stamina.current / maxf(_player.stamina.max_stamina, 1) * 100)
 	if is_instance_valid(_station):
 		var location := location_at(_station.to_local(_player.global_position), _player.is_on_train())
+		if is_instance_valid(_journey) and not _player.is_on_train():
+			var stop: String = _journey.current_station()
+			if stop == "ashford": location = "02  /  ASHFORD DEPOT"
+			elif stop == "blackwater": location = "03  /  BLACKWATER"
 		if location != _last_location:
 			_last_location = location
 			_location.text = location
 			_location.modulate.a = 0.3
 			_location_time = 3.0
 	if is_instance_valid(_train):
-		_status.text = departure_status(_train.state, _train.is_at_end_of_track(), _train.distance < 0.1)
+		var at_platform := _train.distance < 0.1
+		if is_instance_valid(_journey):
+			for progress in _journey.route.stations.values():
+				at_platform = at_platform or absf(_train.distance-float(progress)) < 4
+		_status.text = departure_status(_train.state, _train.is_at_end_of_track(), at_platform)
 		_status.modulate = RailTheme.ALERT if _train.state == Train.State.ACCELERATING and not _aboard else Color.WHITE
 		_speed.text = "%02d km/h" % roundi(_train.speed * 3.6)
 		_train_gauge.value = 100 * _train.speed / maxf(_train.max_speed, 0.1)

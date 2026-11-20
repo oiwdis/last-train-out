@@ -1,0 +1,197 @@
+{
+  "checks": [
+    {
+      "check": "walk: (5.0, 1.0, 1.2)",
+      "passed": true
+    },
+    {
+      "check": "reticle selects @Area3D@2536 (got @Area3D@2536:<Area3D#270515838739>)",
+      "passed": true
+    },
+    {
+      "check": "search harlow_departure_coal",
+      "passed": true
+    },
+    {
+      "check": "reticle selects @Area3D@2592 (got @Area3D@2592:<Area3D#292611428034>)",
+      "passed": true
+    },
+    {
+      "check": "physical heavy pickup: coal_sack",
+      "passed": true
+    },
+    {
+      "check": "walk: (5.0, 1.0, 0.0)",
+      "passed": true
+    },
+    {
+      "check": "walk: (5.0, 1.0, -0.8)",
+      "passed": true
+    },
+    {
+      "check": "reticle selects TrainStorage (got TrainStorage:<Area3D#243789734155>)",
+      "passed": true
+    },
+    {
+      "check": "storage opened using E",
+      "passed": true
+    },
+    {
+      "check": "coal deposited using R",
+      "passed": true
+    },
+    {
+      "check": "walk: (6.6, 1.0, -1.5)",
+      "passed": true
+    },
+    {
+      "check": "walk: (6.6, 1.0, -2.9)",
+      "passed": true
+    },
+    {
+      "check": "walk: (9.7, 1.0, -2.9)",
+      "passed": true
+    },
+    {
+      "check": "walk: (10.2, 1.0, -3.5)",
+      "passed": true
+    },
+    {
+      "check": "walk: (12.4, 1.0, -3.5)",
+      "passed": true
+    },
+    {
+      "check": "walk: (17.8, 1.0, -3.5)",
+      "passed": true
+    },
+    {
+      "check": "walk: (21.3, 1.0, -3.5)",
+      "passed": true
+    },
+    {
+      "check": "walked aboard and through cars to cab",
+      "passed": true
+    },
+    {
+      "check": "train stayed at Harlow throughout the wait",
+      "passed": true
+    },
+    {
+      "check": "fog advanced naturally from its initial position",
+      "passed": true
+    },
+    {
+      "check": "stationary cab occupant takes real exposure damage",
+      "passed": true
+    },
+    {
+      "check": "cab shelter only delays lethal fog",
+      "passed": true
+    },
+    {
+      "check": "natural fog death produces mission failure",
+      "passed": true
+    },
+    {
+      "check": "zero teleports during natural fog catch",
+      "passed": true
+    }
+  ],
+  "failed": false,
+  "graphics_preset": 0,
+  "integration_tour": false,
+  "late_escape": false,
+  "observations": [
+    {
+      "distance": 0.0,
+      "exposure": 0.0,
+      "front": -884.292386666666,
+      "fuel": 55.0,
+      "health": 100.0,
+      "label": "waiting in stationary cab",
+      "time": 70.6000000000003
+    },
+    {
+      "distance": 0.0,
+      "exposure": 0.0,
+      "front": -738.240386666667,
+      "fuel": 55.0,
+      "health": 100.0,
+      "label": "waiting in stationary cab",
+      "time": 130.599999999997
+    },
+    {
+      "distance": 0.0,
+      "exposure": 0.0,
+      "front": -569.173826666667,
+      "fuel": 55.0,
+      "health": 100.0,
+      "label": "waiting in stationary cab",
+      "time": 190.599999999993
+    },
+    {
+      "distance": 0.0,
+      "exposure": 0.0,
+      "front": -413.521826666668,
+      "fuel": 55.0,
+      "health": 100.0,
+      "label": "waiting in stationary cab",
+      "time": 250.59999999999
+    },
+    {
+      "distance": 0.0,
+      "exposure": 0.0,
+      "front": -272.160866666668,
+      "fuel": 55.0,
+      "health": 100.0,
+      "label": "waiting in stationary cab",
+      "time": 310.600000000002
+    },
+    {
+      "distance": 0.0,
+      "exposure": 0.0,
+      "front": -99.7577428666674,
+      "fuel": 55.0,
+      "health": 100.0,
+      "label": "waiting in stationary cab",
+      "time": 370.600000000016
+    },
+    {
+      "distance": 0.0,
+      "exposure": 82.4803985819924,
+      "front": 63.8832810333343,
+      "fuel": 55.0,
+      "health": 26.8700731259544,
+      "label": "waiting in stationary cab",
+      "time": 430.600000000029
+    },
+    {
+      "distance": 0.0,
+      "exposure": 97.3040558113989,
+      "front": 70.7852010333344,
+      "fuel": 55.0,
+      "health": 0.0,
+      "label": "stranded outcome",
+      "time": 433.00000000003
+    }
+  ],
+  "results": {
+    "distance": 0.0,
+    "exposure_seconds": 22.4166666666667,
+    "mission": "harlow_escape_v1",
+    "peak_exposure": 97.3040558113989,
+    "stations_visited": [
+      "harlow"
+    ],
+    "status": "failed",
+    "supplies_collected": {
+      "harlow/coal_sack": 1
+    },
+    "time_survived": 433.00000000003,
+    "version": 1
+  },
+  "save_restore_repositions": 0,
+  "scenario": "stranded",
+  "source_commit": "7a53907840eae936f98c4a5d10344581cffe5f92",
+  "teleports": 0
+}

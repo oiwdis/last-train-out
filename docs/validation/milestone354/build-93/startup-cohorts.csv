@@ -1,0 +1,13 @@
+driver,preset,cache,scheduled,started,passed,losses,diagnostic_processes,engine_min_s,engine_median_s,engine_p95_s,engine_max_s,launcher_min_s,launcher_median_s,launcher_p95_s,launcher_max_s,elapsed_clock,within_target,completed_worst_first_window_ms
+metal,high,cold,20,20,20,0,0,19.128,20.619,34.459,94.275,19.424,21.1,34.853,95.285,launcher_ready_ms,18,111.058
+metal,high,warm,20,20,20,0,0,16.046,16.592,19.993,25.021,16.224,16.803,20.321,25.296,launcher_ready_ms,0,82.191
+metal,medium,cold,10,10,10,0,0,13.543,14.896,53.154,53.154,13.727,15.097,53.477,53.477,launcher_ready_ms,9,62.047
+metal,low,cold,10,10,10,0,0,12.705,16.2,92.587,92.587,12.892,16.484,93.483,93.483,launcher_ready_ms,9,198.556
+metal,medium,warm,10,10,10,0,0,12.956,13.59,18.591,18.591,13.082,13.718,18.912,18.912,launcher_ready_ms,7,105.802
+metal,low,warm,10,10,10,0,0,12.395,12.697,19.476,19.476,12.543,12.828,19.736,19.736,launcher_ready_ms,6,123.739
+vulkan,high,cold,20,20,20,0,0,16.143,19.571,22.622,48.35,,,,,ready_ms,19,171.33
+vulkan,high,warm,20,20,20,0,0,15.712,17.005,17.48,17.699,,,,,ready_ms,0,49.581
+vulkan,medium,cold,10,10,10,0,0,15.783,23.122,78.202,78.202,,,,,ready_ms,7,193.807
+vulkan,low,cold,10,10,9,1,1,15.161,24.705,52.913,52.913,,,,,ready_ms,6,157.852
+vulkan,medium,warm,10,10,10,0,0,14.994,18.566,22.277,22.277,,,,,ready_ms,1,135.101
+vulkan,low,warm,10,10,10,0,0,14.202,17.816,23.721,23.721,,,,,ready_ms,4,110.47

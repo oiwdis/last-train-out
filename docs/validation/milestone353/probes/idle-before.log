@@ -1,0 +1,4 @@
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+
+idle 120 frames: [146, 146, 146, 120]
+after 60 moving frames: [325, 325, 325, 180]

@@ -1,0 +1,4 @@
+archive,stream,pid,operation,count,aggregate_worker_s,union_wall_s,longest_ms,longest_event,unpaired
+metal-library-policy.zip,signposts.ndjson,13099,compute_pipeline_create,184,4.9614,4.9614,111.88,shader_name=GiShaderRD:4,0
+metal-library-policy.zip,signposts.ndjson,13099,shader_compile,194,0.0436,0.0436,2.496,shader_name=CanvasShaderRD:1 stage=vert hash=B8CEFD76,0
+metal-library-policy.zip,signposts.ndjson,13099,render_pipeline_create,253,0.5871,0.2685,12.625,shader_name=SceneForwardClusteredShaderRD:0,0

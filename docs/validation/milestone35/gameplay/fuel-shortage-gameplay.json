@@ -1,0 +1,233 @@
+{
+  "checks": [
+    {
+      "check": "walk: (5.0, 1.0, 1.2)",
+      "passed": true
+    },
+    {
+      "check": "reticle selects @Area3D@2529 (got @Area3D@2529:<Area3D#265868549902>)",
+      "passed": true
+    },
+    {
+      "check": "search harlow_departure_coal",
+      "passed": true
+    },
+    {
+      "check": "reticle selects @Area3D@2585 (got @Area3D@2585:<Area3D#287964139203>)",
+      "passed": true
+    },
+    {
+      "check": "physical heavy pickup: coal_sack",
+      "passed": true
+    },
+    {
+      "check": "walk: (5.0, 1.0, 0.0)",
+      "passed": true
+    },
+    {
+      "check": "walk: (5.0, 1.0, -0.8)",
+      "passed": true
+    },
+    {
+      "check": "reticle selects TrainStorage (got TrainStorage:<Area3D#239326994705>)",
+      "passed": true
+    },
+    {
+      "check": "storage opened using E",
+      "passed": true
+    },
+    {
+      "check": "coal deposited using R",
+      "passed": true
+    },
+    {
+      "check": "walk: (6.6, 1.0, -1.5)",
+      "passed": true
+    },
+    {
+      "check": "walk: (6.6, 1.0, -2.9)",
+      "passed": true
+    },
+    {
+      "check": "walk: (9.7, 1.0, -2.9)",
+      "passed": true
+    },
+    {
+      "check": "walk: (10.2, 1.0, -3.5)",
+      "passed": true
+    },
+    {
+      "check": "walk: (12.4, 1.0, -3.5)",
+      "passed": true
+    },
+    {
+      "check": "walk: (17.8, 1.0, -3.5)",
+      "passed": true
+    },
+    {
+      "check": "walk: (21.3, 1.0, -3.5)",
+      "passed": true
+    },
+    {
+      "check": "walked aboard and through cars to cab",
+      "passed": true
+    },
+    {
+      "check": "reticle selects Regulator (got Regulator:<Area3D#262999647586>)",
+      "passed": true
+    },
+    {
+      "check": "physical regulator starts departure",
+      "passed": true
+    },
+    {
+      "check": "starting fuel exhausted through real train operation",
+      "passed": true
+    },
+    {
+      "check": "empty boiler stops the moving train",
+      "passed": true
+    },
+    {
+      "check": "stranded between Harlow and Ashford",
+      "passed": true
+    },
+    {
+      "check": "rider remains aboard after fuel stop",
+      "passed": true
+    },
+    {
+      "check": "walk: (1357.4, 7.2, 185.3)",
+      "passed": true
+    },
+    {
+      "check": "reticle selects Regulator (got Regulator:<Area3D#262999647586>)",
+      "passed": true
+    },
+    {
+      "check": "physical regulator cannot depart on an empty boiler",
+      "passed": true
+    },
+    {
+      "check": "collected coal survives travel in storage",
+      "passed": true
+    },
+    {
+      "check": "reticle selects StokeBoiler (got StokeBoiler:<Area3D#264106943903>)",
+      "passed": true
+    },
+    {
+      "check": "stored coal stokes boiler",
+      "passed": true
+    },
+    {
+      "check": "refueling consumes the one collected sack",
+      "passed": true
+    },
+    {
+      "check": "reticle selects Regulator (got Regulator:<Area3D#262999647586>)",
+      "passed": true
+    },
+    {
+      "check": "physical regulator starts departure",
+      "passed": true
+    },
+    {
+      "check": "continuous arrival ashford",
+      "passed": true
+    },
+    {
+      "check": "zero teleports during fuel-shortage recovery",
+      "passed": true
+    }
+  ],
+  "failed": false,
+  "graphics_preset": 0,
+  "integration_tour": false,
+  "late_escape": false,
+  "observations": [
+    {
+      "distance": 202.333335717511,
+      "exposure": 0.0,
+      "front": -954.105626666666,
+      "fuel": 45.3040000000011,
+      "health": 100.0,
+      "label": "initial fuel burning",
+      "time": 41.2000000000003
+    },
+    {
+      "distance": 442.333335717498,
+      "exposure": 0.0,
+      "front": -882.855626666666,
+      "fuel": 35.7040000000021,
+      "health": 100.0,
+      "label": "initial fuel burning",
+      "time": 71.2000000000002
+    },
+    {
+      "distance": 682.333335717484,
+      "exposure": 0.0,
+      "front": -810.405626666666,
+      "fuel": 26.1040000000025,
+      "health": 100.0,
+      "label": "initial fuel burning",
+      "time": 101.199999999999
+    },
+    {
+      "distance": 922.333335717471,
+      "exposure": 0.0,
+      "front": -736.755626666667,
+      "fuel": 16.5040000000025,
+      "health": 100.0,
+      "label": "initial fuel burning",
+      "time": 131.199999999997
+    },
+    {
+      "distance": 1162.33333571757,
+      "exposure": 0.0,
+      "front": -661.905626666667,
+      "fuel": 6.90400000000251,
+      "health": 100.0,
+      "label": "initial fuel burning",
+      "time": 161.199999999995
+    },
+    {
+      "distance": 1358.80000095388,
+      "exposure": 0.0,
+      "front": -569.42924,
+      "fuel": 0.0,
+      "health": 100.0,
+      "label": "out of fuel",
+      "time": 190.499999999993
+    },
+    {
+      "distance": 1822.80000190788,
+      "exposure": 0.0,
+      "front": -397.427740000001,
+      "fuel": 23.8800000000014,
+      "health": 100.0,
+      "label": "arrived after refueling",
+      "time": 257.59999999999
+    }
+  ],
+  "results": {
+    "distance": 1822.80000190788,
+    "exposure_seconds": 0.0,
+    "mission": "harlow_escape_v1",
+    "peak_exposure": 0.0,
+    "stations_visited": [
+      "harlow",
+      "ashford"
+    ],
+    "status": "active",
+    "supplies_collected": {
+      "harlow/coal_sack": 1
+    },
+    "time_survived": 257.59999999999,
+    "version": 1
+  },
+  "save_restore_repositions": 0,
+  "scenario": "fuel-shortage",
+  "source_commit": "4630e703c0aa1bfd855ab79304d86d02e7db3570",
+  "teleports": 0
+}

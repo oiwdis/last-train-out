@@ -1,0 +1,43 @@
+{
+  "failed": 0,
+  "godot": "4.5.1-stable (official)",
+  "passed": 5,
+  "physics_engine": "Jolt Physics",
+  "results": [
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_environment_assets.gd",
+      "test": "test_container_art_keeps_roof_and_ladder_collision_dimensions"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_environment_assets.gd",
+      "test": "test_box_vans_preserve_climbable_roofs_and_do_not_add_mesh_collision"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_environment_assets.gd",
+      "test": "test_cutaway_keeps_replaced_blockouts_hidden_and_restores_authored_windows"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_environment_assets.gd",
+      "test": "test_thirteen_searchable_models_retain_identity_and_loot_actions"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_environment_assets.gd",
+      "test": "test_architecture_and_foliage_follow_material_and_distance_budgets"
+    }
+  ]
+}

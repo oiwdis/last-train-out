@@ -1,0 +1,2190 @@
+{
+  "failed": 0,
+  "godot": "4.5.1-stable (official)",
+  "passed": 304,
+  "physics_engine": "Jolt Physics",
+  "results": [
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_fabricated_normals.gd",
+      "test": "test_long_tracks_cull_small_fittings_in_local_sections"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_fabricated_normals.gd",
+      "test": "test_large_ground_surface_keeps_upward_normals_and_orthogonal_tangents"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_fog_exposure.gd",
+      "test": "test_exposure_accumulates_with_time_and_depth"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_fog_exposure.gd",
+      "test": "test_safety_recovers_exposure_without_free_healing"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_fog_exposure.gd",
+      "test": "test_damage_is_gradual_after_warning_dose"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_fog_exposure.gd",
+      "test": "test_damage_calculation"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_fog_exposure.gd",
+      "test": "test_shelter_delays_but_cannot_prevent_death"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_fog_exposure.gd",
+      "test": "test_cover_order_and_independent_players"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_fog_exposure.gd",
+      "test": "test_difficulty_scales_dose"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_fog_exposure.gd",
+      "test": "test_exposure_save_and_validation"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_fog_simulation.gd",
+      "test": "test_front_advances_exact_distance_without_escalation"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_fog_simulation.gd",
+      "test": "test_partitioned_time_matches_one_batch"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_fog_simulation.gd",
+      "test": "test_invalid_delta_cannot_rewind_or_poison_state"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_fog_simulation.gd",
+      "test": "test_four_danger_boundaries"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_fog_simulation.gd",
+      "test": "test_speed_escalates_and_caps"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_fog_simulation.gd",
+      "test": "test_difficulty_changes_progress"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_fog_simulation.gd",
+      "test": "test_surge_always_warns_before_acceleration"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_fog_simulation.gd",
+      "test": "test_event_requests_do_not_stack_or_skip_warning"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_fog_simulation.gd",
+      "test": "test_calm_slows_and_dense_does_not_change_speed"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_fog_simulation.gd",
+      "test": "test_seeded_events_and_front_are_reproducible"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_fog_simulation.gd",
+      "test": "test_json_save_continues_exact_random_sequence"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_fog_simulation.gd",
+      "test": "test_bad_snapshot_rejected_atomically"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_fog_simulation.gd",
+      "test": "test_progress_crosses_segments_without_reset"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_fog_simulation.gd",
+      "test": "test_curved_sample_and_projection_agree"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_fog_simulation.gd",
+      "test": "test_station_transition_keeps_surge_time_and_front"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_fog_simulation.gd",
+      "test": "test_station_approach_slowdown_only_before_station"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_fog_simulation.gd",
+      "test": "test_stationary_and_reversing_train_are_caught"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_fog_simulation.gd",
+      "test": "test_faster_train_increases_gap"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_fog_simulation.gd",
+      "test": "test_conservative_eta_accounts_for_future_surges"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_geometry_preparation.gd",
+      "test": "test_cpu_construction_retains_reviewed_positions_uvs_and_winding"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_geometry_preparation.gd",
+      "test": "test_scene_teardown_releases_cpu_and_gpu_construction_caches"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_inventory.gd",
+      "test": "test_catalog_has_complete_reusable_definitions"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_inventory.gd",
+      "test": "test_stacking_fills_existing_slots_before_new_ones"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_inventory.gd",
+      "test": "test_capacity_returns_unaccepted_quantity_to_caller"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_inventory.gd",
+      "test": "test_heavy_items_do_not_enter_backpack"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_inventory.gd",
+      "test": "test_invalid_mutations_leave_inventory_unchanged"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_inventory.gd",
+      "test": "test_partial_transfer_preserves_both_sides"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_inventory.gd",
+      "test": "test_transfer_signals_observe_atomic_state_and_reject_reentrancy"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_inventory.gd",
+      "test": "test_many_repeated_transfers_never_create_or_lose_items"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_inventory.gd",
+      "test": "test_loot_tables_use_a_private_seeded_rng"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_inventory.gd",
+      "test": "test_loot_distribution_uses_authored_tables_and_valid_quantities"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_journey_state.gd",
+      "test": "test_route_itinerary_has_unique_linked_segments"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_journey_state.gd",
+      "test": "test_route_samples_project_back_through_curves_and_elevation"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_journey_state.gd",
+      "test": "test_rail_frames_are_orthonormal_and_continuous"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_journey_state.gd",
+      "test": "test_station_approaches_are_level_and_straight"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_journey_state.gd",
+      "test": "test_arrivals_do_not_reset_seeded_fog_events"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_journey_state.gd",
+      "test": "test_mission_requires_real_station_objectives"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_journey_state.gd",
+      "test": "test_mission_results_capture_completed_objectives"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_journey_state.gd",
+      "test": "test_mission_death_and_abandoned_train_cannot_win"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_journey_state.gd",
+      "test": "test_mission_json_round_trip_and_invalid_values"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_journey_state.gd",
+      "test": "test_starting_fuel_requires_scavenging"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_journey_state.gd",
+      "test": "test_persistence_validation_rejects_nonfinite_and_fractional_counts"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_presentation_labels.gd",
+      "test": "test_location_labels_cover_track_detour_and_yard"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_presentation_labels.gd",
+      "test": "test_departure_labels_do_not_promise_a_countdown"
+    },
+    {
+      "failures": [],
+      "notes": [
+        "149 scripts compiled"
+      ],
+      "passed": true,
+      "suite": "test_project_integrity.gd",
+      "test": "test_all_scripts_compile"
+    },
+    {
+      "failures": [],
+      "notes": [
+        "69 resources loaded"
+      ],
+      "passed": true,
+      "suite": "test_project_integrity.gd",
+      "test": "test_all_resources_load"
+    },
+    {
+      "failures": [],
+      "notes": [
+        "36 scenes instantiated"
+      ],
+      "passed": true,
+      "suite": "test_project_integrity.gd",
+      "test": "test_all_scenes_instantiate"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_project_integrity.gd",
+      "test": "test_main_scene_is_configured"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_project_integrity.gd",
+      "test": "test_input_map_has_all_actions"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_project_integrity.gd",
+      "test": "test_physics_layers_are_named"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_project_integrity.gd",
+      "test": "test_player_and_train_use_the_documented_collision_layers"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_scene_retirement.gd",
+      "test": "test_stopped_looping_audio_releases_mixer_owners_before_scene_completion"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_scene_retirement.gd",
+      "test": "test_spawned_fixture_cleanup_retires_audio_owners_before_returning"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_scene_retirement.gd",
+      "test": "test_retirement_deadline_requires_main_thread_update_opportunities"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_scene_retirement.gd",
+      "test": "test_spatial_audio_stopped_before_first_physics_tick_releases_pending_owner"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_stamina.gd",
+      "test": "test_starts_full"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_stamina.gd",
+      "test": "test_drains_while_sprinting"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_stamina.gd",
+      "test": "test_does_not_drain_when_not_sprinting"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_stamina.gd",
+      "test": "test_regeneration_waits_for_delay"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_stamina.gd",
+      "test": "test_regenerates_to_full_and_stops"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_stamina.gd",
+      "test": "test_exhaustion_locks_sprinting_until_recovered"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_stamina.gd",
+      "test": "test_reset_restores_everything"
+    },
+    {
+      "failures": [],
+      "notes": [
+        "Emergency Steam: full speed after 6.00 s, peak acceleration 3.00 m/s^2, 36.1 m travelled"
+      ],
+      "passed": true,
+      "suite": "test_train_motion.gd",
+      "test": "test_emergency_steam_mode"
+    },
+    {
+      "failures": [],
+      "notes": [
+        "Normal: full speed after 10.00 s, peak acceleration 1.80 m/s^2, 60.1 m travelled"
+      ],
+      "passed": true,
+      "suite": "test_train_motion.gd",
+      "test": "test_normal_mode"
+    },
+    {
+      "failures": [],
+      "notes": [
+        "Slow Departure: full speed after 16.00 s, peak acceleration 1.12 m/s^2, 96.1 m travelled"
+      ],
+      "passed": true,
+      "suite": "test_train_motion.gd",
+      "test": "test_slow_departure_mode"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_train_motion.gd",
+      "test": "test_default_mode_is_normal"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_train_motion.gd",
+      "test": "test_acceleration_modifier_scales_time"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_train_motion.gd",
+      "test": "test_max_speed_is_configurable"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_train_motion.gd",
+      "test": "test_max_speed_change_is_eased_while_moving"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_train_motion.gd",
+      "test": "test_stop_brakes_smoothly_to_standstill"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_train_motion.gd",
+      "test": "test_stop_and_restart_mid_acceleration_is_continuous"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_train_motion.gd",
+      "test": "test_mode_change_mid_acceleration_is_continuous"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_train_motion.gd",
+      "test": "test_reset_returns_to_station"
+    },
+    {
+      "failures": [],
+      "notes": [
+        "stopped at 150.0 m of a 150 m track"
+      ],
+      "passed": true,
+      "suite": "test_train_motion.gd",
+      "test": "test_brakes_before_end_of_track"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_carrying.gd",
+      "test": "test_heavy_carry_limits_speed_and_prevents_sprint_without_changing_config"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_carrying.gd",
+      "test": "test_one_object_limit_and_drop_recovery"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_carrying.gd",
+      "test": "test_carrying_blocks_ladder_with_feedback_then_allows_climb_after_drop"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_carrying.gd",
+      "test": "test_carrying_blocks_vault_without_changing_normal_jump"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_carrying.gd",
+      "test": "test_heavy_cargo_can_jump_aboard_and_ride_the_train"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_carrying.gd",
+      "test": "test_loose_cargo_rides_acceleration_and_follows_train_reset"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_carrying.gd",
+      "test": "test_heavy_deposit_withdraw_and_repeat_clicks_conserve_cargo"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_carrying.gd",
+      "test": "test_player_reset_preserves_cargo_and_station_reset_clears_it"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_character_assets.gd",
+      "test": "test_authored_character_has_weighted_humanoid_and_individual_fingers"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_character_assets.gd",
+      "test": "test_all_required_animation_clips_import_without_root_motion_tracks"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_character_assets.gd",
+      "test": "test_real_movement_drives_blended_walk_sprint_and_idle"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_character_assets.gd",
+      "test": "test_jump_and_traversal_states_have_distinct_skeletal_presentations"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_character_assets.gd",
+      "test": "test_departing_train_does_not_make_stationary_passenger_walk"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_character_assets.gd",
+      "test": "test_first_person_renders_only_the_matching_arm_meshes"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_character_assets.gd",
+      "test": "test_carry_pose_places_both_hands_at_cargo_in_both_perspectives"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_character_assets.gd",
+      "test": "test_carry_walk_and_drop_animate_without_changing_ownership_rules"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_character_assets.gd",
+      "test": "test_operating_controls_plays_action_and_keeps_train_command_immediate"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_character_assets.gd",
+      "test": "test_station_uses_batched_licensed_geometry_and_preserves_thirteen_caches"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_character_assets.gd",
+      "test": "test_imported_locomotive_wheels_turn_with_the_original_train_speed"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_character_assets.gd",
+      "test": "test_presets_restore_normal_maps_on_batched_assets"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_environment_assets.gd",
+      "test": "test_container_art_keeps_roof_and_ladder_collision_dimensions"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_environment_assets.gd",
+      "test": "test_box_vans_preserve_climbable_roofs_and_do_not_add_mesh_collision"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_environment_assets.gd",
+      "test": "test_cutaway_keeps_replaced_blockouts_hidden_and_restores_authored_windows"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_environment_assets.gd",
+      "test": "test_thirteen_searchable_models_retain_identity_and_loot_actions"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_environment_assets.gd",
+      "test": "test_architecture_and_foliage_follow_material_and_distance_budgets"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_exploration_camera.gd",
+      "test": "test_first_person_eye_and_third_person_initialization"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_exploration_camera.gd",
+      "test": "test_mouse_look_is_unbounded_horizontally_and_limited_vertically"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_exploration_camera.gd",
+      "test": "test_physical_v_key_switches_view_without_reset"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_exploration_camera.gd",
+      "test": "test_physical_wasd_follows_camera_in_all_four_directions"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_exploration_camera.gd",
+      "test": "test_swept_sphere_prevents_camera_crossing_warehouse_wall"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_exploration_camera.gd",
+      "test": "test_switch_preserves_motion_stamina_and_held_object"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_exploration_camera.gd",
+      "test": "test_switch_queues_until_scripted_traversal_finishes"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_exploration_camera.gd",
+      "test": "test_switching_during_acceleration_has_no_train_relative_drift"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_exploration_camera.gd",
+      "test": "test_both_perspectives_target_and_search_with_camera_ray"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_exploration_camera.gd",
+      "test": "test_targeting_rejects_objects_behind_wall_or_beyond_reach"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_exploration_camera.gd",
+      "test": "test_held_cargo_does_not_block_storage_targeting_in_either_view"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_exploration_camera.gd",
+      "test": "test_camera_preferences_persist_and_menu_sources_are_independent"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_exploration_district.gd",
+      "test": "test_service_and_trackside_routes_connect_freight_to_platform"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_exploration_district.gd",
+      "test": "test_waiting_hall_and_platform_approach_are_walkable"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_exploration_district.gd",
+      "test": "test_added_container_ladder_reaches_roof"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_exploration_district.gd",
+      "test": "test_station_reset_restores_door_states_and_preserves_camera"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_fog_gameplay.gd",
+      "test": "test_real_train_escapes_and_station_is_consumed"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_fog_gameplay.gd",
+      "test": "test_stationary_train_is_caught_and_damage_is_real"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_fog_gameplay.gd",
+      "test": "test_cab_doors_and_roof_have_distinct_protection"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_fog_gameplay.gd",
+      "test": "test_boarding_during_exposure_does_not_clear_dose"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_fog_gameplay.gd",
+      "test": "test_leaving_moving_train_loses_shelter"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_fog_gameplay.gd",
+      "test": "test_reversing_progress_reduces_gap"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_fog_gameplay.gd",
+      "test": "test_fog_during_search_preserves_loot_and_interaction"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_fog_gameplay.gd",
+      "test": "test_heavy_cargo_keeps_existing_speed_risk"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_fog_gameplay.gd",
+      "test": "test_death_drops_cargo_and_restart_restores_controls"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_fog_gameplay.gd",
+      "test": "test_fuel_shortage_brakes_and_requires_coal"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_fog_gameplay.gd",
+      "test": "test_presets_do_not_change_simulation_or_exposure"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_fog_gameplay.gd",
+      "test": "test_first_and_third_person_preserve_same_threat"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_fog_gameplay.gd",
+      "test": "test_safe_escape_recovers_dose_but_not_health"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_fog_gameplay.gd",
+      "test": "test_world_snapshot_roundtrip_and_invalid_save_atomicity"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_fog_gameplay.gd",
+      "test": "test_individual_resets_do_not_reset_fog"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_fog_gameplay.gd",
+      "test": "test_station_transition_survives_live_event"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_fog_gameplay.gd",
+      "test": "test_multiple_registered_survivors_have_independent_danger"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_fog_gameplay.gd",
+      "test": "test_restoring_living_save_after_death_reenables_player"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_fog_gameplay.gd",
+      "test": "test_warning_action_changes_after_boarding_and_departure"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_journey_gameplay.gd",
+      "test": "test_three_station_content_is_resident_and_unique"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_journey_gameplay.gd",
+      "test": "test_modular_buildings_have_passable_doorways_and_solid_walls"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_journey_gameplay.gd",
+      "test": "test_save_restores_backpack_storage_and_searched_containers_without_duplication"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_journey_gameplay.gd",
+      "test": "test_save_preserves_held_and_loose_heavy_cargo"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_journey_gameplay.gd",
+      "test": "test_malformed_save_is_rejected_before_any_mutation"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_journey_gameplay.gd",
+      "test": "test_file_save_round_trip_and_missing_file"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_journey_gameplay.gd",
+      "test": "test_fog_rng_and_warning_continue_after_restore"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_journey_gameplay.gd",
+      "test": "test_train_rides_curve_and_grade_with_passenger_and_loose_cargo"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_journey_gameplay.gd",
+      "test": "test_walk_and_switch_cameras_on_curved_moving_train"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_journey_gameplay.gd",
+      "test": "test_save_and_resume_moving_train_retains_rider_and_fuel"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_journey_gameplay.gd",
+      "test": "test_automatic_arrival_and_departure_never_reset_fog_or_inventory"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_journey_gameplay.gd",
+      "test": "test_fuel_shortage_stops_train_and_stored_coal_restores_departure"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_journey_gameplay.gd",
+      "test": "test_fog_catches_stranded_train_and_records_failure"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_journey_gameplay.gd",
+      "test": "test_presets_do_not_change_route_or_survival_state"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_journey_gameplay.gd",
+      "test": "test_reloading_scene_creates_clean_mission_without_duplicate_cache_ownership"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_journey_gameplay.gd",
+      "test": "test_save_from_another_seed_restores_cache_layout_atomically"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_journey_gameplay.gd",
+      "test": "test_save_restores_door_ids_and_future_item_ownership"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_journey_gameplay.gd",
+      "test": "test_heavy_collection_counts_pickup_once_and_not_revealed_abandoned_sacks"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_journey_gameplay.gd",
+      "test": "test_falling_out_of_route_fails_without_teleporting_to_harlow"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_journey_gameplay.gd",
+      "test": "test_walk_between_all_three_cars_on_a_live_curve"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_journey_gameplay.gd",
+      "test": "test_aimed_boarding_and_ladder_climb_during_curved_departure"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_keyboard_input.gd",
+      "test": "test_d_and_a_walk_right_and_left"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_keyboard_input.gd",
+      "test": "test_arrow_keys_also_move"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_keyboard_input.gd",
+      "test": "test_w_and_s_move_in_depth"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_keyboard_input.gd",
+      "test": "test_shift_sprints"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_keyboard_input.gd",
+      "test": "test_space_jumps"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_keyboard_input.gd",
+      "test": "test_e_interacts"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_keyboard_input.gd",
+      "test": "test_debug_menu_keys"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_moving_platform.gd",
+      "test": "test_player_stands_on_stationary_train"
+    },
+    {
+      "failures": [],
+      "notes": [
+        "train speed 12.00 m/s, max drift 0.0000 m, max per-tick jitter 0.00000 m"
+      ],
+      "passed": true,
+      "suite": "test_moving_platform.gd",
+      "test": "test_player_rides_accelerating_train_without_sliding"
+    },
+    {
+      "failures": [],
+      "notes": [
+        "walked 1.44 m along the deck in 0.5 s of input"
+      ],
+      "passed": true,
+      "suite": "test_moving_platform.gd",
+      "test": "test_player_walks_on_moving_train"
+    },
+    {
+      "failures": [],
+      "notes": [
+        "jump apex 1.24 m above the deck, landed 0.000 m from take-off spot"
+      ],
+      "passed": true,
+      "suite": "test_moving_platform.gd",
+      "test": "test_jump_on_train_keeps_platform_momentum"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_moving_platform.gd",
+      "test": "test_jump_off_train_preserves_momentum"
+    },
+    {
+      "failures": [],
+      "notes": [
+        "max drift while braking 0.0000 m"
+      ],
+      "passed": true,
+      "suite": "test_moving_platform.gd",
+      "test": "test_train_stops_smoothly_with_rider"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_moving_platform.gd",
+      "test": "test_reset_with_player_aboard"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_moving_platform.gd",
+      "test": "test_reset_does_not_disturb_player_on_platform"
+    },
+    {
+      "failures": [],
+      "notes": [
+        "complete arm-weighted skin vertices retained: 15334"
+      ],
+      "passed": true,
+      "suite": "test_photoreal_finalization.gd",
+      "test": "test_first_person_extraction_keeps_complete_hand_and_forearm_skin"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_photoreal_finalization.gd",
+      "test": "test_cargo_wrists_reach_each_real_object_in_both_perspectives"
+    },
+    {
+      "failures": [],
+      "notes": [
+        "fully planted samples=41, max ankle contact error=0.0000 m"
+      ],
+      "passed": true,
+      "suite": "test_photoreal_finalization.gd",
+      "test": "test_stance_contacts_hold_to_their_support_during_walk"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_photoreal_finalization.gd",
+      "test": "test_stationary_feet_follow_the_moving_car"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_photoreal_finalization.gd",
+      "test": "test_running_gear_preserves_rod_length_and_quartering"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_photoreal_finalization.gd",
+      "test": "test_gauges_follow_start_brake_stop_and_speed_without_mutating_train"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_photoreal_finalization.gd",
+      "test": "test_planar_pbr_preserves_metres_normals_and_shared_materials"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_photoreal_finalization.gd",
+      "test": "test_gantry_and_columns_keep_existing_traversal_volumes"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_photoreal_finalization.gd",
+      "test": "test_render_preparation_restores_camera_without_advancing_gameplay"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_photoreal_survival.gd",
+      "test": "test_shipped_survival_scene_loads_both_real_rigs_and_locomotive"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_photoreal_survival.gd",
+      "test": "test_exposure_damage_slows_actual_gait_without_invalid_bones"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_photoreal_survival.gd",
+      "test": "test_realistic_carry_grips_remain_valid_under_fog_in_both_views"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_photoreal_survival.gd",
+      "test": "test_authored_locomotive_and_rods_follow_curves_and_grade"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_photoreal_survival.gd",
+      "test": "test_visible_wheelsets_contact_common_rails_across_the_route"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_photoreal_survival.gd",
+      "test": "test_route_phase_and_gauges_survive_fuel_exhaustion_and_restart"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_photoreal_survival.gd",
+      "test": "test_saved_camera_cargo_and_art_restore_at_all_three_stations"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_photoreal_survival.gd",
+      "test": "test_moving_save_restores_mechanism_camera_and_loose_supports"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_photoreal_survival.gd",
+      "test": "test_load_waits_for_render_pause_before_resolving_car_local_support"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_photoreal_survival.gd",
+      "test": "test_camera_validation_is_atomic_and_original_m3_saves_still_load"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_photoreal_survival.gd",
+      "test": "test_render_preparation_covers_new_sites_and_fog_without_advancing_survival"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_photoreal_survival.gd",
+      "test": "test_station_dressing_uses_shared_pbr_without_new_collision_owners"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_photoreal_survival.gd",
+      "test": "test_four_danger_states_and_presets_keep_identical_simulation"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_photoreal_survival.gd",
+      "test": "test_fog_death_and_fresh_scene_recover_authored_character"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_photoreal_survival.gd",
+      "test": "test_results_pause_keeps_model_and_world_state_intact"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_photoreal_survival.gd",
+      "test": "test_scene_detachment_does_not_read_retired_skeleton_transforms"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_photoreal_survival.gd",
+      "test": "test_ledger_hotkey_cannot_override_the_render_preparation_pause"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_photoreal_survival.gd",
+      "test": "test_hud_names_added_stations_and_their_train_stops"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_player_movement.gd",
+      "test": "test_idle_at_rest"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_player_movement.gd",
+      "test": "test_walk_speed_and_responsiveness"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_player_movement.gd",
+      "test": "test_sprint_speed_and_state_transitions"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_player_movement.gd",
+      "test": "test_turnaround_is_quick"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_player_movement.gd",
+      "test": "test_depth_movement"
+    },
+    {
+      "failures": [],
+      "notes": [
+        "apex 1.241 m, air time 0.63 s"
+      ],
+      "passed": true,
+      "suite": "test_player_movement.gd",
+      "test": "test_jump_height_and_states"
+    },
+    {
+      "failures": [],
+      "notes": [
+        "tap-jump apex 0.273 m"
+      ],
+      "passed": true,
+      "suite": "test_player_movement.gd",
+      "test": "test_short_hop_when_jump_released_early"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_player_movement.gd",
+      "test": "test_holding_jump_does_not_repeat"
+    },
+    {
+      "failures": [],
+      "notes": [
+        "sprint jump length 3.90 m"
+      ],
+      "passed": true,
+      "suite": "test_player_movement.gd",
+      "test": "test_sprint_jump_covers_distance"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_player_movement.gd",
+      "test": "test_stamina_drains_only_while_sprinting_then_regenerates"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_player_movement.gd",
+      "test": "test_exhaustion_forces_walking"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_player_movement.gd",
+      "test": "test_coyote_time_allows_late_jump"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_player_movement.gd",
+      "test": "test_coyote_time_expires"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_player_movement.gd",
+      "test": "test_jump_buffer_executes_on_landing"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_player_movement.gd",
+      "test": "test_jump_buffer_expires"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_player_movement.gd",
+      "test": "test_reset_player_returns_to_spawn"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_preparation_lifecycle.gd",
+      "test": "test_scene_exit_during_preparation_releases_pause_and_controller"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_preparation_lifecycle.gd",
+      "test": "test_fog_danger_and_quality_reuse_materials_without_mutating_simulation"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_preparation_lifecycle.gd",
+      "test": "test_rapid_preset_requests_finish_on_last_quality_without_orphan_preparation"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_preparation_lifecycle.gd",
+      "test": "test_fog_preparation_reuses_material_and_preserves_the_game_camera"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_preparation_lifecycle.gd",
+      "test": "test_idle_hud_reuses_style_but_exhaustion_still_changes_color"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_preparation_lifecycle.gd",
+      "test": "test_continue_during_preset_preparation_restores_rider_and_cargo_together"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_presentation.gd",
+      "test": "test_departure_instrument_tracks_real_train_states"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_presentation.gd",
+      "test": "test_location_changes_follow_interior_and_upper_floor"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_presentation.gd",
+      "test": "test_boarding_confirmation_requires_sustained_contact"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_presentation.gd",
+      "test": "test_interaction_prompt_uses_player_eligibility"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_presentation.gd",
+      "test": "test_exhaustion_is_readable_and_recovers"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_presentation.gd",
+      "test": "test_message_expiry_and_rebinding"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_presentation.gd",
+      "test": "test_facade_details_remain_opaque_during_interior_exploration"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_presentation.gd",
+      "test": "test_rear_details_remain_opaque_when_riding_behind_building"
+    },
+    {
+      "failures": [],
+      "notes": [
+        "decorative mesh instances: 208"
+      ],
+      "passed": true,
+      "suite": "test_presentation.gd",
+      "test": "test_new_art_contains_no_collision_or_excess_lights"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_presentation.gd",
+      "test": "test_feedback_does_not_change_body_scale_or_camera"
+    },
+    {
+      "failures": [],
+      "notes": [
+        "600 rendered frames (301 between physics ticks), train 12.0 m/s, drift 0.00000 m, frame-to-frame jitter 0.00000 m"
+      ],
+      "passed": true,
+      "suite": "test_render_smoothness.gd",
+      "test": "test_interpolated_rider_does_not_jitter"
+    },
+    {
+      "failures": [],
+      "notes": [
+        "climber drift against the rendered car: 0.00000 m at 12.0 m/s"
+      ],
+      "passed": true,
+      "suite": "test_render_smoothness.gd",
+      "test": "test_interpolated_ladder_climber_does_not_jitter"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_scavenging.gd",
+      "test": "test_every_authored_search_location_is_reachable_and_selectable"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_scavenging.gd",
+      "test": "test_search_both_warehouses_through_the_real_interaction_input"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_scavenging.gd",
+      "test": "test_search_cancellation_does_not_reroll_or_consume_loot"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_scavenging.gd",
+      "test": "test_full_backpack_leaves_overflow_inside_the_searched_cache"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_scavenging.gd",
+      "test": "test_pickup_drop_and_repeated_interactions_conserve_items"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_scavenging.gd",
+      "test": "test_search_reveals_a_single_heavy_object_exactly_once"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_scavenging.gd",
+      "test": "test_storage_deposit_withdraw_and_partial_capacity"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_scavenging.gd",
+      "test": "test_storage_out_of_range_and_moving_away_reject_transactions"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_scavenging.gd",
+      "test": "test_station_reset_restores_seeded_caches_and_clears_collected_supplies"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_scavenging.gd",
+      "test": "test_search_cancelled_by_reset_and_backpack_opening"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_station.gd",
+      "test": "test_main_scene_starts_at_harlow_junction"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_station.gd",
+      "test": "test_station_dimensions"
+    },
+    {
+      "failures": [],
+      "notes": [
+        "platform -> freight yard in 19.3 s"
+      ],
+      "passed": true,
+      "suite": "test_station.gd",
+      "test": "test_traverse_station_end_to_end"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_station.gd",
+      "test": "test_warehouse_a_stairs_and_upper_floor"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_station.gd",
+      "test": "test_warehouse_b_doorway_is_blocked_but_back_room_gets_around"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_station.gd",
+      "test": "test_freight_yard_ladders_roofs_and_gap"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_station.gd",
+      "test": "test_every_freight_ladder_reaches_the_roof"
+    },
+    {
+      "failures": [],
+      "notes": [
+        "Warehouse A door to door: 4.9 s, Warehouse B door to door: 6.9 s"
+      ],
+      "passed": true,
+      "suite": "test_station.gd",
+      "test": "test_warehouse_b_takes_longer_to_cross_than_warehouse_a"
+    },
+    {
+      "failures": [],
+      "notes": [
+        "return run: 18.6 s (design target: about 20 s)"
+      ],
+      "passed": true,
+      "suite": "test_station.gd",
+      "test": "test_return_run_from_warehouse_b_to_train"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_station_systems.gd",
+      "test": "test_legacy_cutaway_component_opens_and_closes_per_building"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_station_systems.gd",
+      "test": "test_legacy_cutaway_fades_without_changing_collision"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_station_systems.gd",
+      "test": "test_buildings_stay_opaque_when_player_passes_behind_them"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_station_systems.gd",
+      "test": "test_camera_keeps_selected_distance_between_location_profiles"
+    },
+    {
+      "failures": [],
+      "notes": [
+        "largest camera move in one tick: 0.100 m"
+      ],
+      "passed": true,
+      "suite": "test_station_systems.gd",
+      "test": "test_camera_moves_smoothly_through_a_doorway"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_station_systems.gd",
+      "test": "test_camera_keeps_player_in_frame_and_follows_body"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_station_systems.gd",
+      "test": "test_camera_keeps_selected_view_and_stays_with_the_player_during_departure"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_station_systems.gd",
+      "test": "test_debug_menu_toggles_with_f1_and_closes_with_escape"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_station_systems.gd",
+      "test": "test_debug_menu_train_controls"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_station_systems.gd",
+      "test": "test_debug_menu_player_and_station_controls"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_station_systems.gd",
+      "test": "test_debug_menu_diagnostics_are_live"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_station_systems.gd",
+      "test": "test_debug_menu_does_not_steal_player_input"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_station_systems.gd",
+      "test": "test_system_stubs_are_wired"
+    },
+    {
+      "failures": [],
+      "notes": [
+        "rode 170 m at up to 12.0 m/s, max drift 0.0000 m"
+      ],
+      "passed": true,
+      "suite": "test_station_systems.gd",
+      "test": "test_ride_on_roof_through_entire_station"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_station_systems.gd",
+      "test": "test_cling_to_ladder_through_entire_station"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_station_systems.gd",
+      "test": "test_reset_train_while_clinging_to_it"
+    },
+    {
+      "failures": [],
+      "notes": [
+        "after 7 s the player is 5.07 m ahead of the locomotive's centre, y 0.00"
+      ],
+      "passed": true,
+      "suite": "test_station_systems.gd",
+      "test": "test_player_on_track_is_pushed_not_swallowed"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_supply_ui_graphics.gd",
+      "test": "test_keyboard_inventory_selection_drop_and_close"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_supply_ui_graphics.gd",
+      "test": "test_mouse_slot_actions_and_tooltips_match_inventory"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_supply_ui_graphics.gd",
+      "test": "test_graphics_presets_switch_render_features_without_touching_physics"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_supply_ui_graphics.gd",
+      "test": "test_train_storage_controls_refresh_immediately"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_supply_ui_graphics.gd",
+      "test": "test_fullscreen_resolution_budget_uses_window_pixels_not_ui_coordinates"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_train_interiors.gd",
+      "test": "test_walk_inside_crew_car_during_departure_and_braking"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_train_interiors.gd",
+      "test": "test_walk_between_all_three_cars_while_moving"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_train_interiors.gd",
+      "test": "test_cab_controls_start_brake_and_select_all_departure_modes_by_looking"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_train_interiors.gd",
+      "test": "test_closed_door_blocks_walk_and_refuses_to_close_through_player"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_train_interiors.gd",
+      "test": "test_interior_jump_switch_and_reset_keep_platform_motion"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_traversal.gd",
+      "test": "test_vault_over_low_crate"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_traversal.gd",
+      "test": "test_climb_onto_deep_obstacle"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_traversal.gd",
+      "test": "test_tall_wall_cannot_be_vaulted"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_traversal.gd",
+      "test": "test_interact_with_nothing_nearby_does_nothing"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_traversal.gd",
+      "test": "test_climb_static_ladder_to_the_top"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_traversal.gd",
+      "test": "test_climb_down_ladder_from_the_top"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_traversal.gd",
+      "test": "test_jump_off_ladder"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_traversal.gd",
+      "test": "test_regrab_is_blocked_briefly_after_letting_go"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_traversal.gd",
+      "test": "test_grab_moving_ladder_and_climb_to_roof"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_traversal.gd",
+      "test": "test_fast_ladder_cannot_be_grabbed_standing_still"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_traversal.gd",
+      "test": "test_sprinting_player_catches_fast_ladder"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_traversal.gd",
+      "test": "test_grab_railing_and_climb_over"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_traversal.gd",
+      "test": "test_grab_moving_railing_from_the_ground"
+    },
+    {
+      "failures": [],
+      "notes": [
+        "landed at car-local x -3.21, y 1.00"
+      ],
+      "passed": true,
+      "suite": "test_traversal.gd",
+      "test": "test_vault_crate_on_moving_flat_car"
+    },
+    {
+      "failures": [],
+      "notes": [
+        "jumped at train speed 4.0 m/s"
+      ],
+      "passed": true,
+      "suite": "test_traversal.gd",
+      "test": "test_jump_from_platform_onto_moving_flat_car"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_traversal.gd",
+      "test": "test_walking_onto_moving_deck_carries_the_player"
+    },
+    {
+      "failures": [],
+      "notes": [],
+      "passed": true,
+      "suite": "test_traversal.gd",
+      "test": "test_obstacle_in_the_way_knocks_a_climber_off_instead_of_dragging_through"
+    }
+  ]
+}

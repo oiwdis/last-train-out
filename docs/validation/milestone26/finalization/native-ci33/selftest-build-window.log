@@ -1,0 +1,603 @@
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+WARNING: Metal does not support LOD bias for samplers.
+     at: sampler_create (drivers/metal/rendering_device_driver_metal.mm:771)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+ERROR: Shader was generated for a newer Apple GPU
+   at: shader_create_from_container (drivers/metal/rendering_device_driver_metal.mm:1148)
+ERROR: Condition "!shader_id" is true. Returning: RID()
+   at: shader_create_from_bytecode_with_samplers (servers/rendering/rendering_device.cpp:3419)
+ERROR: Condition "shader.is_null()" is true. Returning: false
+   at: _load_from_cache (servers/rendering/renderer_rd/shader_rd.cpp:500)
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+Metal 3.2 - Forward+ - Using Device #0: Apple - Apple Paravirtual device (Apple5)
+
+[self-test] ok    main_scene_loads  (res://scenes/main/main.tscn) [36667 ms]
+[self-test] ok    main_scene_is_the_game [36670 ms]
+[render-warmup] 6 views / 23322 ms / draw pipelines=51.0
+[self-test] ok    station_is_harlow_junction [71299 ms]
+[self-test] ok    train_has_locomotive_and_two_cars [71299 ms]
+[self-test] ok    player_stands_on_the_platform  ((16.0, 1.0, 0.6)) [71299 ms]
+[self-test] ok    input_map_is_complete [71299 ms]
+[self-test] ok    player_walks  (1.93 m) [71965 ms]
+[self-test] ok    player_jumps [72350 ms]
+[self-test] ok    player_lands [72865 ms]
+[self-test] ok    flat_car_exists [72865 ms]
+[self-test] ok    train_departs  (5.00 m/s after 5.0 m) [76033 ms]
+[self-test] ok    player_rides_the_moving_train  (drift 0.0000 m) [76033 ms]
+[self-test] ok    debug_menu_reports_live_state  (On train: yes, train state: ACCELERATING) [76365 ms]
+[self-test] ok    immersive_camera_present [76449 ms]
+[self-test] ok    first_person_eye_in_export [77449 ms]
+[self-test] ok    walk_inside_moving_car_in_export [78449 ms]
+[self-test] ok    perspective_switch_preserves_motion_in_export [78449 ms]
+[self-test] ok    third_person_camera_in_export [79448 ms]
+[self-test] ok    physical_cab_control_in_export [80699 ms]
+[self-test] ok    scavenging_system_present [80786 ms]
+[self-test] ok    search_completes_in_export [82818 ms]
+[self-test] ok    supplies_deposit_in_export [83155 ms]
+[self-test] ok    exported_loot_is_conserved [83155 ms]
+[self-test] ok    supplies_withdraw_in_export [83156 ms]
+[self-test] ok    physical_cargo_is_carried_in_export [85004 ms]
+[self-test] ok    cargo_anchor_perspective_1_in_export [85103 ms]
+[self-test] ok    cargo_anchor_perspective_0_in_export [85146 ms]
+[self-test] ok    physical_cargo_is_released_in_export [85147 ms]
+[render-warmup] 6 views / 18152 ms / draw pipelines=81.0
+[render-warmup] 6 views / 3600 ms / draw pipelines=109.0
+[render-warmup] 6 views / 5519 ms / draw pipelines=109.0
+[self-test] ok    graphics_presets_work_in_export [112513 ms]
+[render-warmup] 6 views / 218 ms / draw pipelines=109.0
+[self-test] ok    inventory_ui_opens_in_export [112734 ms]
+[self-test] ok    frames_are_produced  (119 frames in 2.0 s) [114748 ms]
+[self-test] ok    frame_can_be_captured [114777 ms]
+[self-test] ok    frame_is_not_blank  (44 distinct colours) [114865 ms]
+[self-test] FAIL  no_engine_errors  (Shader was generated for a newer Apple GPU (drivers/metal/rendering_device_driver_metal.mm:1148); Condition "!shader_id" is true. Returning: RID() (servers/rendering/rendering_device.cpp:3419); Condition "shader.is_null()" is true. Returning: false (servers/rendering/renderer_rd/shader_rd.cpp:500); Shader was generated for a newer Apple GPU (drivers/metal/rendering_device_driver_metal.mm:1148); Condition "!shader_id" is true. Returning: RID() (servers/rendering/rendering_device.cpp:3419)) [114871 ms]
+[self-test] FAILED

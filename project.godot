@@ -11,11 +11,15 @@ config_version=5
 [application]
 
 config/name="Last Train Out"
-config/version="0.2.5"
-config/description="Milestone 2.5: full 3D exploration, train interiors and physical cargo."
-run/main_scene="res://scenes/main/main.tscn"
+config/version="0.3.5"
+config/description="Milestone 3.5: detailed railway survival across the Harlow Escape route."
+run/main_scene="res://scenes/missions/harlow_escape.tscn"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+RendererIdentity="*res://scripts/settings/renderer_identity.gd"
 
 [display]
 
@@ -114,6 +118,20 @@ common/physics_interpolation=true
 
 [rendering]
 
+; MoltenVK keeps Forward+ while avoiding GPU-specific baked Metal libraries.
+rendering_device/driver.macos="vulkan"
+; MoltenVK's cache can grow between size-query and serialization while pipelines
+; compile. Batch beyond the observed 10-20 MiB working set; Godot still saves on
+; clean shutdown, after preparation, instead of serializing during live draws.
+rendering_device/pipeline_cache/save_chunk_size_mb=128.0
 textures/vram_compression/import_etc2_astc=true
 anti_aliasing/quality/msaa_3d=1
 environment/defaults/default_clear_color=Color(0.035, 0.045, 0.06, 1)
+
+[threading]
+
+; Godot 4.5.1 can strand background pipeline tasks at shutdown with the default
+; low-priority limit. The controlled route closes with four background workers
+; instead of one on the six-CPU software-rendering host. Reserve worker capacity
+; for foreground work, and keep the ratio below one for single-worker pools.
+worker_pool/low_priority_thread_ratio=0.9

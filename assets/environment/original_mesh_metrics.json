@@ -1,0 +1,74 @@
+[
+  {
+    "name": "freight_container",
+    "triangles": 13427,
+    "dimensions_blender": [
+      6.034478187561035,
+      2.5199999809265137,
+      2.6989998817443848
+    ]
+  },
+  {
+    "name": "parked_box_van",
+    "triangles": 33186,
+    "dimensions_blender": [
+      7.623193264007568,
+      3.0295958518981934,
+      3.7203922271728516
+    ]
+  },
+  {
+    "name": "waiting_hall_roof",
+    "triangles": 10582,
+    "dimensions_blender": [
+      23.34000015258789,
+      10.350000381469727,
+      1.3133100271224976
+    ]
+  },
+  {
+    "name": "station_house_roof",
+    "triangles": 7750,
+    "dimensions_blender": [
+      17.53999900817871,
+      6.349999904632568,
+      1.788804292678833
+    ]
+  },
+  {
+    "name": "broken_pallet",
+    "triangles": 1620,
+    "dimensions_blender": [
+      2.0522518157958984,
+      0.8314146399497986,
+      0.1224999949336052
+    ]
+  },
+  {
+    "name": "supply_locker",
+    "triangles": 2208,
+    "dimensions_blender": [
+      0.7099999785423279,
+      0.4993484914302826,
+      1.1399999856948853
+    ]
+  },
+  {
+    "name": "medical_cabinet",
+    "triangles": 1128,
+    "dimensions_blender": [
+      0.7099999785423279,
+      0.4993484914302826,
+      1.1399999856948853
+    ]
+  },
+  {
+    "name": "supply_toolbox",
+    "triangles": 648,
+    "dimensions_blender": [
+      0.7200000286102295,
+      0.4819999933242798,
+      0.5827279090881348
+    ]
+  }
+]

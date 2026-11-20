@@ -79,3 +79,4 @@ echo "The app exited with code $CODE. Last lines of its output:"
 tail -n 40 "$LOG" || true
 
 python3 "$ROOT/tools/macos/check_selftest.py" "$REPORT" --exit-code "$CODE" "${CHECK[@]}"
+python3 "$ROOT/tools/macos/renderer_diagnostics.py" "$LOG"
