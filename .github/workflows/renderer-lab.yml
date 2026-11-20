@@ -6,6 +6,8 @@ on:
       - .github/workflows/renderer-lab.yml
       - tools/macos/renderer_lab.py
       - tools/macos/renderer_probe.gd
+      - tools/macos/exported_renderer_lab.py
+      - tools/macos/exported_shadow_probe.gd
 
 permissions:
   contents: read
@@ -17,6 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       run: ${{ steps.select.outputs.run }}
+      exported: ${{ steps.select.outputs.exported }}
     steps:
       - uses: actions/checkout@v7
         with:
@@ -26,6 +29,9 @@ jobs:
         run: |
           if [ "$GITHUB_EVENT_NAME" = workflow_dispatch ] || ! git diff --quiet HEAD^ HEAD -- tools/macos/renderer_lab.py tools/macos/renderer_probe.gd; then
             echo 'run=true' >> "$GITHUB_OUTPUT"
+          fi
+          if [ "$GITHUB_EVENT_NAME" = workflow_dispatch ] || ! git diff --quiet HEAD^ HEAD -- tools/macos/exported_renderer_lab.py tools/macos/exported_shadow_probe.gd; then
+            echo 'exported=true' >> "$GITHUB_OUTPUT"
           fi
 
   isolate:
@@ -70,4 +76,38 @@ jobs:
         with:
           name: renderer-lab-${{ matrix.group }}
           path: ${{ runner.temp }}/renderer-lab
+          retention-days: 30
+
+  exported:
+    needs: select
+    if: needs.select.outputs.exported == 'true'
+    name: Original exported app / ${{ matrix.group }}
+    runs-on: macos-latest
+    timeout-minutes: 48
+    strategy:
+      fail-fast: false
+      matrix:
+        group: [shadows, packaged-backends]
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/download-artifact@v8
+        with:
+          name: LastTrainOut-macos-universal.zip
+          run-id: 44608806260
+          github-token: ${{ github.token }}
+          path: download
+          skip-decompress: true
+      - name: Verify original release archive and unpack
+        run: |
+          zip=$(find download -name '*.zip' -type f | head -n 1)
+          echo "e1cff244b9edf7a8af1b6371ad311a4cf0fafa79301beb3ecaec2517ae837159  $zip" | shasum -a 256 -c -
+          ditto -x -k "$zip" extracted
+      - run: python3 tools/macos/exported_renderer_lab.py 'extracted/Last Train Out.app' "${{ matrix.group }}" "$RUNNER_TEMP/exported-lab"
+      - if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: original-export-${{ matrix.group }}
+          path: ${{ runner.temp }}/exported-lab
           retention-days: 30
