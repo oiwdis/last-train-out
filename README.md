@@ -1,12 +1,12 @@
-# Last Train Out — Milestone 3.5.3 renderer stability
+# Last Train Out — Milestone 3.5.4 macOS renderer acceptance
 
 This draft combines PR #4’s detailed survivor, locomotive and Harlow art with PR #5’s continuous three-station survival journey. Press **J** for Save / Continue / New / Restart and **V** to switch camera. [Integration history](docs/MILESTONE3_INTEGRATION.md)
 
-**Release is blocked.** The universal development build passed fresh ARM and Intel launch validation. Separate default Vulkan stress reproduced nine device losses in 95 hosted processes. The explicit Apple Silicon native Metal launcher completed the same schedule with zero device losses, with sampler warnings on scaled presets. Fullscreen performance on a physical 2020 M1 remains pending. [Draft PR #6](https://github.com/oiwdis/last-train-out/pull/6) · [3.5.3 performance and build download](docs/PERFORMANCE_MILESTONE353.md) · [Crash investigation](docs/RENDERER_CRASH_INVESTIGATION.md) · [Physical M1 procedure](docs/M1_MILESTONE353.md)
+**Hold the merge.** The optional native Metal build fixes the viewport sampler warning on Apple Silicon. Its matched steady median was 7.0 ms, with a 1.084-second Warehouse A entry frame. The default Vulkan executable lost its device during a fresh hosted ARM gameplay test. The owner’s physical 2020 M1 fullscreen check remains pending. [Draft PR #6](https://github.com/oiwdis/last-train-out/pull/6) · [Performance and stability report](docs/PERFORMANCE_MILESTONE354.md) · [All 36 paired views](docs/validation/milestone354/matched/README.md) · [Physical M1 procedure](docs/M1_MILESTONE354.md)
 
-[Full continuous journey](docs/recording/milestone353-full-journey.mp4) · [Integrated screenshot gallery](docs/MILESTONE35_GALLERY.md) · [Matched renderer screenshots](docs/validation/milestone353/alternatives/driver-comparison/README.md)
+[Download the tested universal development ZIP](https://github.com/oiwdis/last-train-out/actions/runs/44781367462/artifacts/14653133684) · [ZIP checksum and architecture details](docs/validation/milestone354/build-86.json) · [Full native Metal journey](docs/recording/milestone354-native-metal.mp4) · [Character comparison](docs/validation/milestone354/gallery/character.jpg) · [Train and station comparison](docs/validation/milestone354/gallery/train-and-station.jpg)
 
-The source milestone reports below retain their original evidence and limitations; they are not measurements of this combined build.
+The reports below describe their respective source milestones.
 
 > Milestone 3 now opens **The Harlow Escape**, a continuous three-station survival mission. Press **J** for route progress, Save / Continue / New / Restart. See [journey, controls and save format](docs/MILESTONE3_JOURNEY.md) and [PR #4 integration notes](docs/MILESTONE3_INTEGRATION.md).
 
@@ -40,7 +40,7 @@ Its existing acceleration, moving-platform physics, climbing and inventory rules
 |---|---|
 | Engine | Godot **4.5.1** (the version used for this milestone's tests and exports) |
 | Language | GDScript |
-| Renderer | Forward+ on desktop; Vulkan/MoltenVK on macOS (Compatibility fallback configured for web) |
+| Renderer | Desktop Forward+ with Vulkan/MoltenVK by default on macOS and optional native Metal on Apple Silicon |
 | Physics | Jolt Physics, 60 ticks/s, physics interpolation on |
 | macOS app | Built automatically by GitHub Actions for Apple Silicon and Intel - [download and play](#play-on-macos-no-godot-needed) |
 | Status | [Finalization review, validation and limitations](docs/FINALIZATION_REVIEW.md) |
@@ -80,10 +80,8 @@ Godot runtime and all game data. You do not need Godot, Xcode or anything else t
 
 ### 1. Download the latest build
 
-1. Open **[Actions → macOS app](https://github.com/oiwdis/last-train-out/actions/workflows/macos-app.yml?query=is%3Asuccess)**
-   (the link lists successful runs only) and click the newest run.
-2. At the bottom of the run page, under **Artifacts**, click
-   **LastTrainOut-macos-universal.zip**. You need to be signed in to GitHub.
+1. Sign in to GitHub and open the [tested development ZIP](https://github.com/oiwdis/last-train-out/actions/runs/44781367462/artifacts/14653133684).
+2. Verify the downloaded file with `shasum -a 256 LastTrainOut-macos-universal.zip` and compare the result with the [build receipt](docs/validation/milestone354/build-86.json).
 
 The run page also shows the build number, the commit it was built from and the ZIP's SHA-256.
 Development builds are kept for 30 days.

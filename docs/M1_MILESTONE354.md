@@ -26,6 +26,8 @@ tools/macos/benchmark_m1_renderers.sh "$app" "$out/measurements"
 
 The script runs both renderers, fullscreen and 1280×720 windowed, through Low, Medium and High. Startup JSON includes the normal loading scene, actual first playable time and subsequent 30 frames. The uncapped matrix records separate entry and steady intervals for all 12 locations, including Warehouse B, both train interiors, fog and mission results. Compare like-for-like resolution and preset. Record the worst frame, p95/p99, counts above 33.3/50/100 ms, and process RSS. A nonzero process exit, missing JSON, wrong backend, device loss or rendering warning is a failed attempt. Keep its log even if a retry succeeds. An offline movie’s 12 fps is its encoding rate.
 
+If Xcode is installed, use Instruments → Metal System Trace for an additional launch on a separate recording pass. Select the shipped `LastTrainOutMetal` process for native Metal or `Last Train Out` for Vulkan. Save the trace with the preset, cache condition and display mode. Pipeline creation, command-buffer execution and texture transfers on a physical GPU can help explain long intervals in the unprofiled JSON.
+
 ## Play and inspect
 
 On each renderer use Tab → Graphics or F2 to apply Low, Medium and High fullscreen. Use V to switch first and third person. Check the worker’s skin, coat, hair, shadows and hands during a carry. Walk into Warehouse B with the fog visible, board the cab, look through its windows, inspect the gauges and move into the passenger car. Ride the curve, reach Ashford, refuel and watch fog progress through all four states. Check nearby brickwork, rails, foliage and the fog boundary for shimmer, missing detail or flicker while moving.
