@@ -12,6 +12,7 @@ on:
       - tools/macos/startup_stages/**
       - tools/macos/profile_metal_entry.py
       - tools/macos/compare_player_startup.py
+      - tools/macos/entry_libraries/**
       - tools/macos/engine/worker-pool-shutdown.patch
       - tools/macos/worker_shutdown/**
       - tools/macos/renderer_lab.py
@@ -41,6 +42,7 @@ jobs:
       stages_run: ${{ steps.select.outputs.stages_run }}
       entry_run: ${{ steps.select.outputs.entry_run }}
       players_run: ${{ steps.select.outputs.players_run }}
+      entry_libraries: ${{ steps.select.outputs.entry_libraries }}
       run: ${{ steps.select.outputs.run }}
       exported: ${{ steps.select.outputs.exported }}
       followup: ${{ steps.select.outputs.followup }}
@@ -68,6 +70,11 @@ jobs:
             run=$(jq -r .workflow_run docs/validation/milestone354/build-86.json)
             id=$(tools/macos/find_reference_artifact.sh "$run")
             if [[ -n "$id" ]]; then echo "pool_run=$run" >> "$GITHUB_OUTPUT"; fi
+          fi
+          if ! git diff --quiet HEAD^ HEAD -- tools/macos/entry_libraries; then
+            run=$(jq -r .workflow_run docs/validation/milestone354/build-99.json)
+            id=$(tools/macos/find_reference_artifact.sh "$run")
+            if [[ -n "$id" ]]; then echo "entry_libraries=$run" >> "$GITHUB_OUTPUT"; fi
           fi
           if ! git diff --quiet HEAD^ HEAD -- tools/macos/compare_player_startup.py; then
             run=$(jq -r .workflow_run docs/validation/milestone354/build-99.json)
@@ -297,6 +304,86 @@ jobs:
             ${{ runner.temp }}/compiler/compile.log
             ${{ runner.temp }}/compiler/provenance.txt
             ${{ runner.temp }}/stages/
+          retention-days: 30
+
+  compile-entry-libraries:
+    needs: select
+    if: needs.select.outputs.entry_libraries != ''
+    name: Compile the additional shaders observed in the packaged route
+    runs-on: macos-latest
+    timeout-minutes: 105
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/download-artifact@v8
+        with:
+          name: LastTrainOut-macos-universal.zip
+          run-id: ${{ needs.select.outputs.entry_libraries }}
+          github-token: ${{ github.token }}
+          path: download
+          skip-decompress: true
+      - name: Verify the pack and Metal offline toolchain
+        run: |
+          zip=$(find download -type f -name '*.zip' | head -n 1)
+          echo "$(jq -r .zip_sha256 docs/validation/milestone354/build-99.json)  $zip" | shasum -a 256 -c -
+          ditto -x -k "$zip" extracted
+          smoke="$RUNNER_TEMP/compiler-check.metal"
+          printf '%s\n' '#include <metal_stdlib>' 'using namespace metal;' 'kernel void check(device uint *out [[buffer(0)]], uint i [[thread_position_in_grid]]) { out[i] = i; }' > "$smoke"
+          if ! xcrun -sdk macosx metal -c "$smoke" -o "$RUNNER_TEMP/check.air"; then
+            xcodebuild -downloadComponent MetalToolchain
+            xcrun -sdk macosx metal -c "$smoke" -o "$RUNNER_TEMP/check.air"
+          fi
+      - name: Bake libraries from the signed shader sources and verify all group round trips
+        run: |
+          python3 -m venv "$RUNNER_TEMP/metal-tools"
+          "$RUNNER_TEMP/metal-tools/bin/pip" install --disable-pip-version-check zstandard==0.25.0
+          "$RUNNER_TEMP/metal-tools/bin/python" tools/macos/entry_libraries/extend.py "extracted/Last Train Out.app" \
+            docs/validation/milestone354/build-99/raw/warehouse-metal-entry.zip "$RUNNER_TEMP/offline"
+      - if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: extended-entry-libraries
+          path: ${{ runner.temp }}/offline/
+          retention-days: 30
+
+  compare-entry-libraries:
+    needs: [select,compile-entry-libraries]
+    name: Packaged route libraries / ${{ matrix.first }} first
+    strategy:
+      fail-fast: false
+      matrix:
+        first: [shipped, extended]
+    runs-on: macos-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/download-artifact@v8
+        with:
+          name: LastTrainOut-macos-universal.zip
+          run-id: ${{ needs.select.outputs.entry_libraries }}
+          github-token: ${{ github.token }}
+          path: download
+          skip-decompress: true
+      - uses: actions/download-artifact@v8
+        with:
+          name: extended-entry-libraries
+          path: compiled
+      - name: Compare two signed copies with identical executables and game data
+        run: |
+          zip=download/LastTrainOut-macos-universal.zip
+          echo "$(jq -r .zip_sha256 docs/validation/milestone354/build-99.json)  $zip" | shasum -a 256 -c -
+          ditto -x -k "$zip" shipped
+          ditto -x -k "$zip" extended
+          app="extended/Last Train Out.app"
+          python3 tools/macos/entry_libraries/compare.py install "$app" compiled/extended-libraries.zip
+          codesign --force --sign - "$app"
+          codesign --verify --strict --deep "$app"
+          python3 tools/macos/verify_app.py "$app" --expect-signature adhoc
+          python3 tools/macos/entry_libraries/compare.py compare "shipped/Last Train Out.app" "$app" "$RUNNER_TEMP/ab" "${{ matrix.first }}"
+      - if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: entry-${{ matrix.first }}-first
+          path: ${{ runner.temp }}/ab/
           retention-days: 30
 
   offline-libraries:

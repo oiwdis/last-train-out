@@ -1,0 +1,12 @@
+{
+  "observed_stage_markers": 72,
+  "marker_offset_median_s": 1795207927.1186676,
+  "alignment_margin_ms": 3.646280288696289,
+  "source_process": 3453,
+  "signposted_counts": {
+    "shader_compile": 46,
+    "compute_pipeline_create": 184,
+    "render_pipeline_create": 538
+  },
+  "unmatched_signposts": []
+}
