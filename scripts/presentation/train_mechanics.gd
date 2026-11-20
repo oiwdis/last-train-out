@@ -51,7 +51,7 @@ func _rod(length: float, material: Material) -> MeshInstance3D:
 	var surface := SurfaceTool.new()
 	surface.begin(Mesh.PRIMITIVE_TRIANGLES)
 	surface.set_material(FabricatedMesh.planar_material(material))
-	surface.append_from(FabricatedMesh.box(Vector3(length,.052,.035),material),0,Transform3D.IDENTITY)
+	surface.append_from(FabricatedMesh.box_source(Vector3(length,.052,.035),material),0,Transform3D.IDENTITY)
 	var bearing := CylinderMesh.new()
 	bearing.top_radius = .066
 	bearing.bottom_radius = .066
@@ -64,10 +64,12 @@ func _rod(length: float, material: Material) -> MeshInstance3D:
 	cap.height = .075
 	cap.radial_segments = 6
 	cap.rings = 1
+	var bearing_source := CpuMeshSource.new(bearing.get_mesh_arrays())
+	var cap_source := CpuMeshSource.new(cap.get_mesh_arrays())
 	for sign in [-1.0,1.0]:
 		var transform := Transform3D(Basis(Vector3.RIGHT,PI/2),Vector3(sign*length*.5,0,0))
-		surface.append_from(bearing,0,transform)
-		surface.append_from(cap,0,transform)
+		surface.append_from(bearing_source,0,transform)
+		surface.append_from(cap_source,0,transform)
 	var mesh := MeshInstance3D.new()
 	mesh.mesh = surface.commit()
 	add_child(mesh)

@@ -1,0 +1,38 @@
+extends SceneTree
+
+class TransformCounter:
+	extends Node3D
+	var changes := 0
+
+	func _ready() -> void:
+		set_notify_transform(true)
+
+	func _notification(what: int) -> void:
+		if what == NOTIFICATION_TRANSFORM_CHANGED: changes += 1
+
+func _initialize() -> void:
+	run.call_deferred()
+
+func run() -> void:
+	var game: Game = load("res://scenes/missions/harlow_escape.tscn").instantiate()
+	root.add_child(game)
+	await game.graphics.wait_for_render_ready()
+	while not game.journey.ready_to_play: await process_frame
+	game.player.input.scripted = true
+	var art: TrainArt = game.train.get_node("Locomotive").find_children("*","TrainArt",true,false)[0]
+	var targets: Array[Node3D] = [art._drive_wheels[0], art.mechanics.rods[0].mesh, art.mechanics.gauges[0], game.fog_system.presentation.layers[0]]
+	game.fog_system.set_physics_process(false)
+	var probes: Array[TransformCounter] = []
+	for target in targets:
+		var counter := TransformCounter.new()
+		target.add_child(counter)
+		probes.append(counter)
+	for n in 4: await process_frame
+	for p in probes: p.changes = 0
+	for n in 120: await process_frame
+	print("idle 120 frames: ",probes.map(func(p: TransformCounter) -> int: return p.changes))
+	game.train.start()
+	for n in 60: await process_frame
+	print("after 60 moving frames: ",probes.map(func(p: TransformCounter) -> int: return p.changes))
+	await DiagnosticSceneRetirement.release(game)
+	quit()

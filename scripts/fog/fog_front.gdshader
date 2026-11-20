@@ -8,7 +8,7 @@ void fragment() {
 	float drift = sin(p.x * 1.7 + sin(p.y * 2.0 + TIME * 0.19) + phase);
 	float wisps = sin(p.y * 5.0 + drift * 2.0 - TIME * 0.35);
 	float noise = 0.5 + 0.25 * drift + 0.25 * wisps * detail;
-	float edges = smoothstep(0.0, 0.1, UV.x) * smoothstep(1.0, 0.9, UV.x) * smoothstep(0.0, 0.25, UV.y);
+	float edges = smoothstep(0.0, 0.1, UV.x) * (1.0 - smoothstep(0.9, 1.0, UV.x)) * smoothstep(0.0, 0.25, UV.y);
 	ALBEDO = tint.rgb * (0.72 + noise * 0.28);
 	ALPHA = tint.a * edges * (0.68 + noise * 0.32);
 }

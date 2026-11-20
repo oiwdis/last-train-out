@@ -43,6 +43,11 @@ static func box(size: Vector3, material: Material) -> Mesh:
 	return _shapes[key]
 
 
+## Source for SurfaceTool assembly. Only the final assembled mesh needs a GPU buffer.
+static func box_source(size: Vector3, material: Material) -> Mesh:
+	return CpuMeshSource.new(_box_arrays(size, material))
+
+
 static func _box_arrays(size: Vector3, material: Material) -> Array:
 	var key := "%s/%s" % [size, material.get_instance_id() if material != null else 0]
 	if not _cpu_shapes.has(key):

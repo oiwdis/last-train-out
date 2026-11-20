@@ -10,6 +10,7 @@ var base_density := 0.004
 var base_light := Color.WHITE
 var audio: FogAudio
 var _blend := 0.0
+var _drawn_front := INF
 
 func bind(authority: FogSystem, id: String) -> void:
 	system = authority
@@ -55,12 +56,23 @@ func _process(delta: float) -> void:
 	if sim.event == "dense" and gap < system.config.approach_distance:
 		target = maxf(target, 0.55)
 	_blend = move_toward(_blend, target, delta * 0.6)
-	environment.fog_enabled = true
-	environment.fog_density = lerpf(base_density, system.config.visibility_density, _blend)
-	environment.fog_light_color = base_light.lerp(Color(0.22, 0.27, 0.30), _blend)
+	# Each Environment setter submits the complete fog state to the renderer.
+	if not environment.fog_enabled:
+		environment.fog_enabled = true
+	var density := lerpf(base_density, system.config.visibility_density, _blend)
+	if not is_equal_approx(environment.fog_density, density):
+		environment.fog_density = density
+	var color := base_light.lerp(Color(0.22, 0.27, 0.30), _blend)
+	if environment.fog_light_color != color:
+		environment.fog_light_color = color
+	if _drawn_front == sim.front:
+		return
+	_drawn_front = sim.front
 	for i in layers.size():
 		var progress := sim.front - i * 5.0
-		layers[i].global_position = system.route.sample(progress) + Vector3.UP * 14
+		var transform := layers[i].global_transform
+		transform.origin = system.route.sample(progress) + Vector3.UP * 14
 		var axis := system.route.tangent(progress)
 		if axis.length_squared() > 0.1:
-			layers[i].look_at(layers[i].global_position + axis, Vector3.UP)
+			transform.basis = Basis.looking_at(axis, Vector3.UP)
+		layers[i].global_transform = transform

@@ -5,6 +5,16 @@ var game: Game
 var worker: WorkerAnimator
 var art: TrainArt
 
+class PoseObserver:
+	extends Node3D
+	var changes := 0
+
+	func _ready() -> void:
+		set_notify_transform(true)
+
+	func _notification(what: int) -> void:
+		if what == NOTIFICATION_TRANSFORM_CHANGED: changes += 1
+
 func before_each() -> void:
 	JourneyController.pending_load = {}
 	game = await spawn_scene("res://scenes/missions/harlow_escape.tscn",16) as Game
@@ -307,3 +317,32 @@ func snapshot() -> Dictionary:
 func finite_rig() -> void:
 	for index in worker.skeleton.get_bone_count():
 		check(worker.skeleton.get_bone_global_pose(index).is_finite(),"valid survivor bone "+str(index))
+
+
+func test_stationary_gear_and_fog_publish_only_changed_transforms() -> void:
+	var gear := PoseObserver.new()
+	art.mechanics.rods[0].mesh.add_child(gear)
+	var front := game.fog_system.presentation
+	var sheet := PoseObserver.new()
+	front.layers[0].add_child(sheet)
+	art._process(0)
+	front._process(0)
+	gear.force_update_transform()
+	sheet.force_update_transform()
+	gear.changes = 0
+	sheet.changes = 0
+	for frame in 4:
+		art._process(0)
+		front._process(0)
+		gear.force_update_transform()
+		sheet.force_update_transform()
+	check_eq(gear.changes,0,"parked gear does not invalidate shadow casters")
+	check_eq(sheet.changes,0,"unchanged front does not resubmit geometry")
+	game.train.distance += 2
+	game.fog_system.simulation.front += 3
+	art._process(0)
+	front._process(0)
+	gear.force_update_transform()
+	sheet.force_update_transform()
+	check_greater(gear.changes,0,"a restored train distance updates gear even at zero speed")
+	check_greater(sheet.changes,0,"advancing fog updates the actual sheet")

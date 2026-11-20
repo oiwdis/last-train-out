@@ -81,7 +81,7 @@ func _rebuild() -> void:
 	section.begin(Mesh.PRIMITIVE_TRIANGLES)
 	var height := maxf(rail_height - 0.04, 0.035)
 	for profile in [Vector3(0.15, 0.2, 0.1), Vector3(0.025, 0.5, 0.45), Vector3(0.075, 0.3, 0.85)]:
-		section.append_from(FabricatedMesh.box(Vector3(length, height * profile.y, profile.x), rail_material), 0,
+		section.append_from(FabricatedMesh.box_source(Vector3(length, height * profile.y, profile.x), rail_material), 0,
 			Transform3D(Basis.IDENTITY, Vector3(0, 0.04 + height * profile.z, 0)))
 	var rail_mesh := section.commit()
 	rail_mesh.surface_set_material(0, rail_material)
@@ -109,15 +109,16 @@ func _rebuild() -> void:
 	fastener.begin(Mesh.PRIMITIVE_TRIANGLES)
 	var plate := BoxMesh.new()
 	plate.size = Vector3(0.19, 0.012, 0.24)
-	fastener.append_from(plate, 0, Transform3D.IDENTITY)
+	fastener.append_from(CpuMeshSource.new(plate.get_mesh_arrays()), 0, Transform3D.IDENTITY)
 	var bolt := CylinderMesh.new()
 	bolt.top_radius = 0.016
 	bolt.bottom_radius = 0.016
 	bolt.height = 0.025
 	bolt.radial_segments = 6
 	bolt.rings = 1
+	var bolt_source := CpuMeshSource.new(bolt.get_mesh_arrays())
 	for side in [-0.095, 0.095]:
-		fastener.append_from(bolt, 0, Transform3D(Basis.IDENTITY, Vector3(0,0.015,side)))
+		fastener.append_from(bolt_source, 0, Transform3D(Basis.IDENTITY, Vector3(0,0.015,side)))
 	var fastener_mesh := fastener.commit()
 	fastener_mesh.surface_set_material(0, rail_material)
 	var plate_poses: Array[Transform3D] = []

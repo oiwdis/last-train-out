@@ -6,6 +6,8 @@ extends Node3D
 var _steam: CPUParticles3D
 var _drive_wheels: Array[MeshInstance3D] = []
 var _wheel_phase := 0.0
+var _last_speed := -1.0
+var _last_state := -1
 var mechanics: TrainMechanics
 
 
@@ -51,9 +53,6 @@ func _ready() -> void:
 		mechanics = TrainMechanics.new()
 		mechanics.name = "LiveRunningGearAndInstruments"
 		add_child(mechanics)
-		var train := car.get_parent() as Train
-		if train != null:
-			train.reset_finished.connect(func() -> void: _wheel_phase = 0.0)
 		_steam = PresentationEffects.particles(self, Vector3(5.15, 3.55, 0), 22, Color(0.6, 0.67, 0.7, 0.24), 0.32, 2.1)
 		_steam.direction = Vector3(-0.4, 1, 0)
 		_steam.initial_velocity_min = 0.35
@@ -85,6 +84,7 @@ func _ready() -> void:
 			AssetDressing.place(self, "suitcase", Vector3(1.8, 1.5, 0.95), Vector3.ONE * 0.7)
 		else:
 			AssetDressing.place(self, "oil_can", Vector3(-3.6, 1.6, -0.9), Vector3.ONE)
+	set_process(_steam != null)
 	PerformanceTrace.mark("train_art",profile_start)
 
 
@@ -136,14 +136,19 @@ func _process(_delta: float) -> void:
 		return
 	var train := get_parent().get_parent() as Train
 	if train != null:
+		# Node3D transform setters dirty shadow casters even when the pose is
+		# identical. A brake/regulator change at rest still updates the gauges.
+		if train.distance == _wheel_phase and train.speed == _last_speed and train.state == _last_state:
+			return
+		_last_speed = train.speed
+		_last_state = train.state
 		# Route distance is the simulation authority, including curves and restored
 		# saves. Integrating render deltas drifted and restarted the rods on loading.
 		_wheel_phase = train.distance
 		for wheel in _drive_wheels:
 			var radius := maxf(wheel.mesh.get_aabb().size.y * 0.5, 0.2)
-			wheel.rotation.z = -_wheel_phase / radius
-			if radius > .5 and wheel.position.z>0:
-				wheel.rotation.z += PI/2
+			var quartering := PI/2 if radius > .5 and wheel.position.z > 0 else 0.0
+			wheel.rotation.z = -_wheel_phase / radius + quartering
 		mechanics.update_mechanism(_wheel_phase,train)
 		_steam.initial_velocity_max = 0.8 + minf(train.speed, 12.0) * 0.1
 		_steam.direction.x = -0.4 - train.speed * 0.1
