@@ -1,0 +1,146 @@
+{
+  "run": 44682971897,
+  "head": "0697621649a1493b2a341343d3da7a3b987ff9ab",
+  "files": {
+    "LastTrainOut-macos-universal.zip": {
+      "sha256": "724231e22359a05c43bd800507d8b9ebb7f1c379c681b34ab088bcaafe7b1985",
+      "bytes": 292541512
+    },
+    "linux-tests.zip": {
+      "sha256": "afeec091c18eb2dd2a38d978ae051665a91069036ba78e6d44f98f79ecfe57d1",
+      "bytes": 18121
+    },
+    "performance-and-journey.zip": {
+      "sha256": "9eaffc0625b0b7c979c751724c1ac9fe6d5e6728be2ea2d658f450556b310109",
+      "bytes": 42949061
+    },
+    "release-stress-high.zip": {
+      "sha256": "9c8af031bf22fb03c9261cf5d7ead4152f7037459bb5e8ae59bd2f48a2b2342e",
+      "bytes": 865741
+    },
+    "release-stress-low-medium.zip": {
+      "sha256": "f438edad88691175e9875a9149c5bf925c3fa5b7c4bfdae6233ac70233d7b974",
+      "bytes": 680402
+    },
+    "release-stress-mixed.zip": {
+      "sha256": "059057784ca07fd4a4441c32969d77c2dac67abf9f28deb2eac9e4d487b3ad71",
+      "bytes": 1084837
+    },
+    "renderer-stress.zip": {
+      "sha256": "2173fcff201b7848b647703ef86ef82191f25a180ca4bcb28612e8979d080d9f",
+      "bytes": 19158
+    },
+    "selftest-arm64.zip": {
+      "sha256": "90c9c5c342616e62cf7bc6594de8c9046797d5f3d3d4332c8ead9bfd010a8424",
+      "bytes": 744485
+    },
+    "selftest-x86_64.zip": {
+      "sha256": "7c897927b89bd0da277a97e9a8b77b533f951ec0b8a75cc1f3c40534724d3639",
+      "bytes": 2212
+    },
+    "test-logs.zip": {
+      "sha256": "74e8b67da03e99f6b7a6d1286720d5155a2b9f37d65cb1cecf80ece272a16ef3",
+      "bytes": 201084
+    }
+  },
+  "release": {
+    "build": "77",
+    "pack_sha256": "1bfe361b1814a009656a28a22eb4140f5e6ccc5c700ddc402968af7b744dd272",
+    "zip_sha256": "724231e22359a05c43bd800507d8b9ebb7f1c379c681b34ab088bcaafe7b1985"
+  },
+  "linux-tests": {
+    "passed": 305,
+    "failed": 0
+  },
+  "second_journey": {
+    "checks": 167,
+    "passed": 167,
+    "teleports": 0,
+    "status": "escaped",
+    "duration": "1410.416667",
+    "mp4_sha256": "76aed621a9099bdcf7c06cec8ef2bb33e9224e90029cbb773918a006f142bb41"
+  },
+  "Harlow platform": {
+    "baseline": "2510.907",
+    "optimized": "81.929"
+  },
+  "Warehouse B": {
+    "baseline": "19.365",
+    "optimized": "19.47"
+  },
+  "Inside dangerous fog": {
+    "baseline": "31.533",
+    "optimized": "42.277"
+  },
+  "Mission completion": {
+    "baseline": "18.293",
+    "optimized": "44.373"
+  },
+  "renderer-stress": {
+    "passed": 6,
+    "failed": 0
+  },
+  "selftest-arm64": {
+    "selftest-arm64-headless.json": [
+      46,
+      46
+    ],
+    "selftest-arm64-window.json": [
+      49,
+      49
+    ]
+  },
+  "selftest-x86_64": {
+    "selftest-x86_64-headless.json": [
+      46,
+      46
+    ]
+  },
+  "test-logs": {
+    "passed": 305,
+    "failed": 0
+  },
+  "stress": {
+    "available_cohorts": [
+      "release-stress-high",
+      "release-stress-low-medium",
+      "release-stress-mixed"
+    ],
+    "attempts": 95,
+    "clean": 89,
+    "complete": 89,
+    "losses": 6,
+    "failures": [
+      [
+        "high",
+        "cold-3",
+        "high"
+      ],
+      [
+        "high",
+        "cold-4",
+        "high"
+      ],
+      [
+        "high",
+        "cold-5",
+        "high"
+      ],
+      [
+        "high",
+        "cold-7",
+        "high"
+      ],
+      [
+        "high",
+        "cold-10",
+        "high"
+      ],
+      [
+        "mixed",
+        "cold-3",
+        "high"
+      ]
+    ]
+  }
+}

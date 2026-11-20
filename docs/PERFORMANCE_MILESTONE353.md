@@ -1,6 +1,6 @@
 # Milestone 3.5.3 performance and renderer stability
 
-**Release remains blocked.** The default exported game lost the device in 9 of 95 hosted processes. Native Metal completed the same 95-process schedule with zero device losses. A further 67-process replication also completed. Together 71 of 162 processes logged a sampler warning and cold readiness reached 169.565 s. High Warehouse B and train-interior tails remain slower than the matched original integration. Physical 2020 M1 validation is pending. PR #6 remains draft.
+**Release remains blocked.** The default exported game lost the device in 9 of 95 hosted processes. An independent rebuild had six more cold High losses in its own 95-process schedule. Native Metal completed the same 95-process schedule with zero device losses. A further 67-process replication also completed. Together 71 of 162 processes logged a sampler warning and cold readiness reached 169.565 s. High Warehouse B and train-interior tails remain slower than the matched original integration. Physical 2020 M1 validation is pending. PR #6 remains draft.
 
 The investigation started with a repeatable Apple Paravirtual GPU timeout in the shipped High workload. The standalone renderer probe completed all 31 hosted processes including Metal API validation. The complete mission reproduced the timeout with camera preparation disabled, at reduced pixel coverage during preparation, and with PSO persistence disabled. None of those changes qualifies as a cure. The default remains Godot 4.5.1 Forward+/Vulkan.
 
@@ -70,6 +70,14 @@ The historical 389.66 ms Medium dangerous-fog frame did not recur in this compar
 All three candidate steady frames over 100 ms occurred at mission completion. The 952.577 ms Medium frame had 951.724 ms between render callbacks, 0.008 ms each in process and physics, 0.018 ms of render setup CPU and zero pipeline-count deltas throughout the steady window. The other candidate Medium pass peaked at 8.041 ms there. Six short exported Vulkan stress matrices on independent runners peaked between 6.687 and 13.255 ms in that cell, with 24 steady samples apiece. The actual result UI pauses the world and still draws its 3D background. The available samples do not identify a scene script, shader compilation or a hardware GPU duration for the long wait. High results included two additional steady frames over 100 ms. The full-journey pacing target is open.
 
 [Every location, preset, startup stage, shader cache and memory comparison](validation/milestone353/candidate/comparison/COMPARISON.md) · [CPU time, draws, texture memory and all threshold counts](validation/milestone353/candidate/comparison/pooled-distributions.csv) · [Per-frame callback evidence](validation/milestone353/candidate/comparison/worst-frames.csv) · [Original logs, images, raw intervals and continuous-journey checks](validation/milestone353/candidate/performance-and-journey-logs.zip)
+
+## Independent confirmation on a second hosted Mac
+
+A second matched comparison retained the Harlow entry reduction at **2,510.907 → 81.929 ms**. High Warehouse B p99 was 19.365 → 19.470 ms on this runner. High cab and passenger-car p99 improved modestly here after worsening in the primary pair. Medium dangerous fog went from 31.533 to 42.277 ms. The historical 389.66 ms steady spike did not recur in this cell in either comparison. The second candidate's Medium results-screen worst was 44.373 ms, and **Low Warehouse B instead reached 976.263 ms**, including 931.360 ms in the render bracket with no pipeline-count change. The original also had a 603.403 ms High Ashford workshop frame on this runner. Long steady frames remain a release blocker.
+
+The separately rebuilt export passed both 305-test suites, all six rendered lifecycle checks, both fresh downloads and another continuous 167/167 journey. Six of 20 cold High launches lost the device. Every warm launch completed. Across both default acceptance cohorts the recorded loss counts were nine in build 73 and six in build 77. The latter PCK differed only in its UID cache mapping for an external test script.
+
+[Second matched table, both stress failures, full recording, checksums and original crash reports](validation/milestone353/confirmation/README.md)
 
 ## Mechanics, ownership and game integrity
 

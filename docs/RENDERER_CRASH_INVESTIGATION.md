@@ -114,3 +114,7 @@ The repeated packaged native Metal route captured and independently decoded the 
 Two additional candidate native Metal cohorts completed 67/67 processes, with zero device losses, 45 clean processes and 22 sampler warnings. The complete 162-process data set has 40 successful cold High and 40 successful warm High launches. The repeat's cold Low maximum was 169.565 s. This replication supports an opt-in hosted crash mitigation and preserves the startup and diagnostic blockers.
 
 [Independent replications, strict gate results and original raw logs](validation/milestone353/alternatives/repeats/README.md)
+
+The independent build 77 stress recorded six more cold High device losses in 95 processes. Its fresh ARM and Intel download checks passed. The six logs and native crash reports appear in the corresponding High and mixed archives. A per-entry comparison of all 902 pack paths found only one new external-test UID mapping. The fresh-download results on either build do not establish cold-launch reliability.
+
+[Independent rebuild, exact pack comparison and six additional crash reports](validation/milestone353/confirmation/README.md)

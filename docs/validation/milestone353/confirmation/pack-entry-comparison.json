@@ -1,0 +1,32 @@
+{
+  "primary_pack_sha256": "dd21a5ccd9a1537a99bba028b16825ed2bc40ec7fa843b8861dc839fd4bae72d",
+  "comparison_pack_sha256": "1bfe361b1814a009656a28a22eb4140f5e6ccc5c700ddc402968af7b744dd272",
+  "original_paths": 902,
+  "comparison_paths": 902,
+  "added": 0,
+  "removed": 0,
+  "changed_paths": {
+    ".godot/uid_cache.bin": [
+      [
+        20753,
+        "ec1e27fd821a1b12124bcf0e32943ea4",
+        0
+      ],
+      [
+        20802,
+        "2e674247967d435dc53d486e4390cf61",
+        0
+      ]
+    ]
+  },
+  "uid_changes": {
+    "1362258216590105628": [
+      null,
+      "res://tools/macos/exported_journey.gd"
+    ]
+  },
+  "uid_counts": [
+    343,
+    344
+  ]
+}
