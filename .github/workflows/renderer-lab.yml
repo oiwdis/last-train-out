@@ -8,6 +8,7 @@ on:
       - tools/macos/measure_fresh_player.py
       - tools/macos/check_native_selftest.sh
       - tools/macos/experiments/**
+      - tools/macos/offline_bake/**
       - tools/macos/renderer_lab.py
       - tools/macos/renderer_probe.gd
       - tools/macos/exported_renderer_lab.py
@@ -30,6 +31,7 @@ jobs:
       libraries: ${{ steps.select.outputs.libraries }}
       replay: ${{ steps.select.outputs.replay }}
       gi_run: ${{ steps.select.outputs.gi_run }}
+      offline_run: ${{ steps.select.outputs.offline_run }}
       run: ${{ steps.select.outputs.run }}
       exported: ${{ steps.select.outputs.exported }}
       followup: ${{ steps.select.outputs.followup }}
@@ -52,6 +54,11 @@ jobs:
             run=$(jq -r .workflow_run docs/validation/milestone354/build-86.json)
             id=$(tools/macos/find_reference_artifact.sh "$run")
             if [[ -n "$id" ]]; then echo "replay=$run" >> "$GITHUB_OUTPUT"; fi
+          fi
+          if ! git diff --quiet HEAD^ HEAD -- tools/macos/offline_bake; then
+            run=$(jq -r .workflow_run docs/validation/milestone354/build-86.json)
+            id=$(tools/macos/find_reference_artifact.sh "$run")
+            if [[ -n "$id" ]]; then echo "offline_run=$run" >> "$GITHUB_OUTPUT"; fi
           fi
           if ! git diff --quiet HEAD^ HEAD -- tools/macos/experiments; then
             run=$(jq -r .workflow_run docs/validation/milestone354/build-86.json)
@@ -76,6 +83,102 @@ jobs:
           if [ "$GITHUB_EVENT_NAME" = workflow_dispatch ]; then
             echo 'journey=true' >> "$GITHUB_OUTPUT"
           fi
+
+  offline-libraries:
+    needs: select
+    if: needs.select.outputs.offline_run != ''
+    name: Compile observed Metal libraries for the measured device profile
+    runs-on: macos-latest
+    timeout-minutes: 105
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/download-artifact@v8
+        with:
+          name: LastTrainOut-macos-universal.zip
+          run-id: ${{ needs.select.outputs.offline_run }}
+          github-token: ${{ github.token }}
+          path: download
+          skip-decompress: true
+      - name: Verify the pack and Metal offline toolchain
+        run: |
+          zip=$(find download -type f -name '*.zip' | head -n 1)
+          echo "$(jq -r .zip_sha256 docs/validation/milestone354/build-86.json)  $zip" | shasum -a 256 -c -
+          ditto -x -k "$zip" extracted
+          smoke="$RUNNER_TEMP/compiler-check.metal"
+          printf '%s\n' '#include <metal_stdlib>' 'using namespace metal;' 'kernel void check(device uint *out [[buffer(0)]], uint i [[thread_position_in_grid]]) { out[i] = i; }' > "$smoke"
+          if ! xcrun -sdk macosx metal -c "$smoke" -o "$RUNNER_TEMP/check.air"; then
+            xcodebuild -downloadComponent MetalToolchain
+            xcrun -sdk macosx metal -c "$smoke" -o "$RUNNER_TEMP/check.air"
+          fi
+      - name: Build an offline compiler using Godot’s own Metal container writer
+        run: |
+          folder="$RUNNER_TEMP/baker-source"
+          mkdir "$folder"
+          cp tools/macos/engine/build_metal_template.sh "$folder/"
+          cat tools/macos/engine/viewport-metal-sampler.patch tools/macos/offline_bake/builder.patch > "$folder/viewport-metal-sampler.patch"
+          "$folder/build_metal_template.sh" "$RUNNER_TEMP/compiler"
+      - name: Compile stages observed on the first native player and cover all 36 views
+        run: |
+          python3 tools/macos/offline_bake/measure.py bake "extracted/Last Train Out.app" "$RUNNER_TEMP/compiler/LastTrainOutMetal" \
+            docs/validation/milestone354/raw/fresh-native-metal-replay.zip "$RUNNER_TEMP/offline"
+      - if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: offline-metal-libraries
+          path: |
+            ${{ runner.temp }}/offline/
+            ${{ runner.temp }}/compiler/compile.log
+            ${{ runner.temp }}/compiler/provenance.txt
+          retention-days: 30
+
+  offline-comparison:
+    needs: [select, offline-libraries]
+    name: Fresh player with source or offline Metal libraries / ${{ matrix.first }} first
+    strategy:
+      fail-fast: false
+      matrix:
+        first: [source, binary]
+    runs-on: macos-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/download-artifact@v8
+        with:
+          name: LastTrainOut-macos-universal.zip
+          run-id: ${{ needs.select.outputs.offline_run }}
+          github-token: ${{ github.token }}
+          path: download
+          skip-decompress: true
+      - uses: actions/download-artifact@v8
+        with:
+          name: offline-metal-libraries
+          path: inventory
+      - id: prepare
+        name: Change only the signed library inventory in a disposable application
+        run: |
+          zip=$(find download -type f -name '*.zip' | head -n 1)
+          echo "$(jq -r .zip_sha256 docs/validation/milestone354/build-86.json)  $zip" | shasum -a 256 -c -
+          ditto -x -k "$zip" source
+          ditto -x -k "$zip" binary
+          target="binary/Last Train Out.app"
+          mv "$target/Contents/Resources/MetalShaders" "$RUNNER_TEMP/shipped-sources"
+          ditto inventory/offline/MetalShaders "$target/Contents/Resources/MetalShaders"
+          codesign --force --sign - "$target"
+          codesign --verify --deep --strict "$target"
+          test "$(sw_vers -productVersion | cut -d . -f 1)" -ge 26
+      - name: Launch the assigned app before any other Godot process
+        run: python3 tools/macos/measure_fresh_player.py "${{ matrix.first }}/Last Train Out.app" "$RUNNER_TEMP/measurements/player"
+      - name: Compare cache-cold, warm and all 36 render fixtures on the same host
+        if: ${{ !cancelled() && steps.prepare.outcome == 'success' }}
+        run: |
+          python3 tools/macos/offline_bake/measure.py compare "source/Last Train Out.app" "binary/Last Train Out.app" \
+            "$RUNNER_TEMP/measurements/comparison" "${{ matrix.first }}"
+      - if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: offline-${{ matrix.first }}-first
+          path: ${{ runner.temp }}/measurements/
+          retention-days: 30
 
   gi-template:
     needs: select

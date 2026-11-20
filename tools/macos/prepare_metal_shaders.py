@@ -17,12 +17,14 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('app', type=Path)
     parser.add_argument('out', type=Path)
+    parser.add_argument('--offline-baker', type=Path,
+                        help='Run an isolated build-only compiler and write its test inventory under OUT')
     args = parser.parse_args()
     app, out = args.app.resolve(), args.out.resolve()
     out.mkdir(parents=True, exist_ok=True)
     resources = app / 'Contents/Resources'
     info = plistlib.loads((app / 'Contents/Info.plist').read_bytes())
-    binary = str(app / 'Contents/MacOS/LastTrainOutMetal')
+    binary = str(args.offline_baker.resolve() if args.offline_baker else app / 'Contents/MacOS/LastTrainOutMetal')
     profile = json.loads(subprocess.check_output([app / 'Contents/MacOS/choose-renderer', '--device-profile']))
     original, = resources.glob('*.pck')
     user = 'LTO-MetalBuild-' + uuid.uuid4().hex
@@ -34,7 +36,7 @@ def main():
         (project / 'override.cfg').write_text('[application]\nconfig/use_custom_user_dir=true\n'
                                                f'config/custom_user_dir_name="{user}"\n')
         result = measure(binary, project, out, 'source-inventory', 'integration_benchmark.gd',
-                         ['--suite=matrix', '--samples=12', '--warmup=8'], 600,
+                         ['--suite=matrix', '--samples=12', '--warmup=8'], 2700 if args.offline_baker else 600,
                          ['--main-pack', str(pack), '--rendering-method', 'forward_plus', '--rendering-driver', 'metal'],
                          data / 'shader_cache')
         if result['returncode'] or not result.get('complete_matrix') or result['engine_diagnostics']:
@@ -42,7 +44,7 @@ def main():
         report = json.loads((out / 'source-inventory.json').read_text())
         if (report['renderer'], report['driver'], report['runtime_binary']) != ('forward_plus', 'metal', 'LastTrainOutMetal'):
             raise SystemExit('Wrong renderer in shader inventory.')
-    dest = resources / 'MetalShaders'
+    dest = (out if args.offline_baker else resources) / 'MetalShaders'
     dest.mkdir()
     files = {}
     cache = data / 'shader_cache'
@@ -59,6 +61,12 @@ def main():
         files[key] = hashlib.sha256(source).hexdigest()
     if not files:
         raise SystemExit('Godot produced no Metal shader intermediates.')
+    if args.offline_baker:
+        with (resources / 'MetalShaders/Profile.plist').open('rb') as original_profile:
+            shipped_files = plistlib.load(original_profile)['files']
+        if set(files) != set(shipped_files):
+            raise ValueError('The offline inventory did not cover the same shader groups as the release.')
+        profile['min_os_version'] = '26.0'
     profile.update(files=files, source=info['LTOBuildCommit'], adapter=report['adapter'], engine=report['godot'])
     (dest / 'Profile.plist').write_bytes(plistlib.dumps(profile))
     (out / 'metal-profile.json').write_text(json.dumps(profile, indent=2))
