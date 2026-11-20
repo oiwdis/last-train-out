@@ -4,6 +4,9 @@ on:
   pull_request:
     paths:
       - .github/workflows/renderer-lab.yml
+      - scripts/settings/render_resolution.gd
+      - tools/macos/check_metal_sampler.py
+      - tools/macos/metal_sampler_probe.gd
       - tools/macos/renderer_lab.py
       - tools/macos/renderer_probe.gd
       - tools/macos/exported_renderer_lab.py
@@ -19,6 +22,24 @@ permissions:
   actions: read
 
 jobs:
+  sampler:
+    name: Stock Metal sampler and pixel controls
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/cache/restore@v6
+        with:
+          path: ~/godot-ci
+          key: godot-4.5.1-stable-macos-universal-template-v1
+      - run: tools/macos/install_godot.sh
+      - run: python3 tools/macos/check_metal_sampler.py "$GODOT" "$RUNNER_TEMP/sampler"
+      - if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: metal-sampler-controls
+          path: ${{ runner.temp }}/sampler
+          retention-days: 30
+
   select:
     name: Check investigation inputs
     runs-on: ubuntu-latest

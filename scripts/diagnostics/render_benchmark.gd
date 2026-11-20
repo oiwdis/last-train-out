@@ -157,7 +157,7 @@ func _apply_case(index: int) -> void:
 		var light := entry.light as Light3D
 		light.shadow_enabled = bool(entry.shadow) and index != 2
 		light.visible = index != 3 or light is DirectionalLight3D
-	root.scaling_3d_scale = 0.65 if index == 4 else 1.0
+	RenderResolution.apply(root, 0.65 if index == 4 else 1.0)
 
 
 func _render_frames(count: int) -> void:

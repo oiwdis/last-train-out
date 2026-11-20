@@ -159,7 +159,7 @@ func _apply_resolution() -> void:
 		# The visible rect is in stretched UI coordinates (often 1280×720).
 		# Use window pixels so full-screen/Retina rendering actually respects the budget.
 		scale = minf(scale, float(preset.maximum_3d_height) / maxf(get_viewport().get_window().size.y, 1))
-	get_viewport().scaling_3d_scale = clampf(scale, 0.25, 1.0)
+	RenderResolution.apply(get_window(), clampf(scale, 0.25, 1.0))
 
 
 func cycle() -> void:
