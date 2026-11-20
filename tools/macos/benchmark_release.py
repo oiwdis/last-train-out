@@ -68,6 +68,7 @@ def measure(godot, project, out, name, script, args, timeout, engine_args=(), ca
               'pipeline_cache_events': [line for line in lines if 'PSO cache' in line],
               'shader_cache_misses': sum('Shader cache miss' in line for line in lines),
               'shader_cache_hits': sum('Shader cache hit' in line for line in lines),
+              'shader_variants_loaded': sum('Loading cache for shader' in line for line in lines),
               'engine_diagnostics': diagnostics, 'rss': rss}
     if report.exists():
         try:

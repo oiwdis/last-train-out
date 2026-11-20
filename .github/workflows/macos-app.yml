@@ -416,6 +416,7 @@ jobs:
         run: |
           if [ -f build/macos/export.log ]; then
             mkdir -p "$RUNNER_TEMP/selftest"
+            if [ -d build/macos/metal-inventory ]; then cp -R build/macos/metal-inventory "$RUNNER_TEMP/selftest/"; fi
             cp build/macos/export.log "$RUNNER_TEMP/selftest/export.log"
             cp build/macos/shader-inventory.log "$RUNNER_TEMP/selftest/shader-inventory.log"
           fi
@@ -570,11 +571,12 @@ jobs:
           retention-days: 14
 
   stress:
-    name: Exported Vulkan launch and lifetime stress (${{ matrix.series }})
+    name: Exported ${{ matrix.backend }} launch and lifetime stress (${{ matrix.series }})
     strategy:
       fail-fast: false
       matrix:
         series: [mixed, high, low-medium]
+        backend: [Vulkan, Metal]
     needs: build
     if: ${{ !cancelled() && needs.build.outputs.artifact_id != '' }}
     runs-on: macos-latest
@@ -596,12 +598,62 @@ jobs:
           ditto -x -k "$ZIP_PATH" extracted
           python3 tools/macos/verify_app.py "extracted/$APP_NAME.app" --expect-signature adhoc --title "Stress bundle"
       - name: Retain every cold, warm and lifecycle attempt
-        run: python3 tools/macos/stress_release.py "extracted/$APP_NAME.app" tests/_output/release-stress --series "${{ matrix.series }}"
+        run: |
+          args=()
+          if [[ "${{ matrix.backend }}" = Metal ]]; then args+=(--experimental-backend forward-metal); fi
+          python3 tools/macos/stress_release.py "extracted/$APP_NAME.app" tests/_output/release-stress --series "${{ matrix.series }}" "${args[@]}"
       - uses: actions/upload-artifact@v7
         if: always()
         with:
-          name: release-stress-${{ matrix.series }}
+          name: ${{ matrix.backend == 'Metal' && 'metal-stress' || 'release-stress' }}-${{ matrix.series }}
           path: tests/_output/release-stress/
+          retention-days: 30
+
+  metal-evidence:
+    name: Packaged Metal / ${{ matrix.group }}
+    needs: build
+    if: ${{ !cancelled() && needs.build.outputs.artifact_id != '' && needs.build.outputs.render == 'true' }}
+    strategy:
+      fail-fast: false
+      matrix:
+        group: [sampler, seed-first, local-first, drivers, art, journey]
+    runs-on: macos-latest
+    timeout-minutes: 55
+    env:
+      SOURCE_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/download-artifact@v8
+        with:
+          name: ${{ env.DEV_ZIP }}
+          path: download
+          skip-decompress: true
+      - name: Check and unpack the shared development build
+        run: |
+          zip=$(find download -type f -name '*.zip' | head -n 1)
+          shasum -a 256 "$zip"
+          ditto -x -k "$zip" extracted
+          codesign --verify --deep --strict "extracted/$APP_NAME.app"
+      - name: Run the selected packaged workload
+        env:
+          GROUP: ${{ matrix.group }}
+        run: |
+          app="extracted/$APP_NAME.app"
+          out="$RUNNER_TEMP/metal-evidence"
+          case "$GROUP" in
+            sampler) python3 tools/macos/check_metal_sampler.py "$app" "$out" ;;
+            seed-first|local-first) python3 tools/macos/measure_metal_startup.py "$app" "$out" "${GROUP%-first}" ;;
+            drivers) python3 tools/macos/measure_export_drivers.py "$app" "$out" ;;
+            art) python3 tools/macos/compare_metal_art.py "$app" "$out" ;;
+            journey)
+              command -v ffmpeg || brew install ffmpeg
+              python3 tools/macos/record_integration.py "$app" "$out" --exported-native-metal ;;
+          esac
+      - if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: metal-${{ matrix.group }}
+          path: ${{ runner.temp }}/metal-evidence/
           retention-days: 30
 
   # Optional, manual only. Signs the build that was tested above with a Developer ID
@@ -610,7 +662,7 @@ jobs:
   sign:
     name: Sign with Developer ID, notarize and staple
     if: ${{ github.event_name == 'workflow_dispatch' && inputs.sign_and_notarize }}
-    needs: [linux, build, check, stress, performance]
+    needs: [linux, build, check, stress, performance, metal-evidence]
     runs-on: macos-latest
     timeout-minutes: 90
     env:

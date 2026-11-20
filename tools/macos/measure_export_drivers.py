@@ -62,7 +62,10 @@ def main():
             args = ['--suite=matrix', '--samples=180', '--warmup=60']
             if stage == 'visual':
                 args = ['--suite=matrix', '--samples=24', '--warmup=8', '--shots=' + str(out / (driver + '-shots'))]
-            row = measure(binary, directory, out, name, 'integration_benchmark.gd', args, 600, flags, cache)
+            chooser = app / 'Contents/MacOS/choose-renderer'
+            executable = str(chooser) if chooser.exists() else binary
+            render_flags = [driver, '--main-pack', str(target)] if chooser.exists() else flags
+            row = measure(executable, directory, out, name, 'integration_benchmark.gd', args, 600, render_flags, cache)
             report = out / (name + '.json')
             data = json.loads(report.read_text()) if report.exists() and not row.get('report_error') else {}
             row['actual'] = [data.get('renderer'), data.get('driver')]

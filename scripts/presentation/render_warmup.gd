@@ -88,6 +88,12 @@ func _begin(scene: Node3D) -> void:
 	# reproduced device loss on two independent native runners (3.5.2).
 	_camera.cull_mask = _original.cull_mask
 	add_child(_camera)
+	# Metal used to draw the surrounding world from the origin for the fog
+	# material, then compile another visible set at the platform. Start both
+	# there. Still submit the uncovered platform, every interior and the final
+	# gameplay camera through the full queue before releasing simulation.
+	if RenderingServer.get_current_rendering_driver_name() == "metal" and OS.get_environment("LTO_METAL_WARMUP_CONTROL") != "1":
+		_camera.global_transform = _views[0].global_transform
 	_camera.make_current()
 	_frame_signal = _tree.process_frame if DisplayServer.get_name() == "headless" else RenderingServer.frame_post_draw
 	_frame_signal.connect(_on_frame)

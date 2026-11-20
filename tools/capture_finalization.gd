@@ -1,7 +1,8 @@
 extends "res://tools/capture_milestone26.gd"
 ## Three-way comparison: copy this and its parent to both detached baselines.
 func _run() -> void:
-	game = preload("res://scenes/main/main.tscn").instantiate()
+	var integrated := "--integrated-art" in OS.get_cmdline_user_args()
+	game = load("res://scenes/missions/harlow_escape.tscn" if integrated else "res://scenes/main/main.tscn").instantiate()
 	add_child(game)
 	game.player.input.scripted = true
 	game.player.input.camera_relative = false
@@ -14,7 +15,7 @@ func _run() -> void:
 	for trigger in game.find_children("*","CutawayTrigger",true,false):
 		trigger.set_deferred("monitoring",false)
 	await get_tree().physics_frame
-	_comparison_lighting()
+	if not integrated: _comparison_lighting()
 	var feet := Vector3(28,1.02,.4)
 	await shot("01_character_face",feet,feet+Vector3(.65,1.64,.08),feet+Vector3(0,1.59,0),46)
 	await shot("02_character_front",feet,feet+Vector3(2.9,1.1,0),feet+Vector3(0,.9,0),46)
@@ -55,8 +56,12 @@ func _run() -> void:
 	await shot("16_freight_yard",Vector3(101,.05,6.6),Vector3(101,2.5,6.6),Vector3(117,2.1,9),78,false)
 	await shot("17_distant_environment",Vector3(28,1.05,.4),Vector3(28,3.8,5.7),Vector3(15,5,-17),78,false)
 	var file := FileAccess.open(output.path_join("camera_poses"+("_"+only if not only.is_empty() else "")+".json"),FileAccess.WRITE)
-	file.store_string(JSON.stringify({"preset":"High","lighting":"Shared final HDR, ambient, haze and SSAO; original scene fixtures retained","resolution":str(get_window().size),"renderer":RenderingServer.get_current_rendering_method(),"adapter":RenderingServer.get_video_adapter_name(),"poses":poses},"  "))
+	file.store_string(JSON.stringify({"preset":"High","lighting":"Shipped Harlow mission lighting" if integrated else "Shared final HDR, ambient, haze and SSAO","resolution":str(get_window().size),"renderer":RenderingServer.get_current_rendering_method(),"driver":RenderingServer.get_current_rendering_driver_name(),"adapter":RenderingServer.get_video_adapter_name(),"poses":poses},"  "))
 	file.close()
+	if integrated:
+		await load("res://scripts/diagnostics/scene_retirement.gd").release(game)
+		get_tree().quit()
+		return
 	RenderingServer.set_render_loop_enabled(false)
 	game.queue_free()
 	await get_tree().process_frame

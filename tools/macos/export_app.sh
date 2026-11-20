@@ -98,4 +98,21 @@ if [ "$(uname -s)" = Darwin ] && ! grep -qi "$MAC_DRIVER.*Forward+" "$LOG"; then
 	echo "The native export did not initialize the $MAC_DRIVER shader-baking backend (full log: $LOG)." >&2
 	exit 1
 fi
+if [ "$(uname -s)" = Darwin ]; then
+	# Keep the stock Godot executable and its single PCK untouched. The optional
+	# selector is a second universal executable, signed inside the same bundle.
+	METAL_TEMPLATE="${LTO_METAL_TEMPLATE:-}"
+	if [ -z "$METAL_TEMPLATE" ]; then
+		tools/macos/engine/build_metal_template.sh "$(dirname "$APP")/metal-template"
+		METAL_TEMPLATE="$(dirname "$APP")/metal-template/LastTrainOutMetal"
+	fi
+	install -m 755 "$METAL_TEMPLATE" "$APP/Contents/MacOS/LastTrainOutMetal"
+	codesign --force --sign - "$APP/Contents/MacOS/LastTrainOutMetal"
+	CHOOSER="$APP/Contents/MacOS/choose-renderer"
+	xcrun clang -fobjc-arc -O2 -arch arm64 -arch x86_64 -mmacosx-version-min=11.0 \
+		-framework Metal -framework Foundation tools/macos/choose_renderer.m -o "$CHOOSER"
+	codesign --force --sign - "$CHOOSER"
+	python3 tools/macos/prepare_metal_shaders.py "$APP" "$(dirname "$APP")/metal-inventory"
+	codesign --force --sign - "$APP"
+fi
 echo "Exported $APP ($(du -sh "$APP" | cut -f1))"

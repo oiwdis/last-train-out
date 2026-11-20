@@ -88,6 +88,8 @@ def main():
                    '--', '--out=' + str(report), *args]
         if headless:
             command.insert(1, '--headless')
+        elif options.experimental_backend == 'forward-metal' and (binary.parent / 'choose-renderer').exists():
+            command[:1] = [str(binary.parent / 'choose-renderer'), 'metal']
         elif options.experimental_backend:
             command[1:1] = ['--rendering-method', expected_backend[0], '--rendering-driver', expected_backend[1]]
         row = {'name': name, 'command': command, 'user_directory': str(user_dir),
@@ -140,6 +142,7 @@ def main():
                 if script == 'startup_probe.gd':
                     preset = next(a.split('=', 1)[1] for a in args if a.startswith('--graphics='))
                     row['preset'] = preset
+                    row['launcher_ready_ms'] = data.get('launcher_to_playable_ms')
                     frames = data.get('first_frames_ms', [])
                     row['complete'] = (data.get('mission_ready') is True and len(frames) == 30
                                        and data.get('preset') == ['low', 'medium', 'high'].index(preset))

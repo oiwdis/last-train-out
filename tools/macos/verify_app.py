@@ -174,6 +174,22 @@ def verify_bundle(app: Path, expect_signature: str) -> None:
 
     check((contents / "Resources" / str(info.get("CFBundleIconFile", "icon.icns"))).is_file(), "the app icon exists")
 
+    chooser = contents / "MacOS" / "choose-renderer"
+    metal = contents / "MacOS" / "LastTrainOutMetal"
+    check(chooser.is_file() and os.access(chooser, os.X_OK) and set(macho_architectures(chooser)) == {"arm64", "x86_64"},
+          "the pre-launch renderer selector is universal and executable")
+    check(metal.is_file() and os.access(metal, os.X_OK) and macho_architectures(metal) == ["arm64"],
+          "the optional native Metal runtime is explicitly arm64")
+    cache_dir = contents / "Resources" / "MetalShaders"
+    manifest = cache_dir / "Profile.plist"
+    if check(manifest.is_file(), "the Metal shader profile is present"):
+        profile = plistlib.loads(manifest.read_bytes())
+        files = profile.get("files", {})
+        exact = {p.relative_to(cache_dir).as_posix() for p in cache_dir.rglob("*") if p.is_file() and p != manifest}
+        check(bool(files) and set(files) == exact and profile.get("source") == info.get("LTOBuildCommit") and
+              all(k.endswith(".metal.cache") and file_digest(cache_dir / k) == d for k, d in files.items()),
+              "every optional Metal cache file matches the signed build inventory", f"{len(files)} shader groups")
+
     packs = sorted((contents / "Resources").glob("*.pck"))
     if check(len(packs) == 1, "the game data pack exists", packs[0].name if packs else "no .pck in Contents/Resources"):
         verify_pack(packs[0])

@@ -31,6 +31,10 @@ func run() -> void:
 		await process_frame
 	for i in 3: await physics_frame
 	mark("mission_ready")
+	var launcher_ready_ms: Variant = null
+	var epoch := OS.get_environment("LTO_LAUNCH_EPOCH_USEC")
+	if epoch.is_valid_int():
+		launcher_ready_ms = (Time.get_unix_time_from_system() * 1000000.0 - epoch.to_int()) / 1000.0
 	var first_frames_ms: Array[float] = []
 	var previous := Time.get_ticks_usec()
 	for i in settle_frames:
@@ -43,7 +47,7 @@ func run() -> void:
 		"renderer":RenderingServer.get_current_rendering_method(),"driver":RenderingServer.get_current_rendering_driver_name(),
 		"headless":DisplayServer.get_name()=="headless","mission_ready":bool(game.get("journey").get("ready_to_play")),
 		"user_data_directory":OS.get_user_data_dir(),
-		"phases":PerformanceTrace.events,"first_frames_ms":first_frames_ms,"preset":graphics.get("current_index")}
+		"launcher_to_playable_ms":launcher_ready_ms,"phases":PerformanceTrace.events,"first_frames_ms":first_frames_ms,"preset":graphics.get("current_index")}
 	FileAccess.open(destination,FileAccess.WRITE).store_string(JSON.stringify(report,"  "))
 	await DiagnosticSceneRetirement.release(game)
 	packed = null

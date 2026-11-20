@@ -8,7 +8,7 @@ import sys
 root = Path(__file__).resolve().parents[1]
 manifest = json.loads((root / 'docs/validation/milestone35/baselines/source-test-manifest.json').read_text())
 required = {tuple(item) for item in manifest['distinct_tests']}
-for milestone in ('milestone351', 'milestone352', 'milestone353'):
+for milestone in ('milestone351', 'milestone352', 'milestone353', 'milestone354'):
     previous_integration = root / 'docs/validation' / milestone / 'baseline/test-manifest.json'
     if previous_integration.exists():
         required.update(tuple(item) for item in json.loads(previous_integration.read_text())['distinct_tests'])

@@ -1,0 +1,15 @@
+Stock Metal sampler and pixel controls	Run python3 tools/macos/check_metal_sampler.py "$GODOT" "$RUNNER_TEMP/sampler"	﻿2026-11-20T16:49:53.2379800Z ##[group]Run python3 tools/macos/check_metal_sampler.py "$GODOT" "$RUNNER_TEMP/sampler"
+Stock Metal sampler and pixel controls	Run python3 tools/macos/check_metal_sampler.py "$GODOT" "$RUNNER_TEMP/sampler"	2026-11-20T16:49:53.2380450Z [36;1mpython3 tools/macos/check_metal_sampler.py "$GODOT" "$RUNNER_TEMP/sampler"[0m
+Stock Metal sampler and pixel controls	Run python3 tools/macos/check_metal_sampler.py "$GODOT" "$RUNNER_TEMP/sampler"	2026-11-20T16:49:53.2426710Z shell: /bin/bash -e {0}
+Stock Metal sampler and pixel controls	Run python3 tools/macos/check_metal_sampler.py "$GODOT" "$RUNNER_TEMP/sampler"	2026-11-20T16:49:53.2427160Z env:
+Stock Metal sampler and pixel controls	Run python3 tools/macos/check_metal_sampler.py "$GODOT" "$RUNNER_TEMP/sampler"	2026-11-20T16:49:53.2427460Z   GODOT: /Users/runner/godot-ci/Godot.app/Contents/MacOS/Godot
+Stock Metal sampler and pixel controls	Run python3 tools/macos/check_metal_sampler.py "$GODOT" "$RUNNER_TEMP/sampler"	2026-11-20T16:49:53.2427920Z ##[endgroup]
+Stock Metal sampler and pixel controls	Run python3 tools/macos/check_metal_sampler.py "$GODOT" "$RUNNER_TEMP/sampler"	2026-11-20T16:50:50.2860720Z Traceback (most recent call last):
+Stock Metal sampler and pixel controls	Run python3 tools/macos/check_metal_sampler.py "$GODOT" "$RUNNER_TEMP/sampler"	2026-11-20T16:50:50.2863860Z   File "/Users/runner/work/last-train-out/last-train-out/tools/macos/check_metal_sampler.py", line 54, in <module>
+Stock Metal sampler and pixel controls	Run python3 tools/macos/check_metal_sampler.py "$GODOT" "$RUNNER_TEMP/sampler"	2026-11-20T16:50:50.2864490Z     main()
+Stock Metal sampler and pixel controls	Run python3 tools/macos/check_metal_sampler.py "$GODOT" "$RUNNER_TEMP/sampler"	2026-11-20T16:50:50.2864710Z     ~~~~^^
+Stock Metal sampler and pixel controls	Run python3 tools/macos/check_metal_sampler.py "$GODOT" "$RUNNER_TEMP/sampler"	2026-11-20T16:50:50.2865220Z   File "/Users/runner/work/last-train-out/last-train-out/tools/macos/check_metal_sampler.py", line 47, in main
+Stock Metal sampler and pixel controls	Run python3 tools/macos/check_metal_sampler.py "$GODOT" "$RUNNER_TEMP/sampler"	2026-11-20T16:50:50.2865920Z     assert not warnings, warnings
+Stock Metal sampler and pixel controls	Run python3 tools/macos/check_metal_sampler.py "$GODOT" "$RUNNER_TEMP/sampler"	2026-11-20T16:50:50.2866220Z            ^^^^^^^^^^^^
+Stock Metal sampler and pixel controls	Run python3 tools/macos/check_metal_sampler.py "$GODOT" "$RUNNER_TEMP/sampler"	2026-11-20T16:50:50.2866690Z AssertionError: ['WARNING: Metal does not support LOD bias for samplers.']
+Stock Metal sampler and pixel controls	Run python3 tools/macos/check_metal_sampler.py "$GODOT" "$RUNNER_TEMP/sampler"	2026-11-20T16:50:50.3010790Z ##[error]Process completed with exit code 1.

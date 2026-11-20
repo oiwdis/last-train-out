@@ -17,6 +17,10 @@ run/main_scene="res://scenes/missions/harlow_escape.tscn"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+RendererIdentity="*res://scripts/settings/renderer_identity.gd"
+
 [display]
 
 window/size/viewport_width=1280

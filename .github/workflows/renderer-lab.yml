@@ -42,11 +42,11 @@ jobs:
             echo 'exported=true' >> "$GITHUB_OUTPUT"
           fi
 
-          if [ "$GITHUB_EVENT_NAME" = workflow_dispatch ] || ! git diff --quiet HEAD^ HEAD -- tools/macos/stress_release.py; then
+          if [ "$GITHUB_EVENT_NAME" = workflow_dispatch ]; then
             echo 'followup=true' >> "$GITHUB_OUTPUT"
           fi
 
-          if [ "$GITHUB_EVENT_NAME" = workflow_dispatch ] || ! git diff --quiet HEAD^ HEAD -- tools/macos/measure_export_drivers.py tools/macos/launch_native_metal.sh; then
+          if [ "$GITHUB_EVENT_NAME" = workflow_dispatch ]; then
             echo 'drivers=true' >> "$GITHUB_OUTPUT"
           fi
 

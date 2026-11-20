@@ -7,5 +7,8 @@ if [[ "$(uname -s)" != Darwin || "$(/usr/sbin/sysctl -n hw.optional.arm64 2>/dev
   echo 'This launcher requires an Apple Silicon Mac.' >&2
   exit 2
 fi
+if [[ -x "$app/Contents/MacOS/choose-renderer" ]]; then
+  exec /usr/bin/arch -arm64 "$app/Contents/MacOS/choose-renderer" metal "$@"
+fi
 exe=$(/usr/libexec/PlistBuddy -c 'Print :CFBundleExecutable' "$app/Contents/Info.plist")
 exec /usr/bin/arch -arm64 "$app/Contents/MacOS/$exe" --rendering-method forward_plus --rendering-driver metal "$@"
