@@ -7,6 +7,7 @@ on:
       - tools/macos/metal_library_lab.py
       - tools/macos/measure_fresh_player.py
       - tools/macos/check_native_selftest.sh
+      - tools/macos/experiments/**
       - tools/macos/renderer_lab.py
       - tools/macos/renderer_probe.gd
       - tools/macos/exported_renderer_lab.py
@@ -28,6 +29,7 @@ jobs:
     outputs:
       libraries: ${{ steps.select.outputs.libraries }}
       replay: ${{ steps.select.outputs.replay }}
+      gi_run: ${{ steps.select.outputs.gi_run }}
       run: ${{ steps.select.outputs.run }}
       exported: ${{ steps.select.outputs.exported }}
       followup: ${{ steps.select.outputs.followup }}
@@ -51,6 +53,11 @@ jobs:
             id=$(tools/macos/find_reference_artifact.sh "$run")
             if [[ -n "$id" ]]; then echo "replay=$run" >> "$GITHUB_OUTPUT"; fi
           fi
+          if ! git diff --quiet HEAD^ HEAD -- tools/macos/experiments; then
+            run=$(jq -r .workflow_run docs/validation/milestone354/build-86.json)
+            id=$(tools/macos/find_reference_artifact.sh "$run")
+            if [[ -n "$id" ]]; then echo "gi_run=$run" >> "$GITHUB_OUTPUT"; fi
+          fi
           if [ "$GITHUB_EVENT_NAME" = workflow_dispatch ] || ! git diff --quiet HEAD^ HEAD -- tools/macos/renderer_lab.py tools/macos/renderer_probe.gd; then
             echo 'run=true' >> "$GITHUB_OUTPUT"
           fi
@@ -69,6 +76,77 @@ jobs:
           if [ "$GITHUB_EVENT_NAME" = workflow_dispatch ]; then
             echo 'journey=true' >> "$GITHUB_OUTPUT"
           fi
+
+  gi-template:
+    needs: select
+    if: needs.select.outputs.gi_run != ''
+    name: Build the isolated first-use GI template
+    runs-on: macos-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v7
+      - name: Build the same pinned engine with the GI experiment
+        run: |
+          folder="$RUNNER_TEMP/gi-source"
+          mkdir "$folder"
+          cp tools/macos/engine/build_metal_template.sh "$folder/"
+          cat tools/macos/engine/viewport-metal-sampler.patch tools/macos/experiments/on-demand-gi.patch > "$folder/viewport-metal-sampler.patch"
+          "$folder/build_metal_template.sh" "$RUNNER_TEMP/gi-template"
+      - if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: experimental-gi-template
+          path: ${{ runner.temp }}/gi-template/
+          retention-days: 30
+
+  gi-measurement:
+    needs: [select, gi-template]
+    name: Measure GI composition preparation / ${{ matrix.first }} first
+    strategy:
+      fail-fast: false
+      matrix:
+        first: [eager-gi, on-demand-gi]
+    runs-on: macos-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/download-artifact@v8
+        with:
+          name: LastTrainOut-macos-universal.zip
+          run-id: ${{ needs.select.outputs.gi_run }}
+          github-token: ${{ github.token }}
+          path: download
+          skip-decompress: true
+      - uses: actions/download-artifact@v8
+        with:
+          name: experimental-gi-template
+          path: template
+      - id: subject
+        name: Swap only the optional runtime in a disposable copy of build 86
+        run: |
+          zip=$(find download -type f -name '*.zip' | head -n 1)
+          echo "$(jq -r .zip_sha256 docs/validation/milestone354/build-86.json)  $zip" | shasum -a 256 -c -
+          ditto -x -k "$zip" experiment
+          app="experiment/Last Train Out.app"
+          echo "$(jq -r .pack_sha256 docs/validation/milestone354/build-86.json)  $app/Contents/Resources/Last Train Out.pck" | shasum -a 256 -c -
+          install -m 755 template/LastTrainOutMetal "$app/Contents/MacOS/LastTrainOutMetal"
+          codesign --force --sign - "$app/Contents/MacOS/LastTrainOutMetal"
+          codesign --force --sign - "$app"
+          codesign --verify --deep --strict "$app"
+      - name: Time the same High launch with both GI policies
+        run: |
+          args=()
+          if [[ "${{ matrix.first }}" == on-demand-gi ]]; then args+=(--matrix); fi
+          python3 tools/macos/metal_library_lab.py "experiment/Last Train Out.app" "$RUNNER_TEMP/gi/lab" "${{ matrix.first }}" "${args[@]}"
+      - name: Exercise real GI dispatch and compare the rendered pixels
+        if: ${{ !cancelled() && steps.subject.outcome == 'success' }}
+        run: python3 tools/macos/experiments/check_gi.py "experiment/Last Train Out.app" "$RUNNER_TEMP/gi/feature"
+      - if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: gi-${{ matrix.first }}
+          path: ${{ runner.temp }}/gi/
+          retention-days: 30
 
   fresh-player:
     needs: select
