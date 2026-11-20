@@ -1,0 +1,11 @@
+Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org
+WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by the graphics driver.
+     at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
+OpenGL API 4.5 (Core Profile) Mesa 25.0.7-2+deb13u1 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 19.1.7, 256 bits)
+
+[render-warmup] 13 views / 288553 ms / draw pipelines=0.0
+[integration-benchmark] Harlow platform / High / entry mean=10140.3793333333 p99=10566.448 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Harlow platform / High / steady mean=10175.7356666667 p99=10677.612 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Warehouse B / High / entry mean=14520.0299166667 p99=15240.428 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Warehouse B / High / steady mean=14630.9843333333 p99=16377.879 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }
+[integration-benchmark] Locomotive cab / High / entry mean=17794.7086666667 p99=20917.364 pipelines={ "draw": 0.0, "surface": 0.0, "specialization": 0.0 }

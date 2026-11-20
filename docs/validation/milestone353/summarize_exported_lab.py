@@ -4,7 +4,11 @@ import csv
 import json
 from pathlib import Path
 import statistics
+import sys
 import zipfile
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[3] / 'tools/macos'))
+from renderer_diagnostics import engine_diagnostics
 
 
 def read_json_member(archive, name):
@@ -37,7 +41,8 @@ def summarize(source):
                        texture_mib=final.get('texture_bytes',0)/2**20, restored='restored' in run.get('shadow_phases',[]),
                        worst_post_ready_ms=max(frames,default=None),
                        first_gpu_error=next((line for line in lines if 'kIOGPUCommandBufferCallbackErrorTimeout' in line),''),
-                       engine_diagnostics=json.dumps(run.get('diagnostics',[])))
+                       engine_diagnostics=json.dumps(engine_diagnostics(lines)),
+                       original_diagnostics=json.dumps(run.get('diagnostics', [])))
 
 
 def main():

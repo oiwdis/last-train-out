@@ -1,8 +1,10 @@
-# Last Train Out — Milestone 3.5.2 performance acceptance
+# Last Train Out — Milestone 3.5.3 renderer stability
 
-This draft combines PR #4’s detailed survivor, locomotive and Harlow art with PR #5’s continuous three-station survival journey. Press **J** for Save / Continue / New / Restart and **V** to switch camera. See [draft integration PR #6](https://github.com/oiwdis/last-train-out/pull/6), [integration provenance and merge strategy](docs/MILESTONE3_INTEGRATION.md), [current release review](docs/MILESTONE352_REVIEW.md) and the [physical M1 fullscreen procedure](docs/M1_MILESTONE352.md).
+This draft combines PR #4’s detailed survivor, locomotive and Harlow art with PR #5’s continuous three-station survival journey. Press **J** for Save / Continue / New / Restart and **V** to switch camera. [Integration history](docs/MILESTONE3_INTEGRATION.md)
 
-[New full journey recording](docs/recording/milestone352-full-journey.mp4) · [integrated screenshot gallery](docs/MILESTONE35_GALLERY.md) · [measured performance and release blockers](docs/PERFORMANCE_MILESTONE352.md). The development ZIP and checksum are linked in the performance report. **PR #6 remains in draft: fresh ARM rendering reproduced Vulkan device loss, pacing targets remain unmet, and physical 2020 M1 acceptance is pending.** The added stations retain their existing simplified geometry.
+**Release is blocked.** The universal development build passed fresh ARM and Intel launch validation. Separate default Vulkan stress reproduced nine device losses in 95 hosted processes. The explicit Apple Silicon native Metal launcher completed the same schedule with zero device losses, with sampler warnings on scaled presets. Fullscreen performance on a physical 2020 M1 remains pending. [Draft PR #6](https://github.com/oiwdis/last-train-out/pull/6) · [3.5.3 performance and build download](docs/PERFORMANCE_MILESTONE353.md) · [Crash investigation](docs/RENDERER_CRASH_INVESTIGATION.md) · [Physical M1 procedure](docs/M1_MILESTONE353.md)
+
+[Full continuous journey](docs/recording/milestone353-full-journey.mp4) · [Integrated screenshot gallery](docs/MILESTONE35_GALLERY.md) · [Matched renderer screenshots](docs/validation/milestone353/alternatives/driver-comparison/README.md)
 
 The source milestone reports below retain their original evidence and limitations; they are not measurements of this combined build.
 

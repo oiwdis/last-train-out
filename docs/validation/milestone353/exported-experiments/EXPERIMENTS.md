@@ -4,6 +4,14 @@ All cases ran the same exported 6038bfcd game at 960×540, High. Each runner use
 
 | Raw archive | Method/driver | Covered atlas change | Cache | Passed / attempted | GPU loss | Other failure | Ready min / median / max, s |
 |---|---|---|---|---:|---:|---:|---|
+| [audit-shadow-a.zip](audit-shadow-a.zip) | forward_plus/vulkan | control | cold | 4/4 | 0 | 0 | 19.420 / 25.469 / 68.301 |
+| [audit-shadow-a.zip](audit-shadow-a.zip) | forward_plus/vulkan | directional | cold | 2/4 | 2 | 0 | 21.180 / 22.230 / 23.279 |
+| [audit-shadow-a.zip](audit-shadow-a.zip) | forward_plus/vulkan | local | cold | 1/4 | 3 | 0 | 21.904 / 21.904 / 21.904 |
+| [audit-shadow-a.zip](audit-shadow-a.zip) | forward_plus/vulkan | both | cold | 3/4 | 1 | 0 | 20.741 / 24.045 / 31.156 |
+| [audit-shadow-b.zip](audit-shadow-b.zip) | forward_plus/vulkan | control | cold | 3/4 | 1 | 0 | 24.684 / 28.225 / 79.056 |
+| [audit-shadow-b.zip](audit-shadow-b.zip) | forward_plus/vulkan | directional | cold | 3/4 | 1 | 0 | 26.303 / 27.935 / 31.721 |
+| [audit-shadow-b.zip](audit-shadow-b.zip) | forward_plus/vulkan | local | cold | 2/4 | 2 | 0 | 22.175 / 25.316 / 28.457 |
+| [audit-shadow-b.zip](audit-shadow-b.zip) | forward_plus/vulkan | both | cold | 1/4 | 3 | 0 | 26.500 / 26.500 / 26.500 |
 | [followup-shadow-replica-a.zip](followup-shadow-replica-a.zip) | forward_plus/vulkan | control | cold | 3/4 | 1 | 0 | 22.623 / 22.722 / 63.807 |
 | [followup-shadow-replica-a.zip](followup-shadow-replica-a.zip) | forward_plus/vulkan | directional | cold | 3/4 | 1 | 0 | 22.960 / 23.252 / 23.856 |
 | [followup-shadow-replica-a.zip](followup-shadow-replica-a.zip) | forward_plus/vulkan | local | cold | 0/4 | 4 | 0 | — |

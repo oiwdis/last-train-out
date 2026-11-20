@@ -1,0 +1,45 @@
+
+== Bundle: /tmp/lto-m353-candidate-bundle/Last Train Out.app
+ok    the .app bundle exists
+ok    Info.plist exists
+ok    Info.plist is a valid property list
+ok    Info.plist names the executable  (Last Train Out)
+ok    bundle identifier  (com.lasttrainout.game)
+ok    bundle is an application
+ok    version matches the project  (0.3.5)
+ok    build number is set  (73)
+ok    minimum macOS is declared for both architectures  (arm64 11.00, x86_64 10.13)
+ok    Retina rendering is enabled
+info  build  (number 73, commit 89bc264fccbe547b9f125e063e5bbd877744a743, kind development)
+ok    the executable exists inside the bundle  (Contents/MacOS/Last Train Out)
+ok    the executable is marked executable
+ok    the executable is universal: Apple Silicon (arm64) and Intel (x86_64)  (x86_64, arm64)
+info  executable size  (189 MB (the Godot runtime; no Godot install is needed to play))
+ok    the app icon exists
+ok    the game data pack exists  (Last Train Out.pck)
+ok    the game data pack can be read  (902 files, 327017 kB)
+ok    project settings are in the pack
+ok    baked shader code is included  (144 cache files)
+ok    the main scene is in the pack  (scenes/missions/harlow_escape.tscn)
+ok    every scene, script and resource of the game is in the pack  (371 project files)
+ok    tests, tools and docs are left out of the game
+ok    the bundle carries a code signature
+info  code signature  (codesign is not available on this system, so the signature was not validated)
+
+22 of 22 checks passed
+
+== ZIP: /tmp/lto-m353-release-5534/LastTrainOut-macos-universal.zip
+ok    the ZIP exists
+ok    the ZIP is intact  (292.5 MB)
+info  ZIP sha256  (e779c8b73b9e46a1b46c4a95c327e421d7f3da393b3123bc8d7cdb26b884f2a7)
+ok    the ZIP holds exactly one .app at its top level  (Last Train Out.app)
+ok    the ZIP contains Info.plist
+ok    the ZIP contains the executable  (Contents/MacOS/Last Train Out)
+ok    the executable keeps its executable permission in the ZIP  (0o755)
+ok    the ZIP contains the game data pack
+ok    the ZIP contains the code signature
+ok    the bundle in the ZIP has the expected name  (Last Train Out.app)
+ok    the ZIP holds every file of the bundle and nothing else  (7 files)
+ok    every file in the ZIP is identical to the bundle
+
+11 of 11 checks passed

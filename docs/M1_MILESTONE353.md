@@ -54,7 +54,7 @@ for series in mixed high low-medium; do
 done
 ```
 
-For release acceptance, require zero device losses and complete rendered, save/restore and shutdown checks. Compare every distribution and retain every frame over 100 ms. The existing targets are responsive cold startup under 30 s, warm under 15 s and entries within 100 ms. Report 3D resolution and displayed resolution independently when scaling is active. Physical-M1 acceptance remains pending until these data and the normal fullscreen playthrough are available.
+For release acceptance, require zero device losses and complete rendered, save/restore and shutdown checks. Compare every distribution and retain every frame over 100 ms. The existing targets are responsive cold startup under 30 s, warm under 15 s and entries within 100 ms. Also record whether the original 15-second playable-state goal is reached on a physical cold launch. Report 3D resolution and displayed resolution independently when scaling is active. Physical-M1 acceptance remains pending until these data and the normal fullscreen playthrough are available.
 
 ## Optional comparison on Apple Silicon
 
@@ -75,4 +75,4 @@ You can perform the same launch without a checkout. With the `bin` and `out` var
   > "$out/metal-matrix.log" 2>&1
 ```
 
-Check the JSON for `"renderer": "forward_plus"` and `"driver": "metal"` before comparing results. Use matching window sizes, quality presets, display scaling and power settings. Keep the first cold attempt even if it times out. Native Metal on the hosted virtual Mac had a successful cold High launch lasting over 114 s. Only measurements on the physical M1 can establish performance on that machine.
+Check the JSON for `"renderer": "forward_plus"` and `"driver": "metal"` before comparing results. Use matching window sizes, quality presets, display scaling and power settings. Keep the first cold attempt even if it times out. On scaled Low and Medium, retain the exact `Metal does not support LOD bias for samplers` message and record whether distant surface textures shimmer or soften compared with Vulkan. Check the report and raw log independently. A process can complete with that warning. The first native Metal cohort took up to 114.683 s for cold High and 126.599 s for cold Low. An independent cohort reached 144.937 s on cold High and 169.565 s on cold Low. Its two longest steady intervals occurred in Low Warehouse A. Include that view and the Medium mission-results screen in the physical comparison. Only measurements on the physical M1 can establish performance on that machine.

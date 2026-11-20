@@ -27,3 +27,13 @@ The paired High captures show the same figure and silhouette on the Harlow platf
 The hosted Compatibility screenshot run returned no image before the deadline. As a separate visual check, the original exported PCK rendered these High views with Godot's Linux OpenGL 4.5 backend and Mesa llvmpipe at 640×360. The locomotive, platform figure and brick surfaces are visible. Timing and color from this software renderer cannot establish how a physical M1 draws the same scene.
 
 [Linux Compatibility platform](linux-compatibility/2-harlow_platform.png) · [Linux Compatibility Warehouse B](linux-compatibility/2-warehouse_b.png) · [Fixture used for these Linux images](linux-compatibility/fixture.gd.txt)
+
+The supplemental Linux OpenGL process reached its 1,600 s deadline after recording Harlow and Warehouse B and entering the cab. The launch used a 12-frame steady sample at each location. This process is excluded from the hosted numerical tables. Its partial output is retained in full.
+
+[Supplemental Linux log](linux-compatibility/raw.log) · [All flushed Linux intervals](linux-compatibility/result.json.jsonl)
+
+The Linux comparison used the same original PCK, High preset, 640×360 viewport and fixture cameras for all three methods. Vulkan Forward+ and Mobile finished all five reference views. In the two views available from all three, OpenGL darkens the black locomotive paint and makes Warehouse B's ceiling and brick lighting warmer. Steam and other time-driven effects were captured on different frames. This supplementary comparison is for appearance only. Sample counts differ between its OpenGL and Vulkan passes.
+
+![All three methods on Linux software rendering](linux-high.jpg)
+
+[Every Linux image, original fixture, reduced screenshot sampler, exit status and partial intervals](linux-visuals.zip)
