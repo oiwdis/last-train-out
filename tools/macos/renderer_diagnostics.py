@@ -2,8 +2,9 @@
 import re
 
 ENGINE_DIAGNOSTIC = re.compile(
-    r'SCRIPT ERROR:|ERROR:|WARNING:|Leaked instance:|Resources? still in use:|'
-    r'ObjectDB instances leaked at exit|resources still in use at exit'
+    r'SCRIPT ERROR:|ERROR:|WARNING:|Leaked instance:|'
+    r'ObjectDB instances leaked at exit|[Rr]esources? (?:still )?in use|\[mvk-error\]|'
+    r'VK_ERROR_DEVICE_LOST|kIOGPUCommandBufferCallbackErrorTimeout'
 )
 
 

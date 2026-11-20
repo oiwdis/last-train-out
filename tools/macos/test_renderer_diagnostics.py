@@ -8,6 +8,11 @@ class RendererDiagnosticsTest(unittest.TestCase):
         warning = 'WARNING: Metal does not support LOD bias for samplers.'
         self.assertEqual(engine_diagnostics(['Shader cache miss for Sce' + warning]), [warning])
 
+    def test_driver_fault_without_a_godot_error_prefix(self):
+        for marker in ('[mvk-error] VK_TIMEOUT', 'VK_ERROR_DEVICE_LOST', 'kIOGPUCommandBufferCallbackErrorTimeout'):
+            with self.subTest(marker=marker):
+                self.assertEqual(engine_diagnostics(['Output interrupted by ' + marker]), [marker])
+
     def test_device_and_lifetime_errors_survive_an_interrupted_stdout_line(self):
         messages = ['ERROR: Vulkan device was lost.', 'SCRIPT ERROR: Parse Error', 'Leaked instance: Node']
         self.assertEqual(engine_diagnostics(['Loading cache ' + message for message in messages]), messages)

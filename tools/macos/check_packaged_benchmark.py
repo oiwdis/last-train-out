@@ -5,6 +5,9 @@ import plistlib
 import subprocess
 import sys
 from pathlib import Path
+
+from renderer_diagnostics import engine_diagnostics
+
 app, destination = map(Path, sys.argv[1:])
 destination.mkdir(parents=True, exist_ok=True)
 with (app/'Contents/Info.plist').open('rb') as f:
@@ -16,10 +19,10 @@ for suite, count in [('presets', 6), ('route', 3), ('matrix', 72)]:
     with (destination/('packaged-benchmark-'+suite+'.log')).open('w') as log:
         subprocess.run(command, stdout=log, stderr=subprocess.STDOUT, check=True, timeout=180)
     lines = (destination/('packaged-benchmark-'+suite+'.log')).read_text().splitlines()
-    diagnostics = [line for line in lines if line.startswith(('ERROR:', 'SCRIPT ERROR:',
-                   'WARNING:', 'Leaked instance:', 'Resource still in use:'))]
+    diagnostics = engine_diagnostics(lines)
     assert not diagnostics, 'Packaged diagnostic emitted errors/warnings: ' + '\n'.join(diagnostics)
     data = json.loads(report.read_text())
     assert len(data['results']) == count and data['fixed_fps'] is False
-    assert data['renderer'] == 'forward_plus'
+    driver = data.get('driver', data.get('rendering_driver'))
+    assert (data['renderer'], driver) == ('forward_plus', 'vulkan'), 'Fresh app used a different graphics backend'
     print('Packaged diagnostic reported', count, suite, 'cases.')

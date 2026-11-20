@@ -79,7 +79,4 @@ echo "The app exited with code $CODE. Last lines of its output:"
 tail -n 40 "$LOG" || true
 
 python3 "$ROOT/tools/macos/check_selftest.py" "$REPORT" --exit-code "$CODE" "${CHECK[@]}"
-if grep -E '^(ERROR:|SCRIPT ERROR:)|ObjectDB instances leaked|[Rr]esources? (still )?in use|Leaked instance:' "$LOG"; then
-	echo 'Exported launch reported engine errors or retained resources; raw log preserved.' >&2
-	exit 1
-fi
+python3 "$ROOT/tools/macos/renderer_diagnostics.py" "$LOG"

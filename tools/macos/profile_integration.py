@@ -13,6 +13,8 @@ import sys
 import time
 import threading
 
+from renderer_diagnostics import engine_diagnostics
+
 godot, destination = sys.argv[1:3]
 suite = sys.argv[3] if len(sys.argv) > 3 else 'all'
 root = Path(__file__).resolve().parents[2]
@@ -86,7 +88,7 @@ def run(name, script, arguments, timeout=900, capture_stacks=False):
     status = {'name': name, 'command': command, 'returncode': process.returncode,
               'wall_seconds': time.monotonic() - started, 'sampling_profiler': capture_stacks,
               'report_exists': report.exists(), 'peak_rss_bytes': max((r['bytes'] for r in rss), default=0),
-              'engine_diagnostics': [line for line in text.splitlines() if line.startswith(('ERROR:', 'SCRIPT ERROR:', 'WARNING:', 'Leaked instance:', 'Resource still in use:'))]}
+              'engine_diagnostics': engine_diagnostics(text.splitlines())}
     (out / (name + '-process.json')).write_text(json.dumps({'status': status, 'rss': rss, 'stdout_arrival_timeline': arrivals}, indent=2))
     metadata['runs'].append(status)
     (out / ('investigation-' + suite + '.json')).write_text(json.dumps(metadata, indent=2))
