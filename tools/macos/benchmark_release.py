@@ -20,20 +20,21 @@ BASELINE = '7df2f5abee54b8adcf27b8668263fba231a79033'
 ROOT = Path(__file__).resolve().parents[2]
 
 
-def cache_inventory(project):
-    cache = project / '.godot' / 'shader_cache'
+def cache_inventory(cache):
     files = list(cache.rglob('*')) if cache.exists() else []
     return {'files': sum(p.is_file() for p in files),
             'bytes': sum(p.stat().st_size for p in files if p.is_file())}
 
 
-def measure(godot, project, out, name, script, args, timeout):
+def measure(godot, project, out, name, script, args, timeout, engine_args=(), cache=None):
     report = out / (name + '.json')
-    command = [godot, '--verbose', '--path', str(project), '--audio-driver', 'Dummy',
+    command = [godot, *engine_args, '--verbose', '--path', str(project), '--audio-driver', 'Dummy',
                '--resolution', '960x540', '--position', '32,64', '--script',
                'res://scripts/diagnostics/' + script, '--', '--graphics=low',
                '--out=' + str(report), *args]
-    before = cache_inventory(project)
+    if cache is None:
+        cache = project / '.godot' / 'shader_cache'
+    before = cache_inventory(cache)
     rss = []
     started = time.monotonic()
     timed_out = False
@@ -62,19 +63,23 @@ def measure(godot, project, out, name, script, args, timeout):
     result = {'name': name, 'command': command, 'returncode': process.returncode,
               'timed_out': timed_out, 'wall_seconds': time.monotonic() - started,
               'report_exists': report.exists(), 'peak_rss_bytes': max((r['bytes'] for r in rss), default=0),
-              'shader_cache_before': before, 'shader_cache_after': cache_inventory(project),
+              'shader_cache_before': before, 'shader_cache_after': cache_inventory(cache),
               'pipeline_cache_events': [line for line in lines if 'PSO cache' in line],
               'shader_cache_misses': sum('Shader cache miss' in line for line in lines),
               'shader_cache_hits': sum('Shader cache hit' in line for line in lines),
               'engine_diagnostics': diagnostics, 'rss': rss}
     if report.exists():
-        data = json.loads(report.read_text())
+        try:
+            data = json.loads(report.read_text())
+        except (ValueError,OSError) as error:
+            data = {}
+            result['report_error'] = str(error)
         if script == 'integration_benchmark.gd':
-            result['complete_matrix'] = (len(data['results']) == 72 and
+            result['complete_matrix'] = (len(data.get('results',[])) == 72 and
                                          data['resolution'] == '(960, 540)' and
                                          data['fixed_fps'] is False)
         else:
-            result['mission_ready'] = data['mission_ready']
+            result['mission_ready'] = data.get('mission_ready',False)
     (out / (name + '-process.json')).write_text(json.dumps(result, indent=2))
     print(name, 'exit', process.returncode, 'timeout', timed_out, 'diagnostics', len(diagnostics), flush=True)
     return result

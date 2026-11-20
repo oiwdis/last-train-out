@@ -9,6 +9,8 @@ on:
       - tools/macos/exported_renderer_lab.py
       - tools/macos/exported_shadow_probe.gd
       - tools/macos/stress_release.py
+      - tools/macos/measure_export_drivers.py
+      - tools/macos/launch_native_metal.sh
 
 permissions:
   contents: read
@@ -22,6 +24,7 @@ jobs:
       run: ${{ steps.select.outputs.run }}
       exported: ${{ steps.select.outputs.exported }}
       followup: ${{ steps.select.outputs.followup }}
+      drivers: ${{ steps.select.outputs.drivers }}
     steps:
       - uses: actions/checkout@v7
         with:
@@ -38,6 +41,10 @@ jobs:
 
           if [ "$GITHUB_EVENT_NAME" = workflow_dispatch ] || ! git diff --quiet HEAD^ HEAD -- tools/macos/stress_release.py; then
             echo 'followup=true' >> "$GITHUB_OUTPUT"
+          fi
+
+          if [ "$GITHUB_EVENT_NAME" = workflow_dispatch ] || ! git diff --quiet HEAD^ HEAD -- tools/macos/measure_export_drivers.py tools/macos/launch_native_metal.sh; then
+            echo 'drivers=true' >> "$GITHUB_OUTPUT"
           fi
 
   isolate:
@@ -166,4 +173,64 @@ jobs:
         with:
           name: followup-${{ matrix.case }}
           path: ${{ runner.temp }}/followup
+          retention-days: 30
+
+  drivers:
+    needs: select
+    if: needs.select.outputs.drivers == 'true'
+    name: Optional native Metal / ${{ matrix.group }}
+    runs-on: macos-latest
+    timeout-minutes: 70
+    strategy:
+      fail-fast: false
+      matrix:
+        group: [driver-comparison, low-medium]
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - uses: actions/download-artifact@v8
+        with:
+          name: LastTrainOut-macos-universal.zip
+          run-id: 44675841777
+          github-token: ${{ github.token }}
+          path: download
+          skip-decompress: true
+      - name: Verify candidate and unpack
+        run: |
+          zip=$(find download -name '*.zip' -type f | head -n 1)
+          echo "e779c8b73b9e46a1b46c4a95c327e421d7f3da393b3123bc8d7cdb26b884f2a7  $zip" | shasum -a 256 -c -
+          ditto -x -k "$zip" extracted
+      - name: Compare both Forward+ drivers on the same exported game
+        if: matrix.group == 'driver-comparison'
+        run: python3 tools/macos/measure_export_drivers.py 'extracted/Last Train Out.app' "$RUNNER_TEMP/metal"
+      - name: Finish the optional native Metal stress cohort
+        if: matrix.group == 'low-medium'
+        env:
+          SOURCE_SHA: 5534cf82c2e6e494cbf54add169e6ab4e8101b46
+        run: python3 tools/macos/stress_release.py 'extracted/Last Train Out.app' "$RUNNER_TEMP/metal" --series low-medium --experimental-backend forward-metal
+      - name: Launch via the owner-facing command with a window and native audio
+        if: ${{ !cancelled() && matrix.group == 'low-medium' }}
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import json, os, subprocess, sys
+          out=Path(os.environ['RUNNER_TEMP'])/'metal'
+          out.mkdir(exist_ok=True)
+          report=out/'owner-selftest.json'
+          with (out/'owner-selftest.log').open('w') as stream:
+              proc=subprocess.run(['tools/macos/launch_native_metal.sh','extracted/Last Train Out.app',
+                  'res://scenes/main/self_test.tscn','--','--selftest-report='+str(report),
+                  '--selftest-screenshot='+str(out/'owner-selftest.png')],stdout=stream,stderr=subprocess.STDOUT,timeout=360)
+          subprocess.run([sys.executable,'tools/macos/check_selftest.py',str(report),'--exit-code',str(proc.returncode),
+                          '--expect-window','--expect-arch','arm64','--label','optional-native-metal'],check=True)
+          data=json.loads(report.read_text())
+          assert (data['rendering_method'],data['rendering_driver'])==('forward_plus','metal')
+          PY
+          if grep -E '^(ERROR:|SCRIPT ERROR:)|ObjectDB instances leaked|resources still in use' "$RUNNER_TEMP/metal/owner-selftest.log"; then exit 1; fi
+      - if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: native-metal-${{ matrix.group }}
+          path: ${{ runner.temp }}/metal
           retention-days: 30
