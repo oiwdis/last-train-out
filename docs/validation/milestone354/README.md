@@ -15,8 +15,8 @@ python3 ../milestone353/summarize_release.py metal-stress raw/metal-stress-*.zip
 python3 ../milestone353/summarize_release.py vulkan-stress raw/release-stress-*.zip
 python3 ../milestone353/summarize_lab.py matched raw/metal-drivers.zip
 python3 summarize_frames.py raw/metal-drivers.zip matched
-python3 summarize_startup.py startup raw/metal-*-first.zip raw/*libraries*.zip raw/metal-library-policy.zip raw/metal-stress-*.zip raw/release-stress-*.zip raw/fresh-native-metal-*.zip raw/gi-*.zip
-python3 summarize_signposts.py startup/signposts.csv raw/*libraries*.zip raw/metal-library-policy.zip raw/fresh-native-metal-replay.zip raw/fresh-native-metal-signposts.zip raw/gi-*.zip
+python3 summarize_startup.py startup raw/metal-*-first.zip raw/*libraries*.zip raw/metal-library-policy.zip raw/metal-stress-*.zip raw/release-stress-*.zip raw/fresh-native-metal-*.zip raw/worker-*.zip raw/gi-*.zip
+python3 summarize_signposts.py startup/signposts.csv raw/*libraries*.zip raw/metal-library-policy.zip raw/fresh-native-metal-replay.zip raw/fresh-native-metal-signposts.zip raw/worker-*-instrumented.zip raw/gi-*.zip
 python3 compare_images.py raw/metal-drivers.zip raw/metal-art.zip gallery
 python3 audit_movie.py ../../recording/milestone354-native-metal.mp4 movie-motion.json
 ```
