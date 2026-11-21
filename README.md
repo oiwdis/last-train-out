@@ -74,10 +74,10 @@ reference; physical 2020 M1 fullscreen performance remains unverified.
 
 ## Play on macOS (no Godot needed)
 
-The development build opens with Forward+ on Vulkan. On Apple Silicon, quit the game and use its bundled selector to evaluate native Metal. In Terminal, run the following command with the path to your app. Use `vulkan` in the same command for the experimental comparison. The selector prints the resolved backend and uses the same mission, graphics settings and saves. [Physical M1 test and log collection](docs/M1_MILESTONE354.md)
+The development build opens with Forward+ on Vulkan. For the fullscreen Medium playtest on Apple Silicon, quit the game and run the following command in Terminal. It selects native Metal and Medium. The game uses the same manual save slot with either renderer. [Physical M1 test and log collection](docs/MILESTONE4_ENVIRONMENT_OVERHAUL.md#physical-2020-m1-procedure)
 
 ```bash
-"/Applications/Last Train Out.app/Contents/MacOS/choose-renderer" metal --fullscreen
+"/Applications/Last Train Out.app/Contents/MacOS/choose-renderer" metal --fullscreen -- --graphics=medium
 ```
 
 Milestone pull requests and configured development branches are tested by GitHub Actions and built into a standalone
@@ -128,13 +128,13 @@ the command above; a mismatched download should be downloaded again. Signed buil
 
 ### 4. Replacing an older build
 
-1. Quit the game if it is running.
-2. Delete the old **Last Train Out.app** (or drag the new one to the same place and choose
-   **Replace**).
-3. Open the new one. Each download is quarantined afresh, so repeat step 3 above.
+1. Quit the running game. Drag the new **Last Train Out.app** into Applications and choose **Replace**.
+2. Launch the new app with the Metal command above for an Apple Silicon playtest. If macOS asks for approval, use the first-launch instructions above.
+3. Press **J** and choose **Continue** to restore your checkpoint.
 
-There is nothing to migrate: the prototype has no save files. To see which build an app is,
-run:
+The manual save lives outside the app at `~/Library/Application Support/Godot/app_userdata/Last Train Out/harlow_escape_v1.json`. Replacing the app preserves it. Builds 103 and 111 share this one slot. To keep a separate copy of your build 103 checkpoint, copy the JSON before saving again. A cross-build test restored a moving train, its rider and held cargo and verified that Continue preserved the file’s checksum. [Save compatibility results](docs/validation/milestone4/save-103-to-111.zip)
+
+To check the installed build number, run the following command.
 
 ```bash
 defaults read "/Applications/Last Train Out.app/Contents/Info" LTOBuildNumber

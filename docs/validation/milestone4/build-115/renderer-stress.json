@@ -1,0 +1,316 @@
+{
+  "metal": {
+    "total": 95,
+    "clean": 95,
+    "device_losses": 0,
+    "failures": [],
+    "series": {
+      "high": {
+        "complete": true,
+        "passed": true,
+        "processes": 36,
+        "ips": 0
+      },
+      "low-medium": {
+        "complete": true,
+        "passed": true,
+        "processes": 28,
+        "ips": 0
+      },
+      "mixed": {
+        "complete": true,
+        "passed": true,
+        "processes": 31,
+        "ips": 0
+      }
+    }
+  },
+  "vulkan": {
+    "total": 95,
+    "clean": 83,
+    "device_losses": 12,
+    "failures": [
+      {
+        "series": "high",
+        "name": "cold-2",
+        "returncode": -5,
+        "complete": null,
+        "device_loss": true,
+        "timed_out": false,
+        "diagnostics": [
+          "[mvk-error] VK_TIMEOUT: MTLCommandBuffer \"vkQueueSubmit MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+          "ERROR: VALIDATION - Message Id Number: 0 | Message Id Name: mvk-error",
+          "kIOGPUCommandBufferCallbackErrorTimeout)",
+          "[mvk-error] VK_TIMEOUT: MTLCommandBuffer \"vkQueuePresentKHR MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+          "ERROR: VALIDATION - Message Id Number: 0 | Message Id Name: mvk-error",
+          "kIOGPUCommandBufferCallbackErrorTimeout)",
+          "ERROR: Condition \"err != VK_SUCCESS\" is true. Returning: FAILED",
+          "ERROR: VK_EXT_device_fault not available.",
+          "ERROR: Vulkan device was lost."
+        ],
+        "preset": null,
+        "wall_seconds": 33.224703334000026,
+        "peak_rss_bytes": 515850240
+      },
+      {
+        "series": "high",
+        "name": "cold-3",
+        "returncode": -5,
+        "complete": null,
+        "device_loss": true,
+        "timed_out": false,
+        "diagnostics": [
+          "[mvk-error] VK_TIMEOUT: MTLCommandBuffer \"vkQueueSubmit MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+          "ERROR: VALIDATION - Message Id Number: 0 | Message Id Name: mvk-error",
+          "kIOGPUCommandBufferCallbackErrorTimeout)",
+          "ERROR: Condition \"err != VK_SUCCESS\" is true. Returning: FAILED",
+          "[mvk-error] VK_TIMEOUT: MTLCommandBuffer \"vkQueuePresentKHR MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+          "ERROR: VALIDATION - Message Id Number: 0 | Message Id Name: mvk-error",
+          "kIOGPUCommandBufferCallbackErrorTimeout)",
+          "ERROR: VK_EXT_device_fault not available.",
+          "ERROR: Vulkan device was lost."
+        ],
+        "preset": null,
+        "wall_seconds": 43.61243975000002,
+        "peak_rss_bytes": 430866432
+      },
+      {
+        "series": "high",
+        "name": "cold-4",
+        "returncode": -5,
+        "complete": null,
+        "device_loss": true,
+        "timed_out": false,
+        "diagnostics": [
+          "[mvk-error] VK_TIMEOUT: MTLCommandBuffer \"vkQueueSubmit MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+          "ERROR: VALIDATION - Message Id Number: 0 | Message Id Name: mvk-error",
+          "kIOGPUCommandBufferCallbackErrorTimeout)",
+          "ERROR: Condition \"err != VK_SUCCESS\" is true. Returning: FAILED",
+          "ERROR: VK_EXT_device_fault not available.",
+          "ERROR: Vulkan device was lost."
+        ],
+        "preset": null,
+        "wall_seconds": 34.62696112499998,
+        "peak_rss_bytes": 515981312
+      },
+      {
+        "series": "high",
+        "name": "cold-5",
+        "returncode": -5,
+        "complete": null,
+        "device_loss": true,
+        "timed_out": false,
+        "diagnostics": [
+          "[mvk-error] VK_TIMEOUT: MTLCommandBuffer \"vkQueueSubmit MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+          "ERROR: VALIDATION - Message Id Number: 0 | Message Id Name: mvk-error",
+          "kIOGPUCommandBufferCallbackErrorTimeout)",
+          "ERROR: Condition \"err != VK_SUCCESS\" is true. Returning: FAILED",
+          "[mvk-error] VK_TIMEOUT: MTLCommandBuffer \"vkQueuePresentKHR MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+          "ERROR: VALIDATION - Message Id Number: 0 | Message Id Name: mvk-error",
+          "kIOGPUCommandBufferCallbackErrorTimeout)",
+          "ERROR: VK_EXT_device_fault not available.",
+          "ERROR: Vulkan device was lost."
+        ],
+        "preset": null,
+        "wall_seconds": 35.613331958,
+        "peak_rss_bytes": 515997696
+      },
+      {
+        "series": "high",
+        "name": "cold-6",
+        "returncode": -5,
+        "complete": null,
+        "device_loss": true,
+        "timed_out": false,
+        "diagnostics": [
+          "[mvk-error] VK_TIMEOUT: MTLCommandBuffer \"vkQueuePresentKHR MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+          "ERROR: VALIDATION - Message Id Number: 0 | Message Id Name: mvk-error",
+          "kIOGPUCommandBufferCallbackErrorTimeout)",
+          "[mvk-error] VK_TIMEOUT: MTLCommandBuffer \"vkQueueSubmit MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+          "ERROR: VALIDATION - Message Id Number: 0 | Message Id Name: mvk-error",
+          "kIOGPUCommandBufferCallbackErrorTimeout)",
+          "ERROR: Condition \"err != VK_SUCCESS\" is true. Returning: FAILED",
+          "ERROR: VK_EXT_device_fault not available.",
+          "ERROR: Vulkan device was lost."
+        ],
+        "preset": null,
+        "wall_seconds": 27.922394209000004,
+        "peak_rss_bytes": 478199808
+      },
+      {
+        "series": "high",
+        "name": "cold-7",
+        "returncode": -5,
+        "complete": null,
+        "device_loss": true,
+        "timed_out": false,
+        "diagnostics": [
+          "[mvk-error] VK_TIMEOUT: MTLCommandBuffer \"vkQueuePresentKHR MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+          "ERROR: VALIDATION - Message Id Number: 0 | Message Id Name: mvk-error",
+          "kIOGPUCommandBufferCallbackErrorTimeout)",
+          "[mvk-error] VK_TIMEOUT: MTLCommandBuffer \"vkQueueSubmit MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+          "ERROR: VALIDATION - Message Id Number: 0 | Message Id Name: mvk-error",
+          "kIOGPUCommandBufferCallbackErrorTimeout)",
+          "ERROR: Condition \"err != VK_SUCCESS\" is true. Returning: FAILED",
+          "ERROR: VK_EXT_device_fault not available.",
+          "ERROR: Vulkan device was lost."
+        ],
+        "preset": null,
+        "wall_seconds": 34.98459616700001,
+        "peak_rss_bytes": 427671552
+      },
+      {
+        "series": "high",
+        "name": "cold-10",
+        "returncode": -5,
+        "complete": null,
+        "device_loss": true,
+        "timed_out": false,
+        "diagnostics": [
+          "[mvk-error] VK_TIMEOUT: MTLCommandBuffer \"vkQueuePresentKHR MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+          "ERROR: VALIDATION - Message Id Number: 0 | Message Id Name: mvk-error",
+          "kIOGPUCommandBufferCallbackErrorTimeout)",
+          "ERROR: Condition \"err != VK_SUCCESS\" is true. Returning: FAILED",
+          "[mvk-error] VK_TIMEOUT: MTLCommandBuffer \"vkQueueSubmit MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+          "ERROR: VALIDATION - Message Id Number: 0 | Message Id Name: mvk-error",
+          "kIOGPUCommandBufferCallbackErrorTimeout)",
+          "ERROR: VK_EXT_device_fault not available.",
+          "ERROR: Vulkan device was lost."
+        ],
+        "preset": null,
+        "wall_seconds": 25.156799750000005,
+        "peak_rss_bytes": 517062656
+      },
+      {
+        "series": "high",
+        "name": "cold-11",
+        "returncode": -5,
+        "complete": null,
+        "device_loss": true,
+        "timed_out": false,
+        "diagnostics": [
+          "[mvk-error] VK_TIMEOUT: MTLCommandBuffer \"vkQueueSubmit MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+          "ERROR: VALIDATION - Message Id Number: 0 | Message Id Name: mvk-error",
+          "kIOGPUCommandBufferCallbackErrorTimeout)",
+          "ERROR: Condition \"err != VK_SUCCESS\" is true. Returning: FAILED",
+          "[mvk-error] VK_TIMEOUT: MTLCommandBuffer \"vkQueuePresentKHR MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+          "ERROR: VALIDATION - Message Id Number: 0 | Message Id Name: mvk-error",
+          "kIOGPUCommandBufferCallbackErrorTimeout)",
+          "ERROR: VK_EXT_device_fault not available.",
+          "ERROR: Vulkan device was lost."
+        ],
+        "preset": null,
+        "wall_seconds": 30.26959095799998,
+        "peak_rss_bytes": 516505600
+      },
+      {
+        "series": "high",
+        "name": "cold-12",
+        "returncode": -5,
+        "complete": null,
+        "device_loss": true,
+        "timed_out": false,
+        "diagnostics": [
+          "[mvk-error] VK_TIMEOUT: MTLCommandBuffer \"vkQueuePresentKHR MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+          "ERROR: VALIDATION - Message Id Number: 0 | Message Id Name: mvk-error",
+          "kIOGPUCommandBufferCallbackErrorTimeout)",
+          "[mvk-error] VK_TIMEOUT: MTLCommandBuffer \"vkQueueSubmit MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+          "ERROR: VALIDATION - Message Id Number: 0 | Message Id Name: mvk-error",
+          "kIOGPUCommandBufferCallbackErrorTimeout)",
+          "ERROR: Condition \"err != VK_SUCCESS\" is true. Returning: FAILED",
+          "ERROR: VK_EXT_device_fault not available.",
+          "ERROR: Vulkan device was lost."
+        ],
+        "preset": null,
+        "wall_seconds": 25.23081062499989,
+        "peak_rss_bytes": 516456448
+      },
+      {
+        "series": "high",
+        "name": "cold-16",
+        "returncode": -5,
+        "complete": null,
+        "device_loss": true,
+        "timed_out": false,
+        "diagnostics": [
+          "[mvk-error] VK_TIMEOUT: MTLCommandBuffer \"vkQueuePresentKHR MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+          "ERROR: VALIDATION - Message Id Number: 0 | Message Id Name: mvk-error",
+          "kIOGPUCommandBufferCallbackErrorTimeout)",
+          "ERROR: Condition \"err != VK_SUCCESS\" is true. Returning: FAILED",
+          "[mvk-error] VK_TIMEOUT: MTLCommandBuffer \"vkQueueSubmit MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+          "ERROR: VALIDATION - Message Id Number: 0 | Message Id Name: mvk-error",
+          "kIOGPUCommandBufferCallbackErrorTimeout)",
+          "ERROR: VK_EXT_device_fault not available.",
+          "ERROR: Vulkan device was lost."
+        ],
+        "preset": null,
+        "wall_seconds": 25.51678129100003,
+        "peak_rss_bytes": 515670016
+      },
+      {
+        "series": "high",
+        "name": "cold-17",
+        "returncode": -5,
+        "complete": null,
+        "device_loss": true,
+        "timed_out": false,
+        "diagnostics": [
+          "[mvk-error] VK_TIMEOUT: MTLCommandBuffer \"vkQueueSubmit MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+          "ERROR: VALIDATION - Message Id Number: 0 | Message Id Name: mvk-error",
+          "kIOGPUCommandBufferCallbackErrorTimeout)",
+          "ERROR: Condition \"err != VK_SUCCESS\" is true. Returning: FAILED",
+          "[mvk-error] VK_TIMEOUT: MTLCommandBuffer \"vkQueuePresentKHR MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+          "ERROR: VALIDATION - Message Id Number: 0 | Message Id Name: mvk-error",
+          "kIOGPUCommandBufferCallbackErrorTimeout)",
+          "ERROR: VK_EXT_device_fault not available.",
+          "ERROR: Vulkan device was lost."
+        ],
+        "preset": null,
+        "wall_seconds": 24.446360166999966,
+        "peak_rss_bytes": 516456448
+      },
+      {
+        "series": "mixed",
+        "name": "cold-6",
+        "returncode": -5,
+        "complete": null,
+        "device_loss": true,
+        "timed_out": false,
+        "diagnostics": [
+          "[mvk-error] VK_TIMEOUT: MTLCommandBuffer \"vkQueuePresentKHR MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+          "ERROR: VALIDATION - Message Id Number: 0 | Message Id Name: mvk-error",
+          "kIOGPUCommandBufferCallbackErrorTimeout)",
+          "ERROR: Condition \"err != VK_SUCCESS\" is true. Returning: FAILED",
+          "[mvk-error] VK_TIMEOUT: MTLCommandBuffer \"vkQueueSubmit MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+          "ERROR: VALIDATION - Message Id Number: 0 | Message Id Name: mvk-error",
+          "kIOGPUCommandBufferCallbackErrorTimeout)",
+          "ERROR: VK_EXT_device_fault not available.",
+          "ERROR: Vulkan device was lost."
+        ],
+        "preset": null,
+        "wall_seconds": 21.38069925000002,
+        "peak_rss_bytes": 517079040
+      }
+    ],
+    "series": {
+      "high": {
+        "complete": true,
+        "passed": false,
+        "processes": 36,
+        "ips": 11
+      },
+      "low-medium": {
+        "complete": true,
+        "passed": true,
+        "processes": 28,
+        "ips": 0
+      },
+      "mixed": {
+        "complete": true,
+        "passed": false,
+        "processes": 31,
+        "ips": 1
+      }
+    }
+  }
+}

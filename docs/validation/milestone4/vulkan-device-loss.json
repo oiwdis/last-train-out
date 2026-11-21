@@ -771,6 +771,480 @@
         }
       ]
     },
+    "build-115-low-medium": {
+      "host": "macOS-26.7.2-arm64-arm-64bit-Mach-O",
+      "architecture": "arm64",
+      "signed_pack_sha256": "6feceff39867f940852cb082fad8f3c5e5b51ac6dd4563b1540708e3c00bf312",
+      "complete": true,
+      "passed": true,
+      "series": "low-medium",
+      "counts": {
+        "lifecycle and preflight": {
+          "processes": 2,
+          "failed": 0,
+          "device_loss": 0
+        },
+        "cold medium": {
+          "processes": 7,
+          "failed": 0,
+          "device_loss": 0
+        },
+        "cold low": {
+          "processes": 6,
+          "failed": 0,
+          "device_loss": 0
+        },
+        "warm medium": {
+          "processes": 7,
+          "failed": 0,
+          "device_loss": 0
+        },
+        "warm low": {
+          "processes": 6,
+          "failed": 0,
+          "device_loss": 0
+        }
+      },
+      "successful_cold_high_peak_rss_mib": [],
+      "failed_attempts": [],
+      "crashes": []
+    },
+    "build-115-high": {
+      "host": "macOS-26.7.2-arm64-arm-64bit-Mach-O",
+      "architecture": "arm64",
+      "signed_pack_sha256": "6feceff39867f940852cb082fad8f3c5e5b51ac6dd4563b1540708e3c00bf312",
+      "complete": true,
+      "passed": false,
+      "series": "high",
+      "counts": {
+        "lifecycle and preflight": {
+          "processes": 2,
+          "failed": 0,
+          "device_loss": 0
+        },
+        "cold high": {
+          "processes": 17,
+          "failed": 11,
+          "device_loss": 11
+        },
+        "warm high": {
+          "processes": 17,
+          "failed": 0,
+          "device_loss": 0
+        }
+      },
+      "successful_cold_high_peak_rss_mib": [
+        460.2,
+        500.8,
+        500.6,
+        501.0,
+        499.5,
+        500.0
+      ],
+      "failed_attempts": [
+        {
+          "name": "cold-2",
+          "condition": "cold",
+          "requested_preset": "high",
+          "returncode": -5,
+          "device_loss": true,
+          "watchdog_killed": false,
+          "peak_rss_mib": 492.0,
+          "last_completed_phase": "warmup_view_Platform",
+          "last_phase_texture_mib": 361.5,
+          "timeout_messages": [
+            "[mvk-error] VK_TIMEOUT: MTLCommandBuffer \"vkQueueSubmit MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+            "\tVK_TIMEOUT: MTLCommandBuffer \"vkQueueSubmit MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+            "[mvk-error] VK_TIMEOUT: MTLCommandBuffer \"vkQueuePresentKHR MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+            "\tVK_TIMEOUT: MTLCommandBuffer \"vkQueuePresentKHR MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+            "ERROR: Vulkan device was lost."
+          ]
+        },
+        {
+          "name": "cold-3",
+          "condition": "cold",
+          "requested_preset": "high",
+          "returncode": -5,
+          "device_loss": true,
+          "watchdog_killed": false,
+          "peak_rss_mib": 410.9,
+          "last_completed_phase": "warmup_fog_material",
+          "last_phase_texture_mib": 361.5,
+          "timeout_messages": [
+            "[mvk-error] VK_TIMEOUT: MTLCommandBuffer \"vkQueueSubmit MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+            "\tVK_TIMEOUT: MTLCommandBuffer \"vkQueueSubmit MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+            "[mvk-error] VK_TIMEOUT: MTLCommandBuffer \"vkQueuePresentKHR MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+            "\tVK_TIMEOUT: MTLCommandBuffer \"vkQueuePresentKHR MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+            "ERROR: Vulkan device was lost."
+          ]
+        },
+        {
+          "name": "cold-4",
+          "condition": "cold",
+          "requested_preset": "high",
+          "returncode": -5,
+          "device_loss": true,
+          "watchdog_killed": false,
+          "peak_rss_mib": 492.1,
+          "last_completed_phase": "warmup_view_Platform",
+          "last_phase_texture_mib": 361.5,
+          "timeout_messages": [
+            "[mvk-error] VK_TIMEOUT: MTLCommandBuffer \"vkQueueSubmit MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+            "\tVK_TIMEOUT: MTLCommandBuffer \"vkQueueSubmit MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+            "ERROR: Vulkan device was lost."
+          ]
+        },
+        {
+          "name": "cold-5",
+          "condition": "cold",
+          "requested_preset": "high",
+          "returncode": -5,
+          "device_loss": true,
+          "watchdog_killed": false,
+          "peak_rss_mib": 492.1,
+          "last_completed_phase": "warmup_view_Platform",
+          "last_phase_texture_mib": 361.5,
+          "timeout_messages": [
+            "[mvk-error] VK_TIMEOUT: MTLCommandBuffer \"vkQueueSubmit MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+            "\tVK_TIMEOUT: MTLCommandBuffer \"vkQueueSubmit MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+            "[mvk-error] VK_TIMEOUT: MTLCommandBuffer \"vkQueuePresentKHR MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+            "\tVK_TIMEOUT: MTLCommandBuffer \"vkQueuePresentKHR MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+            "ERROR: Vulkan device was lost."
+          ]
+        },
+        {
+          "name": "cold-6",
+          "condition": "cold",
+          "requested_preset": "high",
+          "returncode": -5,
+          "device_loss": true,
+          "watchdog_killed": false,
+          "peak_rss_mib": 456.0,
+          "last_completed_phase": "warmup_view_Platform",
+          "last_phase_texture_mib": 361.5,
+          "timeout_messages": [
+            "[mvk-error] VK_TIMEOUT: MTLCommandBuffer \"vkQueuePresentKHR MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+            "\tVK_TIMEOUT: MTLCommandBuffer \"vkQueuePresentKHR MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+            "[mvk-error] VK_TIMEOUT: MTLCommandBuffer \"vkQueueSubmit MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+            "\tVK_TIMEOUT: MTLCommandBuffer \"vkQueueSubmit MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+            "ERROR: Vulkan device was lost."
+          ]
+        },
+        {
+          "name": "cold-7",
+          "condition": "cold",
+          "requested_preset": "high",
+          "returncode": -5,
+          "device_loss": true,
+          "watchdog_killed": false,
+          "peak_rss_mib": 407.9,
+          "last_completed_phase": "warmup_view_Platform",
+          "last_phase_texture_mib": 361.5,
+          "timeout_messages": [
+            "[mvk-error] VK_TIMEOUT: MTLCommandBuffer \"vkQueuePresentKHR MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+            "\tVK_TIMEOUT: MTLCommandBuffer \"vkQueuePresentKHR MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+            "[mvk-error] VK_TIMEOUT: MTLCommandBuffer \"vkQueueSubmit MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+            "\tVK_TIMEOUT: MTLCommandBuffer \"vkQueueSubmit MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+            "ERROR: Vulkan device was lost."
+          ]
+        },
+        {
+          "name": "cold-10",
+          "condition": "cold",
+          "requested_preset": "high",
+          "returncode": -5,
+          "device_loss": true,
+          "watchdog_killed": false,
+          "peak_rss_mib": 493.1,
+          "last_completed_phase": "warmup_view_Platform",
+          "last_phase_texture_mib": 361.5,
+          "timeout_messages": [
+            "[mvk-error] VK_TIMEOUT: MTLCommandBuffer \"vkQueuePresentKHR MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+            "\tVK_TIMEOUT: MTLCommandBuffer \"vkQueuePresentKHR MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+            "[mvk-error] VK_TIMEOUT: MTLCommandBuffer \"vkQueueSubmit MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+            "\tVK_TIMEOUT: MTLCommandBuffer \"vkQueueSubmit MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+            "ERROR: Vulkan device was lost."
+          ]
+        },
+        {
+          "name": "cold-11",
+          "condition": "cold",
+          "requested_preset": "high",
+          "returncode": -5,
+          "device_loss": true,
+          "watchdog_killed": false,
+          "peak_rss_mib": 492.6,
+          "last_completed_phase": "warmup_view_Platform",
+          "last_phase_texture_mib": 361.5,
+          "timeout_messages": [
+            "[mvk-error] VK_TIMEOUT: MTLCommandBuffer \"vkQueueSubmit MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+            "\tVK_TIMEOUT: MTLCommandBuffer \"vkQueueSubmit MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+            "[mvk-error] VK_TIMEOUT: MTLCommandBuffer \"vkQueuePresentKHR MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+            "\tVK_TIMEOUT: MTLCommandBuffer \"vkQueuePresentKHR MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+            "ERROR: Vulkan device was lost."
+          ]
+        },
+        {
+          "name": "cold-12",
+          "condition": "cold",
+          "requested_preset": "high",
+          "returncode": -5,
+          "device_loss": true,
+          "watchdog_killed": false,
+          "peak_rss_mib": 492.5,
+          "last_completed_phase": "warmup_view_Platform",
+          "last_phase_texture_mib": 361.5,
+          "timeout_messages": [
+            "[mvk-error] VK_TIMEOUT: MTLCommandBuffer \"vkQueuePresentKHR MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+            "\tVK_TIMEOUT: MTLCommandBuffer \"vkQueuePresentKHR MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+            "[mvk-error] VK_TIMEOUT: MTLCommandBuffer \"vkQueueSubmit MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+            "\tVK_TIMEOUT: MTLCommandBuffer \"vkQueueSubmit MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+            "ERROR: Vulkan device was lost."
+          ]
+        },
+        {
+          "name": "cold-16",
+          "condition": "cold",
+          "requested_preset": "high",
+          "returncode": -5,
+          "device_loss": true,
+          "watchdog_killed": false,
+          "peak_rss_mib": 491.8,
+          "last_completed_phase": "warmup_view_Platform",
+          "last_phase_texture_mib": 361.5,
+          "timeout_messages": [
+            "[mvk-error] VK_TIMEOUT: MTLCommandBuffer \"vkQueuePresentKHR MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+            "\tVK_TIMEOUT: MTLCommandBuffer \"vkQueuePresentKHR MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+            "[mvk-error] VK_TIMEOUT: MTLCommandBuffer \"vkQueueSubmit MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+            "\tVK_TIMEOUT: MTLCommandBuffer \"vkQueueSubmit MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+            "ERROR: Vulkan device was lost."
+          ]
+        },
+        {
+          "name": "cold-17",
+          "condition": "cold",
+          "requested_preset": "high",
+          "returncode": -5,
+          "device_loss": true,
+          "watchdog_killed": false,
+          "peak_rss_mib": 492.5,
+          "last_completed_phase": "warmup_view_Platform",
+          "last_phase_texture_mib": 361.5,
+          "timeout_messages": [
+            "[mvk-error] VK_TIMEOUT: MTLCommandBuffer \"vkQueueSubmit MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+            "\tVK_TIMEOUT: MTLCommandBuffer \"vkQueueSubmit MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+            "[mvk-error] VK_TIMEOUT: MTLCommandBuffer \"vkQueuePresentKHR MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+            "\tVK_TIMEOUT: MTLCommandBuffer \"vkQueuePresentKHR MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+            "ERROR: Vulkan device was lost."
+          ]
+        }
+      ],
+      "crashes": [
+        {
+          "file": "Last Train Out-2026-11-21-051740.ips",
+          "exception": "EXC_BREAKPOINT",
+          "signal": "SIGTRAP",
+          "initial_symbols": [
+            "RenderingDeviceDriverVulkan::command_queue_execute_and_present",
+            "RenderingDevice::execute_chained_cmds",
+            "RenderingDevice::_execute_frame",
+            "RenderingDevice::swap_buffers"
+          ]
+        },
+        {
+          "file": "Last Train Out-2026-11-21-051741.ips",
+          "exception": "EXC_BREAKPOINT",
+          "signal": "SIGTRAP",
+          "initial_symbols": [
+            "RenderingDeviceDriverVulkan::command_queue_execute_and_present",
+            "RenderingDevice::execute_chained_cmds",
+            "RenderingDevice::_execute_frame",
+            "RenderingDevice::swap_buffers"
+          ]
+        },
+        {
+          "file": "Last Train Out-2026-11-21-051824.ips",
+          "exception": "EXC_BREAKPOINT",
+          "signal": "SIGTRAP",
+          "initial_symbols": [
+            "RenderingDeviceDriverVulkan::command_queue_execute_and_present",
+            "RenderingDevice::execute_chained_cmds",
+            "RenderingDevice::_execute_frame",
+            "RenderingDevice::swap_buffers"
+          ]
+        },
+        {
+          "file": "Last Train Out-2026-11-21-051847.ips",
+          "exception": "EXC_BREAKPOINT",
+          "signal": "SIGTRAP",
+          "initial_symbols": [
+            "RenderingDeviceDriverVulkan::command_queue_execute_and_present",
+            "RenderingDevice::execute_chained_cmds",
+            "RenderingDevice::_execute_frame",
+            "RenderingDevice::swap_buffers"
+          ]
+        },
+        {
+          "file": "Last Train Out-2026-11-21-051937.ips",
+          "exception": "EXC_BREAKPOINT",
+          "signal": "SIGTRAP",
+          "initial_symbols": [
+            "RenderingDeviceDriverVulkan::command_queue_execute_and_present",
+            "RenderingDevice::execute_chained_cmds",
+            "RenderingDevice::_execute_frame",
+            "RenderingDevice::swap_buffers"
+          ]
+        },
+        {
+          "file": "Last Train Out-2026-11-21-051950.ips",
+          "exception": "EXC_BREAKPOINT",
+          "signal": "SIGTRAP",
+          "initial_symbols": [
+            "RenderingDeviceDriverVulkan::command_queue_execute_and_present",
+            "RenderingDevice::execute_chained_cmds",
+            "RenderingDevice::_execute_frame",
+            "RenderingDevice::swap_buffers"
+          ]
+        },
+        {
+          "file": "Last Train Out-2026-11-21-052127.ips",
+          "exception": "EXC_BREAKPOINT",
+          "signal": "SIGTRAP",
+          "initial_symbols": [
+            "RenderingDeviceDriverVulkan::command_queue_execute_and_present",
+            "RenderingDevice::execute_chained_cmds",
+            "RenderingDevice::_execute_frame",
+            "RenderingDevice::swap_buffers"
+          ]
+        },
+        {
+          "file": "Last Train Out-2026-11-21-052149.ips",
+          "exception": "EXC_BREAKPOINT",
+          "signal": "SIGTRAP",
+          "initial_symbols": [
+            "RenderingDeviceDriverVulkan::command_queue_execute_and_present",
+            "RenderingDevice::execute_chained_cmds",
+            "RenderingDevice::_execute_frame",
+            "RenderingDevice::swap_buffers"
+          ]
+        },
+        {
+          "file": "Last Train Out-2026-11-21-052211.ips",
+          "exception": "EXC_BREAKPOINT",
+          "signal": "SIGTRAP",
+          "initial_symbols": [
+            "RenderingDeviceDriverVulkan::command_queue_execute_and_present",
+            "RenderingDevice::execute_chained_cmds",
+            "RenderingDevice::_execute_frame",
+            "RenderingDevice::swap_buffers"
+          ]
+        },
+        {
+          "file": "Last Train Out-2026-11-21-052407.ips",
+          "exception": "EXC_BREAKPOINT",
+          "signal": "SIGTRAP",
+          "initial_symbols": [
+            "RenderingDeviceDriverVulkan::command_queue_execute_and_present",
+            "RenderingDevice::execute_chained_cmds",
+            "RenderingDevice::_execute_frame",
+            "RenderingDevice::swap_buffers"
+          ]
+        },
+        {
+          "file": "Last Train Out-2026-11-21-052426.ips",
+          "exception": "EXC_BREAKPOINT",
+          "signal": "SIGTRAP",
+          "initial_symbols": [
+            "RenderingDeviceDriverVulkan::command_queue_execute_and_present",
+            "RenderingDevice::execute_chained_cmds",
+            "RenderingDevice::_execute_frame",
+            "RenderingDevice::swap_buffers"
+          ]
+        }
+      ]
+    },
+    "build-115-mixed": {
+      "host": "macOS-26.7.2-arm64-arm-64bit-Mach-O",
+      "architecture": "arm64",
+      "signed_pack_sha256": "6feceff39867f940852cb082fad8f3c5e5b51ac6dd4563b1540708e3c00bf312",
+      "complete": true,
+      "passed": false,
+      "series": "mixed",
+      "counts": {
+        "lifecycle and preflight": {
+          "processes": 11,
+          "failed": 0,
+          "device_loss": 0
+        },
+        "cold low": {
+          "processes": 4,
+          "failed": 0,
+          "device_loss": 0
+        },
+        "cold medium": {
+          "processes": 3,
+          "failed": 0,
+          "device_loss": 0
+        },
+        "cold high": {
+          "processes": 3,
+          "failed": 1,
+          "device_loss": 1
+        },
+        "warm low": {
+          "processes": 4,
+          "failed": 0,
+          "device_loss": 0
+        },
+        "warm medium": {
+          "processes": 3,
+          "failed": 0,
+          "device_loss": 0
+        },
+        "warm high": {
+          "processes": 3,
+          "failed": 0,
+          "device_loss": 0
+        }
+      },
+      "successful_cold_high_peak_rss_mib": [
+        476.1,
+        501.4
+      ],
+      "failed_attempts": [
+        {
+          "name": "cold-6",
+          "condition": "cold",
+          "requested_preset": "high",
+          "returncode": -5,
+          "device_loss": true,
+          "watchdog_killed": false,
+          "peak_rss_mib": 493.1,
+          "last_completed_phase": "warmup_view_Platform",
+          "last_phase_texture_mib": 361.5,
+          "timeout_messages": [
+            "[mvk-error] VK_TIMEOUT: MTLCommandBuffer \"vkQueuePresentKHR MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+            "\tVK_TIMEOUT: MTLCommandBuffer \"vkQueuePresentKHR MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+            "[mvk-error] VK_TIMEOUT: MTLCommandBuffer \"vkQueueSubmit MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+            "\tVK_TIMEOUT: MTLCommandBuffer \"vkQueueSubmit MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+            "ERROR: Vulkan device was lost."
+          ]
+        }
+      ],
+      "crashes": [
+        {
+          "file": "Last Train Out-2026-11-21-055940.ips",
+          "exception": "EXC_BREAKPOINT",
+          "signal": "SIGTRAP",
+          "initial_symbols": [
+            "RenderingDeviceDriverVulkan::command_queue_execute_and_present",
+            "RenderingDevice::execute_chained_cmds",
+            "RenderingDevice::_execute_frame",
+            "RenderingDevice::swap_buffers"
+          ]
+        }
+      ]
+    },
     "high-vulkan-candidate-first/reference": {
       "host": "macOS-26.7.2-arm64-arm-64bit-Mach-O",
       "architecture": "arm64",
