@@ -1,5 +1,6 @@
 """Compile newly observed journey stages and retain the byte-exact shipped Metal libraries."""
 import argparse
+from collections import deque
 from concurrent.futures import ThreadPoolExecutor
 import hashlib
 import json
@@ -49,10 +50,32 @@ def collect(app, trace):
             raise ValueError('Existing library did not round-trip')
         inputs[name] = base
     needed = {k:v for k,v in sources.items() if int(k[:8],16) in observed}
-    if not observed or len(needed) != len(observed) or set(needed) & set(before):
-        raise ValueError('The trace must identify unique new signed source stages')
+    if not observed or len(needed) != len(observed):
+        raise ValueError('The trace must identify unique signed source stages')
     return source, profile, before, needed, inputs
 
+
+
+def extend_group(base, observed_libraries, verified):
+    # One source hash can be compiled in one material variant and source-only
+    # in another. Preserve each occurrence unless the trace asks for its library.
+    expected = deque()
+
+    def fill(digest, source, invariant, existing):
+        addition = observed_libraries.get(digest) if not existing else None
+        expected.append((digest, existing or addition or b''))
+        return addition
+
+    def check(digest, source, invariant, library):
+        if not expected or expected.popleft() != (digest, library):
+            raise ValueError('Output library drift: ' + digest)
+        if library:
+            verified.add(digest)
+
+    data = group(base, fill)
+    if group(data, check) != data or expected:
+        raise ValueError('Output group did not round-trip')
+    return data
 
 def main():
     p = argparse.ArgumentParser(description=__doc__)
@@ -63,7 +86,9 @@ def main():
     opt = p.parse_args()
     source,profile,before,needed,inputs = collect(opt.app,opt.trace)
     opt.out.mkdir(parents=True)
-    receipt = dict(original_libraries=len(before), additional_stages=sorted(needed),
+    uncompiled = {digest: stage for digest, stage in needed.items() if digest not in before}
+    receipt = dict(original_libraries=len(before), additional_stages=sorted(uncompiled),
+                   reused_observed_stages=sorted(needed.keys() & before.keys()),
                    original_library_bytes=sum(map(len,before.values())), trace_sha256=hashlib.sha256(opt.trace.read_bytes()).hexdigest())
     report = opt.out / 'coverage.json'
     report.write_text(json.dumps(receipt,indent=2))
@@ -72,21 +97,15 @@ def main():
     logs = opt.out / 'compiler-logs'
     logs.mkdir()
     with tempfile.TemporaryDirectory() as directory, ThreadPoolExecutor(max_workers=3) as workers:
-        new = dict(workers.map(lambda item: compile_stage(item,Path(directory),logs), sorted(needed.items())))
+        new = dict(workers.map(lambda item: compile_stage(item,Path(directory),logs), sorted(uncompiled.items())))
     combined = dict(before,**new)
+    observed_libraries = {digest: combined[digest] for digest in needed}
     verified = set()
-    def check(digest,msl,invariant,library):
-        if library != combined.get(digest,b''):
-            raise ValueError('Output library drift: ' + digest)
-        if library:
-            verified.add(digest)
     with tempfile.TemporaryDirectory() as directory:
         full = Path(directory)
         hashes = {}
         for name, base in inputs.items():
-            data = group(base,lambda digest,msl,invariant,existing: new.get(digest))
-            if group(data,check) != data:
-                raise ValueError('Output group did not round-trip')
+            data = extend_group(base, observed_libraries, verified)
             path = full / name
             path.parent.mkdir(parents=True,exist_ok=True)
             path.write_bytes(data)

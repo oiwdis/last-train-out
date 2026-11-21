@@ -309,6 +309,7 @@ jobs:
           fi
           python3 -m venv "$RUNNER_TEMP/world-stage-tools"
           "$RUNNER_TEMP/world-stage-tools/bin/pip" install --disable-pip-version-check zstandard==0.25.0
+          "$RUNNER_TEMP/world-stage-tools/bin/python" tools/macos/entry_libraries/test_extend.py
           "$RUNNER_TEMP/world-stage-tools/bin/python" tools/macos/prepare_environment_libraries.py "$APP" "$RUNNER_TEMP/world-stages"
 
       - name: Preserve the original GPU trace, compiler receipts and clean-cache replay
