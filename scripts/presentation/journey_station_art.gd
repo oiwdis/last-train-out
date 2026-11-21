@@ -4,6 +4,10 @@ extends AssetDressing
 ## modular shells, doors, shelters, cache ownership and walking routes stay intact.
 
 var station: JourneyStation
+var _structure_palette := {}
+
+func structural_details(title: String) -> DetailBuilder:
+	return DetailBuilder.new(self,title,true,_structure_palette)
 
 func build_route_station(owner_station: JourneyStation) -> void:
 	station = owner_station

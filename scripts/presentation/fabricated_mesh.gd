@@ -7,6 +7,7 @@ static var _shapes: Dictionary = {}
 static var _unit_arrays: Array = []
 static var _cpu_shapes: Dictionary = {}
 static var _unit_source: Mesh
+static var _square_member: Mesh
 
 
 static func clear_cache() -> void:
@@ -15,6 +16,7 @@ static func clear_cache() -> void:
 	_unit_arrays.clear()
 	_cpu_shapes.clear()
 	_unit_source = null
+	_square_member = null
 
 
 static func unit_box() -> Mesh:
@@ -43,16 +45,32 @@ static func box(size: Vector3, material: Material) -> Mesh:
 	return _shapes[key]
 
 
+## Long structural members use four flat sides. The 3.4 cm telegraph wires
+## previously carried 108 triangles per length, including invisible bevels.
+static func square_member_source() -> Mesh:
+	if _square_member == null:
+		_square_member = CpuMeshSource.new(BoxMesh.new().get_mesh_arrays())
+	return _square_member
+
+
+static func _square_arrays(size: Vector3, material: Material) -> Array:
+	var primitive := BoxMesh.new()
+	primitive.size = size
+	var arrays := primitive.get_mesh_arrays()
+	if material is StandardMaterial3D and material.uv1_triplanar:
+		return _project_faces(arrays, material)
+	return arrays
+
+
+static func square_panel_source(size: Vector3, material: Material) -> Mesh:
+	return CpuMeshSource.new(_square_arrays(size,material))
+
+
 static func square_box(size: Vector3, material: Material) -> Mesh:
 	var key := "wall/%s/%d" % [size, material.get_instance_id()]
 	if not _shapes.has(key):
-		var primitive := BoxMesh.new()
-		primitive.size = size
-		var arrays := primitive.get_mesh_arrays()
-		if material is StandardMaterial3D and material.uv1_triplanar:
-			arrays = _project_faces(arrays, material)
 		var shape := ArrayMesh.new()
-		shape.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arrays)
+		shape.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, _square_arrays(size, material))
 		shape.surface_set_material(0, planar_material(material))
 		_shapes[key] = shape
 	return _shapes[key]

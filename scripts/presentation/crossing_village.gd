@@ -10,7 +10,7 @@ const GREEN := Color("41594f")
 const RED := Color("915347")
 
 static func build(art: JourneyStationArt) -> void:
-	var crossing := DetailBuilder.new(art,"RoadCrossing")
+	var crossing := art.structural_details("RoadCrossing")
 	for z in range(-60,63,9):
 		if absi(z)>5:
 			crossing.box(Vector3(48,.038,z),Vector3(.10,.012,3.2),BOARD)
@@ -34,7 +34,7 @@ static func build(art: JourneyStationArt) -> void:
 	_cottage(art,Vector3(-26,0,41),Vector3(7.6,3.15,7.0),false,true)
 	_cottage(art,Vector3(31,0,40),Vector3(7.3,3.2,7.6),false,true)
 	_cottage(art,Vector3(107,0,63),Vector3(8.2,3.3,6.9),false,true)
-	var stores := DetailBuilder.new(art,"CrossingStoresFront")
+	var stores := art.structural_details("CrossingStoresFront")
 	stores.panel(Vector3(168,-.075,54.9),Vector3(14.3,.15,3.2),CONCRETE)
 	stores.panel(Vector3(168,3.1,54.2),Vector3(14.4,.16,2.6),ROOF,Vector3(-.12,0,0))
 	for x: float in [161.6,174.4]:
@@ -49,7 +49,7 @@ static func build(art: JourneyStationArt) -> void:
 	art.prop("crate",Vector3(173.2,.01,54.45),.13)
 	stores.finish(165.)
 	art.station.add_structure_collision(Vector3(168,-.075,54.9),Vector3(14.3,.15,3.2))
-	var roadside := DetailBuilder.new(art,"SettlementStreet")
+	var roadside := art.structural_details("SettlementStreet")
 	# The footpath links the occupied side of the station, the road and the shop.
 	# The planted verge and two breaks in the kerb leave cache approaches clear.
 	for x in range(0,181,3):
@@ -81,7 +81,7 @@ static func build(art: JourneyStationArt) -> void:
 	_van(art,Vector3(38.,0,59.9))
 	art.prop("suitcase",Vector3(35.2,-.01,59.5),-.18)
 	art.prop("hand_truck",Vector3(34.7,-.02,60.5),.43)
-	var utility := DetailBuilder.new(art,"LineCrewHut")
+	var utility := art.structural_details("LineCrewHut")
 	utility.panel(Vector3(-65,3.7,32),Vector3(11,.23,10),ROOF,Vector3(-.07,0,0))
 	utility.signboard(Vector3(-65,2.9,36.8),"TRACK CREW  /  COAL",6.4,.66)
 	for x: float in [-71.8,-70.4]:
@@ -89,7 +89,7 @@ static func build(art: JourneyStationArt) -> void:
 	utility.finish(145.)
 
 static func _cottage(art: JourneyStationArt, at: Vector3, size: Vector3, station: bool, new_shell: bool) -> void:
-	var d := DetailBuilder.new(art,"CrossingHouse")
+	var d := art.structural_details("CrossingHouse")
 	if new_shell:
 		d.panel(at+Vector3.UP*size.y*.5,size,BRICK)
 		art.station.add_structure_collision(at+Vector3.UP*size.y*.5,size)

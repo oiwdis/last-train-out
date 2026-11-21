@@ -14,6 +14,7 @@ from compare_player_startup import run_player
 ROOT = Path(__file__).resolve().parents[2]
 FIXTURE = ROOT / 'scripts/diagnostics/integration_benchmark.gd'
 VIEWS = 16
+PHOTO_VIEWS = VIEWS + 3
 
 
 def digest(path):
@@ -69,7 +70,7 @@ def main():
                 select_user(project, user.name)
         schedules = [(v, 'first') for v in apps] + [(v, 'repeat') for v in reversed(apps)] if args.candidate else []
         schedules += [(v, 'images') for v in apps]
-        poses = None
+        poses = {}
         for version, stage in schedules:
             name = version + '-' + stage
             chooser, project, pack, user = contexts[version]
@@ -81,13 +82,19 @@ def main():
             raw = out / (name + '.json')
             data = json.loads(raw.read_text()) if raw.exists() else {}
             camera = data.get('camera_poses', [])
-            if poses is None and camera:
-                poses = camera
+            kind = 'images' if stage == 'images' else 'timing'
+            expected_poses = poses.setdefault(kind, camera) if camera else []
+            checks = data.get('field_checks', [])
+            if stage == 'images':
+                run['daylit_field_checks'] = checks
+            visual_ok = (len(checks) == 6 and all(row['near_black_fraction'] < .01 for row in checks)
+                         and len(list((out / name).glob('*.png'))) == PHOTO_VIEWS * 3) if stage == 'images' else True
             run['passed'] = bool(not run['returncode'] and not run['timed_out'] and not run['engine_diagnostics']
                                  and data.get('driver') == 'metal' and data.get('renderer') == 'forward_plus'
                                  and data.get('runtime_binary') == 'LastTrainOutMetal' and data.get('resolution') == '(960, 540)'
-                                 and len(data.get('results', [])) == VIEWS * 3 * 2 and len(camera) == VIEWS * 3
-                                 and poses == camera and (stage != 'images' or len(list((out / name).glob('*.png'))) == VIEWS * 3))
+                                 and len(data.get('results', [])) == VIEWS * 3 * 2
+                                 and len(camera) == (PHOTO_VIEWS if stage == 'images' else VIEWS) * 3
+                                 and expected_poses == camera and visual_ok)
             manifest['attempts'].append(run)
             report.write_text(json.dumps(manifest, indent=2))
     return int(any(not run['passed'] for run in manifest['attempts'] + manifest['player_launches']))

@@ -73,7 +73,8 @@ func _collect(node: Node) -> void:
 
 
 func _authored_material_state(material: StandardMaterial3D) -> Dictionary:
-	return {"normal": material.normal_enabled, "roughness": material.roughness_texture,
+	return {"normal": material.normal_enabled, "normal_minimum": material.get_meta("normal_map_minimum_preset", 0),
+		"roughness": material.roughness_texture,
 		"skin": material.subsurf_scatter_enabled,
 		"skin_capable": material.subsurf_scatter_enabled or material.get_meta("skin_scattering_candidate", false)}
 
@@ -86,7 +87,7 @@ func set_preset(index: int, persist: bool = false) -> void:
 	var preset := PRESETS[current_index]
 	for material: StandardMaterial3D in _materials:
 		# Low retains textured colour but avoids the triplanar normal/roughness fetches.
-		material.normal_enabled = bool(_materials[material].normal) and preset.normal_maps
+		material.normal_enabled = bool(_materials[material].normal) and preset.normal_maps and current_index >= int(_materials[material].normal_minimum)
 		material.roughness_texture = _materials[material].roughness if preset.roughness_maps else null
 		material.subsurf_scatter_enabled = bool(_materials[material].skin_capable) and preset.skin_scattering
 	if _atmosphere != null:

@@ -11,5 +11,6 @@ albedo_texture = ExtResource("grass")
 normal_enabled = true
 normal_texture = ExtResource("relief")
 normal_scale = 0.55
+metadata/normal_map_minimum_preset = 2
 roughness = 0.97
 texture_filter = 5

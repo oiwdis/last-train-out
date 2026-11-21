@@ -11,7 +11,7 @@ const CORRUGATED := preload("res://resources/materials/roof_metal.tres")
 const TIMBER := preload("res://resources/materials/floor_wood.tres")
 
 static func build(art: JourneyStationArt) -> void:
-	var bay := DetailBuilder.new(art,"FreightLoadingBays")
+	var bay := art.structural_details("FreightLoadingBays")
 	for x: float in [39.,48.]:
 		bay.panel(Vector3(x,.49,33.6),Vector3(6.6,.98,3.9),CONCRETE)
 		art.station.add_structure_collision(Vector3(x,.49,33.6),Vector3(6.6,.98,3.9))
@@ -57,7 +57,7 @@ static func build(art: JourneyStationArt) -> void:
 	art.station.add_structure_collision(Vector3(14.45,.47,43.16),Vector3(5.4,.91,1.92))
 	art.prop("hand_truck",Vector3(18.4,.01,44.1),-.38)
 	bay.finish(175.)
-	var tip := DetailBuilder.new(art,"CoalTipple")
+	var tip := art.structural_details("CoalTipple")
 	for x: float in [-5.,3.]:
 		# Riveted elevated screens, a discharge neck and cross-braced legs.
 		var center := Vector3(x,0,-14.)
@@ -84,7 +84,7 @@ static func build(art: JourneyStationArt) -> void:
 			tip.beam(a.lerp(b,t)+side,a.lerp(b,(n+1)/9.)+side+Vector3.UP*1.1,.09,FRAME)
 	tip.beam(a,b,1.0,DetailBuilder.INK)
 	tip.finish(240.)
-	var runner := DetailBuilder.new(art,"TransferGantry")
+	var runner := art.structural_details("TransferGantry")
 	for x: float in [42.,68.]:
 		for z: float in [15.,28.]:
 			runner.beam(Vector3(x,0,z),Vector3(x,8.6,z),.34,FRAME)
@@ -101,7 +101,7 @@ static func build(art: JourneyStationArt) -> void:
 	runner.beam(Vector3(50,9.,21.5),Vector3(50,4.0,21.5),.065,DetailBuilder.INK)
 	runner.box(Vector3(50,4.,21.5),Vector3(.52,.46,.42),RUST)
 	runner.finish(230.)
-	var work := DetailBuilder.new(art,"WorkshopFittings")
+	var work := art.structural_details("WorkshopFittings")
 	work.panel(Vector3(122,4.75,44.7),Vector3(12.,.15,4.2),CORRUGATED,Vector3(-.08,0,0))
 	work.panel(Vector3(118,.95,34.9),Vector3(5.4,.16,1.25),TIMBER)
 	for x: float in [115.6,120.4]:
@@ -136,7 +136,7 @@ static func build(art: JourneyStationArt) -> void:
 	for x: float in [42.,58.,74.]:
 		EnvironmentArt.place(art,EnvironmentArt.CONTAINER,Vector3(x,0,-12.),"FreightConsignment",Vector3(2.,1.185,1.2))
 	EnvironmentArt.place(art,EnvironmentArt.BOX_VAN,Vector3(63,.02,-21.),"SidingBoxVan")
-	var phone := DetailBuilder.new(art,"ServiceFence")
+	var phone := art.structural_details("ServiceFence")
 	for i in 12:
 		var x := 5.+i*4.
 		phone.beam(Vector3(x,0,-22),Vector3(x,2.1,-22),.10,FRAME)

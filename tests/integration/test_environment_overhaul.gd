@@ -114,3 +114,29 @@ func test_atmospheric_banks_and_station_landmarks_are_in_the_playable_mission() 
 		check(layer.material_override.get_shader_parameter("density_field") is Texture2D,"density field is assigned")
 	check(game.journey.stations[0].has_node("AuthoredStationDetails/CoalTipple"),"Ashford coal landmark")
 	check(game.journey.stations[1].has_node("AuthoredStationDetails/CrossingStoresFront"),"Blackwater evacuation stores")
+
+func test_line_materials_are_shared_and_distant_fog_uses_its_broad_density_sample() -> void:
+	var track := game.get_node("RouteTrack") as RouteTrack
+	var wire_palette := {}
+	var wire_triangles := 0
+	for chunk in track.chunks:
+		for piece in chunk.get_node("TelegraphWires").get_children():
+			var mesh := piece.mesh as ArrayMesh
+			wire_palette[mesh.surface_get_material(0)] = true
+			wire_triangles += mesh.surface_get_array_index_len(0) / 3
+	check_eq(wire_palette.size(),1,"telegraph runs share their authored iron material")
+	check(wire_triangles>0 and wire_triangles<5000,"narrow wires use rectangular sections")
+	var banks := game.fog_system.presentation
+	for preset in 3:
+		game.graphics.set_preset(preset)
+		var field: StandardMaterial3D = track.chunks[0].get_node("Ground").mesh.surface_get_material(0)
+		check(field.albedo_texture!=null and field.normal_texture!=null,"the scanned ground assets stay resident across presets")
+		check_eq(field.normal_enabled,preset==2,"Medium uses geometric slope lighting and High uses the authored normal map")
+		var bank_count := 0
+		var fine_count := 0
+		for layer in banks.layers:
+			if layer.visible:
+				bank_count += 1
+				if layer.material_override.get_shader_parameter("detail")>0.: fine_count += 1
+		check_eq(bank_count,[2,4,6][preset],"the preset retains its distinct bank count")
+		check_eq(fine_count,[0,2,6][preset],"fine movement is budgeted independently from the hazard")

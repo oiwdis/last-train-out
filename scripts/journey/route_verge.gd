@@ -32,7 +32,7 @@ static func foliage_mesh(index: int) -> ArrayMesh:
 			_trees.append(surface.commit())
 	return _trees[index]
 
-static func dress(chunk: Node3D, route: FogRoute, start: int) -> void:
+static func dress(chunk: Node3D, route: FogRoute, start: int, palette: Dictionary) -> void:
 	var rng := RandomNumberGenerator.new()
 	rng.seed = 37249 + start
 	var groups: Array = [[],[],[],[]]
@@ -48,12 +48,25 @@ static func dress(chunk: Node3D, route: FogRoute, start: int) -> void:
 			var height := rng.randf_range(4.8,9.2) if variant<2 else rng.randf_range(1.6,3.8)
 			var basis := Basis(Vector3.UP,rng.randf_range(-PI,PI)).scaled(Vector3.ONE*height)
 			groups[variant].append(Transform3D(basis,ground-Vector3.UP*.045))
+	# A field boundary is planted as one hedgerow. A few taller standards
+	# break its silhouette. Reuse the chunk's four existing foliage batches.
+	if posmod(start-RouteTrack.FIRST_CHUNK,240)==0:
+		var side := -1. if posmod(start-RouteTrack.FIRST_CHUNK,480)==0 else 1.
+		for i in 12:
+			var along := start+19.+i*5.2
+			var lateral := side*(49.+i*.85+rng.randf_range(-.7,.7))
+			if RouteLandscape.yard_weight(route,along,lateral)>.02: continue
+			var variant := (i/4)%2 if i%4==0 else 2+i%2
+			var h := rng.randf_range(7.8,11.2) if variant<2 else rng.randf_range(2.2,3.3)
+			var position := RouteLandscape.ground_contact(route,along,lateral)-Vector3.UP*.045
+			var basis := Basis(Vector3.UP,rng.randf_range(-PI,PI)).scaled(Vector3(h*1.3,h,h*1.3))
+			groups[variant].append(Transform3D(basis,position))
 	for variant in 4:
 		var poses: Array[Transform3D] = []
 		poses.assign(groups[variant])
 		RouteTrack.instance_batch(chunk,"Copse%d" % variant,foliage_mesh(variant),poses,285. if variant<2 else 155.)
-	var steel := DetailBuilder.new(chunk,"LineFurniture")
-	var wires := DetailBuilder.new(chunk,"TelegraphWires")
+	var steel := DetailBuilder.new(chunk,"LineFurniture",true,palette)
+	var wires := DetailBuilder.new(chunk,"TelegraphWires",true,palette)
 	for at in range(start+12,start+RouteTrack.CHUNK,60):
 		var frame := RouteTrack.frame(route,at)
 		var base := RouteLandscape.ground_contact(route,at,-10.8)

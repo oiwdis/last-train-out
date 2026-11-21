@@ -56,6 +56,10 @@ def gallery(archive, out):
                       ('ashford_workshop', 'Ashford workshop'), ('locomotive_cab', 'Locomotive cab'),
                       ('passenger_car', 'Passenger car')]
     }
+    if 'candidate-images/1-ashford_fitter_bench.png' in archive.namelist():
+        groups['station-details'] = [('ashford_coal_screens', 'Ashford coal screens and conveyor'),
+                                     ('ashford_fitter_bench', "Ashford fitter’s bench"),
+                                     ('blackwater_crossing_lane', 'Blackwater level crossing')]
     try:
         face = ImageFont.truetype('DejaVuSans.ttf', 20)
     except OSError:
@@ -123,10 +127,14 @@ def main():
                                  worst_loading_frame_ms=player['load']['worst_loading_frame_ms'],
                                  cache_files_before=run['cache_before']['files'],
                                  cache_bytes_after=run['cache_after']['bytes']))
+        photo_poses = None
+        measured = {r['location'] for r in poses}
         for version in ('reference','candidate'):
             data = load(version+'-images.json')
-            if data['camera_poses'] != poses:
-                raise ValueError('Screenshot conditions differ from timings')
+            camera = data['camera_poses']
+            if [r for r in camera if r['location'] in measured] != poses or (photo_poses and camera != photo_poses):
+                raise ValueError('Screenshot camera, observer or fog state differs between builds')
+            photo_poses = camera
         gallery(archive, out)
         with zipfile.ZipFile(out/'native-pngs.zip', 'w', zipfile.ZIP_STORED) as images:
             for member in archive.namelist():

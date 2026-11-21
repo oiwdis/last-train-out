@@ -13,10 +13,13 @@ var root: Node3D
 var _batches: Dictionary = {}
 var _materials: Dictionary = {}
 var _unit_box: Mesh
+var _square_members := false
 
 
-func _init(parent: Node3D, title: String = "Details") -> void:
-	_unit_box = FabricatedMesh.unit_box_source()
+func _init(parent: Node3D, title: String = "Details", square_members := false, palette: Dictionary = {}) -> void:
+	_materials = palette
+	_square_members = square_members
+	_unit_box = FabricatedMesh.square_member_source() if square_members else FabricatedMesh.unit_box_source()
 	root = Node3D.new()
 	root.name = title
 	root.add_to_group(&"presentation_detail")
@@ -54,7 +57,8 @@ func panel(at: Vector3, size: Vector3, source: StandardMaterial3D, rotation := V
 		var batch := SurfaceTool.new()
 		batch.begin(Mesh.PRIMITIVE_TRIANGLES)
 		_batches[mat] = batch
-	(_batches[mat] as SurfaceTool).append_from(FabricatedMesh.box_source(size,source),0,
+	var panel_mesh := FabricatedMesh.square_panel_source(size,source) if _square_members else FabricatedMesh.box_source(size,source)
+	(_batches[mat] as SurfaceTool).append_from(panel_mesh,0,
 		Transform3D(Basis.from_euler(rotation),at))
 
 

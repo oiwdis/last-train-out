@@ -34,9 +34,10 @@ func build(railway: FogRoute, player: Node3D, baked: PackedScene = null) -> void
 	if baked != null:
 		var corridor := baked.instantiate() as Node3D
 		if corridor.get_meta("geometry_key","") == geometry_key(route):
-			add_child(corridor)
 			chunks.assign(corridor.get_children())
+			# Only register nearby visuals as visible when entering the scenario.
 			_update_visibility()
+			add_child(corridor)
 			return
 		corridor.free()
 	generate_corridor()
@@ -45,6 +46,7 @@ func build(railway: FogRoute, player: Node3D, baked: PackedScene = null) -> void
 ## Editor bake and custom-route fallback. Shipped routes load the mesh and the
 ## triangle collision together through the normal threaded mission resource.
 func generate_corridor() -> void:
+	var line_palette := {}
 	var tie := BoxMesh.new()
 	tie.size = Vector3(.24,.05,2.3)
 	tie.material = TIMBER
@@ -74,7 +76,7 @@ func generate_corridor() -> void:
 				var pose := frames[before].interpolate_with(frames[before+1],index-before)
 				sleepers.append(pose.translated_local(Vector3.UP*.035))
 			instance_batch(chunk,"Ties",tie,sleepers,150.)
-		RouteVerge.dress(chunk,route,start)
+		RouteVerge.dress(chunk,route,start,line_palette)
 
 static func _visual(parent: Node3D, title: String, mesh: Mesh) -> void:
 	var instance := MeshInstance3D.new()

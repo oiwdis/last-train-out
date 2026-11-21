@@ -70,7 +70,10 @@ static func _bank_mesh(layer: int) -> ArrayMesh:
 func _quality(index: int) -> void:
 	for i in layers.size():
 		layers[i].visible = i < [2, 4, 6][index]
-		(layers[i].material_override as ShaderMaterial).set_shader_parameter("detail", [0.,.73,1.][index])
+		# At Medium, keep fine wind on the leading wisps. The two deeper
+		# layers combine with distance fog and need only their broad density.
+		var fine_detail: float = [0., .73 if i < 2 else 0., 1.][index]
+		(layers[i].material_override as ShaderMaterial).set_shader_parameter("detail", fine_detail)
 
 func _process(delta: float) -> void:
 	if not system.players.has(player_id):

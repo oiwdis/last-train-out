@@ -77,9 +77,11 @@ static func build(frames: Array[Transform3D], start: int, step: int, route: FogR
 			var dy := height(along+1.,side,yard_weight(route,along+1.,side))-height(along-1.,side,yard_weight(route,along-1.,side))
 			var across := point(frames[i],along,side+1.,route)-point(frames[i],along,side-1.,route)
 			var forward := frames[i].basis.x + Vector3.UP*dy*.5
-			normals.append(across.cross(forward).normalized())
-			var t := forward.normalized()
-			tangents.append_array(PackedFloat32Array([t.x,t.y,t.z,1.]))
+			var normal := across.cross(forward).normalized()
+			normals.append(normal)
+			# UV.x follows world X and UV.y follows positive Z, including on bends.
+			var tangent := (Vector3.RIGHT-normal*normal.x).normalized()
+			tangents.append_array(PackedFloat32Array([tangent.x,tangent.y,tangent.z,-1.]))
 			if i+1 < frames.size() and j+1 < columns:
 				var k := i*columns+j
 				indices.append_array(PackedInt32Array([k,k+columns,k+1,k+1,k+columns,k+columns+1]))

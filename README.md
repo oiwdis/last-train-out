@@ -2,7 +2,7 @@
 
 The Harlow Escape now has a continuous railway embankment, repaired Harlow track and warehouse joints, a freight yard at Ashford, an evacuated settlement at Blackwater and layered advancing fog. The journey runs for 4.26 km with the original survival rules. The development work is stacked on PR #6. Both PRs are open drafts. [Milestone 4 report](docs/MILESTONE4_ENVIRONMENT_OVERHAUL.md) · [Environment gallery](docs/validation/milestone4/GALLERY.md) · [Draft PR #7](https://github.com/oiwdis/last-train-out/pull/7)
 
-[Universal macOS development build 108](https://github.com/oiwdis/last-train-out/actions/runs/44850871725/artifacts/14686450857) · [ZIP checksum](docs/validation/milestone4/development-build.json) · [Fullscreen 2020 M1 procedure](docs/MILESTONE4_ENVIRONMENT_OVERHAUL.md#physical-2020-m1-procedure)
+[Archived development build 108 with the Medium terrain defect](https://github.com/oiwdis/last-train-out/actions/runs/44850871725/artifacts/14686450857) · [ZIP checksum](docs/validation/milestone4/development-build.json) · [Fullscreen 2020 M1 procedure](docs/MILESTONE4_ENVIRONMENT_OVERHAUL.md#physical-2020-m1-procedure)
 
 ## Milestone 3.5.4 integration renderer history
 
