@@ -377,7 +377,7 @@ jobs:
           python3 tools/macos/entry_libraries/compare.py install "$app" compiled/extended-libraries.zip
           codesign --force --sign - "$app"
           codesign --verify --strict --deep "$app"
-          python3 tools/macos/verify_app.py "$app" --expect-signature adhoc
+          bash tools/macos/entry_libraries/verify_reference.sh "$app" docs/validation/milestone354/build-99.json
           python3 tools/macos/entry_libraries/compare.py compare "shipped/Last Train Out.app" "$app" "$RUNNER_TEMP/ab" "${{ matrix.first }}"
       - if: always()
         uses: actions/upload-artifact@v7
