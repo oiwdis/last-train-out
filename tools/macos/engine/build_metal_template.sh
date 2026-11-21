@@ -12,7 +12,12 @@ if [[ "$(uname -s)-$(uname -m)" != Darwin-arm64 ]]; then
 fi
 revision=f62fdbde15035c5576dad93e586201f4d41ef0cb
 patch_dir="$(cd "$(dirname "$0")" && pwd)"
-patches=("$patch_dir/viewport-metal-sampler.patch" "$patch_dir/worker-pool-shutdown.patch" "$patch_dir/bundled-metal-libraries.patch")
+patches=(
+  "$patch_dir/viewport-metal-sampler.patch"
+  "$patch_dir/worker-pool-shutdown.patch"
+  "$patch_dir/bundled-metal-libraries.patch"
+  "$patch_dir/vertex-format-read.patch"
+)
 for extra in "$@"; do patches+=("$(cd "$(dirname "$extra")" && pwd)/$(basename "$extra")"); done
 work="$(mktemp -d)"
 trap 'rm -rf "$work"' EXIT

@@ -1,0 +1,159 @@
+{
+  "source": "86007236d795713a9271dec69977ddde5e9441d5",
+  "baseline": "7df2f5abee54b8adcf27b8668263fba231a79033",
+  "host": "macOS-26.7.2-arm64-arm-64bit-Mach-O",
+  "resolution": "960x540",
+  "cases": [
+    {
+      "case": "baseline-startup-1",
+      "exit": 0,
+      "timed_out": false,
+      "report_exists": true,
+      "ready": true,
+      "complete_matrix": null,
+      "device_loss": false,
+      "graphics_args": [
+        "--graphics=low"
+      ],
+      "last_completed_phase": null,
+      "diagnostics": [
+        "[mvk-error] VK_INCOMPLETE: Error writing pipeline cache data: Failed to write 4 bytes to output stream! Wrote 0",
+        "ERROR: VALIDATION - Message Id Number: 0 | Message Id Name: mvk-error",
+        "[mvk-error] VK_INCOMPLETE: Error writing pipeline cache data: Failed to write 4 bytes to output stream! Wrote 0",
+        "ERROR: VALIDATION - Message Id Number: 0 | Message Id Name: mvk-error"
+      ]
+    },
+    {
+      "case": "optimized-startup-1",
+      "exit": 0,
+      "timed_out": false,
+      "report_exists": true,
+      "ready": true,
+      "complete_matrix": null,
+      "device_loss": false,
+      "graphics_args": [
+        "--graphics=low"
+      ],
+      "last_completed_phase": "warmup_end",
+      "diagnostics": []
+    },
+    {
+      "case": "optimized-startup-2",
+      "exit": 0,
+      "timed_out": false,
+      "report_exists": true,
+      "ready": true,
+      "complete_matrix": null,
+      "device_loss": false,
+      "graphics_args": [
+        "--graphics=low"
+      ],
+      "last_completed_phase": "warmup_end",
+      "diagnostics": []
+    },
+    {
+      "case": "baseline-startup-2",
+      "exit": 0,
+      "timed_out": false,
+      "report_exists": true,
+      "ready": true,
+      "complete_matrix": null,
+      "device_loss": false,
+      "graphics_args": [
+        "--graphics=low"
+      ],
+      "last_completed_phase": null,
+      "diagnostics": []
+    },
+    {
+      "case": "baseline-startup-3",
+      "exit": 0,
+      "timed_out": false,
+      "report_exists": true,
+      "ready": true,
+      "complete_matrix": null,
+      "device_loss": false,
+      "graphics_args": [
+        "--graphics=low"
+      ],
+      "last_completed_phase": null,
+      "diagnostics": []
+    },
+    {
+      "case": "optimized-startup-3",
+      "exit": 0,
+      "timed_out": false,
+      "report_exists": true,
+      "ready": true,
+      "complete_matrix": null,
+      "device_loss": false,
+      "graphics_args": [
+        "--graphics=low"
+      ],
+      "last_completed_phase": "warmup_end",
+      "diagnostics": []
+    },
+    {
+      "case": "baseline-matrix-1",
+      "exit": 0,
+      "timed_out": false,
+      "report_exists": true,
+      "ready": null,
+      "complete_matrix": true,
+      "device_loss": false,
+      "graphics_args": [
+        "--graphics=low"
+      ],
+      "last_completed_phase": null,
+      "diagnostics": [
+        "[mvk-error] VK_INCOMPLETE: Error writing pipeline cache data: Failed to write 4 bytes to output stream! Wrote 0",
+        "ERROR: VALIDATION - Message Id Number: 0 | Message Id Name: mvk-error"
+      ]
+    },
+    {
+      "case": "optimized-matrix-1",
+      "exit": 0,
+      "timed_out": false,
+      "report_exists": true,
+      "ready": null,
+      "complete_matrix": true,
+      "device_loss": false,
+      "graphics_args": [
+        "--graphics=low"
+      ],
+      "last_completed_phase": null,
+      "diagnostics": []
+    },
+    {
+      "case": "optimized-matrix-2",
+      "exit": 0,
+      "timed_out": false,
+      "report_exists": true,
+      "ready": null,
+      "complete_matrix": true,
+      "device_loss": false,
+      "graphics_args": [
+        "--graphics=low"
+      ],
+      "last_completed_phase": null,
+      "diagnostics": []
+    },
+    {
+      "case": "baseline-matrix-2",
+      "exit": 0,
+      "timed_out": false,
+      "report_exists": true,
+      "ready": null,
+      "complete_matrix": true,
+      "device_loss": false,
+      "graphics_args": [
+        "--graphics=low"
+      ],
+      "last_completed_phase": null,
+      "diagnostics": []
+    }
+  ],
+  "conditioning": "separate fresh project/user caches, warm filesystem; shared OS/driver caches uncontrolled",
+  "source_movie_complete": true,
+  "source_movie_diagnostics": []
+}

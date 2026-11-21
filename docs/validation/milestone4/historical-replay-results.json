@@ -1,0 +1,125 @@
+{
+  "run": 44860690626,
+  "package_build": 99,
+  "source": "9d0c848c93c6853c634122edda90898c707a20af",
+  "attempts": [
+    {
+      "artifact": 14689584154,
+      "order": "shipped first",
+      "sha256": "9e216e9d2d69f884d37485c88abfd339c92e399f08e44c7e5c30fed7ffabda91",
+      "runs": [
+        {
+          "name": "shipped-matrix-1",
+          "returncode": 0,
+          "peak_rss_bytes": 583106560,
+          "engine_diagnostics": [],
+          "passed": true,
+          "native_counts": {
+            "shader_compile": 46,
+            "compute_pipeline_create": 184,
+            "render_pipeline_create": 538
+          }
+        },
+        {
+          "name": "extended-matrix-1",
+          "returncode": 0,
+          "peak_rss_bytes": 570769408,
+          "engine_diagnostics": [],
+          "passed": true,
+          "native_counts": {
+            "shader_compile": 0,
+            "compute_pipeline_create": 184,
+            "render_pipeline_create": 538
+          }
+        },
+        {
+          "name": "extended-matrix-2",
+          "returncode": 0,
+          "peak_rss_bytes": 571686912,
+          "engine_diagnostics": [],
+          "passed": true
+        },
+        {
+          "name": "shipped-matrix-2",
+          "returncode": 0,
+          "peak_rss_bytes": 600276992,
+          "engine_diagnostics": [],
+          "passed": true
+        },
+        {
+          "name": "shipped-visual",
+          "returncode": 0,
+          "peak_rss_bytes": 572915712,
+          "engine_diagnostics": [],
+          "passed": true
+        },
+        {
+          "name": "extended-visual",
+          "returncode": 0,
+          "peak_rss_bytes": 565673984,
+          "engine_diagnostics": [],
+          "passed": true
+        }
+      ]
+    },
+    {
+      "artifact": 14689609025,
+      "order": "extended first",
+      "sha256": "85a45a4c2d9bd5a18ae57802f5b8964e4fad447d8d14d3311464260825571975",
+      "runs": [
+        {
+          "name": "extended-matrix-1",
+          "returncode": 0,
+          "peak_rss_bytes": 568229888,
+          "engine_diagnostics": [],
+          "passed": true,
+          "native_counts": {
+            "shader_compile": 0,
+            "compute_pipeline_create": 184,
+            "render_pipeline_create": 538
+          }
+        },
+        {
+          "name": "shipped-matrix-1",
+          "returncode": 0,
+          "peak_rss_bytes": 494829568,
+          "engine_diagnostics": [],
+          "passed": true,
+          "native_counts": {
+            "shader_compile": 46,
+            "compute_pipeline_create": 184,
+            "render_pipeline_create": 538
+          }
+        },
+        {
+          "name": "shipped-matrix-2",
+          "returncode": 0,
+          "peak_rss_bytes": 586809344,
+          "engine_diagnostics": [],
+          "passed": true
+        },
+        {
+          "name": "extended-matrix-2",
+          "returncode": 0,
+          "peak_rss_bytes": 583614464,
+          "engine_diagnostics": [],
+          "passed": true
+        },
+        {
+          "name": "extended-visual",
+          "returncode": 0,
+          "peak_rss_bytes": 566296576,
+          "engine_diagnostics": [],
+          "passed": true
+        },
+        {
+          "name": "shipped-visual",
+          "returncode": 0,
+          "peak_rss_bytes": 573194240,
+          "engine_diagnostics": [],
+          "passed": true
+        }
+      ]
+    }
+  ]
+}

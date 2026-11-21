@@ -32,7 +32,7 @@ def measure(godot, project, out, name, script, args, timeout, engine_args=(), ca
     report = out / (name + '.json')
     command = [godot, *engine_args, '--verbose', '--path', str(project), '--audio-driver', 'Dummy',
                '--resolution', '960x540', '--position', '32,64', '--script',
-               'res://scripts/diagnostics/' + script, '--', '--graphics=low',
+               str(script) if Path(script).is_absolute() else 'res://scripts/diagnostics/' + script, '--', '--graphics=low',
                '--out=' + str(report), *args]
     if cache is None:
         cache = project / '.godot' / 'shader_cache'
@@ -61,7 +61,7 @@ def measure(godot, project, out, name, script, args, timeout, engine_args=(), ca
                 process.wait()
     lines = (out / (name + '.log')).read_text().splitlines()
     diagnostics = engine_diagnostics(lines)
-    result = {'name': name, 'command': command, 'returncode': process.returncode,
+    result = {'name': name, 'pid': process.pid, 'command': command, 'returncode': process.returncode,
               'timed_out': timed_out, 'wall_seconds': time.monotonic() - started,
               'report_exists': report.exists(), 'peak_rss_bytes': max((r['bytes'] for r in rss), default=0),
               'shader_cache_before': before, 'shader_cache_after': cache_inventory(cache),

@@ -96,9 +96,9 @@ collision_layer = 1
 collision_mask = 0
 
 [node name="Slab" type="CollisionShape3D" parent="Ground"]
-transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 270.0, -0.5, 0.0)
+transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 47.5, -0.5, 0.0)
 script = ExtResource("3_box_part")
-size = Vector3(720.0, 1.0, 52.0)
+size = Vector3(275.0, 1.0, 52.0)
 material = ExtResource("4_ground_aspha")
 
 [node name="BoundaryBack" type="CollisionShape3D" parent="Ground"]

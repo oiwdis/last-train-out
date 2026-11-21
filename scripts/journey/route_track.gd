@@ -1,6 +1,12 @@
 class_name RouteTrack
 extends Node3D
-## Bounded draw chunks. All collision remains resident: no streaming underneath riders.
+## The sampled landscape supplies both visible ground and continuously resident collision.
+const RAIL_START := 280
+const FIRST_CHUNK := -440
+const CHUNK := 120
+const STEP := 6
+const STEEL := preload("res://resources/materials/rail_steel.tres")
+const TIMBER := preload("res://resources/materials/sleeper_wood.tres")
 var route: FogRoute
 var chunks: Array[Node3D] = []
 var observer: Node3D
@@ -9,81 +15,113 @@ var _refresh := 0.0
 static func frame(railway: FogRoute, progress: float) -> Transform3D:
 	var x := railway.tangent(progress)
 	var z := x.cross(Vector3.UP).normalized()
-	return Transform3D(Basis(x, z.cross(x).normalized(), z), railway.sample(progress))
+	return Transform3D(Basis(x,z.cross(x).normalized(),z),railway.sample(progress))
 
-func build(railway: FogRoute, player: Node3D) -> void:
+static func geometry_key(railway: FogRoute) -> String:
+	var controls := PackedInt32Array()
+	for segment in railway.segments:
+		var curve := segment.curve
+		controls.append(curve.point_count)
+		for i in curve.point_count:
+			for value: Vector3 in [curve.get_point_position(i),curve.get_point_in(i),curve.get_point_out(i)]:
+				for axis in 3: controls.append(roundi(value[axis]*1000.))
+	for station in railway.stations: controls.append(roundi(float(railway.stations[station])*10.))
+	return (railway.id+str(controls)).sha256_text()
+
+func build(railway: FogRoute, player: Node3D, baked: PackedScene = null) -> void:
 	route = railway
 	observer = player
-	var steel := preload("res://resources/materials/rail_steel.tres")
-	var ground := StandardMaterial3D.new()
-	ground.albedo_color = Color("363b32")
-	ground.roughness = 1
-	var wood := StandardMaterial3D.new()
-	wood.albedo_color = Color("49453a")
-	wood.roughness = 0.95
-	for start in range(280, ceili(route.length()) + 100, 120):
+	if baked != null:
+		var corridor := baked.instantiate() as Node3D
+		if corridor.get_meta("geometry_key","") == geometry_key(route):
+			chunks.assign(corridor.get_children())
+			# Only register nearby visuals as visible when entering the scenario.
+			_update_visibility()
+			add_child(corridor)
+			return
+		corridor.free()
+	generate_corridor()
+	_update_visibility()
+
+## Editor bake and custom-route fallback. Shipped routes load the mesh and the
+## triangle collision together through the normal threaded mission resource.
+func generate_corridor() -> void:
+	var line_palette := {}
+	var tie := BoxMesh.new()
+	tie.size = Vector3(.24,.05,2.3)
+	tie.material = TIMBER
+	for start in range(FIRST_CHUNK,ceili(route.length())+400,CHUNK):
 		var chunk := Node3D.new()
 		chunk.name = "Track_%d" % start
 		add_child(chunk)
 		chunks.append(chunk)
-		var sleepers: Array[Transform3D] = []
-		var rails: Array[Transform3D] = []
-		for n in range(172):
-			var at := start + n * 0.7
-			var t := frame(route, at)
-			t.origin += t.basis.y * 0.035
-			sleepers.append(t)
-		var earth := StaticBody3D.new()
-		chunk.add_child(earth)
-		for n in range(12):
-			var t := frame(route, start + n * 10 + 5)
-			for side in [-Track.STANDARD_GAUGE/2,Track.STANDARD_GAUGE/2]:
-				var rail := t
-				rail.origin += t.basis * Vector3(0,Track.STANDARD_RAIL_HEIGHT-0.03,side)
-				rails.append(rail)
-			var floor := BoxPart.new()
-			floor.size = Vector3(10.3,0.6,620)
-			floor.material = ground
-			floor.transform = t.translated_local(Vector3(0,-0.32,0))
-			floor.cast_shadow = false
-			earth.add_child(floor)
-		# Match Harlow's running surface. Only visible ties/rails change; the
-		# existing ground bodies, route frames and train integrator are untouched.
-		_instance(chunk, sleepers, Vector3(0.23,0.05,2.7), wood)
-		_instance(chunk, rails, Vector3(10.12,0.06,0.09), steel)
-		# Telegraph poles and broken fence lines provide speed/scale cues.
-		var detail := DetailBuilder.new(chunk)
-		for along in [15.0,75.0]:
-			var t := frame(route, start + along)
-			var pole := t * Vector3(0,0,10)
-			detail.beam(pole, pole + Vector3.UP * 6, 0.18, Color("514a40"))
-			detail.beam(pole + Vector3(-1.2,5.3,0), pole + Vector3(1.2,5.3,0), 0.12, Color("514a40"))
-		detail.finish()
-	_update_visibility()
+		var frames: Array[Transform3D] = []
+		for along in range(start,start+CHUNK+1,STEP):
+			frames.append(frame(route,along))
+		var ground := RouteLandscape.build(frames,start,STEP,route)
+		_visual(chunk,"Ground",ground)
+		var body := StaticBody3D.new()
+		body.name = "GroundCollision"
+		var collision := CollisionShape3D.new()
+		collision.shape = ground.create_trimesh_shape()
+		body.add_child(collision)
+		chunk.add_child(body)
+		if start >= RAIL_START:
+			_visual(chunk,"BallastShoulders",RailFormation.ballast(frames,start,STEP,2.9,RailFormation.BALLAST))
+			_visual(chunk,"RunningRails",RailFormation.running_rails(frames,start,STEP,Track.STANDARD_GAUGE,Track.STANDARD_RAIL_HEIGHT,STEEL))
+			var sleepers: Array[Transform3D] = []
+			for n in range(ceili(start/.7),ceili((start+CHUNK)/.7)):
+				var index := (n*.7-start)/STEP
+				var before := clampi(floori(index),0,frames.size()-2)
+				var pose := frames[before].interpolate_with(frames[before+1],index-before)
+				sleepers.append(pose.translated_local(Vector3.UP*.035))
+			instance_batch(chunk,"Ties",tie,sleepers,150.)
+		RouteVerge.dress(chunk,route,start,line_palette)
 
-func _instance(parent: Node3D, transforms: Array[Transform3D], size: Vector3, material: Material) -> void:
+static func _visual(parent: Node3D, title: String, mesh: Mesh) -> void:
+	var instance := MeshInstance3D.new()
+	instance.name = title
+	instance.mesh = mesh
+	instance.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	parent.add_child(instance)
+
+static func instance_batch(parent: Node3D, title: String, mesh: Mesh, poses: Array[Transform3D], end: float) -> void:
+	if poses.is_empty():
+		return
 	var batch := MultiMeshInstance3D.new()
-	var mesh := BoxMesh.new()
-	mesh.size = size
-	mesh.material = material
-	batch.multimesh = MultiMesh.new()
-	batch.multimesh.transform_format = MultiMesh.TRANSFORM_3D
-	batch.multimesh.mesh = mesh
-	batch.multimesh.instance_count = transforms.size()
-	for i in transforms.size():
-		batch.multimesh.set_instance_transform(i, transforms[i])
+	batch.name = title
+	var multi := MultiMesh.new()
+	multi.transform_format = MultiMesh.TRANSFORM_3D
+	multi.mesh = mesh
+	multi.instance_count = poses.size()
+	# Godot's headless storage serializes the bulk buffer. Individual transform
+	# setters lack storage on that backend, so baking those would lose the poses.
+	var data := PackedFloat32Array()
+	var mesh_bounds := mesh.get_aabb()
+	var bounds := poses[0]*mesh_bounds
+	for pose in poses:
+		bounds = bounds.merge(pose*mesh_bounds)
+		for axis in 3:
+			data.append(pose.basis.x[axis])
+			data.append(pose.basis.y[axis])
+			data.append(pose.basis.z[axis])
+			data.append(pose.origin[axis])
+	multi.buffer = data
+	multi.custom_aabb = bounds
+	batch.multimesh = multi
+	batch.visibility_range_end = end
+	batch.visibility_range_end_margin = 12.
 	batch.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	parent.add_child(batch)
 
 func _process(delta: float) -> void:
 	_refresh += delta
-	if _refresh > 0.3:
+	if _refresh > .3:
 		_refresh = 0
 		_update_visibility()
 
 func _update_visibility() -> void:
-	if observer == null:
-		return
+	if observer == null: return
 	var progress := route.project(observer.global_position)
 	for i in chunks.size():
-		chunks[i].visible = absf(340 + i * 120 - progress) < 430
+		chunks[i].visible = absf(FIRST_CHUNK+(i+.5)*CHUNK-progress) < 520.

@@ -1,0 +1,132 @@
+[
+  {
+    "control": "control",
+    "near_black_percent": 19.1265432098765,
+    "view": "Curved embankment"
+  },
+  {
+    "control": "no_normal",
+    "near_black_percent": 0.0,
+    "view": "Curved embankment"
+  },
+  {
+    "control": "neutral_normal",
+    "near_black_percent": 19.0987654320988,
+    "view": "Curved embankment"
+  },
+  {
+    "control": "no_albedo_map",
+    "near_black_percent": 18.9783950617284,
+    "view": "Curved embankment"
+  },
+  {
+    "control": "no_vertex_tint",
+    "near_black_percent": 19.0802469135802,
+    "view": "Curved embankment"
+  },
+  {
+    "control": "no_anisotropy",
+    "near_black_percent": 19.0925925925926,
+    "view": "Curved embankment"
+  },
+  {
+    "control": "flat_lighting",
+    "near_black_percent": 19.1172839506173,
+    "view": "Curved embankment"
+  },
+  {
+    "control": "no_sun_shadow",
+    "near_black_percent": 19.0895061728395,
+    "view": "Curved embankment"
+  },
+  {
+    "control": "no_glow",
+    "near_black_percent": 19.141975308642,
+    "view": "Curved embankment"
+  },
+  {
+    "control": "native_scale",
+    "near_black_percent": 13.9228395061728,
+    "view": "Curved embankment"
+  },
+  {
+    "control": "msaa_2x",
+    "near_black_percent": 18.3672839506173,
+    "view": "Curved embankment"
+  },
+  {
+    "control": "no_atmospheric_fog",
+    "near_black_percent": 19.1049382716049,
+    "view": "Curved embankment"
+  },
+  {
+    "control": "control_repeat",
+    "near_black_percent": 19.0956790123457,
+    "view": "Curved embankment"
+  },
+  {
+    "control": "control",
+    "near_black_percent": 22.4845679012346,
+    "view": "Crossing Stores"
+  },
+  {
+    "control": "no_normal",
+    "near_black_percent": 0.0,
+    "view": "Crossing Stores"
+  },
+  {
+    "control": "neutral_normal",
+    "near_black_percent": 22.4845679012346,
+    "view": "Crossing Stores"
+  },
+  {
+    "control": "no_albedo_map",
+    "near_black_percent": 22.1851851851852,
+    "view": "Crossing Stores"
+  },
+  {
+    "control": "no_vertex_tint",
+    "near_black_percent": 22.4166666666667,
+    "view": "Crossing Stores"
+  },
+  {
+    "control": "no_anisotropy",
+    "near_black_percent": 22.4845679012346,
+    "view": "Crossing Stores"
+  },
+  {
+    "control": "flat_lighting",
+    "near_black_percent": 46.9351851851852,
+    "view": "Crossing Stores"
+  },
+  {
+    "control": "no_sun_shadow",
+    "near_black_percent": 22.4845679012346,
+    "view": "Crossing Stores"
+  },
+  {
+    "control": "no_glow",
+    "near_black_percent": 22.5,
+    "view": "Crossing Stores"
+  },
+  {
+    "control": "native_scale",
+    "near_black_percent": 26.9506172839506,
+    "view": "Crossing Stores"
+  },
+  {
+    "control": "msaa_2x",
+    "near_black_percent": 21.7222222222222,
+    "view": "Crossing Stores"
+  },
+  {
+    "control": "no_atmospheric_fog",
+    "near_black_percent": 22.4814814814815,
+    "view": "Crossing Stores"
+  },
+  {
+    "control": "control_repeat",
+    "near_black_percent": 22.4814814814815,
+    "view": "Crossing Stores"
+  }
+]

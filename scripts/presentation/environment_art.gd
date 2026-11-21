@@ -170,6 +170,7 @@ func _warehouse(building: Node3D, damaged: bool) -> void:
 		elif child is Node3D:
 			child.hide()
 	var bays := 10 if damaged else 8
+	_front_wall_lining(front, length, height, bays)
 	for row in 2:
 		for bay in bays:
 			_module(front,"FacadeWindow" if row == 1 else "FacadeSolid",Vector3((bay+.5)*length/bays,row*height/2,4.88),Vector3(length/bays/3,height/6,1))
@@ -200,6 +201,40 @@ func _warehouse(building: Node3D, damaged: bool) -> void:
 	if damaged:
 		place(building,DEBRIS,Vector3(16.8,.035,4.1),"BrokenLoadingPallet",Vector3.ONE,.2)
 		_deterioration(building)
+
+## The kit's FacadeSolid is a one-sided plane at z=4.88. Build wall thickness
+## from the actual inner face of the collider to the backs of those outer panels.
+## The upper openings follow the measured glass bounds of the three-metre kit bay.
+func _front_wall_lining(front: CutawayWall, length: float, height: float, bays: int) -> void:
+	var wall := front.get_node("Wall") as BoxPart
+	var inner := wall.position.z - wall.size.z*.5
+	var outer := 4.875
+	var depth := outer-inner
+	var middle := (inner+outer)*.5
+	var bay := length/bays
+	var sill := height*.5 + height/6.0*.76
+	var lintel := height*.5 + height/6.0*2.18
+	var opening := bay*1.93/3.0
+	var brick := preload("res://resources/materials/wall_brick.tres")
+	var surface := SurfaceTool.new()
+	surface.begin(Mesh.PRIMITIVE_TRIANGLES)
+	var spans: Array[Rect2] = [Rect2(0,0,length,sill), Rect2(0,lintel,length,height-lintel)]
+	for index in range(bays+1):
+		var begin := maxf(0,index*bay-(bay-opening)*.5)
+		var end := minf(length,index*bay+(bay-opening)*.5)
+		spans.append(Rect2(begin,sill,end-begin,lintel-sill))
+	for span in spans:
+		var block := BoxMesh.new()
+		block.size = Vector3(span.size.x,span.size.y,depth)
+		surface.append_from(CpuMeshSource.new(block.get_mesh_arrays()), 0,
+			Transform3D(Basis.IDENTITY,Vector3(span.get_center().x,span.get_center().y,middle)))
+	var shape := ArrayMesh.new()
+	shape.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES,FabricatedMesh._project_faces(surface.commit_to_arrays(),brick))
+	shape.surface_set_material(0,FabricatedMesh.planar_material(brick))
+	var lining := MeshInstance3D.new()
+	lining.name = "MasonryInnerLeaf"
+	lining.mesh = shape
+	front.add_child(lining)
 
 func _structural_steel(station: Station) -> void:
 	var steel := preload("res://resources/materials/environment_painted_steel.tres")

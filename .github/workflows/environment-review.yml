@@ -1,0 +1,112 @@
+name: Environment review
+on:
+  pull_request:
+    branches: [integration/milestone-3-5-photoreal-survival]
+    paths:
+      - .github/workflows/environment-review.yml
+      - tools/macos/compare_environments.py
+      - tools/macos/diagnose_terrain.gd
+      - scripts/diagnostics/integration_benchmark.gd
+  workflow_call:
+    inputs:
+      paired:
+        type: boolean
+        default: true
+permissions:
+  contents: read
+  actions: read
+jobs:
+  metal:
+    name: Native Metal environment comparison
+    runs-on: macos-latest
+    timeout-minutes: 100
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/download-artifact@v8
+        with:
+          name: LastTrainOut-macos-universal.zip
+          run-id: 44835867870
+          github-token: ${{ github.token }}
+          path: reference-download
+          skip-decompress: true
+      - name: Verify and extract the PR 6 reference
+        run: |
+          zip=$(find reference-download -name '*.zip' -type f)
+          echo "95d5ccbc65700a2d1f7b8e641eef3fd880f35b34221d09077ebd58a45a49b5ee  $zip" | shasum -a 256 -c -
+          ditto -x -k "$zip" reference
+      - if: inputs.paired
+        uses: actions/download-artifact@v8
+        with:
+          name: LastTrainOut-macos-universal.zip
+          path: candidate-download
+          skip-decompress: true
+      - name: Render and measure the fixed views
+        env:
+          PAIRED: ${{ inputs.paired }}
+        run: |
+          args=()
+          if [[ "$PAIRED" == true ]]; then
+            ditto -x -k "$(find candidate-download -name '*.zip' -type f)" candidate
+            args+=(--candidate "candidate/Last Train Out.app")
+          fi
+          python3 tools/macos/compare_environments.py "reference/Last Train Out.app" "$RUNNER_TEMP/world-review" "${args[@]}"
+      - if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: native-metal-environment
+          path: ${{ runner.temp }}/world-review
+          retention-days: 30
+
+  native-high-pipelines:
+    if: inputs.paired
+    name: Native Metal pipeline workers on the same game pack
+    runs-on: macos-latest
+    timeout-minutes: 100
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/download-artifact@v8
+        with:
+          name: LastTrainOut-macos-universal.zip
+          run-id: 44859769512
+          github-token: ${{ github.token }}
+          path: original-download
+          skip-decompress: true
+      - uses: actions/download-artifact@v8
+        with:
+          name: LastTrainOut-macos-universal.zip
+          path: candidate-download
+          skip-decompress: true
+      - name: Isolate the native executable on build 111's signed data and shader inventory
+        run: |
+          name=LastTrainOut-macos-universal.zip
+          echo "527af2233d5cb88ea444aded3c7d40b13f3a2176a52bd20d5c5ffb48f5df538a  original-download/$name" | shasum -a 256 -c -
+          ditto -x -k "original-download/$name" original
+          ditto -x -k "original-download/$name" corrected
+          ditto -x -k "candidate-download/$name" candidate
+          app='Last Train Out.app'
+          exe=Contents/MacOS/LastTrainOutMetal
+          codesign --verify --strict --deep "candidate/$app"
+          if cmp -s "original/$app/$exe" "candidate/$app/$exe"; then
+            echo 'Expected the rebuilt native executable.' >&2
+            exit 1
+          fi
+          cp "candidate/$app/$exe" "corrected/$app/$exe"
+          codesign --force --sign - "corrected/$app"
+          for variant in original corrected; do
+            codesign --verify --strict --deep "$variant/$app"
+            shasum -a 256 "$variant/$app/$exe" "$variant/$app/Contents/Resources/Last Train Out.pck"
+          done
+      - name: Check both native players through the complete existing High workload
+        run: |
+          failed=0
+          for variant in corrected original; do
+            python3 tools/macos/stress_release.py "$variant/Last Train Out.app" "$RUNNER_TEMP/pipeline-workers/$variant" \
+              --series high --experimental-backend forward-metal || failed=1
+          done
+          exit "$failed"
+      - if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: native-high-pipeline-workers
+          path: ${{ runner.temp }}/pipeline-workers
+          retention-days: 30

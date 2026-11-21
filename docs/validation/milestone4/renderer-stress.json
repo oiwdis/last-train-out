@@ -1,0 +1,54 @@
+{
+  "metal": {
+    "total": 95,
+    "clean": 95,
+    "device_losses": 0,
+    "failures": [],
+    "series": {
+      "high": {
+        "complete": true,
+        "passed": true,
+        "processes": 36,
+        "ips": 0
+      },
+      "low-medium": {
+        "complete": true,
+        "passed": true,
+        "processes": 28,
+        "ips": 0
+      },
+      "mixed": {
+        "complete": true,
+        "passed": true,
+        "processes": 31,
+        "ips": 0
+      }
+    }
+  },
+  "vulkan": {
+    "total": 95,
+    "clean": 95,
+    "device_losses": 0,
+    "failures": [],
+    "series": {
+      "high": {
+        "complete": true,
+        "passed": true,
+        "processes": 36,
+        "ips": 0
+      },
+      "low-medium": {
+        "complete": true,
+        "passed": true,
+        "processes": 28,
+        "ips": 0
+      },
+      "mixed": {
+        "complete": true,
+        "passed": true,
+        "processes": 31,
+        "ips": 0
+      }
+    }
+  }
+}

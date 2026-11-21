@@ -24,6 +24,7 @@ on:
       - codex/milestone-1-5-visual-overhaul
       - codex/milestone-2-scavenging
       - feature/milestone-2-5-full-3d
+      - integration/milestone-3-5-photoreal-survival
   workflow_dispatch:
     inputs:
       investigate:
@@ -57,7 +58,7 @@ env:
   DEV_ZIP: LastTrainOut-macos-universal.zip
   SIGNED_ZIP: LastTrainOut-macos-universal-signed.zip
   # The build fails if fewer tests than this pass, so tests cannot silently go missing.
-  MIN_TESTS: "305"
+  MIN_TESTS: "312"
 
 jobs:
   metal-template:
@@ -294,6 +295,32 @@ jobs:
           BUILD_KIND: development
         run: LTO_METAL_TEMPLATE="$RUNNER_TEMP/metal-template/LastTrainOutMetal" tools/macos/export_app.sh "$GODOT" "$APP"
 
+      - name: Prepare the observed world material stages on the compatible Metal profile
+        run: |
+          if [[ ! -f "$APP/Contents/Resources/MetalLibraries/Profile.plist" ]]; then
+            echo 'The existing profile selector retained the source path on this builder.'
+            exit 0
+          fi
+          smoke="$RUNNER_TEMP/world-stage.metal"
+          echo 'kernel void shader_test() {}' > "$smoke"
+          if ! xcrun -sdk macosx metal -c "$smoke" -o "$RUNNER_TEMP/world-stage.air"; then
+            xcodebuild -downloadComponent MetalToolchain
+            xcrun -sdk macosx metal -c "$smoke" -o "$RUNNER_TEMP/world-stage.air"
+          fi
+          python3 -m venv "$RUNNER_TEMP/world-stage-tools"
+          "$RUNNER_TEMP/world-stage-tools/bin/pip" install --disable-pip-version-check zstandard==0.25.0
+          "$RUNNER_TEMP/world-stage-tools/bin/python" tools/macos/entry_libraries/test_extend.py
+          "$RUNNER_TEMP/world-stage-tools/bin/python" tools/macos/prepare_environment_libraries.py "$APP" "$RUNNER_TEMP/world-stages"
+
+      - name: Preserve the original GPU trace, compiler receipts and clean-cache replay
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: environment-metal-stages
+          path: ${{ runner.temp }}/world-stages
+          if-no-files-found: ignore
+          retention-days: 30
+
       - name: Save baked Vulkan shaders
         if: steps.shaders.outputs.cache-hit != 'true'
         uses: actions/cache/save@v6
@@ -374,7 +401,7 @@ jobs:
         if: ${{ !cancelled() && steps.upload.outputs.artifact-id != '' }}
         timeout-minutes: 10
         run: |
-          "$GODOT" --verbose --path . --audio-driver Dummy --resolution 960x540 --fixed-fps 60 tests/test_runner.tscn -- --only=preparation_lifecycle --graphics=low --report=tests/_output/renderer-stress.json > tests/_output/renderer-stress.log 2>&1
+          "$GODOT" --verbose --path . --audio-driver Dummy --resolution 960x540 --fixed-fps 60 tests/test_runner.tscn -- --only=preparation_lifecycle --graphics=low --profile-phases --report=tests/_output/renderer-stress.json > tests/_output/renderer-stress.log 2>&1
           if grep -E '^(ERROR|SCRIPT ERROR)|ObjectDB instances leaked|resources still in use' tests/_output/renderer-stress.log; then exit 1; fi
 
       - name: Retain renderer stress evidence
@@ -730,6 +757,14 @@ jobs:
           name: metal-${{ matrix.group }}
           path: ${{ runner.temp }}/metal-evidence/
           retention-days: 30
+
+  environment-comparison:
+    name: Compare the environment with PR 6
+    needs: build
+    if: ${{ !cancelled() && github.base_ref == 'integration/milestone-3-5-photoreal-survival' && needs.build.outputs.artifact_id != '' && needs.build.outputs.render == 'true' }}
+    uses: ./.github/workflows/environment-review.yml
+    with:
+      paired: true
 
   # Optional, manual only. Signs the build that was tested above with a Developer ID
   # Application certificate (hardened runtime), has Apple notarize it and staples the ticket.

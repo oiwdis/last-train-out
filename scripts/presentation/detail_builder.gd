@@ -13,10 +13,13 @@ var root: Node3D
 var _batches: Dictionary = {}
 var _materials: Dictionary = {}
 var _unit_box: Mesh
+var _square_members := false
 
 
-func _init(parent: Node3D, title: String = "Details") -> void:
-	_unit_box = FabricatedMesh.unit_box_source()
+func _init(parent: Node3D, title: String = "Details", square_members := false, palette: Dictionary = {}) -> void:
+	_materials = palette
+	_square_members = square_members
+	_unit_box = FabricatedMesh.square_member_source() if square_members else FabricatedMesh.unit_box_source()
 	root = Node3D.new()
 	root.name = title
 	root.add_to_group(&"presentation_detail")
@@ -45,6 +48,18 @@ func box(at: Vector3, size: Vector3, color: Color, rotation: Vector3 = Vector3.Z
 		_batches[mat] = surface
 	var transform := Transform3D(Basis.from_euler(rotation).scaled_local(size), at)
 	(_batches[mat] as SurfaceTool).append_from(_unit_box, 0, transform)
+
+
+## Flat architectural panels retain metre-scaled texture coordinates when batched.
+func panel(at: Vector3, size: Vector3, source: StandardMaterial3D, rotation := Vector3.ZERO) -> void:
+	var mat := FabricatedMesh.planar_material(source)
+	if not _batches.has(mat):
+		var batch := SurfaceTool.new()
+		batch.begin(Mesh.PRIMITIVE_TRIANGLES)
+		_batches[mat] = batch
+	var panel_mesh := FabricatedMesh.square_panel_source(size,source) if _square_members else FabricatedMesh.box_source(size,source)
+	(_batches[mat] as SurfaceTool).append_from(panel_mesh,0,
+		Transform3D(Basis.from_euler(rotation),at))
 
 
 func beam(a: Vector3, b: Vector3, width: float, color: Color) -> void:
@@ -105,12 +120,14 @@ func signboard(at: Vector3, text: String, width: float, height: float = 0.65, co
 	label.rotation.y = yaw
 
 
-func finish() -> void:
+func finish(distance := 0.0) -> void:
 	for mat: Material in _batches:
 		var shape := (_batches[mat] as SurfaceTool).commit()
 		shape.surface_set_material(0, mat)
 		var instance := MeshInstance3D.new()
 		instance.mesh = shape
+		instance.visibility_range_end = distance
+		instance.visibility_range_end_margin = 10. if distance > 0. else 0.
 		instance.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 		root.add_child(instance)
 	_batches.clear()

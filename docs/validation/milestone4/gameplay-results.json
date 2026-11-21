@@ -1,0 +1,55 @@
+{
+  "source": "86007236d795713a9271dec69977ddde5e9441d5",
+  "baseline": "684df38f0d9ba39a876d4788696855f0b64d5b29",
+  "all_existing": 305,
+  "suites": {
+    "linux": {
+      "godot": "4.5.1-stable (official)",
+      "physics": "Jolt Physics",
+      "passed": 312,
+      "failed": 0,
+      "summary": [
+        "=== 312 passed, 0 failed, 312 total (77.0 s wall clock) ==="
+      ]
+    },
+    "macos": {
+      "godot": "4.5.1-stable (official)",
+      "physics": "Jolt Physics",
+      "passed": 312,
+      "failed": 0,
+      "summary": [
+        "=== 312 passed, 0 failed, 312 total (117.6 s wall clock) ==="
+      ]
+    }
+  },
+  "gameplay": {
+    "continuous-journey": {
+      "checks": 167,
+      "status": "escaped",
+      "teleports": 0,
+      "save_restore_repositions": 1,
+      "distance": 4260.00608047029
+    },
+    "fuel-shortage-gameplay": {
+      "checks": 35,
+      "status": "active",
+      "teleports": 0,
+      "save_restore_repositions": 0,
+      "distance": 1822.80000190788
+    },
+    "stranded-gameplay": {
+      "checks": 24,
+      "status": "failed",
+      "teleports": 0,
+      "save_restore_repositions": 0,
+      "distance": 0.0
+    },
+    "process-resume": {
+      "checks": 17,
+      "status": "read",
+      "teleports": null,
+      "save_restore_repositions": null,
+      "distance": null
+    }
+  }
+}

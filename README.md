@@ -1,8 +1,14 @@
-# Last Train Out — Milestone 3.5.4 macOS renderer acceptance
+# Last Train Out — Milestone 4 environment overhaul
+
+The Harlow Escape now has a continuous railway embankment, repaired Harlow track and warehouse joints, a freight yard at Ashford, an evacuated settlement at Blackwater and layered advancing fog. The journey runs for 4.26 km with the original survival rules. The development work is stacked on PR #6. Both PRs are open drafts. [Milestone 4 report](docs/MILESTONE4_ENVIRONMENT_OVERHAUL.md) · [Environment gallery](docs/validation/milestone4/GALLERY.md) · [Draft PR #7](https://github.com/oiwdis/last-train-out/pull/7)
+
+[Download Milestone 4 development build 118](https://github.com/oiwdis/last-train-out/actions/runs/44877553078/artifacts/14698763058) · [ZIP checksum](docs/validation/milestone4/development-build.json) · [Build 111 for the owner’s Medium comparison](https://github.com/oiwdis/last-train-out/actions/runs/44859769512/artifacts/14689604118) · [Native Metal frame times](docs/validation/milestone4/FRAME_TIMES.md) · [Continuous journey](docs/recording/milestone4-native-metal.mp4) · [Fullscreen 2020 M1 procedure](docs/MILESTONE4_ENVIRONMENT_OVERHAUL.md#physical-2020-m1-procedure)
+
+## Milestone 3.5.4 integration renderer history
 
 This draft combines PR #4’s detailed survivor, locomotive and Harlow art with PR #5’s continuous three-station survival journey. Press **J** for Save / Continue / New / Restart and **V** to switch camera. [Integration history](docs/MILESTONE3_INTEGRATION.md)
 
-**Hold the merge.** The optional native Metal player reached High gameplay in 35.1 s cold and 26.1 s warm on a fresh hosted Mac. Precompiling the observed route shaders reduced a 1.52 s Warehouse A entry frame to 73 ms in a paired test. Metal passed all 95 packaged stress processes. Vulkan lost the GPU on ten cold High starts. Approaching fog still produced a 237 ms Metal entry frame. The owner’s fullscreen 2020 M1 test remains pending. [Draft PR #6](https://github.com/oiwdis/last-train-out/pull/6) · [Performance report](docs/PERFORMANCE_MILESTONE354.md) · [M1 owner test](docs/M1_MILESTONE354.md)
+**Hold the merge.** The optional native Metal player reached High gameplay in 35.1 s cold and 26.1 s warm on a fresh hosted Mac. Precompiling the observed route shaders reduced a 1.52 s Warehouse A entry frame to 73 ms in a paired test. Metal passed all 95 packaged stress processes. Vulkan lost the GPU on ten cold High starts. Approaching fog still produced a 237 ms Metal entry frame. The owner subsequently reported roughly 60 FPS on fullscreen Medium on a 2020 M1. Instrumented physical validation of the overhaul is pending. [Draft PR #6](https://github.com/oiwdis/last-train-out/pull/6) · [Performance report](docs/PERFORMANCE_MILESTONE354.md) · [M1 owner test](docs/M1_MILESTONE354.md)
 
 [Download the verified universal development ZIP](https://github.com/oiwdis/last-train-out/actions/runs/44822226233/artifacts/14673852596) · [SHA-256 and build identity](docs/validation/milestone354/build-103.json) · [Matched frame times](docs/validation/milestone354/build-103/matched/README.md) · [Visual gallery](docs/validation/milestone354/build-103/README.md#visual-compatibility) · [Full Metal journey](docs/recording/milestone354-native-metal.mp4)
 
@@ -68,10 +74,10 @@ reference; physical 2020 M1 fullscreen performance remains unverified.
 
 ## Play on macOS (no Godot needed)
 
-The development build opens with Forward+ on Vulkan. On Apple Silicon, quit the game and use its bundled selector to evaluate native Metal. In Terminal, run the following command with the path to your app. Use `vulkan` in the same command for the experimental comparison. The selector prints the resolved backend and uses the same mission, graphics settings and saves. [Physical M1 test and log collection](docs/M1_MILESTONE354.md)
+The development build opens with Forward+ on Vulkan. For the fullscreen Medium playtest on Apple Silicon, quit the game and run the following command in Terminal. It selects native Metal and Medium. The game uses the same manual save slot with either renderer. [Physical M1 test and log collection](docs/MILESTONE4_ENVIRONMENT_OVERHAUL.md#physical-2020-m1-procedure)
 
 ```bash
-"/Applications/Last Train Out.app/Contents/MacOS/choose-renderer" metal --fullscreen
+"/Applications/Last Train Out.app/Contents/MacOS/choose-renderer" metal --fullscreen -- --graphics=medium
 ```
 
 Milestone pull requests and configured development branches are tested by GitHub Actions and built into a standalone
@@ -80,8 +86,8 @@ Godot runtime and all game data. You do not need Godot, Xcode or anything else t
 
 ### 1. Download the latest build
 
-1. Sign in to GitHub and open the [tested development ZIP](https://github.com/oiwdis/last-train-out/actions/runs/44822226233/artifacts/14673852596).
-2. Verify the downloaded file with `shasum -a 256 LastTrainOut-macos-universal.zip` and compare the result with the [build receipt](docs/validation/milestone354/build-103.json).
+1. Sign in to GitHub and open the [Milestone 4 development ZIP](https://github.com/oiwdis/last-train-out/actions/runs/44877553078/artifacts/14698763058).
+2. Verify the downloaded file with `shasum -a 256 LastTrainOut-macos-universal.zip` and compare the result with the [build 118 receipt](docs/validation/milestone4/development-build.json).
 
 The run page also shows the build number, the commit it was built from and the ZIP's SHA-256.
 Development builds are kept for 30 days.
@@ -122,13 +128,13 @@ the command above; a mismatched download should be downloaded again. Signed buil
 
 ### 4. Replacing an older build
 
-1. Quit the game if it is running.
-2. Delete the old **Last Train Out.app** (or drag the new one to the same place and choose
-   **Replace**).
-3. Open the new one. Each download is quarantined afresh, so repeat step 3 above.
+1. Quit the running game. Drag the new **Last Train Out.app** into Applications and choose **Replace**.
+2. Launch the new app with the Metal command above for an Apple Silicon playtest. If macOS asks for approval, use the first-launch instructions above.
+3. Press **J** and choose **Continue** to restore your checkpoint.
 
-There is nothing to migrate: the prototype has no save files. To see which build an app is,
-run:
+The manual save lives outside the app at `~/Library/Application Support/Godot/app_userdata/Last Train Out/harlow_escape_v1.json`. Replacing the app preserves it. Builds 103, 111 and 118 share this one slot. To keep a separate copy of your build 103 checkpoint, copy the JSON before saving again. A cross-build test restored a moving train, its rider and held cargo and verified that Continue preserved the file’s checksum. [103 to 111 save test](docs/validation/milestone4/save-103-to-111.zip) · [103 to 118 save test](docs/validation/milestone4/save-103-to-118.zip)
+
+To check the installed build number, run the following command.
 
 ```bash
 defaults read "/Applications/Last Train Out.app/Contents/Info" LTOBuildNumber

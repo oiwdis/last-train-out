@@ -1,0 +1,176 @@
+{
+  "host": "macOS-26.7.2-arm64-arm-64bit-Mach-O",
+  "fixture": "8bde3af0cd62574fb19acc35d45368019cd4ebe60161e6cab3cfc5e000bf3d31",
+  "packs": {
+    "reference": {
+      "sha256": "e4dfd14ccfa967a6d72fc46c5adcf809400449140118b650637c6370133e515d",
+      "build": "30bf4bae03c83c7d6f96e6b10e79b763b068e3c0"
+    },
+    "candidate": {
+      "sha256": "9a0c1163fce19c8469777e99d2619530692ff21e091d013774a6b87149a7feb0",
+      "build": "3cb7b32235eaa09d72ae7c51ef3987741acaebb1"
+    }
+  },
+  "attempts": [
+    {
+      "name": "reference-first",
+      "adapter": "Apple Paravirtual device (Apple5)",
+      "processor": "Apple M1 (Virtual)",
+      "scene_construct_ms": 2186,
+      "render_ready_ms": 12587,
+      "peak_rss_mib": 609.6875,
+      "shader_hits": 0,
+      "shader_misses": 11,
+      "preset_preparation": [
+        {
+          "milliseconds": 442,
+          "pipelines": {
+            "draw": 54.0,
+            "specialization": 64.0,
+            "surface": 86.0
+          },
+          "preset": 0
+        },
+        {
+          "milliseconds": 5373,
+          "pipelines": {
+            "draw": 78.0,
+            "specialization": 112.0,
+            "surface": 146.0
+          },
+          "preset": 1
+        },
+        {
+          "milliseconds": 9943,
+          "pipelines": {
+            "draw": 86.0,
+            "specialization": 195.0,
+            "surface": 173.0
+          },
+          "preset": 2
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "name": "candidate-first",
+      "adapter": "Apple Paravirtual device (Apple5)",
+      "processor": "Apple M1 (Virtual)",
+      "scene_construct_ms": 6006,
+      "render_ready_ms": 17963,
+      "peak_rss_mib": 608.171875,
+      "shader_hits": 0,
+      "shader_misses": 11,
+      "preset_preparation": [
+        {
+          "milliseconds": 284,
+          "pipelines": {
+            "draw": 57.0,
+            "specialization": 66.0,
+            "surface": 84.0
+          },
+          "preset": 0
+        },
+        {
+          "milliseconds": 4727,
+          "pipelines": {
+            "draw": 81.0,
+            "specialization": 114.0,
+            "surface": 144.0
+          },
+          "preset": 1
+        },
+        {
+          "milliseconds": 8980,
+          "pipelines": {
+            "draw": 89.0,
+            "specialization": 201.0,
+            "surface": 175.0
+          },
+          "preset": 2
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "name": "candidate-repeat",
+      "adapter": "Apple Paravirtual device (Apple5)",
+      "processor": "Apple M1 (Virtual)",
+      "scene_construct_ms": 3828,
+      "render_ready_ms": 13879,
+      "peak_rss_mib": 578.84375,
+      "shader_hits": 0,
+      "shader_misses": 0,
+      "preset_preparation": [
+        {
+          "milliseconds": 295,
+          "pipelines": {
+            "draw": 57.0,
+            "specialization": 66.0,
+            "surface": 84.0
+          },
+          "preset": 0
+        },
+        {
+          "milliseconds": 5971,
+          "pipelines": {
+            "draw": 81.0,
+            "specialization": 114.0,
+            "surface": 144.0
+          },
+          "preset": 1
+        },
+        {
+          "milliseconds": 10007,
+          "pipelines": {
+            "draw": 89.0,
+            "specialization": 201.0,
+            "surface": 175.0
+          },
+          "preset": 2
+        }
+      ],
+      "diagnostics": []
+    },
+    {
+      "name": "reference-repeat",
+      "adapter": "Apple Paravirtual device (Apple5)",
+      "processor": "Apple M1 (Virtual)",
+      "scene_construct_ms": 2843,
+      "render_ready_ms": 13265,
+      "peak_rss_mib": 581.5625,
+      "shader_hits": 0,
+      "shader_misses": 0,
+      "preset_preparation": [
+        {
+          "milliseconds": 534,
+          "pipelines": {
+            "draw": 54.0,
+            "specialization": 64.0,
+            "surface": 86.0
+          },
+          "preset": 0
+        },
+        {
+          "milliseconds": 7224,
+          "pipelines": {
+            "draw": 78.0,
+            "specialization": 112.0,
+            "surface": 146.0
+          },
+          "preset": 1
+        },
+        {
+          "milliseconds": 9511,
+          "pipelines": {
+            "draw": 86.0,
+            "specialization": 195.0,
+            "surface": 173.0
+          },
+          "preset": 2
+        }
+      ],
+      "diagnostics": []
+    }
+  ]
+}

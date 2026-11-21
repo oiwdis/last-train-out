@@ -1,0 +1,13 @@
+
+== ZIP: /tmp/lto4/build118/LastTrainOut-macos-universal.zip
+ok    the ZIP exists
+ok    the ZIP is intact  (340.8 MB)
+info  ZIP sha256  (a3a129d80ec95ae5d880f4d9bc92dde469df04350c9c949bdfa8584abf12b9c5)
+ok    the ZIP holds exactly one .app at its top level  (Last Train Out.app)
+ok    the ZIP contains Info.plist
+ok    the ZIP contains the executable  (Contents/MacOS/Last Train Out)
+ok    the executable keeps its executable permission in the ZIP  (0o755)
+ok    the ZIP contains the game data pack
+ok    the ZIP contains the code signature
+
+8 of 8 checks passed

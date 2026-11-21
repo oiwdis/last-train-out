@@ -12,12 +12,18 @@ func _ready() -> void:
 	var d := dimensions.z
 	var wall: Material = preload("res://resources/materials/wall_industrial.tres") if industrial else preload("res://resources/materials/wall_brick.tres")
 	var roof := preload("res://resources/materials/roof_metal.tres")
-	part(Vector3(0,-0.12,0), Vector3(w,0.24,d), preload("res://resources/materials/floor_interior.tres") if industrial else preload("res://resources/materials/floor_wood.tres"))
+	var floor_material := preload("res://resources/materials/floor_interior.tres") if industrial else preload("res://resources/materials/floor_wood.tres")
+	part(Vector3(0,-0.12,0), Vector3(w,0.24,d), floor_material).name = "FloorSlab"
 	part(Vector3(0,h/2,-d/2),Vector3(w,h,0.24),wall)
 	for side in [-1,1]:
 		part(Vector3(side*w/2,h/2,0),Vector3(0.24,h,d),wall)
 		# Wide walk-through doorway, no invisible collider across it.
 		part(Vector3(side*(w/4+0.65),h/2,d/2),Vector3(w/2-1.3,h,0.24),wall)
+	# A wide, shallow threshold joins the yard grade to this zero-height floor.
+	# The square floor edge otherwise catches a player walking in from the verge.
+	var threshold := part(Vector3(0,-.13,d/2+.79),Vector3(2.55,.12,1.7),
+		preload("res://resources/materials/platform_concrete.tres"))
+	threshold.rotation.x = deg_to_rad(4.8)
 	part(Vector3(0,h-0.5,d/2),Vector3(2.6,1,0.24),wall)
 	part(Vector3(0,h,0),Vector3(w+0.6,0.18,d+0.6),roof)
 	var details := DetailBuilder.new(self)
@@ -38,6 +44,7 @@ func _ready() -> void:
 
 func part(at: Vector3, size: Vector3, material: Material) -> BoxPart:
 	var block := BoxPart.new()
+	block.square_edges = true
 	block.position = at
 	block.size = size
 	block.material = material

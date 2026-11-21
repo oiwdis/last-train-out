@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/pbr/rusty_painted_metal_albedo.jpg" id="rust"]
+[ext_resource type="Texture2D" path="res://assets/pbr/rusty_painted_metal_roughness.jpg" id="rough"]
+
+[resource]
+resource_name = "Oxidized rail web and foot"
+albedo_color = Color(0.32, 0.22, 0.16, 1)
+albedo_texture = ExtResource("rust")
+roughness = 0.88
+roughness_texture = ExtResource("rough")
+metallic = 0.32
+texture_filter = 5

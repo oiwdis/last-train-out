@@ -20,6 +20,14 @@ var timeline: Node
 const TIMELINE = preload("res://scripts/diagnostics/frame_timeline.gd")
 const LOCATIONS := ["Harlow platform", "Warehouse A", "Warehouse B", "Locomotive cab", "Passenger car", "Curved railway", "Ashford Depot", "Ashford workshop", "Blackwater Crossing", "Near advancing fog", "Inside dangerous fog", "Mission completion"]
 
+const ENVIRONMENT_VIEWS := ["Harlow platform", "Harlow track", "Bonded Stores exterior", "Bonded Stores interior",
+	"Warehouse A", "Warehouse B", "Curved embankment", "Ashford Depot", "Ashford workshop",
+	"Blackwater Crossing", "Crossing Stores", "Locomotive cab", "Passenger car",
+	"Distant fog", "Near advancing fog", "Inside dangerous fog"]
+const DETAIL_VIEWS := ["Ashford coal screens", "Ashford fitter bench", "Blackwater crossing lane"]
+var poses: Array = []
+var field_checks: Array = []
+
 func _initialize() -> void:
 	for arg in OS.get_cmdline_user_args():
 		if arg.begins_with("--suite="): suite = arg.trim_prefix("--suite=")
@@ -64,6 +72,7 @@ func run() -> void:
 	eye.make_current()
 	RenderingServer.viewport_set_measure_render_time(root.get_viewport_rid(),true)
 	var locations: Array = LOCATIONS if suite == "matrix" else LOCATIONS.slice(0,5)
+	if suite == "environment": locations = ENVIRONMENT_VIEWS
 	if suite == "ablations": locations = ["Harlow platform","Near advancing fog","Inside dangerous fog"]
 	if not output_dir.is_empty(): DirAccess.make_dir_recursive_absolute(output_dir)
 	for preset in 3:
@@ -81,7 +90,10 @@ func run() -> void:
 			await measure(location,preset,"steady",samples)
 			if not output_dir.is_empty():
 				await RenderingServer.frame_post_draw
-				root.get_texture().get_image().save_png(output_dir.path_join("%d-%s.png" % [preset,location.to_snake_case()]))
+				var shot := root.get_texture().get_image()
+				shot.save_png(output_dir.path_join("%d-%s.png" % [preset,location.to_snake_case()]))
+				if suite == "environment" and location in ["Curved embankment","Crossing Stores"]:
+					field_checks.append({"view":location,"preset":preset,"near_black_fraction":field_black_fraction(shot)})
 			if suite == "ablations":
 				var actors := game.find_children("*","WorkerAnimator",true,false)
 				for actor in actors: actor.process_mode = Node.PROCESS_MODE_DISABLED
@@ -102,14 +114,31 @@ func run() -> void:
 					environment.fog_density = density
 			paused = false
 			if journey != null: journey.ui.panel.hide()
-	var report := {"suite":suite,"fixture_only":true,"fixed_fps":false,"vsync":"disabled","resolution":str(root.size),"samples":samples,"warmup":warmup,
+		if suite == "environment" and not output_dir.is_empty():
+			for detail: String in DETAIL_VIEWS:
+				await place(detail)
+				await frames(warmup)
+				await RenderingServer.frame_post_draw
+				root.get_texture().get_image().save_png(output_dir.path_join("%d-%s.png" % [preset,detail.to_snake_case()]))
+	var report := {"field_checks":field_checks,"suite":suite,"fixture_only":true,"fixed_fps":false,"vsync":"disabled","resolution":str(root.size),"samples":samples,"warmup":warmup,
 		"godot":Engine.get_version_info().string,"processor":OS.get_processor_name(),"processor_count":OS.get_processor_count(),"os":OS.get_name(),
 		"adapter":RenderingServer.get_video_adapter_name(),"runtime_binary":OS.get_executable_path().get_file(),"engine_build":Engine.get_version_info().build,"renderer":RenderingServer.get_current_rendering_method(),"driver":RenderingServer.get_current_rendering_driver_name(),
-		"window_mode":DisplayServer.window_get_mode(),"loading":loading,"fixture_transitions":transitions,"preset_preparation":prepared,"results":rows,
+		"window_mode":DisplayServer.window_get_mode(),"loading":loading,"camera_poses":poses,"fixture_transitions":transitions,"preset_preparation":prepared,"results":rows,
 		"static_memory_peak_bytes":OS.get_static_memory_peak_usage(),"total_memory_note":"process RSS sampled externally; static memory is not total RSS"}
 	FileAccess.open(destination,FileAccess.WRITE).store_string(JSON.stringify(report,"  "))
 	await DiagnosticSceneRetirement.release(game)
 	quit()
+
+## The rejected Medium export produced black regions on two daylit, textured fields.
+## Sample only these fixed review images, independently from frame measurements.
+static func field_black_fraction(shot: Image) -> float:
+	shot.resize(240,135,Image.INTERPOLATE_NEAREST)
+	var count := 0
+	for y in shot.get_height():
+		for x in shot.get_width():
+			var pixel := shot.get_pixel(x,y)
+			if maxf(pixel.r,maxf(pixel.g,pixel.b))<6./255.: count+=1
+	return float(count)/(shot.get_width()*shot.get_height())
 
 func place(location: String) -> void:
 	var at := Vector3(12,1.05,0.4)
@@ -121,6 +150,7 @@ func place(location: String) -> void:
 	game.train.speed = 0
 	game.train.state = 0
 	if location == "Curved railway": game.train.distance = 850.0
+	if location == "Curved embankment": game.train.distance = 2020.0
 	if location == "Mission completion": game.train.distance = journey.route.length()
 	game.train._apply_positions(0)
 	# AnimatableBody3D synchronizes on physics ticks. Read car-local positions
@@ -131,6 +161,33 @@ func place(location: String) -> void:
 		fog.presentation._blend = 0.0
 		journey.mission.status = "active"
 	match location:
+		"Harlow track":
+			at = Vector3(21,0.05,-7.0); camera = Vector3(30.6,1.35,-5.65); target = Vector3(40,.12,-3.5)
+		"Bonded Stores exterior":
+			at = Vector3(37,0.05,7); camera = Vector3(32.7,2.2,8.6); target = Vector3(38.0,2.1,4.35)
+		"Bonded Stores interior":
+			at = Vector3(37,0.05,2.5); camera = Vector3(37,1.75,2.5); target = Vector3(35.1,2.4,4.75)
+		"Curved embankment":
+			var rail := RouteTrack.frame(journey.route,2020)
+			at = rail * Vector3(0,.1,3.2)
+			camera = rail * Vector3(-14,7.2,11.0); target = rail * Vector3(75,1.5,-2)
+		"Crossing Stores":
+			var crossing: Node3D = journey.stations[1]
+			at = crossing.to_global(Vector3(151,.05,58))
+			camera = crossing.to_global(Vector3(149,2.4,63)); target = crossing.to_global(Vector3(167,2.3,51))
+		"Ashford coal screens", "Ashford fitter bench", "Blackwater crossing lane":
+			var site: Node3D = journey.stations[1 if location == "Blackwater crossing lane" else 0]
+			var eye_local := Vector3(13,3.25,-2)
+			var target_local := Vector3(-3.5,5.7,-14)
+			if location == "Ashford fitter bench":
+				eye_local = Vector3(120.4,1.67,38.2)
+				target_local = Vector3(117.9,1.60,33.0)
+			if location == "Blackwater crossing lane":
+				eye_local = Vector3(50.9,2.15,-12.8)
+				target_local = Vector3(44.,2.4,18.)
+			camera = site.to_global(eye_local)
+			target = site.to_global(target_local)
+			at = site.to_global(Vector3(eye_local.x,.05,eye_local.z))
 		"Warehouse A":
 			at = Vector3(44,0.05,1); camera = Vector3(38,1.6,3); target = Vector3(47,1.6,2)
 		"Warehouse B":
@@ -154,10 +211,10 @@ func place(location: String) -> void:
 				camera = station.to_global(Vector3(-6,3.1,40)); target = station.to_global(Vector3(12,1.8,22))
 			if location == "Ashford workshop":
 				at = station.to_global(Vector3(122,.05,41)); camera = at+Vector3(3,1.6,0); target = station.to_global(Vector3(119,1.6,35))
-		"Near advancing fog", "Inside dangerous fog":
-			fog.simulation.front = -65.0 if location == "Near advancing fog" else 40.0
+		"Distant fog", "Near advancing fog", "Inside dangerous fog":
+			fog.simulation.front = {"Distant fog":-155.0,"Near advancing fog":-65.0,"Inside dangerous fog":40.0}[location]
 			camera = Vector3(18,3.2,6); target = Vector3(-35,2,-3.5)
-			fog.presentation._blend = 0.7 if location == "Near advancing fog" else 1.0
+			fog.presentation._blend = {"Distant fog":0.0,"Near advancing fog":0.7,"Inside dangerous fog":1.0}[location]
 		"Mission completion":
 			at = game.train.get_node("CrewCar").to_global(Vector3(0,1.05,0))
 			camera = at+Vector3(-9,6,14); target = at
@@ -179,12 +236,23 @@ func place(location: String) -> void:
 		fog.set_state(int(fog.simulation.danger(fog.players.local.exposure.progress)))
 	eye.global_position = camera
 	eye.look_at(target)
+	if suite == "environment":
+		poses.append({"location":location,"camera":[camera.x,camera.y,camera.z],"target":[target.x,target.y,target.z],
+			"at":[at.x,at.y,at.z],"front":fog.simulation.front,"preset":game.graphics.current_index})
+		# Timing includes the normal UI, as it does in play. The separate visual
+		# passes give the rail and joints a clear view, retaining fog warnings.
+		if not output_dir.is_empty():
+			game.hud.hide()
+			journey.ui.hide()
+			game.supply_ui.hide()
+			fog.survival_hud.visible = location in ["Distant fog","Near advancing fog","Inside dangerous fog"]
+		fog.presentation._process(0.0)
 	# Cab/car views sit at eye height. The fixture camera bypasses the normal
 	# rig's visibility update, so apply its first-person body rule explicitly;
 	# otherwise these measurements render the inside of the survivor's head.
 	var first_person := location in ["Locomotive cab", "Passenger car"]
 	game.camera_rig.exploration.request_perspective(0 if first_person else 1)
-	game.player.visual.visible = not first_person
+	game.player.visual.visible = not first_person and suite != "environment"
 	game.hud._refresh_context()
 	if location == "Curved railway":
 		game.train.start()

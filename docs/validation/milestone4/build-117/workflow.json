@@ -1,0 +1,407 @@
+{
+  "run": 44869971053,
+  "source": "27048ed2feda5c8afa21b44e694f862e0e02af3e",
+  "status": "completed",
+  "conclusion": "failure",
+  "jobs": [
+    {
+      "name": "Build pinned 4.5.1 Metal runtime",
+      "id": 136756969959,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/oiwdis/last-train-out/actions/runs/44869971053/job/136756969959",
+      "failed_steps": []
+    },
+    {
+      "name": "Linux gameplay tests",
+      "id": 136756970071,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/oiwdis/last-train-out/actions/runs/44869971053/job/136756970071",
+      "failed_steps": []
+    },
+    {
+      "name": "Performance investigation (no release)",
+      "id": 136756970879,
+      "status": "completed",
+      "conclusion": "skipped",
+      "url": "https://github.com/oiwdis/last-train-out/actions/runs/44869971053/job/136756970879",
+      "failed_steps": []
+    },
+    {
+      "name": "Test, export and package",
+      "id": 136757305417,
+      "status": "completed",
+      "conclusion": "failure",
+      "url": "https://github.com/oiwdis/last-train-out/actions/runs/44869971053/job/136757305417",
+      "failed_steps": [
+        "Stress rendered preparation, preset switching and Continue",
+        "Launch the exported app with its window"
+      ]
+    },
+    {
+      "name": "Matched frame pacing and continuous journey",
+      "id": 136763470874,
+      "status": "completed",
+      "conclusion": "failure",
+      "url": "https://github.com/oiwdis/last-train-out/actions/runs/44869971053/job/136763470874",
+      "failed_steps": [
+        "Require completed integration evidence"
+      ]
+    },
+    {
+      "name": "Download and launch (Apple Silicon native Metal)",
+      "id": 136763470881,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/oiwdis/last-train-out/actions/runs/44869971053/job/136763470881",
+      "failed_steps": []
+    },
+    {
+      "name": "Download and launch (Apple Silicon)",
+      "id": 136763470931,
+      "status": "completed",
+      "conclusion": "failure",
+      "url": "https://github.com/oiwdis/last-train-out/actions/runs/44869971053/job/136763470931",
+      "failed_steps": [
+        "Launch the unzipped app with its window"
+      ]
+    },
+    {
+      "name": "Packaged Metal / local-first",
+      "id": 136763470946,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/oiwdis/last-train-out/actions/runs/44869971053/job/136763470946",
+      "failed_steps": []
+    },
+    {
+      "name": "Exported Vulkan launch and lifetime stress (high)",
+      "id": 136763470947,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/oiwdis/last-train-out/actions/runs/44869971053/job/136763470947",
+      "failed_steps": []
+    },
+    {
+      "name": "Exported Metal launch and lifetime stress (low-medium)",
+      "id": 136763470951,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/oiwdis/last-train-out/actions/runs/44869971053/job/136763470951",
+      "failed_steps": []
+    },
+    {
+      "name": "Exported Metal launch and lifetime stress (high)",
+      "id": 136763470960,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/oiwdis/last-train-out/actions/runs/44869971053/job/136763470960",
+      "failed_steps": []
+    },
+    {
+      "name": "Exported Metal launch and lifetime stress (mixed)",
+      "id": 136763470963,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/oiwdis/last-train-out/actions/runs/44869971053/job/136763470963",
+      "failed_steps": []
+    },
+    {
+      "name": "Packaged Metal / drivers",
+      "id": 136763470965,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/oiwdis/last-train-out/actions/runs/44869971053/job/136763470965",
+      "failed_steps": []
+    },
+    {
+      "name": "Packaged Metal / sampler",
+      "id": 136763470970,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/oiwdis/last-train-out/actions/runs/44869971053/job/136763470970",
+      "failed_steps": []
+    },
+    {
+      "name": "Packaged Metal / seed-first",
+      "id": 136763470976,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/oiwdis/last-train-out/actions/runs/44869971053/job/136763470976",
+      "failed_steps": []
+    },
+    {
+      "name": "Packaged Metal / journey",
+      "id": 136763470978,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/oiwdis/last-train-out/actions/runs/44869971053/job/136763470978",
+      "failed_steps": []
+    },
+    {
+      "name": "Download and launch (Intel)",
+      "id": 136763470984,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/oiwdis/last-train-out/actions/runs/44869971053/job/136763470984",
+      "failed_steps": []
+    },
+    {
+      "name": "Packaged Metal / library-policy",
+      "id": 136763470993,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/oiwdis/last-train-out/actions/runs/44869971053/job/136763470993",
+      "failed_steps": []
+    },
+    {
+      "name": "Exported Vulkan launch and lifetime stress (mixed)",
+      "id": 136763470994,
+      "status": "completed",
+      "conclusion": "failure",
+      "url": "https://github.com/oiwdis/last-train-out/actions/runs/44869971053/job/136763470994",
+      "failed_steps": [
+        "Retain every cold, warm and lifecycle attempt"
+      ]
+    },
+    {
+      "name": "Compare the environment with PR 6 / Native Metal pipeline workers on the same game pack",
+      "id": 136763470996,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/oiwdis/last-train-out/actions/runs/44869971053/job/136763470996",
+      "failed_steps": []
+    },
+    {
+      "name": "Exported Vulkan launch and lifetime stress (low-medium)",
+      "id": 136763471017,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/oiwdis/last-train-out/actions/runs/44869971053/job/136763471017",
+      "failed_steps": []
+    },
+    {
+      "name": "Packaged Metal / art",
+      "id": 136763471048,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/oiwdis/last-train-out/actions/runs/44869971053/job/136763471048",
+      "failed_steps": []
+    },
+    {
+      "name": "Compare the environment with PR 6 / Native Metal environment comparison",
+      "id": 136763471051,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/oiwdis/last-train-out/actions/runs/44869971053/job/136763471051",
+      "failed_steps": []
+    },
+    {
+      "name": "Sign with Developer ID, notarize and staple",
+      "id": 136780367942,
+      "status": "completed",
+      "conclusion": "skipped",
+      "url": "https://github.com/oiwdis/last-train-out/actions/runs/44869971053/job/136780367942",
+      "failed_steps": []
+    }
+  ],
+  "artifacts": [
+    {
+      "id": 14698425077,
+      "name": "metal-stress-high",
+      "bytes": 774336,
+      "digest": "sha256:f035ea284ff49f2a16a9214cb8ed04c29c137f57ecb3cd3d3bade9b9e8d21e8f",
+      "url": "https://github.com/oiwdis/last-train-out/actions/runs/44869971053/artifacts/14698425077"
+    },
+    {
+      "id": 14698311753,
+      "name": "metal-library-policy",
+      "bytes": 1110869,
+      "digest": "sha256:b9881ae2eac48b9d4dd11e605c857d198dcea0947032e7fa7fb2e9fb020a92aa",
+      "url": "https://github.com/oiwdis/last-train-out/actions/runs/44869971053/artifacts/14698311753"
+    },
+    {
+      "id": 14698116347,
+      "name": "metal-sampler",
+      "bytes": 174352,
+      "digest": "sha256:02229f2836a01375633b147fbca9d501f403a837e73cefe9db45cb8b0385863f",
+      "url": "https://github.com/oiwdis/last-train-out/actions/runs/44869971053/artifacts/14698116347"
+    },
+    {
+      "id": 14698109626,
+      "name": "release-stress-mixed",
+      "bytes": 1118999,
+      "digest": "sha256:d72e993cc7c55b11a891b9b58f12911a6c07940e09ef59372eba5c3b23b59099",
+      "url": "https://github.com/oiwdis/last-train-out/actions/runs/44869971053/artifacts/14698109626"
+    },
+    {
+      "id": 14698091019,
+      "name": "metal-art",
+      "bytes": 17583006,
+      "digest": "sha256:b5b54258372c6e4672c0f48ec65730b73e7a0487aadaa0c79634c5db2bbf9ecb",
+      "url": "https://github.com/oiwdis/last-train-out/actions/runs/44869971053/artifacts/14698091019"
+    },
+    {
+      "id": 14697667837,
+      "name": "release-stress-low-medium",
+      "bytes": 682008,
+      "digest": "sha256:611e711c51590d3cbdcf32108c94ea0899dab640c5815e42657ca3776f079348",
+      "url": "https://github.com/oiwdis/last-train-out/actions/runs/44869971053/artifacts/14697667837"
+    },
+    {
+      "id": 14697537247,
+      "name": "metal-stress-mixed",
+      "bytes": 1021640,
+      "digest": "sha256:d86a4ae20b697bf9222e836e0894f9c8f39d4d2f65c13b4c858d04a5b7eef03c",
+      "url": "https://github.com/oiwdis/last-train-out/actions/runs/44869971053/artifacts/14697537247"
+    },
+    {
+      "id": 14697353980,
+      "name": "metal-seed-first",
+      "bytes": 269985,
+      "digest": "sha256:6296e821676ee200845430194e6625d387cf42910b31dea0c23677d89da84d9c",
+      "url": "https://github.com/oiwdis/last-train-out/actions/runs/44869971053/artifacts/14697353980"
+    },
+    {
+      "id": 14697338036,
+      "name": "release-stress-high",
+      "bytes": 848380,
+      "digest": "sha256:9169a6e1f72eb3ad0289f9ab520a78020dc501981f3c0340829b7d2ea5483fa5",
+      "url": "https://github.com/oiwdis/last-train-out/actions/runs/44869971053/artifacts/14697338036"
+    },
+    {
+      "id": 14697209472,
+      "name": "performance-and-journey",
+      "bytes": 52293175,
+      "digest": "sha256:41292eef9cfe18da94735f95e74c3337e50604016c7c03c0edd2e04af4fe841a",
+      "url": "https://github.com/oiwdis/last-train-out/actions/runs/44869971053/artifacts/14697209472"
+    },
+    {
+      "id": 14697079649,
+      "name": "native-metal-environment",
+      "bytes": 50242936,
+      "digest": "sha256:75c32585bf7f0c74e478b1cc768172cb74ac258113c4098e764372d6003eebab",
+      "url": "https://github.com/oiwdis/last-train-out/actions/runs/44869971053/artifacts/14697079649"
+    },
+    {
+      "id": 14697071355,
+      "name": "metal-stress-low-medium",
+      "bytes": 617478,
+      "digest": "sha256:c5dea79479569161409c66939832b9f62e9ea003d53faa9ef3cc9a5dcb3b7bdb",
+      "url": "https://github.com/oiwdis/last-train-out/actions/runs/44869971053/artifacts/14697071355"
+    },
+    {
+      "id": 14697045595,
+      "name": "selftest-arm64-metal",
+      "bytes": 711380,
+      "digest": "sha256:e4d56deaba63e30407b988a7f6257c208c42c7d9e408de8e99c458ca67d0a555",
+      "url": "https://github.com/oiwdis/last-train-out/actions/runs/44869971053/artifacts/14697045595"
+    },
+    {
+      "id": 14697035410,
+      "name": "selftest-arm64",
+      "bytes": 3521,
+      "digest": "sha256:92575e7ece7ffb244faf0b348e69f1bb42f44c96afb9c1604ff043d9df43b468",
+      "url": "https://github.com/oiwdis/last-train-out/actions/runs/44869971053/artifacts/14697035410"
+    },
+    {
+      "id": 14696928289,
+      "name": "native-high-pipeline-workers",
+      "bytes": 1556847,
+      "digest": "sha256:563b3dc0ece5f613323b582b29cc53afd847127e8bfb66fd09504de3d3546000",
+      "url": "https://github.com/oiwdis/last-train-out/actions/runs/44869971053/artifacts/14696928289"
+    },
+    {
+      "id": 14696901470,
+      "name": "metal-local-first",
+      "bytes": 286898,
+      "digest": "sha256:499ccddb5292e2eccac84d856c411855a76fcd753b857d5193b8f9a4ad101fcb",
+      "url": "https://github.com/oiwdis/last-train-out/actions/runs/44869971053/artifacts/14696901470"
+    },
+    {
+      "id": 14696758325,
+      "name": "metal-drivers",
+      "bytes": 33280836,
+      "digest": "sha256:bfed913508283de0f905fe5381cd6be2217e3b744e8b45f397a4aab5506b1acd",
+      "url": "https://github.com/oiwdis/last-train-out/actions/runs/44869971053/artifacts/14696758325"
+    },
+    {
+      "id": 14696687144,
+      "name": "selftest-x86_64",
+      "bytes": 2438,
+      "digest": "sha256:33e226a9328f83d0040ecefe67d5a3931a4fb7d69c57309e6cd425bc014c29d7",
+      "url": "https://github.com/oiwdis/last-train-out/actions/runs/44869971053/artifacts/14696687144"
+    },
+    {
+      "id": 14696226414,
+      "name": "selftest-build",
+      "bytes": 747953,
+      "digest": "sha256:03e745a7e78c9dfb3ad1b11a6539b0749e4cb721bc959126969681dfcba3137c",
+      "url": "https://github.com/oiwdis/last-train-out/actions/runs/44869971053/artifacts/14696226414"
+    },
+    {
+      "id": 14696137752,
+      "name": "metal-journey",
+      "bytes": 47279894,
+      "digest": "sha256:441f6a2b8f1a4aafe947fa5441a207ae1b8893c1ba2013bf9a9c01cf48cec809",
+      "url": "https://github.com/oiwdis/last-train-out/actions/runs/44869971053/artifacts/14696137752"
+    },
+    {
+      "id": 14695965078,
+      "name": "metal-template",
+      "bytes": 21560772,
+      "digest": "sha256:9ded17b7ecf496304cecd0d182b4cea7328ad8ad613309212909ab0899932e6b",
+      "url": "https://github.com/oiwdis/last-train-out/actions/runs/44869971053/artifacts/14695965078"
+    },
+    {
+      "id": 14695945991,
+      "name": "validated-imports",
+      "bytes": 420315613,
+      "digest": "sha256:b50124b0a202e468336fcb3f01974693a835f91947f10523e3f87bdbcb8ada3c",
+      "url": "https://github.com/oiwdis/last-train-out/actions/runs/44869971053/artifacts/14695945991"
+    },
+    {
+      "id": 14695915819,
+      "name": "linux-tests",
+      "bytes": 18777,
+      "digest": "sha256:6a13e90d29903261edd8e8f92c07f4c7281e0fd1246c0b61471a49cca0aea8e4",
+      "url": "https://github.com/oiwdis/last-train-out/actions/runs/44869971053/artifacts/14695915819"
+    },
+    {
+      "id": 14695908495,
+      "name": "renderer-stress",
+      "bytes": 18207,
+      "digest": "sha256:480c7c157260b0db977f838e29235feb22ab8694c934dbc74727295ad057c2c5",
+      "url": "https://github.com/oiwdis/last-train-out/actions/runs/44869971053/artifacts/14695908495"
+    },
+    {
+      "id": 14695813361,
+      "name": "LastTrainOut-macos-universal.zip",
+      "bytes": 340821923,
+      "digest": "sha256:a3d71b678cd85545bf7aa5ddbe0145ad0f9b37961eb562b72afba0c3d4d05449",
+      "url": "https://github.com/oiwdis/last-train-out/actions/runs/44869971053/artifacts/14695813361"
+    },
+    {
+      "id": 14695758479,
+      "name": "environment-metal-stages",
+      "bytes": 16286946,
+      "digest": "sha256:d6c7dc26d721c7ef3b1e66713f1357d44905c2835be5eec45da0b8d2b9eaf450",
+      "url": "https://github.com/oiwdis/last-train-out/actions/runs/44869971053/artifacts/14695758479"
+    },
+    {
+      "id": 14695418674,
+      "name": "performance-startup",
+      "bytes": 156985,
+      "digest": "sha256:2f757c9f2d379e001b01c6a4732bc4abcf0a7869a6b581dd92090faa817c58a4",
+      "url": "https://github.com/oiwdis/last-train-out/actions/runs/44869971053/artifacts/14695418674"
+    },
+    {
+      "id": 14695299942,
+      "name": "test-logs",
+      "bytes": 205601,
+      "digest": "sha256:5e9cbeb1b9d76892d69f6c156f25b5a7c282571c4ed5b3e230850abf49d5325a",
+      "url": "https://github.com/oiwdis/last-train-out/actions/runs/44869971053/artifacts/14695299942"
+    }
+  ]
+}

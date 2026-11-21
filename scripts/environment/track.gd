@@ -36,17 +36,17 @@ const STANDARD_RAIL_HEIGHT := 0.1
 		ballast_width = maxf(value, 0.0)
 		_rebuild()
 
-@export var rail_material: Material:
+@export var rail_material: Material = preload("res://resources/materials/rail_steel.tres"):
 	set(value):
 		rail_material = value
 		_rebuild()
 
-@export var sleeper_material: Material:
+@export var sleeper_material: Material = preload("res://resources/materials/sleeper_wood.tres"):
 	set(value):
 		sleeper_material = value
 		_rebuild()
 
-@export var ballast_material: Material:
+@export var ballast_material: Material = preload("res://resources/materials/ballast.tres"):
 	set(value):
 		ballast_material = value
 		_rebuild()
@@ -66,31 +66,18 @@ func _rebuild() -> void:
 	_visual_root = Node3D.new()
 	add_child(_visual_root, false, Node.INTERNAL_MODE_BACK)
 
+	var frames: Array[Transform3D] = [Transform3D.IDENTITY,Transform3D(Basis.IDENTITY,Vector3.RIGHT*length)]
 	if ballast_width > 0.0:
-		var ballast := MeshInstance3D.new()
-		var ballast_mesh := BoxMesh.new()
-		ballast_mesh.size = Vector3(length, 0.02, ballast_width)
-		ballast_mesh.material = ballast_material
-		ballast.mesh = ballast_mesh
-		ballast.position = Vector3(length * 0.5, 0.01, 0.0)
-		ballast.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
-		_visual_root.add_child(ballast)
-
-	# A railway rail has a wide foot, narrow web and rounded running head.
-	var section := SurfaceTool.new()
-	section.begin(Mesh.PRIMITIVE_TRIANGLES)
-	var height := maxf(rail_height - 0.04, 0.035)
-	for profile in [Vector3(0.15, 0.2, 0.1), Vector3(0.025, 0.5, 0.45), Vector3(0.075, 0.3, 0.85)]:
-		section.append_from(FabricatedMesh.box_source(Vector3(length, height * profile.y, profile.x), rail_material), 0,
-			Transform3D(Basis.IDENTITY, Vector3(0, 0.04 + height * profile.z, 0)))
-	var rail_mesh := section.commit()
-	rail_mesh.surface_set_material(0, rail_material)
-	for side: float in [-1.0, 1.0]:
-		var rail := MeshInstance3D.new()
-		rail.mesh = rail_mesh
-		rail.position = Vector3(length * 0.5, 0, side * gauge * 0.5)
-		rail.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
-		_visual_root.add_child(rail)
+		var bed := MeshInstance3D.new()
+		bed.name = "BallastShoulders"
+		bed.mesh = RailFormation.ballast(frames,0,length,ballast_width,ballast_material)
+		bed.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+		_visual_root.add_child(bed)
+	var rails := MeshInstance3D.new()
+	rails.name = "RunningRails"
+	rails.mesh = RailFormation.running_rails(frames,0,length,gauge,rail_height,rail_material)
+	rails.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	_visual_root.add_child(rails)
 
 	# Sleepers share one draw call through a MultiMesh.
 	var count := int(length / sleeper_spacing)

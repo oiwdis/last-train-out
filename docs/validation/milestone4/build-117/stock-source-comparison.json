@@ -1,0 +1,255 @@
+{
+  "source": "27048ed2feda5c8afa21b44e694f862e0e02af3e",
+  "baseline": "7df2f5abee54b8adcf27b8668263fba231a79033",
+  "host": "macOS-26.7.2-arm64-arm-64bit-Mach-O",
+  "resolution": "960x540",
+  "cases": [
+    {
+      "case": "baseline-startup-1",
+      "exit": 0,
+      "timed_out": false,
+      "report_exists": true,
+      "ready": true,
+      "complete_matrix": null,
+      "device_loss": false,
+      "graphics_args": [
+        "--graphics=low"
+      ],
+      "last_completed_phase": null,
+      "diagnostics": [
+        "[mvk-error] VK_INCOMPLETE: Error writing pipeline cache data: Failed to write 4 bytes to output stream! Wrote 0",
+        "ERROR: VALIDATION - Message Id Number: 0 | Message Id Name: mvk-error",
+        "[mvk-error] VK_INCOMPLETE: Error writing pipeline cache data: Failed to write 4 bytes to output stream! Wrote 0",
+        "ERROR: VALIDATION - Message Id Number: 0 | Message Id Name: mvk-error"
+      ]
+    },
+    {
+      "case": "optimized-startup-1",
+      "exit": 0,
+      "timed_out": false,
+      "report_exists": true,
+      "ready": true,
+      "complete_matrix": null,
+      "device_loss": false,
+      "graphics_args": [
+        "--graphics=low"
+      ],
+      "last_completed_phase": "warmup_end",
+      "diagnostics": []
+    },
+    {
+      "case": "optimized-startup-2",
+      "exit": 0,
+      "timed_out": false,
+      "report_exists": true,
+      "ready": true,
+      "complete_matrix": null,
+      "device_loss": false,
+      "graphics_args": [
+        "--graphics=low"
+      ],
+      "last_completed_phase": "warmup_end",
+      "diagnostics": []
+    },
+    {
+      "case": "baseline-startup-2",
+      "exit": -6,
+      "timed_out": false,
+      "report_exists": false,
+      "ready": null,
+      "complete_matrix": null,
+      "device_loss": true,
+      "graphics_args": [
+        "--graphics=low"
+      ],
+      "last_completed_phase": null,
+      "diagnostics": [
+        "[mvk-error] VK_TIMEOUT: MTLCommandBuffer \"vkQueueSubmit MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+        "ERROR: VALIDATION - Message Id Number: 0 | Message Id Name: mvk-error",
+        "kIOGPUCommandBufferCallbackErrorTimeout)",
+        "ERROR: Condition \"err != VK_SUCCESS\" is true. Returning: FAILED",
+        "[mvk-error] VK_TIMEOUT: MTLCommandBuffer \"vkQueuePresentKHR MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+        "ERROR: VALIDATION - Message Id Number: 0 | Message Id Name: mvk-error",
+        "kIOGPUCommandBufferCallbackErrorTimeout)",
+        "ERROR: Printing last known breadcrumbs in reverse order (last executed first).",
+        "ERROR: ",
+        "ERROR: ",
+        "ERROR: ",
+        "ERROR: ",
+        "ERROR: ",
+        "ERROR: ",
+        "ERROR: ",
+        "ERROR: ",
+        "ERROR: ",
+        "ERROR: ",
+        "ERROR: VK_EXT_device_fault not available.",
+        "ERROR: Vulkan device was lost."
+      ]
+    },
+    {
+      "case": "baseline-startup-3",
+      "exit": -6,
+      "timed_out": false,
+      "report_exists": false,
+      "ready": null,
+      "complete_matrix": null,
+      "device_loss": true,
+      "graphics_args": [
+        "--graphics=low"
+      ],
+      "last_completed_phase": null,
+      "diagnostics": [
+        "[mvk-error] VK_TIMEOUT: MTLCommandBuffer \"vkQueueSubmit MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+        "ERROR: VALIDATION - Message Id Number: 0 | Message Id Name: mvk-error",
+        "kIOGPUCommandBufferCallbackErrorTimeout)",
+        "ERROR: Condition \"err != VK_SUCCESS\" is true. Returning: FAILED",
+        "[mvk-error] VK_TIMEOUT: MTLCommandBuffer \"vkQueuePresentKHR MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+        "ERROR: VALIDATION - Message Id Number: 0 | Message Id Name: mvk-error",
+        "kIOGPUCommandBufferCallbackErrorTimeout)",
+        "[mvk-error] VK_TIMEOUT: MTLCommandBuffer \"vkAcquireNextImageKHR MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+        "ERROR: VALIDATION - Message Id Number: 0 | Message Id Name: mvk-error",
+        "kIOGPUCommandBufferCallbackErrorTimeout)",
+        "[mvk-error] VK_TIMEOUT: MTLCommandBuffer \"vkQueueSubmit MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+        "ERROR: VALIDATION - Message Id Number: 0 | Message Id Name: mvk-error",
+        "kIOGPUCommandBufferCallbackErrorTimeout)",
+        "ERROR: Printing last known breadcrumbs in reverse order (last executed first).",
+        "ERROR: ",
+        "ERROR: ",
+        "ERROR: ",
+        "ERROR: ",
+        "ERROR: ",
+        "ERROR: ",
+        "ERROR: ",
+        "ERROR: ",
+        "ERROR: ",
+        "ERROR: ",
+        "ERROR: VK_EXT_device_fault not available.",
+        "ERROR: Vulkan device was lost."
+      ]
+    },
+    {
+      "case": "optimized-startup-3",
+      "exit": -6,
+      "timed_out": false,
+      "report_exists": false,
+      "ready": null,
+      "complete_matrix": null,
+      "device_loss": true,
+      "graphics_args": [
+        "--graphics=low"
+      ],
+      "last_completed_phase": "warmup_begin",
+      "diagnostics": [
+        "[mvk-error] VK_TIMEOUT: MTLCommandBuffer \"vkQueueSubmit MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+        "ERROR: VALIDATION - Message Id Number: 0 | Message Id Name: mvk-error",
+        "kIOGPUCommandBufferCallbackErrorTimeout)",
+        "ERROR: Condition \"err != VK_SUCCESS\" is true. Returning: FAILED",
+        "[mvk-error] VK_TIMEOUT: MTLCommandBuffer \"vkQueuePresentKHR MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+        "ERROR: VALIDATION - Message Id Number: 0 | Message Id Name: mvk-error",
+        "kIOGPUCommandBufferCallbackErrorTimeout)",
+        "ERROR: Printing last known breadcrumbs in reverse order (last executed first).",
+        "ERROR: ",
+        "ERROR: ",
+        "ERROR: ",
+        "ERROR: ",
+        "ERROR: ",
+        "ERROR: ",
+        "ERROR: ",
+        "ERROR: ",
+        "ERROR: ",
+        "ERROR: ",
+        "ERROR: VK_EXT_device_fault not available.",
+        "ERROR: Vulkan device was lost."
+      ]
+    },
+    {
+      "case": "baseline-matrix-1",
+      "exit": -6,
+      "timed_out": false,
+      "report_exists": false,
+      "ready": null,
+      "complete_matrix": null,
+      "device_loss": true,
+      "graphics_args": [
+        "--graphics=low"
+      ],
+      "last_completed_phase": null,
+      "diagnostics": [
+        "[mvk-error] VK_TIMEOUT: MTLCommandBuffer \"vkQueueSubmit MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+        "ERROR: VALIDATION - Message Id Number: 0 | Message Id Name: mvk-error",
+        "kIOGPUCommandBufferCallbackErrorTimeout)",
+        "ERROR: Condition \"err != VK_SUCCESS\" is true. Returning: FAILED",
+        "[mvk-error] VK_TIMEOUT: MTLCommandBuffer \"vkQueuePresentKHR MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+        "ERROR: VALIDATION - Message Id Number: 0 | Message Id Name: mvk-error",
+        "kIOGPUCommandBufferCallbackErrorTimeout)",
+        "[mvk-error] VK_TIMEOUT: MTLCommandBuffer \"vkAcquireNextImageKHR MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+        "ERROR: VALIDATION - Message Id Number: 0 | Message Id Name: mvk-error",
+        "kIOGPUCommandBufferCallbackErrorTimeout)",
+        "[mvk-error] VK_TIMEOUT: MTLCommandBuffer \"vkQueueSubmit MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+        "ERROR: VALIDATION - Message Id Number: 0 | Message Id Name: mvk-error",
+        "kIOGPUCommandBufferCallbackErrorTimeout)",
+        "ERROR: Printing last known breadcrumbs in reverse order (last executed first).",
+        "ERROR: ",
+        "ERROR: ",
+        "ERROR: ",
+        "ERROR: ",
+        "ERROR: ",
+        "ERROR: ",
+        "ERROR: ",
+        "ERROR: ",
+        "ERROR: ",
+        "ERROR: ",
+        "ERROR: VK_EXT_device_fault not available.",
+        "ERROR: Vulkan device was lost."
+      ]
+    },
+    {
+      "case": "optimized-matrix-1",
+      "exit": 0,
+      "timed_out": false,
+      "report_exists": true,
+      "ready": null,
+      "complete_matrix": true,
+      "device_loss": false,
+      "graphics_args": [
+        "--graphics=low"
+      ],
+      "last_completed_phase": null,
+      "diagnostics": []
+    },
+    {
+      "case": "optimized-matrix-2",
+      "exit": 0,
+      "timed_out": false,
+      "report_exists": true,
+      "ready": null,
+      "complete_matrix": true,
+      "device_loss": false,
+      "graphics_args": [
+        "--graphics=low"
+      ],
+      "last_completed_phase": null,
+      "diagnostics": []
+    },
+    {
+      "case": "baseline-matrix-2",
+      "exit": 0,
+      "timed_out": false,
+      "report_exists": true,
+      "ready": null,
+      "complete_matrix": true,
+      "device_loss": false,
+      "graphics_args": [
+        "--graphics=low"
+      ],
+      "last_completed_phase": null,
+      "diagnostics": [
+        "[mvk-error] VK_INCOMPLETE: Error writing pipeline cache data: Failed to write 4 bytes to output stream! Wrote 0",
+        "ERROR: VALIDATION - Message Id Number: 0 | Message Id Name: mvk-error"
+      ]
+    }
+  ],
+  "conditioning": "separate fresh project/user caches, warm filesystem; shared OS/driver caches uncontrolled",
+  "source_movie_complete": true,
+  "source_movie_diagnostics": []
+}

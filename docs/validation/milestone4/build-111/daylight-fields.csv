@@ -1,0 +1,13 @@
+version,preset,view,near_black_percent
+reference,Low,Curved embankment,0.0
+reference,Low,Crossing Stores,0.0
+reference,Medium,Curved embankment,0.0
+reference,Medium,Crossing Stores,0.0
+reference,High,Curved embankment,0.0
+reference,High,Crossing Stores,0.0
+candidate,Low,Curved embankment,0.0
+candidate,Low,Crossing Stores,0.0
+candidate,Medium,Curved embankment,0.0
+candidate,Medium,Crossing Stores,0.0
+candidate,High,Curved embankment,0.0
+candidate,High,Crossing Stores,0.0

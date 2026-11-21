@@ -35,6 +35,12 @@ extends CollisionShape3D
 		cast_shadow = value
 		_rebuild()
 
+## Architectural joints need square ends. A scaled furniture bevel opens long wall seams.
+@export var square_edges := false:
+	set(value):
+		square_edges = value
+		_rebuild()
+
 var _mesh_instance: MeshInstance3D
 
 
@@ -64,7 +70,7 @@ func _rebuild() -> void:
 	if _mesh_instance == null:
 		_mesh_instance = MeshInstance3D.new()
 		add_child(_mesh_instance, false, Node.INTERNAL_MODE_BACK)
-	_mesh_instance.mesh = FabricatedMesh.box(size, material)
+	_mesh_instance.mesh = FabricatedMesh.square_box(size, material) if square_edges else FabricatedMesh.box(size, material)
 	_mesh_instance.cast_shadow = (
 		GeometryInstance3D.SHADOW_CASTING_SETTING_ON
 		if cast_shadow

@@ -6,7 +6,7 @@
 
 [resource]
 resource_name = "sleeper_wood"
-albedo_color = Color(0.8, 0.8, 0.8, 1)
+albedo_color = Color(0.54, 0.45, 0.34, 1)
 roughness = 0.95
 
 albedo_texture = ExtResource("albedo")

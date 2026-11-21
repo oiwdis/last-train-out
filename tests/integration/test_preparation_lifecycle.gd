@@ -15,6 +15,15 @@ func after_each() -> void:
 	get_tree().paused = false
 	await free_spawned()
 
+func test_initial_fog_camera_for_mac_renderers_and_presets() -> void:
+	for preset in 3:
+		for first: bool in [true, false]:
+			check_eq(RenderWarmup.starts_at_platform("vulkan", "macOS", preset, false, first), preset == 2 and first, "only a first High Vulkan preparation starts at the platform")
+			check(RenderWarmup.starts_at_platform("metal", "macOS", preset, false, first), "native Metal prepares each preset at the platform")
+			check(not RenderWarmup.starts_at_platform("metal", "macOS", preset, true, first), "native Metal retains the origin comparison")
+			check(not RenderWarmup.starts_at_platform("vulkan", "Linux", preset, false, first), "Linux keeps its authored origin")
+			check(not RenderWarmup.starts_at_platform("opengl3", "macOS", preset, false, first), "the compatibility renderer keeps its authored origin")
+
 func test_scene_exit_during_preparation_releases_pause_and_controller() -> void:
 	var controller: WeakRef = weakref(game.graphics)
 	game.graphics._prepare_rendering()
@@ -56,11 +65,13 @@ func test_fog_preparation_reuses_material_and_preserves_the_game_camera() -> voi
 	var mask := original.cull_mask
 	var source := game.fog_system.presentation.layers[0]
 	var source_layers := source.layers
-	var completion := RenderWarmup.prepare(game)
+	var completion := RenderWarmup.prepare(game, 2)
 	var job := game.get_node("RenderPreparation")
 	var camera: Camera3D = job.get("_camera")
 	var proxy: MeshInstance3D = job.get("_proxy")
 	check_eq(camera.cull_mask,mask,"preparation includes the initial world view before the full station view")
+	if DisplayServer.get_name() != "headless" and OS.get_name() == "macOS" and RenderingServer.get_current_rendering_driver_name() == "vulkan":
+		check_eq(camera.transform, Transform3D.IDENTITY, "a later High Vulkan preparation starts at the origin")
 	check_eq(proxy.get_active_material(0),source.get_active_material(0),"prepare the real fog material")
 	await completion
 	check_eq(game.get_viewport().get_camera_3d(),original,"restore actual gameplay camera")

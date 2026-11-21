@@ -1,0 +1,89 @@
+build,workload,archive,raw_report,location,frames,p50_ms,p95_ms,p99_ms,worst_ms,above_16_67,above_33_3,draw_calls,primitives,render_cpu_ms,texture_mib,slow_tail_sample_count,slow_tail_mean_render_bracket_ms,slow_tail_mean_process_bracket_ms,slow_tail_mean_physics_bracket_ms,draw_pipeline_changes,specialization_pipeline_changes,surface_pipeline_changes
+111,matched world,native-metal-environment,reference-first.json,Warehouse B,180,3.31,3.63,3.843,3.945,0,0,460.0,750948.0,0.4649,305.94,10,3.375,0.125,0.025,0.0,0.0,0.0
+111,matched world,native-metal-environment,reference-first.json,Locomotive cab,180,6.9915,8.185,8.618,8.694,0,0,985.0,1522774.0,1.0514,305.94,10,7.798,0.235,0.04,0.0,0.0,0.0
+111,matched world,native-metal-environment,reference-first.json,Passenger car,180,6.089,7.34,8.674,8.909,0,0,1110.0,1588511.0,1.0835,305.94,10,7.325,0.256,0.031,0.0,0.0,0.0
+111,matched world,native-metal-environment,reference-first.json,Inside dangerous fog,180,3.8105,4.391,4.591,5.598,0,0,315.0,364164.0,0.5178,305.94,10,4.164,0.218,0.013,0.0,0.0,0.0
+111,matched world,native-metal-environment,reference-first.json,All 16 views,2880,3.9995,6.668,7.902,8.909,0,0,485.624,665133.633,0.5959,305.94,145,6.8,0.251,0.04,0.0,0.0,0.0
+111,matched world,native-metal-environment,candidate-first.json,Warehouse B,180,4.501,5.315,5.639,6.016,0,0,475.0,746006.0,0.6846,310.06,10,4.992,0.238,0.033,0.0,0.0,0.0
+111,matched world,native-metal-environment,candidate-first.json,Locomotive cab,180,4.858,5.927,6.264,6.528,0,0,1002.0,1515686.0,0.802,310.06,10,5.724,0.176,0.005,0.0,0.0,0.0
+111,matched world,native-metal-environment,candidate-first.json,Passenger car,180,5.5265,6.425,6.694,7.029,0,0,1125.0,1580203.0,0.9344,310.06,10,6.197,0.203,0.021,0.0,0.0,0.0
+111,matched world,native-metal-environment,candidate-first.json,Inside dangerous fog,180,2.9815,3.422,3.533,3.818,0,0,333.0,368502.0,0.3954,310.06,10,3.264,0.13,0.005,0.0,0.0,0.0
+111,matched world,native-metal-environment,candidate-first.json,All 16 views,2880,4.3785,5.868,6.37,7.473,0,0,510.724,681007.346,0.6266,310.06,145,5.638,0.24,0.03,0.0,0.0,0.0
+111,matched world,native-metal-environment,candidate-repeat.json,Warehouse B,180,3.2195,3.483,3.561,3.59,0,0,475.0,746006.0,0.4493,310.06,10,3.305,0.099,0.004,0.0,0.0,0.0
+111,matched world,native-metal-environment,candidate-repeat.json,Locomotive cab,180,4.531,5.034,5.157,5.475,0,0,1005.0,1515710.0,0.7077,310.06,10,4.766,0.124,0.027,0.0,0.0,0.0
+111,matched world,native-metal-environment,candidate-repeat.json,Passenger car,180,4.87,5.493,5.58,5.609,0,0,1127.0,1580227.0,0.7866,310.06,10,5.107,0.161,0.024,0.0,0.0,0.0
+111,matched world,native-metal-environment,candidate-repeat.json,Inside dangerous fog,180,3.064,3.437,3.619,3.72,0,0,333.0,368502.0,0.3786,310.06,10,3.208,0.119,0.021,0.0,0.0,0.0
+111,matched world,native-metal-environment,candidate-repeat.json,All 16 views,2880,3.197,4.788,5.251,5.609,0,0,510.984,680996.75,0.4666,310.06,145,4.717,0.139,0.019,0.0,0.0,0.0
+111,matched world,native-metal-environment,reference-repeat.json,Warehouse B,180,3.2585,3.574,3.88,4.066,0,0,460.0,750948.0,0.4586,305.94,10,3.376,0.147,0.011,0.0,0.0,0.0
+111,matched world,native-metal-environment,reference-repeat.json,Locomotive cab,180,4.539,5.336,5.811,6.088,0,0,985.0,1522774.0,0.7689,305.94,10,5.122,0.207,0.019,0.0,0.0,0.0
+111,matched world,native-metal-environment,reference-repeat.json,Passenger car,180,4.5205,4.97,5.3,5.327,0,0,1110.0,1588511.0,0.7669,305.94,10,4.601,0.142,0.047,0.0,0.0,0.0
+111,matched world,native-metal-environment,reference-repeat.json,Inside dangerous fog,180,3.7065,4.441,5.042,5.123,0,0,315.0,364164.0,0.473,305.94,10,4.126,0.25,0.018,0.0,0.0,0.0
+111,matched world,native-metal-environment,reference-repeat.json,All 16 views,2880,3.33,4.717,5.175,6.088,0,0,485.783,665154.304,0.5023,305.94,145,4.55,0.175,0.021,0.0,0.0,0.0
+115,matched world,native-metal-environment,reference-first.json,Warehouse B,180,7.3045,10.432,11.257,11.398,0,0,460.0,750948.0,0.9459,305.94,10,9.855,0.414,0.097,0.0,0.0,0.0
+115,matched world,native-metal-environment,reference-first.json,Locomotive cab,180,8.0415,9.979,11.914,13.105,0,0,985.0,1522774.0,1.2924,305.94,10,10.25,0.332,0.011,0.0,0.0,0.0
+115,matched world,native-metal-environment,reference-first.json,Passenger car,180,9.2525,12.191,14.797,20.519,1,0,1109.889,1588491.667,1.6643,305.94,10,13.204,0.337,0.105,0.0,0.0,0.0
+115,matched world,native-metal-environment,reference-first.json,Inside dangerous fog,180,6.049,7.635,8.956,9.341,0,0,315.0,364164.0,0.7021,305.94,10,7.151,0.396,0.065,0.0,0.0,0.0
+115,matched world,native-metal-environment,reference-first.json,All 16 views,2880,6.6215,9.936,12.16,43.21,5,1,485.681,665131.104,0.8998,305.94,145,10.78,0.338,0.07,0.0,0.0,0.0
+115,matched world,native-metal-environment,candidate-first.json,Warehouse B,180,5.079,6.396,7.744,8.491,0,0,475.0,746006.0,0.8514,310.06,10,6.234,0.344,0.06,0.0,0.0,0.0
+115,matched world,native-metal-environment,candidate-first.json,Locomotive cab,180,6.79,6.989,7.175,7.643,0,0,1002.0,1515686.0,0.8606,310.06,10,6.677,0.204,0.019,0.0,0.0,0.0
+115,matched world,native-metal-environment,candidate-first.json,Passenger car,180,7.116,7.638,8.79,8.86,0,0,1125.0,1580203.0,1.0364,310.06,10,7.669,0.204,0.014,0.0,0.0,0.0
+115,matched world,native-metal-environment,candidate-first.json,Inside dangerous fog,180,4.013,4.463,4.896,4.963,0,0,333.0,368502.0,0.5692,310.06,10,3.974,0.336,0.041,0.0,0.0,0.0
+115,matched world,native-metal-environment,candidate-first.json,All 16 views,2880,5.034,7.531,8.756,16.612,0,0,510.442,680964.901,0.7276,310.06,145,7.557,0.36,0.064,0.0,0.0,0.0
+115,matched world,native-metal-environment,candidate-repeat.json,Warehouse B,180,6.1175,10.045,12.474,13.29,0,0,475.0,746006.0,0.9132,310.06,10,10.297,0.423,0.068,0.0,0.0,0.0
+115,matched world,native-metal-environment,candidate-repeat.json,Locomotive cab,180,6.8665,8.964,9.938,10.494,0,0,1002.0,1515686.0,1.0294,310.06,10,8.848,0.252,0.031,0.0,0.0,0.0
+115,matched world,native-metal-environment,candidate-repeat.json,Passenger car,180,7.3825,9.728,11.223,12.068,0,0,1125.0,1580203.0,1.1848,310.06,10,9.725,0.238,0.056,0.0,0.0,0.0
+115,matched world,native-metal-environment,candidate-repeat.json,Inside dangerous fog,180,4.2845,5.846,6.401,6.521,0,0,333.0,368502.0,0.6063,310.06,10,5.582,0.278,0.008,0.0,0.0,0.0
+115,matched world,native-metal-environment,candidate-repeat.json,All 16 views,2880,6.15,9.728,12.794,25.092,8,0,510.562,680969.938,0.8356,310.06,145,10.828,0.416,0.091,0.0,0.0,0.0
+115,matched world,native-metal-environment,reference-repeat.json,Warehouse B,180,6.657,10.528,12.825,13.717,0,0,460.0,750948.0,0.9414,305.94,10,10.811,0.364,0.078,0.0,0.0,0.0
+115,matched world,native-metal-environment,reference-repeat.json,Locomotive cab,180,7.5115,10.278,11.785,12.665,0,0,985.0,1522774.0,1.2321,305.94,10,10.326,0.285,0.053,0.0,0.0,0.0
+115,matched world,native-metal-environment,reference-repeat.json,Passenger car,180,7.2045,9.622,11.592,13.511,0,0,1110.0,1588511.0,1.2406,305.94,10,9.925,0.364,0.071,0.0,0.0,0.0
+115,matched world,native-metal-environment,reference-repeat.json,Inside dangerous fog,180,4.8565,6.604,7.332,8.149,0,0,315.0,364164.0,0.6479,305.94,10,6.291,0.345,0.045,0.0,0.0,0.0
+115,matched world,native-metal-environment,reference-repeat.json,All 16 views,2880,6.6985,11.775,16.738,61.365,29,3,485.698,665132.786,0.916,305.94,145,14.459,0.438,0.1,0.0,0.0,0.0
+117,matched world,native-metal-environment,reference-first.json,Warehouse B,180,9.3575,15.936,22.929,28.299,9,0,460.0,750948.0,1.0995,305.94,10,18.741,0.897,0.068,0.0,0.0,0.0
+117,matched world,native-metal-environment,reference-first.json,Locomotive cab,180,12.113,19.202,29.458,37.879,26,1,983.8,1522565.2,1.8064,305.94,10,22.953,0.309,0.159,0.0,0.0,0.0
+117,matched world,native-metal-environment,reference-first.json,Passenger car,180,13.655,25.617,30.532,31.314,54,0,1108.644,1588275.133,1.8937,305.94,10,26.61,0.462,0.115,0.0,0.0,0.0
+117,matched world,native-metal-environment,reference-first.json,Inside dangerous fog,180,7.731,13.989,28.01,29.072,6,0,315.0,364164.0,0.8276,305.94,10,19.843,0.306,0.088,0.0,0.0,0.0
+117,matched world,native-metal-environment,reference-first.json,All 16 views,2880,9.0245,17.6,26.768,61.127,171,11,485.536,665104.872,1.0803,305.94,145,21.916,0.609,0.16,0.0,0.0,0.0
+117,matched world,native-metal-environment,candidate-first.json,Warehouse B,180,8.0105,11.331,13.555,15.792,0,0,475.0,746006.0,0.9596,310.06,10,11.983,0.24,0.051,0.0,0.0,0.0
+117,matched world,native-metal-environment,candidate-first.json,Locomotive cab,180,10.2,12.764,14.46,15.0,0,0,1001.556,1515608.667,1.6858,310.06,10,13.093,0.234,0.046,0.0,0.0,0.0
+117,matched world,native-metal-environment,candidate-first.json,Passenger car,180,11.8365,15.185,23.982,24.981,4,0,1124.311,1580083.133,1.7426,310.06,10,17.682,0.31,0.073,0.0,0.0,0.0
+117,matched world,native-metal-environment,candidate-first.json,Inside dangerous fog,180,6.515,8.825,12.165,13.547,0,0,333.0,368502.0,0.8217,310.06,10,10.013,0.248,0.043,0.0,0.0,0.0
+117,matched world,native-metal-environment,candidate-first.json,All 16 views,2880,6.77,11.778,14.372,24.981,4,0,510.304,680968.488,0.9577,310.06,146,12.629,0.327,0.082,0.0,0.0,0.0
+117,matched world,native-metal-environment,candidate-repeat.json,Warehouse B,180,6.512,7.688,8.768,9.061,0,0,475.0,746006.0,0.8576,310.06,10,7.551,0.41,0.031,0.0,0.0,0.0
+117,matched world,native-metal-environment,candidate-repeat.json,Locomotive cab,180,10.107,15.417,18.52,18.901,5,0,1003.511,1515624.933,1.5554,310.06,10,16.283,0.31,0.069,0.0,0.0,0.0
+117,matched world,native-metal-environment,candidate-repeat.json,Passenger car,180,11.623,19.371,28.975,83.902,15,1,1125.978,1580049.133,1.7862,310.06,10,27.82,0.403,0.082,0.0,0.0,0.0
+117,matched world,native-metal-environment,candidate-repeat.json,Inside dangerous fog,180,6.859,8.786,19.254,20.846,2,0,333.0,368502.0,0.779,310.06,10,11.716,0.448,0.101,0.0,0.0,0.0
+117,matched world,native-metal-environment,candidate-repeat.json,All 16 views,2880,6.9695,12.02,16.736,83.902,29,1,510.722,680955.686,0.9866,310.06,145,14.506,0.381,0.098,0.0,0.0,0.0
+117,matched world,native-metal-environment,reference-repeat.json,Warehouse B,180,7.1295,9.335,11.249,12.191,0,0,460.0,750948.0,0.9569,305.94,10,9.41,0.268,0.099,0.0,0.0,0.0
+117,matched world,native-metal-environment,reference-repeat.json,Locomotive cab,180,9.1325,14.683,22.594,36.23,5,1,984.822,1522743.067,1.5263,305.94,10,18.148,0.354,0.074,0.0,0.0,0.0
+117,matched world,native-metal-environment,reference-repeat.json,Passenger car,180,10.044,16.556,23.938,28.27,9,0,1109.5,1588424.0,1.7301,305.94,10,19.416,0.659,0.277,0.0,0.0,0.0
+117,matched world,native-metal-environment,reference-repeat.json,Inside dangerous fog,180,6.7515,11.349,35.357,37.341,4,2,315.0,364164.0,0.8205,305.94,10,18.89,0.395,0.059,0.0,0.0,0.0
+117,matched world,native-metal-environment,reference-repeat.json,All 16 views,2880,7.4915,12.885,18.7,40.767,52,6,485.799,665146.444,1.0264,305.94,145,16.091,0.412,0.121,0.0,0.0,0.0
+118,matched world,native-metal-environment,reference-first.json,Warehouse B,180,7.9585,12.707,21.295,30.235,3,0,460.0,750948.0,1.0252,305.94,10,16.017,0.323,0.104,0.0,0.0,0.0
+118,matched world,native-metal-environment,reference-first.json,Locomotive cab,180,10.0785,13.15,18.189,20.097,3,0,984.389,1522667.667,1.5508,305.94,10,14.765,0.262,0.086,0.0,0.0,0.0
+118,matched world,native-metal-environment,reference-first.json,Passenger car,180,10.9035,16.543,20.967,23.355,8,0,1108.933,1588325.4,1.7378,305.94,10,17.385,0.289,0.106,0.0,0.0,0.0
+118,matched world,native-metal-environment,reference-first.json,Inside dangerous fog,180,7.739,11.676,13.888,14.06,0,0,315.0,364164.0,0.8287,305.94,10,11.525,0.444,0.13,0.0,0.0,0.0
+118,matched world,native-metal-environment,reference-first.json,All 16 views,2880,8.252,13.3,18.426,49.503,49,3,485.729,665135.264,1.0591,305.94,145,16.047,0.374,0.107,0.0,0.0,0.0
+118,matched world,native-metal-environment,candidate-first.json,Warehouse B,180,11.0675,19.443,43.898,47.423,22,2,475.0,746006.0,1.1389,310.06,10,28.171,0.281,0.11,0.0,0.0,0.0
+118,matched world,native-metal-environment,candidate-first.json,Locomotive cab,180,12.0355,17.611,25.325,42.962,15,1,1001.022,1515515.867,1.4916,310.06,10,21.941,0.314,0.116,0.0,0.0,0.0
+118,matched world,native-metal-environment,candidate-first.json,Passenger car,180,12.961,18.893,36.435,59.072,27,2,1123.478,1579938.133,1.8618,310.06,10,26.775,0.318,0.182,0.0,0.0,0.0
+118,matched world,native-metal-environment,candidate-first.json,Inside dangerous fog,180,9.0865,14.562,30.714,35.994,6,1,333.0,368502.0,0.987,310.06,10,20.452,0.361,0.135,0.0,0.0,0.0
+118,matched world,native-metal-environment,candidate-first.json,All 16 views,2880,9.3805,17.123,25.368,59.072,170,8,510.552,680963.901,1.1203,310.06,145,21.236,0.36,0.151,0.0,0.0,0.0
+118,matched world,native-metal-environment,candidate-repeat.json,Warehouse B,180,8.706,13.778,19.837,20.531,3,0,475.0,746006.0,1.1005,310.06,10,15.496,0.372,0.097,0.0,0.0,0.0
+118,matched world,native-metal-environment,candidate-repeat.json,Locomotive cab,180,11.45,18.549,42.12,42.679,16,2,1000.778,1515473.333,1.7143,310.06,10,26.942,0.409,0.155,0.0,0.0,0.0
+118,matched world,native-metal-environment,candidate-repeat.json,Passenger car,180,14.574,28.198,57.997,59.417,64,6,1123.967,1580023.2,2.1149,310.06,10,39.036,0.597,0.161,0.0,0.0,0.0
+118,matched world,native-metal-environment,candidate-repeat.json,Inside dangerous fog,180,7.6805,13.114,23.681,41.585,7,1,333.0,368502.0,0.9284,310.06,10,18.522,0.545,0.111,0.0,0.0,0.0
+118,matched world,native-metal-environment,candidate-repeat.json,All 16 views,2880,8.9675,17.453,27.784,81.545,169,14,510.42,680960.332,1.146,310.06,145,22.616,0.454,0.144,0.0,0.0,0.0
+118,matched world,native-metal-environment,reference-repeat.json,Warehouse B,180,9.368,12.266,14.41,15.994,0,0,460.0,750948.0,1.0316,305.94,10,12.579,0.353,0.11,0.0,0.0,0.0
+118,matched world,native-metal-environment,reference-repeat.json,Locomotive cab,180,12.135,16.561,18.77,22.162,9,0,984.033,1522605.8,1.668,305.94,10,17.135,0.329,0.075,0.0,0.0,0.0
+118,matched world,native-metal-environment,reference-repeat.json,Passenger car,180,11.1615,18.198,21.691,26.47,16,0,1108.967,1588331.2,1.8056,305.94,10,19.339,0.31,0.104,0.0,0.0,0.0
+118,matched world,native-metal-environment,reference-repeat.json,Inside dangerous fog,180,9.738,17.832,71.539,82.852,10,2,315.0,364164.0,1.0046,305.94,10,29.483,0.459,0.391,0.0,0.0,0.0
+118,matched world,native-metal-environment,reference-repeat.json,All 16 views,2880,8.9705,16.171,23.52,82.852,117,8,485.692,665131.011,1.1281,305.94,145,20.285,0.397,0.162,0.0,0.0,0.0
+118,library policy,metal-library-policy,immediate-matrix.json,Warehouse B,180,8.112,9.77,11.085,12.595,0,0,508.0,768032.0,0.9573,310.11,10,9.423,0.403,0.032,0.0,0.0,0.0
+118,library policy,metal-library-policy,immediate-matrix.json,Locomotive cab,180,9.3125,11.551,13.162,13.499,0,0,1003.689,1515655.867,1.4656,310.11,10,11.298,0.339,0.052,0.0,0.0,0.0
+118,library policy,metal-library-policy,immediate-matrix.json,Passenger car,180,10.1335,13.622,14.744,17.51,1,0,1126.567,1580151.6,1.7297,310.11,10,13.614,0.352,0.11,0.0,0.0,0.0
+118,library policy,metal-library-policy,immediate-matrix.json,Inside dangerous fog,180,8.569,11.581,13.077,13.611,0,0,367.0,391264.0,0.8998,310.11,10,11.191,0.46,0.051,0.0,0.0,0.0
+118,library policy,metal-library-policy,lazy-matrix.json,Warehouse B,180,8.5085,10.633,12.385,13.508,0,0,508.0,768032.0,1.0634,310.11,10,10.638,0.387,0.043,0.0,0.0,0.0
+118,library policy,metal-library-policy,lazy-matrix.json,Locomotive cab,180,9.4275,11.946,13.795,14.637,0,0,1003.678,1515653.933,1.5113,310.11,10,11.816,0.452,0.085,0.0,0.0,0.0
+118,library policy,metal-library-policy,lazy-matrix.json,Passenger car,180,8.985,10.768,12.332,12.843,0,0,1126.722,1580178.667,1.6187,310.11,10,10.672,0.357,0.043,0.0,0.0,0.0
+118,library policy,metal-library-policy,lazy-matrix.json,Inside dangerous fog,180,7.873,11.069,13.472,13.578,0,0,367.0,390528.0,0.8898,310.11,10,10.694,0.346,0.101,0.0,0.0,0.0

@@ -4,6 +4,10 @@ extends Node
 ## Real draws prepare destination-GPU pipelines while gameplay stays paused.
 signal completed
 
+# A process can prepare several scenes, including after Continue. The cold High
+# camera experiment covered its first world preparation.
+static var _started_world_preparation := false
+
 var _scene: Node3D
 var _tree: SceneTree
 var _original: Camera3D
@@ -30,16 +34,22 @@ var _draining := false
 var _frame_signal: Signal
 
 
-static func prepare(scene: Node3D) -> Signal:
+static func prepare(scene: Node3D, preset_index: int = -1) -> Signal:
 	var job := RenderWarmup.new()
 	job.name = "RenderPreparation"
 	job.process_mode = Node.PROCESS_MODE_ALWAYS
 	scene.add_child(job)
-	job._begin(scene)
+	job._begin(scene, preset_index)
 	return job.completed
 
 
-func _begin(scene: Node3D) -> void:
+static func starts_at_platform(driver: String, platform: String, preset_index: int, metal_origin_control: bool, first_preparation: bool = true) -> bool:
+	if driver == "metal":
+		return not metal_origin_control
+	return driver == "vulkan" and platform == "macOS" and preset_index == 2 and first_preparation
+
+
+func _begin(scene: Node3D, preset_index: int) -> void:
 	_scene = scene
 	_tree = scene.get_tree()
 	var viewport := scene.get_viewport()
@@ -88,12 +98,16 @@ func _begin(scene: Node3D) -> void:
 	# reproduced device loss on two independent native runners (3.5.2).
 	_camera.cull_mask = _original.cull_mask
 	add_child(_camera)
-	# Metal used to draw the surrounding world from the origin for the fog
-	# material, then compile another visible set at the platform. Start both
-	# there. Still submit the uncovered platform, every interior and the final
-	# gameplay camera through the full queue before releasing simulation.
-	if RenderingServer.get_current_rendering_driver_name() == "metal" and OS.get_environment("LTO_METAL_WARMUP_CONTROL") != "1":
+	# Cold High Vulkan benefits from sharing the platform geometry on the first
+	# two draws. Later preset switches use the established world-origin setup.
+	var first_preparation := not _started_world_preparation
+	_started_world_preparation = true
+	if starts_at_platform(RenderingServer.get_current_rendering_driver_name(), OS.get_name(),
+			preset_index, OS.get_environment("LTO_METAL_WARMUP_CONTROL") == "1", first_preparation):
 		_camera.global_transform = _views[0].global_transform
+		PerformanceTrace.mark("warmup_fog_view_" + String(_views[0].name))
+	else:
+		PerformanceTrace.mark("warmup_fog_view_Origin")
 	_camera.make_current()
 	_frame_signal = _tree.process_frame if DisplayServer.get_name() == "headless" else RenderingServer.frame_post_draw
 	_frame_signal.connect(_on_frame)
