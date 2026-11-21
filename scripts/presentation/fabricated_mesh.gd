@@ -43,6 +43,20 @@ static func box(size: Vector3, material: Material) -> Mesh:
 	return _shapes[key]
 
 
+static func square_box(size: Vector3, material: Material) -> Mesh:
+	var key := "wall/%s/%d" % [size, material.get_instance_id()]
+	if not _shapes.has(key):
+		var primitive := BoxMesh.new()
+		primitive.size = size
+		var arrays := primitive.get_mesh_arrays()
+		if material is StandardMaterial3D and material.uv1_triplanar:
+			arrays = _project_faces(arrays, material)
+		var shape := ArrayMesh.new()
+		shape.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arrays)
+		shape.surface_set_material(0, planar_material(material))
+		_shapes[key] = shape
+	return _shapes[key]
+
 ## Source for SurfaceTool assembly. Only the final assembled mesh needs a GPU buffer.
 static func box_source(size: Vector3, material: Material) -> Mesh:
 	return CpuMeshSource.new(_box_arrays(size, material))

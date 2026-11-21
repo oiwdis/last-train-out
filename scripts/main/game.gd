@@ -38,6 +38,7 @@ var graphics: GraphicsSettings
 
 func _exit_tree() -> void:
 	FabricatedMesh.clear_cache()
+	RouteVerge.clear_cache()
 
 
 func _ready() -> void:

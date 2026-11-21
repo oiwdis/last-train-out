@@ -13,7 +13,11 @@ func _ready() -> void:
 	var site := StaticBody3D.new()
 	add_child(site)
 	var concrete := preload("res://resources/materials/platform_concrete.tres")
-	_box(site,Vector3(50,-0.45,18),Vector3(420,0.8,170),preload("res://resources/materials/ground_asphalt.tres") if industrial else preload("res://resources/materials/ballast.tres"))
+	var asphalt := preload("res://resources/materials/ground_asphalt.tres")
+	if industrial:
+		_box(site,Vector3(44,-.12,22),Vector3(218,.16,57),asphalt)
+	else:
+		_box(site,Vector3(51,-.10,58),Vector3(263,.16,7.2),asphalt)
 	_box(site,Vector3(-12,0.5,4),Vector3(70,1,5),concrete)
 	# Continuous shallow ramp from yard to platform; rail-side ladders remain usable.
 	var ramp := _box(site,Vector3(-12,0.37,10),Vector3(8,0.25,8),concrete)
@@ -41,7 +45,7 @@ func _ready() -> void:
 	d.beam(Vector3(-3,0,5.8),Vector3(-3,4,5.8),0.18,DetailBuilder.INK)
 	if industrial:
 		for x in [42,58,74]:
-			_box(site,Vector3(x,1.6,-12),Vector3(12,3.2,3),preload("res://resources/materials/train_body.tres"))
+			_box(site,Vector3(x,1.6,-12),Vector3(12,3.2,3),preload("res://resources/materials/train_body.tres")).show_mesh = false
 		for x in [-38,-22]:
 			d.cylinder(Vector3(x,4,-17),2.4,8,Color("6b7168"))
 		d.signboard(Vector3(-30,6,-13),"FUEL RESERVE",8,0.8)
@@ -53,7 +57,7 @@ func _ready() -> void:
 		add_cache("rations",Vector3(16,0.05,24),"Freight rations","canned_food",3)
 		add_cache("scrap",Vector3(115,0.05,38),"Repair stock","scrap_metal",4)
 	else:
-		_box(site,Vector3(48,0.025,0),Vector3(6,0.05,130),preload("res://resources/materials/train_body.tres"))
+		_box(site,Vector3(48,-.01,0),Vector3(6.8,.08,130),asphalt)
 		for z in [-8,9]:
 			d.beam(Vector3(44,0,z),Vector3(44,4,z),0.15,DetailBuilder.INK)
 			d.beam(Vector3(43,3,z),Vector3(45,4,z),0.16,DetailBuilder.PALE)

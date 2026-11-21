@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/pbr/aerial_grass_rock_albedo.jpg" id="grass"]
+[ext_resource type="Texture2D" path="res://assets/pbr/aerial_grass_rock_normal.jpg" id="relief"]
+
+[resource]
+resource_name = "Weathered railway verge"
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_texture = ExtResource("grass")
+normal_enabled = true
+normal_texture = ExtResource("relief")
+normal_scale = 0.55
+roughness = 0.97
+texture_filter = 5

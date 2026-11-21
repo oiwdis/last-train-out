@@ -139,7 +139,7 @@ func place(location: String) -> void:
 		journey.mission.status = "active"
 	match location:
 		"Harlow track":
-			at = Vector3(31,0.05,-5.5); camera = Vector3(30.6,1.35,-5.65); target = Vector3(40,.12,-3.5)
+			at = Vector3(21,0.05,-7.0); camera = Vector3(30.6,1.35,-5.65); target = Vector3(40,.12,-3.5)
 		"Bonded Stores exterior":
 			at = Vector3(37,0.05,7); camera = Vector3(32.7,2.2,8.6); target = Vector3(38.0,2.1,4.35)
 		"Bonded Stores interior":
@@ -210,7 +210,7 @@ func place(location: String) -> void:
 	# otherwise these measurements render the inside of the survivor's head.
 	var first_person := location in ["Locomotive cab", "Passenger car"]
 	game.camera_rig.exploration.request_perspective(0 if first_person else 1)
-	game.player.visual.visible = not first_person
+	game.player.visual.visible = not first_person and suite != "environment"
 	game.hud._refresh_context()
 	if location == "Curved railway":
 		game.train.start()

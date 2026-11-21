@@ -205,5 +205,24 @@
         "sha256": "874b326f617f4ce59b3522871482dfc569d37624d1948f521a46d7668bdef950"
       }
     ]
+  },
+  {
+    "asset": "aerial_grass_rock",
+    "author": "Rob Tuytel",
+    "source": "https://polyhaven.com/a/aerial_grass_rock",
+    "license": "CC0-1.0",
+    "license_url": "https://polyhaven.com/license",
+    "files": [
+      {
+        "path": "assets/pbr/aerial_grass_rock_albedo.jpg",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/aerial_grass_rock/aerial_grass_rock_diff_1k.jpg",
+        "sha256": "57b8041bfe0d0f01430e4dbaad45e7ddddf0a9fc97317f90dbc51f7b0d9e1b5d"
+      },
+      {
+        "path": "assets/pbr/aerial_grass_rock_normal.jpg",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/aerial_grass_rock/aerial_grass_rock_nor_gl_1k.jpg",
+        "sha256": "1aa3e23bff453f152e089b9f83aa36b4901651e019f7e2ca01d5331a9bbbda78"
+      }
+    ]
   }
 ]

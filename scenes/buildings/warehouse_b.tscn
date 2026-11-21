@@ -52,78 +52,91 @@ script = ExtResource("3_cutaway_wall")
 transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.6, 2.75, -1.275)
 script = ExtResource("4_box_part")
 size = Vector3(1.2, 5.5, 0.25)
+square_edges = true
 material = ExtResource("5_wall_industr")
 
 [node name="WallSeg2" type="CollisionShape3D" parent="BackWall"]
 transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 2.3, 0.75, -1.275)
 script = ExtResource("4_box_part")
 size = Vector3(2.2, 1.5, 0.25)
+square_edges = true
 material = ExtResource("5_wall_industr")
 
 [node name="WallSeg3" type="CollisionShape3D" parent="BackWall"]
 transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 2.3, 4.1, -1.275)
 script = ExtResource("4_box_part")
 size = Vector3(2.2, 2.8, 0.25)
+square_edges = true
 material = ExtResource("5_wall_industr")
 
 [node name="WallSeg4" type="CollisionShape3D" parent="BackWall"]
 transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 4.4, 2.75, -1.275)
 script = ExtResource("4_box_part")
 size = Vector3(2.0, 5.5, 0.25)
+square_edges = true
 material = ExtResource("5_wall_industr")
 
 [node name="WallSeg5" type="CollisionShape3D" parent="BackWall"]
 transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 6.3, 0.75, -1.275)
 script = ExtResource("4_box_part")
 size = Vector3(1.8, 1.5, 0.25)
+square_edges = true
 material = ExtResource("5_wall_industr")
 
 [node name="WallSeg6" type="CollisionShape3D" parent="BackWall"]
 transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 6.3, 4.1, -1.275)
 script = ExtResource("4_box_part")
 size = Vector3(1.8, 2.8, 0.25)
+square_edges = true
 material = ExtResource("5_wall_industr")
 
 [node name="WallSeg7" type="CollisionShape3D" parent="BackWall"]
 transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 11.75, 2.75, -1.275)
 script = ExtResource("4_box_part")
 size = Vector3(9.1, 5.5, 0.25)
+square_edges = true
 material = ExtResource("5_wall_industr")
 
 [node name="WallSeg8" type="CollisionShape3D" parent="BackWall"]
 transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 17.2, 0.65, -1.275)
 script = ExtResource("4_box_part")
 size = Vector3(1.8, 1.3, 0.25)
+square_edges = true
 material = ExtResource("5_wall_industr")
 
 [node name="WallSeg9" type="CollisionShape3D" parent="BackWall"]
 transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 17.2, 3.9, -1.275)
 script = ExtResource("4_box_part")
 size = Vector3(1.8, 3.2, 0.25)
+square_edges = true
 material = ExtResource("5_wall_industr")
 
 [node name="WallSeg10" type="CollisionShape3D" parent="BackWall"]
 transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 22.65, 2.75, -1.275)
 script = ExtResource("4_box_part")
 size = Vector3(9.1, 5.5, 0.25)
+square_edges = true
 material = ExtResource("5_wall_industr")
 
 [node name="WallSeg11" type="CollisionShape3D" parent="BackWall"]
 transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 28.3, 0.75, -1.275)
 script = ExtResource("4_box_part")
 size = Vector3(2.2, 1.5, 0.25)
+square_edges = true
 material = ExtResource("5_wall_industr")
 
 [node name="WallSeg12" type="CollisionShape3D" parent="BackWall"]
 transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 28.3, 4.1, -1.275)
 script = ExtResource("4_box_part")
 size = Vector3(2.2, 2.8, 0.25)
+square_edges = true
 material = ExtResource("5_wall_industr")
 
 [node name="WallSeg13" type="CollisionShape3D" parent="BackWall"]
 transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 29.7, 2.75, -1.275)
 script = ExtResource("4_box_part")
 size = Vector3(0.6, 5.5, 0.25)
+square_edges = true
 material = ExtResource("5_wall_industr")
 
 [node name="Glass1" type="CollisionShape3D" parent="BackWall"]
@@ -182,42 +195,49 @@ material = ExtResource("5_wall_industr")
 transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.125, 2.75, -0.425)
 script = ExtResource("4_box_part")
 size = Vector3(0.25, 5.5, 1.45)
+square_edges = true
 material = ExtResource("5_wall_industr")
 
 [node name="LeftWallSeg2" type="CollisionShape3D" parent="Shell"]
 transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.125, 4.0, 1.1)
 script = ExtResource("4_box_part")
 size = Vector3(0.25, 3.0, 1.6)
+square_edges = true
 material = ExtResource("5_wall_industr")
 
 [node name="LeftWallSeg3" type="CollisionShape3D" parent="Shell"]
 transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.125, 2.75, 3.25)
 script = ExtResource("4_box_part")
 size = Vector3(0.25, 5.5, 2.7)
+square_edges = true
 material = ExtResource("5_wall_industr")
 
 [node name="RightWallSeg1" type="CollisionShape3D" parent="Shell"]
 transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 29.875, 2.75, -0.125)
 script = ExtResource("4_box_part")
 size = Vector3(0.25, 5.5, 2.05)
+square_edges = true
 material = ExtResource("5_wall_industr")
 
 [node name="RightWallSeg2" type="CollisionShape3D" parent="Shell"]
 transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 29.875, 4.0, 1.7)
 script = ExtResource("4_box_part")
 size = Vector3(0.25, 3.0, 1.6)
+square_edges = true
 material = ExtResource("5_wall_industr")
 
 [node name="RightWallSeg3" type="CollisionShape3D" parent="Shell"]
 transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 29.875, 2.75, 3.55)
 script = ExtResource("4_box_part")
 size = Vector3(0.25, 5.5, 2.1)
+square_edges = true
 material = ExtResource("5_wall_industr")
 
 [node name="Roof" type="CollisionShape3D" parent="Shell"]
 transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 15.0, 5.65, 1.8)
 script = ExtResource("4_box_part")
 size = Vector3(30.5, 0.3, 6.4)
+square_edges = true
 material = ExtResource("7_roof_metal")
 
 [node name="BackRoomEndA" type="CollisionShape3D" parent="Shell"]
@@ -247,30 +267,35 @@ script = ExtResource("3_cutaway_wall")
 transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 11.9, 1.5, 0.8)
 script = ExtResource("4_box_part")
 size = Vector3(0.8, 3.0, 0.2)
+square_edges = true
 material = ExtResource("8_wall_interio")
 
 [node name="WallSeg2" type="CollisionShape3D" parent="BackRoomFront"]
 transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 13.0, 2.65, 0.8)
 script = ExtResource("4_box_part")
 size = Vector3(1.4, 0.7, 0.2)
+square_edges = true
 material = ExtResource("8_wall_interio")
 
 [node name="WallSeg3" type="CollisionShape3D" parent="BackRoomFront"]
 transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 17.35, 1.5, 0.8)
 script = ExtResource("4_box_part")
 size = Vector3(7.3, 3.0, 0.2)
+square_edges = true
 material = ExtResource("8_wall_interio")
 
 [node name="WallSeg4" type="CollisionShape3D" parent="BackRoomFront"]
 transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 21.7, 2.65, 0.8)
 script = ExtResource("4_box_part")
 size = Vector3(1.4, 0.7, 0.2)
+square_edges = true
 material = ExtResource("8_wall_interio")
 
 [node name="WallSeg5" type="CollisionShape3D" parent="BackRoomFront"]
 transform = Transform3D(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 22.95, 1.5, 0.8)
 script = ExtResource("4_box_part")
 size = Vector3(1.1, 3.0, 0.2)
+square_edges = true
 material = ExtResource("8_wall_interio")
 
 [node name="PartitionSeg1" type="CollisionShape3D" parent="Shell"]

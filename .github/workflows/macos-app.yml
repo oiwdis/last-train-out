@@ -24,6 +24,7 @@ on:
       - codex/milestone-1-5-visual-overhaul
       - codex/milestone-2-scavenging
       - feature/milestone-2-5-full-3d
+      - integration/milestone-3-5-photoreal-survival
   workflow_dispatch:
     inputs:
       investigate:
@@ -57,7 +58,7 @@ env:
   DEV_ZIP: LastTrainOut-macos-universal.zip
   SIGNED_ZIP: LastTrainOut-macos-universal-signed.zip
   # The build fails if fewer tests than this pass, so tests cannot silently go missing.
-  MIN_TESTS: "305"
+  MIN_TESTS: "309"
 
 jobs:
   metal-template:
@@ -730,6 +731,14 @@ jobs:
           name: metal-${{ matrix.group }}
           path: ${{ runner.temp }}/metal-evidence/
           retention-days: 30
+
+  environment-comparison:
+    name: Compare the environment with PR 6
+    needs: build
+    if: ${{ !cancelled() && github.base_ref == 'integration/milestone-3-5-photoreal-survival' && needs.build.outputs.artifact_id != '' && needs.build.outputs.render == 'true' }}
+    uses: ./.github/workflows/environment-review.yml
+    with:
+      paired: true
 
   # Optional, manual only. Signs the build that was tested above with a Developer ID
   # Application certificate (hardened runtime), has Apple notarize it and staples the ticket.

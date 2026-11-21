@@ -47,6 +47,17 @@ func box(at: Vector3, size: Vector3, color: Color, rotation: Vector3 = Vector3.Z
 	(_batches[mat] as SurfaceTool).append_from(_unit_box, 0, transform)
 
 
+## Flat architectural panels retain metre-scaled texture coordinates when batched.
+func panel(at: Vector3, size: Vector3, source: StandardMaterial3D, rotation := Vector3.ZERO) -> void:
+	var mat := FabricatedMesh.planar_material(source)
+	if not _batches.has(mat):
+		var batch := SurfaceTool.new()
+		batch.begin(Mesh.PRIMITIVE_TRIANGLES)
+		_batches[mat] = batch
+	(_batches[mat] as SurfaceTool).append_from(FabricatedMesh.box_source(size,source),0,
+		Transform3D(Basis.from_euler(rotation),at))
+
+
 func beam(a: Vector3, b: Vector3, width: float, color: Color) -> void:
 	var middle := (a + b) * 0.5
 	var direction := b - a
@@ -105,12 +116,14 @@ func signboard(at: Vector3, text: String, width: float, height: float = 0.65, co
 	label.rotation.y = yaw
 
 
-func finish() -> void:
+func finish(distance := 0.0) -> void:
 	for mat: Material in _batches:
 		var shape := (_batches[mat] as SurfaceTool).commit()
 		shape.surface_set_material(0, mat)
 		var instance := MeshInstance3D.new()
 		instance.mesh = shape
+		instance.visibility_range_end = distance
+		instance.visibility_range_end_margin = 10. if distance > 0. else 0.
 		instance.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 		root.add_child(instance)
 	_batches.clear()

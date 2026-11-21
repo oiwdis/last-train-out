@@ -5,6 +5,7 @@ extends Resource
 @export var cruise_speed := 8.0
 @export var seed_value := 3001
 @export var fog: FogConfig = preload("res://resources/journey/escape_fog.tres")
+@export var rail_corridor: PackedScene
 @export var station_scenes: Array[PackedScene] = []
 
 func build_route() -> FogRoute:

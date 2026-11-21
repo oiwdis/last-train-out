@@ -28,6 +28,10 @@ func build_route_station(station: JourneyStation) -> void:
 	else:
 		for entry in [["suitcase",Vector3(8,.02,19)],["military_crate",Vector3(171,.02,44)],["hand_truck",Vector3(164,.02,44)],["barrel",Vector3(-68,.02,29)]]:
 			prop(entry[0],entry[1],0)
+	if station.industrial:
+		DepotYard.build(self)
+	else:
+		CrossingVillage.build(self)
 	_flush()
 	warm_view(Vector3(-20,3.2,9),Vector3(22,2,24))
 	warm_view(Vector3(125,1.65,41),Vector3(119,1.6,34)) if station.industrial else warm_view(Vector3(169,1.65,51),Vector3(164,1.6,44))
@@ -49,3 +53,16 @@ func warm_view(at: Vector3, target: Vector3) -> void:
 	marker.position = at
 	marker.look_at(to_global(target))
 	marker.add_to_group("render_warmup_view")
+
+func solid(at: Vector3, size: Vector3) -> void:
+	var body := get_node_or_null("SceneryCollision") as StaticBody3D
+	if body == null:
+		body = StaticBody3D.new()
+		body.name = "SceneryCollision"
+		add_child(body)
+	var instance := CollisionShape3D.new()
+	var box := BoxShape3D.new()
+	box.size = size
+	instance.shape = box
+	instance.position = at
+	body.add_child(instance)

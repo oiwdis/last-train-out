@@ -34,19 +34,13 @@ func setup(owner_game: Game, content: JourneyDefinition) -> void:
 	var far_end := game.station.get_node_or_null("Ground/BoundaryFarEnd")
 	if far_end != null:
 		far_end.queue_free()
-	# The original line remains under Harlow; curved track starts before it ends.
-	var line := game.station.get_node_or_null("MainLine")
-	if line != null:
-		line.queue_free()
+	# Keep Harlow's authored materials and end the straight exactly at the first swept rail.
+	var line := game.station.get_node("MainLine") as Track
+	line.length = route.sample(RouteTrack.RAIL_START).x - line.global_position.x
 	var track := RouteTrack.new()
 	track.name = "RouteTrack"
 	game.add_child(track)
-	track.build(route,game.player)
-	# Harlow retains its authored ground, with a short straight rail module.
-	var home_track := Track.new()
-	home_track.position = Vector3(-75,0,-3.5)
-	home_track.length = 380
-	game.add_child(home_track)
+	track.build(route,game.player,definition.rail_corridor)
 	for scene in definition.station_scenes:
 		var station := scene.instantiate() as JourneyStation
 		station.position = route.sample(float(route.stations[station.station_id]))
