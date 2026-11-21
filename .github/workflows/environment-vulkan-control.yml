@@ -1,0 +1,84 @@
+name: Compare Vulkan stability before and after the world overhaul
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [integration/milestone-3-5-photoreal-survival]
+    paths: [.github/workflows/environment-vulkan-control.yml]
+
+permissions:
+  actions: read
+  contents: read
+
+jobs:
+  select:
+    runs-on: ubuntu-latest
+    outputs:
+      compare: ${{ steps.changed.outputs.compare }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 2
+      - id: changed
+        run: |
+          if [[ "$GITHUB_EVENT_NAME" == workflow_dispatch ]] || ! git diff --quiet HEAD^ HEAD -- .github/workflows/environment-vulkan-control.yml; then
+            echo 'compare=true' >> "$GITHUB_OUTPUT"
+          fi
+
+  compare:
+    needs: select
+    if: needs.select.outputs.compare == 'true'
+    name: Packaged High Vulkan / ${{ matrix.first }} first
+    runs-on: macos-latest
+    timeout-minutes: 100
+    strategy:
+      fail-fast: false
+      matrix:
+        first: [reference, candidate]
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/download-artifact@v8
+        with:
+          run-id: 44835867870
+          name: LastTrainOut-macos-universal.zip
+          github-token: ${{ github.token }}
+          path: reference-download
+          skip-decompress: true
+      - uses: actions/download-artifact@v8
+        with:
+          run-id: 44859769512
+          name: LastTrainOut-macos-universal.zip
+          github-token: ${{ github.token }}
+          path: candidate-download
+          skip-decompress: true
+      - name: Verify both signed downloads and compare their universal runtime UUIDs
+        run: |
+          name=LastTrainOut-macos-universal.zip
+          echo "95d5ccbc65700a2d1f7b8e641eef3fd880f35b34221d09077ebd58a45a49b5ee  reference-download/$name" | shasum -a 256 -c -
+          echo "527af2233d5cb88ea444aded3c7d40b13f3a2176a52bd20d5c5ffb48f5df538a  candidate-download/$name" | shasum -a 256 -c -
+          for version in reference candidate; do
+            ditto -x -k "$version-download/$name" "$version"
+            codesign --verify --deep --strict "$version/Last Train Out.app"
+            xcrun dwarfdump --uuid "$version/Last Train Out.app/Contents/MacOS/Last Train Out" | awk '{print $2, $3}' > "$RUNNER_TEMP/$version-uuids"
+            test "$(wc -l < "$RUNNER_TEMP/$version-uuids")" -eq 2
+          done
+          cmp "$RUNNER_TEMP/reference-uuids" "$RUNNER_TEMP/candidate-uuids"
+      - name: Run both full High series on the same Mac and retain every failure
+        env:
+          FIRST: ${{ matrix.first }}
+        run: |
+          second=reference
+          if [[ "$FIRST" == reference ]]; then second=candidate; fi
+          failed=0
+          for version in "$FIRST" "$second"; do
+            app="$version/Last Train Out.app"
+            SOURCE_SHA=$(/usr/libexec/PlistBuddy -c 'Print :LTOBuildCommit' "$app/Contents/Info.plist") \
+              python3 tools/macos/stress_release.py "$app" "$RUNNER_TEMP/paired-vulkan/$version" --series high || failed=1
+          done
+          exit "$failed"
+      - if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: high-vulkan-${{ matrix.first }}-first
+          path: ${{ runner.temp }}/paired-vulkan
+          retention-days: 30
