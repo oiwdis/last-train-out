@@ -20,6 +20,12 @@ var timeline: Node
 const TIMELINE = preload("res://scripts/diagnostics/frame_timeline.gd")
 const LOCATIONS := ["Harlow platform", "Warehouse A", "Warehouse B", "Locomotive cab", "Passenger car", "Curved railway", "Ashford Depot", "Ashford workshop", "Blackwater Crossing", "Near advancing fog", "Inside dangerous fog", "Mission completion"]
 
+const ENVIRONMENT_VIEWS := ["Harlow platform", "Harlow track", "Bonded Stores exterior", "Bonded Stores interior",
+	"Warehouse A", "Warehouse B", "Curved embankment", "Ashford Depot", "Ashford workshop",
+	"Blackwater Crossing", "Crossing Stores", "Locomotive cab", "Passenger car",
+	"Distant fog", "Near advancing fog", "Inside dangerous fog"]
+var poses: Array = []
+
 func _initialize() -> void:
 	for arg in OS.get_cmdline_user_args():
 		if arg.begins_with("--suite="): suite = arg.trim_prefix("--suite=")
@@ -64,6 +70,7 @@ func run() -> void:
 	eye.make_current()
 	RenderingServer.viewport_set_measure_render_time(root.get_viewport_rid(),true)
 	var locations: Array = LOCATIONS if suite == "matrix" else LOCATIONS.slice(0,5)
+	if suite == "environment": locations = ENVIRONMENT_VIEWS
 	if suite == "ablations": locations = ["Harlow platform","Near advancing fog","Inside dangerous fog"]
 	if not output_dir.is_empty(): DirAccess.make_dir_recursive_absolute(output_dir)
 	for preset in 3:
@@ -105,7 +112,7 @@ func run() -> void:
 	var report := {"suite":suite,"fixture_only":true,"fixed_fps":false,"vsync":"disabled","resolution":str(root.size),"samples":samples,"warmup":warmup,
 		"godot":Engine.get_version_info().string,"processor":OS.get_processor_name(),"processor_count":OS.get_processor_count(),"os":OS.get_name(),
 		"adapter":RenderingServer.get_video_adapter_name(),"runtime_binary":OS.get_executable_path().get_file(),"engine_build":Engine.get_version_info().build,"renderer":RenderingServer.get_current_rendering_method(),"driver":RenderingServer.get_current_rendering_driver_name(),
-		"window_mode":DisplayServer.window_get_mode(),"loading":loading,"fixture_transitions":transitions,"preset_preparation":prepared,"results":rows,
+		"window_mode":DisplayServer.window_get_mode(),"loading":loading,"camera_poses":poses,"fixture_transitions":transitions,"preset_preparation":prepared,"results":rows,
 		"static_memory_peak_bytes":OS.get_static_memory_peak_usage(),"total_memory_note":"process RSS sampled externally; static memory is not total RSS"}
 	FileAccess.open(destination,FileAccess.WRITE).store_string(JSON.stringify(report,"  "))
 	await DiagnosticSceneRetirement.release(game)
@@ -120,7 +127,7 @@ func place(location: String) -> void:
 	game.player.set_physics_process(false)
 	game.train.speed = 0
 	game.train.state = 0
-	if location == "Curved railway": game.train.distance = 850.0
+	if location in ["Curved railway", "Curved embankment"]: game.train.distance = 850.0
 	if location == "Mission completion": game.train.distance = journey.route.length()
 	game.train._apply_positions(0)
 	# AnimatableBody3D synchronizes on physics ticks. Read car-local positions
@@ -131,6 +138,20 @@ func place(location: String) -> void:
 		fog.presentation._blend = 0.0
 		journey.mission.status = "active"
 	match location:
+		"Harlow track":
+			at = Vector3(31,0.05,-5.5); camera = Vector3(30.6,1.35,-5.65); target = Vector3(40,.12,-3.5)
+		"Bonded Stores exterior":
+			at = Vector3(37,0.05,7); camera = Vector3(32.7,2.2,8.6); target = Vector3(38.0,2.1,4.35)
+		"Bonded Stores interior":
+			at = Vector3(37,0.05,2.5); camera = Vector3(37,1.75,2.5); target = Vector3(35.1,2.4,4.75)
+		"Curved embankment":
+			var rail := RouteTrack.frame(journey.route,850)
+			at = rail * Vector3(0,.1,3.2)
+			camera = rail * Vector3(-5,4.3,7.0); target = rail * Vector3(60,1.5,-2)
+		"Crossing Stores":
+			var crossing: Node3D = journey.stations[1]
+			at = crossing.to_global(Vector3(151,.05,58))
+			camera = crossing.to_global(Vector3(149,2.4,63)); target = crossing.to_global(Vector3(167,2.3,51))
 		"Warehouse A":
 			at = Vector3(44,0.05,1); camera = Vector3(38,1.6,3); target = Vector3(47,1.6,2)
 		"Warehouse B":
@@ -154,10 +175,10 @@ func place(location: String) -> void:
 				camera = station.to_global(Vector3(-6,3.1,40)); target = station.to_global(Vector3(12,1.8,22))
 			if location == "Ashford workshop":
 				at = station.to_global(Vector3(122,.05,41)); camera = at+Vector3(3,1.6,0); target = station.to_global(Vector3(119,1.6,35))
-		"Near advancing fog", "Inside dangerous fog":
-			fog.simulation.front = -65.0 if location == "Near advancing fog" else 40.0
+		"Distant fog", "Near advancing fog", "Inside dangerous fog":
+			fog.simulation.front = {"Distant fog":-155.0,"Near advancing fog":-65.0,"Inside dangerous fog":40.0}[location]
 			camera = Vector3(18,3.2,6); target = Vector3(-35,2,-3.5)
-			fog.presentation._blend = 0.7 if location == "Near advancing fog" else 1.0
+			fog.presentation._blend = {"Distant fog":0.0,"Near advancing fog":0.7,"Inside dangerous fog":1.0}[location]
 		"Mission completion":
 			at = game.train.get_node("CrewCar").to_global(Vector3(0,1.05,0))
 			camera = at+Vector3(-9,6,14); target = at
@@ -179,6 +200,11 @@ func place(location: String) -> void:
 		fog.set_state(int(fog.simulation.danger(fog.players.local.exposure.progress)))
 	eye.global_position = camera
 	eye.look_at(target)
+	if suite == "environment":
+		poses.append({"location":location,"camera":[camera.x,camera.y,camera.z],"target":[target.x,target.y,target.z],
+			"at":[at.x,at.y,at.z],"front":fog.simulation.front,"preset":game.graphics.current_index})
+		game.hud.hide()
+		fog.presentation._process(0.0)
 	# Cab/car views sit at eye height. The fixture camera bypasses the normal
 	# rig's visibility update, so apply its first-person body rule explicitly;
 	# otherwise these measurements render the inside of the survivor's head.

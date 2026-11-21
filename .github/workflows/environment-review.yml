@@ -1,0 +1,57 @@
+name: Environment review
+on:
+  pull_request:
+    branches: [integration/milestone-3-5-photoreal-survival]
+    paths:
+      - .github/workflows/environment-review.yml
+      - tools/macos/compare_environments.py
+      - scripts/diagnostics/integration_benchmark.gd
+  workflow_call:
+    inputs:
+      paired:
+        type: boolean
+        default: true
+permissions:
+  contents: read
+  actions: read
+jobs:
+  metal:
+    name: Native Metal environment comparison
+    runs-on: macos-latest
+    timeout-minutes: 100
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/download-artifact@v8
+        with:
+          name: LastTrainOut-macos-universal.zip
+          run-id: 44835867870
+          github-token: ${{ github.token }}
+          path: reference-download
+          skip-decompress: true
+      - name: Verify and extract the PR 6 reference
+        run: |
+          zip=$(find reference-download -name '*.zip' -type f)
+          echo "95d5ccbc65700a2d1f7b8e641eef3fd880f35b34221d09077ebd58a45a49b5ee  $zip" | shasum -a 256 -c -
+          ditto -x -k "$zip" reference
+      - if: inputs.paired
+        uses: actions/download-artifact@v8
+        with:
+          name: LastTrainOut-macos-universal.zip
+          path: candidate-download
+          skip-decompress: true
+      - name: Render and measure the fixed views
+        env:
+          PAIRED: ${{ inputs.paired }}
+        run: |
+          args=()
+          if [[ "$PAIRED" == true ]]; then
+            ditto -x -k "$(find candidate-download -name '*.zip' -type f)" candidate
+            args+=(--candidate "candidate/Last Train Out.app")
+          fi
+          python3 tools/macos/compare_environments.py "reference/Last Train Out.app" "$RUNNER_TEMP/world-review" "${args[@]}"
+      - if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: native-metal-environment
+          path: ${{ runner.temp }}/world-review
+          retention-days: 30
