@@ -1,0 +1,13 @@
+version,preset,cache,passed,selector_to_play_ms,first_worst_ms,resource_load_ms,worst_loading_frame_ms,cache_files_before,cache_bytes_after
+reference,low,cold,True,33102.656,35.6,8434.036,295.675,0,431196
+candidate,low,cold,True,33535.199,20.679,11269.69,106.216,0,431196
+candidate,low,warm,True,31688.601,20.249,11222.993,144.223,11,431196
+reference,low,warm,True,25652.96,20.084,6868.688,177.026,11,431196
+candidate,medium,cold,True,38685.909,30.984,12438.853,229.673,0,431196
+reference,medium,cold,True,26582.51,34.067,7998.945,173.954,0,431196
+reference,medium,warm,True,25176.328,33.379,7424.95,91.315,11,431196
+candidate,medium,warm,True,31121.373,31.839,11406.096,61.396,11,431196
+reference,high,cold,True,26473.686,26.929,6450.004,107.011,0,431196
+candidate,high,cold,True,40151.761,23.462,11761.193,127.772,0,431196
+candidate,high,warm,True,33825.871,18.733,12440.685,385.932,11,431196
+reference,high,warm,True,23894.325,20.376,6645.076,59.399,11,431196

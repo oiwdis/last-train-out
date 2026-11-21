@@ -1,0 +1,122 @@
+{
+  "candidate_build": 117,
+  "trace": {
+    "before": {
+      "pid": 24776,
+      "unmatched_begins": 0,
+      "signposts": {
+        "shader_compile": {
+          "complete_intervals": 30,
+          "wall_time_union_s": 5.8263,
+          "summed_thread_s": 8.6789
+        },
+        "compute_pipeline_create": {
+          "complete_intervals": 184,
+          "wall_time_union_s": 5.665,
+          "summed_thread_s": 5.665
+        },
+        "render_pipeline_create": {
+          "complete_intervals": 558,
+          "wall_time_union_s": 10.0358,
+          "summed_thread_s": 21.3373
+        }
+      }
+    },
+    "after": {
+      "pid": 27923,
+      "unmatched_begins": 0,
+      "signposts": {
+        "shader_compile": {
+          "complete_intervals": 0,
+          "wall_time_union_s": 0,
+          "summed_thread_s": 0
+        },
+        "compute_pipeline_create": {
+          "complete_intervals": 184,
+          "wall_time_union_s": 5.405,
+          "summed_thread_s": 5.405
+        },
+        "render_pipeline_create": {
+          "complete_intervals": 558,
+          "wall_time_union_s": 1.1035,
+          "summed_thread_s": 2.423
+        }
+      }
+    }
+  },
+  "coverage": {
+    "original_libraries": 361,
+    "additional_stages": [
+      "02a502e40ed3ef1b7e6f8d95a1d57ca8f6e822e28ca482b781e9ec8de1aa42e1",
+      "0ac61b4c2bb2b785236b79f573da665e1be86e0576b8b313cd9469e8debf97a7",
+      "1408732615773476f7458d0ea17de214310c02de313f19ba8d99a9b0cb35d328",
+      "152983284c5e50fe2d36f2b110a2fc0576ed46407c6064278d6e7fa5d22bc9b6",
+      "29f927d5568ed53aaf6faef45321c7a956212adc9ff6655f2b75b928b4531629",
+      "2b60e03508fc83183c923e2beb2ecfd639e1ba625ca21c0703d953915b3904d3",
+      "3031d10b0378c1ae078cbf526e632ef625cdac1a10cebe3b07b758b04c8cb055",
+      "36b971842d07860927f4060d1315ef345a416130896066348a42809ef3ff9afc",
+      "3dda1d53e536670d2b44187313e750586eec75763caa3d749157ad90e626265d",
+      "4d1e19e614bdfec853a7e6f751df261abcfc2fedcfc8e5f70a0982c5da844a3c",
+      "563bef0ffc0412b3491f6772a3d71a98e5f518c6480d603348dfede4fcf0b0b6",
+      "622e7b7b85e354ac21f809376ddb93eeabc4c58a3c6c7ffb1b3fae8373512ac7",
+      "6c29a6f883d92a9bf0fe00659321a7cbb4f1eeb293b866e40f0be0948a9d947f",
+      "6d3eb281f9ccf3c5bd6abdd2952b6c7644cda24d4ec4a213b7164358df5322ea",
+      "7019212ee5560bda14f35f6e440f9b6264870e8191fcae50b1123aed6eb019e1",
+      "7a93053f8ea718366f798ea4df4769725fb5ae95995370f9798d13459d2bdc79",
+      "7c073e26208d97e26e45e6bd8bf2c80aafd007b0996e851a96d15e94502f5711",
+      "89f71fe0891f52157fe3e9c051af400552c1abfcdae145fbe47add23448dc35e",
+      "97f4f106d97aea9b8aea2c3515e2ed78c8e5c6172c2f9d112c486b0791ac59ed",
+      "b35bd3e8bd8a96f6567e4ebc79a9b09296244481d397b11f73f0bba67b27116c",
+      "b4527b55597e5e9fe9c47cf13fd8f5e17aa4f2d5e62bb1f00eac4aaee58199af",
+      "bb6a34b105bf06f776ae7fd58bfbbe5bde55920fc0b9ed7775f1f62efe40da28",
+      "c11a3d5e1e007bd85b25605463d3b63827643fec456dc5e2d7d2b7ae58cd8db5",
+      "c2037e73974b7f428fbc981a21372972281a77d8f3817099c10c069dd4e77bf8",
+      "cdc19bedca737f0c7e8118d8b611cc63021664e51df1dafe93ab96baef9cf82b",
+      "dbd5ff1ebe4f48d67073edc8ab2104c8777f6ab3ad099231407b79c21af2544b",
+      "eb280db8729ad91ff63bb7549dcec7884ced4b4b658355935ee28686a7d0c43c",
+      "fc7f684827fd529b2c2f6ffb03efbb808048611f2f77c897fb79aeb5c3d12db4"
+    ],
+    "reused_observed_stages": [],
+    "original_library_bytes": 11535708,
+    "trace_sha256": "1b992747908babfab294f6720c35a71c82a9b521597de5d496454c38a87635c9",
+    "total_libraries": 389,
+    "additional_library_bytes": 1330988,
+    "read_only_groups": 86,
+    "archive_sha256": "b49daae8412544eac6e579ae6f6fa3d442835b676df65828b5ae035ade7bcf71"
+  },
+  "result": {
+    "source_compiles_before": [
+      "14087326",
+      "15298328",
+      "29F927D5",
+      "2A502E4",
+      "2B60E035",
+      "3031D10B",
+      "36B97184",
+      "3DDA1D53",
+      "4D1E19E6",
+      "563BEF0F",
+      "622E7B7B",
+      "6C29A6F8",
+      "6D3EB281",
+      "7019212E",
+      "7A93053F",
+      "7C073E26",
+      "89F71FE0",
+      "97F4F106",
+      "AC61B4C",
+      "B35BD3E8",
+      "B4527B55",
+      "BB6A34B1",
+      "C11A3D5E",
+      "C2037E73",
+      "CDC19BED",
+      "DBD5FF1E",
+      "EB280DB8",
+      "FC7F6848"
+    ],
+    "source_compiles_after": [],
+    "matched_library_groups": 86
+  },
+  "original_workflow_artifact": "environment-metal-stages"
+}

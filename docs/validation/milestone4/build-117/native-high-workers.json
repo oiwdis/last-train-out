@@ -1,0 +1,60 @@
+{
+  "original": {
+    "host": "macOS-26.7.2-arm64-arm-64bit-Mach-O",
+    "pack_sha256": "deea300ff4f73d2b3ec76e1dd667d6fb35c5ff8b2637604b164f64934520c138",
+    "series_passed": true,
+    "cohorts": {
+      "isolation-preflight": {
+        "total": 1,
+        "clean": 1,
+        "device_losses": 0
+      },
+      "cold": {
+        "total": 17,
+        "clean": 17,
+        "device_losses": 0
+      },
+      "warm-seed-matrix": {
+        "total": 1,
+        "clean": 1,
+        "device_losses": 0
+      },
+      "warm": {
+        "total": 17,
+        "clean": 17,
+        "device_losses": 0
+      }
+    },
+    "failures": [],
+    "os_crash_reports": []
+  },
+  "corrected": {
+    "host": "macOS-26.7.2-arm64-arm-64bit-Mach-O",
+    "pack_sha256": "deea300ff4f73d2b3ec76e1dd667d6fb35c5ff8b2637604b164f64934520c138",
+    "series_passed": true,
+    "cohorts": {
+      "isolation-preflight": {
+        "total": 1,
+        "clean": 1,
+        "device_losses": 0
+      },
+      "cold": {
+        "total": 17,
+        "clean": 17,
+        "device_losses": 0
+      },
+      "warm-seed-matrix": {
+        "total": 1,
+        "clean": 1,
+        "device_losses": 0
+      },
+      "warm": {
+        "total": 17,
+        "clean": 17,
+        "device_losses": 0
+      }
+    },
+    "failures": [],
+    "os_crash_reports": []
+  }
+}
