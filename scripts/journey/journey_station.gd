@@ -8,15 +8,16 @@ var caches: Array[SearchContainer] = []
 var buildings: Array[StationBuilding] = []
 var note: SupplyInteractable
 var boarding_point: Vector3
-var site := StaticBody3D.new()
+var site: StaticBody3D
 
 func _ready() -> void:
+	site = StaticBody3D.new()
 	site.name = "StationStructure"
 	add_child(site)
 	var concrete := preload("res://resources/materials/platform_concrete.tres")
 	var asphalt := preload("res://resources/materials/ground_asphalt.tres")
 	if industrial:
-		_box(site,Vector3(44,-.12,22),Vector3(218,.16,57),asphalt)
+		_box(site,Vector3(44,-.08,22),Vector3(218,.16,57),asphalt)
 	else:
 		_box(site,Vector3(51,-.10,58),Vector3(263,.16,7.2),asphalt)
 	_box(site,Vector3(-12,0.5,4),Vector3(70,1,5),concrete)

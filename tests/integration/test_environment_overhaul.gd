@@ -74,6 +74,14 @@ func test_curve_mesh_collision_and_neighboring_chunks_share_the_same_terrain() -
 		check(poses[poses.size()-9]-poses[3]>80.,"baked sleepers extend along the actual rail")
 
 func test_atmospheric_banks_and_station_landmarks_are_in_the_playable_mission() -> void:
+	# Save validation may instantiate and discard a station without entering
+	# the tree. A detached station must own no unparented physics objects.
+	for scene in game.journey.definition.station_scenes:
+		var unused := scene.instantiate() as JourneyStation
+		check(unused.site == null,"an unused station allocates no physics body")
+		unused.free()
+	for station in game.journey.stations:
+		check(station.site.get_parent() == station,"the occupied station owns its structural collider")
 	var presentation := game.fog_system.presentation
 	for layer in presentation.layers:
 		check(layer.mesh.get_aabb().size.z>8.,"fog bank has depth across the valley")

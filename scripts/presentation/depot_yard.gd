@@ -12,7 +12,7 @@ const TIMBER := preload("res://resources/materials/floor_wood.tres")
 
 static func build(art: JourneyStationArt) -> void:
 	var bay := DetailBuilder.new(art,"FreightLoadingBays")
-	for x: float in [13.,31.]:
+	for x: float in [39.,48.]:
 		bay.panel(Vector3(x,.49,33.6),Vector3(6.6,.98,3.9),CONCRETE)
 		art.station.add_structure_collision(Vector3(x,.49,33.6),Vector3(6.6,.98,3.9))
 		bay.panel(Vector3(x,4.65,32.6),Vector3(8.1,.13,5.7),CORRUGATED,Vector3(-.09,0,0))
@@ -24,12 +24,12 @@ static func build(art: JourneyStationArt) -> void:
 		for offset: float in [-2.1,-.8,.5]:
 			art.prop("crate",Vector3(x+offset,1.,33.8),offset*.04)
 		art.prop("military_crate",Vector3(x-1.45,1.63,33.7),.03)
-	bay.signboard(Vector3(22,4.4,31.24),"CONSIGNMENTS  /  02",8.,.7)
+	bay.signboard(Vector3(43.5,4.4,31.24),"CONSIGNMENTS  /  02",8.,.7)
 	# Faded lane boundaries, dock numbers and stacks stage a freight movement.
-	for x: float in [10.,16.,28.,34.]:
+	for x: float in [36.,42.,45.,51.]:
 		for z: float in [37.7,40.7,43.7]:
-			bay.box(Vector3(x,-.031,z),Vector3(.11,.013,1.85),PAINT)
-	for x: float in [7.,37.]:
+			bay.box(Vector3(x,.008,z),Vector3(.11,.013,1.85),PAINT)
+	for x: float in [33.,54.]:
 		for z: float in [35.6,39.0]:
 			bay.cylinder(Vector3(x,.46,z),.14,.92,FRAME)
 			bay.cylinder(Vector3(x,.65,z),.146,.19,PAINT)

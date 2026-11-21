@@ -29,7 +29,8 @@ static func height(progress: float, offset: float, yard: float) -> float:
 	var hill := sin(progress*.012+offset*.032)*.85 + sin(progress*.039-offset*.053)*.36
 	var ridge := smoothstep(19.,155.,width)*(3.5+5.*sin(progress*.0065+offset*.021)+3.2*sin(progress*.004-offset*.046))
 	var field := -.015 - .74*shoulder - .81*ditch + meadow*(hill+ridge)
-	return lerpf(field,-.11,yard)
+	var yard_grade := lerpf(-.11,-.045,smoothstep(170.,240.,progress))
+	return lerpf(field,yard_grade,yard)
 
 static func point(frame: Transform3D, progress: float, offset: float, route: FogRoute) -> Vector3:
 	var near_offset := clampf(offset,-18.,18.)
