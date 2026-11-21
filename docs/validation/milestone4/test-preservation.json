@@ -1,0 +1,14 @@
+{
+  "baseline": "684df38f0d9ba39a876d4788696855f0b64d5b29",
+  "candidate": "9b6f67cd15cc12fecb64bbc3112b39fd4a307dc5",
+  "original": 305,
+  "candidate_total": 309,
+  "missing": [],
+  "added": [
+    "test_environment_overhaul.gd/test_atmospheric_banks_and_station_landmarks_are_in_the_playable_mission",
+    "test_environment_overhaul.gd/test_bonded_stores_and_transfer_hall_have_closed_masonry_returns_and_open_doors",
+    "test_environment_overhaul.gd/test_curve_mesh_collision_and_neighboring_chunks_share_the_same_terrain",
+    "test_environment_overhaul.gd/test_harlow_running_head_web_sleepers_and_ballast_have_their_authored_materials"
+  ],
+  "original_missing_or_failing": []
+}

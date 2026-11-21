@@ -1,8 +1,14 @@
-# Last Train Out — Milestone 3.5.4 macOS renderer acceptance
+# Last Train Out — Milestone 4 environment overhaul
+
+The Harlow Escape now has a continuous railway embankment, repaired Harlow track and warehouse joints, a freight yard at Ashford, an evacuated settlement at Blackwater and layered advancing fog. The journey runs for 4.26 km with the original survival rules. The development work is stacked on PR #6. Both PRs are open drafts. [Milestone 4 report](docs/MILESTONE4_ENVIRONMENT_OVERHAUL.md) · [Environment gallery](docs/validation/milestone4/GALLERY.md) · [Draft PR #7](https://github.com/oiwdis/last-train-out/pull/7)
+
+[Universal macOS development build 108](https://github.com/oiwdis/last-train-out/actions/runs/44850871725/artifacts/14686450857) · [ZIP checksum](docs/validation/milestone4/development-build.json) · [Fullscreen 2020 M1 procedure](docs/MILESTONE4_ENVIRONMENT_OVERHAUL.md#physical-2020-m1-procedure)
+
+## Milestone 3.5.4 integration renderer history
 
 This draft combines PR #4’s detailed survivor, locomotive and Harlow art with PR #5’s continuous three-station survival journey. Press **J** for Save / Continue / New / Restart and **V** to switch camera. [Integration history](docs/MILESTONE3_INTEGRATION.md)
 
-**Hold the merge.** The optional native Metal player reached High gameplay in 35.1 s cold and 26.1 s warm on a fresh hosted Mac. Precompiling the observed route shaders reduced a 1.52 s Warehouse A entry frame to 73 ms in a paired test. Metal passed all 95 packaged stress processes. Vulkan lost the GPU on ten cold High starts. Approaching fog still produced a 237 ms Metal entry frame. The owner’s fullscreen 2020 M1 test remains pending. [Draft PR #6](https://github.com/oiwdis/last-train-out/pull/6) · [Performance report](docs/PERFORMANCE_MILESTONE354.md) · [M1 owner test](docs/M1_MILESTONE354.md)
+**Hold the merge.** The optional native Metal player reached High gameplay in 35.1 s cold and 26.1 s warm on a fresh hosted Mac. Precompiling the observed route shaders reduced a 1.52 s Warehouse A entry frame to 73 ms in a paired test. Metal passed all 95 packaged stress processes. Vulkan lost the GPU on ten cold High starts. Approaching fog still produced a 237 ms Metal entry frame. The owner subsequently reported roughly 60 FPS on fullscreen Medium on a 2020 M1. Instrumented physical validation of the overhaul is pending. [Draft PR #6](https://github.com/oiwdis/last-train-out/pull/6) · [Performance report](docs/PERFORMANCE_MILESTONE354.md) · [M1 owner test](docs/M1_MILESTONE354.md)
 
 [Download the verified universal development ZIP](https://github.com/oiwdis/last-train-out/actions/runs/44822226233/artifacts/14673852596) · [SHA-256 and build identity](docs/validation/milestone354/build-103.json) · [Matched frame times](docs/validation/milestone354/build-103/matched/README.md) · [Visual gallery](docs/validation/milestone354/build-103/README.md#visual-compatibility) · [Full Metal journey](docs/recording/milestone354-native-metal.mp4)
 

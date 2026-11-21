@@ -28,6 +28,9 @@ def summarize(records):
     for field in ('draw_calls', 'primitives', 'process_ms', 'physics_ms', 'render_cpu_ms', 'render_gpu_ms',
                   'texture_bytes', 'static_memory_bytes'):
         summary[field] = sum(record[field] * record['samples'] for record in records) / n
+    summary['gpu_timing_available'] = any(record['render_gpu_ms'] > 0 for record in records)
+    if not summary['gpu_timing_available']:
+        summary['render_gpu_ms'] = None
     for kind in ('draw', 'surface', 'specialization'):
         summary[kind + '_pipelines'] = sum(record['pipeline_delta'][kind] for record in records)
     return summary
@@ -125,6 +128,10 @@ def main():
             if data['camera_poses'] != poses:
                 raise ValueError('Screenshot conditions differ from timings')
         gallery(archive, out)
+        with zipfile.ZipFile(out/'native-pngs.zip', 'w', zipfile.ZIP_STORED) as images:
+            for member in archive.namelist():
+                if member.endswith('.png'):
+                    images.writestr(member, archive.read(member))
         with zipfile.ZipFile(out/'raw-environment.zip', 'w', zipfile.ZIP_DEFLATED, compresslevel=9) as raw:
             for member in archive.namelist():
                 if not member.endswith(('/', '.png')):

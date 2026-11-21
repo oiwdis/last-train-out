@@ -1,0 +1,17 @@
+{
+  "reference_source_groups": 94,
+  "candidate_source_groups": 97,
+  "reference_matched_libraries": 83,
+  "candidate_matched_libraries": 82,
+  "unchanged_files": 93,
+  "added": [
+    "SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/4279a93253e01101e8acfb6d72869973f0f6e2d1.metal.cache",
+    "SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/48d67f07e6e6c22b072226fef883403f0e0d5d6b.metal.cache",
+    "SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/66723b401cb2ed11a779dd0ae008c82ababc4937.metal.cache",
+    "SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/86ecfc0cd482316c1afb0cde9b2379e20609ac68.metal.cache"
+  ],
+  "removed": [
+    "SceneForwardClusteredShaderRD/df8d1dbb6fb950c04bcc78fb1667a6eb52d604ac1f0317023833936c838ed75f/c973f1f68ae5670dc941621353dde6ab8790087e.metal.cache"
+  ],
+  "same_name_changed_sha": []
+}

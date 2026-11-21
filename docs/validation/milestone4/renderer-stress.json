@@ -1,0 +1,16 @@
+{
+  "metal": {
+    "total": 0,
+    "clean": 0,
+    "device_losses": 0,
+    "failures": [],
+    "series": {}
+  },
+  "vulkan": {
+    "total": 0,
+    "clean": 0,
+    "device_losses": 0,
+    "failures": [],
+    "series": {}
+  }
+}
