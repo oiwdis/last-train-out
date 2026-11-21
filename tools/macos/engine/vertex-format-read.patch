@@ -1,0 +1,29 @@
+--- a/servers/rendering/rendering_device.cpp
++++ b/servers/rendering/rendering_device.cpp
+@@ -4014,10 +4014,11 @@
+ 
+ 	RDD::VertexFormatID driver_vertex_format;
+ 	if (p_vertex_format != INVALID_ID) {
+-		// Uses vertices, else it does not.
+-		ERR_FAIL_COND_V(!vertex_formats.has(p_vertex_format), RID());
+-		const VertexDescriptionCache &vd = vertex_formats[p_vertex_format];
+-		driver_vertex_format = vertex_formats[p_vertex_format].driver_id;
++		// The render thread can register another vertex format while a pipeline worker validates this one.
++		_THREAD_SAFE_METHOD_
++		const VertexDescriptionCache *vd = vertex_formats.getptr(p_vertex_format);
++		ERR_FAIL_NULL_V(vd, RID());
++		driver_vertex_format = vd->driver_id;
+ 
+ 		// Validate with inputs.
+ 		for (uint32_t i = 0; i < 64; i++) {
+@@ -4025,8 +4026,8 @@
+ 				continue;
+ 			}
+ 			bool found = false;
+-			for (int j = 0; j < vd.vertex_formats.size(); j++) {
+-				if (vd.vertex_formats[j].location == i) {
++			for (int j = 0; j < vd->vertex_formats.size(); j++) {
++				if (vd->vertex_formats[j].location == i) {
+ 					found = true;
+ 					break;
+ 				}

@@ -192,7 +192,7 @@ def main():
             md.append('| '+' | '.join([l]+[cell('steady',m) for m in ('median_ms','p95_ms','p99_ms','worst_ms')]+
                                        [cell('entry',m) for m in ('p99_ms','worst_ms')])+' |')
         md.append('')
-    (out/'FRAME_TIMES.md').write_text('\n'.join(md)+'\n')
+    (out/'FRAME_TIMES.md').write_text('\n'.join(md).rstrip()+'\n')
 
 
 if __name__ == '__main__':

@@ -68,4 +68,3 @@ Times are milliseconds. Each cell shows the PR 6 reference followed by the Miles
 | Distant fog | 3.5 / 3.6 | 4.7 / 4.3 | 5.6 / 4.7 | 6.4 / 5.0 | 12.0 / 11.0 | 12.8 / 11.1 |
 | Near advancing fog | 3.5 / 3.7 | 5.0 / 4.2 | 5.5 / 4.6 | 5.8 / 4.7 | 7.7 / 5.7 | 8.2 / 5.9 |
 | Inside dangerous fog | 3.5 / 3.4 | 4.9 / 3.9 | 5.6 / 4.0 | 6.1 / 4.6 | 4.9 / 3.9 | 4.9 / 4.5 |
-
