@@ -15,6 +15,14 @@ func after_each() -> void:
 	get_tree().paused = false
 	await free_spawned()
 
+func test_initial_fog_camera_for_mac_renderers_and_presets() -> void:
+	for preset in 3:
+		check_eq(RenderWarmup.starts_at_platform("vulkan", "macOS", preset, false), preset == 2, "High Vulkan prepares fog at the platform")
+		check(RenderWarmup.starts_at_platform("metal", "macOS", preset, false), "native Metal prepares each preset at the platform")
+		check(not RenderWarmup.starts_at_platform("metal", "macOS", preset, true), "native Metal retains the origin comparison")
+		check(not RenderWarmup.starts_at_platform("vulkan", "Linux", preset, false), "Linux keeps its authored origin")
+		check(not RenderWarmup.starts_at_platform("opengl3", "macOS", preset, false), "the compatibility renderer keeps its authored origin")
+
 func test_scene_exit_during_preparation_releases_pause_and_controller() -> void:
 	var controller: WeakRef = weakref(game.graphics)
 	game.graphics._prepare_rendering()

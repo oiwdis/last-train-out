@@ -54,6 +54,29 @@ func test_bonded_stores_and_transfer_hall_have_closed_masonry_returns_and_open_d
 		var hit := game.get_world_3d().direct_space_state.intersect_ray(query)
 		check(hit.is_empty() or hit.collider != left.get_parent(),"the authored side-door aperture stays open")
 
+func test_ashford_floor_slabs_clear_the_apron_and_their_doors_stay_walkable() -> void:
+	var station := game.journey.stations[0]
+	var pavement: BoxPart = station.site.get_node("FreightApron")
+	var pavement_mesh := pavement.get_mesh_instance()
+	var yard_top := (pavement_mesh.global_transform * pavement_mesh.mesh.get_aabb()).end.y
+	var space := station.get_world_3d().direct_space_state
+	for building in station.buildings:
+		var floor_part: BoxPart = building.get_node("FloorSlab")
+		var floor_mesh := floor_part.get_mesh_instance()
+		var slab_top := (floor_mesh.global_transform * floor_mesh.mesh.get_aabb()).end.y
+		check(slab_top - yard_top > 0.02, building.title + " floor clears the outdoor pavement")
+		var previous := yard_top
+		for offset: float in [1.8, 1.3, 0.9, 0.5, 0.1, -0.3]:
+			var at_door := building.to_global(Vector3(0, 0, building.dimensions.z * 0.5 + offset))
+			var ray := PhysicsRayQueryParameters3D.create(at_door + Vector3.UP * 0.4, at_door - Vector3.UP * 0.4, 1)
+			var hit := space.intersect_ray(ray)
+			check(not hit.is_empty(), building.title + " approach has continuous collision")
+			if hit.is_empty(): continue
+			var height: float = hit.position.y
+			check(height >= previous - 0.003 and height - previous < 0.04, building.title + " threshold has no abrupt step")
+			previous = height
+		check(absf(previous - slab_top) < 0.003, building.title + " floor collider meets its rendered top")
+
 func test_curve_mesh_collision_and_neighboring_chunks_share_the_same_terrain() -> void:
 	var track := game.get_node("RouteTrack") as RouteTrack
 	check(track.has_node("BakedCorridor"),"the threaded mission loaded the static baked geometry")

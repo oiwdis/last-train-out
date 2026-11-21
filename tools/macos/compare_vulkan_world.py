@@ -30,6 +30,8 @@ def main():
     parser.add_argument('legacy_shader', type=Path)
     parser.add_argument('out', type=Path)
     parser.add_argument('--reverse', action='store_true')
+    parser.add_argument('--camera-pair', action='store_true',
+                        help='Repeat the unmodified and platform-first cameras 16 times each.')
     args = parser.parse_args()
     out = args.out.resolve()
     out.mkdir(parents=True, exist_ok=False)
@@ -41,16 +43,19 @@ def main():
         raise ValueError('Expected the signed build 111 data and the PR 6 fog shader.')
     started = time.time()
     rows = []
+    treatments = ('control', 'platform_start') if args.camera_pair else TREATMENTS
+    repeats = 32 // len(treatments)
     summary = {'host': platform.platform(), 'bundle': info, 'pack_sha256': PACK,
                'legacy_shader_sha256': LEGACY_FOG, 'fixture_sha256': digest(FIXTURE),
-               'reverse': args.reverse, 'runs': rows, 'complete': False}
-    options = TREATMENTS[::-1] if args.reverse else TREATMENTS
+               'reverse': args.reverse, 'treatments': treatments, 'repeats_per_treatment': repeats,
+               'runs': rows, 'complete': False}
+    options = treatments[::-1] if args.reverse else treatments
     with tempfile.TemporaryDirectory(prefix='lto-world-cold-') as tmp:
         project = Path(tmp)
         pack = project / original.name
         shutil.copyfile(original, pack)
         assert digest(pack) == PACK
-        for repeat in range(8):
+        for repeat in range(repeats):
             offset = repeat % len(options)
             for arm in options[offset:] + options[:offset]:
                 name = f'{repeat + 1:02d}-{arm}'

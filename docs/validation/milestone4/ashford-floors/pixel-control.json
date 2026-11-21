@@ -1,0 +1,43 @@
+{
+  "adapter": "Linux Godot 4.5.1 Forward+ / llvmpipe",
+  "images": "960x540 real mission, same camera and preset per pair",
+  "floor_mask": "x=30..929, y=432..529. Fraction of pixels with any RGB channel changing by >8/255 when hiding only the apron mesh. Collider stays active; no post-processing of the actual screenshots.",
+  "values_percent": [
+    {
+      "preset": "Low",
+      "view": "ashford_workshop",
+      "coplanar": 0.17,
+      "raised": 0.0
+    },
+    {
+      "preset": "Low",
+      "view": "ashford_fitter_bench",
+      "coplanar": 0.0,
+      "raised": 0.0
+    },
+    {
+      "preset": "Medium",
+      "view": "ashford_workshop",
+      "coplanar": 16.146,
+      "raised": 0.0
+    },
+    {
+      "preset": "Medium",
+      "view": "ashford_fitter_bench",
+      "coplanar": 0.0,
+      "raised": 0.0
+    },
+    {
+      "preset": "High",
+      "view": "ashford_workshop",
+      "coplanar": 63.91,
+      "raised": 0.0
+    },
+    {
+      "preset": "High",
+      "view": "ashford_fitter_bench",
+      "coplanar": 0.0,
+      "raised": 0.0
+    }
+  ]
+}

@@ -137,7 +137,7 @@ func _prepare_rendering() -> void:
 	if not is_instance_valid(_scene_root) or not _scene_root.is_inside_tree():
 		return
 	_warming = true
-	await RenderWarmup.prepare(_scene_root)
+	await RenderWarmup.prepare(_scene_root, current_index)
 	_warming = false
 	if _warmup_pending and is_inside_tree() and not _scene_root.is_queued_for_deletion():
 		_prepare_rendering.call_deferred()

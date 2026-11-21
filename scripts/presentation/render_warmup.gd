@@ -30,16 +30,22 @@ var _draining := false
 var _frame_signal: Signal
 
 
-static func prepare(scene: Node3D) -> Signal:
+static func prepare(scene: Node3D, preset_index: int = -1) -> Signal:
 	var job := RenderWarmup.new()
 	job.name = "RenderPreparation"
 	job.process_mode = Node.PROCESS_MODE_ALWAYS
 	scene.add_child(job)
-	job._begin(scene)
+	job._begin(scene, preset_index)
 	return job.completed
 
 
-func _begin(scene: Node3D) -> void:
+static func starts_at_platform(driver: String, platform: String, preset_index: int, metal_origin_control: bool) -> bool:
+	if driver == "metal":
+		return not metal_origin_control
+	return driver == "vulkan" and platform == "macOS" and preset_index == 2
+
+
+func _begin(scene: Node3D, preset_index: int) -> void:
 	_scene = scene
 	_tree = scene.get_tree()
 	var viewport := scene.get_viewport()
@@ -88,12 +94,13 @@ func _begin(scene: Node3D) -> void:
 	# reproduced device loss on two independent native runners (3.5.2).
 	_camera.cull_mask = _original.cull_mask
 	add_child(_camera)
-	# Metal used to draw the surrounding world from the origin for the fog
-	# material, then compile another visible set at the platform. Start both
-	# there. Still submit the uncovered platform, every interior and the final
-	# gameplay camera through the full queue before releasing simulation.
-	if RenderingServer.get_current_rendering_driver_name() == "metal" and OS.get_environment("LTO_METAL_WARMUP_CONTROL") != "1":
+	# Drawing the surrounding world from the platform lets the fog proxy and
+	# the first uncovered view share geometry. The complete interior and final
+	# camera passes still run. Preserve the native Metal comparison control.
+	if starts_at_platform(RenderingServer.get_current_rendering_driver_name(), OS.get_name(),
+			preset_index, OS.get_environment("LTO_METAL_WARMUP_CONTROL") == "1"):
 		_camera.global_transform = _views[0].global_transform
+		PerformanceTrace.mark("warmup_fog_view_" + String(_views[0].name))
 	_camera.make_current()
 	_frame_signal = _tree.process_frame if DisplayServer.get_name() == "headless" else RenderingServer.frame_post_draw
 	_frame_signal.connect(_on_frame)

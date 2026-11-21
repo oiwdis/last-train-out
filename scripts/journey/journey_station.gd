@@ -17,7 +17,7 @@ func _ready() -> void:
 	var concrete := preload("res://resources/materials/platform_concrete.tres")
 	var asphalt := preload("res://resources/materials/ground_asphalt.tres")
 	if industrial:
-		_box(site,Vector3(44,-.08,22),Vector3(218,.16,57),asphalt)
+		_box(site,Vector3(44,-.08,22),Vector3(218,.16,57),asphalt).name = "FreightApron"
 	else:
 		_box(site,Vector3(51,-.10,58),Vector3(263,.16,7.2),asphalt)
 	_box(site,Vector3(-12,0.5,4),Vector3(70,1,5),concrete)
@@ -35,6 +35,10 @@ func _ready() -> void:
 	for spec in specs:
 		var building := StationBuilding.new()
 		building.position = spec[0]
+		if industrial:
+			# The apron runs under all three halls. The door threshold climbs
+			# from its surface onto a finished slab four centimetres above it.
+			building.position.y += 0.04
 		building.dimensions = spec[1]
 		building.industrial = industrial
 		building.title = spec[2]

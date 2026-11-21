@@ -167,6 +167,14 @@ At the last completed phase the texture counter was 361.5 MiB on build 111 and 3
 
 The failure predates the world overhaul, but the increased frequency follows the candidate across both Macs. App caches were private. Each host’s filesystem and driver caches were shared. A separate rotating same-pack experiment compares the full world, the integration fog shader on the new banks, the corridor hidden, and the unmodified world with the first fog draw at the platform. The normal acceptance workflow continues using the complete authored scene. [Every failed process log and Apple crash report](validation/milestone4/vulkan-device-loss.zip) · [Per-series counts, phase markers and backtraces](validation/milestone4/vulkan-device-loss.json) · [Matched Vulkan experiment](https://github.com/oiwdis/last-train-out/actions/runs/44864165485)
 
+### Isolating the initial camera
+
+The signed build 111 four-arm control reproduced the loss in four of sixteen unmodified starts, three with the original integration fog shader, and six with the visual corridor hidden. The full world with the fog preparation camera initially located at the platform finished all sixteen. One of the hosts recorded no failures in any arm. The new macOS High Vulkan path uses the platform placement while retaining the full camera schedule. Its release validation and two-host camera replication are separate gates. [World controls and original failures](validation/milestone4/vulkan-world/README.md)
+
+## The Ashford workshop floor
+
+A review across presets also found yard asphalt showing through the maintenance floor. The new apron and the three building slabs shared the same top plane. All three buildings now meet the yard through their existing shallow thresholds with the finished floor four centimetres above the pavement. The real input journey completed 167 checks after the fix. [Geometry, before-and-after images and floor controls](validation/milestone4/ashford-floors/README.md)
+
 ## Reproduce the review
 
 Download and unzip both development apps, then run the commands below from the Milestone 4 checkout on an Apple Silicon Mac. Use a new output directory. The timing driver uses the standard library. The gallery builder also uses Pillow.
@@ -183,7 +191,7 @@ The Linux geometry checks use the pinned Godot 4.5.1 executable. Rebuild the shi
 
 ```sh
 godot --headless --path . --script res://tools/assets/bake_route_corridor.gd
-MIN_TESTS=310 tools/run_tests.sh godot
+MIN_TESTS=312 tools/run_tests.sh godot
 python3 tools/check_integration_tests.py tests/_output/results.json
 ```
 

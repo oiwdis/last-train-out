@@ -12,7 +12,8 @@ func _ready() -> void:
 	var d := dimensions.z
 	var wall: Material = preload("res://resources/materials/wall_industrial.tres") if industrial else preload("res://resources/materials/wall_brick.tres")
 	var roof := preload("res://resources/materials/roof_metal.tres")
-	part(Vector3(0,-0.12,0), Vector3(w,0.24,d), preload("res://resources/materials/floor_interior.tres") if industrial else preload("res://resources/materials/floor_wood.tres"))
+	var floor_material := preload("res://resources/materials/floor_interior.tres") if industrial else preload("res://resources/materials/floor_wood.tres")
+	part(Vector3(0,-0.12,0), Vector3(w,0.24,d), floor_material).name = "FloorSlab"
 	part(Vector3(0,h/2,-d/2),Vector3(w,h,0.24),wall)
 	for side in [-1,1]:
 		part(Vector3(side*w/2,h/2,0),Vector3(0.24,h,d),wall)

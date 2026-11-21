@@ -7,6 +7,12 @@ on:
       - tools/macos/compare_vulkan_world.py
       - tools/macos/vulkan_world_probe.gd
   workflow_dispatch:
+    inputs:
+      experiment:
+        type: choice
+        options: [camera-pair, world]
+        default: camera-pair
+        description: Repeat the two camera positions or the original four world controls
 
 permissions:
   contents: read
@@ -60,14 +66,16 @@ jobs:
       - name: Rotate isolated fresh-cache starts and retain each attempt
         env:
           ORDER: ${{ matrix.order }}
+          EXPERIMENT: ${{ inputs.experiment || 'camera-pair' }}
         run: |
           args=()
           if [[ "$ORDER" == reverse ]]; then args+=(--reverse); fi
+          if [[ "$EXPERIMENT" == camera-pair ]]; then args+=(--camera-pair); fi
           python3 tools/macos/compare_vulkan_world.py "candidate/Last Train Out.app" \
             "$RUNNER_TEMP/base-fog.gdshader" "$RUNNER_TEMP/world" "${args[@]}"
       - if: always()
         uses: actions/upload-artifact@v7
         with:
-          name: vulkan-world-${{ matrix.order }}
+          name: vulkan-${{ inputs.experiment || 'camera-pair' }}-${{ matrix.order }}
           path: ${{ runner.temp }}/world
           retention-days: 30
