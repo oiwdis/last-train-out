@@ -7,23 +7,23 @@
       "build": "30bf4bae03c83c7d6f96e6b10e79b763b068e3c0"
     },
     "candidate": {
-      "sha256": "deea300ff4f73d2b3ec76e1dd667d6fb35c5ff8b2637604b164f64934520c138",
-      "build": "2dc2fcb41b9725bc83bf6aecb4760c76a0df9f1e"
+      "sha256": "d5671598a01c6c8ae7dc8dcdb1a6a073d6e0083608e09854244a920211160d17",
+      "build": "16d0978d855a6316c33afc2c675d31f3ac104b18"
     }
   },
   "attempts": [
     {
       "name": "reference-first",
       "adapter": "Apple Paravirtual device (Apple5)",
-      "processor": "Apple M2 Pro (Virtual)",
-      "scene_construct_ms": 1293,
-      "render_ready_ms": 8547,
-      "peak_rss_mib": 587.296875,
+      "processor": "Apple M1 (Virtual)",
+      "scene_construct_ms": 2118,
+      "render_ready_ms": 14868,
+      "peak_rss_mib": 621.34375,
       "shader_hits": 0,
       "shader_misses": 11,
       "preset_preparation": [
         {
-          "milliseconds": 220,
+          "milliseconds": 414,
           "pipelines": {
             "draw": 54.0,
             "specialization": 64.0,
@@ -32,7 +32,7 @@
           "preset": 0
         },
         {
-          "milliseconds": 3563,
+          "milliseconds": 6858,
           "pipelines": {
             "draw": 78.0,
             "specialization": 112.0,
@@ -41,7 +41,7 @@
           "preset": 1
         },
         {
-          "milliseconds": 6638,
+          "milliseconds": 10864,
           "pipelines": {
             "draw": 86.0,
             "specialization": 195.0,
@@ -55,15 +55,15 @@
     {
       "name": "candidate-first",
       "adapter": "Apple Paravirtual device (Apple5)",
-      "processor": "Apple M2 Pro (Virtual)",
-      "scene_construct_ms": 1925,
-      "render_ready_ms": 9527,
-      "peak_rss_mib": 651.734375,
+      "processor": "Apple M1 (Virtual)",
+      "scene_construct_ms": 5773,
+      "render_ready_ms": 20295,
+      "peak_rss_mib": 628.578125,
       "shader_hits": 0,
       "shader_misses": 11,
       "preset_preparation": [
         {
-          "milliseconds": 227,
+          "milliseconds": 526,
           "pipelines": {
             "draw": 57.0,
             "specialization": 66.0,
@@ -72,7 +72,7 @@
           "preset": 0
         },
         {
-          "milliseconds": 4115,
+          "milliseconds": 6412,
           "pipelines": {
             "draw": 81.0,
             "specialization": 114.0,
@@ -81,7 +81,7 @@
           "preset": 1
         },
         {
-          "milliseconds": 6258,
+          "milliseconds": 11455,
           "pipelines": {
             "draw": 89.0,
             "specialization": 201.0,
@@ -95,15 +95,15 @@
     {
       "name": "candidate-repeat",
       "adapter": "Apple Paravirtual device (Apple5)",
-      "processor": "Apple M2 Pro (Virtual)",
-      "scene_construct_ms": 1945,
-      "render_ready_ms": 9309,
-      "peak_rss_mib": 597.84375,
+      "processor": "Apple M1 (Virtual)",
+      "scene_construct_ms": 5501,
+      "render_ready_ms": 19537,
+      "peak_rss_mib": 576.734375,
       "shader_hits": 0,
       "shader_misses": 0,
       "preset_preparation": [
         {
-          "milliseconds": 221,
+          "milliseconds": 513,
           "pipelines": {
             "draw": 57.0,
             "specialization": 66.0,
@@ -112,7 +112,7 @@
           "preset": 0
         },
         {
-          "milliseconds": 3447,
+          "milliseconds": 6369,
           "pipelines": {
             "draw": 81.0,
             "specialization": 114.0,
@@ -121,7 +121,7 @@
           "preset": 1
         },
         {
-          "milliseconds": 5807,
+          "milliseconds": 12028,
           "pipelines": {
             "draw": 89.0,
             "specialization": 201.0,
@@ -135,15 +135,15 @@
     {
       "name": "reference-repeat",
       "adapter": "Apple Paravirtual device (Apple5)",
-      "processor": "Apple M2 Pro (Virtual)",
-      "scene_construct_ms": 1312,
-      "render_ready_ms": 8391,
-      "peak_rss_mib": 551.765625,
+      "processor": "Apple M1 (Virtual)",
+      "scene_construct_ms": 4303,
+      "render_ready_ms": 21249,
+      "peak_rss_mib": 549.09375,
       "shader_hits": 0,
       "shader_misses": 0,
       "preset_preparation": [
         {
-          "milliseconds": 247,
+          "milliseconds": 500,
           "pipelines": {
             "draw": 54.0,
             "specialization": 64.0,
@@ -152,7 +152,7 @@
           "preset": 0
         },
         {
-          "milliseconds": 3568,
+          "milliseconds": 6891,
           "pipelines": {
             "draw": 78.0,
             "specialization": 112.0,
@@ -161,7 +161,7 @@
           "preset": 1
         },
         {
-          "milliseconds": 5704,
+          "milliseconds": 10758,
           "pipelines": {
             "draw": 86.0,
             "specialization": 195.0,

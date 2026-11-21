@@ -1,0 +1,512 @@
+{
+  "build": 118,
+  "patterns": {
+    "object_db": "ObjectDB instances leaked|Leaked instance:",
+    "resource_in_use": "\\bresources? (?:still )?in use\\b",
+    "rid_diagnostic": "\\b(?:RID allocations? .* leaked|RIDs? remain|leaked RID)\\b",
+    "static_name": "Orphan StringName: servers\\b",
+    "vulkan_before_device_release": "Destroyed VkPhysicalDevice .* GPU memory still allocated"
+  },
+  "files": {
+    "performance-startup/startup-1.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 12 MB of GPU memory still allocated."
+      ],
+      "static_name": [
+        "Orphan StringName: servers (static: 1, total: 2)"
+      ]
+    },
+    "performance-startup/startup-2.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 12 MB of GPU memory still allocated."
+      ],
+      "static_name": [
+        "Orphan StringName: servers (static: 1, total: 2)"
+      ]
+    },
+    "performance-startup/startup-3.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 12 MB of GPU memory still allocated."
+      ],
+      "static_name": [
+        "Orphan StringName: servers (static: 1, total: 2)"
+      ]
+    },
+    "release-stress-high/cold-10.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 13 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-high/cold-1.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 13 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-high/cold-11.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 13 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-high/cold-12.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 13 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-high/cold-13.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 13 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-high/cold-14.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 13 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-high/cold-15.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 13 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-high/cold-16.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 13 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-high/cold-17.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 13 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-high/cold-2.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 13 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-high/cold-3.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 13 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-high/cold-4.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 13 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-high/cold-5.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 13 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-high/cold-6.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 13 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-high/cold-7.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 13 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-high/cold-8.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 13 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-high/cold-9.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 13 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-high/warm-1.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 13 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-high/warm-10.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 13 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-high/warm-11.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 13 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-high/warm-12.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 13 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-high/warm-13.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 13 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-high/warm-14.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 13 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-high/warm-15.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 13 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-high/warm-16.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 13 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-high/warm-17.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 13 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-high/warm-2.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 13 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-high/warm-3.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 13 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-high/warm-4.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 13 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-high/warm-5.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 13 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-high/warm-6.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 13 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-high/warm-7.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 13 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-high/warm-8.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 13 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-high/warm-9.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 13 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-high/warm-seed-matrix.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 20 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-low-medium/cold-1.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 12 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-low-medium/cold-10.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 12 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-low-medium/cold-11.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 12 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-low-medium/cold-12.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 12 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-low-medium/cold-13.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 12 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-low-medium/cold-2.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 12 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-low-medium/cold-3.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 12 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-low-medium/cold-4.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 12 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-low-medium/cold-5.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 12 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-low-medium/cold-6.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 12 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-low-medium/cold-7.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 12 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-low-medium/cold-8.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 12 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-low-medium/cold-9.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 12 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-low-medium/warm-1.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 12 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-low-medium/warm-10.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 12 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-low-medium/warm-11.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 12 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-low-medium/warm-12.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 12 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-low-medium/warm-13.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 12 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-low-medium/warm-2.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 12 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-low-medium/warm-3.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 12 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-low-medium/warm-4.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 12 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-low-medium/warm-5.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 12 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-low-medium/warm-6.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 12 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-low-medium/warm-7.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 12 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-low-medium/warm-8.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 12 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-low-medium/warm-9.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 12 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-low-medium/warm-seed-matrix.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 20 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-mixed/cold-10.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 12 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-mixed/cold-1.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 12 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-mixed/cold-2.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 12 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-mixed/cold-3.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 13 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-mixed/cold-4.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 12 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-mixed/cold-5.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 12 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-mixed/cold-6.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 13 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-mixed/cold-7.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 12 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-mixed/cold-8.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 12 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-mixed/cold-9.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 13 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-mixed/cycles-1.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 46 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-mixed/cycles-2.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 46 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-mixed/cycles-3.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 46 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-mixed/exit-preparing-1.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 12 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-mixed/exit-preparing-2.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 12 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-mixed/exit-preparing-3.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 12 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-mixed/station-entries-1.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 20 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-mixed/station-entries-2.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 20 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-mixed/station-entries-3.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 20 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-mixed/warm-1.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 12 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-mixed/warm-10.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 12 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-mixed/warm-2.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 12 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-mixed/warm-3.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 13 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-mixed/warm-4.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 12 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-mixed/warm-5.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 12 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-mixed/warm-6.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 13 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-mixed/warm-7.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 12 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-mixed/warm-8.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 12 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-mixed/warm-9.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 13 MB of GPU memory still allocated."
+      ]
+    },
+    "release-stress-mixed/warm-seed-matrix.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 20 MB of GPU memory still allocated."
+      ]
+    },
+    "renderer-stress/renderer-stress.log": {
+      "vulkan_before_device_release": [
+        "[mvk-info] Destroyed VkPhysicalDevice for GPU Apple Paravirtual device with 58 MB of GPU memory still allocated."
+      ],
+      "static_name": [
+        "Orphan StringName: servers (static: 1, total: 2)"
+      ]
+    }
+  },
+  "counts": {
+    "object_db": 0,
+    "resource_in_use": 0,
+    "rid_diagnostic": 0,
+    "static_name": 4,
+    "vulkan_before_device_release": 96
+  },
+  "notes": "Files are original diagnostic logs from the published release checks. A process that crashed or timed out cannot establish clean shutdown. The static engine name and pre-release driver memory message are reported separately."
+}

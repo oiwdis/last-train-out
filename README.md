@@ -2,7 +2,7 @@
 
 The Harlow Escape now has a continuous railway embankment, repaired Harlow track and warehouse joints, a freight yard at Ashford, an evacuated settlement at Blackwater and layered advancing fog. The journey runs for 4.26 km with the original survival rules. The development work is stacked on PR #6. Both PRs are open drafts. [Milestone 4 report](docs/MILESTONE4_ENVIRONMENT_OVERHAUL.md) · [Environment gallery](docs/validation/milestone4/GALLERY.md) · [Draft PR #7](https://github.com/oiwdis/last-train-out/pull/7)
 
-[Download Milestone 4 development build 111](https://github.com/oiwdis/last-train-out/actions/runs/44859769512/artifacts/14689604118) · [ZIP checksum](docs/validation/milestone4/development-build.json) · [Native Metal frame times](docs/validation/milestone4/FRAME_TIMES.md) · [Continuous journey](docs/recording/milestone4-native-metal.mp4) · [Fullscreen 2020 M1 procedure](docs/MILESTONE4_ENVIRONMENT_OVERHAUL.md#physical-2020-m1-procedure)
+[Download Milestone 4 development build 118](https://github.com/oiwdis/last-train-out/actions/runs/44877553078/artifacts/14698763058) · [ZIP checksum](docs/validation/milestone4/development-build.json) · [Build 111 for the owner’s Medium comparison](https://github.com/oiwdis/last-train-out/actions/runs/44859769512/artifacts/14689604118) · [Native Metal frame times](docs/validation/milestone4/FRAME_TIMES.md) · [Continuous journey](docs/recording/milestone4-native-metal.mp4) · [Fullscreen 2020 M1 procedure](docs/MILESTONE4_ENVIRONMENT_OVERHAUL.md#physical-2020-m1-procedure)
 
 ## Milestone 3.5.4 integration renderer history
 
@@ -86,8 +86,8 @@ Godot runtime and all game data. You do not need Godot, Xcode or anything else t
 
 ### 1. Download the latest build
 
-1. Sign in to GitHub and open the [Milestone 4 development ZIP](https://github.com/oiwdis/last-train-out/actions/runs/44859769512/artifacts/14689604118).
-2. Verify the downloaded file with `shasum -a 256 LastTrainOut-macos-universal.zip` and compare the result with the [build 111 receipt](docs/validation/milestone4/development-build.json).
+1. Sign in to GitHub and open the [Milestone 4 development ZIP](https://github.com/oiwdis/last-train-out/actions/runs/44877553078/artifacts/14698763058).
+2. Verify the downloaded file with `shasum -a 256 LastTrainOut-macos-universal.zip` and compare the result with the [build 118 receipt](docs/validation/milestone4/development-build.json).
 
 The run page also shows the build number, the commit it was built from and the ZIP's SHA-256.
 Development builds are kept for 30 days.
@@ -132,7 +132,7 @@ the command above; a mismatched download should be downloaded again. Signed buil
 2. Launch the new app with the Metal command above for an Apple Silicon playtest. If macOS asks for approval, use the first-launch instructions above.
 3. Press **J** and choose **Continue** to restore your checkpoint.
 
-The manual save lives outside the app at `~/Library/Application Support/Godot/app_userdata/Last Train Out/harlow_escape_v1.json`. Replacing the app preserves it. Builds 103 and 111 share this one slot. To keep a separate copy of your build 103 checkpoint, copy the JSON before saving again. A cross-build test restored a moving train, its rider and held cargo and verified that Continue preserved the file’s checksum. [Save compatibility results](docs/validation/milestone4/save-103-to-111.zip)
+The manual save lives outside the app at `~/Library/Application Support/Godot/app_userdata/Last Train Out/harlow_escape_v1.json`. Replacing the app preserves it. Builds 103, 111 and 118 share this one slot. To keep a separate copy of your build 103 checkpoint, copy the JSON before saving again. A cross-build test restored a moving train, its rider and held cargo and verified that Continue preserved the file’s checksum. [103 to 111 save test](docs/validation/milestone4/save-103-to-111.zip) · [103 to 118 save test](docs/validation/milestone4/save-103-to-118.zip)
 
 To check the installed build number, run the following command.
 

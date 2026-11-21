@@ -1,0 +1,133 @@
+release_run,game,sequence,pass,preset,prior_camera,archive,report,frames,first_ms,remaining_max_ms,render_bracket_ms,game_process_ms,physics_bracket_ms,render_setup_ms,preparation_ms,draw_since_ready,specializations_since_ready,draw_across_sample,specialization_across_sample
+111,reference,world timing,first,Low,initial,native-metal-environment,reference-first.json,60,1.931,4.853,1.33,0.057,0.033,0.018,220,0.0,0.0,0.0,0.0
+111,reference,world timing,first,Medium,Inside dangerous fog,native-metal-environment,reference-first.json,60,10.635,4.29,8.007,0.269,0.198,0.033,3563,8.0,15.0,0.0,0.0
+111,reference,world timing,first,High,Inside dangerous fog,native-metal-environment,reference-first.json,60,12.196,9.514,9.836,0.254,0.302,0.043,6638,0.0,14.0,0.0,0.0
+111,reference,world timing,repeat,Low,initial,native-metal-environment,reference-repeat.json,60,2.174,3.23,1.683,0.055,0.028,0.022,247,0.0,0.0,0.0,0.0
+111,reference,world timing,repeat,Medium,Inside dangerous fog,native-metal-environment,reference-repeat.json,60,4.484,5.082,2.742,0.308,0.33,0.043,3568,8.0,15.0,0.0,0.0
+111,reference,world timing,repeat,High,Inside dangerous fog,native-metal-environment,reference-repeat.json,60,288.897,10.85,287.152,0.248,0.262,0.031,5704,0.0,14.0,0.0,0.0
+111,reference,world capture,images,Low,initial,native-metal-environment,reference-images.json,24,1.979,2.881,1.265,0.079,0.039,0.028,249,0.0,0.0,0.0,0.0
+111,reference,world capture,images,Medium,Blackwater crossing lane,native-metal-environment,reference-images.json,24,1.757,4.592,1.183,0.174,0.046,0.037,3343,0.0,0.0,0.0,0.0
+111,reference,world capture,images,High,Blackwater crossing lane,native-metal-environment,reference-images.json,24,2.148,5.565,1.58,0.089,0.038,0.04,5411,0.0,0.0,0.0,0.0
+111,candidate,world timing,first,Low,initial,native-metal-environment,candidate-first.json,60,2.04,3.254,1.532,0.091,0.032,0.025,227,0.0,0.0,0.0,0.0
+111,candidate,world timing,first,Medium,Inside dangerous fog,native-metal-environment,candidate-first.json,60,7.103,8.024,4.442,0.313,0.212,0.044,4115,8.0,15.0,0.0,0.0
+111,candidate,world timing,first,High,Inside dangerous fog,native-metal-environment,candidate-first.json,60,97.207,11.987,95.375,0.265,0.263,0.038,6258,0.0,14.0,0.0,0.0
+111,candidate,world timing,repeat,Low,initial,native-metal-environment,candidate-repeat.json,60,1.951,2.912,1.44,0.073,0.032,0.02,221,0.0,0.0,0.0,0.0
+111,candidate,world timing,repeat,Medium,Inside dangerous fog,native-metal-environment,candidate-repeat.json,60,9.519,4.038,8.024,0.264,0.249,0.03,3447,8.0,15.0,0.0,0.0
+111,candidate,world timing,repeat,High,Inside dangerous fog,native-metal-environment,candidate-repeat.json,60,247.935,6.889,246.29,0.138,0.32,0.024,5807,0.0,14.0,0.0,0.0
+111,candidate,world capture,images,Low,initial,native-metal-environment,candidate-images.json,24,2.902,4.28,1.993,0.218,0.033,0.044,309,0.0,0.0,0.0,0.0
+111,candidate,world capture,images,Medium,Blackwater crossing lane,native-metal-environment,candidate-images.json,24,1.705,6.824,1.208,0.072,0.03,0.019,4019,0.0,0.0,0.0,0.0
+111,candidate,world capture,images,High,Blackwater crossing lane,native-metal-environment,candidate-images.json,24,2.232,12.578,1.829,0.086,0.041,0.021,6172,0.0,0.0,0.0,0.0
+111,candidate,standard matrix,low-medium,Low,initial,metal-stress-low-medium,warm-seed-matrix.json,24,2.829,5.548,2.123,0.215,0.101,0.054,294,0.0,0.0,0.0,0.0
+111,candidate,standard matrix,low-medium,Medium,Mission completion,metal-stress-low-medium,warm-seed-matrix.json,24,2.252,11.039,1.511,0.143,0.054,0.098,5034,0.0,0.0,0.0,0.0
+111,candidate,standard matrix,low-medium,High,Mission completion,metal-stress-low-medium,warm-seed-matrix.json,24,3.803,31.928,2.977,0.213,0.053,0.084,8804,0.0,0.0,0.0,0.0
+111,candidate,standard matrix,high,Low,initial,metal-stress-high,warm-seed-matrix.json,24,4.374,7.192,3.251,0.303,0.057,0.049,387,0.0,0.0,0.0,0.0
+111,candidate,standard matrix,high,Medium,Mission completion,metal-stress-high,warm-seed-matrix.json,24,5.995,29.638,4.978,0.188,0.212,0.056,7301,0.0,0.0,0.0,0.0
+111,candidate,standard matrix,high,High,Mission completion,metal-stress-high,warm-seed-matrix.json,24,3.844,37.022,2.994,0.204,0.074,0.046,10358,0.0,0.0,0.0,0.0
+111,candidate,standard matrix,mixed,Low,initial,metal-stress-mixed,warm-seed-matrix.json,24,4.101,10.04,3.245,0.423,0.049,0.102,445,0.0,0.0,0.0,0.0
+111,candidate,standard matrix,mixed,Medium,Mission completion,metal-stress-mixed,warm-seed-matrix.json,24,4.612,34.53,3.944,0.167,0.092,0.095,6973,0.0,0.0,0.0,0.0
+111,candidate,standard matrix,mixed,High,Mission completion,metal-stress-mixed,warm-seed-matrix.json,24,5.652,18.101,4.693,0.463,0.097,0.059,10554,0.0,0.0,0.0,0.0
+111,candidate,library matrix,immediate,Low,initial,metal-library-policy,immediate-matrix.json,60,6.901,15.999,5.205,0.513,0.278,0.06,569,0.0,0.0,0.0,0.0
+111,candidate,library matrix,immediate,Medium,Mission completion,metal-library-policy,immediate-matrix.json,60,8.342,20.19,7.546,0.219,0.08,0.068,7246,0.0,0.0,0.0,0.0
+111,candidate,library matrix,immediate,High,Mission completion,metal-library-policy,immediate-matrix.json,60,5.202,57.971,4.475,0.153,0.119,0.057,12004,0.0,0.0,0.0,0.0
+111,candidate,library matrix,lazy,Low,initial,metal-library-policy,lazy-matrix.json,60,4.68,19.549,3.514,0.335,0.075,0.099,410,0.0,0.0,0.0,0.0
+111,candidate,library matrix,lazy,Medium,Mission completion,metal-library-policy,lazy-matrix.json,60,6.693,31.523,6.277,0.129,0.041,0.192,7721,0.0,0.0,0.0,0.0
+111,candidate,library matrix,lazy,High,Mission completion,metal-library-policy,lazy-matrix.json,60,8.042,26.25,6.901,0.246,0.191,0.057,11830,0.0,0.0,0.0,0.0
+115,reference,world timing,first,Low,initial,native-metal-environment,reference-first.json,60,3.872,25.257,3.023,0.263,0.123,0.073,413,0.0,0.0,0.0,0.0
+115,reference,world timing,first,Medium,Inside dangerous fog,native-metal-environment,reference-first.json,60,19.284,8.577,18.104,0.295,0.135,0.036,4560,8.0,15.0,0.0,0.0
+115,reference,world timing,first,High,Inside dangerous fog,native-metal-environment,reference-first.json,60,764.615,15.296,763.676,0.327,0.352,0.072,7479,0.0,14.0,0.0,0.0
+115,reference,world timing,repeat,Low,initial,native-metal-environment,reference-repeat.json,60,2.093,7.644,1.505,0.266,0.047,0.049,328,0.0,0.0,0.0,0.0
+115,reference,world timing,repeat,Medium,Inside dangerous fog,native-metal-environment,reference-repeat.json,60,50.422,38.119,43.776,1.592,1.697,0.134,4528,8.0,15.0,0.0,0.0
+115,reference,world timing,repeat,High,Inside dangerous fog,native-metal-environment,reference-repeat.json,60,10.485,13.154,7.688,0.48,0.594,0.042,7458,0.0,14.0,0.0,0.0
+115,reference,world capture,images,Low,initial,native-metal-environment,reference-images.json,24,3.01,6.286,2.308,0.253,0.109,0.036,345,0.0,0.0,0.0,0.0
+115,reference,world capture,images,Medium,Blackwater crossing lane,native-metal-environment,reference-images.json,24,2.647,7.733,1.893,0.14,0.134,0.033,4894,0.0,0.0,0.0,0.0
+115,reference,world capture,images,High,Blackwater crossing lane,native-metal-environment,reference-images.json,24,4.702,13.736,3.931,0.314,0.068,0.034,7486,0.0,0.0,0.0,0.0
+115,candidate,world timing,first,Low,initial,native-metal-environment,candidate-first.json,60,2.151,5.664,1.661,0.188,0.039,0.042,367,0.0,0.0,0.0,0.0
+115,candidate,world timing,first,Medium,Inside dangerous fog,native-metal-environment,candidate-first.json,60,6.192,11.564,4.843,0.262,0.19,0.036,4278,8.0,15.0,0.0,0.0
+115,candidate,world timing,first,High,Inside dangerous fog,native-metal-environment,candidate-first.json,60,602.047,22.786,600.592,0.557,0.321,0.037,6791,0.0,14.0,0.0,0.0
+115,candidate,world timing,repeat,Low,initial,native-metal-environment,candidate-repeat.json,60,2.627,16.004,1.951,0.182,0.129,0.042,527,0.0,0.0,0.0,0.0
+115,candidate,world timing,repeat,Medium,Inside dangerous fog,native-metal-environment,candidate-repeat.json,60,665.573,12.658,664.838,0.413,0.707,0.084,5532,8.0,15.0,0.0,0.0
+115,candidate,world timing,repeat,High,Inside dangerous fog,native-metal-environment,candidate-repeat.json,60,439.258,16.081,438.144,0.259,0.135,0.042,8008,0.0,14.0,0.0,0.0
+115,candidate,world capture,images,Low,initial,native-metal-environment,candidate-images.json,24,4.018,6.916,3.318,0.318,0.067,0.039,397,0.0,0.0,0.0,0.0
+115,candidate,world capture,images,Medium,Blackwater crossing lane,native-metal-environment,candidate-images.json,24,2.908,14.922,2.2,0.162,0.057,0.037,4919,0.0,0.0,0.0,0.0
+115,candidate,world capture,images,High,Blackwater crossing lane,native-metal-environment,candidate-images.json,24,4.972,20.138,4.058,0.168,0.047,0.135,8302,0.0,0.0,0.0,0.0
+115,candidate,standard matrix,low-medium,Low,initial,metal-stress-low-medium,warm-seed-matrix.json,24,2.25,4.612,1.801,0.119,0.076,0.048,296,0.0,0.0,0.0,0.0
+115,candidate,standard matrix,low-medium,Medium,Mission completion,metal-stress-low-medium,warm-seed-matrix.json,24,2.739,15.425,1.466,0.487,0.109,0.052,6100,0.0,0.0,0.0,0.0
+115,candidate,standard matrix,low-medium,High,Mission completion,metal-stress-low-medium,warm-seed-matrix.json,24,3.888,43.589,2.865,0.333,0.104,0.097,9674,0.0,0.0,0.0,0.0
+115,candidate,standard matrix,high,Low,initial,metal-stress-high,warm-seed-matrix.json,24,4.322,9.217,3.409,0.243,0.053,0.051,379,0.0,0.0,0.0,0.0
+115,candidate,standard matrix,high,Medium,Mission completion,metal-stress-high,warm-seed-matrix.json,24,6.692,40.467,5.237,0.461,0.054,0.186,7581,0.0,0.0,0.0,0.0
+115,candidate,standard matrix,high,High,Mission completion,metal-stress-high,warm-seed-matrix.json,24,5.388,43.276,4.248,0.361,0.136,0.062,15000,0.0,0.0,0.0,0.0
+115,candidate,standard matrix,mixed,Low,initial,metal-stress-mixed,warm-seed-matrix.json,24,2.986,6.603,2.535,0.136,0.05,0.041,289,0.0,0.0,0.0,0.0
+115,candidate,standard matrix,mixed,Medium,Mission completion,metal-stress-mixed,warm-seed-matrix.json,24,2.94,14.478,1.462,0.636,0.099,0.048,5656,0.0,0.0,0.0,0.0
+115,candidate,standard matrix,mixed,High,Mission completion,metal-stress-mixed,warm-seed-matrix.json,24,3.623,13.324,2.829,0.173,0.124,0.067,9328,0.0,0.0,0.0,0.0
+115,candidate,library matrix,immediate,Low,initial,metal-library-policy,immediate-matrix.json,60,4.151,9.41,3.161,0.276,0.084,0.086,436,0.0,0.0,0.0,0.0
+115,candidate,library matrix,immediate,Medium,Mission completion,metal-library-policy,immediate-matrix.json,60,4.73,13.648,4.024,0.159,0.102,0.049,6117,0.0,0.0,0.0,0.0
+115,candidate,library matrix,immediate,High,Mission completion,metal-library-policy,immediate-matrix.json,60,4.011,11.446,3.351,0.239,0.133,0.085,9054,0.0,0.0,0.0,0.0
+115,candidate,library matrix,lazy,Low,initial,metal-library-policy,lazy-matrix.json,60,4.017,8.021,3.437,0.23,0.065,0.079,395,0.0,0.0,0.0,0.0
+115,candidate,library matrix,lazy,Medium,Mission completion,metal-library-policy,lazy-matrix.json,60,2.264,12.845,1.379,0.152,0.184,0.077,6158,0.0,0.0,0.0,0.0
+115,candidate,library matrix,lazy,High,Mission completion,metal-library-policy,lazy-matrix.json,60,4.542,14.835,3.82,0.287,0.044,0.042,10263,0.0,0.0,0.0,0.0
+117,reference,world timing,first,Low,initial,native-metal-environment,reference-first.json,60,3.278,6.975,2.881,0.123,0.045,0.041,442,0.0,0.0,0.0,0.0
+117,reference,world timing,first,Medium,Inside dangerous fog,native-metal-environment,reference-first.json,60,10.834,16.787,7.914,0.477,0.407,0.051,5373,8.0,15.0,0.0,0.0
+117,reference,world timing,first,High,Inside dangerous fog,native-metal-environment,reference-first.json,60,696.564,45.869,694.416,0.774,0.322,0.08,9943,0.0,14.0,0.0,0.0
+117,reference,world timing,repeat,Low,initial,native-metal-environment,reference-repeat.json,60,5.505,11.099,4.877,0.142,0.042,0.057,534,0.0,0.0,0.0,0.0
+117,reference,world timing,repeat,Medium,Inside dangerous fog,native-metal-environment,reference-repeat.json,60,676.884,38.419,674.393,0.769,1.076,0.074,7224,8.0,15.0,0.0,0.0
+117,reference,world timing,repeat,High,Inside dangerous fog,native-metal-environment,reference-repeat.json,60,694.384,19.24,690.782,0.456,0.207,0.184,9511,0.0,14.0,0.0,0.0
+117,reference,world capture,images,Low,initial,native-metal-environment,reference-images.json,24,6.733,9.327,6.062,0.16,0.117,0.052,606,0.0,0.0,0.0,0.0
+117,reference,world capture,images,Medium,Blackwater crossing lane,native-metal-environment,reference-images.json,24,3.738,9.468,2.586,0.439,0.111,0.05,7622,0.0,0.0,0.0,0.0
+117,reference,world capture,images,High,Blackwater crossing lane,native-metal-environment,reference-images.json,24,3.975,16.616,3.247,0.124,0.084,0.045,8861,0.0,0.0,0.0,0.0
+117,candidate,world timing,first,Low,initial,native-metal-environment,candidate-first.json,60,3.105,7.916,2.393,0.243,0.13,0.097,284,0.0,0.0,0.0,0.0
+117,candidate,world timing,first,Medium,Inside dangerous fog,native-metal-environment,candidate-first.json,60,12.772,8.356,11.337,0.328,0.138,0.037,4727,8.0,15.0,0.0,0.0
+117,candidate,world timing,first,High,Inside dangerous fog,native-metal-environment,candidate-first.json,60,957.33,28.116,954.434,0.53,0.605,0.05,8980,0.0,14.0,0.0,0.0
+117,candidate,world timing,repeat,Low,initial,native-metal-environment,candidate-repeat.json,60,3.388,6.166,2.62,0.226,0.05,0.128,295,0.0,0.0,0.0,0.0
+117,candidate,world timing,repeat,Medium,Inside dangerous fog,native-metal-environment,candidate-repeat.json,60,899.672,14.934,899.147,0.236,0.485,0.172,5971,8.0,15.0,0.0,0.0
+117,candidate,world timing,repeat,High,Inside dangerous fog,native-metal-environment,candidate-repeat.json,60,651.892,41.504,645.55,1.655,1.563,0.114,10007,0.0,14.0,0.0,0.0
+117,candidate,world capture,images,Low,initial,native-metal-environment,candidate-images.json,24,4.357,7.018,3.065,0.337,0.068,0.087,388,0.0,0.0,0.0,0.0
+117,candidate,world capture,images,Medium,Blackwater crossing lane,native-metal-environment,candidate-images.json,24,4.334,12.371,3.07,0.58,0.057,0.044,6274,0.0,0.0,0.0,0.0
+117,candidate,world capture,images,High,Blackwater crossing lane,native-metal-environment,candidate-images.json,24,2.912,14.712,2.265,0.243,0.072,0.038,8241,0.0,0.0,0.0,0.0
+117,candidate,standard matrix,low-medium,Low,initial,metal-stress-low-medium,warm-seed-matrix.json,24,1.94,4.117,1.523,0.061,0.026,0.021,225,0.0,0.0,0.0,0.0
+117,candidate,standard matrix,low-medium,Medium,Mission completion,metal-stress-low-medium,warm-seed-matrix.json,24,2.112,5.642,1.635,0.058,0.114,0.019,4441,0.0,0.0,0.0,0.0
+117,candidate,standard matrix,low-medium,High,Mission completion,metal-stress-low-medium,warm-seed-matrix.json,24,2.002,9.033,1.486,0.127,0.05,0.047,7974,0.0,0.0,0.0,0.0
+117,candidate,standard matrix,high,Low,initial,metal-stress-high,warm-seed-matrix.json,24,1.907,6.331,1.451,0.131,0.048,0.049,360,0.0,0.0,0.0,0.0
+117,candidate,standard matrix,high,Medium,Mission completion,metal-stress-high,warm-seed-matrix.json,24,2.451,11.484,1.724,0.263,0.095,0.096,5721,0.0,0.0,0.0,0.0
+117,candidate,standard matrix,high,High,Mission completion,metal-stress-high,warm-seed-matrix.json,24,2.755,17.505,1.73,0.314,0.044,0.049,9070,0.0,0.0,0.0,0.0
+117,candidate,standard matrix,mixed,Low,initial,metal-stress-mixed,warm-seed-matrix.json,24,2.253,6.675,1.872,0.123,0.039,0.061,318,0.0,0.0,0.0,0.0
+117,candidate,standard matrix,mixed,Medium,Mission completion,metal-stress-mixed,warm-seed-matrix.json,24,2.56,12.171,2.008,0.237,0.05,0.077,5224,0.0,0.0,0.0,0.0
+117,candidate,standard matrix,mixed,High,Mission completion,metal-stress-mixed,warm-seed-matrix.json,24,2.882,16.749,2.191,0.175,0.051,0.058,8732,0.0,0.0,0.0,0.0
+117,candidate,library matrix,immediate,Low,initial,metal-library-policy,immediate-matrix.json,60,2.245,3.408,1.839,0.074,0.028,0.033,233,0.0,0.0,0.0,0.0
+117,candidate,library matrix,immediate,Medium,Mission completion,metal-library-policy,immediate-matrix.json,60,1.845,4.47,1.303,0.08,0.027,0.02,4443,0.0,0.0,0.0,0.0
+117,candidate,library matrix,immediate,High,Mission completion,metal-library-policy,immediate-matrix.json,60,2.274,8.245,1.775,0.133,0.032,0.021,7635,0.0,0.0,0.0,0.0
+117,candidate,library matrix,lazy,Low,initial,metal-library-policy,lazy-matrix.json,60,1.935,3.32,1.485,0.096,0.027,0.027,217,0.0,0.0,0.0,0.0
+117,candidate,library matrix,lazy,Medium,Mission completion,metal-library-policy,lazy-matrix.json,60,1.869,5.337,1.529,0.066,0.027,0.017,4328,0.0,0.0,0.0,0.0
+117,candidate,library matrix,lazy,High,Mission completion,metal-library-policy,lazy-matrix.json,60,2.19,7.284,1.764,0.065,0.041,0.032,7502,0.0,0.0,0.0,0.0
+118,reference,world timing,first,Low,initial,native-metal-environment,reference-first.json,60,12.364,12.747,11.643,0.264,0.035,0.043,414,0.0,0.0,0.0,0.0
+118,reference,world timing,first,Medium,Inside dangerous fog,native-metal-environment,reference-first.json,60,691.29,32.731,689.663,0.352,1.138,0.061,6858,8.0,15.0,0.0,0.0
+118,reference,world timing,first,High,Inside dangerous fog,native-metal-environment,reference-first.json,60,1183.451,26.411,1181.039,0.296,0.734,0.044,10864,0.0,14.0,0.0,0.0
+118,reference,world timing,repeat,Low,initial,native-metal-environment,reference-repeat.json,60,5.669,19.375,4.653,0.263,0.183,0.04,500,0.0,0.0,0.0,0.0
+118,reference,world timing,repeat,Medium,Inside dangerous fog,native-metal-environment,reference-repeat.json,60,18.344,16.221,15.778,0.824,0.425,0.081,6891,8.0,15.0,0.0,0.0
+118,reference,world timing,repeat,High,Inside dangerous fog,native-metal-environment,reference-repeat.json,60,819.012,46.195,814.924,1.521,0.552,0.2,10758,0.0,14.0,0.0,0.0
+118,reference,world capture,images,Low,initial,native-metal-environment,reference-images.json,24,26.181,15.225,25.819,0.15,0.205,0.041,449,0.0,0.0,0.0,0.0
+118,reference,world capture,images,Medium,Blackwater crossing lane,native-metal-environment,reference-images.json,24,4.827,18.771,3.465,0.648,0.104,0.057,6603,0.0,0.0,0.0,0.0
+118,reference,world capture,images,High,Blackwater crossing lane,native-metal-environment,reference-images.json,24,4.912,24.801,3.289,0.539,0.103,0.107,10372,0.0,0.0,0.0,0.0
+118,candidate,world timing,first,Low,initial,native-metal-environment,candidate-first.json,60,10.413,15.882,9.899,0.203,0.048,0.045,526,0.0,0.0,0.0,0.0
+118,candidate,world timing,first,Medium,Inside dangerous fog,native-metal-environment,candidate-first.json,60,833.386,34.055,831.374,0.481,1.537,0.07,6412,8.0,15.0,0.0,0.0
+118,candidate,world timing,first,High,Inside dangerous fog,native-metal-environment,candidate-first.json,60,278.647,17.806,276.042,0.322,0.174,0.044,11455,0.0,14.0,0.0,0.0
+118,candidate,world timing,repeat,Low,initial,native-metal-environment,candidate-repeat.json,60,15.924,31.551,15.5,0.125,0.05,0.039,513,0.0,0.0,0.0,0.0
+118,candidate,world timing,repeat,Medium,Inside dangerous fog,native-metal-environment,candidate-repeat.json,60,802.677,31.701,800.077,1.985,1.842,0.604,6369,8.0,15.0,0.0,0.0
+118,candidate,world timing,repeat,High,Inside dangerous fog,native-metal-environment,candidate-repeat.json,60,28.035,49.681,24.466,0.971,0.446,0.135,12028,0.0,14.0,0.0,0.0
+118,candidate,world capture,images,Low,initial,native-metal-environment,candidate-images.json,24,7.647,9.122,7.154,0.135,0.043,0.075,453,0.0,0.0,0.0,0.0
+118,candidate,world capture,images,Medium,Blackwater crossing lane,native-metal-environment,candidate-images.json,24,8.191,14.205,7.536,0.319,0.047,0.041,7302,0.0,0.0,0.0,0.0
+118,candidate,world capture,images,High,Blackwater crossing lane,native-metal-environment,candidate-images.json,24,6.017,58.883,4.972,0.215,0.152,0.076,10357,0.0,0.0,0.0,0.0
+118,candidate,standard matrix,low-medium,Low,initial,metal-stress-low-medium,warm-seed-matrix.json,24,4.508,8.314,3.322,0.298,0.103,0.095,373,0.0,0.0,0.0,0.0
+118,candidate,standard matrix,low-medium,Medium,Mission completion,metal-stress-low-medium,warm-seed-matrix.json,24,3.369,15.943,2.371,0.322,0.275,0.081,7237,0.0,0.0,0.0,0.0
+118,candidate,standard matrix,low-medium,High,Mission completion,metal-stress-low-medium,warm-seed-matrix.json,24,5.499,36.345,4.137,0.369,0.139,0.133,10865,0.0,0.0,0.0,0.0
+118,candidate,standard matrix,high,Low,initial,metal-stress-high,warm-seed-matrix.json,24,2.657,7.282,1.648,0.228,0.217,0.051,328,0.0,0.0,0.0,0.0
+118,candidate,standard matrix,high,Medium,Mission completion,metal-stress-high,warm-seed-matrix.json,24,2.436,8.584,1.439,0.241,0.201,0.061,5664,0.0,0.0,0.0,0.0
+118,candidate,standard matrix,high,High,Mission completion,metal-stress-high,warm-seed-matrix.json,24,3.407,15.923,2.605,0.381,0.053,0.094,9512,0.0,0.0,0.0,0.0
+118,candidate,standard matrix,mixed,Low,initial,metal-stress-mixed,warm-seed-matrix.json,24,3.526,9.89,2.748,0.165,0.094,0.054,344,0.0,0.0,0.0,0.0
+118,candidate,standard matrix,mixed,Medium,Mission completion,metal-stress-mixed,warm-seed-matrix.json,24,3.803,29.43,2.63,0.373,0.086,0.072,6778,0.0,0.0,0.0,0.0
+118,candidate,standard matrix,mixed,High,Mission completion,metal-stress-mixed,warm-seed-matrix.json,24,6.722,37.798,5.619,0.222,0.115,0.12,11105,0.0,0.0,0.0,0.0
+118,candidate,library matrix,immediate,Low,initial,metal-library-policy,immediate-matrix.json,60,5.91,11.889,4.539,0.566,0.116,0.052,502,0.0,0.0,0.0,0.0
+118,candidate,library matrix,immediate,Medium,Mission completion,metal-library-policy,immediate-matrix.json,60,4.342,19.602,3.178,0.343,0.123,0.128,6709,0.0,0.0,0.0,0.0
+118,candidate,library matrix,immediate,High,Mission completion,metal-library-policy,immediate-matrix.json,60,5.52,33.518,4.405,0.272,0.145,0.065,11303,0.0,0.0,0.0,0.0
+118,candidate,library matrix,lazy,Low,initial,metal-library-policy,lazy-matrix.json,60,3.666,8.874,2.672,0.295,0.055,0.053,419,0.0,0.0,0.0,0.0
+118,candidate,library matrix,lazy,Medium,Mission completion,metal-library-policy,lazy-matrix.json,60,4.564,10.883,3.688,0.19,0.044,0.1,6183,0.0,0.0,0.0,0.0
+118,candidate,library matrix,lazy,High,Mission completion,metal-library-policy,lazy-matrix.json,60,6.148,47.413,5.025,0.454,0.073,0.048,10766,0.0,0.0,0.0,0.0

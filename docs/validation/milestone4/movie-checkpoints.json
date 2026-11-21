@@ -1,0 +1,164 @@
+{
+  "build": 118,
+  "movie_sha256": "3434365f7a136c49324bf00916772d8807ee78f64297a84b610f2bc77c7a8c28",
+  "frames_per_second": 12,
+  "source": "Photos from recorded-journey.zip compared to all decoded MP4 frames after 72 x 40 RGB area averaging. Frame indices start at zero. Near ties have absolute RGB error within 0.12 levels of the smallest mean absolute error. A held shot can have several equally close frames.",
+  "checkpoints": [
+    {
+      "checkpoint": "00_harlow_character",
+      "nearest_frame": 237,
+      "seconds": 19.75,
+      "rgb_mae_8bit": 0.993,
+      "near_tie_ranges": [
+        [
+          228,
+          237
+        ]
+      ]
+    },
+    {
+      "checkpoint": "00_harlow_architecture",
+      "nearest_frame": 255,
+      "seconds": 21.25,
+      "rgb_mae_8bit": 1.098,
+      "near_tie_ranges": [
+        [
+          238,
+          261
+        ]
+      ]
+    },
+    {
+      "checkpoint": "01_harlow_carry",
+      "nearest_frame": 371,
+      "seconds": 30.917,
+      "rgb_mae_8bit": 1.305,
+      "near_tie_ranges": [
+        [
+          370,
+          373
+        ]
+      ]
+    },
+    {
+      "checkpoint": "01_harlow_departure",
+      "nearest_frame": 96,
+      "seconds": 8.0,
+      "rgb_mae_8bit": 1.69,
+      "near_tie_ranges": [
+        [
+          96,
+          96
+        ]
+      ]
+    },
+    {
+      "checkpoint": "02_ashford_arrival",
+      "nearest_frame": 3287,
+      "seconds": 273.917,
+      "rgb_mae_8bit": 1.42,
+      "near_tie_ranges": [
+        [
+          3287,
+          3287
+        ]
+      ]
+    },
+    {
+      "checkpoint": "03_ashford_heavy_cargo",
+      "nearest_frame": 3611,
+      "seconds": 300.917,
+      "rgb_mae_8bit": 1.072,
+      "near_tie_ranges": [
+        [
+          3607,
+          3611
+        ]
+      ]
+    },
+    {
+      "checkpoint": "04_ashford_heavy_return",
+      "nearest_frame": 10888,
+      "seconds": 907.333,
+      "rgb_mae_8bit": 0.975,
+      "near_tie_ranges": [
+        [
+          10552,
+          10904
+        ]
+      ]
+    },
+    {
+      "checkpoint": "04_ashford_late_escape",
+      "nearest_frame": 11557,
+      "seconds": 963.083,
+      "rgb_mae_8bit": 1.978,
+      "near_tie_ranges": [
+        [
+          11557,
+          11557
+        ]
+      ]
+    },
+    {
+      "checkpoint": "05_blackwater_arrival",
+      "nearest_frame": 14132,
+      "seconds": 1177.667,
+      "rgb_mae_8bit": 1.29,
+      "near_tie_ranges": [
+        [
+          14132,
+          14132
+        ]
+      ]
+    },
+    {
+      "checkpoint": "06_blackwater_evacuation",
+      "nearest_frame": 14824,
+      "seconds": 1235.333,
+      "rgb_mae_8bit": 1.183,
+      "near_tie_ranges": [
+        [
+          14824,
+          14825
+        ]
+      ]
+    },
+    {
+      "checkpoint": "06_blackwater_saved",
+      "nearest_frame": 15545,
+      "seconds": 1295.417,
+      "rgb_mae_8bit": 1.461,
+      "near_tie_ranges": [
+        [
+          15543,
+          15546
+        ]
+      ]
+    },
+    {
+      "checkpoint": "06_blackwater_resumed",
+      "nearest_frame": 15600,
+      "seconds": 1300.0,
+      "rgb_mae_8bit": 1.928,
+      "near_tie_ranges": [
+        [
+          15600,
+          15600
+        ]
+      ]
+    },
+    {
+      "checkpoint": "07_results",
+      "nearest_frame": 16885,
+      "seconds": 1407.083,
+      "rgb_mae_8bit": 1.069,
+      "near_tie_ranges": [
+        [
+          16873,
+          16925
+        ]
+      ]
+    }
+  ]
+}

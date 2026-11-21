@@ -34,7 +34,7 @@
             "start_time": "0.000000",
             "duration_ts": 17336320,
             "duration": "1410.833333",
-            "bit_rate": "179989",
+            "bit_rate": "178870",
             "bits_per_raw_sample": "8",
             "nb_frames": "16930",
             "extradata_size": 51,
@@ -88,7 +88,7 @@
             "start_time": "0.000000",
             "duration_ts": 67720000,
             "duration": "1410.833333",
-            "bit_rate": "63548",
+            "bit_rate": "63555",
             "nb_frames": "66134",
             "extradata_size": 5,
             "disposition": {
@@ -120,7 +120,7 @@
         }
     ],
     "format": {
-        "filename": "/workspace/last-train-out-m35/docs/recording/milestone4-native-metal.mp4",
+        "filename": "/tmp/lto4/evidence118/milestone4-native-metal.mp4",
         "nb_streams": 2,
         "nb_programs": 0,
         "nb_stream_groups": 0,
@@ -128,8 +128,8 @@
         "format_long_name": "QuickTime / MOV",
         "start_time": "0.000000",
         "duration": "1410.833333",
-        "size": "43589864",
-        "bit_rate": "247172",
+        "size": "43393468",
+        "bit_rate": "246058",
         "probe_score": 100,
         "tags": {
             "major_brand": "isom",

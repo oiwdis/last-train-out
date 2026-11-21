@@ -1,17 +1,18 @@
 {
   "baseline": "684df38f0d9ba39a876d4788696855f0b64d5b29",
-  "candidate": "6c8a3248fa7d5390c3a71fdbfbba5674a1a3b952",
+  "candidate": "86007236d795713a9271dec69977ddde5e9441d5",
   "original": 305,
-  "candidate_total": 310,
+  "candidate_total": 312,
   "missing": [],
   "added": [
+    "test_environment_overhaul.gd/test_ashford_floor_slabs_clear_the_apron_and_their_doors_stay_walkable",
     "test_environment_overhaul.gd/test_atmospheric_banks_and_station_landmarks_are_in_the_playable_mission",
     "test_environment_overhaul.gd/test_bonded_stores_and_transfer_hall_have_closed_masonry_returns_and_open_doors",
     "test_environment_overhaul.gd/test_curve_mesh_collision_and_neighboring_chunks_share_the_same_terrain",
     "test_environment_overhaul.gd/test_harlow_running_head_web_sleepers_and_ballast_have_their_authored_materials",
-    "test_environment_overhaul.gd/test_line_materials_are_shared_and_distant_fog_uses_its_broad_density_sample"
+    "test_environment_overhaul.gd/test_line_materials_are_shared_and_distant_fog_uses_its_broad_density_sample",
+    "test_preparation_lifecycle.gd/test_initial_fog_camera_for_mac_renderers_and_presets"
   ],
   "original_missing_or_failing": [],
-  "local_game_source": "36436ff3856db0d2a30d46620ab8ad084ed99fef",
-  "comparison": "Compared the complete passing suite/test identifiers from the reference source and the build 111 Linux runner."
+  "comparison": "Compared all passing suite and test identifiers from the original source with both release runners."
 }

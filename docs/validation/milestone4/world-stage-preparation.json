@@ -1,29 +1,29 @@
 {
-  "candidate_build": 111,
+  "candidate_build": 118,
   "trace": {
     "before": {
-      "pid": 21536,
+      "pid": 24486,
       "unmatched_begins": 0,
       "signposts": {
         "shader_compile": {
           "complete_intervals": 30,
-          "wall_time_union_s": 5.1862,
-          "summed_thread_s": 7.3878
+          "wall_time_union_s": 6.0558,
+          "summed_thread_s": 8.5145
         },
         "compute_pipeline_create": {
           "complete_intervals": 184,
-          "wall_time_union_s": 5.6091,
-          "summed_thread_s": 5.6091
+          "wall_time_union_s": 7.7662,
+          "summed_thread_s": 7.7662
         },
         "render_pipeline_create": {
           "complete_intervals": 558,
-          "wall_time_union_s": 8.2622,
-          "summed_thread_s": 18.6082
+          "wall_time_union_s": 10.1838,
+          "summed_thread_s": 23.5711
         }
       }
     },
     "after": {
-      "pid": 24689,
+      "pid": 27815,
       "unmatched_begins": 0,
       "signposts": {
         "shader_compile": {
@@ -33,13 +33,13 @@
         },
         "compute_pipeline_create": {
           "complete_intervals": 184,
-          "wall_time_union_s": 4.0399,
-          "summed_thread_s": 4.0399
+          "wall_time_union_s": 4.2437,
+          "summed_thread_s": 4.2437
         },
         "render_pipeline_create": {
           "complete_intervals": 558,
-          "wall_time_union_s": 0.8479,
-          "summed_thread_s": 1.8289
+          "wall_time_union_s": 1.3128,
+          "summed_thread_s": 2.8351
         }
       }
     }
@@ -78,7 +78,7 @@
     ],
     "reused_observed_stages": [],
     "original_library_bytes": 11535708,
-    "trace_sha256": "f982a045feb8e7f45c52894b9f372509bc092d2e6b14aaa141c546110e2745d9",
+    "trace_sha256": "547b35f6c14cb0a391d2c26b77ab29f0973f324c18b5acc0e195121d5634a617",
     "total_libraries": 389,
     "additional_library_bytes": 1330988,
     "read_only_groups": 86,

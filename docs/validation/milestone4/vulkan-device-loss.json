@@ -1,6 +1,44 @@
 {
   "notes": "The phase marker is the last completed CPU trace. GPU execution is asynchronous. RSS measures the process, not the GPU memory budget.",
   "runs": {
+    "build-104-low-medium": {
+      "host": "macOS-26.7.2-arm64-arm-64bit-Mach-O",
+      "architecture": "arm64",
+      "signed_pack_sha256": "e4dfd14ccfa967a6d72fc46c5adcf809400449140118b650637c6370133e515d",
+      "complete": true,
+      "passed": true,
+      "series": "low-medium",
+      "counts": {
+        "lifecycle and preflight": {
+          "processes": 2,
+          "failed": 0,
+          "device_loss": 0
+        },
+        "cold medium": {
+          "processes": 7,
+          "failed": 0,
+          "device_loss": 0
+        },
+        "cold low": {
+          "processes": 6,
+          "failed": 0,
+          "device_loss": 0
+        },
+        "warm medium": {
+          "processes": 7,
+          "failed": 0,
+          "device_loss": 0
+        },
+        "warm low": {
+          "processes": 6,
+          "failed": 0,
+          "device_loss": 0
+        }
+      },
+      "successful_cold_high_peak_rss_mib": [],
+      "failed_attempts": [],
+      "crashes": []
+    },
     "build-104-high": {
       "host": "macOS-26.7.2-arm64-arm-64bit-Mach-O",
       "architecture": "arm64",
@@ -1244,6 +1282,396 @@
           ]
         }
       ]
+    },
+    "build-117-low-medium": {
+      "host": "macOS-26.7.2-arm64-arm-64bit-Mach-O",
+      "architecture": "arm64",
+      "signed_pack_sha256": "9a0c1163fce19c8469777e99d2619530692ff21e091d013774a6b87149a7feb0",
+      "complete": true,
+      "passed": true,
+      "series": "low-medium",
+      "counts": {
+        "lifecycle and preflight": {
+          "processes": 2,
+          "failed": 0,
+          "device_loss": 0
+        },
+        "cold medium": {
+          "processes": 7,
+          "failed": 0,
+          "device_loss": 0
+        },
+        "cold low": {
+          "processes": 6,
+          "failed": 0,
+          "device_loss": 0
+        },
+        "warm medium": {
+          "processes": 7,
+          "failed": 0,
+          "device_loss": 0
+        },
+        "warm low": {
+          "processes": 6,
+          "failed": 0,
+          "device_loss": 0
+        }
+      },
+      "successful_cold_high_peak_rss_mib": [],
+      "failed_attempts": [],
+      "crashes": []
+    },
+    "build-117-high": {
+      "host": "macOS-26.7.2-arm64-arm-64bit-Mach-O",
+      "architecture": "arm64",
+      "signed_pack_sha256": "9a0c1163fce19c8469777e99d2619530692ff21e091d013774a6b87149a7feb0",
+      "complete": true,
+      "passed": true,
+      "series": "high",
+      "counts": {
+        "lifecycle and preflight": {
+          "processes": 2,
+          "failed": 0,
+          "device_loss": 0
+        },
+        "cold high": {
+          "processes": 17,
+          "failed": 0,
+          "device_loss": 0
+        },
+        "warm high": {
+          "processes": 17,
+          "failed": 0,
+          "device_loss": 0
+        }
+      },
+      "successful_cold_high_peak_rss_mib": [
+        434.0,
+        497.8,
+        498.8,
+        499.6,
+        499.5,
+        464.2,
+        499.1,
+        498.6,
+        498.8,
+        498.1,
+        498.4,
+        498.5,
+        498.5,
+        498.7,
+        499.6,
+        498.9,
+        498.6
+      ],
+      "failed_attempts": [],
+      "crashes": []
+    },
+    "build-117-mixed": {
+      "host": "macOS-26.7.2-arm64-arm-64bit-Mach-O",
+      "architecture": "arm64",
+      "signed_pack_sha256": "9a0c1163fce19c8469777e99d2619530692ff21e091d013774a6b87149a7feb0",
+      "complete": true,
+      "passed": false,
+      "series": "mixed",
+      "counts": {
+        "lifecycle and preflight": {
+          "processes": 11,
+          "failed": 3,
+          "device_loss": 3
+        },
+        "cold low": {
+          "processes": 4,
+          "failed": 0,
+          "device_loss": 0
+        },
+        "cold medium": {
+          "processes": 3,
+          "failed": 0,
+          "device_loss": 0
+        },
+        "cold high": {
+          "processes": 3,
+          "failed": 0,
+          "device_loss": 0
+        },
+        "warm low": {
+          "processes": 4,
+          "failed": 0,
+          "device_loss": 0
+        },
+        "warm medium": {
+          "processes": 3,
+          "failed": 0,
+          "device_loss": 0
+        },
+        "warm high": {
+          "processes": 3,
+          "failed": 1,
+          "device_loss": 1
+        }
+      },
+      "successful_cold_high_peak_rss_mib": [
+        500.1,
+        500.7,
+        501.7
+      ],
+      "failed_attempts": [
+        {
+          "name": "warm-9",
+          "condition": "warm",
+          "requested_preset": "high",
+          "returncode": -5,
+          "device_loss": true,
+          "watchdog_killed": false,
+          "peak_rss_mib": 481.0,
+          "last_completed_phase": "warmup_fog_view_Platform",
+          "last_phase_texture_mib": 0.0,
+          "timeout_messages": [
+            "[mvk-error] VK_TIMEOUT: MTLCommandBuffer \"vkQueuePresentKHR MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+            "\tVK_TIMEOUT: MTLCommandBuffer \"vkQueuePresentKHR MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+            "[mvk-error] VK_TIMEOUT: MTLCommandBuffer \"vkQueueSubmit MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+            "\tVK_TIMEOUT: MTLCommandBuffer \"vkQueueSubmit MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+            "ERROR: Vulkan device was lost."
+          ]
+        },
+        {
+          "name": "cycles-1",
+          "condition": "lifecycle and preflight",
+          "requested_preset": "low",
+          "returncode": -5,
+          "device_loss": true,
+          "watchdog_killed": false,
+          "peak_rss_mib": 513.5,
+          "last_completed_phase": null,
+          "last_phase_texture_mib": 0.0,
+          "timeout_messages": [
+            "Loading cache for shader SceneForwardClusteredShaderRD, v[mvk-error] VK_TIMEOUT: MTLCommandBuffer \"vkQueueSubmit MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+            "\tVK_TIMEOUT: MTLCommandBuffer \"vkQueueSubmit MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+            "[mvk-error] VK_TIMEOUT: MTLCommandBuffer \"vkQueuePresentKHR MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+            "\tVK_TIMEOUT: MTLCommandBuffer \"vkQueuePresentKHR MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+            "ERROR: Vulkan device was lost."
+          ]
+        },
+        {
+          "name": "cycles-2",
+          "condition": "lifecycle and preflight",
+          "requested_preset": "low",
+          "returncode": -5,
+          "device_loss": true,
+          "watchdog_killed": false,
+          "peak_rss_mib": 513.3,
+          "last_completed_phase": null,
+          "last_phase_texture_mib": 0.0,
+          "timeout_messages": [
+            "Loading cache for shader SceneForwardClusteredShaderRD, v[mvk-error] VK_TIMEOUT: MTLCommandBuffer \"vkQueuePresentKHR MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+            "\tVK_TIMEOUT: MTLCommandBuffer \"vkQueuePresentKHR MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+            "[mvk-error] VK_TIMEOUT: MTLCommandBuffer \"vkQueueSubmit MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+            "\tVK_TIMEOUT: MTLCommandBuffer \"vkQueueSubmit MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+            "ERROR: Vulkan device was lost."
+          ]
+        },
+        {
+          "name": "cycles-3",
+          "condition": "lifecycle and preflight",
+          "requested_preset": "low",
+          "returncode": -5,
+          "device_loss": true,
+          "watchdog_killed": false,
+          "peak_rss_mib": 514.1,
+          "last_completed_phase": null,
+          "last_phase_texture_mib": 0.0,
+          "timeout_messages": [
+            "Loading cache for shader SceneForwardClusteredShaderRD, v[mvk-error] VK_TIMEOUT: MTLCommandBuffer \"vkQueuePresentKHR MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+            "\tVK_TIMEOUT: MTLCommandBuffer \"vkQueuePresentKHR MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+            "[mvk-error] VK_TIMEOUT: MTLCommandBuffer \"vkQueueSubmit MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+            "\tVK_TIMEOUT: MTLCommandBuffer \"vkQueueSubmit MTLCommandBuffer on Queue 0-0\" execution failed (code 2): Caused GPU Timeout Error (00000002:kIOGPUCommandBufferCallbackErrorTimeout)",
+            "ERROR: Vulkan device was lost."
+          ]
+        }
+      ],
+      "crashes": [
+        {
+          "file": "Last Train Out-2026-11-21-074817.ips",
+          "exception": "EXC_BREAKPOINT",
+          "signal": "SIGTRAP",
+          "initial_symbols": [
+            "RenderingDeviceDriverVulkan::command_queue_execute_and_present",
+            "RenderingDevice::execute_chained_cmds",
+            "RenderingDevice::_execute_frame",
+            "RenderingDevice::screen_prepare_for_drawing"
+          ]
+        },
+        {
+          "file": "Last Train Out-2026-11-21-074903.ips",
+          "exception": "EXC_BREAKPOINT",
+          "signal": "SIGTRAP",
+          "initial_symbols": [
+            "RenderingDeviceDriverVulkan::command_queue_execute_and_present",
+            "RenderingDevice::execute_chained_cmds",
+            "RenderingDevice::_execute_frame",
+            "RenderingDevice::swap_buffers"
+          ]
+        },
+        {
+          "file": "Last Train Out-2026-11-21-075110.ips",
+          "exception": "EXC_BREAKPOINT",
+          "signal": "SIGTRAP",
+          "initial_symbols": [
+            "RenderingDeviceDriverVulkan::command_queue_execute_and_present",
+            "RenderingDevice::execute_chained_cmds",
+            "RenderingDevice::_execute_frame",
+            "RenderingDevice::swap_buffers"
+          ]
+        },
+        {
+          "file": "Last Train Out-2026-11-21-075318.ips",
+          "exception": "EXC_BREAKPOINT",
+          "signal": "SIGTRAP",
+          "initial_symbols": [
+            "RenderingDeviceDriverVulkan::command_queue_execute_and_present",
+            "RenderingDevice::execute_chained_cmds",
+            "RenderingDevice::_execute_frame",
+            "RenderingDevice::swap_buffers"
+          ]
+        }
+      ]
+    },
+    "build-118-low-medium": {
+      "host": "macOS-26.7.2-arm64-arm-64bit-Mach-O",
+      "architecture": "arm64",
+      "signed_pack_sha256": "d5671598a01c6c8ae7dc8dcdb1a6a073d6e0083608e09854244a920211160d17",
+      "complete": true,
+      "passed": true,
+      "series": "low-medium",
+      "counts": {
+        "lifecycle and preflight": {
+          "processes": 2,
+          "failed": 0,
+          "device_loss": 0
+        },
+        "cold medium": {
+          "processes": 7,
+          "failed": 0,
+          "device_loss": 0
+        },
+        "cold low": {
+          "processes": 6,
+          "failed": 0,
+          "device_loss": 0
+        },
+        "warm medium": {
+          "processes": 7,
+          "failed": 0,
+          "device_loss": 0
+        },
+        "warm low": {
+          "processes": 6,
+          "failed": 0,
+          "device_loss": 0
+        }
+      },
+      "successful_cold_high_peak_rss_mib": [],
+      "failed_attempts": [],
+      "crashes": []
+    },
+    "build-118-high": {
+      "host": "macOS-26.7.2-arm64-arm-64bit-Mach-O",
+      "architecture": "arm64",
+      "signed_pack_sha256": "d5671598a01c6c8ae7dc8dcdb1a6a073d6e0083608e09854244a920211160d17",
+      "complete": true,
+      "passed": true,
+      "series": "high",
+      "counts": {
+        "lifecycle and preflight": {
+          "processes": 2,
+          "failed": 0,
+          "device_loss": 0
+        },
+        "cold high": {
+          "processes": 17,
+          "failed": 0,
+          "device_loss": 0
+        },
+        "warm high": {
+          "processes": 17,
+          "failed": 0,
+          "device_loss": 0
+        }
+      },
+      "successful_cold_high_peak_rss_mib": [
+        506.7,
+        501.4,
+        501.7,
+        501.0,
+        501.9,
+        501.7,
+        502.3,
+        500.9,
+        501.7,
+        500.8,
+        501.4,
+        501.5,
+        501.2,
+        501.4,
+        501.5,
+        502.0,
+        502.5
+      ],
+      "failed_attempts": [],
+      "crashes": []
+    },
+    "build-118-mixed": {
+      "host": "macOS-26.7.2-arm64-arm-64bit-Mach-O",
+      "architecture": "arm64",
+      "signed_pack_sha256": "d5671598a01c6c8ae7dc8dcdb1a6a073d6e0083608e09854244a920211160d17",
+      "complete": true,
+      "passed": true,
+      "series": "mixed",
+      "counts": {
+        "lifecycle and preflight": {
+          "processes": 11,
+          "failed": 0,
+          "device_loss": 0
+        },
+        "cold low": {
+          "processes": 4,
+          "failed": 0,
+          "device_loss": 0
+        },
+        "cold medium": {
+          "processes": 3,
+          "failed": 0,
+          "device_loss": 0
+        },
+        "cold high": {
+          "processes": 3,
+          "failed": 0,
+          "device_loss": 0
+        },
+        "warm low": {
+          "processes": 4,
+          "failed": 0,
+          "device_loss": 0
+        },
+        "warm medium": {
+          "processes": 3,
+          "failed": 0,
+          "device_loss": 0
+        },
+        "warm high": {
+          "processes": 3,
+          "failed": 0,
+          "device_loss": 0
+        }
+      },
+      "successful_cold_high_peak_rss_mib": [
+        502.5,
+        500.9,
+        502.5
+      ],
+      "failed_attempts": [],
+      "crashes": []
     },
     "high-vulkan-candidate-first/reference": {
       "host": "macOS-26.7.2-arm64-arm-64bit-Mach-O",
