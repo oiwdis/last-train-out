@@ -5,6 +5,7 @@ on:
     paths:
       - .github/workflows/environment-review.yml
       - tools/macos/compare_environments.py
+      - tools/macos/diagnose_terrain.gd
       - scripts/diagnostics/integration_benchmark.gd
   workflow_call:
     inputs:
@@ -54,4 +55,34 @@ jobs:
         with:
           name: native-metal-environment
           path: ${{ runner.temp }}/world-review
+          retention-days: 30
+
+  investigate-ground:
+    name: Isolate the build 108 terrain defect on native Metal
+    if: github.event_name == 'pull_request' && !inputs.paired
+    runs-on: macos-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/download-artifact@v8
+        with:
+          name: LastTrainOut-macos-universal.zip
+          run-id: 44850871725
+          github-token: ${{ github.token }}
+          path: build108
+          skip-decompress: true
+      - name: Compare fixed views with individual material and viewport changes
+        run: |
+          archive=$(find build108 -type f -name '*.zip')
+          echo "e9b7573db2dd05a4109eb7c82bef304173c0ae8b1f598b707fc725dea3afd639  $archive" | shasum -a 256 -c -
+          ditto -x -k "$archive" original
+          app="$PWD/original/Last Train Out.app/Contents"
+          mkdir -p "$RUNNER_TEMP/ground"
+          "$app/MacOS/choose-renderer" metal --main-pack "$app/Resources/Last Train Out.pck" --resolution 960x540 --audio-driver Dummy --script "$PWD/tools/macos/diagnose_terrain.gd" -- --graphics=low --shots="$RUNNER_TEMP/ground" --out="$RUNNER_TEMP/ground/results.json" > "$RUNNER_TEMP/ground/probe.log" 2>&1
+          python3 -c 'import json, sys; assert len(json.load(open(sys.argv[1]))) == 26' "$RUNNER_TEMP/ground/results.json"
+      - if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: build108-terrain-material-controls
+          path: ${{ runner.temp }}/ground
           retention-days: 30
