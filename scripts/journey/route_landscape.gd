@@ -38,6 +38,24 @@ static func point(frame: Transform3D, progress: float, offset: float, route: Fog
 	p.y += height(progress,offset,yard_weight(route,progress,offset))
 	return p
 
+## Place rooted scenery on the same triangle as the rendered and physical hillside.
+## Wide field cells can differ by metres from a continuous height sample between vertices.
+static func ground_contact(route: FogRoute, along: float, lateral: float) -> Vector3:
+	var step := RouteTrack.STEP
+	var start := RouteTrack.FIRST_CHUNK + floori((along-RouteTrack.FIRST_CHUNK)/step)*step
+	var col := clampi(OFFSETS.bsearch(lateral)-1,0,OFFSETS.size()-2)
+	var left: float = OFFSETS[col]
+	var right: float = OFFSETS[col+1]
+	var u := (along-start)/step
+	var v := clampf((lateral-left)/(right-left),0.,1.)
+	var a := RouteTrack.frame(route,start)
+	var b := RouteTrack.frame(route,start+step)
+	var far_left := point(b,start+step,left,route)
+	var near_right := point(a,start,right,route)
+	if u+v <= 1.:
+		return point(a,start,left,route)*(1.-u-v)+far_left*u+near_right*v
+	return point(b,start+step,right,route)*(u+v-1.)+near_right*(1.-u)+far_left*(1.-v)
+
 static func build(frames: Array[Transform3D], start: int, step: int, route: FogRoute) -> ArrayMesh:
 	var vertices := PackedVector3Array()
 	var normals := PackedVector3Array()

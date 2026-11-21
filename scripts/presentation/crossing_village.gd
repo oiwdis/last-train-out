@@ -102,6 +102,16 @@ static func _cottage(art: JourneyStationArt, at: Vector3, size: Vector3, station
 	# Closed triangles beneath both roof slopes meet the outer wall at the eaves.
 	for side: float in [-1.,1.]:
 		_gable(d,at+Vector3(side*size.x*.5,size.y,0),size.z*.5,span*.40,side)
+	# The gable ends face the railway and the street on arrival. Wrap the sash
+	# and attic vents around those elevations, including the back of the row.
+	for side: float in [-1.,1.]:
+		var gable := at+Vector3(side*(size.x*.5+.16),0,0)
+		var yaw := side*PI*.5
+		for z: float in [-.24,.24]:
+			_window(d,gable+Vector3(0,1.8,size.z*z),1.08,1.36,yaw)
+		d.box(gable+Vector3.UP*(size.y+.45),Vector3(.60,.47,.08),GREEN,Vector3(0,yaw,0))
+		for i in 3:
+			d.box(gable+Vector3(side*.055,size.y+.30+i*.13,0),Vector3(.54,.045,.09),BOARD,Vector3(0,yaw,0))
 	for x: float in [-size.x*.3,size.x*.30]:
 		_window(d,face+Vector3(x,1.9,.0),1.54,1.55)
 	if new_shell:
@@ -122,13 +132,15 @@ static func _gable(d: DetailBuilder, center: Vector3, radius: float, rise: float
 		shape.add_vertex(p)
 	d.mesh(shape.commit(),center,Color("746658"))
 
-static func _window(d: DetailBuilder, at: Vector3, width: float, height: float) -> void:
-	d.box(at,Vector3(width,height,.075),Color("414f51"))
+static func _window(d: DetailBuilder, at: Vector3, width: float, height: float, yaw := 0.) -> void:
+	var face := Basis(Vector3.UP,yaw)
+	var rotation := Vector3(0,yaw,0)
+	d.box(at,Vector3(width,height,.075),Color("414f51"),rotation)
 	for side: float in [-1.,1.]:
-		d.box(at+Vector3(side*width*.5,0,.045),Vector3(.085,height+.12,.09),BOARD)
-		d.box(at+Vector3(0,side*height*.5,.045),Vector3(width+.15,.08,.09),BOARD)
-	d.box(at+Vector3(0,0,.055),Vector3(.054,height,.07),BOARD)
-	d.box(at+Vector3(0,.03,.055),Vector3(width,.06,.07),BOARD)
+		d.box(at+face*Vector3(side*width*.5,0,.045),Vector3(.085,height+.12,.09),BOARD,rotation)
+		d.box(at+face*Vector3(0,side*height*.5,.045),Vector3(width+.15,.08,.09),BOARD,rotation)
+	d.box(at+face*Vector3(0,0,.055),Vector3(.054,height,.07),BOARD,rotation)
+	d.box(at+face*Vector3(0,.03,.055),Vector3(width,.06,.07),BOARD,rotation)
 
 static func _van(art: JourneyStationArt, at: Vector3) -> void:
 	var d := DetailBuilder.new(art,"AbandonedDeliveryVan")

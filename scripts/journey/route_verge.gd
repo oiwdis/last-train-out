@@ -43,7 +43,7 @@ static func dress(chunk: Node3D, route: FogRoute, start: int) -> void:
 			var at := along+rng.randf_range(-9.,9.)
 			var lateral := side+rng.randf_range(-8.,8.)
 			if absf(lateral)<9. or RouteLandscape.yard_weight(route,at,lateral)>.02: continue
-			var ground := RouteLandscape.point(RouteTrack.frame(route,at),at,lateral,route)
+			var ground := RouteLandscape.ground_contact(route,at,lateral)
 			var variant := rng.randi_range(0,3)
 			var height := rng.randf_range(4.8,9.2) if variant<2 else rng.randf_range(1.6,3.8)
 			var basis := Basis(Vector3.UP,rng.randf_range(-PI,PI)).scaled(Vector3.ONE*height)
@@ -53,12 +53,13 @@ static func dress(chunk: Node3D, route: FogRoute, start: int) -> void:
 		poses.assign(groups[variant])
 		RouteTrack.instance_batch(chunk,"Copse%d" % variant,foliage_mesh(variant),poses,285. if variant<2 else 155.)
 	var steel := DetailBuilder.new(chunk,"LineFurniture")
+	var wires := DetailBuilder.new(chunk,"TelegraphWires")
 	for at in range(start+12,start+RouteTrack.CHUNK,60):
 		var frame := RouteTrack.frame(route,at)
-		var base := RouteLandscape.point(frame,at,-10.8,route)
+		var base := RouteLandscape.ground_contact(route,at,-10.8)
 		var next_at := at+60
 		var next_frame := RouteTrack.frame(route,next_at)
-		var other := RouteLandscape.point(next_frame,next_at,-10.8,route)
+		var other := RouteLandscape.ground_contact(route,next_at,-10.8)
 		if RouteLandscape.yard_weight(route,at,-10.8)>.1: continue
 		steel.beam(base,base+Vector3.UP*6.6,.17,Color("51483d"))
 		steel.beam(base+Vector3.UP*6.3-frame.basis.z*.9,base+Vector3.UP*6.3+frame.basis.z*.9,.11,DetailBuilder.INK)
@@ -67,17 +68,19 @@ static func dress(chunk: Node3D, route: FogRoute, start: int) -> void:
 				var a := base+Vector3.UP*6.42+frame.basis.z*wire
 				var b := other+Vector3.UP*6.42+next_frame.basis.z*wire
 				var sag := (a+b)*.5-Vector3.UP*.78
-				steel.beam(a,sag,.034,DetailBuilder.INK)
-				steel.beam(sag,b,.034,DetailBuilder.INK)
+				wires.beam(a,sag,.034,DetailBuilder.INK)
+				wires.beam(sag,b,.034,DetailBuilder.INK)
 	if start>=280 and posmod(start,480)==280:
 		var last := Vector3.ZERO
 		for n in 10:
 			var at := start+8+n*4
 			if RouteLandscape.yard_weight(route,at,8.)>.1: break
-			var post := RouteLandscape.point(RouteTrack.frame(route,at),at,8.,route)
+			var post := RouteLandscape.ground_contact(route,at,8.)
 			steel.beam(post,post+Vector3.UP*1.08,.10,DetailBuilder.RUST)
 			if n>0 and n!=6:
 				for level: float in [.39,.82]:
 					steel.beam(last+Vector3.UP*level,post+Vector3.UP*level,.05,DetailBuilder.STEEL)
 			last = post
-	steel.finish()
+	steel.finish(225.)
+	# Subpixel wires alias into detached dashes against the skyline.
+	wires.finish(105.)

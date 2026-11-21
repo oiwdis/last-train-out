@@ -45,7 +45,7 @@ def gallery(archive, out):
     groups = {
         'harlow': [('harlow_track', 'Harlow running line'), ('bonded_stores_exterior', 'Bonded Stores exterior'),
                    ('bonded_stores_interior', 'Bonded Stores interior')],
-        'line-and-settlements': [('curved_embankment', 'Curved approach at 850 m'), ('ashford_depot', 'Ashford freight yard'),
+        'line-and-settlements': [('curved_embankment', 'Curved approach at 2,020 m'), ('ashford_depot', 'Ashford freight yard'),
                                  ('blackwater_crossing', 'Blackwater station'), ('crossing_stores', 'Crossing Stores')],
         'weather': [('distant_fog', 'Distant bank'), ('near_advancing_fog', 'Approaching fog'),
                     ('inside_dangerous_fog', 'Inside dangerous fog')],
@@ -116,7 +116,9 @@ def main():
             player = load(run['version'] + '-player/' + run['name'] + '.json')
             startups.append(dict(version=run['version'], preset=run['preset'], cache=run['state'], passed=run['passed'],
                                  selector_to_play_ms=run['launcher_ready_ms'], first_worst_ms=run['first_worst_ms'],
-                                 loading_done_ms=player['load'].get('ready_ms'), cache_files_before=run['cache_before']['files'],
+                                 resource_load_ms=player['load']['resource_ms'],
+                                 worst_loading_frame_ms=player['load']['worst_loading_frame_ms'],
+                                 cache_files_before=run['cache_before']['files'],
                                  cache_bytes_after=run['cache_after']['bytes']))
         for version in ('reference','candidate'):
             data = load(version+'-images.json')

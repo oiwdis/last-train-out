@@ -33,6 +33,29 @@ static func build(art: JourneyStationArt) -> void:
 		for z: float in [35.6,39.0]:
 			bay.cylinder(Vector3(x,.46,z),.14,.92,FRAME)
 			bay.cylinder(Vector3(x,.65,z),.146,.19,PAINT)
+	# Two steel ventilator banks and downpipes articulate the goods shed's
+	# blank west end. The pipe cradle sits outside the run to the coal doorway.
+	for z: float in [19.7,26.2]:
+		bay.box(Vector3(9.83,2.58,z),Vector3(.13,1.63,3.8),FRAME)
+		for j in 8:
+			bay.box(Vector3(9.73,1.91+j*.19,z),Vector3(.17,.12,3.63),GREEN_STEEL,Vector3(0,0,-.32))
+		for dz: float in [-1.94,1.94]:
+			bay.beam(Vector3(9.69,1.70,z+dz),Vector3(9.69,3.47,z+dz),.10,RUST)
+	for x: float in [10.35,33.65]:
+		bay.cylinder(Vector3(x,2.34,31.30),.095,4.55,RUST)
+		for y: float in [.85,2.6,4.2]:
+			bay.cylinder(Vector3(x,y,31.30),.13,.08,FRAME)
+	for x: float in [12.9,16.0]:
+		bay.panel(Vector3(x,.14,43.2),Vector3(.38,.29,2.4),TIMBER)
+	for row in 2:
+		for j in 4-row:
+			var at := Vector3(14.45,.49+row*.33,42.42+j*.44+row*.22)
+			bay.cylinder(at,.215,5.4,RUST,Vector3(0,0,PI/2.))
+			# The dark bore at either end gives stored tubes their actual section.
+			for side: float in [-1.,1.]:
+				bay.cylinder(at+Vector3(side*2.708,0,0),.166,.025,DetailBuilder.INK,Vector3(0,0,PI/2.))
+	art.station.add_structure_collision(Vector3(14.45,.47,43.16),Vector3(5.4,.91,1.92))
+	art.prop("hand_truck",Vector3(18.4,.01,44.1),-.38)
 	bay.finish(175.)
 	var tip := DetailBuilder.new(art,"CoalTipple")
 	for x: float in [-5.,3.]:

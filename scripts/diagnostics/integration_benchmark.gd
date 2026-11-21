@@ -127,7 +127,8 @@ func place(location: String) -> void:
 	game.player.set_physics_process(false)
 	game.train.speed = 0
 	game.train.state = 0
-	if location in ["Curved railway", "Curved embankment"]: game.train.distance = 850.0
+	if location == "Curved railway": game.train.distance = 850.0
+	if location == "Curved embankment": game.train.distance = 2020.0
 	if location == "Mission completion": game.train.distance = journey.route.length()
 	game.train._apply_positions(0)
 	# AnimatableBody3D synchronizes on physics ticks. Read car-local positions
@@ -145,9 +146,9 @@ func place(location: String) -> void:
 		"Bonded Stores interior":
 			at = Vector3(37,0.05,2.5); camera = Vector3(37,1.75,2.5); target = Vector3(35.1,2.4,4.75)
 		"Curved embankment":
-			var rail := RouteTrack.frame(journey.route,850)
+			var rail := RouteTrack.frame(journey.route,2020)
 			at = rail * Vector3(0,.1,3.2)
-			camera = rail * Vector3(-5,4.3,7.0); target = rail * Vector3(60,1.5,-2)
+			camera = rail * Vector3(-14,7.2,11.0); target = rail * Vector3(75,1.5,-2)
 		"Crossing Stores":
 			var crossing: Node3D = journey.stations[1]
 			at = crossing.to_global(Vector3(151,.05,58))
