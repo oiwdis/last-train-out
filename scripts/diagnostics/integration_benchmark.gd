@@ -203,7 +203,13 @@ func place(location: String) -> void:
 	if suite == "environment":
 		poses.append({"location":location,"camera":[camera.x,camera.y,camera.z],"target":[target.x,target.y,target.z],
 			"at":[at.x,at.y,at.z],"front":fog.simulation.front,"preset":game.graphics.current_index})
-		game.hud.hide()
+		# Timing includes the normal UI, as it does in play. The separate visual
+		# passes give the rail and joints a clear view, retaining fog warnings.
+		if not output_dir.is_empty():
+			game.hud.hide()
+			journey.ui.hide()
+			game.supply_ui.hide()
+			fog.survival_hud.visible = location in ["Distant fog","Near advancing fog","Inside dangerous fog"]
 		fog.presentation._process(0.0)
 	# Cab/car views sit at eye height. The fixture camera bypasses the normal
 	# rig's visibility update, so apply its first-person body rule explicitly;

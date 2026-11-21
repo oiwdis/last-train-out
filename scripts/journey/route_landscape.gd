@@ -9,8 +9,10 @@ static func yard_weight(route: FogRoute, progress: float, offset: float) -> floa
 	# Harlow's original working yard and the two station aprons have their own
 	# authored floors. Lower the landscape under those footprints only.
 	var harlow := _rectangle(progress,offset,-105.,170.,-23.,29.)
-	var depot := _rectangle(progress-float(route.stations.ashford),offset,-160.,260.,-67.,103.)
-	var crossing := _rectangle(progress-float(route.stations.blackwater),offset,-160.,260.,-67.,103.)
+	var depot := _rectangle(progress-float(route.stations.ashford),offset,-69.,155.,-26.,53.)
+	var local_x := progress-float(route.stations.blackwater)
+	var crossing := maxf(_rectangle(local_x,offset,-83.,190.,-5.,66.),
+		_rectangle(local_x,offset,42.,54.,-68.,68.))
 	return maxf(harlow,maxf(depot,crossing))
 
 static func _rectangle(x: float, z: float, x0: float, x1: float, z0: float, z1: float) -> float:
@@ -19,12 +21,14 @@ static func _rectangle(x: float, z: float, x0: float, x1: float, z0: float, z1: 
 
 static func height(progress: float, offset: float, yard: float) -> float:
 	var width := absf(offset)
-	var shoulder := smoothstep(1.4,3.5,width)
-	var ditch := exp(-pow((width-5.0)/2.65,2.0))
+	# The walkable ballast cess beside both rails is also the curve boarding
+	# surface for the car-side ladders. Drainage begins outside this shoulder.
+	var shoulder := smoothstep(3.5,6.,width)
+	var ditch := exp(-pow((width-8.)/2.65,2.0))*shoulder
 	var meadow := smoothstep(5.,29.,width)
 	var hill := sin(progress*.012+offset*.032)*.85 + sin(progress*.039-offset*.053)*.36
 	var ridge := smoothstep(19.,155.,width)*(3.5+5.*sin(progress*.0065+offset*.021)+3.2*sin(progress*.004-offset*.046))
-	var field := -.07 - .74*shoulder - .81*ditch + meadow*(hill+ridge)
+	var field := -.015 - .74*shoulder - .81*ditch + meadow*(hill+ridge)
 	return lerpf(field,-.11,yard)
 
 static func point(frame: Transform3D, progress: float, offset: float, route: FogRoute) -> Vector3:
@@ -49,7 +53,7 @@ static func build(frames: Array[Transform3D], start: int, step: int, route: FogR
 			vertices.append(vertex)
 			uvs.append(Vector2(vertex.x,vertex.z)/12.)
 			var v := .86 + .075*sin(along*.022+side*.047) + .055*cos(side*.105-along*.013)
-			var wet := exp(-pow((absf(side)-5.)/2.5,2.))
+			var wet := exp(-pow((absf(side)-8.)/2.5,2.))
 			colors.append(Color(v,v*.985,v*.91).lerp(Color(.47,.45,.38),wet*.65))
 			var dy := height(along+1.,side,yard_weight(route,along+1.,side))-height(along-1.,side,yard_weight(route,along-1.,side))
 			var across := point(frames[i],along,side+1.,route)-point(frames[i],along,side-1.,route)

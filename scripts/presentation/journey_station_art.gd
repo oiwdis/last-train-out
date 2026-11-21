@@ -3,7 +3,10 @@ extends AssetDressing
 ## Reuses Harlow's licensed props and scanned materials. Visual-only additions;
 ## modular shells, doors, shelters, cache ownership and walking routes stay intact.
 
-func build_route_station(station: JourneyStation) -> void:
+var station: JourneyStation
+
+func build_route_station(owner_station: JourneyStation) -> void:
+	station = owner_station
 	var steel := preload("res://resources/materials/metal_dark.tres")
 	var roof := preload("res://resources/materials/roof_metal.tres")
 	for building in station.buildings:
@@ -53,16 +56,3 @@ func warm_view(at: Vector3, target: Vector3) -> void:
 	marker.position = at
 	marker.look_at(to_global(target))
 	marker.add_to_group("render_warmup_view")
-
-func solid(at: Vector3, size: Vector3) -> void:
-	var body := get_node_or_null("SceneryCollision") as StaticBody3D
-	if body == null:
-		body = StaticBody3D.new()
-		body.name = "SceneryCollision"
-		add_child(body)
-	var instance := CollisionShape3D.new()
-	var box := BoxShape3D.new()
-	box.size = size
-	instance.shape = box
-	instance.position = at
-	body.add_child(instance)

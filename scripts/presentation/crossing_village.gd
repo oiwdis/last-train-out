@@ -48,8 +48,18 @@ static func build(art: JourneyStationArt) -> void:
 	art.prop("suitcase",Vector3(173.4,.2,55.0),.40)
 	art.prop("crate",Vector3(173.2,.2,54.45),.13)
 	stores.finish(165.)
-	art.solid(Vector3(168,.09,54.9),Vector3(14.3,.20,3.2))
+	art.station.add_structure_collision(Vector3(168,.09,54.9),Vector3(14.3,.20,3.2))
 	var roadside := DetailBuilder.new(art,"SettlementStreet")
+	# The footpath links the occupied side of the station, the road and the shop.
+	# The planted verge and two breaks in the kerb leave cache approaches clear.
+	for x in range(0,181,3):
+		if absi(x-48)>5:
+			roadside.panel(Vector3(x,.007,53.1),Vector3(2.98,.06,1.75),CONCRETE)
+			roadside.panel(Vector3(x,.046,54.04),Vector3(2.98,.12,.18),CONCRETE)
+	for z in range(29,53,3):
+		roadside.panel(Vector3(12,.007,z),Vector3(1.72,.06,2.98),CONCRETE)
+	for x: float in [-35.,-5.,35.,61.,101.,142.]:
+		roadside.panel(Vector3(x,.02,61.85),Vector3(2.8,.13,.22),CONCRETE)
 	for x in range(-73,181,9):
 		if absi(x-48)>7: roadside.box(Vector3(x,-.012,58),Vector3(3.2,.013,.09),BOARD)
 	for x: float in [-57.,-10.,72.,134.,178.]:
@@ -82,7 +92,7 @@ static func _cottage(art: JourneyStationArt, at: Vector3, size: Vector3, station
 	var d := DetailBuilder.new(art,"CrossingHouse")
 	if new_shell:
 		d.panel(at+Vector3.UP*size.y*.5,size,BRICK)
-		art.solid(at+Vector3.UP*size.y*.5,size)
+		art.station.add_structure_collision(at+Vector3.UP*size.y*.5,size)
 	var slope := .39
 	var span := size.z*.5+.42
 	for side: float in [-1.,1.]:
@@ -134,4 +144,4 @@ static func _van(art: JourneyStationArt, at: Vector3) -> void:
 			d.cylinder(at+Vector3(x,.40,side*.98),.19,.04,DetailBuilder.STEEL,Vector3(PI/2.,0,0))
 	d.box(at+Vector3(2.1,.48,0),Vector3(.14,.14,1.97),DetailBuilder.STEEL)
 	d.finish(125.)
-	art.solid(at+Vector3(0,1.05,0),Vector3(4.15,1.50,1.85))
+	art.station.add_structure_collision(at+Vector3(0,1.05,0),Vector3(4.15,1.50,1.85))

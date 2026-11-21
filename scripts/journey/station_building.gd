@@ -38,6 +38,7 @@ func _ready() -> void:
 
 func part(at: Vector3, size: Vector3, material: Material) -> BoxPart:
 	var block := BoxPart.new()
+	block.square_edges = true
 	block.position = at
 	block.size = size
 	block.material = material

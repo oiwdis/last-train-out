@@ -8,9 +8,10 @@ var caches: Array[SearchContainer] = []
 var buildings: Array[StationBuilding] = []
 var note: SupplyInteractable
 var boarding_point: Vector3
+var site := StaticBody3D.new()
 
 func _ready() -> void:
-	var site := StaticBody3D.new()
+	site.name = "StationStructure"
 	add_child(site)
 	var concrete := preload("res://resources/materials/platform_concrete.tres")
 	var asphalt := preload("res://resources/materials/ground_asphalt.tres")
@@ -44,6 +45,11 @@ func _ready() -> void:
 	d.beam(Vector3(-17,0,5.8),Vector3(-17,4,5.8),0.18,DetailBuilder.INK)
 	d.beam(Vector3(-3,0,5.8),Vector3(-3,4,5.8),0.18,DetailBuilder.INK)
 	if industrial:
+		var spur := Track.new()
+		spur.name = "LoadingSiding"
+		spur.position = Vector3(51.,-.08,-21.)
+		spur.length = 28.
+		add_child(spur)
 		for x in [42,58,74]:
 			_box(site,Vector3(x,1.6,-12),Vector3(12,3.2,3),preload("res://resources/materials/train_body.tres")).show_mesh = false
 		for x in [-38,-22]:
@@ -81,6 +87,16 @@ func _ready() -> void:
 	art.name = "AuthoredStationDetails"
 	add_child(art)
 	art.build_route_station(self)
+
+## New permanent freight platforms, buildings and vehicles share the station's
+## original static body. Dressing can be culled independently of this geometry.
+func add_structure_collision(at: Vector3, size: Vector3) -> void:
+	var collider := CollisionShape3D.new()
+	var box := BoxShape3D.new()
+	box.size = size
+	collider.shape = box
+	collider.position = at
+	site.add_child(collider)
 
 func add_cache(suffix: String, at: Vector3, caption: String, item_id: String, amount: int) -> void:
 	var cache := SearchContainer.new()

@@ -9,6 +9,7 @@ import tempfile
 from pathlib import Path
 
 from benchmark_release import measure
+from compare_player_startup import run_player
 
 ROOT = Path(__file__).resolve().parents[2]
 FIXTURE = ROOT / 'scripts/diagnostics/integration_benchmark.gd'
@@ -20,6 +21,12 @@ def digest(path):
         return hashlib.file_digest(stream, 'sha256').hexdigest()
 
 
+def select_user(project, token):
+    (project / 'override.cfg').write_text('[application]\nconfig/use_custom_user_dir=true\n'
+                                          f'config/custom_user_dir_name="{token}"\n')
+    return Path.home() / 'Library/Application Support' / token
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('reference', type=Path)
@@ -28,7 +35,7 @@ def main():
     args = parser.parse_args()
     out = args.output.resolve()
     out.mkdir(parents=True, exist_ok=False)
-    manifest = {'host': platform.platform(), 'fixture_sha256': digest(FIXTURE), 'packs': {}, 'attempts': []}
+    manifest = {'host': platform.platform(), 'fixture_sha256': digest(FIXTURE), 'packs': {}, 'attempts': [], 'player_launches': []}
     report = out / 'comparison.json'
     apps = {'reference': args.reference.resolve()}
     if args.candidate:
@@ -40,14 +47,26 @@ def main():
             project.mkdir()
             pack, = (app / 'Contents/Resources').glob('*.pck')
             token = Path(tmp).name + '-' + version
-            (project / 'override.cfg').write_text('[application]\nconfig/use_custom_user_dir=true\n'
-                                                 f'config/custom_user_dir_name="{token}"\n')
+            user = select_user(project, token)
             target = project / pack.name
             shutil.copyfile(pack, target)
             info = plistlib.loads((app / 'Contents/Info.plist').read_bytes())
             manifest['packs'][version] = {'sha256': digest(target), 'build': info['LTOBuildCommit']}
-            contexts[version] = (app / 'Contents/MacOS/choose-renderer', project, target,
-                                 Path.home() / 'Library/Application Support' / token)
+            contexts[version] = (app / 'Contents/MacOS/choose-renderer', project, target, user)
+        if args.candidate:
+            for i, preset in enumerate(('low', 'medium', 'high')):
+                for state in ('cold', 'warm'):
+                    order = list(apps) if (i + int(state == 'warm')) % 2 == 0 else list(reversed(apps))
+                    for version in order:
+                        chooser, project, pack, matrix_user = contexts[version]
+                        user = select_user(project, matrix_user.name + '-player-' + preset)
+                        dest = out / (version + '-player')
+                        dest.mkdir(exist_ok=True)
+                        launch = run_player(chooser, pack, dest, 'metal', preset, state, user)
+                        manifest['player_launches'].append(dict(version=version, **launch))
+                        report.write_text(json.dumps(manifest, indent=2))
+            for _, project, _, user in contexts.values():
+                select_user(project, user.name)
         schedules = [(v, 'first') for v in apps] + [(v, 'repeat') for v in reversed(apps)] if args.candidate else []
         schedules += [(v, 'images') for v in apps]
         poses = None
@@ -71,7 +90,7 @@ def main():
                                  and poses == camera and (stage != 'images' or len(list((out / name).glob('*.png'))) == VIEWS * 3))
             manifest['attempts'].append(run)
             report.write_text(json.dumps(manifest, indent=2))
-    return int(any(not run['passed'] for run in manifest['attempts']))
+    return int(any(not run['passed'] for run in manifest['attempts'] + manifest['player_launches']))
 
 
 if __name__ == '__main__':
