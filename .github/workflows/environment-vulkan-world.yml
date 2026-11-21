@@ -1,0 +1,73 @@
+name: Isolate cold High Vulkan scene preparation
+on:
+  pull_request:
+    branches: [integration/milestone-3-5-photoreal-survival]
+    paths:
+      - .github/workflows/environment-vulkan-world.yml
+      - tools/macos/compare_vulkan_world.py
+      - tools/macos/vulkan_world_probe.gd
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  select:
+    runs-on: ubuntu-latest
+    outputs:
+      changed: ${{ steps.scope.outputs.changed }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 2
+      - id: scope
+        run: |
+          if [[ "$GITHUB_EVENT_NAME" == workflow_dispatch ]] || ! git diff --quiet HEAD^ HEAD -- \
+            .github/workflows/environment-vulkan-world.yml tools/macos/compare_vulkan_world.py tools/macos/vulkan_world_probe.gd; then
+            echo 'changed=true' >> "$GITHUB_OUTPUT"
+          fi
+
+  world:
+    needs: select
+    if: needs.select.outputs.changed == 'true'
+    name: Cold High world controls / ${{ matrix.order }}
+    runs-on: macos-latest
+    timeout-minutes: 110
+    strategy:
+      fail-fast: false
+      matrix:
+        order: [forward, reverse]
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/download-artifact@v8
+        with:
+          run-id: 44859769512
+          name: LastTrainOut-macos-universal.zip
+          github-token: ${{ github.token }}
+          path: download
+          skip-decompress: true
+      - name: Verify the exported game and recover the exact integration fog shader
+        run: |
+          zip=download/LastTrainOut-macos-universal.zip
+          echo "527af2233d5cb88ea444aded3c7d40b13f3a2176a52bd20d5c5ffb48f5df538a  $zip" | shasum -a 256 -c -
+          ditto -x -k "$zip" candidate
+          codesign --verify --strict --deep "candidate/Last Train Out.app"
+          base=684df38f0d9ba39a876d4788696855f0b64d5b29
+          git fetch --no-tags --depth=1 origin "$base"
+          git show "$base:scripts/fog/fog_front.gdshader" > "$RUNNER_TEMP/base-fog.gdshader"
+      - name: Rotate isolated fresh-cache starts and retain each attempt
+        env:
+          ORDER: ${{ matrix.order }}
+        run: |
+          args=()
+          if [[ "$ORDER" == reverse ]]; then args+=(--reverse); fi
+          python3 tools/macos/compare_vulkan_world.py "candidate/Last Train Out.app" \
+            "$RUNNER_TEMP/base-fog.gdshader" "$RUNNER_TEMP/world" "${args[@]}"
+      - if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: vulkan-world-${{ matrix.order }}
+          path: ${{ runner.temp }}/world
+          retention-days: 30

@@ -1,0 +1,12 @@
+# Build 111 on the original native runtime
+
+Build 111 retains the repaired world and the native executable shipped in build 103. Its immutable game source is `6c8a3248fa7d5390c3a71fdbfbba5674a1a3b952`. The full performance and visual report for this build was published in `6fd54cd360ee57ed47f4c4d1721baec6187507db`.
+
+- [Universal app](https://github.com/oiwdis/last-train-out/actions/runs/44859769512/artifacts/14689604118) · [SHA-256 and game pack](development-build.json) · [Reported frame times](https://github.com/oiwdis/last-train-out/blob/6fd54cd360ee57ed47f4c4d1721baec6187507db/docs/validation/milestone4/FRAME_TIMES.md) · [All raw matched runs](https://github.com/oiwdis/last-train-out/blob/6fd54cd360ee57ed47f4c4d1721baec6187507db/docs/validation/milestone4/raw-environment.zip)
+- [114 native matched screenshots](https://github.com/oiwdis/last-train-out/blob/6fd54cd360ee57ed47f4c4d1721baec6187507db/docs/validation/milestone4/GALLERY.md) · [Six daylight checks per build](daylight-fields.csv) · [Full native movie](https://github.com/oiwdis/last-train-out/blob/6fd54cd360ee57ed47f4c4d1721baec6187507db/docs/recording/milestone4-native-metal.mp4)
+- [Linux and macOS gameplay](gameplay-results.json) · [Uncut native route checks](recorded-journey.zip) · [Ordinary native player launches](fresh-player-startup.json) · [World shader preparation](world-stage-preparation.json)
+- [Renderer stress counts](renderer-stress.json) · [One cold High native pipeline crash](../build-111-native-high/README.md) · [Build workflow](https://github.com/oiwdis/last-train-out/actions/runs/44859769512)
+
+The native player completed 94 of 95 stress processes. One cold High start crashed in the vertex-format table lookup. Vulkan completed 86 of 95 without errors and lost the device on nine cold High starts. Both renderers completed the low and medium series. The owner identified build 103 as the earlier physical M1 playtest. [Build 103 to 111 save compatibility](../save-103-to-111.zip)
+
+On the same two hosted Macs, rotating first position, build 111 lost the Vulkan device on 22 of 34 cold High starts. PR #6 lost it on two of 34. All 68 warm High starts completed. The original archives retain both successful and failed attempts, user-cache conditions, phase traces and crash reports. [Build 111 first](high-vulkan-candidate-first.zip) · [PR #6 first](high-vulkan-reference-first.zip) · [Full original CI checks](raw-release-checks.zip)

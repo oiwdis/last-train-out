@@ -1,21 +1,46 @@
 {
   "metal": {
-    "total": 28,
-    "clean": 28,
+    "total": 95,
+    "clean": 94,
     "device_losses": 0,
-    "failures": [],
+    "failures": [
+      {
+        "series": "mixed",
+        "name": "cold-3",
+        "returncode": -11,
+        "complete": null,
+        "device_loss": false,
+        "timed_out": false,
+        "diagnostics": [],
+        "preset": null,
+        "wall_seconds": 16.41164766600002,
+        "peak_rss_bytes": 431800320
+      }
+    ],
     "series": {
+      "high": {
+        "complete": true,
+        "passed": true,
+        "processes": 36,
+        "ips": 0
+      },
       "low-medium": {
         "complete": true,
         "passed": true,
         "processes": 28,
         "ips": 0
+      },
+      "mixed": {
+        "complete": true,
+        "passed": false,
+        "processes": 31,
+        "ips": 1
       }
     }
   },
   "vulkan": {
-    "total": 67,
-    "clean": 58,
+    "total": 95,
+    "clean": 86,
     "device_losses": 9,
     "failures": [
       {
@@ -223,6 +248,12 @@
         "passed": false,
         "processes": 36,
         "ips": 7
+      },
+      "low-medium": {
+        "complete": true,
+        "passed": true,
+        "processes": 28,
+        "ips": 0
       },
       "mixed": {
         "complete": true,

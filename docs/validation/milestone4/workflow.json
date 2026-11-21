@@ -1,8 +1,8 @@
 {
   "run": 44859769512,
   "source": "6c8a3248fa7d5390c3a71fdbfbba5674a1a3b952",
-  "status": "in_progress",
-  "conclusion": null,
+  "status": "completed",
+  "conclusion": "failure",
   "jobs": [
     {
       "name": "Linux gameplay tests",
@@ -39,8 +39,8 @@
     {
       "name": "Matched frame pacing and continuous journey",
       "id": 136716175162,
-      "status": "in_progress",
-      "conclusion": null,
+      "status": "completed",
+      "conclusion": "success",
       "url": "https://github.com/oiwdis/last-train-out/actions/runs/44859769512/job/136716175162",
       "failed_steps": []
     },
@@ -71,8 +71,8 @@
     {
       "name": "Exported Vulkan launch and lifetime stress (low-medium)",
       "id": 136716175215,
-      "status": "in_progress",
-      "conclusion": null,
+      "status": "completed",
+      "conclusion": "success",
       "url": "https://github.com/oiwdis/last-train-out/actions/runs/44859769512/job/136716175215",
       "failed_steps": []
     },
@@ -123,10 +123,12 @@
     {
       "name": "Exported Metal launch and lifetime stress (mixed)",
       "id": 136716175279,
-      "status": "in_progress",
-      "conclusion": null,
+      "status": "completed",
+      "conclusion": "failure",
       "url": "https://github.com/oiwdis/last-train-out/actions/runs/44859769512/job/136716175279",
-      "failed_steps": []
+      "failed_steps": [
+        "Retain every cold, warm and lifecycle attempt"
+      ]
     },
     {
       "name": "Packaged Metal / library-policy",
@@ -179,19 +181,48 @@
     {
       "name": "Exported Metal launch and lifetime stress (high)",
       "id": 136716175472,
-      "status": "in_progress",
-      "conclusion": null,
+      "status": "completed",
+      "conclusion": "success",
       "url": "https://github.com/oiwdis/last-train-out/actions/runs/44859769512/job/136716175472",
+      "failed_steps": []
+    },
+    {
+      "name": "Sign with Developer ID, notarize and staple",
+      "id": 136734356018,
+      "status": "completed",
+      "conclusion": "skipped",
+      "url": "https://github.com/oiwdis/last-train-out/actions/runs/44859769512/job/136734356018",
       "failed_steps": []
     }
   ],
   "artifacts": [
+    {
+      "id": 14692187360,
+      "name": "performance-and-journey",
+      "bytes": 53553696,
+      "digest": "sha256:16d5816cf633ab50603097f46d7a56179bbbca459673395f62b16a480edc4f14",
+      "url": "https://github.com/oiwdis/last-train-out/actions/runs/44859769512/artifacts/14692187360"
+    },
+    {
+      "id": 14691746187,
+      "name": "release-stress-low-medium",
+      "bytes": 692087,
+      "digest": "sha256:82d3e09ae711529bae40ef9f91a2a9bc719c148a8ee5980a83c38e3113e95ca4",
+      "url": "https://github.com/oiwdis/last-train-out/actions/runs/44859769512/artifacts/14691746187"
+    },
     {
       "id": 14691371149,
       "name": "release-stress-mixed",
       "bytes": 1110479,
       "digest": "sha256:5f91d843182c9fbfeba66116dc1354ef91ea328596824702a7508965d550f5b8",
       "url": "https://github.com/oiwdis/last-train-out/actions/runs/44859769512/artifacts/14691371149"
+    },
+    {
+      "id": 14691367326,
+      "name": "metal-stress-mixed",
+      "bytes": 1046738,
+      "digest": "sha256:0d9bea76f14f7768a7d725e9bbc8a4296746b2ffa88885ab46a1cbe61d38f366",
+      "url": "https://github.com/oiwdis/last-train-out/actions/runs/44859769512/artifacts/14691367326"
     },
     {
       "id": 14691250563,
@@ -241,6 +272,13 @@
       "bytes": 33411733,
       "digest": "sha256:1e0b403a5b95dfca67f4ce7bf4dc5e98e41d916b1bd8c38530503edef9b45948",
       "url": "https://github.com/oiwdis/last-train-out/actions/runs/44859769512/artifacts/14690913900"
+    },
+    {
+      "id": 14690794912,
+      "name": "metal-stress-high",
+      "bytes": 783973,
+      "digest": "sha256:9027ed854a66260c036839f2da6f71b1fe8c42ea663f1a28404c64d6b9b4bced",
+      "url": "https://github.com/oiwdis/last-train-out/actions/runs/44859769512/artifacts/14690794912"
     },
     {
       "id": 14690346533,
