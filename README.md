@@ -2,7 +2,7 @@
 
 The Harlow Escape now has a continuous railway embankment, repaired Harlow track and warehouse joints, a freight yard at Ashford, an evacuated settlement at Blackwater and layered advancing fog. The journey runs for 4.26 km with the original survival rules. The development work is stacked on PR #6. Both PRs are open drafts. [Milestone 4 report](docs/MILESTONE4_ENVIRONMENT_OVERHAUL.md) · [Environment gallery](docs/validation/milestone4/GALLERY.md) · [Draft PR #7](https://github.com/oiwdis/last-train-out/pull/7)
 
-[Archived development build 108 with the Medium terrain defect](https://github.com/oiwdis/last-train-out/actions/runs/44850871725/artifacts/14686450857) · [ZIP checksum](docs/validation/milestone4/development-build.json) · [Fullscreen 2020 M1 procedure](docs/MILESTONE4_ENVIRONMENT_OVERHAUL.md#physical-2020-m1-procedure)
+[Download Milestone 4 development build 111](https://github.com/oiwdis/last-train-out/actions/runs/44859769512/artifacts/14689604118) · [ZIP checksum](docs/validation/milestone4/development-build.json) · [Native Metal frame times](docs/validation/milestone4/FRAME_TIMES.md) · [Continuous journey](docs/recording/milestone4-native-metal.mp4) · [Fullscreen 2020 M1 procedure](docs/MILESTONE4_ENVIRONMENT_OVERHAUL.md#physical-2020-m1-procedure)
 
 ## Milestone 3.5.4 integration renderer history
 
@@ -86,8 +86,8 @@ Godot runtime and all game data. You do not need Godot, Xcode or anything else t
 
 ### 1. Download the latest build
 
-1. Sign in to GitHub and open the [tested development ZIP](https://github.com/oiwdis/last-train-out/actions/runs/44822226233/artifacts/14673852596).
-2. Verify the downloaded file with `shasum -a 256 LastTrainOut-macos-universal.zip` and compare the result with the [build receipt](docs/validation/milestone354/build-103.json).
+1. Sign in to GitHub and open the [Milestone 4 development ZIP](https://github.com/oiwdis/last-train-out/actions/runs/44859769512/artifacts/14689604118).
+2. Verify the downloaded file with `shasum -a 256 LastTrainOut-macos-universal.zip` and compare the result with the [build 111 receipt](docs/validation/milestone4/development-build.json).
 
 The run page also shows the build number, the commit it was built from and the ZIP's SHA-256.
 Development builds are kept for 30 days.

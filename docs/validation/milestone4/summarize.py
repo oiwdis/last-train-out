@@ -38,7 +38,7 @@ def summarize(records):
 
 def table(path, rows):
     with path.open('w', newline='') as stream:
-        writer = csv.DictWriter(stream, list(rows[0]))
+        writer = csv.DictWriter(stream, list(rows[0]), lineterminator='\n')
         writer.writeheader()
         for row in rows:
             writer.writerow({k: round(v, 4) if isinstance(v, float) else v for k, v in row.items()})
@@ -90,6 +90,7 @@ def main():
     out.mkdir(exist_ok=True, parents=True)
     scenes, presets, startups = defaultdict(list), defaultdict(list), []
     all_runs = []
+    slow_frames = []
     with zipfile.ZipFile(args.artifact) as archive:
         def load(name):
             return json.loads(archive.read(name))
@@ -108,6 +109,14 @@ def main():
             for record in data['results']:
                 if len(record['frames_ms']) != {'entry': 60, 'steady': 180}[record['stage']]:
                     raise ValueError(f'Incomplete frame sequence in {name}')
+                for i, ms in enumerate(record['frames_ms']):
+                    if ms > 50:
+                        last = record['timeline'][i]
+                        slow_frames.append(dict(attempt=name, preset=record['preset'], location=record['location'],
+                            phase=record['stage'], index=i, interval_ms=ms, callback_frame_ms=last['frame_ms'],
+                            callback_process_ms=last['process_bracket_ms'], callback_physics_ms=last['physics_bracket_ms'],
+                            callback_render_ms=last['render_bracket_ms'], setup_cpu_ms=last['render_setup_cpu_ms'],
+                            **{kind+'_pipelines':record['pipeline_delta'][kind] for kind in ('surface','draw','specialization')}))
                 key = (version, record['preset'], record['stage'])
                 scenes[key + (record['location'],)].append(record)
                 presets[key].append(record)
@@ -128,13 +137,22 @@ def main():
                                  cache_files_before=run['cache_before']['files'],
                                  cache_bytes_after=run['cache_after']['bytes']))
         photo_poses = None
+        field_rows = []
         measured = {r['location'] for r in poses}
         for version in ('reference','candidate'):
             data = load(version+'-images.json')
+            photo_attempt = next(row for row in manifest['attempts'] if row['name'] == version+'-images')
+            if not photo_attempt['passed']:
+                raise ValueError(f'Incomplete native image capture for {version}')
             camera = data['camera_poses']
             if [r for r in camera if r['location'] in measured] != poses or (photo_poses and camera != photo_poses):
                 raise ValueError('Screenshot camera, observer or fog state differs between builds')
             photo_poses = camera
+            for check in data.get('field_checks', []):
+                field_rows.append(dict(version=version, preset=('Low','Medium','High')[check['preset']],
+                                       view=check['view'], near_black_percent=100*check['near_black_fraction']))
+        if field_rows:
+            table(out/'daylight-fields.csv', field_rows)
         gallery(archive, out)
         with zipfile.ZipFile(out/'native-pngs.zip', 'w', zipfile.ZIP_STORED) as images:
             for member in archive.namelist():
@@ -147,6 +165,8 @@ def main():
     rows = [dict(version=v, preset=p, stage=s, location=l, **summarize(records))
             for (v,p,s,l),records in scenes.items()]
     group_rows = [dict(version=v, preset=p, stage=s, **summarize(records)) for (v,p,s),records in presets.items()]
+    if slow_frames:
+        table(out/'slow-frames.csv', slow_frames)
     table(out/'locations.csv', rows)
     table(out/'presets.csv', group_rows)
     table(out/'launches.csv', startups)
@@ -158,6 +178,8 @@ def main():
           'The comparison uses all observed intervals. Percentiles use nearest rank and medians use the sample median.', '',
           '[Frame intervals, poses, logs and cache counters](raw-environment.zip) · [Location metrics and FPS distributions](locations.csv) · '
           '[Pooled results by preset](presets.csv) · [Player startup](launches.csv) · [Machine and memory](runs.json)', '']
+    if slow_frames:
+        md.extend(['[Every frame above 50 ms with its callback timings](slow-frames.csv)', ''])
     for p in ('Low','Medium','High'):
         md.extend([f'## {p}', '', '| Location | Steady median | Steady p95 | Steady p99 | Steady worst | Entry p99 | Entry worst |',
                    '|---|---:|---:|---:|---:|---:|---:|'])

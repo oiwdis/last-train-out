@@ -1,0 +1,5 @@
+attempt,preset,location,phase,index,interval_ms,callback_frame_ms,callback_process_ms,callback_physics_ms,callback_render_ms,setup_cpu_ms,surface_pipelines,draw_pipelines,specialization_pipelines
+candidate-first,High,Harlow platform,entry,0,97.207,97.777,0.265,0.263,95.375,0.038,0.0,0.0,0.0
+candidate-repeat,High,Harlow platform,entry,0,247.935,248.684,0.138,0.32,246.29,0.024,0.0,0.0,0.0
+reference-repeat,High,Harlow platform,entry,0,288.897,289.631,0.248,0.262,287.152,0.031,0.0,0.0,0.0
+reference-repeat,High,Locomotive cab,entry,4,111.782,111.767,0.406,0.0,110.924,0.049,0.0,0.0,0.0

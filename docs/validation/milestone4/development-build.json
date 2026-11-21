@@ -1,39 +1,40 @@
 {
-  "zip_sha256": "e9b7573db2dd05a4109eb7c82bef304173c0ae8b1f598b707fc725dea3afd639",
-  "bytes": 340416790,
-  "artifact": 14686450857,
-  "workflow_run": 44850871725,
-  "source_head": "9b6f67cd15cc12fecb64bbc3112b39fd4a307dc5",
-  "bundle_commit": "13d7cbde24b62ef23ec6426d42ab58e699e9c64a",
-  "build": "108",
+  "zip_sha256": "527af2233d5cb88ea444aded3c7d40b13f3a2176a52bd20d5c5ffb48f5df538a",
+  "bytes": 340821630,
+  "artifact": 14689604118,
+  "workflow_run": 44859769512,
+  "source_head": "6c8a3248fa7d5390c3a71fdbfbba5674a1a3b952",
+  "bundle_commit": "2dc2fcb41b9725bc83bf6aecb4760c76a0df9f1e",
+  "build": "111",
   "kind": "development",
   "crc_bad_entry": null,
   "shader_profile": {
     "adapter": "Apple Paravirtual device (Apple5)",
     "argumentBuffers": 1,
-    "bundled_library_groups": 82,
+    "bundled_library_groups": 86,
     "device": "Apple Paravirtual device",
     "engine": "4.5.1-stable (lto_metal)",
     "family": 1005,
     "language": 262144,
-    "source": "13d7cbde24b62ef23ec6426d42ab58e699e9c64a"
+    "source": "2dc2fcb41b9725bc83bf6aecb4760c76a0df9f1e"
   },
   "shader_groups": 97,
-  "cache_bytes": 8946028,
+  "cache_bytes": 8946964,
   "cache_hashes_accepted": true,
   "offline_libraries": {
     "shader_profile": {
       "adapter": "Apple Paravirtual device (Apple5)",
       "argumentBuffers": 1,
+      "bundled_library_groups": 82,
       "device": "Apple Paravirtual device",
       "engine": "4.5.1-stable (lto_metal)",
       "family": 1005,
       "language": 262144,
       "min_os_version": "26.0",
-      "source": "13d7cbde24b62ef23ec6426d42ab58e699e9c64a"
+      "source": "2dc2fcb41b9725bc83bf6aecb4760c76a0df9f1e"
     },
-    "shader_groups": 82,
-    "cache_bytes": 17162300,
+    "shader_groups": 86,
+    "cache_bytes": 18862528,
     "cache_hashes_accepted": true
   },
   "runtimes": {
@@ -43,7 +44,7 @@
         "arm64"
       ],
       "bytes": 187369968,
-      "sha256": "12f751e73c1bf4b7b82f20ad0f4bc22b0f4fad97b194ae3f3027443ba1ef459f"
+      "sha256": "ee95bde69344b4211b3e33ae81c296d71a631465cd5de346211fbb1713516fd1"
     },
     "LastTrainOutMetal": {
       "arch": [
@@ -61,14 +62,14 @@
       "sha256": "10befdf25b6122011c87c814ee53a247e9e918889d79ef92711e22556c862558"
     }
   },
-  "pack_sha256": "2a00fdd9c90987660c5c4e9e06730b710eb9de5230cb73b30b167afed4c5bcee",
+  "pack_sha256": "deea300ff4f73d2b3ec76e1dd667d6fb35c5ff8b2637604b164f64934520c138",
   "test_merge_parents": [
     "684df38f0d9ba39a876d4788696855f0b64d5b29",
-    "9b6f67cd15cc12fecb64bbc3112b39fd4a307dc5"
+    "6c8a3248fa7d5390c3a71fdbfbba5674a1a3b952"
   ],
-  "verified_git_tree": "d55155454c6ebc5c8b8cf457663685529dccadc4",
-  "github_digest": "sha256:e9b7573db2dd05a4109eb7c82bef304173c0ae8b1f598b707fc725dea3afd639",
-  "pack_members": 939,
+  "verified_git_tree": "acb4899d8e4fdf209e5f5e0f55bb11db4cc7c8af",
+  "github_digest": "sha256:527af2233d5cb88ea444aded3c7d40b13f3a2176a52bd20d5c5ffb48f5df538a",
+  "pack_members": 941,
   "expected_source_files": 385,
   "environment_resources_verified": [
     "resources/journey/rail_corridor.scn",

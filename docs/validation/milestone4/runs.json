@@ -1,29 +1,29 @@
 {
   "host": "macOS-26.7.2-arm64-arm-64bit-Mach-O",
-  "fixture": "fe3d01dd1de8c01427c3eb844d39036869ba8549b4c511e41a31e63397f3ce2a",
+  "fixture": "8bde3af0cd62574fb19acc35d45368019cd4ebe60161e6cab3cfc5e000bf3d31",
   "packs": {
     "reference": {
       "sha256": "e4dfd14ccfa967a6d72fc46c5adcf809400449140118b650637c6370133e515d",
       "build": "30bf4bae03c83c7d6f96e6b10e79b763b068e3c0"
     },
     "candidate": {
-      "sha256": "2a00fdd9c90987660c5c4e9e06730b710eb9de5230cb73b30b167afed4c5bcee",
-      "build": "13d7cbde24b62ef23ec6426d42ab58e699e9c64a"
+      "sha256": "deea300ff4f73d2b3ec76e1dd667d6fb35c5ff8b2637604b164f64934520c138",
+      "build": "2dc2fcb41b9725bc83bf6aecb4760c76a0df9f1e"
     }
   },
   "attempts": [
     {
       "name": "reference-first",
       "adapter": "Apple Paravirtual device (Apple5)",
-      "processor": "Apple M1 (Virtual)",
-      "scene_construct_ms": 2157,
-      "render_ready_ms": 11839,
-      "peak_rss_mib": 622.828125,
+      "processor": "Apple M2 Pro (Virtual)",
+      "scene_construct_ms": 1293,
+      "render_ready_ms": 8547,
+      "peak_rss_mib": 587.296875,
       "shader_hits": 0,
       "shader_misses": 11,
       "preset_preparation": [
         {
-          "milliseconds": 388,
+          "milliseconds": 220,
           "pipelines": {
             "draw": 54.0,
             "specialization": 64.0,
@@ -32,7 +32,7 @@
           "preset": 0
         },
         {
-          "milliseconds": 6145,
+          "milliseconds": 3563,
           "pipelines": {
             "draw": 78.0,
             "specialization": 112.0,
@@ -41,7 +41,7 @@
           "preset": 1
         },
         {
-          "milliseconds": 8072,
+          "milliseconds": 6638,
           "pipelines": {
             "draw": 86.0,
             "specialization": 195.0,
@@ -55,15 +55,15 @@
     {
       "name": "candidate-first",
       "adapter": "Apple Paravirtual device (Apple5)",
-      "processor": "Apple M1 (Virtual)",
-      "scene_construct_ms": 4498,
-      "render_ready_ms": 15592,
-      "peak_rss_mib": 668.703125,
+      "processor": "Apple M2 Pro (Virtual)",
+      "scene_construct_ms": 1925,
+      "render_ready_ms": 9527,
+      "peak_rss_mib": 651.734375,
       "shader_hits": 0,
-      "shader_misses": 15,
+      "shader_misses": 11,
       "preset_preparation": [
         {
-          "milliseconds": 466,
+          "milliseconds": 227,
           "pipelines": {
             "draw": 57.0,
             "specialization": 66.0,
@@ -72,19 +72,19 @@
           "preset": 0
         },
         {
-          "milliseconds": 4890,
+          "milliseconds": 4115,
           "pipelines": {
-            "draw": 82.0,
-            "specialization": 115.0,
-            "surface": 145.0
+            "draw": 81.0,
+            "specialization": 114.0,
+            "surface": 144.0
           },
           "preset": 1
         },
         {
-          "milliseconds": 10503,
+          "milliseconds": 6258,
           "pipelines": {
-            "draw": 90.0,
-            "specialization": 202.0,
+            "draw": 89.0,
+            "specialization": 201.0,
             "surface": 175.0
           },
           "preset": 2
@@ -95,15 +95,15 @@
     {
       "name": "candidate-repeat",
       "adapter": "Apple Paravirtual device (Apple5)",
-      "processor": "Apple M1 (Virtual)",
-      "scene_construct_ms": 4368,
-      "render_ready_ms": 15238,
-      "peak_rss_mib": 584.09375,
+      "processor": "Apple M2 Pro (Virtual)",
+      "scene_construct_ms": 1945,
+      "render_ready_ms": 9309,
+      "peak_rss_mib": 597.84375,
       "shader_hits": 0,
       "shader_misses": 0,
       "preset_preparation": [
         {
-          "milliseconds": 357,
+          "milliseconds": 221,
           "pipelines": {
             "draw": 57.0,
             "specialization": 66.0,
@@ -112,19 +112,19 @@
           "preset": 0
         },
         {
-          "milliseconds": 4356,
+          "milliseconds": 3447,
           "pipelines": {
-            "draw": 82.0,
-            "specialization": 115.0,
-            "surface": 145.0
+            "draw": 81.0,
+            "specialization": 114.0,
+            "surface": 144.0
           },
           "preset": 1
         },
         {
-          "milliseconds": 8570,
+          "milliseconds": 5807,
           "pipelines": {
-            "draw": 90.0,
-            "specialization": 202.0,
+            "draw": 89.0,
+            "specialization": 201.0,
             "surface": 175.0
           },
           "preset": 2
@@ -135,15 +135,15 @@
     {
       "name": "reference-repeat",
       "adapter": "Apple Paravirtual device (Apple5)",
-      "processor": "Apple M1 (Virtual)",
-      "scene_construct_ms": 2979,
-      "render_ready_ms": 14044,
-      "peak_rss_mib": 587.875,
+      "processor": "Apple M2 Pro (Virtual)",
+      "scene_construct_ms": 1312,
+      "render_ready_ms": 8391,
+      "peak_rss_mib": 551.765625,
       "shader_hits": 0,
       "shader_misses": 0,
       "preset_preparation": [
         {
-          "milliseconds": 359,
+          "milliseconds": 247,
           "pipelines": {
             "draw": 54.0,
             "specialization": 64.0,
@@ -152,7 +152,7 @@
           "preset": 0
         },
         {
-          "milliseconds": 5285,
+          "milliseconds": 3568,
           "pipelines": {
             "draw": 78.0,
             "specialization": 112.0,
@@ -161,7 +161,7 @@
           "preset": 1
         },
         {
-          "milliseconds": 8727,
+          "milliseconds": 5704,
           "pipelines": {
             "draw": 86.0,
             "specialization": 195.0,
