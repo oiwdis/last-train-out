@@ -401,7 +401,7 @@ jobs:
         if: ${{ !cancelled() && steps.upload.outputs.artifact-id != '' }}
         timeout-minutes: 10
         run: |
-          "$GODOT" --verbose --path . --audio-driver Dummy --resolution 960x540 --fixed-fps 60 tests/test_runner.tscn -- --only=preparation_lifecycle --graphics=low --report=tests/_output/renderer-stress.json > tests/_output/renderer-stress.log 2>&1
+          "$GODOT" --verbose --path . --audio-driver Dummy --resolution 960x540 --fixed-fps 60 tests/test_runner.tscn -- --only=preparation_lifecycle --graphics=low --profile-phases --report=tests/_output/renderer-stress.json > tests/_output/renderer-stress.log 2>&1
           if grep -E '^(ERROR|SCRIPT ERROR)|ObjectDB instances leaked|resources still in use' tests/_output/renderer-stress.log; then exit 1; fi
 
       - name: Retain renderer stress evidence

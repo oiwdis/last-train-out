@@ -1,0 +1,82 @@
+{
+  "zip_sha256": "a3d71b678cd85545bf7aa5ddbe0145ad0f9b37961eb562b72afba0c3d4d05449",
+  "bytes": 340821923,
+  "artifact": 14695813361,
+  "workflow_run": 44869971053,
+  "source_head": "27048ed2feda5c8afa21b44e694f862e0e02af3e",
+  "bundle_commit": "3cb7b32235eaa09d72ae7c51ef3987741acaebb1",
+  "build": "117",
+  "kind": "development",
+  "crc_bad_entry": null,
+  "shader_profile": {
+    "adapter": "Apple Paravirtual device (Apple5)",
+    "argumentBuffers": 1,
+    "bundled_library_groups": 86,
+    "device": "Apple Paravirtual device",
+    "engine": "4.5.1-stable (lto_metal)",
+    "family": 1005,
+    "language": 262144,
+    "source": "3cb7b32235eaa09d72ae7c51ef3987741acaebb1"
+  },
+  "shader_groups": 97,
+  "cache_bytes": 8946964,
+  "cache_hashes_accepted": true,
+  "offline_libraries": {
+    "shader_profile": {
+      "adapter": "Apple Paravirtual device (Apple5)",
+      "argumentBuffers": 1,
+      "bundled_library_groups": 82,
+      "device": "Apple Paravirtual device",
+      "engine": "4.5.1-stable (lto_metal)",
+      "family": 1005,
+      "language": 262144,
+      "min_os_version": "26.0",
+      "source": "3cb7b32235eaa09d72ae7c51ef3987741acaebb1"
+    },
+    "shader_groups": 86,
+    "cache_bytes": 18862528,
+    "cache_hashes_accepted": true
+  },
+  "runtimes": {
+    "Last Train Out": {
+      "arch": [
+        "x86_64",
+        "arm64"
+      ],
+      "bytes": 187369968,
+      "sha256": "c4e6746cf8000246d0c6b662ba458367ecb2c0da8c1b315be81c3cd9d7bfe7aa"
+    },
+    "LastTrainOutMetal": {
+      "arch": [
+        "arm64"
+      ],
+      "bytes": 64040928,
+      "sha256": "a7108e46a8a7a476d5809f4fe7dd79ca08e0cd71f85ddc3d55487019fdb37ae2"
+    },
+    "choose-renderer": {
+      "arch": [
+        "x86_64",
+        "arm64"
+      ],
+      "bytes": 157024,
+      "sha256": "10befdf25b6122011c87c814ee53a247e9e918889d79ef92711e22556c862558"
+    }
+  },
+  "pack_sha256": "9a0c1163fce19c8469777e99d2619530692ff21e091d013774a6b87149a7feb0",
+  "test_merge_parents": [
+    "684df38f0d9ba39a876d4788696855f0b64d5b29",
+    "27048ed2feda5c8afa21b44e694f862e0e02af3e"
+  ],
+  "verified_git_tree": "d241317d55f7f05db3d74666d4377d859265ee58",
+  "github_digest": "sha256:a3d71b678cd85545bf7aa5ddbe0145ad0f9b37961eb562b72afba0c3d4d05449",
+  "pack_members": 941,
+  "expected_source_files": 385,
+  "environment_resources_verified": [
+    "resources/journey/rail_corridor.scn",
+    "scripts/fog/fog_front.gdshader",
+    "assets/environment/railway_copse.png",
+    "assets/environment/fog_density.png",
+    "assets/pbr/aerial_grass_rock_albedo.jpg",
+    "assets/pbr/aerial_grass_rock_normal.jpg"
+  ]
+}

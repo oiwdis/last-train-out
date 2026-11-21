@@ -175,6 +175,10 @@ The signed build 111 four-arm control reproduced the loss in four of sixteen unm
 
 A review across presets also found yard asphalt showing through the maintenance floor. The new apron and the three building slabs shared the same top plane. All three buildings now meet the yard through their existing shallow thresholds with the finished floor four centimetres above the pavement. The real input journey completed 167 checks after the fix. [Geometry, before-and-after images and floor controls](validation/milestone4/ashford-floors/README.md)
 
+## Vulkan after a preset change
+
+The build 117 universal game and the source-based lifecycle test each lost the Vulkan device on the build host during a Low-to-Medium-to-High sequence. The cold-start camera experiment exercised a different sequence. It recorded eleven losses in 32 starts at the origin and zero in 32 starts at the platform. The revised macOS Vulkan policy uses the platform only on initial High preparation. Later preset changes and Continue use the original camera placement. The independent check runs the same build 117 data, fog, preset and save sequence under each policy. [Failed player and source logs](validation/milestone4/build-117/README.md) · [Cold-start replication on both hosts](validation/milestone4/vulkan-world/replication/README.md)
+
 ## Reproduce the review
 
 Download and unzip both development apps, then run the commands below from the Milestone 4 checkout on an Apple Silicon Mac. Use a new output directory. The timing driver uses the standard library. The gallery builder also uses Pillow.
